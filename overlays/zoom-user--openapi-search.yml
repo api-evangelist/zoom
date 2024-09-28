@@ -1,0 +1,1860 @@
+openapi: 3.0.1
+info:
+  title: ' user/'
+  description: Needs description.
+  contact:
+    name: Zoom Developers
+    url: https://zoom.us/developer
+    email: developer@zoom.us
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  version: 1.0.0
+externalDocs:
+  description: Zoom REST API Documentation
+  url: https://zoom.github.io/api
+servers:
+  - url: https://api.zoom.us/v1
+security:
+  - api_key: []
+  - api_secret: []
+tags: []
+paths:
+  /user/assistant/delete:
+    post:
+      tags:
+        - Assistants
+        - Users
+      description: |+
+        Delete a user's assistant.
+
+      operationId: userAssistantDelete
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: The host’s user id.
+                host_email:
+                  type: string
+                  description: The host’s email address.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                id: unique_id
+                host_email: email_address
+                updated_at: '2013-09-02T12:00:00.000Z'
+      summary: Create User Assistant Delete
+  /user/assistant/set:
+    post:
+      tags:
+        - Assistants
+        - Sets
+        - Users
+      description: |+
+        Set a user's assistant which can schedule meeting for him.
+
+      operationId: userAssistantSet
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - assistant_email
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: The host’s user id.
+                host_email:
+                  type: string
+                  description: 'The host’s email address. '
+                assistant_email:
+                  type: string
+                  description: The assistant’s email address.
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                id: unique_id
+                host_email: email_address
+                updated_at: '2013-09-02T12:00:00.000Z'
+      summary: Create User Assistant Set
+  /user/autocreate:
+    post:
+      tags:
+        - Autocreate
+        - Users
+      description: >+
+        Create a user on Zoom, returns the created user ID.
+
+
+        <aside class="notice">
+
+        The API is provided for enterprise customer who has a managed domain
+
+        </aside>
+
+
+        <aside class="warning">
+
+        This feature is disabled by default because of the security risk
+        involved in creating a user who does not belong to your domain without
+        notifying the user. You need to contact Zoom customer support if you
+        want to use this API
+
+        </aside>
+
+      operationId: userAutocreate
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - email
+                - password
+                - type
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: >-
+                    A valid email address. It must be unique in Zoom service. If
+                    an email address is existed, a "user existing" error message
+                    will be return
+                type:
+                  type: string
+                  description: >-
+                    User’s type. 1 for basic user, 2 for pro user, 3 for corp
+                    user. Basic user can host up to 40 minutes meeting
+                password:
+                  type: string
+                  description: User's password
+                first_name:
+                  type: string
+                  description: User's first name
+                last_name:
+                  type: string
+                  description: User's last name
+                disable_chat:
+                  type: boolean
+                  description: Disable in-meeting chat
+                  default: false
+                enable_e2e_encryption:
+                  type: boolean
+                  description: Enable end-to-end encryption
+                  default: false
+                enable_silent_mode:
+                  type: boolean
+                  description: Enable attendee on-hold
+                  default: false
+                disable_group_hd:
+                  type: boolean
+                  description: Disable Group HD
+                  default: false
+                disable_recording:
+                  type: boolean
+                  description: Disable recording
+                  default: false
+                enable_cmr:
+                  type: boolean
+                  description: Enable cloud meeting record
+                  default: false
+                enable_auto_recording:
+                  type: boolean
+                  description: >-
+                    Enable automatic recording. By default, if
+                    "enable_cloud_auto_recording" is true, it will become true
+                  default: false
+                enable_cloud_auto_recording:
+                  type: boolean
+                  description: Enable cloud automatic recording
+                  default: false
+                track_id:
+                  type: string
+                  description: Referral partner track ID
+                meeting_capacity:
+                  type: string
+                  description: >-
+                    User’s meeting capacity, 0 means following account’s meeting
+                    capacity
+                  default: '0'
+                enable_webinar:
+                  type: string
+                  description: Enable webinar feature
+                webinar_capacity:
+                  type: string
+                  description: >-
+                    Enable webinar capacity, can be 100, 500, 1000, 3000, 5000
+                    or 10000, depends on if having related webinar capacity plan
+                    subscription or not
+                  default: '0'
+                enable_large:
+                  type: string
+                  description: Enable large meting feature
+                large_capacity:
+                  type: string
+                  description: >-
+                    Enable large meeting capacity, can be 100, 200, 300 or 500,
+                    depends on if having related webinar capacity plan
+                    subscription or not
+                  default: '0'
+                disable_feedback:
+                  type: boolean
+                  description: Disable feedback
+                  default: false
+                disable_jbh_reminder:
+                  type: boolean
+                  description: Disable jbh email reminder
+                  default: false
+                enable_breakout_room:
+                  type: boolean
+                  description: Enable breakout room
+                  default: false
+                enable_polling:
+                  type: boolean
+                  description: Enable polling for meeting
+                  default: false
+                enable_annotation:
+                  type: boolean
+                  description: Enable Annotation
+                  default: true
+                enable_share_dual_camera:
+                  type: boolean
+                  description: Enable Share dual camera
+                  default: false
+                enable_far_end_camera_control:
+                  type: boolean
+                  description: Enable Far end camera control
+                  default: false
+                disable_private_chat:
+                  type: boolean
+                  description: Disable Private chat
+                  default: false
+                enable_enter_exit_chime:
+                  type: boolean
+                  description: Enable Enter/exit chime
+                  default: false
+                option_enter_exit_chime_type:
+                  type: string
+                  description: >-
+                    Enter/exit chime type. 0 means Heard by all including host
+                    and attendees, 1 means Heard by host only
+                  default: '0'
+                disable_cancel_meeting_notification:
+                  type: boolean
+                  description: Disable email notification when a meeting is cancelled
+                  default: false
+                enable_remote_support:
+                  type: boolean
+                  description: Enable Remote support
+                  default: false
+                enable_file_transfer:
+                  type: boolean
+                  description: Enable File transfer
+                  default: false
+                enable_virtual_background:
+                  type: boolean
+                  description: Enable Virtual background
+                  default: false
+                enable_attention_tracking:
+                  type: boolean
+                  description: Enable Attention tracking
+                  default: false
+                enable_waiting_room:
+                  type: boolean
+                  description: Enable Waiting room
+                  default: false
+                enable_closed_caption:
+                  type: boolean
+                  description: Enable Closed caption
+                  default: false
+                enable_co_host:
+                  type: boolean
+                  description: Enable Co-host
+                  default: false
+                enable_auto_saving_chats:
+                  type: boolean
+                  description: Enable Auto saving chats
+                  default: false
+                enable_phone_participants_password:
+                  type: boolean
+                  description: >-
+                    Enable Generate and require password for participants
+                    joining by phone
+                  default: false
+                enable_auto_delete_cmr:
+                  type: boolean
+                  description: Enable Auto delete cloud recordings
+                  default: false
+                auto_delete_cmr_days:
+                  type: string
+                  description: Auto delete cloud recordings after days
+                dept:
+                  type: string
+                  description: Department for user profile, use for repor
+                group_id:
+                  type: string
+                  description: >-
+                    User Group ID. If set default user group, the parameter’s
+                    default value is the default user group
+                imgroup_id:
+                  type: string
+                  description: >-
+                    IM Group ID. If set default im group, the parameter’s
+                    default value is the default im group
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                email: email_address
+                id: unique_id
+                created_at: '2012-11-25T12:00:00.000Z'
+                first_name: Zoomie
+                last_name: Userton
+                pic_url: ''
+                type: 1
+                disable_chat: false
+                enable_e2e_encryption: false
+                enable_silent_mode: true
+                disable_group_hd: false
+                disable_recording: false
+                enable_cmr: false
+                enable_auto_recording: false
+                enable_cloud_auto_recording: false
+                verified: 1
+                pmi: 2035134243
+                meeting_capacity: 0
+                enable_webinar: false
+                webinar_capacity: 0
+                enable_large: false
+                large_capacity: 0
+                disable_feedback: false
+                disable_jbh_reminder: true
+                enable_breakout_room: true
+                enable_polling: false
+                enable_annotation: false
+                enable_share_dual_camera: false
+                enable_far_end_camera_control: false
+                disable_private_chat: false
+                enable_enter_exit_chime: false
+                disable_cancel_meeting_notification: false
+                enable_remote_support: false
+                enable_file_transfer: false
+                enable_virtual_background: false
+                enable_attention_tracking: false
+                enable_waiting_room: false
+                enable_closed_caption: false
+                enable_co_host: false
+                enable_auto_saving_chats: false
+                enable_phone_participants_password: false
+                enable_auto_delete_cmr: true
+                auto_delete_cmr_days: 30
+                dept: Engineer
+                lastClientVersion: ''
+                lastLoginTime: ''
+                token: ''
+                zpk: ''
+                zak: ''
+      summary: Create User Autocreate
+  /user/checkemail:
+    post:
+      tags:
+        - Checkemail
+        - Users
+      description: |+
+        Check if the user email exists.
+
+      operationId: userCheckemail
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - email
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: User email.
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                existed_email: true
+      summary: Create User Checkemail
+  /user/checkzpk:
+    post:
+      tags:
+        - Checkzpk
+        - Users
+      description: |+
+        Check if the zpk is expired. The zpk is used to authenticate a user.
+
+      operationId: userCheckzpk
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - zpk
+              type: object
+              properties:
+                zpk:
+                  type: string
+                  description: User zpk.
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                expire_in: 7187
+      summary: Create User Checkzpk
+  /user/create:
+    post:
+      tags:
+        - Users
+      description: >+
+        Create a user on Zoom, returns the created user ID.
+
+
+        <aside class="notice">
+
+        Your account must have this privilege to provisioning user. Zoom only
+        assigns this privilege to a trusted partner
+
+        </aside>
+
+
+        <aside class="notice">
+
+        User will get an email sent from Zoom. There is a confirmation link in
+        this email. User will then need to click this link to activate their
+        account to the Zoom service. The user can set or change their password
+        in Zoom.
+
+        </aside>
+
+      operationId: userCreate
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - email
+                - type
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: >-
+                    A valid email address. It must be unique in Zoom service. If
+                    an email address is existed, a "user existing" error message
+                    will be return
+                type:
+                  type: string
+                  description: >-
+                    User’s type. 1 for basic user, 2 for pro user, 3 for corp
+                    user. Basic user can host up to 40 minutes meeting
+                first_name:
+                  type: string
+                  description: User's first name
+                last_name:
+                  type: string
+                  description: User's last name
+                disable_chat:
+                  type: boolean
+                  description: Disable in-meeting chat
+                  default: false
+                enable_e2e_encryption:
+                  type: boolean
+                  description: Enable end-to-end encryption
+                  default: false
+                enable_silent_mode:
+                  type: boolean
+                  description: Enable attendee on-hold
+                  default: false
+                disable_group_hd:
+                  type: boolean
+                  description: Disable Group HD
+                  default: false
+                disable_recording:
+                  type: boolean
+                  description: Disable recording
+                  default: false
+                enable_cmr:
+                  type: boolean
+                  description: Enable cloud meeting record
+                  default: false
+                enable_auto_recording:
+                  type: boolean
+                  description: >-
+                    Enable automatic recording. By default, if
+                    "enable_cloud_auto_recording" is true, it will become true
+                  default: false
+                enable_cloud_auto_recording:
+                  type: boolean
+                  description: Enable cloud automatic recording
+                  default: false
+                track_id:
+                  type: string
+                  description: Referral partner track ID
+                meeting_capacity:
+                  type: string
+                  description: >-
+                    User’s meeting capacity, passing 0 will inherit account’s
+                    meeting capacity
+                  default: '0'
+                enable_webinar:
+                  type: string
+                  description: Enable webinar feature
+                webinar_capacity:
+                  type: string
+                  description: >-
+                    Enable webinar capacity, can be 100, 500, 1000, 3000, 5000
+                    or 10000, depends on if having related webinar capacity plan
+                    subscription or not
+                  default: '0'
+                enable_large:
+                  type: string
+                  description: Enable large meting feature
+                large_capacity:
+                  type: string
+                  description: >-
+                    Enable large meeting capacity, can be 100, 200, 300 or 500,
+                    depends on if having related webinar capacity plan
+                    subscription or not
+                  default: '0'
+                disable_feedback:
+                  type: boolean
+                  description: Disable feedback
+                  default: false
+                disable_jbh_reminder:
+                  type: boolean
+                  description: Disable jbh email reminder
+                  default: false
+                enable_breakout_room:
+                  type: boolean
+                  description: Enable breakout room
+                  default: false
+                enable_polling:
+                  type: boolean
+                  description: Enable polling for meeting
+                  default: false
+                enable_annotation:
+                  type: boolean
+                  description: Enable Annotation
+                  default: true
+                enable_share_dual_camera:
+                  type: boolean
+                  description: Enable Share dual camera
+                  default: false
+                enable_far_end_camera_control:
+                  type: boolean
+                  description: Enable Far end camera control
+                  default: false
+                disable_private_chat:
+                  type: boolean
+                  description: Disable Private chat
+                  default: false
+                enable_enter_exit_chime:
+                  type: boolean
+                  description: Enable Enter/exit chime
+                  default: false
+                option_enter_exit_chime_type:
+                  type: string
+                  description: >-
+                    Enter/exit chime type. 0 means Heard by all including host
+                    and attendees, 1 means Heard by host only
+                  default: '0'
+                disable_cancel_meeting_notification:
+                  type: boolean
+                  description: Disable email notification when a meeting is cancelled
+                  default: false
+                enable_remote_support:
+                  type: boolean
+                  description: Enable Remote support
+                  default: false
+                enable_file_transfer:
+                  type: boolean
+                  description: Enable File transfer
+                  default: false
+                enable_virtual_background:
+                  type: boolean
+                  description: Enable Virtual background
+                  default: false
+                enable_attention_tracking:
+                  type: boolean
+                  description: Enable Attention tracking
+                  default: false
+                enable_waiting_room:
+                  type: boolean
+                  description: Enable Waiting room
+                  default: false
+                enable_closed_caption:
+                  type: boolean
+                  description: Enable Closed caption
+                  default: false
+                enable_co_host:
+                  type: boolean
+                  description: Enable Co-host
+                  default: false
+                enable_auto_saving_chats:
+                  type: boolean
+                  description: Enable Auto saving chats
+                  default: false
+                enable_phone_participants_password:
+                  type: boolean
+                  description: >-
+                    Enable Generate and require password for participants
+                    joining by phone
+                  default: false
+                enable_auto_delete_cmr:
+                  type: boolean
+                  description: Enable Auto delete cloud recordings
+                  default: false
+                auto_delete_cmr_days:
+                  type: string
+                  description: Auto delete cloud recordings after days
+                dept:
+                  type: string
+                  description: Department for user profile, use for repor
+                group_id:
+                  type: string
+                  description: >-
+                    User Group ID. If set default user group, the parameter’s
+                    default value is the default user group
+                imgroup_id:
+                  type: string
+                  description: >-
+                    IM Group ID. If set default im group, the parameter’s
+                    default value is the default im group
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                email: email_address
+                id: unique_id
+                created_at: '2012-11-25T12:00:00.000Z'
+                first_name: Zoom
+                last_name: User
+                pic_url: ''
+                type: 1
+                disable_chat: false
+                enable_e2e_encryption: false
+                enable_silent_mode: true
+                disable_group_hd: false
+                disable_recording: false
+                enable_cmr: false
+                enable_auto_recording: false
+                enable_cloud_auto_recording: false
+                verified: 1
+                pmi: 2035134243
+                meeting_capacity: 0
+                enable_webinar: false
+                webinar_capacity: 0
+                enable_large: false
+                large_capacity: 0
+                disable_feedback: false
+                disable_jbh_reminder: true
+                enable_breakout_room: true
+                enable_polling: false
+                enable_annotation: false
+                enable_share_dual_camera: false
+                enable_far_end_camera_control: false
+                disable_private_chat: false
+                enable_enter_exit_chime: false
+                disable_cancel_meeting_notification: false
+                enable_remote_support: false
+                enable_file_transfer: false
+                enable_virtual_background: false
+                enable_attention_tracking: false
+                enable_waiting_room: false
+                enable_closed_caption: false
+                enable_co_host: false
+                enable_auto_saving_chats: false
+                enable_phone_participants_password: false
+                enable_auto_delete_cmr: true
+                auto_delete_cmr_days: 30
+                dept: Engineer
+                lastClientVersion: ''
+                lastLoginTime: ''
+                token: ''
+                zpk: ''
+                zak: ''
+      summary: Create User Create
+  /user/custcreate:
+    post:
+      tags:
+        - Custcreate
+        - Users
+      description: >+
+        Create a user on Zoom, returns the created user ID.
+
+
+        <aside class="notice">
+
+        The API is provided for API plan only
+
+        </aside>
+
+
+        <aside class="notice">
+
+        User created in this way has no password and is not able to log into the
+        Zoom web site or client
+
+        </aside>
+
+      operationId: userCustcreate
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - email
+                - type
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: >-
+                    A valid email address. It must be unique in Zoom service. If
+                    an email address is existed, a "user existing" error message
+                    will be return
+                type:
+                  type: string
+                  description: >-
+                    User’s type. 1 for basic user, 2 for pro user, 3 for corp
+                    user. Basic user can host up to 40 minutes meeting
+                first_name:
+                  type: string
+                  description: User's first name
+                last_name:
+                  type: string
+                  description: User's last name
+                disable_chat:
+                  type: boolean
+                  description: Disable in-meeting chat
+                  default: false
+                enable_e2e_encryption:
+                  type: boolean
+                  description: Enable end-to-end encryption
+                  default: false
+                enable_silent_mode:
+                  type: boolean
+                  description: Enable attendee on-hold
+                  default: false
+                disable_group_hd:
+                  type: boolean
+                  description: Disable Group HD
+                  default: false
+                disable_recording:
+                  type: boolean
+                  description: Disable recording
+                  default: false
+                enable_cmr:
+                  type: boolean
+                  description: Enable cloud meeting record
+                  default: false
+                enable_auto_recording:
+                  type: boolean
+                  description: >-
+                    Enable automatic recording. By default, if
+                    "enable_cloud_auto_recording" is true, it will become true
+                  default: false
+                enable_cloud_auto_recording:
+                  type: boolean
+                  description: Enable cloud automatic recording
+                  default: false
+                track_id:
+                  type: string
+                  description: Referral partner track ID
+                meeting_capacity:
+                  type: string
+                  description: >-
+                    User’s meeting capacity, 0 means following account’s meeting
+                    capacity
+                  default: '0'
+                enable_webinar:
+                  type: string
+                  description: Enable webinar feature
+                webinar_capacity:
+                  type: string
+                  description: >-
+                    Enable webinar capacity, can be 100, 500, 1000, 3000, 5000
+                    or 10000, depends on if having related webinar capacity plan
+                    subscription or not
+                  default: '0'
+                enable_large:
+                  type: string
+                  description: Enable large meting feature
+                large_capacity:
+                  type: string
+                  description: >-
+                    Enable large meeting capacity, can be 100, 200, 300 or 500,
+                    depends on if having related webinar capacity plan
+                    subscription or not
+                  default: '0'
+                disable_feedback:
+                  type: boolean
+                  description: Disable feedback
+                  default: false
+                disable_jbh_reminder:
+                  type: boolean
+                  description: Disable jbh email reminder
+                  default: false
+                enable_breakout_room:
+                  type: boolean
+                  description: Enable breakout room
+                  default: false
+                enable_polling:
+                  type: boolean
+                  description: Enable polling for meeting
+                  default: false
+                enable_annotation:
+                  type: boolean
+                  description: Enable Annotation
+                  default: true
+                enable_share_dual_camera:
+                  type: boolean
+                  description: Enable Share dual camera
+                  default: false
+                enable_far_end_camera_control:
+                  type: boolean
+                  description: Enable Far end camera control
+                  default: false
+                disable_private_chat:
+                  type: boolean
+                  description: Disable Private chat
+                  default: false
+                enable_enter_exit_chime:
+                  type: boolean
+                  description: Enable Enter/exit chime
+                  default: false
+                option_enter_exit_chime_type:
+                  type: string
+                  description: >-
+                    Enter/exit chime type. 0 means Heard by all including host
+                    and attendees, 1 means Heard by host only
+                  default: '0'
+                disable_cancel_meeting_notification:
+                  type: boolean
+                  description: Disable email notification when a meeting is cancelled
+                  default: false
+                enable_remote_support:
+                  type: boolean
+                  description: Enable Remote support
+                  default: false
+                enable_file_transfer:
+                  type: boolean
+                  description: Enable File transfer
+                  default: false
+                enable_virtual_background:
+                  type: boolean
+                  description: Enable Virtual background
+                  default: false
+                enable_attention_tracking:
+                  type: boolean
+                  description: Enable Attention tracking
+                  default: false
+                enable_waiting_room:
+                  type: boolean
+                  description: Enable Waiting room
+                  default: false
+                enable_closed_caption:
+                  type: boolean
+                  description: Enable Closed caption
+                  default: false
+                enable_co_host:
+                  type: boolean
+                  description: Enable Co-host
+                  default: false
+                enable_auto_saving_chats:
+                  type: boolean
+                  description: Enable Auto saving chats
+                  default: false
+                enable_phone_participants_password:
+                  type: boolean
+                  description: >-
+                    Enable Generate and require password for participants
+                    joining by phone
+                  default: false
+                enable_auto_delete_cmr:
+                  type: boolean
+                  description: Enable Auto delete cloud recordings
+                  default: false
+                auto_delete_cmr_days:
+                  type: string
+                  description: Auto delete cloud recordings after days
+                dept:
+                  type: string
+                  description: Department for user profile, use for repor
+                group_id:
+                  type: string
+                  description: >-
+                    User Group ID. If set default user group, the parameter’s
+                    default value is the default user group
+                imgroup_id:
+                  type: string
+                  description: >-
+                    IM Group ID. If set default im group, the parameter’s
+                    default value is the default im group
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                email: email_address
+                id: unique_id
+                created_at: '2012-11-25T12:00:00.000Z'
+                first_name: Zoomie
+                last_name: Userton
+                pic_url: ''
+                type: 1
+                disable_chat: false
+                enable_e2e_encryption: false
+                enable_silent_mode: true
+                disable_group_hd: false
+                disable_recording: false
+                enable_cmr: false
+                enable_auto_recording: false
+                enable_cloud_auto_recording: false
+                verified: 1
+                pmi: 2035134243
+                meeting_capacity: 0
+                enable_webinar: false
+                webinar_capacity: 0
+                enable_large: false
+                large_capacity: 0
+                disable_feedback: false
+                disable_jbh_reminder: true
+                enable_breakout_room: true
+                enable_polling: false
+                enable_annotation: false
+                enable_share_dual_camera: false
+                enable_far_end_camera_control: false
+                disable_private_chat: false
+                enable_enter_exit_chime: false
+                disable_cancel_meeting_notification: false
+                enable_remote_support: false
+                enable_file_transfer: false
+                enable_virtual_background: false
+                enable_attention_tracking: false
+                enable_waiting_room: false
+                enable_closed_caption: false
+                enable_co_host: false
+                enable_auto_saving_chats: false
+                enable_phone_participants_password: false
+                enable_auto_delete_cmr: true
+                auto_delete_cmr_days: 30
+                dept: Engineer
+                lastClientVersion: ''
+                lastLoginTime: ''
+                token: ''
+                zpk: ''
+                zak: ''
+      summary: Create User Custcreate
+  /user/activate:
+    post:
+      tags:
+        - Activate
+        - Users
+      description: |+
+        Activate a user on Zoom, return the user ID.
+
+      operationId: userActivate
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - id
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: User id.
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                id: unique_id
+                activated_at: '2012-11-25T12:00:00.000Z'
+      summary: Create User Activate
+  /user/deactivate:
+    post:
+      tags:
+        - Deactivate
+        - Users
+      description: |+
+        Deactivate a user on Zoom, return the user ID.
+
+      operationId: userDeactivate
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - id
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: User id.
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                id: unique_id
+                deactivated_at: '2012-11-25T12:00:00.000Z'
+      summary: Create User Deactivate
+  /user/delete:
+    post:
+      tags:
+        - Users
+      description: |+
+        Delete a user on Zoom, return the deleted user ID.
+
+      operationId: userDelete
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - id
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: User id.
+                type:
+                  type: string
+                  description: 0 means existing user, 1 means pending user.
+                  default: '0'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                id: unique_id
+                account_id: ' unique_id'
+                deleted_at: '2012-11-25T12:00:00.000Z'
+      summary: Create User Delete
+  /user/get:
+    post:
+      tags:
+        - Users
+      description: |+
+        Get a user info on Zoom via user ID
+
+      operationId: userGet
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - api_key
+                - api_secret
+                - id
+              type: object
+              properties:
+                api_key:
+                  type: string
+                  description: API Key
+                api_secret:
+                  type: string
+                  description: API Secret
+                id:
+                  type: string
+                  description: User ID
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                email: email_address
+                id: unique_id
+                account_id: 8af3444232345
+                created_at: '2012-11-25T12:00:00.000Z'
+                first_name: Zoomie
+                last_name: Userton
+                type: 1
+                token: adlfjadslfkjasdkljfkjalkadfskjdsafkjdfsajkllajsdfaljsdf
+                pic_url: https://www.zoom.us/p/bNsPi
+                disable_chat: false
+                enable_e2e_encryption: false
+                enable_silent_mode: true
+                disable_group_hd: false
+                disable_recording: false
+                enable_cmr: false
+                enable_record_speaker_view: false
+                enable_record_gallery_view: false
+                enable_record_audio_file: false
+                enable_auto_recording: false
+                enable_cloud_auto_recording: false
+                verified: 1
+                pmi: 2035134243
+                vanity_url: https://zoom.us/my/test
+                meeting_capacity: 0
+                enable_webinar: true
+                webinar_capacity: 100
+                enable_large: false
+                large_capacity: 0
+                disable_feedback: false
+                disable_jbh_reminder: true
+                enable_breakout_room: true
+                enable_polling: false
+                enable_annotation: false
+                dept: Engineer
+                timezone: America/Los_Angeles
+                lastClientVersion: 3.5.44664.0321(mac)
+                lastLoginTime: '2016-03-23T09:54:41.000Z'
+                status: 0
+                zpk: >-
+                  ABzyF_DKLzVcPd-5Wu6zCwlZ3978jn7ZcTHONHrP7Vs.BwYAAAFTY-4XnwAAHCAkMTRlMzRjYzUtMjJmZC00MTQ1LTg2MzUtZmVmYjk3ZDI0NGMyFlYydzlQTzgxUl8yS1pmREtvTWVybVEWVjJ3OVBPODFSXzJLWmZES29NZXJtUQxzb3BoaWUgc3VuNjZkALM0VUVtMTFHTmh3cGFTWlJNMGkxYjhXSXNIZEIzbXZ0VlZwOGg0Q1Jhb1B3LkJnSWdUMjlLVG1KR1YySjNTVnBDZDFwUlpXb3Zhamh1TUUwd2VVVkVaU3QyTDNCQVpUSTNabVJtWkRNNFpqSmhZall5TXpRMk9XVTVOMkUwT1RNeVlUa3lPV1UyTlRnMk5qTm1OV0prT0RVek5URmhNR1l5WTJObVpUTTVNV0V6TTJabU1RQQAAFi1YZ0gzWVg2VDNTZmRqVEI5dEJLMXcAAgE
+                zak: >-
+                  eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjbGllbnQiLCJ1aWQiOiJXWGpRbkRNRVFzdWNVNXYxWXlIV0lBIiwiaXNzIjoid2ViIiwic3R5IjoxMDAsImNsdCI6MCwic3RrIjoiUGpuNXItSEJVb0tXd2lBQVFOR1FndnFKNWVLY19zV1l3VHBHNjdJQm00SS5CZ1FnVDI5S1RtSkdWMkozU1ZwQ2QxcFJaV292YWpodU1FMHdlVVZFWlN0MkwzQkFaVEkzWm1SbVpETTRaakpoWWpZeU16UTJPV1U1TjJFME9UTXlZVGt5T1dVMk5UZzJOak5tTldKa09EVXpOVEZoTUdZeVkyTm1aVE01TVdFek0yWm1NUUFnZFVvemNIQndjRnA1WTBaSFYybEZjbTFoYlZwSEt6VTRkMFprY2pWS1VXOEEiLCJleHAiOjE1MjYyNzQ1NzUsImlhdCI6MTUyNjI2NzM3NSwiYWlkIjoiWG1XeGlnZFVSZWVnTW9ibHY3d3FUQSIsImNpZCI6IiJ9.oMMmw50xEfD2IVaSfxap1OlSbczto-KAM
+      summary: Create User Get
+  /user/getbyemail:
+    post:
+      tags:
+        - Getbyemail
+        - Users
+      description: >+
+        Get a user on Zoom via user email address and login type, return the
+        user info.
+
+      operationId: userGetbyemail
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - email
+                - login_type
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: Email, String
+                login_type:
+                  type: string
+                  description: >-
+                    Login type of the email, int SNS_FACEBOOK = 0; SNS_GOOGLE =
+                    1; SNS_API = 99; SNS_ZOOM = 100; SNS_SSO = 101;
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                email: email_address
+                id: unique_id
+                created_at: '2012-11-25T12:00:00.000Z'
+                first_name: Zoomie
+                last_name: Userton
+                type: 1
+                token: adlfjadslfkjasdkljfkjalkadfskjdsafkjdfsajkllajsdfaljsdf
+                pic_url: https://www.zoom.us/p/bNsPi
+                disable_chat: false
+                enable_e2e_encryption: false
+                enable_silent_mode: true
+                disable_group_hd: false
+                disable_recording: false
+                enable_cmr: false
+                enable_record_speaker_view: false
+                enable_record_gallery_view: false
+                enable_record_audio_file: false
+                enable_auto_recording: false
+                enable_cloud_auto_recording: false
+                verified: 1
+                pmi: 2035134243
+                vanity_url: https://zoom.us/my/test
+                meeting_capacity: 0
+                enable_webinar: true
+                webinar_capacity: 100
+                enable_large: false
+                large_capacity: 0
+                disable_feedback: false
+                disable_jbh_reminder: true
+                enable_breakout_room: true
+                enable_polling: false
+                enable_annotation: false
+                dept: Engineer
+                lastClientVersion: 3.5.44664.0321(mac)
+                lastLoginTime: '2016-03-23T09:54:41.000Z'
+                status: 0
+                zpk: >-
+                  ABzyF_DKLzVcPd-5Wu6zCwlZ3978jn7ZcTHONHrP7Vs.BwYAAAFTY-4XnwAAHCAkMTRlMzRjYzUtMjJmZC00MTQ1LTg2MzUtZmVmYjk3ZDI0NGMyFlYydzlQTzgxUl8yS1pmREtvTWVybVEWVjJ3OVBPODFSXzJLWmZES29NZXJtUQxzb3BoaWUgc3VuNjZkALM0VUVtMTFHTmh3cGFTWlJNMGkxYjhXSXNIZEIzbXZ0VlZwOGg0Q1Jhb1B3LkJnSWdUMjlLVG1KR1YySjNTVnBDZDFwUlpXb3Zhamh1TUUwd2VVVkVaU3QyTDNCQVpUSTNabVJtWkRNNFpqSmhZall5TXpRMk9XVTVOMkUwT1RNeVlUa3lPV1UyTlRnMk5qTm1OV0prT0RVek5URmhNR1l5WTJObVpUTTVNV0V6TTJabU1RQQAAFi1YZ0gzWVg2VDNTZmRqVEI5dEJLMXcAAgE
+                zak: >-
+                  eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjbGllbnQiLCJ1aWQiOiJXWGpRbkRNRVFzdWNVNXYxWXlIV0lBIiwiaXNzIjoid2ViIiwic3R5IjoxMDAsImNsdCI6MCwic3RrIjoiUGpuNXItSEJVb0tXd2lBQVFOR1FndnFKNWVLY19zV1l3VHBHNjdJQm00SS5CZ1FnVDI5S1RtSkdWMkozU1ZwQ2QxcFJaV292YWpodU1FMHdlVVZFWlN0MkwzQkFaVEkzWm1SbVpETTRaakpoWWpZeU16UTJPV1U1TjJFME9UTXlZVGt5T1dVMk5UZzJOak5tTldKa09EVXpOVEZoTUdZeVkyTm1aVE01TVdFek0yWm1NUUFnZFVvemNIQndjRnA1WTBaSFYybEZjbTFoYlZwSEt6VTRkMFprY2pWS1VXOEEiLCJleHAiOjE1MjYyNzQ1NzUsImlhdCI6MTUyNjI2NzM3NSwiYWlkIjoiWG1XeGlnZFVSZWVnTW9ibHY3d3FUQSIsImNpZCI6IiJ9.oMMmw50xEfD2IVaSfxap1OlSbczto-KAM
+      summary: Create User Getbyemail
+  /user/list:
+    post:
+      tags:
+        - Users
+      description: |+
+        List all the users on Zoom
+
+      operationId: userList
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                page_size:
+                  type: string
+                  description: >-
+                    The amount of records returns within a single API call. Max
+                    of 300 users.
+                  default: '30'
+                page_number:
+                  type: string
+                  description: Current page number of returned records. Default to 1.
+                  default: '1'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                page_count: 5
+                total_records: 235
+                page_number: 1
+                page_size: 50
+                users:
+                  - email: email_address
+                    id: unique_id
+                    created_at: '2012-11-25T12:00:00.000Z'
+                    first_name: Zoomie
+                    last_name: Userton
+                    type: 1
+                    pic_url: https://www.zoom.us/p/bNsPi
+                    disable_chat: false
+                    enable_e2e_encryption: false
+                    enable_silent_mode: true
+                    disable_group_hd: false
+                    disable_recording: false
+                    enable_cmr: false
+                    enable_auto_recording: false
+                    enable_cloud_auto_recording: false
+                    verified: 0
+                    pmi: 2035134243
+                    meeting_capacity: 0
+                    enable_webinar: true
+                    webinar_capacity: 100
+                    enable_large: false
+                    large_capacity: 0
+                    disable_feedback: false
+                    disable_jbh_reminder: true
+                    enable_breakout_room: false
+                    dept: Engineer
+                    timezone: America/Los_Angeles
+                    lastClientVersion: 3.5.44664.0321(mac)
+                    lastLoginTime: '2016-03-23T09:54:41.000Z'
+                    status: 0
+                    token: ''
+                    zpk: ''
+                    zak: ''
+      summary: Create User List
+  /user/pending:
+    post:
+      tags:
+        - Pending
+        - Users
+      description: |+
+        List all the pending users on Zoom
+
+      operationId: userPending
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                page_size:
+                  type: string
+                  description: >-
+                    The amount of records returns within a single API call. Max
+                    of 300 users.
+                  default: '30'
+                page_number:
+                  type: string
+                  description: Current page number of returned records. Default to 1.
+                  default: '1'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                page_count: 5
+                total_records: 235
+                page_number: 1
+                page_size: 50
+                users:
+                  - email: email_address
+                    id: unique_id
+                    created_at: '2012-11-25T12:00:00.000Z'
+                    first_name: Zoomie
+                    last_name: Userton
+                    type: 1
+                    pic_url: https://www.zoom.us/p/bNsPi
+                    disable_chat: false
+                    enable_e2e_encryption: false
+                    enable_silent_mode: true
+                    disable_group_hd: false
+                    disable_recording: false
+                    enable_cmr: false
+                    enable_auto_recording: false
+                    enable_cloud_auto_recording: false
+                    verified: 0
+                    pmi: 2035134243
+                    meeting_capacity: 0
+                    enable_webinar: true
+                    webinar_capacity: 100
+                    enable_large: false
+                    large_capacity: 0
+                    disable_feedback: false
+                    disable_jbh_reminder: true
+                    enable_breakout_room: false
+                    dept: Engineer
+                    timezone: America/Los_Angeles
+                    lastClientVersion: 3.5.44664.0321(mac)
+                    lastLoginTime: '2016-03-23T09:54:41.000Z'
+                    status: 0
+                    token: ''
+                    zpk: ''
+                    zak: ''
+      summary: Create User Pending
+  /user/permanentdelete:
+    post:
+      tags:
+        - Permanentdelete
+        - Users
+      description: |+
+        Delete a user from Zoom system permanently.
+
+      operationId: userPermanentdelete
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: The user’s user id.
+                email:
+                  type: string
+                  description: >-
+                    The user’s email address. Must have id or email, if given
+                    id, the email is ignored.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                id: unique_id
+                email: email_address
+                deleted_at: '2013-09-02T12:00:00.000Z'
+      summary: Create User Permanentdelete
+  /user/revoketoken:
+    post:
+      tags:
+        - Revoketoken
+        - Users
+      description: |+
+        Revoke a user's SSO token.
+
+      operationId: userRevoketoken
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: The SSO user’s user id.
+                email:
+                  type: string
+                  description: The SSO user’s email address.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                id: unique_id
+                email: email_address
+                updated_at: '2013-09-02T12:00:00.000Z'
+      summary: Create User Revoketoken
+  /user/scheduleforhost/list:
+    post:
+      tags:
+        - Scheduleforhost
+        - Users
+      description: |+
+        List assigned schedule privilege for host users.
+
+      operationId: userScheduleforhostList
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: The host’s user id.
+                host_email:
+                  type: string
+                  description: The host’s email address.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                total_records: 1
+                users:
+                  - id: unique_id
+                    email: email_address
+                    first_name: Zoomie
+                    last_name: Userton
+      summary: Create User Scheduleforhost List
+  /user/ssocreate:
+    post:
+      tags:
+        - Ssocreate
+        - Users
+      description: >+
+        Create a SSO user on Zoom, return the created user ID.
+
+
+        <aside class="notice">The API is provided for enabled 'Pre-provisioning
+        SSO User' option. User created in this way has no password. If it is not
+        a basic user, will generate a Personal Vanity URL using user name (no
+        domain) of the provisioning email. If user name or pmi is invalid or
+        occupied, will use random number/random personal vanity URL.</aside>
+
+      operationId: userSsocreate
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - email
+                - type
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: A valid email address. It must be unique in Zoom service.
+                type:
+                  type: string
+                  description: >-
+                    User’s type. 1 means it is a basic user. 2 means a pro user,
+                    3 means a corp user. Basic user can host up to 40 minutes
+                    meeting.
+                first_name:
+                  type: string
+                  description: User’s first name.
+                last_name:
+                  type: string
+                  description: User’s last name.
+                meeting_capacity:
+                  type: string
+                  description: >-
+                    User’s meeting capacity, 0 means following account’s meeting
+                    capacity.
+                  default: '0'
+                enable_webinar:
+                  type: string
+                  description: Enable webinar feature true or false.
+                webinar_capacity:
+                  type: string
+                  description: >-
+                    Enable webinar capacity, can be 100, 500, 1000, 3000, 5000
+                    or 10000, depends on if having related webinar capacity plan
+                    subscription or not.
+                  default: '0'
+                enable_large:
+                  type: string
+                  description: Enable large meting feature true or false.
+                large_capacity:
+                  type: string
+                  description: >-
+                    Enable large meeting capacity, can be 100, 200, 300 or 500,
+                    depends on if having related webinar capacity plan
+                    subscription or not.
+                  default: '0'
+                pmi:
+                  type: string
+                  description: Personal Meeting ID, long, length must be 10.
+                group_id:
+                  type: string
+                  description: >-
+                    User Group ID. If set default user group, the parameter’s
+                    default value is the default user group.
+                imgroup_id:
+                  type: string
+                  description: >-
+                    IM Group ID. If set default im group, the parameter’s
+                    default value is the default im group.
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                id: unique_id
+                email: email_address
+                first_name: Zoomie
+                last_name: Userton
+                pic_url: ''
+                type: 2
+                disable_chat: true
+                disable_private_chat: false
+                enable_e2e_encryption: false
+                enable_silent_mode: true
+                disable_group_hd: false
+                disable_recording: true
+                enable_cmr: false
+                enable_record_speaker_view: false
+                enable_record_gallery_view: false
+                enable_record_audio_file: false
+                enable_auto_recording: false
+                enable_cloud_auto_recording: false
+                verified: 0
+                pmi: 0
+                vanity_url: https://abc.zoom.us/my/test126
+                meeting_capacity: 0
+                enable_webinar: true
+                webinar_capacity: 100
+                enable_large: false
+                large_capacity: 0
+                disable_feedback: false
+                disable_jbh_reminder: false
+                enable_breakout_room: true
+                enable_polling: false
+                enable_annotation: false
+                dept: Engineer
+                timezone: ''
+                created_at: '2015-03-12T05:45:45.000Z'
+                lastClientVersion: ''
+                lastLoginTime: ''
+                token: ''
+                zpk: ''
+                zak: ''
+      summary: Create User Ssocreate
+  /user/update:
+    post:
+      tags:
+        - Users
+      description: |+
+        Update user info on Zoom via user ID.
+
+      operationId: userUpdate
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - id
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: User id.
+                type:
+                  type: string
+                  description: >-
+                    User’s type. 1 means it is a basic user. 2 means a pro user,
+                    3 means a corp user. Basic user can host up to 40 minutes
+                    meeting.
+                first_name:
+                  type: string
+                  description: User’s first name.
+                last_name:
+                  type: string
+                  description: User’s last name.
+                disable_chat:
+                  type: boolean
+                  description: Disable in-meeting chat.
+                  default: false
+                enable_e2e_encryption:
+                  type: boolean
+                  description: Enable end-to-end encryption.
+                  default: false
+                enable_silent_mode:
+                  type: boolean
+                  description: Enable attendee on-hold.
+                  default: false
+                disable_group_hd:
+                  type: boolean
+                  description: Disable Group HD.
+                  default: false
+                disable_recording:
+                  type: boolean
+                  description: Disable recording.
+                  default: false
+                enable_cmr:
+                  type: boolean
+                  description: Enable cloud meeting record.
+                  default: false
+                enable_record_speaker_view:
+                  type: string
+                  description: Enable record the active speaker view.
+                enable_record_gallery_view:
+                  type: string
+                  description: Enable record the gallery view.
+                enable_record_audio_file:
+                  type: string
+                  description: Enable record an audio only file.
+                enable_auto_recording:
+                  type: boolean
+                  description: >-
+                    Enable automatic recording. By default, if
+                    "enable_cloud_auto_recording" is true, it will become true.
+                  default: false
+                enable_cloud_auto_recording:
+                  type: boolean
+                  description: Enable cloud automatic recording.
+                  default: false
+                track_id:
+                  type: string
+                  description: Referral partner track ID.
+                meeting_capacity:
+                  type: string
+                  description: >-
+                    User’s meeting capacity, passing 0 will inherit account’s
+                    meeting capacity
+                  default: '0'
+                enable_webinar:
+                  type: string
+                  description: Enable webinar feature true or false.
+                webinar_capacity:
+                  type: string
+                  description: >-
+                    Enable webinar capacity, can be 100, 500, 1000, 3000, 5000
+                    or 10000, depends on if having related webinar capacity plan
+                    subscription or not.
+                  default: '0'
+                enable_large:
+                  type: string
+                  description: Enable large meting feature true or false.
+                large_capacity:
+                  type: string
+                  description: >-
+                    Enable large meeting capacity, can be 100, 200, 300 or 500,
+                    depends on if having related webinar capacity plan
+                    subscription or not.
+                  default: '0'
+                disable_feedback:
+                  type: boolean
+                  description: Disable feedback.
+                  default: false
+                disable_jbh_reminder:
+                  type: boolean
+                  description: Disable jbh email reminder.
+                  default: false
+                enable_breakout_room:
+                  type: boolean
+                  description: Enable breakout room.
+                  default: false
+                enable_polling:
+                  type: boolean
+                  description: Enable polling for meeting.
+                  default: false
+                enable_annotation:
+                  type: boolean
+                  description: Enable Annotation.
+                  default: true
+                enable_share_dual_camera:
+                  type: boolean
+                  description: Enable Share dual camera.
+                  default: false
+                enable_far_end_camera_control:
+                  type: boolean
+                  description: Enable Far end camera control.
+                  default: false
+                disable_private_chat:
+                  type: boolean
+                  description: Disable Private chat.
+                  default: false
+                enable_enter_exit_chime:
+                  type: boolean
+                  description: Enable Enter/exit chime.
+                  default: false
+                option_enter_exit_chime_type:
+                  type: string
+                  description: >-
+                    Enter/exit chime type. 0 means Heard by all including host
+                    and attendees, 1 means Heard by host only.
+                  default: '0'
+                disable_cancel_meeting_notification:
+                  type: boolean
+                  description: Disable email notification when a meeting is cancelled.
+                  default: false
+                enable_remote_support:
+                  type: boolean
+                  description: Enable Remote support.
+                  default: false
+                enable_file_transfer:
+                  type: boolean
+                  description: Enable File transfer.
+                  default: false
+                enable_virtual_background:
+                  type: boolean
+                  description: Enable Virtual background.
+                  default: false
+                enable_attention_tracking:
+                  type: boolean
+                  description: Enable Attention tracking.
+                  default: false
+                enable_waiting_room:
+                  type: boolean
+                  description: Enable Waiting room.
+                  default: false
+                enable_use_pmi:
+                  type: boolean
+                  description: Enable Use Personal Meeting ID for instant meetings.
+                  default: false
+                enable_closed_caption:
+                  type: boolean
+                  description: Enable Closed caption.
+                  default: false
+                enable_co_host:
+                  type: boolean
+                  description: Enable Co-host.
+                  default: false
+                enable_auto_saving_chats:
+                  type: boolean
+                  description: Enable Auto saving chats.
+                  default: false
+                enable_phone_participants_password:
+                  type: boolean
+                  description: >-
+                    Enable Generate and require password for participants
+                    joining by phone.
+                  default: false
+                enable_auto_delete_cmr:
+                  type: boolean
+                  description: Enable Auto delete cloud recordings.
+                  default: false
+                auto_delete_cmr_days:
+                  type: string
+                  description: Auto delete cloud recordings after days.
+                pmi:
+                  type: string
+                  description: Personal Meeting ID, long, length must be 10.
+                dept:
+                  type: string
+                  description: Department for user profile, use for report.
+                timezone:
+                  type: string
+                  description: The time zone id for user profile.
+                vanity_name:
+                  type: string
+                  description: Personal meeting room name.
+                host_key:
+                  type: string
+                  description: Host Key should be 6-digit number.
+                group_id:
+                  type: string
+                  description: >-
+                    User Group ID. If set default user group, the parameter’s
+                    default value is the default user group.
+                imgroup_id:
+                  type: string
+                  description: >-
+                    IM Group ID. If set default im group, the parameter’s
+                    default value is the default im group.
+                cms_user_id:
+                  type: string
+                  description: User ID on external CMS
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                id: unique_id
+                updated_at: '2012-11-25T12:00:00.000Z'
+      summary: Create User Update
+  /user/updatepassword:
+    post:
+      tags:
+        - Updatepassword
+        - Users
+      description: |+
+        Upload and update user's profile picture on Zoom via user ID.
+
+      operationId: userUpdatepassword
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - id
+                - pic_file
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: User id.
+                pic_file:
+                  type: string
+                  description: User picture file, must be a jpg/jpeg file.
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                id: unique_id
+                updated_at: '2013-09-02T12:00:00.000Z'
+      summary: Create User Updatepassword
+components:
+  schemas: {}

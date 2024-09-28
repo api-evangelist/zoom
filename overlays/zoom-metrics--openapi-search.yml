@@ -1,0 +1,685 @@
+openapi: 3.0.1
+info:
+  title: ' metrics/'
+  description: Needs description.
+  contact:
+    name: Zoom Developers
+    url: https://zoom.us/developer
+    email: developer@zoom.us
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  version: 1.0.0
+externalDocs:
+  description: Zoom REST API Documentation
+  url: https://zoom.github.io/api
+servers:
+  - url: https://api.zoom.us/v1
+security:
+  - api_key: []
+  - api_secret: []
+tags: []
+paths:
+  /metrics/crc:
+    post:
+      tags:
+        - Crc
+        - Metrics
+      description: |+
+        Get CRC Port usage hour by hour for a specified time period.
+
+      operationId: dashboardCrc
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - from
+                - to
+              type: object
+              properties:
+                from:
+                  type: string
+                  description: Start date.
+                to:
+                  type: string
+                  description: End date.
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                from: '2015-03-12T00:00:00.000Z'
+                to: '2015-03-12T00:00:00.000Z'
+                crc_ports_usage:
+                  - date_time: '2015-03-12T00:00:00.000Z'
+                    crc_ports_hour_usage:
+                      - hour: '00'
+                        max_usage: 1
+                        total_usage: 3
+      summary: Create Metrics Crc
+  /metrics/im:
+    post:
+      tags:
+        - Metrics
+      description: |+
+        Get statistics of Zoom IM
+
+      operationId: dashboardIm
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - from
+                - to
+              type: object
+              properties:
+                from:
+                  type: string
+                  description: Start date.
+                to:
+                  type: string
+                  description: End date.
+                page_size:
+                  type: string
+                  description: >-
+                    The amount of records returns within a single API call.
+                    Defaults to 30. Max of 30 records.
+                  default: '30'
+                page_number:
+                  type: string
+                  description: Current page number of returned records. Default to 1.
+                  default: '1'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                from: '2016-04-12T00:00:00.000Z'
+                to: '2016-04-13T00:00:00.000Z'
+                page_count: 1
+                page_number: 1
+                page_size: 30
+                total_records: 10
+                users:
+                  - user_id: unique_id
+                    user_name: Zoomie Userton
+                    email: email_address
+                    total_send: 0
+                    total_receive: 0
+                    group_send: 0
+                    group_receive: 0
+                    calls_send: 0
+                    calls_receive: 0
+                    files_send: 0
+                    files_receive: 0
+                    images_send: 0
+                    images_receive: 0
+                    voice_send: 0
+                    voice_receive: 0
+                    videos_send: 0
+                    videos_receive: 0
+                    emoji_send: 0
+                    emoji_receive: 0
+      summary: Create Metrics Im
+  /metrics/meetingdetail:
+    post:
+      tags:
+        - Meetingdetail
+        - Metrics
+      description: |+
+        Get live and past meeting details
+
+      operationId: dashboardMeetingdetail
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - meeting_id
+                - type
+              type: object
+              properties:
+                meeting_id:
+                  type: string
+                  description: >-
+                    The meeting ID Example: ucc69C82Q5mTNyCRWE29Aw== Or
+                    B9C73AF4-2F36-4399-9337-2091584DBD03
+                type:
+                  type: string
+                  description: Meeting type. 1 means live meeting. 2 means past meeting.
+                page_size:
+                  type: string
+                  description: >-
+                    The amount of records returns within a single API call.
+                    Defaults to 30. Max of 100 records.
+                  default: '30'
+                page_number:
+                  type: string
+                  description: Current page number of returned records. Default to 1.
+                  default: '1'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                uuid: unique_id
+                id: '123456789'
+                type: Past Meeting
+                host: Zoomie Userton
+                email: email_address
+                user_type: Pro
+                start_time: '2015-08-30T05:36:56.000Z'
+                end_time: '2015-08-30T06:36:56.000Z'
+                duration: 4 mins
+                has_pstn: false
+                has_voip: true
+                has_3rd_party_audio: false
+                has_video: true
+                has_screen_share: false
+                recording: 0
+                participants_count: 2
+                page_count: 1
+                page_number: 1
+                page_size: 30
+                participants:
+                  - id: unique_id
+                    user_id: unique_id
+                    user_name: Zoomie Userton
+                    device: Mac
+                    ip_address: 117.83.222.228
+                    cn: CN
+                    city: Nanjing
+                    network_type: Wifi
+                    join_time: '2017-02-18T01:44:47.000Z'
+                    leave_time: '2017-02-18T01:45:58.000Z'
+                    share_application: true
+                    share_desktop: true
+                    share_whiteboard: true
+                    recording: true
+      summary: Create Metrics Meetingdetail
+  /metrics/meetings:
+    post:
+      tags:
+        - Meetings
+        - Metrics
+      description: |+
+        Get Live Meetings and past meetings for a specified period
+
+      operationId: dashboardMeetings
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - from
+                - to
+                - type
+              type: object
+              properties:
+                type:
+                  type: string
+                  description: >-
+                    Meeting list type. 1 means live meetings. 2 means past
+                    meetings.
+                  default: '1'
+                from:
+                  type: string
+                  description: Start date. Only for past meetings.
+                to:
+                  type: string
+                  description: End date. Only for past meetings.
+                page_size:
+                  type: string
+                  description: >-
+                    The amount of records returns within a single API call.
+                    Defaults to 30. Max of 100 meetings.
+                  default: '30'
+                page_number:
+                  type: string
+                  description: Current page number of returned records. Default to 1.
+                  default: '1'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                from: '2015-08-02T00:00:00.000Z'
+                to: '2015-09-02T00:00:00.000Z'
+                page_count: 2
+                page_number: 1
+                page_size: 30
+                total_records: 49
+                type: Past Meetings
+                meetings:
+                  - uuid: unique_id
+                    id: '123456789'
+                    host: Zoomie Userton
+                    email: email_address
+                    user_type: Pro
+                    start_time: '2015-08-29T05:36:56.000Z'
+                    end_time: '2015-08-29T06:36:56.000Z'
+                    duration: 4 mins
+                    participants: 2
+                    has_pstn: false
+                    has_voip: true
+                    has_3rd_party_audio: false
+                    has_video: true
+                    has_screen_share: false
+                    recording: 0
+      summary: Create Metrics Meetings
+  /metrics/qos:
+    post:
+      tags:
+        - Metrics
+        - Qos
+      description: |+
+        Get the users quality of service in a Zoom Meeting
+
+      operationId: dashboardQos
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - meeting_id
+                - type
+              type: object
+              properties:
+                meeting_id:
+                  type: string
+                  description: The meeting ID.
+                type:
+                  type: string
+                  description: Meeting type. 1 means live meeting. 2 means past meeting.
+                user_id:
+                  type: string
+                  description: The user ID to get user qos.
+                page_size:
+                  type: string
+                  description: >-
+                    The amount of records returns within a single API call.
+                    Defaults to 10. Max of 10 records.
+                  default: '10'
+                page_number:
+                  type: string
+                  description: Current page number of returned records. Default to 1.
+                  default: '1'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                meeting_id: unique_id
+                user_id: unique_id
+                type: Past Meeting
+                device: Mac
+                ip_address: 112.80.63.6
+                cn: CN
+                city: Nanjing
+                version: 3.5.35288.1217
+                user_qos:
+                  - dateTime: '2015-08-30T06:40:56.000Z'
+                    audio_input:
+                      bitrate: 29 kbps
+                      latency: 39 ms
+                      jitter: 11 ms
+                      avg_loss: 2.5%
+                      max_loss: 5.0%
+                    audio_output:
+                      bitrate: ''
+                      latency: ''
+                      jitter: ''
+                      avg_loss: ''
+                      max_loss: ''
+                    video_input:
+                      bitrate: 77 kbps
+                      latency: 84 ms
+                      jitter: 4 ms
+                      avg_loss: 28.3%
+                      max_loss: 28.3%
+                      resolution: 480*270
+                      frame_rate: 3 fps
+                    video_output:
+                      bitrate: ''
+                      latency: ''
+                      jitter: ''
+                      avg_loss: ''
+                      max_loss: ''
+                      resolution: ''
+                      frame_rate: ''
+                    as_input:
+                      bitrate: ''
+                      latency: ''
+                      jitter: ''
+                      avg_loss: ''
+                      max_loss: ''
+                      resolution: ''
+                      frame_rate: ''
+                    as_output:
+                      bitrate: ''
+                      latency: ''
+                      jitter: ''
+                      avg_loss: ''
+                      max_loss: ''
+                      resolution: ''
+                      frame_rate: ''
+                    cpu_usage:
+                      zoom_min_cpu_usage: 1%
+                      zoom_avg_cpu_usage: 3%
+                      zoom_max_cpu_usage: 5%
+                      system_max_cpu_usage: 20%
+      summary: Create Metrics Qos
+  /metrics/webinardetail:
+    post:
+      tags:
+        - Metrics
+        - Webinardetail
+      description: |+
+        Get live and past webinar details
+
+      operationId: dashboardWebinardetail
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - meeting_id
+                - type
+              type: object
+              properties:
+                meeting_id:
+                  type: string
+                  description: >-
+                    The meeting ID Example: ucc69C82Q5mTNyCRWE29Aw== Or
+                    B9C73AF4-2F36-4399-9337-2091584DBD03
+                type:
+                  type: string
+                  description: Meeting type. 1 means live webinar. 2 means past webinar.
+                page_size:
+                  type: string
+                  description: >-
+                    The amount of records returns within a single API call.
+                    Defaults to 30. Max of 100 records.
+                  default: '30'
+                page_number:
+                  type: string
+                  description: Current page number of returned records. Default to 1.
+                  default: '1'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                uuid: unique_id
+                id: '123456789'
+                type: Past Webinar
+                host: Zoomie Userton
+                email: email_address
+                user_type: Pro
+                start_time: '2015-08-30T05:36:56.000Z'
+                end_time: '2015-08-30T06:36:56.000Z'
+                duration: 4 mins
+                has_pstn: false
+                has_voip: true
+                has_3rd_party_audio: false
+                has_video: true
+                has_screen_share: false
+                recording: 0
+                participants_count: 2
+                page_count: 1
+                page_number: 1
+                page_size: 30
+                participants:
+                  - id: unique_id
+                    user_id: unique_id
+                    user_name: Zoomie Userton
+                    device: Mac
+                    ip_address: 117.83.222.228
+                    cn: CN
+                    city: Nanjing
+                    network_type: Wifi
+                    join_time: '2017-02-18T01:44:47.000Z'
+                    leave_time: '2017-02-18T01:45:58.000Z'
+                    share_application: true
+                    share_desktop: true
+                    share_whiteboard: true
+                    recording: true
+      summary: Create Metrics Webinardetail
+  /metrics/webinars:
+    post:
+      tags:
+        - Metrics
+        - Webinars
+      description: |+
+        Get live webinars and past webinars for a specified period.
+
+      operationId: dashboardWebinars
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - from
+                - to
+                - type
+              type: object
+              properties:
+                type:
+                  type: string
+                  description: >-
+                    Webinar list type. 1 means live webinars. 2 means past
+                    webinars.
+                  default: '1'
+                from:
+                  type: string
+                  description: Start date. Only for past webinars.
+                to:
+                  type: string
+                  description: End date. Only for past webinars.
+                page_size:
+                  type: string
+                  description: >-
+                    The amount of records returns within a single API call.
+                    Defaults to 30. Max of 100 webinars.
+                  default: '30'
+                page_number:
+                  type: string
+                  description: Current page number of returned records. Default to 1.
+                  default: '1'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                from: '2015-08-02T00:00:00.000Z'
+                to: '2015-09-02T00:00:00.000Z'
+                page_count: 2
+                page_number: 1
+                page_size: 30
+                total_records: 49
+                type: Past Webinars
+                meetings:
+                  - uuid: unique_id
+                    id: '123456789'
+                    host: Zoomie Userton
+                    email: email_address
+                    user_type: Pro
+                    start_time: '2015-08-29T05:36:56.000Z'
+                    end_time: '2015-08-29T06:36:56.000Z'
+                    duration: 4 mins
+                    participants: 2
+                    has_pstn: false
+                    has_voip: true
+                    has_3rd_party_audio: false
+                    has_video: true
+                    has_screen_share: false
+                    recording: 0
+      summary: Create Metrics Webinars
+  /metrics/zoomroomdetail:
+    post:
+      tags:
+        - Metrics
+        - Zoomroomdetail
+      description: |+
+        Get a Zoom Room on Zoom via Zoom ID, return the Zoom Room info.
+
+      operationId: dashboardZoomroomdetail
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - from
+                - id
+                - to
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: >-
+                    The zoom room ID. Example: ucc69C82Q5mTNyCRWE29Aw== Or
+                    B9C73AF4-2F36-4399-9337-2091584DBD03
+                from:
+                  type: string
+                  description: Start date.
+                to:
+                  type: string
+                  description: End date.
+                page_size:
+                  type: string
+                  description: >-
+                    The amount of records returns within a single API call.
+                    Defaults to 30. Max of 30 records.
+                  default: '30'
+                page_number:
+                  type: string
+                  description: Current page number of returned records. Default to 1.
+                  default: '1'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                from: '2016-04-12T00:00:00.000Z'
+                to: '2016-04-13T00:00:00.000Z'
+                page_count: 1
+                page_number: 1
+                page_size: 30
+                total_records: 1
+                zoom_room:
+                  id: unique_id
+                  room_name: zoom room
+                  email: zoomroom@zoom.us
+                  account_type: Work Email
+                  passcode: '123'
+                  status: Available
+                  messages:
+                    last_started_time: ''
+                    running_time: ''
+                    selected_microphone: ''
+                    selected_speaker: ''
+                    selected_camera: ''
+                  meeting_id: ''
+                live_meeting:
+                  uuid: ''
+                  id: 0
+                  host: ''
+                  email: ''
+                  user_type: ''
+                  start_time: ''
+                  end_time: ''
+                  duration: ''
+                  participants: 0
+                  has_pstn: false
+                  has_voip: false
+                  has_3rd_party_audio: false
+                  has_video: false
+                  has_screen_share: false
+                  recording: 0
+                past_meetings:
+                  - uuid: unique_id
+                    id: '123456789'
+                    host: Zoomie Userton
+                    email: email_address
+                    user_type: ''
+                    start_time: ''
+                    end_time: ''
+                    duration: ''
+                    participants: 1
+                    has_pstn: false
+                    has_voip: false
+                    has_3rd_party_audio: false
+                    has_video: false
+                    has_screen_share: false
+                    recording: 0
+      summary: Create Metrics Zoomroomdetail
+  /metrics/zoomrooms:
+    post:
+      tags:
+        - Metrics
+        - Zoomrooms
+      description: |+
+        List all Zoom Rooms on Zoom.
+
+      operationId: dashboardZoomrooms
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                page_size:
+                  type: string
+                  description: >-
+                    The amount of records returns within a single API call.
+                    Defaults to 30. Max of 30 records.
+                  default: '30'
+                page_number:
+                  type: string
+                  description: Current page number of returned records. Default to 1.
+                  default: '1'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                page_count: 1
+                page_number: 1
+                page_size: 30
+                total_records: 2
+                zoom_rooms:
+                  - id: unique_id
+                    room_name: zoom room1
+                    email: zoomroom1@zoom.us
+                    account_type: Work Email
+                    passcode: '123'
+                    status: Available
+                    messages:
+                      last_started_time: ''
+                      running_time: ''
+                      selected_microphone: ''
+                      selected_speaker: ''
+                      selected_camera: ''
+                    meeting_id: ''
+      summary: Create Metrics Zoomrooms
+components:
+  schemas: {}
