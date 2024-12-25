@@ -4,7 +4,6 @@ apis:
   - aid: zoom:zoom-graphql-api
     name: Zoom GraphQL API
     tags: []
-    overlays: []
     description: >-
       Zoom GraphQL is in a public beta. See the GraphQL beta FAQ for details.
       GraphQL is a query language for APIs as well as a runtime environment for
@@ -14,9 +13,6 @@ apis:
     tags:
       - Chat
     humanURL: https://developers.zoom.us/docs/api/rest/chat-api/
-    overlays:
-      - url: overlays/zoom-chat--openapi-search.yml
-        type: OpenAPI
     properties:
       - url: openapi/zoom-chat--openapi-original.yml
         type: OpenAPI
@@ -33,9 +29,6 @@ apis:
       - Edit
       - Members
     humanURL: https://developers.zoom.us/docs/api/
-    overlays:
-      - url: overlays/zoom-group--openapi-search.yml
-        type: OpenAPI
     properties:
       - url: openapi/zoom-group--openapi-original.yml
         type: OpenAPI
@@ -46,9 +39,6 @@ apis:
       - Device
       - H323
     humanURL: https://developers.zoom.us/docs/api/rest/zoom-phone-api/
-    overlays:
-      - url: overlays/zoom-device--openapi-search.yml
-        type: OpenAPI
     properties:
       - url: openapi/zoom-device--openapi-original.yml
         type: OpenAPI
@@ -64,9 +54,6 @@ apis:
       - Edit
       - Members
     humanURL: https://developers.zoom.us/docs/api/
-    overlays:
-      - url: overlays/zoom-im--openapi-search.yml
-        type: OpenAPI
     properties:
       - url: openapi/zoom-im--openapi-original.yml
         type: OpenAPI
@@ -81,9 +68,6 @@ apis:
       - Plan
       - Subscribe
     humanURL: https://developers.zoom.us/docs/api/rest/account/
-    overlays:
-      - url: overlays/zoom-account--openapi-search.yml
-        type: OpenAPI
     properties:
       - url: openapi/zoom-account--openapi-original.yml
         type: OpenAPI
@@ -101,9 +85,6 @@ apis:
       - Mc
       - Recording
     humanURL: https://developers.zoom.us/docs/video-sdk/web/recording/
-    overlays:
-      - url: overlays/zoom-recording--openapi-search.yml
-        type: OpenAPI
     properties:
       - url: openapi/zoom-recording--openapi-original.yml
         type: OpenAPI
@@ -117,9 +98,6 @@ apis:
       - Live
       - Register
     humanURL: https://developers.zoom.us/docs/api/rest/meeting/
-    overlays:
-      - url: overlays/zoom-meeting--openapi-search.yml
-        type: OpenAPI
     properties:
       - url: openapi/zoom-meeting--openapi-original.yml
         type: OpenAPI
@@ -142,9 +120,6 @@ apis:
       - Zoomroomdetail
       - Zoomrooms
     humanURL: https://developers.zoom.us/docs/api/
-    overlays:
-      - url: overlays/zoom-metrics--openapi-search.yml
-        type: OpenAPI
     properties:
       - url: openapi/zoom-metrics--openapi-original.yml
         type: OpenAPI
@@ -152,9 +127,6 @@ apis:
   - aid: zoom:zoom-recording-api
     name: Zoom Recording API
     tags: []
-    overlays:
-      - url: overlays/zoom-recording--openapi-search.yml
-        type: OpenAPI
     properties:
       - url: openapi/zoom-recording--openapi-original.yml
         type: OpenAPI
@@ -164,9 +136,6 @@ apis:
     tags: []
     humanURL: >-
       https://developers.zoom.us/docs/api/rest/reference/zoom-api/methods/#tag/Reports
-    overlays:
-      - url: overlays/zoom-report--openapi-search.yml
-        type: OpenAPI
     properties:
       - url: openapi/zoom-report--openapi-original.yml
         type: OpenAPI
@@ -193,9 +162,6 @@ apis:
       - Ssocreate
       - Updatepassword
     humanURL: https://developers.zoom.us/docs/api/rest/user/
-    overlays:
-      - url: overlays/zoom-user--openapi-search.yml
-        type: OpenAPI
     properties:
       - url: openapi/zoom-user--openapi-original.yml
         type: OpenAPI
@@ -223,9 +189,6 @@ apis:
       - Uu
     humanURL: >-
       https://developers.zoom.us/docs/api/rest/reference/zoom-api/methods/#tag/Webinars
-    overlays:
-      - url: overlays/zoom-webinar--openapi-search.yml
-        type: OpenAPI
     properties:
       - url: openapi/zoom-webinar--openapi-original.yml
         type: OpenAPI
