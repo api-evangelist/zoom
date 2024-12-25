@@ -1,0 +1,702 @@
+openapi: 3.0.1
+info:
+  title: ' account/'
+  description: Needs description.
+  contact:
+    name: Zoom Developers
+    url: https://zoom.us/developer
+    email: developer@zoom.us
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  version: 1.0.0
+externalDocs:
+  description: Zoom REST API Documentation
+  url: https://zoom.github.io/api
+servers:
+  - url: https://api.zoom.us/v1
+security:
+  - api_key: []
+  - api_secret: []
+tags: []
+paths:
+  /ma/account/billing/update:
+    post:
+      tags:
+        - Account
+      description: >+
+        Update Billing Information for a sub account of the master account on
+        Zoom.
+
+      operationId: accountBillingUpdate
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - account_id
+              type: object
+              properties:
+                account_id:
+                  type: string
+                  description: The sub account ID.
+                first_name:
+                  type: string
+                  description: Sold To Contact’s first name.
+                last_name:
+                  type: string
+                  description: Sold To Contact’s last name.
+                phone_number:
+                  type: string
+                  description: Sold To Contact’s phone number.
+                address:
+                  type: string
+                  description: Sold To Contact’s address.
+                apt:
+                  type: string
+                  description: Sold To Contact’s Apt/Suite.
+                city:
+                  type: string
+                  description: Sold To Contact’s city.
+                country:
+                  type: string
+                  description: >-
+                    Sold To Contact’s country. For this parameter value please
+                    refer to the id value in country list JSON file
+                state:
+                  type: string
+                  description: >-
+                    Sold To Contact’s state. If country value is "US" or "CA",
+                    for this parameter value please refer to the id value in
+                    state list JSON file
+                zip:
+                  type: string
+                  description: Sold To Contact’s zip/postal.
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                id: 'unique_id '
+                updated_at: '2012-11-25T12:00:00.000Z'
+  /ma/account/create:
+    post:
+      tags:
+        - Account
+      description: >+
+        Create a sub account of the master account on Zoom, return the created
+        sub account id and owner id.
+
+
+        <aside class="notice">Your account must be a master account and have
+        this privilege to create sub account. Zoom only assign this privilege to
+        trusted partner.</aside>
+
+
+        <aside class="notice">User will not receive the confirmation
+        email.</aside>
+
+      operationId: accountCreate
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - email
+                - first_name
+                - last_name
+                - password
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: >-
+                    A valid email address. It must be unique in Zoom service. If
+                    an email address is existed, a "user existing" error message
+                    will be return.
+                first_name:
+                  type: string
+                  description: User’s first name.
+                last_name:
+                  type: string
+                  description: User’s last name.
+                password:
+                  type: string
+                  description: User’s password.
+                enable_share_rc:
+                  type: boolean
+                  description: Enable Share Virtual Room Connector.
+                  default: false
+                share_rc:
+                  type: string
+                  description: Virtual Room Connector, multiple value separated by comma.
+                enable_share_mc:
+                  type: boolean
+                  description: Enable Share Meeting Connector.
+                  default: false
+                share_mc:
+                  type: string
+                  description: Meeting Connector, multiple value separated by comma.
+                pay_mode:
+                  type: string
+                  description: >-
+                    Who will pay for this account? 0 means Sub Account Holders
+                    Pays, 1 means Master Account Holder Pays.
+                  default: '1'
+                collection_method:
+                  type: string
+                  description: >-
+                    Collection Method? 0 means Automatic (billing online), 1
+                    means Manual (send invoice).
+                  default: '1'
+                enable_pstn:
+                  type: boolean
+                  description: The value should be true or false, by default is true.
+                  default: true
+                enable_enforce_login:
+                  type: boolean
+                  description: Only signed-in users can join this meeting.
+                  default: false
+                enable_enforce_login_sd:
+                  type: boolean
+                  description: >-
+                    Only signed-in users with specified domains can join
+                    meetings.
+                  default: false
+                enforce_login_domains:
+                  type: string
+                  description: Domains of signed-in users.
+                meeting_capacity:
+                  type: string
+                  description: Account’ meeting capacity, max of 100.
+                disable_cmr_reminder:
+                  type: boolean
+                  description: Disable cloud recording reminder.
+                  default: false
+                enable_only_host_download_cmr:
+                  type: boolean
+                  description: Enable Only the host can download cloud recordings.
+                  default: false
+                enable_same_account_access_cmr:
+                  type: boolean
+                  description: Enable Only users on my account can access cloud recordings.
+                  default: false
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                id: unique_id
+                owner_id: unique_id
+                owner_email: email_address
+                created_at: '2012-11-25T12:00:00.000Z'
+  /ma/account/delete:
+    post:
+      tags:
+        - Account
+      description: |+
+        Delete the sub account.
+
+      operationId: accountDelete
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - account_id
+              type: object
+              properties:
+                account_id:
+                  type: string
+                  description: The sub account ID.
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                id: unique_id
+                deleted_at: '2012-11-25T12:00:00.000Z'
+  /ma/account/get:
+    post:
+      tags:
+        - Account
+      description: >+
+        Get a sub account of the master account on Zoom, return the created sub
+        account id and owner id.
+
+
+        <aside class="notice">Your account must be a master account and have
+        this privilege to get sub account. Zoom only assign this privilege to
+        trusted partner.</aside>
+
+
+        <aside class="notice">This API will let the master account owner to get
+        sub account API key pair. This is a private feature and needs to be
+        enabled by zoom support. If you need this function, please open a case
+        with support to enable this API.</aside>
+
+      operationId: accountGet
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - account_id
+              type: object
+              properties:
+                account_id:
+                  type: string
+                  description: The sub account ID.
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                id: unique_id
+                owner_id: unique_id
+                owner_email: email_address
+                created_at: '2012-11-25T12:00:00.000Z'
+  /ma/account/list:
+    post:
+      tags:
+        - Account
+      description: |+
+        List all the sub account under the master account.
+
+      operationId: accountList
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - api_key
+                - api_secret
+              type: object
+              properties:
+                api_key:
+                  type: string
+                  description: Your API Key
+                api_secret:
+                  type: string
+                  description: Your API Secret
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                page_count: 1
+                page_number: 1
+                page_size: 30
+                total_records: 3
+                subAccounts:
+                  - id: unique_id
+                    owner_email: email_address
+                    created_at: 2015-01-27T140508Z
+  /ma/account/plan/add:
+    post:
+      tags:
+        - Account
+      description: >+
+        Add a plan for a sub account of the master account on Zoom.
+
+
+        <aside class="notice">Only for the sub account which is a paid account
+        and paid by master account.</aside>
+
+
+        <aside class="notice">Only add an Additional plan for a sub
+        account.</aside>
+
+      operationId: accountPlanAdd
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - account_id
+                - plan
+              type: object
+              properties:
+                account_id:
+                  type: string
+                  description: The sub account ID.
+                plan:
+                  type: string
+                  description: Additional Plan. See [Plans](#plans) for more details
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                id: unique_id
+                updated_at: '2012-11-25T12:00:00.000Z'
+  /ma/account/plan/get:
+    post:
+      tags:
+        - Account
+      description: |+
+        Get plans information for a sub account of the master account on Zoom.
+
+      operationId: accountPlanGet
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - account_id
+              type: object
+              properties:
+                account_id:
+                  type: string
+                  description: The sub account ID.
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                email: email_address
+                first_name: Zoomie
+                last_name: Userton
+                phone_number: '123456789'
+                address: address
+                apt: apt
+                city: city
+                state: state
+                zip: '12345'
+                country: country
+                plan_base:
+                  type: monthly
+                  hosts: 9
+                plan_zoom_rooms:
+                  type: zroom_monthly
+                  hosts: 9
+                plan_room_connector:
+                  type: roomconnector_yearly
+                  hosts: 9
+                plan_large_meeting:
+                  - type: large100_monthly
+                    hosts: 9
+                  - type: large200_monthly
+                    hosts: 9
+                  - type: large300_yearly
+                    hosts: 9
+                  - type: large500_yearly
+                    hosts: 9
+                plan_webinar:
+                  - type: webinar100_monthly
+                    hosts: 9
+                  - type: webinar500_yearly
+                    hosts: 9
+                  - type: webinar1000_yearly
+                    hosts: 9
+                  - type: webinar3000_monthly
+                    hosts: 9
+                  - type: webinar5000_monthly
+                    hosts: 9
+                  - type: webinar10000_monthly
+                    hosts: 9
+                plan_recording: cmr_monthly_commitment_500
+                plan_audio:
+                  type: tollfree_monthly_commitment_100
+                  tollfree_country: AT
+                  premium_country: TW
+                  callout: 1
+                  ddi_numbers: 66
+  /ma/account/plan/subscribe:
+    post:
+      tags:
+        - Account
+      description: |+
+        Subscribe plans for a sub account of the master account on Zoom.
+
+      operationId: accountPlanSubscribe
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - account_id
+                - address
+                - city
+                - country
+                - first_name
+                - last_name
+                - phone_number
+                - plan_base
+                - state
+                - zip
+              type: object
+              properties:
+                account_id:
+                  type: string
+                  description: The sub account ID.
+                first_name:
+                  type: string
+                  description: Sold To Contact’s first name.
+                last_name:
+                  type: string
+                  description: Sold To Contact’s last name.
+                phone_number:
+                  type: string
+                  description: Sold To Contact’s phone number.
+                address:
+                  type: string
+                  description: Sold To Contact’s address.
+                apt:
+                  type: string
+                  description: Sold To Contact’s Apt/Suite.
+                city:
+                  type: string
+                  description: Sold To Contact’s city.
+                country:
+                  type: string
+                  description: >-
+                    Sold To Contact’s country. For this parameter value please
+                    refer to the id value in country list JSON file
+                state:
+                  type: string
+                  description: >-
+                    Sold To Contact’s state. If country value is "US" or "CA",
+                    for this parameter value please refer to the id value in
+                    state list JSON file
+                zip:
+                  type: string
+                  description: Sold To Contact’s zip/postal.
+                plan_base:
+                  type: string
+                  description: Base Plan.  See [Plans](#plans) for more details
+                plan_zoom_rooms:
+                  type: string
+                  description: >-
+                    Additional Zoom Rooms Plan.  See [Plans](#plans) for more
+                    details
+                plan_room_connector:
+                  type: string
+                  description: >-
+                    Additional H.323/SIP Room Connector Plan.  See
+                    [Plans](#plans) for more details
+                plan_large_meeting:
+                  type: string
+                  description: >-
+                    Additional Large Meeting Plan.  See [Plans](#plans) for more
+                    details
+                plan_webinar:
+                  type: string
+                  description: >-
+                    Additional Webinar Plan.  See [Plans](#plans) for more
+                    details
+                plan_recording:
+                  type: string
+                  description: >-
+                    Additional Cloud Recording Plan.  See [Plans](#plans) for
+                    more details
+                plan_audio:
+                  type: string
+                  description: >-
+                    Additional Audio Conferencing Plan.  See [Plans](#plans) for
+                    more details
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                email: email_address
+                first_name: Zoomie
+                last_name: Userton
+                phone_number: '123456789'
+                address: address
+                apt: apt
+                city: city
+                state: state
+                zip: '12345'
+                country: country
+                plan_base:
+                  type: monthly
+                  hosts: 9
+                plan_zoom_rooms:
+                  type: zroom_monthly
+                  hosts: 9
+                plan_room_connector:
+                  type: roomconnector_yearly
+                  hosts: 9
+                plan_large_meeting:
+                  - type: large200_monthly
+                    hosts: 9
+                  - type: large300_yearly
+                    hosts: 9
+                  - type: large500_yearly
+                    hosts: 9
+                plan_webinar:
+                  - type: webinar100_monthly
+                    hosts: 9
+                  - type: webinar500_yearly
+                    hosts: 9
+                  - type: webinar1000_yearly
+                    hosts: 9
+                  - type: webinar3000_monthly
+                    hosts: 9
+                  - type: webinar5000_monthly
+                    hosts: 9
+                  - type: webinar10000_monthly
+                    hosts: 9
+                plan_recording: cmr_monthly_commitment_500
+                plan_audio:
+                  type: tollfree_monthly_commitment_100
+                  tollfree_country: AT
+                  premium_country: TW
+                  callout: 1
+                  ddi_numbers: 66
+  /ma/account/plan/update:
+    post:
+      tags:
+        - Account
+      description: >+
+        Update a plan for a sub account of the master account on Zoom.
+
+
+        <aside class="notice">Only for the sub account which is a paid account
+        and paid by master account.</aside>
+
+
+        <aside class="notice">Could update a base plan or an additional
+        plan.</aside>
+
+      operationId: accountPlanUpdate
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - account_id
+                - plan
+                - type
+              type: object
+              properties:
+                account_id:
+                  type: string
+                  description: The sub account ID.
+                type:
+                  type: string
+                  description: Plan Type. 1 means Base Plan, 2 means Additional Plan.
+                  default: '1'
+                plan:
+                  type: string
+                  description: >-
+                    A Base Plan or an Additional Plan. See [Plans](#plans) for
+                    more details
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                id: w40hUJRpRmmkx4uPXczdHg
+                updated_at: '2012-11-25T12:00:00.000Z'
+  /ma/account/update:
+    post:
+      tags:
+        - Account
+      description: >+
+        Update a sub account of the master account on Zoom, return the updated
+        sub account id.
+
+      operationId: accountUpdate
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - account_id
+              type: object
+              properties:
+                account_id:
+                  type: string
+                  description: The sub account ID.
+                enable_share_rc:
+                  type: string
+                  description: Enable Share Virtual Room Connector.
+                share_rc:
+                  type: string
+                  description: Virtual Room Connector, multiple value separated by comma.
+                enable_share_mc:
+                  type: string
+                  description: Enable Share Meeting Connector.
+                share_mc:
+                  type: string
+                  description: Meeting Connector, multiple value separated by comma.
+                pay_mode:
+                  type: string
+                  description: >-
+                    Who will pay for this account? 0 means Sub Account Holders
+                    Pays, 1 means Master Account Holder Pays.
+                collection_method:
+                  type: string
+                  description: >-
+                    Collection Method? 0 means Automatic (billing online), 1
+                    means Manual (send invoice).
+                enable_pstn:
+                  type: boolean
+                  description: The value should be true or false, by default is true.
+                  default: true
+                enable_call_out:
+                  type: boolean
+                  description: >-
+                    The value should be true or false. If it is true, the user
+                    under this account will follow MA call out type.
+                  default: false
+                enable_enforce_login:
+                  type: boolean
+                  description: Only signed-in users can join this meeting.
+                  default: false
+                enable_enforce_login_sd:
+                  type: boolean
+                  description: >-
+                    Only signed-in users with specified domains can join
+                    meetings.
+                  default: false
+                enforce_login_domains:
+                  type: string
+                  description: Domains of signed-in users.
+                meeting_capacity:
+                  type: string
+                  description: Account’ meeting capacity, max of 100.
+                disable_cmr_reminder:
+                  type: boolean
+                  description: Disable cloud recording reminder.
+                  default: false
+                enable_only_host_download_cmr:
+                  type: boolean
+                  description: Enable Only the host can download cloud recordings.
+                  default: false
+                enable_same_account_access_cmr:
+                  type: boolean
+                  description: Enable Only users on my account can access cloud recordings.
+                  default: false
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                id: unique_id
+                updated_at: '2012-11-25T12:00:00.000Z'
+components:
+  schemas: {}

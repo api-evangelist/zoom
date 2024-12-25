@@ -1,0 +1,253 @@
+openapi: 3.0.1
+info:
+  title: ' report/'
+  description: Needs description.
+  contact:
+    name: Zoom Developers
+    url: https://zoom.us/developer
+    email: developer@zoom.us
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  version: 1.0.0
+externalDocs:
+  description: Zoom REST API Documentation
+  url: https://zoom.github.io/api
+servers:
+  - url: https://api.zoom.us/v1
+security:
+  - api_key: []
+  - api_secret: []
+tags: []
+paths:
+  /report/getaccountreport:
+    post:
+      tags:
+        - Report
+      description: |+
+        Get account report for a specified period.
+
+      operationId: reportGetaccountreport
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - from
+                - to
+              type: object
+              properties:
+                from:
+                  type: string
+                  description: Start date.
+                to:
+                  type: string
+                  description: End date.
+                page_size:
+                  type: string
+                  description: >-
+                    The amount of records returns within a single API call.
+                    Defaults to 30. Max of 300 meetings.
+                  default: '30'
+                page_number:
+                  type: string
+                  description: Current page number of returned records. Default to 1.
+                  default: '1'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                page_count: 1
+                page_number: 1
+                page_size: 30
+                total_records: 5
+                from: 2013-5-19
+                to: 2013-5-20
+                total_meetings: 50
+                total_participants: 100
+                total_meeting_minutes: 100
+                users:
+                  - user_id: bNsPi5hCQ-qOzWn2EeCXJA
+                    email: john@sample.com
+                    type: 2
+                    meetings: 10
+                    participants: 56
+                    meeting_minutes: 300
+                    last_client_version: 1.0.18584.0225
+                    last_login_time: '2013-02-11T08:18:09.000Z'
+  /report/getaudioreport:
+    post:
+      tags:
+        - Report
+      description: >+
+        Get user report for a specified period.
+
+
+        <aside class="notice">Toll Report API is provided for enabled 'Toll
+        Report' option.</aside>
+
+
+        <aside class="notice">We will report a maximum of one month. For
+        example, if "from" is set to "2015-08-05" and "to" is "2015-10-10" we
+        will adjust "from" to "2015-09-10"</aside>
+
+      operationId: reportGetaudioreport
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - from
+                - to
+              type: object
+              properties:
+                from:
+                  type: string
+                  description: Start date.
+                to:
+                  type: string
+                  description: End date.
+                type:
+                  type: string
+                  description: >-
+                    Audio type: 1 means Toll-free Call-in & Call-out. 2 means
+                    Toll.
+                  default: '1'
+                page_size:
+                  type: string
+                  description: >-
+                    The amount of records returns within a single API call.
+                    Defaults to 30. Max of 300 meetings.
+                  default: '30'
+                page_number:
+                  type: string
+                  description: Current page number of returned records. Default to 1.
+                  default: '1'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                from: '2016-01-08T00:00:00.000Z'
+                to: '2016-01-21T00:00:00.000Z'
+                page_count: 1
+                page_number: 1
+                page_size: 30
+                total_records: 1
+                telephony_usage:
+                  - meeting_id: 2932547621
+                    phone_number: +86 8208
+                    type: call-out
+                    host_name: test
+                    host_email: zoom.test@zoom.us
+                    department: ''
+                    start_time: '2016-01-12T02:25:34.000Z'
+                    end_time: '2016-01-12T02:26:48.000Z'
+                    duration: 2
+                    total: 0.12
+  /report/getdailyreport:
+    post:
+      tags:
+        - Report
+      description: >+
+        Get daily report for one month, can only get daily report for recent 3
+        months.
+
+      operationId: reportGetdailyreport
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - month
+                - year
+              type: object
+              properties:
+                year:
+                  type: string
+                  description: Year for this report.
+                month:
+                  type: string
+                  description: Month for this report.
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                year: 2013
+                month: 5
+                dates:
+                  - meetings: 0
+                    date: '2013-05-01T00:00:00.000Z'
+                    new_user: 0
+                    participants: 0
+                    meeting_minutes: 0
+  /report/getuserreport:
+    post:
+      tags:
+        - Report
+      description: |+
+        Get user report for a specified period.
+
+      operationId: reportGetuserreport
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - from
+                - to
+                - user_id
+              type: object
+              properties:
+                user_id:
+                  type: string
+                  description: The user to generate the report.
+                from:
+                  type: string
+                  description: Start date.
+                to:
+                  type: string
+                  description: End date.
+                page_size:
+                  type: string
+                  description: >-
+                    The amount of records returns within a single API call.
+                    Defaults to 30. Max of 300 meetings.
+                  default: '30'
+                page_number:
+                  type: string
+                  description: Current page number of returned records. Default to 1.
+                  default: '1'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                page_count: 1
+                page_number: 1
+                page_size: 30
+                total_records: 5
+                from: 2013-5-19
+                to: 2013-5-20
+                meetings:
+                  - number: 111111111
+                    topic: Meeting Topic
+                    start_time: '2013-02-11T08:18:09.000Z'
+                    end_time: '2013-02-11T09:18:09.000Z'
+                    duration: 60
+                    participants:
+                      - name: John
+                        join_time: '2013-02-11T08:30:09.000Z'
+                        leave_time: '2013-02-11T08:50:09.000Z'
+components:
+  schemas: {}

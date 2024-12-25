@@ -1,0 +1,586 @@
+openapi: 3.0.1
+info:
+  title: ' group/'
+  description: Needs description.
+  contact:
+    name: Zoom Developers
+    url: https://zoom.us/developer
+    email: developer@zoom.us
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  version: 1.0.0
+externalDocs:
+  description: Zoom REST API Documentation
+  url: https://zoom.github.io/api
+servers:
+  - url: https://api.zoom.us/v1
+security:
+  - api_key: []
+  - api_secret: []
+tags: []
+paths:
+  /group/create:
+    post:
+      tags:
+        - Group
+      description: |+
+        Create a group on Zoom, return the new group info.
+
+      operationId: groupCreate
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - name
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Group name, must be unique in one account.
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                group_id: unique_id
+                account_id: unique_id
+                name: New Group Test
+                total_members: 0
+  /group/delete:
+    post:
+      tags:
+        - Group
+      description: |+
+        Delete a group on Zoom, return the deleted group ID.
+
+      operationId: groupDelete
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - id
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: Group ID.
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                id: unique_id
+                deleted_at: '2015-08-20T08:41:58.000Z'
+                deleted_count: 1
+  /group/edit:
+    post:
+      tags:
+        - Group
+      description: |+
+        Edit a group on Zoom, return the new group info.
+
+      operationId: groupEdit
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - id
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: Group ID.
+                name:
+                  type: string
+                  description: Group name, must be unique in one account.
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                group_id: unique_id
+                account_id: unique_id
+                name: New Group Test
+                total_members: 0
+  /group/get:
+    post:
+      tags:
+        - Group
+      description: |+
+        Get a group on Zoom via ID, return the group info.
+
+      operationId: groupGet
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - id
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: Group ID.
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                group_id: unique_id
+                account_id: unique_id
+                name: Group Test
+                total_members: 2
+  /group/list:
+    post:
+      tags:
+        - Group
+      description: |+
+        List all groups on your Zoom account.
+
+      operationId: groupList
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - api_key
+                - api_secret
+              type: object
+              properties:
+                api_key:
+                  type: string
+                  description: Your API Key
+                api_secret:
+                  type: string
+                  description: Your API Secret
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                total_records: 1
+                groups:
+                  - group_id: unique_id
+                    account_id: unique_id
+                    name: Group Test1
+                    total_members: 40
+  /group/member/add:
+    post:
+      tags:
+        - Group
+      description: |+
+        Add members to a group on Zoom.
+
+      operationId: groupMemberAdd
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - id
+                - member_ids
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: Group ID.
+                member_ids:
+                  type: string
+                  description: The member IDs, separated by comma
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                id: unique_id
+                add_at: '2015-08-20T08:57:38.000Z'
+                add_count: 2
+  /group/member/delete:
+    post:
+      tags:
+        - Group
+      description: |+
+        Delete members of a group on Zoom.
+
+      operationId: groupMemberDelete
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - id
+                - member_ids
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: Group ID.
+                member_ids:
+                  type: string
+                  description: The member IDs, separated by comma
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                id: unique_id
+                deleted_at: '2015-08-20T08:57:38.000Z'
+                deleted_count: 2
+  /group/member/list:
+    post:
+      tags:
+        - Group
+      description: |+
+        Lists the members of a group on Zoom.
+
+      operationId: groupMemberList
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - id
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: Group ID.
+                page_size:
+                  type: string
+                  description: >-
+                    The amount of records returns within a single API call.
+                    Defaults to 30.
+                  default: '30'
+                page_number:
+                  type: string
+                  description: Current page number of returned records. Default to 1.
+                  default: '1'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                page_count: 1
+                page_number: 1
+                page_size: 30
+                total_records: 1
+                members:
+                  - id: unique_id
+                    email: email_address
+                    first_name: Zoomie
+                    last_name: Userton
+                    pic_url: >-
+                      https://ssotest.zoom.us/p/6EoubcvJR7eF2grNXJkrHA/f2003a9c-3095-4865-8536-03cc6f211e86-9569
+  /im/group/create:
+    post:
+      tags:
+        - IM Group
+      description: |+
+        Create a IM group on Zoom, return the new group info.
+
+      operationId: imGroupGroupCreate
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - name
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Group name, must be unique in one account.
+                type:
+                  type: string
+                  description: >-
+                    Group type, Normal: normal group, Restricted: Restricted
+                    group, Shared: Shared group.
+                  default: Normal
+                option_search_by_domain:
+                  type: boolean
+                  description: Others in the same email domain can search members.
+                  default: false
+                option_search_by_account:
+                  type: boolean
+                  description: Others under same account can search members.
+                  default: false
+                option_search_by_ma:
+                  type: boolean
+                  description: >-
+                    Others under same master account, including all sub accounts
+                    can search members.
+                  default: false
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                group_id: unique_id
+                account_id: unique_id
+                name: New Group Test
+                total_members: 0
+                option_search_by_domain: false
+                option_search_by_account: false
+                option_search_by_ma_account: false
+  /im/group/delete:
+    post:
+      tags:
+        - IM Group
+      description: |+
+        Delete a IM group on Zoom, return the deleted group ID.
+
+      operationId: imGroupGroupDelete
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - id
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: Group ID.
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                id: unique_id
+                deleted_at: '2015-08-20T08:41:58.000Z'
+                deleted_count: 1
+  /im/group/edit:
+    post:
+      tags:
+        - IM Group
+      description: |+
+        Edit a IM group on Zoom, return the new group info.
+
+      operationId: imGroupGroupEdit
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - id
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: Group ID.
+                name:
+                  type: string
+                  description: Group name, must be unique in one account.
+                type:
+                  type: string
+                  description: >-
+                    Group type, Normal: normal group, Restricted: Restricted
+                    group, Shared: Shared group.
+                  default: Normal
+                option_search_by_domain:
+                  type: boolean
+                  description: Others in the same email domain can search members.
+                  default: false
+                option_search_by_account:
+                  type: boolean
+                  description: Others under same account can search members.
+                  default: false
+                option_search_by_ma:
+                  type: boolean
+                  description: >-
+                    Others under same master account, including all sub accounts
+                    can search members.
+                  default: false
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                group_id: unique_id
+                account_id: unique_id
+                name: New Group Test
+                total_members: 0
+                option_search_by_domain: false
+                option_search_by_account: true
+                option_search_by_ma_account: false
+  /im/group/get:
+    post:
+      tags:
+        - IM Group
+      description: |+
+        Get a IM group on Zoom via ID, return the group info.
+
+      operationId: imGroupGroupGet
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - id
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: Group ID.
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                group_id: unique_id
+                account_id: unique_id
+                name: Group Test
+                total_members: 2
+                option_search_by_domain: false
+                option_search_by_account: true
+                option_search_by_ma_account: false
+  /im/group/list:
+    post:
+      tags:
+        - IM Group
+      description: |+
+        List all IM groups on your Zoom account.
+
+      operationId: imGroupGroupList
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - api_key
+                - api_secret
+              type: object
+              properties:
+                api_key:
+                  type: string
+                  description: Your API Key
+                api_secret:
+                  type: string
+                  description: Your API Secret
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                total_records: 1
+                groups:
+                  - group_id: unique_id
+                    account_id: unique_id
+                    name: Group Test1
+                    total_members: 40
+                    option_search_by_domain: false
+                    option_search_by_account: true
+                    option_search_by_ma_account: false
+                    last_modified_time: '2016-04-16T07:45:41.000Z'
+  /im/group/member/delete:
+    post:
+      tags:
+        - IM Group
+      description: |+
+        Delete members of a IM group on Zoom.
+
+      operationId: imGroupGroupMemberDelete
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - id
+                - member_ids
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: Group ID.
+                member_ids:
+                  type: string
+                  description: The member IDs, separated by comma
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                id: unique_id
+                deleted_at: '2015-08-20T08:57:38.000Z'
+                deleted_count: 2
+  /im/group/member/list:
+    post:
+      tags:
+        - IM Group
+      description: |+
+        Lists the members of a IM group on Zoom.
+
+      operationId: imGroupGroupMemberList
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - id
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: Group ID.
+                page_size:
+                  type: string
+                  description: >-
+                    The amount of records returns within a single API call.
+                    Defaults to 30.
+                  default: '30'
+                page_number:
+                  type: string
+                  description: Current page number of returned records. Default to 1.
+                  default: '1'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                page_count: 1
+                page_number: 1
+                page_size: 30
+                total_records: 1
+                members:
+                  - id: unique_id
+                    email: email_address
+                    first_name: Zoomie
+                    last_name: Userton
+                    pic_url: >-
+                      https://ssotest.zoom.us/p/6EoubcvJR7eF2grNXJkrHA/f2003a9c-3095-4865-8536-03cc6f211e86-9569
+components:
+  schemas: {}
