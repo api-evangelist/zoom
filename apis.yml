@@ -18,7 +18,7 @@ apis:
       - url: overlays/zoom-chat--openapi-search.yml
         type: OpenAPI
     properties:
-      - url: properties/zoom-chat--openapi-original.yml
+      - url: openapizoom-chat--openapi-original.yml
         type: OpenAPI
       - url: https://developers.zoom.us/docs/api/rest/chat-api/
         type: Documentation
@@ -37,7 +37,7 @@ apis:
       - url: overlays/zoom-group--openapi-search.yml
         type: OpenAPI
     properties:
-      - url: properties/zoom-group--openapi-original.yml
+      - url: openapizoom-group--openapi-original.yml
         type: OpenAPI
     description: For managing Zoom groups.
   - aid: zoom:zoom-device-api
@@ -50,7 +50,7 @@ apis:
       - url: overlays/zoom-device--openapi-search.yml
         type: OpenAPI
     properties:
-      - url: properties/zoom-device--openapi-original.yml
+      - url: openapizoom-device--openapi-original.yml
         type: OpenAPI
       - url: https://developers.zoom.us/docs/api/rest/zoom-phone-api/
         type: Documentation
@@ -68,7 +68,7 @@ apis:
       - url: overlays/zoom-im--openapi-search.yml
         type: OpenAPI
     properties:
-      - url: properties/zoom-im--openapi-original.yml
+      - url: openapizoom-im--openapi-original.yml
         type: OpenAPI
       - url: https://developers.zoom.us/docs/api/
         type: Documentation
@@ -85,7 +85,7 @@ apis:
       - url: overlays/zoom-account--openapi-search.yml
         type: OpenAPI
     properties:
-      - url: properties/zoom-account--openapi-original.yml
+      - url: openapizoom-account--openapi-original.yml
         type: OpenAPI
       - url: https://developers.zoom.us/docs/api/rest/account/
         type: Documentation
@@ -105,7 +105,7 @@ apis:
       - url: overlays/zoom-recording--openapi-search.yml
         type: OpenAPI
     properties:
-      - url: properties/zoom-recording--openapi-original.yml
+      - url: openapizoom-recording--openapi-original.yml
         type: OpenAPI
       - url: https://developers.zoom.us/docs/video-sdk/web/recording/
         type: Documentation
@@ -121,7 +121,7 @@ apis:
       - url: overlays/zoom-meeting--openapi-search.yml
         type: OpenAPI
     properties:
-      - url: properties/zoom-meeting--openapi-original.yml
+      - url: openapizoom-meeting--openapi-original.yml
         type: OpenAPI
       - url: https://developers.zoom.us/docs/api/rest/meeting/
         type: Documentation
@@ -146,7 +146,7 @@ apis:
       - url: overlays/zoom-metrics--openapi-search.yml
         type: OpenAPI
     properties:
-      - url: properties/zoom-metrics--openapi-original.yml
+      - url: openapizoom-metrics--openapi-original.yml
         type: OpenAPI
     description: Access and manage all of the metrics associate with operating on Zoom.
   - aid: zoom:zoom-recording-api
@@ -156,7 +156,7 @@ apis:
       - url: overlays/zoom-recording--openapi-search.yml
         type: OpenAPI
     properties:
-      - url: properties/zoom-recording--openapi-original.yml
+      - url: openapizoom-recording--openapi-original.yml
         type: OpenAPI
     description: DELETE
   - aid: zoom:zoom-report-api
@@ -168,7 +168,7 @@ apis:
       - url: overlays/zoom-report--openapi-search.yml
         type: OpenAPI
     properties:
-      - url: properties/zoom-report--openapi-original.yml
+      - url: openapizoom-report--openapi-original.yml
         type: OpenAPI
       - url: https://developers.zoom.us/docs/api/rest/reference/zoom-api/methods/
         type: Documentation
@@ -197,7 +197,7 @@ apis:
       - url: overlays/zoom-user--openapi-search.yml
         type: OpenAPI
     properties:
-      - url: properties/zoom-user--openapi-original.yml
+      - url: openapizoom-user--openapi-original.yml
         type: OpenAPI
       - url: https://developers.zoom.us/docs/api/rest/user/
         type: Documentation
@@ -227,7 +227,7 @@ apis:
       - url: overlays/zoom-webinar--openapi-search.yml
         type: OpenAPI
     properties:
-      - url: properties/zoom-webinar--openapi-original.yml
+      - url: openapizoom-webinar--openapi-original.yml
         type: OpenAPI
       - url: https://developers.zoom.us/docs/api/rest/reference/zoom-api/methods/
         type: Documentation
