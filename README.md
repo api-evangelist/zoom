@@ -1,5 +1,5 @@
 # Zoom (zoom)
-Zoom is a video conferencing platform that allows users to connect with others through virtual meetings, webinars, and online events. It offers features such as screen sharing, virtual backgrounds, and chat capabilities to enhance communication and collaboration among participants. With Zoom, users can easily schedule and join meetings from any device, making it convenient for remote work, distance learning, and social gatherings. The platform has become increasingly popular for its user-friendly interface and reliable performance, making it a go-to choice for individuals and organizations looking to stay connected in a virtual world.
+This is a starter APIs.json that you can use to learn the specification and make your own.
 
 **URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-search/videos/main/_apis/zoom/apis.md)
 
