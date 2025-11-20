@@ -99,7 +99,7 @@ apis:
       - Register
     humanURL: https://developers.zoom.us/docs/api/rest/meeting/
     properties:
-      - url: openapi/zoom-meeting--openapi-original.yml
+      - url: properties/zoom-meeting-api-openapi.yml
         type: OpenAPI
       - url: https://developers.zoom.us/docs/api/rest/meeting/
         type: Documentation
