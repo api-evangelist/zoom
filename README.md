@@ -1,29 +1,20 @@
 # Zoom (zoom)
-This is a starter APIs.json that you can use to learn the specification and make your own.
+Zoom is a communications platform that allows users to connect with video,  audio, phone, and chat. The Zoom API provides programmatic access to Zoom's  core features including meetings, webinars, recordings, users, and more.
+
 
 **URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-search/videos/main/_apis/zoom/apis.md)
 
-## Scope
-
-
 ## Tags:
 
- - Videos, Video Conferences, Webinars
+ - Meetings, T1, Videos, Webinars, chat, collaboration, communications, meetings, video conferencing, webinars
 
 ## Timestamps
 
 - **Created:** 2024/04/14 
-- **Modified:** 2024-12-24 
+- **Modified:** 2025-12-31 
 
 ## APIs
 
-### Zoom GraphQL API
-Zoom GraphQL is in a public beta. See the GraphQL beta FAQ for details. GraphQL is a query language for APIs as well as a runtime environment for filling those queries with data.
-
-
-#### Tags:
-
- - No Tags
 ### Zoom Chat API
 Developers can use the Zoom Chat API to access chat and chat channel data to build private services or public applications on the Zoom App Marketplace.
 
@@ -38,6 +29,7 @@ Developers can use the Zoom Chat API to access chat and chat channel data to bui
 
 - [OpenAPI](openapi/zoom-chat--openapi-original.yml)
 - [Documentation](https://developers.zoom.us/docs/api/rest/chat-api/)
+
 ### Zoom Group API
 For managing Zoom groups.
 
@@ -51,6 +43,7 @@ For managing Zoom groups.
 #### Properties
 
 - [OpenAPI](openapi/zoom-group--openapi-original.yml)
+
 ### Zoom Device API
 You can access information from Zoom with Zoom Phone APIs to build private services or public applications on the Zoom App Marketplace.
 
@@ -65,6 +58,7 @@ You can access information from Zoom with Zoom Phone APIs to build private servi
 
 - [OpenAPI](openapi/zoom-device--openapi-original.yml)
 - [Documentation](https://developers.zoom.us/docs/api/rest/zoom-phone-api/)
+
 ### Zoom Instant Message API
 Provides the ability to instant message.
 
@@ -79,6 +73,7 @@ Provides the ability to instant message.
 
 - [OpenAPI](openapi/zoom-im--openapi-original.yml)
 - [Documentation](https://developers.zoom.us/docs/api/)
+
 ### Zoom Account API
 The Zoom Account API lets developers access data related to Accounts, Dashboards, Information Barriers, and Roles. Use this API to build private services or public applications on the Zoom App Marketplace. Learn how to get your credentials and create private/public applications in our Authorization Guide.
 
@@ -93,6 +88,7 @@ The Zoom Account API lets developers access data related to Accounts, Dashboards
 
 - [OpenAPI](openapi/zoom-account--openapi-original.yml)
 - [Documentation](https://developers.zoom.us/docs/api/rest/account/)
+
 ### Zoom Recording API
 Manage the recordings made of Zoom calls.
 
@@ -107,6 +103,7 @@ Manage the recordings made of Zoom calls.
 
 - [OpenAPI](openapi/zoom-recording--openapi-original.yml)
 - [Documentation](https://developers.zoom.us/docs/video-sdk/web/recording/)
+
 ### Zoom Meeting API
 The Zoom Meeting API lets developers access meeting and webinar data from Zoom Meeting. Use this API to build private services or public applications on the Zoom App Marketplace.
 
@@ -121,6 +118,7 @@ The Zoom Meeting API lets developers access meeting and webinar data from Zoom M
 
 - [OpenAPI](openapi/zoom-meeting--openapi-original.yml)
 - [Documentation](https://developers.zoom.us/docs/api/rest/meeting/)
+
 ### Zoom Metrics API
 Access and manage all of the metrics associate with operating on Zoom.
 
@@ -134,31 +132,24 @@ Access and manage all of the metrics associate with operating on Zoom.
 #### Properties
 
 - [OpenAPI](openapi/zoom-metrics--openapi-original.yml)
+
 ### Zoom Recording API
 DELETE
-
-
-#### Tags:
-
- - No Tags
 
 #### Properties
 
 - [OpenAPI](openapi/zoom-recording--openapi-original.yml)
+
 ### Zoom Report API
 Access and manage reports associated with using Zoom.
 
 **Human URL:** [https://developers.zoom.us/docs/api/rest/reference/zoom-api/methods/#tag/Reports](https://developers.zoom.us/docs/api/rest/reference/zoom-api/methods/#tag/Reports)
 
-
-#### Tags:
-
- - No Tags
-
 #### Properties
 
 - [OpenAPI](openapi/zoom-report--openapi-original.yml)
 - [Documentation](https://developers.zoom.us/docs/api/rest/reference/zoom-api/methods/)
+
 ### Zoom User API
 The Zoom User API lets developers access data related to Contact Groups, Groups, and Users. Use this API to build private services or public applications on the Zoom App Marketplace. Learn how to get your credentials and create private/public applications in our Authorization Guide.
 
@@ -173,6 +164,7 @@ The Zoom User API lets developers access data related to Contact Groups, Groups,
 
 - [OpenAPI](openapi/zoom-user--openapi-original.yml)
 - [Documentation](https://developers.zoom.us/docs/api/rest/user/)
+
 ### Zoom Webinar API
 Provides the ability to manage details of webinars operated via Zoom.
 
@@ -188,9 +180,23 @@ Provides the ability to manage details of webinars operated via Zoom.
 - [OpenAPI](openapi/zoom-webinar--openapi-original.yml)
 - [Documentation](https://developers.zoom.us/docs/api/rest/reference/zoom-api/methods/)
 
+## Common Properties
+
+- [Getting Started](https://developers.zoom.us/docs/api/rest/getting-started/)
+- [Authentication](https://developers.zoom.us/docs/api/rest/authentication/)
+- [Rate Limits](https://developers.zoom.us/docs/api/rest/rate-limits/)
+- [Changelog](https://developers.zoom.us/docs/api/rest/changelog/)
+- [SDKs](https://developers.zoom.us/docs/api/rest/sdks/)
+- [Developer Forum](https://devforum.zoom.us/)
+- [Status Page](https://status.zoom.us/)
+- [Terms of Service](https://explore.zoom.us/en/terms/)
+- [Privacy Policy](https://explore.zoom.us/en/privacy/)
+
 ## Maintainers
 
 **FN:** API Evangelist
 
 **Email:** info@apievangelist.com
+**FN:** Zoom Video Communications, Inc.
 
+**Email:** developer-support@zoom.us
