@@ -1,0 +1,1074 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-search/zoom/json-schema/zoom-meeting-schema.json",
+  "title": "Zoom Meeting API Core Models",
+  "description": "JSON Schema definitions for core Zoom Meeting API data models including meetings, participants, registrants, recordings, polls, and webhook events.",
+  "type": "object",
+  "$defs": {
+    "MeetingType": {
+      "title": "Meeting Type",
+      "description": "The type of Zoom meeting. 1 = Instant meeting, 2 = Scheduled meeting, 3 = Recurring meeting with no fixed time, 4 = Personal Meeting Room, 8 = Recurring meeting with a fixed time.",
+      "type": "integer",
+      "enum": [1, 2, 3, 4, 8]
+    },
+    "MeetingStatus": {
+      "title": "Meeting Status",
+      "description": "The current status of a meeting.",
+      "type": "string",
+      "enum": ["waiting", "started", "finished"]
+    },
+    "Meeting": {
+      "title": "Meeting",
+      "description": "A Zoom meeting object representing a scheduled, instant, or recurring meeting.",
+      "type": "object",
+      "required": ["id", "topic", "type"],
+      "properties": {
+        "uuid": {
+          "type": "string",
+          "description": "Unique meeting instance identifier. Each meeting instance generates its own UUID."
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The meeting ID, also known as the meeting number."
+        },
+        "host_id": {
+          "type": "string",
+          "description": "The user ID of the meeting host."
+        },
+        "host_email": {
+          "type": "string",
+          "format": "email",
+          "description": "Email address of the meeting host."
+        },
+        "assistant_id": {
+          "type": "string",
+          "description": "Unique identifier of the scheduler who scheduled this meeting on behalf of the host."
+        },
+        "topic": {
+          "type": "string",
+          "description": "Meeting topic. Maximum 200 characters.",
+          "maxLength": 200
+        },
+        "type": {
+          "$ref": "#/$defs/MeetingType"
+        },
+        "status": {
+          "$ref": "#/$defs/MeetingStatus"
+        },
+        "start_time": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Meeting start time in UTC/GMT. Only used for scheduled and recurring meetings."
+        },
+        "duration": {
+          "type": "integer",
+          "description": "Meeting duration in minutes.",
+          "minimum": 0
+        },
+        "timezone": {
+          "type": "string",
+          "description": "Timezone for the meeting (e.g., America/Los_Angeles). See IANA Time Zone Database.",
+          "examples": ["America/Los_Angeles", "America/New_York", "Europe/London", "Asia/Tokyo"]
+        },
+        "agenda": {
+          "type": "string",
+          "description": "Meeting description or agenda. Maximum 2000 characters.",
+          "maxLength": 2000
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The date and time when the meeting was created."
+        },
+        "start_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL for the host to start the meeting. This URL should only be used by the host and expires after a single use."
+        },
+        "join_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL for participants to join the meeting."
+        },
+        "password": {
+          "type": "string",
+          "description": "Meeting passcode. May only contain a-z, A-Z, 0-9, @, -, _, *. Maximum 10 characters.",
+          "maxLength": 10
+        },
+        "h323_password": {
+          "type": "string",
+          "description": "H.323/SIP room system passcode. Only numbers, maximum 16 characters.",
+          "maxLength": 16,
+          "pattern": "^[0-9]*$"
+        },
+        "pstn_password": {
+          "type": "string",
+          "description": "PSTN password for phone dial-in."
+        },
+        "encrypted_password": {
+          "type": "string",
+          "description": "Encrypted passcode for the meeting link."
+        },
+        "pmi": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Personal Meeting ID, if applicable."
+        },
+        "tracking_fields": {
+          "type": "array",
+          "description": "Tracking fields configured for the meeting.",
+          "items": {
+            "$ref": "#/$defs/TrackingField"
+          }
+        },
+        "occurrences": {
+          "type": "array",
+          "description": "Array of occurrence objects for recurring meetings.",
+          "items": {
+            "$ref": "#/$defs/Occurrence"
+          }
+        },
+        "settings": {
+          "$ref": "#/$defs/MeetingSettings"
+        },
+        "recurrence": {
+          "$ref": "#/$defs/Recurrence"
+        },
+        "pre_schedule": {
+          "type": "boolean",
+          "description": "Whether this is a pre-scheduled meeting.",
+          "default": false
+        }
+      }
+    },
+    "MeetingSummary": {
+      "title": "Meeting Summary",
+      "description": "A compact meeting object returned in list responses.",
+      "type": "object",
+      "properties": {
+        "uuid": {
+          "type": "string",
+          "description": "Unique meeting instance ID."
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Meeting ID (meeting number)."
+        },
+        "host_id": {
+          "type": "string",
+          "description": "ID of the meeting host."
+        },
+        "topic": {
+          "type": "string",
+          "description": "Meeting topic."
+        },
+        "type": {
+          "$ref": "#/$defs/MeetingType"
+        },
+        "start_time": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Meeting start time."
+        },
+        "duration": {
+          "type": "integer",
+          "description": "Meeting duration in minutes."
+        },
+        "timezone": {
+          "type": "string",
+          "description": "Timezone."
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Time the meeting was created."
+        },
+        "join_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL for participants to join."
+        },
+        "agenda": {
+          "type": "string",
+          "description": "Meeting description."
+        }
+      }
+    },
+    "MeetingSettings": {
+      "title": "Meeting Settings",
+      "description": "Configuration settings for a Zoom meeting.",
+      "type": "object",
+      "properties": {
+        "host_video": {
+          "type": "boolean",
+          "description": "Start video when the host joins the meeting.",
+          "default": true
+        },
+        "participant_video": {
+          "type": "boolean",
+          "description": "Start video when participants join the meeting.",
+          "default": false
+        },
+        "cn_meeting": {
+          "type": "boolean",
+          "description": "Host meeting in China.",
+          "default": false
+        },
+        "in_meeting": {
+          "type": "boolean",
+          "description": "Host meeting in India.",
+          "default": false
+        },
+        "join_before_host": {
+          "type": "boolean",
+          "description": "Allow participants to join before the host.",
+          "default": false
+        },
+        "jbh_time": {
+          "type": "integer",
+          "description": "Minutes before the host joins that participants can join. 0 = any time, 5 = 5 minutes, 10 = 10 minutes.",
+          "enum": [0, 5, 10]
+        },
+        "mute_upon_entry": {
+          "type": "boolean",
+          "description": "Mute participants upon entry.",
+          "default": false
+        },
+        "watermark": {
+          "type": "boolean",
+          "description": "Add watermark when viewing a shared screen.",
+          "default": false
+        },
+        "use_pmi": {
+          "type": "boolean",
+          "description": "Use Personal Meeting ID.",
+          "default": false
+        },
+        "approval_type": {
+          "type": "integer",
+          "description": "Registration approval type. 0 = Automatically approve, 1 = Manually approve, 2 = No registration required.",
+          "enum": [0, 1, 2],
+          "default": 2
+        },
+        "registration_type": {
+          "type": "integer",
+          "description": "Registration type for recurring meetings. 1 = Register once and attend any, 2 = Register for each, 3 = Register once and choose occurrences.",
+          "enum": [1, 2, 3],
+          "default": 1
+        },
+        "audio": {
+          "type": "string",
+          "description": "How participants can join the meeting audio.",
+          "enum": ["both", "telephony", "voip", "thirdParty"],
+          "default": "both"
+        },
+        "auto_recording": {
+          "type": "string",
+          "description": "Automatic recording configuration.",
+          "enum": ["local", "cloud", "none"],
+          "default": "none"
+        },
+        "enforce_login": {
+          "type": "boolean",
+          "description": "Only authenticated users can join.",
+          "default": false
+        },
+        "enforce_login_domains": {
+          "type": "string",
+          "description": "Only users with specified email domains can join."
+        },
+        "alternative_hosts": {
+          "type": "string",
+          "description": "Alternative host email addresses, comma separated."
+        },
+        "alternative_hosts_email_notification": {
+          "type": "boolean",
+          "description": "Send email notification to alternative hosts.",
+          "default": true
+        },
+        "close_registration": {
+          "type": "boolean",
+          "description": "Close registration after event date.",
+          "default": false
+        },
+        "waiting_room": {
+          "type": "boolean",
+          "description": "Enable the waiting room.",
+          "default": false
+        },
+        "global_dial_in_countries": {
+          "type": "array",
+          "description": "List of countries for global dial-in numbers.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "contact_name": {
+          "type": "string",
+          "description": "Contact name for meeting registration."
+        },
+        "contact_email": {
+          "type": "string",
+          "format": "email",
+          "description": "Contact email for meeting registration."
+        },
+        "meeting_authentication": {
+          "type": "boolean",
+          "description": "Require authentication to join.",
+          "default": false
+        },
+        "encryption_type": {
+          "type": "string",
+          "description": "Meeting encryption type.",
+          "enum": ["enhanced_encryption", "e2ee"],
+          "default": "enhanced_encryption"
+        },
+        "breakout_room": {
+          "$ref": "#/$defs/BreakoutRoomSettings"
+        },
+        "language_interpretation": {
+          "$ref": "#/$defs/LanguageInterpretationSettings"
+        },
+        "focus_mode": {
+          "type": "boolean",
+          "description": "Enable focus mode.",
+          "default": false
+        },
+        "private_meeting": {
+          "type": "boolean",
+          "description": "Make the meeting private.",
+          "default": false
+        },
+        "email_notification": {
+          "type": "boolean",
+          "description": "Send email notification when meeting starts.",
+          "default": true
+        },
+        "continuous_meeting_chat": {
+          "type": "object",
+          "description": "Continuous meeting chat settings.",
+          "properties": {
+            "enable": {
+              "type": "boolean"
+            },
+            "auto_add_invited_external_users": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "Recurrence": {
+      "title": "Recurrence",
+      "description": "Recurrence configuration for recurring meetings.",
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "type": "integer",
+          "description": "Recurrence type. 1 = Daily, 2 = Weekly, 3 = Monthly.",
+          "enum": [1, 2, 3]
+        },
+        "repeat_interval": {
+          "type": "integer",
+          "description": "Interval at which the meeting recurs. For daily max 90, weekly max 12, monthly max 3.",
+          "minimum": 1
+        },
+        "weekly_days": {
+          "type": "string",
+          "description": "Days of the week for weekly recurrence. Comma-separated values 1(Sun) through 7(Sat).",
+          "pattern": "^[1-7](,[1-7])*$"
+        },
+        "monthly_day": {
+          "type": "integer",
+          "description": "Day of the month for monthly recurrence.",
+          "minimum": 1,
+          "maximum": 31
+        },
+        "monthly_week": {
+          "type": "integer",
+          "description": "Week of the month for monthly recurrence. -1 = Last week.",
+          "enum": [-1, 1, 2, 3, 4]
+        },
+        "monthly_week_day": {
+          "type": "integer",
+          "description": "Day of the week for monthly recurrence. 1(Sun) through 7(Sat).",
+          "enum": [1, 2, 3, 4, 5, 6, 7]
+        },
+        "end_times": {
+          "type": "integer",
+          "description": "Number of times the meeting will recur before ending. Cannot be used with end_date_time.",
+          "minimum": 1,
+          "maximum": 365,
+          "default": 1
+        },
+        "end_date_time": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The end date-time for the recurrence. Cannot be used with end_times."
+        }
+      }
+    },
+    "Occurrence": {
+      "title": "Occurrence",
+      "description": "A single occurrence of a recurring meeting.",
+      "type": "object",
+      "properties": {
+        "occurrence_id": {
+          "type": "string",
+          "description": "Occurrence ID."
+        },
+        "start_time": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Start time of this occurrence."
+        },
+        "duration": {
+          "type": "integer",
+          "description": "Duration of this occurrence in minutes."
+        },
+        "status": {
+          "type": "string",
+          "description": "Occurrence status.",
+          "enum": ["available", "deleted"]
+        }
+      }
+    },
+    "TrackingField": {
+      "title": "Tracking Field",
+      "description": "A tracking field set for a meeting.",
+      "type": "object",
+      "properties": {
+        "field": {
+          "type": "string",
+          "description": "Tracking field label/name."
+        },
+        "value": {
+          "type": "string",
+          "description": "Tracking field value."
+        },
+        "visible": {
+          "type": "boolean",
+          "description": "Whether the field is visible to participants."
+        }
+      }
+    },
+    "BreakoutRoomSettings": {
+      "title": "Breakout Room Settings",
+      "description": "Breakout room configuration for a meeting.",
+      "type": "object",
+      "properties": {
+        "enable": {
+          "type": "boolean",
+          "description": "Enable breakout rooms."
+        },
+        "rooms": {
+          "type": "array",
+          "description": "Pre-assigned breakout rooms.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Breakout room name."
+              },
+              "participants": {
+                "type": "array",
+                "description": "Email addresses of participants assigned to this room.",
+                "items": {
+                  "type": "string",
+                  "format": "email"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "LanguageInterpretationSettings": {
+      "title": "Language Interpretation Settings",
+      "description": "Language interpretation configuration for a meeting.",
+      "type": "object",
+      "properties": {
+        "enable": {
+          "type": "boolean",
+          "description": "Enable language interpretation."
+        },
+        "interpreters": {
+          "type": "array",
+          "description": "List of interpreters.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "email": {
+                "type": "string",
+                "format": "email",
+                "description": "Interpreter email address."
+              },
+              "languages": {
+                "type": "string",
+                "description": "Comma-separated language codes the interpreter supports."
+              }
+            }
+          }
+        }
+      }
+    },
+    "Participant": {
+      "title": "Participant",
+      "description": "A meeting participant.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Participant UUID."
+        },
+        "user_id": {
+          "type": "string",
+          "description": "Participant user ID if a registered Zoom user."
+        },
+        "name": {
+          "type": "string",
+          "description": "Participant display name."
+        },
+        "user_email": {
+          "type": "string",
+          "format": "email",
+          "description": "Participant email address."
+        },
+        "join_time": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Time the participant joined."
+        },
+        "leave_time": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Time the participant left."
+        },
+        "duration": {
+          "type": "integer",
+          "description": "Duration in the meeting in seconds."
+        },
+        "registrant_id": {
+          "type": "string",
+          "description": "Registrant ID if the participant registered for the meeting."
+        },
+        "failover": {
+          "type": "boolean",
+          "description": "Whether failover occurred for this participant."
+        },
+        "status": {
+          "type": "string",
+          "description": "Participant status.",
+          "enum": ["in_meeting", "in_waiting_room"]
+        }
+      }
+    },
+    "Registrant": {
+      "title": "Registrant",
+      "description": "A meeting registrant.",
+      "type": "object",
+      "required": ["email", "first_name"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Registrant ID."
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Registrant email address."
+        },
+        "first_name": {
+          "type": "string",
+          "description": "Registrant first name.",
+          "maxLength": 64
+        },
+        "last_name": {
+          "type": "string",
+          "description": "Registrant last name.",
+          "maxLength": 64
+        },
+        "address": {
+          "type": "string",
+          "description": "Registrant address."
+        },
+        "city": {
+          "type": "string",
+          "description": "Registrant city."
+        },
+        "state": {
+          "type": "string",
+          "description": "Registrant state or province."
+        },
+        "zip": {
+          "type": "string",
+          "description": "Registrant zip or postal code."
+        },
+        "country": {
+          "type": "string",
+          "description": "Registrant two-letter country code."
+        },
+        "phone": {
+          "type": "string",
+          "description": "Registrant phone number."
+        },
+        "comments": {
+          "type": "string",
+          "description": "Registrant questions and comments."
+        },
+        "industry": {
+          "type": "string",
+          "description": "Registrant industry."
+        },
+        "job_title": {
+          "type": "string",
+          "description": "Registrant job title."
+        },
+        "org": {
+          "type": "string",
+          "description": "Registrant organization."
+        },
+        "no_of_employees": {
+          "type": "string",
+          "description": "Number of employees.",
+          "enum": [
+            "1-20",
+            "21-50",
+            "51-100",
+            "101-250",
+            "251-500",
+            "501-1,000",
+            "1,001-5,000",
+            "5,001-10,000",
+            "More than 10,000"
+          ]
+        },
+        "purchasing_time_frame": {
+          "type": "string",
+          "description": "Purchasing time frame.",
+          "enum": [
+            "Within a month",
+            "1-3 months",
+            "4-6 months",
+            "More than 6 months",
+            "No timeframe"
+          ]
+        },
+        "role_in_purchase_process": {
+          "type": "string",
+          "description": "Role in purchase process.",
+          "enum": [
+            "Decision Maker",
+            "Evaluator/Recommender",
+            "Influencer",
+            "Not involved"
+          ]
+        },
+        "language": {
+          "type": "string",
+          "description": "Registrant language preference.",
+          "enum": ["en-US", "en", "zh-CN", "zh", "es", "fr-FR", "fr", "jp", "pt", "de", "ko", "it", "vi", "pl", "tr", "id", "nl", "ru", "uk", "sv"]
+        },
+        "status": {
+          "type": "string",
+          "description": "Registrant status.",
+          "enum": ["approved", "pending", "denied"]
+        },
+        "create_time": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Time the registrant registered."
+        },
+        "join_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "Unique join URL for this registrant."
+        },
+        "custom_questions": {
+          "type": "array",
+          "description": "Custom question responses.",
+          "items": {
+            "$ref": "#/$defs/CustomQuestion"
+          }
+        }
+      }
+    },
+    "CustomQuestion": {
+      "title": "Custom Question",
+      "description": "A custom question and answer for meeting registration.",
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Question text."
+        },
+        "value": {
+          "type": "string",
+          "description": "Answer to the question."
+        }
+      }
+    },
+    "Poll": {
+      "title": "Poll",
+      "description": "A meeting poll.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Poll ID."
+        },
+        "title": {
+          "type": "string",
+          "description": "Poll title.",
+          "maxLength": 64
+        },
+        "anonymous": {
+          "type": "boolean",
+          "description": "Whether this is an anonymous poll.",
+          "default": false
+        },
+        "status": {
+          "type": "string",
+          "description": "Poll status.",
+          "enum": ["notstart", "started", "ended", "sharing"]
+        },
+        "poll_type": {
+          "type": "integer",
+          "description": "Type of poll. 1 = Poll, 2 = Advanced Poll, 3 = Quiz.",
+          "enum": [1, 2, 3]
+        },
+        "questions": {
+          "type": "array",
+          "description": "List of questions in the poll.",
+          "items": {
+            "$ref": "#/$defs/PollQuestion"
+          }
+        }
+      }
+    },
+    "PollQuestion": {
+      "title": "Poll Question",
+      "description": "A question within a meeting poll.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Question text."
+        },
+        "type": {
+          "type": "string",
+          "description": "Question type.",
+          "enum": [
+            "single",
+            "multiple",
+            "matching",
+            "rank_order",
+            "short_answer",
+            "long_answer",
+            "fill_in_the_blank",
+            "rating_scale"
+          ]
+        },
+        "answer_required": {
+          "type": "boolean",
+          "description": "Whether an answer is required."
+        },
+        "answers": {
+          "type": "array",
+          "description": "Available answer options.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "right_answers": {
+          "type": "array",
+          "description": "Correct answers for quiz type polls.",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "RecordingFile": {
+      "title": "Recording File",
+      "description": "A cloud recording file from a Zoom meeting.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Recording file ID."
+        },
+        "meeting_id": {
+          "type": "string",
+          "description": "Meeting ID."
+        },
+        "recording_start": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Recording start time."
+        },
+        "recording_end": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Recording end time."
+        },
+        "file_type": {
+          "type": "string",
+          "description": "Recording file type.",
+          "enum": ["MP4", "M4A", "CHAT", "TRANSCRIPT", "CSV", "TB", "CC", "CHAT_MESSAGE", "SUMMARY"]
+        },
+        "file_extension": {
+          "type": "string",
+          "description": "File extension.",
+          "enum": ["MP4", "M4A", "TXT", "VTT", "CSV", "JSON"]
+        },
+        "file_size": {
+          "type": "number",
+          "description": "File size in bytes."
+        },
+        "download_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL to download the recording file."
+        },
+        "play_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL to play the recording file."
+        },
+        "status": {
+          "type": "string",
+          "description": "Recording status.",
+          "enum": ["completed"]
+        },
+        "recording_type": {
+          "type": "string",
+          "description": "Recording type.",
+          "enum": [
+            "shared_screen_with_speaker_view(CC)",
+            "shared_screen_with_speaker_view",
+            "shared_screen_with_gallery_view",
+            "active_speaker",
+            "gallery_view",
+            "shared_screen",
+            "audio_only",
+            "audio_transcript",
+            "chat_file",
+            "poll",
+            "host_video",
+            "closed_caption",
+            "timeline",
+            "sign_interpretation",
+            "production_studio"
+          ]
+        }
+      }
+    },
+    "PastMeetingDetails": {
+      "title": "Past Meeting Details",
+      "description": "Details of a past (completed) meeting.",
+      "type": "object",
+      "properties": {
+        "uuid": {
+          "type": "string",
+          "description": "Unique meeting instance ID."
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Meeting ID."
+        },
+        "host_id": {
+          "type": "string",
+          "description": "Host user ID."
+        },
+        "host_email": {
+          "type": "string",
+          "format": "email",
+          "description": "Host email address."
+        },
+        "type": {
+          "$ref": "#/$defs/MeetingType"
+        },
+        "topic": {
+          "type": "string",
+          "description": "Meeting topic."
+        },
+        "user_name": {
+          "type": "string",
+          "description": "Display name of the meeting host."
+        },
+        "start_time": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Meeting start time."
+        },
+        "end_time": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Meeting end time."
+        },
+        "duration": {
+          "type": "integer",
+          "description": "Meeting duration in minutes."
+        },
+        "total_minutes": {
+          "type": "integer",
+          "description": "Total meeting minutes across all participants."
+        },
+        "participants_count": {
+          "type": "integer",
+          "description": "Number of participants."
+        }
+      }
+    },
+    "LiveStream": {
+      "title": "Live Stream",
+      "description": "Live stream configuration for a meeting.",
+      "type": "object",
+      "required": ["stream_url", "stream_key"],
+      "properties": {
+        "stream_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "Streaming URL (e.g., RTMP endpoint)."
+        },
+        "stream_key": {
+          "type": "string",
+          "description": "Stream key or name."
+        },
+        "page_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "The live stream page URL where viewers can watch."
+        },
+        "resolution": {
+          "type": "string",
+          "description": "The live stream resolution.",
+          "enum": ["720p", "1080p"]
+        }
+      }
+    },
+    "WebhookEvent": {
+      "title": "Webhook Event",
+      "description": "The standard envelope for all Zoom webhook event payloads.",
+      "type": "object",
+      "required": ["event", "event_ts", "payload"],
+      "properties": {
+        "event": {
+          "type": "string",
+          "description": "The event type identifier.",
+          "examples": [
+            "meeting.created",
+            "meeting.updated",
+            "meeting.deleted",
+            "meeting.started",
+            "meeting.ended",
+            "meeting.participant_joined",
+            "meeting.participant_left",
+            "meeting.registration_created",
+            "meeting.registration_approved",
+            "recording.completed",
+            "recording.started",
+            "recording.stopped"
+          ]
+        },
+        "event_ts": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Timestamp of the event in milliseconds since epoch."
+        },
+        "payload": {
+          "type": "object",
+          "description": "Event-specific payload data.",
+          "properties": {
+            "account_id": {
+              "type": "string",
+              "description": "The Zoom account ID."
+            },
+            "operator": {
+              "type": "string",
+              "description": "Email of the user who triggered the event."
+            },
+            "operator_id": {
+              "type": "string",
+              "description": "User ID of the operator."
+            },
+            "object": {
+              "type": "object",
+              "description": "The event-specific object data."
+            }
+          }
+        },
+        "download_token": {
+          "type": "string",
+          "description": "Short-lived token for downloading recording files. Only present in recording events."
+        }
+      }
+    },
+    "PaginatedResponse": {
+      "title": "Paginated Response",
+      "description": "Standard pagination wrapper for list endpoints.",
+      "type": "object",
+      "properties": {
+        "page_count": {
+          "type": "integer",
+          "description": "Total number of pages."
+        },
+        "page_number": {
+          "type": "integer",
+          "description": "Current page number."
+        },
+        "page_size": {
+          "type": "integer",
+          "description": "Number of records per page."
+        },
+        "total_records": {
+          "type": "integer",
+          "description": "Total number of records."
+        },
+        "next_page_token": {
+          "type": "string",
+          "description": "Token for the next page of results."
+        }
+      }
+    },
+    "ErrorResponse": {
+      "title": "Error Response",
+      "description": "Standard error response from the Zoom API.",
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "description": "Zoom error code."
+        },
+        "message": {
+          "type": "string",
+          "description": "Error message."
+        },
+        "errors": {
+          "type": "array",
+          "description": "Detailed field-level errors.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "field": {
+                "type": "string",
+                "description": "The field that caused the error."
+              },
+              "message": {
+                "type": "string",
+                "description": "Error message for this field."
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

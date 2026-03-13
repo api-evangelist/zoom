@@ -1,0 +1,1334 @@
+asyncapi: 3.0.0
+info:
+  title: Zoom Meeting Webhooks
+  version: 2.0.0
+  description: >-
+    Zoom delivers webhook event notifications to your application when meeting-related
+    events occur on the Zoom platform. These webhooks enable real-time integration
+    with meeting lifecycle events including creation, updates, starts, ends,
+    participant joins and leaves, recordings, and alerts. Configure your webhook
+    endpoint in the Zoom Marketplace to receive these event notifications.
+  contact:
+    name: Zoom Developer Support
+    url: https://developers.zoom.us
+    email: developer-support@zoom.us
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  termsOfService: https://explore.zoom.us/en/terms/
+  externalDocs:
+    description: Zoom Webhook Event Reference
+    url: https://developers.zoom.us/docs/api/rest/reference/zoom-api/events/
+  tags:
+    - name: meeting
+      description: Meeting lifecycle webhook events.
+    - name: recording
+      description: Recording-related webhook events.
+    - name: participant
+      description: Participant join and leave webhook events.
+servers:
+  zoomWebhookEndpoint:
+    host: '{yourWebhookEndpoint}'
+    protocol: https
+    description: >-
+      Your application's webhook endpoint URL. Zoom sends HTTP POST requests
+      to this URL when events occur. Configure this URL in your Zoom Marketplace
+      app settings under the Event Subscriptions section.
+    variables:
+      yourWebhookEndpoint:
+        description: >-
+          The fully qualified domain and path of your webhook receiver
+          (e.g., api.example.com/webhooks/zoom).
+    security:
+      - $ref: '#/components/securitySchemes/webhookVerificationToken'
+defaultContentType: application/json
+channels:
+  meetingCreated:
+    address: /webhook
+    description: >-
+      Triggered when a meeting is created by a host or on behalf of a host.
+    messages:
+      meetingCreatedMessage:
+        $ref: '#/components/messages/MeetingCreated'
+  meetingUpdated:
+    address: /webhook
+    description: >-
+      Triggered when a meeting is updated, including changes to topic, time,
+      settings, or other meeting properties.
+    messages:
+      meetingUpdatedMessage:
+        $ref: '#/components/messages/MeetingUpdated'
+  meetingDeleted:
+    address: /webhook
+    description: >-
+      Triggered when a meeting is deleted by the host or an admin.
+    messages:
+      meetingDeletedMessage:
+        $ref: '#/components/messages/MeetingDeleted'
+  meetingStarted:
+    address: /webhook
+    description: >-
+      Triggered when a meeting starts. This event fires when the host or
+      the first participant joins the meeting.
+    messages:
+      meetingStartedMessage:
+        $ref: '#/components/messages/MeetingStarted'
+  meetingEnded:
+    address: /webhook
+    description: >-
+      Triggered when a meeting ends. This event fires when all participants
+      have left the meeting or the host ends the meeting.
+    messages:
+      meetingEndedMessage:
+        $ref: '#/components/messages/MeetingEnded'
+  meetingRecoveredFromTrash:
+    address: /webhook
+    description: >-
+      Triggered when a previously deleted meeting is recovered from trash.
+    messages:
+      meetingRecoveredMessage:
+        $ref: '#/components/messages/MeetingRecovered'
+  meetingPermanentlyDeleted:
+    address: /webhook
+    description: >-
+      Triggered when a meeting is permanently deleted and can no longer
+      be recovered.
+    messages:
+      meetingPermanentlyDeletedMessage:
+        $ref: '#/components/messages/MeetingPermanentlyDeleted'
+  meetingParticipantJoined:
+    address: /webhook
+    description: >-
+      Triggered when a participant joins a meeting. Includes participant
+      details such as name, email, and join time.
+    messages:
+      participantJoinedMessage:
+        $ref: '#/components/messages/ParticipantJoined'
+  meetingParticipantLeft:
+    address: /webhook
+    description: >-
+      Triggered when a participant leaves a meeting. Includes participant
+      details and leave reason.
+    messages:
+      participantLeftMessage:
+        $ref: '#/components/messages/ParticipantLeft'
+  meetingParticipantWaitingForHost:
+    address: /webhook
+    description: >-
+      Triggered when a participant is waiting in the waiting room or
+      waiting for the host to start the meeting.
+    messages:
+      participantWaitingMessage:
+        $ref: '#/components/messages/ParticipantWaitingForHost'
+  meetingParticipantAdmittedFromWaitingRoom:
+    address: /webhook
+    description: >-
+      Triggered when a participant is admitted from the waiting room.
+    messages:
+      participantAdmittedMessage:
+        $ref: '#/components/messages/ParticipantAdmittedFromWaitingRoom'
+  meetingParticipantPutInWaitingRoom:
+    address: /webhook
+    description: >-
+      Triggered when a participant is placed in the waiting room during
+      a meeting.
+    messages:
+      participantPutInWaitingRoomMessage:
+        $ref: '#/components/messages/ParticipantPutInWaitingRoom'
+  meetingRegistrationCreated:
+    address: /webhook
+    description: >-
+      Triggered when a new registrant registers for a meeting.
+    messages:
+      registrationCreatedMessage:
+        $ref: '#/components/messages/RegistrationCreated'
+  meetingRegistrationApproved:
+    address: /webhook
+    description: >-
+      Triggered when a meeting registration is approved.
+    messages:
+      registrationApprovedMessage:
+        $ref: '#/components/messages/RegistrationApproved'
+  meetingRegistrationCancelled:
+    address: /webhook
+    description: >-
+      Triggered when a meeting registration is cancelled.
+    messages:
+      registrationCancelledMessage:
+        $ref: '#/components/messages/RegistrationCancelled'
+  meetingRegistrationDenied:
+    address: /webhook
+    description: >-
+      Triggered when a meeting registration is denied.
+    messages:
+      registrationDeniedMessage:
+        $ref: '#/components/messages/RegistrationDenied'
+  meetingSharingStarted:
+    address: /webhook
+    description: >-
+      Triggered when a participant starts sharing their screen in a meeting.
+    messages:
+      sharingStartedMessage:
+        $ref: '#/components/messages/MeetingSharingStarted'
+  meetingSharingEnded:
+    address: /webhook
+    description: >-
+      Triggered when a participant stops sharing their screen in a meeting.
+    messages:
+      sharingEndedMessage:
+        $ref: '#/components/messages/MeetingSharingEnded'
+  meetingRecordingCompleted:
+    address: /webhook
+    description: >-
+      Triggered when a cloud recording for a meeting has been processed
+      and is available for download.
+    messages:
+      recordingCompletedMessage:
+        $ref: '#/components/messages/RecordingCompleted'
+  meetingRecordingStarted:
+    address: /webhook
+    description: >-
+      Triggered when cloud recording starts for a meeting.
+    messages:
+      recordingStartedMessage:
+        $ref: '#/components/messages/RecordingStarted'
+  meetingRecordingStopped:
+    address: /webhook
+    description: >-
+      Triggered when cloud recording stops for a meeting.
+    messages:
+      recordingStoppedMessage:
+        $ref: '#/components/messages/RecordingStopped'
+  meetingRecordingPaused:
+    address: /webhook
+    description: >-
+      Triggered when cloud recording is paused during a meeting.
+    messages:
+      recordingPausedMessage:
+        $ref: '#/components/messages/RecordingPaused'
+  meetingRecordingResumed:
+    address: /webhook
+    description: >-
+      Triggered when cloud recording is resumed during a meeting.
+    messages:
+      recordingResumedMessage:
+        $ref: '#/components/messages/RecordingResumed'
+  meetingRecordingTrashed:
+    address: /webhook
+    description: >-
+      Triggered when a cloud recording is moved to trash.
+    messages:
+      recordingTrashedMessage:
+        $ref: '#/components/messages/RecordingTrashed'
+  meetingRecordingDeleted:
+    address: /webhook
+    description: >-
+      Triggered when a cloud recording is permanently deleted.
+    messages:
+      recordingDeletedMessage:
+        $ref: '#/components/messages/RecordingDeleted'
+  meetingRecordingRecovered:
+    address: /webhook
+    description: >-
+      Triggered when a cloud recording is recovered from trash.
+    messages:
+      recordingRecoveredMessage:
+        $ref: '#/components/messages/RecordingRecovered'
+  meetingRecordingTranscriptCompleted:
+    address: /webhook
+    description: >-
+      Triggered when a recording transcript is completed and available.
+    messages:
+      transcriptCompletedMessage:
+        $ref: '#/components/messages/RecordingTranscriptCompleted'
+  meetingAlert:
+    address: /webhook
+    description: >-
+      Triggered when a meeting quality alert is detected, such as poor
+      network quality or audio issues.
+    messages:
+      meetingAlertMessage:
+        $ref: '#/components/messages/MeetingAlert'
+operations:
+  receiveMeetingCreated:
+    action: receive
+    channel:
+      $ref: '#/channels/meetingCreated'
+    summary: Receive meeting.created event
+    tags:
+      - $ref: '#/components/tags/meeting'
+  receiveMeetingUpdated:
+    action: receive
+    channel:
+      $ref: '#/channels/meetingUpdated'
+    summary: Receive meeting.updated event
+    tags:
+      - $ref: '#/components/tags/meeting'
+  receiveMeetingDeleted:
+    action: receive
+    channel:
+      $ref: '#/channels/meetingDeleted'
+    summary: Receive meeting.deleted event
+    tags:
+      - $ref: '#/components/tags/meeting'
+  receiveMeetingStarted:
+    action: receive
+    channel:
+      $ref: '#/channels/meetingStarted'
+    summary: Receive meeting.started event
+    tags:
+      - $ref: '#/components/tags/meeting'
+  receiveMeetingEnded:
+    action: receive
+    channel:
+      $ref: '#/channels/meetingEnded'
+    summary: Receive meeting.ended event
+    tags:
+      - $ref: '#/components/tags/meeting'
+  receiveMeetingRecovered:
+    action: receive
+    channel:
+      $ref: '#/channels/meetingRecoveredFromTrash'
+    summary: Receive meeting.recovered event
+    tags:
+      - $ref: '#/components/tags/meeting'
+  receiveMeetingPermanentlyDeleted:
+    action: receive
+    channel:
+      $ref: '#/channels/meetingPermanentlyDeleted'
+    summary: Receive meeting.permanently_deleted event
+    tags:
+      - $ref: '#/components/tags/meeting'
+  receiveParticipantJoined:
+    action: receive
+    channel:
+      $ref: '#/channels/meetingParticipantJoined'
+    summary: Receive meeting.participant_joined event
+    tags:
+      - $ref: '#/components/tags/participant'
+  receiveParticipantLeft:
+    action: receive
+    channel:
+      $ref: '#/channels/meetingParticipantLeft'
+    summary: Receive meeting.participant_left event
+    tags:
+      - $ref: '#/components/tags/participant'
+  receiveParticipantWaiting:
+    action: receive
+    channel:
+      $ref: '#/channels/meetingParticipantWaitingForHost'
+    summary: Receive meeting.participant_joined_waiting_room event
+    tags:
+      - $ref: '#/components/tags/participant'
+  receiveParticipantAdmitted:
+    action: receive
+    channel:
+      $ref: '#/channels/meetingParticipantAdmittedFromWaitingRoom'
+    summary: Receive meeting.participant_admitted event
+    tags:
+      - $ref: '#/components/tags/participant'
+  receiveParticipantPutInWaitingRoom:
+    action: receive
+    channel:
+      $ref: '#/channels/meetingParticipantPutInWaitingRoom'
+    summary: Receive meeting.participant_put_in_waiting_room event
+    tags:
+      - $ref: '#/components/tags/participant'
+  receiveRegistrationCreated:
+    action: receive
+    channel:
+      $ref: '#/channels/meetingRegistrationCreated'
+    summary: Receive meeting.registration_created event
+    tags:
+      - $ref: '#/components/tags/meeting'
+  receiveRegistrationApproved:
+    action: receive
+    channel:
+      $ref: '#/channels/meetingRegistrationApproved'
+    summary: Receive meeting.registration_approved event
+    tags:
+      - $ref: '#/components/tags/meeting'
+  receiveRegistrationCancelled:
+    action: receive
+    channel:
+      $ref: '#/channels/meetingRegistrationCancelled'
+    summary: Receive meeting.registration_cancelled event
+    tags:
+      - $ref: '#/components/tags/meeting'
+  receiveRegistrationDenied:
+    action: receive
+    channel:
+      $ref: '#/channels/meetingRegistrationDenied'
+    summary: Receive meeting.registration_denied event
+    tags:
+      - $ref: '#/components/tags/meeting'
+  receiveSharingStarted:
+    action: receive
+    channel:
+      $ref: '#/channels/meetingSharingStarted'
+    summary: Receive meeting.sharing_started event
+    tags:
+      - $ref: '#/components/tags/meeting'
+  receiveSharingEnded:
+    action: receive
+    channel:
+      $ref: '#/channels/meetingSharingEnded'
+    summary: Receive meeting.sharing_ended event
+    tags:
+      - $ref: '#/components/tags/meeting'
+  receiveRecordingCompleted:
+    action: receive
+    channel:
+      $ref: '#/channels/meetingRecordingCompleted'
+    summary: Receive recording.completed event
+    tags:
+      - $ref: '#/components/tags/recording'
+  receiveRecordingStarted:
+    action: receive
+    channel:
+      $ref: '#/channels/meetingRecordingStarted'
+    summary: Receive recording.started event
+    tags:
+      - $ref: '#/components/tags/recording'
+  receiveRecordingStopped:
+    action: receive
+    channel:
+      $ref: '#/channels/meetingRecordingStopped'
+    summary: Receive recording.stopped event
+    tags:
+      - $ref: '#/components/tags/recording'
+  receiveRecordingPaused:
+    action: receive
+    channel:
+      $ref: '#/channels/meetingRecordingPaused'
+    summary: Receive recording.paused event
+    tags:
+      - $ref: '#/components/tags/recording'
+  receiveRecordingResumed:
+    action: receive
+    channel:
+      $ref: '#/channels/meetingRecordingResumed'
+    summary: Receive recording.resumed event
+    tags:
+      - $ref: '#/components/tags/recording'
+  receiveRecordingTrashed:
+    action: receive
+    channel:
+      $ref: '#/channels/meetingRecordingTrashed'
+    summary: Receive recording.trashed event
+    tags:
+      - $ref: '#/components/tags/recording'
+  receiveRecordingDeleted:
+    action: receive
+    channel:
+      $ref: '#/channels/meetingRecordingDeleted'
+    summary: Receive recording.deleted event
+    tags:
+      - $ref: '#/components/tags/recording'
+  receiveRecordingRecovered:
+    action: receive
+    channel:
+      $ref: '#/channels/meetingRecordingRecovered'
+    summary: Receive recording.recovered event
+    tags:
+      - $ref: '#/components/tags/recording'
+  receiveRecordingTranscriptCompleted:
+    action: receive
+    channel:
+      $ref: '#/channels/meetingRecordingTranscriptCompleted'
+    summary: Receive recording.transcript_completed event
+    tags:
+      - $ref: '#/components/tags/recording'
+  receiveMeetingAlert:
+    action: receive
+    channel:
+      $ref: '#/channels/meetingAlert'
+    summary: Receive meeting.alert event
+    tags:
+      - $ref: '#/components/tags/meeting'
+components:
+  tags:
+    meeting:
+      name: meeting
+      description: Meeting lifecycle events
+    recording:
+      name: recording
+      description: Recording events
+    participant:
+      name: participant
+      description: Participant events
+  securitySchemes:
+    webhookVerificationToken:
+      type: httpApiKey
+      name: Authorization
+      in: header
+      description: >-
+        Zoom uses a verification token sent in webhook headers to validate
+        that requests originate from Zoom. Your app must verify the token
+        in the `authorization` header matches your app's verification token.
+        Zoom also supports URL validation via a challenge-response mechanism
+        and webhook signature verification using the `x-zm-signature` and
+        `x-zm-request-timestamp` headers with HMAC-SHA256.
+  schemas:
+    WebhookEventEnvelope:
+      type: object
+      description: >-
+        The standard envelope for all Zoom webhook event payloads. Every
+        webhook notification includes these top-level fields.
+      required:
+        - event
+        - event_ts
+        - payload
+      properties:
+        event:
+          type: string
+          description: >-
+            The event type identifier (e.g., meeting.started,
+            meeting.participant_joined).
+        event_ts:
+          type: integer
+          format: int64
+          description: Timestamp of the event in milliseconds since epoch.
+        payload:
+          type: object
+          description: Event-specific payload data.
+          properties:
+            account_id:
+              type: string
+              description: The account ID of the Zoom account.
+            operator:
+              type: string
+              description: >-
+                Email address of the user who triggered the event, if
+                applicable.
+            operator_id:
+              type: string
+              description: User ID of the operator.
+            object:
+              type: object
+              description: The event-specific object data.
+        download_token:
+          type: string
+          description: >-
+            A short-lived token for downloading recording files. Only present
+            in recording events. Valid for a limited time.
+    MeetingObject:
+      type: object
+      description: Core meeting object included in webhook payloads.
+      properties:
+        uuid:
+          type: string
+          description: Unique meeting instance ID.
+        id:
+          type: integer
+          format: int64
+          description: Meeting ID (meeting number).
+        host_id:
+          type: string
+          description: User ID of the meeting host.
+        topic:
+          type: string
+          description: Meeting topic.
+        type:
+          type: integer
+          description: >-
+            Meeting type: 1 - Instant, 2 - Scheduled, 3 - Recurring no
+            fixed time, 4 - PMI meeting, 8 - Recurring fixed time.
+          enum:
+            - 1
+            - 2
+            - 3
+            - 4
+            - 8
+        start_time:
+          type: string
+          format: date-time
+          description: Scheduled start time.
+        duration:
+          type: integer
+          description: Scheduled duration in minutes.
+        timezone:
+          type: string
+          description: Timezone of the meeting.
+    MeetingObjectWithTimes:
+      allOf:
+        - $ref: '#/components/schemas/MeetingObject'
+        - type: object
+          properties:
+            start_time:
+              type: string
+              format: date-time
+              description: Actual start time of the meeting instance.
+            end_time:
+              type: string
+              format: date-time
+              description: End time of the meeting instance.
+    ParticipantObject:
+      type: object
+      description: Participant object in webhook payloads.
+      properties:
+        user_id:
+          type: string
+          description: Participant's unique identifier within the meeting session.
+        user_name:
+          type: string
+          description: Participant display name.
+        id:
+          type: string
+          description: Zoom user ID if the participant is a registered Zoom user.
+        email:
+          type: string
+          format: email
+          description: Participant email address.
+        participant_user_id:
+          type: string
+          description: Participant user ID.
+        participant_uuid:
+          type: string
+          description: Participant UUID.
+        join_time:
+          type: string
+          format: date-time
+          description: Time the participant joined.
+        leave_time:
+          type: string
+          format: date-time
+          description: Time the participant left.
+        date_time:
+          type: string
+          format: date-time
+          description: Event timestamp.
+        registrant_id:
+          type: string
+          description: Registrant ID if applicable.
+        participant_pin_code:
+          type: integer
+          description: Participant PIN code for phone dial-in.
+    RegistrantObject:
+      type: object
+      description: Registrant object in webhook payloads.
+      properties:
+        id:
+          type: string
+          description: Registrant ID.
+        email:
+          type: string
+          format: email
+          description: Registrant email.
+        first_name:
+          type: string
+          description: Registrant first name.
+        last_name:
+          type: string
+          description: Registrant last name.
+        address:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zip:
+          type: string
+        country:
+          type: string
+        phone:
+          type: string
+        industry:
+          type: string
+        org:
+          type: string
+        job_title:
+          type: string
+        status:
+          type: string
+          enum:
+            - approved
+            - pending
+            - denied
+    RecordingFileObject:
+      type: object
+      description: Recording file object in webhook payloads.
+      properties:
+        id:
+          type: string
+          description: Recording file ID.
+        meeting_id:
+          type: string
+          description: Meeting ID.
+        recording_start:
+          type: string
+          format: date-time
+          description: Recording start time.
+        recording_end:
+          type: string
+          format: date-time
+          description: Recording end time.
+        file_type:
+          type: string
+          description: Recording file type.
+          enum:
+            - MP4
+            - M4A
+            - CHAT
+            - TRANSCRIPT
+            - CSV
+            - TB
+            - CC
+            - CHAT_MESSAGE
+            - SUMMARY
+        file_size:
+          type: number
+          description: File size in bytes.
+        file_extension:
+          type: string
+          enum:
+            - MP4
+            - M4A
+            - TXT
+            - VTT
+            - CSV
+            - JSON
+        download_url:
+          type: string
+          format: uri
+          description: URL to download the file (requires download_token).
+        play_url:
+          type: string
+          format: uri
+          description: URL to play the file.
+        status:
+          type: string
+          enum:
+            - completed
+        recording_type:
+          type: string
+          enum:
+            - shared_screen_with_speaker_view(CC)
+            - shared_screen_with_speaker_view
+            - shared_screen_with_gallery_view
+            - active_speaker
+            - gallery_view
+            - shared_screen
+            - audio_only
+            - audio_transcript
+            - chat_file
+            - poll
+            - timeline
+            - closed_caption
+  messages:
+    MeetingCreated:
+      name: meeting.created
+      title: Meeting Created
+      summary: A meeting has been created.
+      contentType: application/json
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/WebhookEventEnvelope'
+          - type: object
+            properties:
+              event:
+                const: meeting.created
+              payload:
+                type: object
+                properties:
+                  object:
+                    $ref: '#/components/schemas/MeetingObject'
+    MeetingUpdated:
+      name: meeting.updated
+      title: Meeting Updated
+      summary: A meeting has been updated.
+      contentType: application/json
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/WebhookEventEnvelope'
+          - type: object
+            properties:
+              event:
+                const: meeting.updated
+              payload:
+                type: object
+                properties:
+                  old_object:
+                    $ref: '#/components/schemas/MeetingObject'
+                  object:
+                    $ref: '#/components/schemas/MeetingObject'
+    MeetingDeleted:
+      name: meeting.deleted
+      title: Meeting Deleted
+      summary: A meeting has been deleted.
+      contentType: application/json
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/WebhookEventEnvelope'
+          - type: object
+            properties:
+              event:
+                const: meeting.deleted
+              payload:
+                type: object
+                properties:
+                  object:
+                    $ref: '#/components/schemas/MeetingObject'
+    MeetingStarted:
+      name: meeting.started
+      title: Meeting Started
+      summary: A meeting has started.
+      contentType: application/json
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/WebhookEventEnvelope'
+          - type: object
+            properties:
+              event:
+                const: meeting.started
+              payload:
+                type: object
+                properties:
+                  object:
+                    $ref: '#/components/schemas/MeetingObjectWithTimes'
+    MeetingEnded:
+      name: meeting.ended
+      title: Meeting Ended
+      summary: A meeting has ended.
+      contentType: application/json
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/WebhookEventEnvelope'
+          - type: object
+            properties:
+              event:
+                const: meeting.ended
+              payload:
+                type: object
+                properties:
+                  object:
+                    $ref: '#/components/schemas/MeetingObjectWithTimes'
+    MeetingRecovered:
+      name: meeting.recovered
+      title: Meeting Recovered from Trash
+      summary: A deleted meeting has been recovered from trash.
+      contentType: application/json
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/WebhookEventEnvelope'
+          - type: object
+            properties:
+              event:
+                const: meeting.recovered
+              payload:
+                type: object
+                properties:
+                  object:
+                    $ref: '#/components/schemas/MeetingObject'
+    MeetingPermanentlyDeleted:
+      name: meeting.permanently_deleted
+      title: Meeting Permanently Deleted
+      summary: A meeting has been permanently deleted.
+      contentType: application/json
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/WebhookEventEnvelope'
+          - type: object
+            properties:
+              event:
+                const: meeting.permanently_deleted
+              payload:
+                type: object
+                properties:
+                  object:
+                    $ref: '#/components/schemas/MeetingObject'
+    ParticipantJoined:
+      name: meeting.participant_joined
+      title: Participant Joined Meeting
+      summary: A participant has joined a meeting.
+      contentType: application/json
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/WebhookEventEnvelope'
+          - type: object
+            properties:
+              event:
+                const: meeting.participant_joined
+              payload:
+                type: object
+                properties:
+                  object:
+                    allOf:
+                      - $ref: '#/components/schemas/MeetingObject'
+                      - type: object
+                        properties:
+                          participant:
+                            $ref: '#/components/schemas/ParticipantObject'
+    ParticipantLeft:
+      name: meeting.participant_left
+      title: Participant Left Meeting
+      summary: A participant has left a meeting.
+      contentType: application/json
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/WebhookEventEnvelope'
+          - type: object
+            properties:
+              event:
+                const: meeting.participant_left
+              payload:
+                type: object
+                properties:
+                  object:
+                    allOf:
+                      - $ref: '#/components/schemas/MeetingObject'
+                      - type: object
+                        properties:
+                          participant:
+                            allOf:
+                              - $ref: '#/components/schemas/ParticipantObject'
+                              - type: object
+                                properties:
+                                  leave_reason:
+                                    type: string
+                                    description: Reason the participant left.
+    ParticipantWaitingForHost:
+      name: meeting.participant_joined_waiting_room
+      title: Participant Waiting for Host
+      summary: A participant is waiting for the host or in the waiting room.
+      contentType: application/json
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/WebhookEventEnvelope'
+          - type: object
+            properties:
+              event:
+                const: meeting.participant_joined_waiting_room
+              payload:
+                type: object
+                properties:
+                  object:
+                    allOf:
+                      - $ref: '#/components/schemas/MeetingObject'
+                      - type: object
+                        properties:
+                          participant:
+                            $ref: '#/components/schemas/ParticipantObject'
+    ParticipantAdmittedFromWaitingRoom:
+      name: meeting.participant_admitted
+      title: Participant Admitted from Waiting Room
+      summary: A participant has been admitted from the waiting room.
+      contentType: application/json
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/WebhookEventEnvelope'
+          - type: object
+            properties:
+              event:
+                const: meeting.participant_admitted
+              payload:
+                type: object
+                properties:
+                  object:
+                    allOf:
+                      - $ref: '#/components/schemas/MeetingObject'
+                      - type: object
+                        properties:
+                          participant:
+                            $ref: '#/components/schemas/ParticipantObject'
+    ParticipantPutInWaitingRoom:
+      name: meeting.participant_put_in_waiting_room
+      title: Participant Put in Waiting Room
+      summary: A participant has been placed in the waiting room.
+      contentType: application/json
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/WebhookEventEnvelope'
+          - type: object
+            properties:
+              event:
+                const: meeting.participant_put_in_waiting_room
+              payload:
+                type: object
+                properties:
+                  object:
+                    allOf:
+                      - $ref: '#/components/schemas/MeetingObject'
+                      - type: object
+                        properties:
+                          participant:
+                            $ref: '#/components/schemas/ParticipantObject'
+    RegistrationCreated:
+      name: meeting.registration_created
+      title: Meeting Registration Created
+      summary: A new registrant has registered for a meeting.
+      contentType: application/json
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/WebhookEventEnvelope'
+          - type: object
+            properties:
+              event:
+                const: meeting.registration_created
+              payload:
+                type: object
+                properties:
+                  object:
+                    allOf:
+                      - $ref: '#/components/schemas/MeetingObject'
+                      - type: object
+                        properties:
+                          registrant:
+                            $ref: '#/components/schemas/RegistrantObject'
+    RegistrationApproved:
+      name: meeting.registration_approved
+      title: Meeting Registration Approved
+      summary: A meeting registration has been approved.
+      contentType: application/json
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/WebhookEventEnvelope'
+          - type: object
+            properties:
+              event:
+                const: meeting.registration_approved
+              payload:
+                type: object
+                properties:
+                  object:
+                    allOf:
+                      - $ref: '#/components/schemas/MeetingObject'
+                      - type: object
+                        properties:
+                          registrant:
+                            $ref: '#/components/schemas/RegistrantObject'
+    RegistrationCancelled:
+      name: meeting.registration_cancelled
+      title: Meeting Registration Cancelled
+      summary: A meeting registration has been cancelled.
+      contentType: application/json
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/WebhookEventEnvelope'
+          - type: object
+            properties:
+              event:
+                const: meeting.registration_cancelled
+              payload:
+                type: object
+                properties:
+                  object:
+                    allOf:
+                      - $ref: '#/components/schemas/MeetingObject'
+                      - type: object
+                        properties:
+                          registrant:
+                            $ref: '#/components/schemas/RegistrantObject'
+    RegistrationDenied:
+      name: meeting.registration_denied
+      title: Meeting Registration Denied
+      summary: A meeting registration has been denied.
+      contentType: application/json
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/WebhookEventEnvelope'
+          - type: object
+            properties:
+              event:
+                const: meeting.registration_denied
+              payload:
+                type: object
+                properties:
+                  object:
+                    allOf:
+                      - $ref: '#/components/schemas/MeetingObject'
+                      - type: object
+                        properties:
+                          registrant:
+                            $ref: '#/components/schemas/RegistrantObject'
+    MeetingSharingStarted:
+      name: meeting.sharing_started
+      title: Meeting Sharing Started
+      summary: Screen sharing has started in a meeting.
+      contentType: application/json
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/WebhookEventEnvelope'
+          - type: object
+            properties:
+              event:
+                const: meeting.sharing_started
+              payload:
+                type: object
+                properties:
+                  object:
+                    allOf:
+                      - $ref: '#/components/schemas/MeetingObject'
+                      - type: object
+                        properties:
+                          participant:
+                            $ref: '#/components/schemas/ParticipantObject'
+                          sharing_details:
+                            type: object
+                            properties:
+                              content:
+                                type: string
+                                description: Type of content being shared.
+                              link_source:
+                                type: string
+                              file_link:
+                                type: string
+                              date_time:
+                                type: string
+                                format: date-time
+    MeetingSharingEnded:
+      name: meeting.sharing_ended
+      title: Meeting Sharing Ended
+      summary: Screen sharing has ended in a meeting.
+      contentType: application/json
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/WebhookEventEnvelope'
+          - type: object
+            properties:
+              event:
+                const: meeting.sharing_ended
+              payload:
+                type: object
+                properties:
+                  object:
+                    allOf:
+                      - $ref: '#/components/schemas/MeetingObject'
+                      - type: object
+                        properties:
+                          participant:
+                            $ref: '#/components/schemas/ParticipantObject'
+    RecordingCompleted:
+      name: recording.completed
+      title: Recording Completed
+      summary: >-
+        Cloud recording has been processed and is available for download.
+      contentType: application/json
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/WebhookEventEnvelope'
+          - type: object
+            properties:
+              event:
+                const: recording.completed
+              download_token:
+                type: string
+                description: Short-lived token for downloading recording files.
+              payload:
+                type: object
+                properties:
+                  object:
+                    allOf:
+                      - $ref: '#/components/schemas/MeetingObject'
+                      - type: object
+                        properties:
+                          share_url:
+                            type: string
+                            format: uri
+                          total_size:
+                            type: integer
+                            format: int64
+                          recording_count:
+                            type: integer
+                          recording_files:
+                            type: array
+                            items:
+                              $ref: '#/components/schemas/RecordingFileObject'
+    RecordingStarted:
+      name: recording.started
+      title: Recording Started
+      summary: Cloud recording has started.
+      contentType: application/json
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/WebhookEventEnvelope'
+          - type: object
+            properties:
+              event:
+                const: recording.started
+              payload:
+                type: object
+                properties:
+                  object:
+                    $ref: '#/components/schemas/MeetingObject'
+    RecordingStopped:
+      name: recording.stopped
+      title: Recording Stopped
+      summary: Cloud recording has stopped.
+      contentType: application/json
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/WebhookEventEnvelope'
+          - type: object
+            properties:
+              event:
+                const: recording.stopped
+              payload:
+                type: object
+                properties:
+                  object:
+                    $ref: '#/components/schemas/MeetingObject'
+    RecordingPaused:
+      name: recording.paused
+      title: Recording Paused
+      summary: Cloud recording has been paused.
+      contentType: application/json
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/WebhookEventEnvelope'
+          - type: object
+            properties:
+              event:
+                const: recording.paused
+              payload:
+                type: object
+                properties:
+                  object:
+                    $ref: '#/components/schemas/MeetingObject'
+    RecordingResumed:
+      name: recording.resumed
+      title: Recording Resumed
+      summary: Cloud recording has been resumed.
+      contentType: application/json
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/WebhookEventEnvelope'
+          - type: object
+            properties:
+              event:
+                const: recording.resumed
+              payload:
+                type: object
+                properties:
+                  object:
+                    $ref: '#/components/schemas/MeetingObject'
+    RecordingTrashed:
+      name: recording.trashed
+      title: Recording Trashed
+      summary: A cloud recording has been moved to trash.
+      contentType: application/json
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/WebhookEventEnvelope'
+          - type: object
+            properties:
+              event:
+                const: recording.trashed
+              payload:
+                type: object
+                properties:
+                  object:
+                    allOf:
+                      - $ref: '#/components/schemas/MeetingObject'
+                      - type: object
+                        properties:
+                          recording_files:
+                            type: array
+                            items:
+                              $ref: '#/components/schemas/RecordingFileObject'
+    RecordingDeleted:
+      name: recording.deleted
+      title: Recording Deleted
+      summary: A cloud recording has been permanently deleted.
+      contentType: application/json
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/WebhookEventEnvelope'
+          - type: object
+            properties:
+              event:
+                const: recording.deleted
+              payload:
+                type: object
+                properties:
+                  object:
+                    allOf:
+                      - $ref: '#/components/schemas/MeetingObject'
+                      - type: object
+                        properties:
+                          recording_files:
+                            type: array
+                            items:
+                              $ref: '#/components/schemas/RecordingFileObject'
+    RecordingRecovered:
+      name: recording.recovered
+      title: Recording Recovered
+      summary: A cloud recording has been recovered from trash.
+      contentType: application/json
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/WebhookEventEnvelope'
+          - type: object
+            properties:
+              event:
+                const: recording.recovered
+              payload:
+                type: object
+                properties:
+                  object:
+                    allOf:
+                      - $ref: '#/components/schemas/MeetingObject'
+                      - type: object
+                        properties:
+                          recording_files:
+                            type: array
+                            items:
+                              $ref: '#/components/schemas/RecordingFileObject'
+    RecordingTranscriptCompleted:
+      name: recording.transcript_completed
+      title: Recording Transcript Completed
+      summary: A recording transcript has been completed and is available.
+      contentType: application/json
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/WebhookEventEnvelope'
+          - type: object
+            properties:
+              event:
+                const: recording.transcript_completed
+              payload:
+                type: object
+                properties:
+                  object:
+                    allOf:
+                      - $ref: '#/components/schemas/MeetingObject'
+                      - type: object
+                        properties:
+                          recording_files:
+                            type: array
+                            items:
+                              $ref: '#/components/schemas/RecordingFileObject'
+    MeetingAlert:
+      name: meeting.alert
+      title: Meeting Alert
+      summary: >-
+        A meeting quality alert has been triggered, such as poor network
+        quality or audio/video issues.
+      contentType: application/json
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/WebhookEventEnvelope'
+          - type: object
+            properties:
+              event:
+                const: meeting.alert
+              payload:
+                type: object
+                properties:
+                  object:
+                    allOf:
+                      - $ref: '#/components/schemas/MeetingObject'
+                      - type: object
+                        properties:
+                          issues:
+                            type: array
+                            description: List of detected quality issues.
+                            items:
+                              type: string
+                              enum:
+                                - unstable_audio
+                                - unstable_video
+                                - unstable_screen_share
+                                - high_cpu_usage
+                                - call_reconnection
+                                - low_meeting_satisfaction

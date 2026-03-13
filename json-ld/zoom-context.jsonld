@@ -1,0 +1,570 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@vocab": "https://developers.zoom.us/docs/api/rest/reference/zoom-api/",
+    "zoom": "https://developers.zoom.us/docs/api/rest/reference/zoom-api/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "ical": "http://www.w3.org/2002/12/cal/ical#",
+
+    "Meeting": {
+      "@id": "zoom:Meeting",
+      "@context": {
+        "uuid": {
+          "@id": "zoom:Meeting/uuid",
+          "@type": "xsd:string"
+        },
+        "id": {
+          "@id": "schema:identifier",
+          "@type": "xsd:integer"
+        },
+        "topic": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "agenda": {
+          "@id": "schema:description",
+          "@type": "xsd:string"
+        },
+        "type": {
+          "@id": "zoom:Meeting/type",
+          "@type": "xsd:integer"
+        },
+        "status": {
+          "@id": "schema:eventStatus",
+          "@type": "xsd:string"
+        },
+        "start_time": {
+          "@id": "schema:startDate",
+          "@type": "xsd:dateTime"
+        },
+        "duration": {
+          "@id": "schema:duration",
+          "@type": "xsd:integer"
+        },
+        "timezone": {
+          "@id": "zoom:Meeting/timezone",
+          "@type": "xsd:string"
+        },
+        "created_at": {
+          "@id": "schema:dateCreated",
+          "@type": "xsd:dateTime"
+        },
+        "start_url": {
+          "@id": "zoom:Meeting/startUrl",
+          "@type": "@id"
+        },
+        "join_url": {
+          "@id": "schema:url",
+          "@type": "@id"
+        },
+        "password": {
+          "@id": "zoom:Meeting/password",
+          "@type": "xsd:string"
+        },
+        "h323_password": {
+          "@id": "zoom:Meeting/h323Password",
+          "@type": "xsd:string"
+        },
+        "encrypted_password": {
+          "@id": "zoom:Meeting/encryptedPassword",
+          "@type": "xsd:string"
+        },
+        "host_id": {
+          "@id": "zoom:Meeting/hostId",
+          "@type": "xsd:string"
+        },
+        "host_email": {
+          "@id": "zoom:Meeting/hostEmail",
+          "@type": "xsd:string"
+        },
+        "settings": {
+          "@id": "zoom:Meeting/settings",
+          "@type": "@id"
+        },
+        "recurrence": {
+          "@id": "zoom:Meeting/recurrence",
+          "@type": "@id"
+        },
+        "occurrences": {
+          "@id": "zoom:Meeting/occurrences",
+          "@container": "@list"
+        },
+        "tracking_fields": {
+          "@id": "zoom:Meeting/trackingFields",
+          "@container": "@list"
+        }
+      }
+    },
+
+    "MeetingSettings": {
+      "@id": "zoom:MeetingSettings",
+      "@context": {
+        "host_video": {
+          "@id": "zoom:MeetingSettings/hostVideo",
+          "@type": "xsd:boolean"
+        },
+        "participant_video": {
+          "@id": "zoom:MeetingSettings/participantVideo",
+          "@type": "xsd:boolean"
+        },
+        "join_before_host": {
+          "@id": "zoom:MeetingSettings/joinBeforeHost",
+          "@type": "xsd:boolean"
+        },
+        "mute_upon_entry": {
+          "@id": "zoom:MeetingSettings/muteUponEntry",
+          "@type": "xsd:boolean"
+        },
+        "watermark": {
+          "@id": "zoom:MeetingSettings/watermark",
+          "@type": "xsd:boolean"
+        },
+        "use_pmi": {
+          "@id": "zoom:MeetingSettings/usePmi",
+          "@type": "xsd:boolean"
+        },
+        "approval_type": {
+          "@id": "zoom:MeetingSettings/approvalType",
+          "@type": "xsd:integer"
+        },
+        "registration_type": {
+          "@id": "zoom:MeetingSettings/registrationType",
+          "@type": "xsd:integer"
+        },
+        "audio": {
+          "@id": "zoom:MeetingSettings/audio",
+          "@type": "xsd:string"
+        },
+        "auto_recording": {
+          "@id": "zoom:MeetingSettings/autoRecording",
+          "@type": "xsd:string"
+        },
+        "waiting_room": {
+          "@id": "zoom:MeetingSettings/waitingRoom",
+          "@type": "xsd:boolean"
+        },
+        "encryption_type": {
+          "@id": "zoom:MeetingSettings/encryptionType",
+          "@type": "xsd:string"
+        },
+        "alternative_hosts": {
+          "@id": "zoom:MeetingSettings/alternativeHosts",
+          "@type": "xsd:string"
+        },
+        "focus_mode": {
+          "@id": "zoom:MeetingSettings/focusMode",
+          "@type": "xsd:boolean"
+        },
+        "breakout_room": {
+          "@id": "zoom:MeetingSettings/breakoutRoom",
+          "@type": "@id"
+        },
+        "language_interpretation": {
+          "@id": "zoom:MeetingSettings/languageInterpretation",
+          "@type": "@id"
+        },
+        "meeting_authentication": {
+          "@id": "zoom:MeetingSettings/meetingAuthentication",
+          "@type": "xsd:boolean"
+        },
+        "private_meeting": {
+          "@id": "zoom:MeetingSettings/privateMeeting",
+          "@type": "xsd:boolean"
+        },
+        "continuous_meeting_chat": {
+          "@id": "zoom:MeetingSettings/continuousMeetingChat",
+          "@type": "@id"
+        }
+      }
+    },
+
+    "Recurrence": {
+      "@id": "zoom:Recurrence",
+      "@context": {
+        "type": {
+          "@id": "zoom:Recurrence/type",
+          "@type": "xsd:integer"
+        },
+        "repeat_interval": {
+          "@id": "zoom:Recurrence/repeatInterval",
+          "@type": "xsd:integer"
+        },
+        "weekly_days": {
+          "@id": "zoom:Recurrence/weeklyDays",
+          "@type": "xsd:string"
+        },
+        "monthly_day": {
+          "@id": "zoom:Recurrence/monthlyDay",
+          "@type": "xsd:integer"
+        },
+        "monthly_week": {
+          "@id": "zoom:Recurrence/monthlyWeek",
+          "@type": "xsd:integer"
+        },
+        "monthly_week_day": {
+          "@id": "zoom:Recurrence/monthlyWeekDay",
+          "@type": "xsd:integer"
+        },
+        "end_times": {
+          "@id": "zoom:Recurrence/endTimes",
+          "@type": "xsd:integer"
+        },
+        "end_date_time": {
+          "@id": "zoom:Recurrence/endDateTime",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "Occurrence": {
+      "@id": "zoom:Occurrence",
+      "@context": {
+        "occurrence_id": {
+          "@id": "schema:identifier",
+          "@type": "xsd:string"
+        },
+        "start_time": {
+          "@id": "schema:startDate",
+          "@type": "xsd:dateTime"
+        },
+        "duration": {
+          "@id": "schema:duration",
+          "@type": "xsd:integer"
+        },
+        "status": {
+          "@id": "schema:eventStatus",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "Participant": {
+      "@id": "zoom:Participant",
+      "@context": {
+        "id": {
+          "@id": "schema:identifier",
+          "@type": "xsd:string"
+        },
+        "user_id": {
+          "@id": "zoom:Participant/userId",
+          "@type": "xsd:string"
+        },
+        "name": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "user_email": {
+          "@id": "schema:email",
+          "@type": "xsd:string"
+        },
+        "join_time": {
+          "@id": "zoom:Participant/joinTime",
+          "@type": "xsd:dateTime"
+        },
+        "leave_time": {
+          "@id": "zoom:Participant/leaveTime",
+          "@type": "xsd:dateTime"
+        },
+        "duration": {
+          "@id": "schema:duration",
+          "@type": "xsd:integer"
+        },
+        "registrant_id": {
+          "@id": "zoom:Participant/registrantId",
+          "@type": "xsd:string"
+        },
+        "status": {
+          "@id": "zoom:Participant/status",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "Registrant": {
+      "@id": "zoom:Registrant",
+      "@context": {
+        "id": {
+          "@id": "schema:identifier",
+          "@type": "xsd:string"
+        },
+        "email": {
+          "@id": "schema:email",
+          "@type": "xsd:string"
+        },
+        "first_name": {
+          "@id": "schema:givenName",
+          "@type": "xsd:string"
+        },
+        "last_name": {
+          "@id": "schema:familyName",
+          "@type": "xsd:string"
+        },
+        "address": {
+          "@id": "schema:streetAddress",
+          "@type": "xsd:string"
+        },
+        "city": {
+          "@id": "schema:addressLocality",
+          "@type": "xsd:string"
+        },
+        "state": {
+          "@id": "schema:addressRegion",
+          "@type": "xsd:string"
+        },
+        "zip": {
+          "@id": "schema:postalCode",
+          "@type": "xsd:string"
+        },
+        "country": {
+          "@id": "schema:addressCountry",
+          "@type": "xsd:string"
+        },
+        "phone": {
+          "@id": "schema:telephone",
+          "@type": "xsd:string"
+        },
+        "org": {
+          "@id": "schema:memberOf",
+          "@type": "xsd:string"
+        },
+        "job_title": {
+          "@id": "schema:jobTitle",
+          "@type": "xsd:string"
+        },
+        "industry": {
+          "@id": "zoom:Registrant/industry",
+          "@type": "xsd:string"
+        },
+        "comments": {
+          "@id": "schema:comment",
+          "@type": "xsd:string"
+        },
+        "status": {
+          "@id": "zoom:Registrant/status",
+          "@type": "xsd:string"
+        },
+        "create_time": {
+          "@id": "schema:dateCreated",
+          "@type": "xsd:dateTime"
+        },
+        "join_url": {
+          "@id": "schema:url",
+          "@type": "@id"
+        },
+        "language": {
+          "@id": "schema:inLanguage",
+          "@type": "xsd:string"
+        },
+        "no_of_employees": {
+          "@id": "schema:numberOfEmployees",
+          "@type": "xsd:string"
+        },
+        "purchasing_time_frame": {
+          "@id": "zoom:Registrant/purchasingTimeFrame",
+          "@type": "xsd:string"
+        },
+        "role_in_purchase_process": {
+          "@id": "zoom:Registrant/roleInPurchaseProcess",
+          "@type": "xsd:string"
+        },
+        "custom_questions": {
+          "@id": "zoom:Registrant/customQuestions",
+          "@container": "@list"
+        }
+      }
+    },
+
+    "Poll": {
+      "@id": "zoom:Poll",
+      "@context": {
+        "id": {
+          "@id": "schema:identifier",
+          "@type": "xsd:integer"
+        },
+        "title": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "anonymous": {
+          "@id": "zoom:Poll/anonymous",
+          "@type": "xsd:boolean"
+        },
+        "status": {
+          "@id": "zoom:Poll/status",
+          "@type": "xsd:string"
+        },
+        "poll_type": {
+          "@id": "zoom:Poll/pollType",
+          "@type": "xsd:integer"
+        },
+        "questions": {
+          "@id": "zoom:Poll/questions",
+          "@container": "@list"
+        }
+      }
+    },
+
+    "RecordingFile": {
+      "@id": "zoom:RecordingFile",
+      "@context": {
+        "id": {
+          "@id": "schema:identifier",
+          "@type": "xsd:string"
+        },
+        "meeting_id": {
+          "@id": "zoom:RecordingFile/meetingId",
+          "@type": "xsd:string"
+        },
+        "recording_start": {
+          "@id": "schema:startDate",
+          "@type": "xsd:dateTime"
+        },
+        "recording_end": {
+          "@id": "schema:endDate",
+          "@type": "xsd:dateTime"
+        },
+        "file_type": {
+          "@id": "schema:encodingFormat",
+          "@type": "xsd:string"
+        },
+        "file_extension": {
+          "@id": "zoom:RecordingFile/fileExtension",
+          "@type": "xsd:string"
+        },
+        "file_size": {
+          "@id": "schema:contentSize",
+          "@type": "xsd:integer"
+        },
+        "download_url": {
+          "@id": "schema:contentUrl",
+          "@type": "@id"
+        },
+        "play_url": {
+          "@id": "schema:embedUrl",
+          "@type": "@id"
+        },
+        "status": {
+          "@id": "zoom:RecordingFile/status",
+          "@type": "xsd:string"
+        },
+        "recording_type": {
+          "@id": "zoom:RecordingFile/recordingType",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "LiveStream": {
+      "@id": "zoom:LiveStream",
+      "@context": {
+        "stream_url": {
+          "@id": "zoom:LiveStream/streamUrl",
+          "@type": "@id"
+        },
+        "stream_key": {
+          "@id": "zoom:LiveStream/streamKey",
+          "@type": "xsd:string"
+        },
+        "page_url": {
+          "@id": "schema:url",
+          "@type": "@id"
+        },
+        "resolution": {
+          "@id": "zoom:LiveStream/resolution",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "WebhookEvent": {
+      "@id": "zoom:WebhookEvent",
+      "@context": {
+        "event": {
+          "@id": "zoom:WebhookEvent/event",
+          "@type": "xsd:string"
+        },
+        "event_ts": {
+          "@id": "zoom:WebhookEvent/eventTimestamp",
+          "@type": "xsd:integer"
+        },
+        "payload": {
+          "@id": "zoom:WebhookEvent/payload",
+          "@type": "@id"
+        },
+        "download_token": {
+          "@id": "zoom:WebhookEvent/downloadToken",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "User": {
+      "@id": "zoom:User",
+      "@context": {
+        "id": {
+          "@id": "schema:identifier",
+          "@type": "xsd:string"
+        },
+        "email": {
+          "@id": "schema:email",
+          "@type": "xsd:string"
+        },
+        "first_name": {
+          "@id": "schema:givenName",
+          "@type": "xsd:string"
+        },
+        "last_name": {
+          "@id": "schema:familyName",
+          "@type": "xsd:string"
+        },
+        "display_name": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "type": {
+          "@id": "zoom:User/type",
+          "@type": "xsd:integer"
+        },
+        "role_name": {
+          "@id": "schema:roleName",
+          "@type": "xsd:string"
+        },
+        "pmi": {
+          "@id": "zoom:User/personalMeetingId",
+          "@type": "xsd:integer"
+        },
+        "timezone": {
+          "@id": "zoom:User/timezone",
+          "@type": "xsd:string"
+        },
+        "dept": {
+          "@id": "zoom:User/department",
+          "@type": "xsd:string"
+        },
+        "created_at": {
+          "@id": "schema:dateCreated",
+          "@type": "xsd:dateTime"
+        },
+        "last_login_time": {
+          "@id": "zoom:User/lastLoginTime",
+          "@type": "xsd:dateTime"
+        },
+        "pic_url": {
+          "@id": "schema:image",
+          "@type": "@id"
+        },
+        "language": {
+          "@id": "schema:inLanguage",
+          "@type": "xsd:string"
+        },
+        "status": {
+          "@id": "zoom:User/status",
+          "@type": "xsd:string"
+        }
+      }
+    }
+  }
+}

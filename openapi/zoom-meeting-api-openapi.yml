@@ -1,0 +1,2202 @@
+openapi: 3.1.0
+info:
+  title: Zoom Meeting API
+  description: >-
+    The Zoom Meeting API lets developers access meeting data from the Zoom
+    platform. Use this API to create, read, update, and delete meetings, manage
+    participants, registrants, polls, and live streams. Build private services
+    or public applications on the Zoom App Marketplace.
+  version: 2.0.0
+  contact:
+    name: Zoom Developer Support
+    url: https://developers.zoom.us
+    email: developer-support@zoom.us
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  termsOfService: https://explore.zoom.us/en/terms/
+  x-logo:
+    url: https://st1.zoom.us/static/5.16.6-1642/image/new/ZoomLogo.png
+    altText: Zoom Logo
+externalDocs:
+  description: Zoom Meeting API Documentation
+  url: https://developers.zoom.us/docs/api/rest/meeting/
+servers:
+  - url: https://api.zoom.us/v2
+    description: Zoom REST API v2 Production
+security:
+  - oauth2: []
+  - bearerAuth: []
+tags:
+  - name: Meetings
+    description: Create and manage Zoom meetings.
+    externalDocs:
+      url: https://developers.zoom.us/docs/api/rest/reference/zoom-api/methods/#tag/Meetings
+  - name: Meeting Participants
+    description: Manage participants in Zoom meetings.
+  - name: Meeting Registrants
+    description: Manage meeting registration and registrants.
+  - name: Meeting Polls
+    description: Create and manage polls for Zoom meetings.
+  - name: Meeting Live Stream
+    description: Manage live streaming for Zoom meetings.
+  - name: Meeting Recordings
+    description: Access and manage meeting recordings.
+paths:
+  /users/{userId}/meetings:
+    get:
+      tags:
+        - Meetings
+      summary: List meetings
+      description: >-
+        List all the meetings that were scheduled for a user. For user-level
+        apps, pass the `me` value instead of the userId parameter.
+      operationId: listMeetings
+      parameters:
+        - $ref: '#/components/parameters/UserIdPath'
+        - name: type
+          in: query
+          description: >-
+            The type of meeting. `scheduled` - All valid previous (unexpired)
+            meetings, live meetings, and upcoming scheduled meetings.
+            `live` - All the ongoing meetings.
+            `upcoming` - All upcoming meetings including live meetings.
+            `upcoming_meetings` - All upcoming meetings including live meetings.
+            `previous_meetings` - All the previous meetings.
+          schema:
+            type: string
+            enum:
+              - scheduled
+              - live
+              - upcoming
+              - upcoming_meetings
+              - previous_meetings
+            default: scheduled
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/NextPageToken'
+        - $ref: '#/components/parameters/PageNumber'
+      responses:
+        '200':
+          description: Successfully retrieved the list of meetings.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MeetingList'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      tags:
+        - Meetings
+      summary: Create a meeting
+      description: >-
+        Create a meeting for a user. For user-level apps, pass the `me` value
+        instead of the userId parameter. A meeting can be scheduled, instant,
+        or recurring.
+      operationId: createMeeting
+      parameters:
+        - $ref: '#/components/parameters/UserIdPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MeetingCreateRequest'
+      responses:
+        '201':
+          description: Meeting created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MeetingCreateResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+  /meetings/{meetingId}:
+    get:
+      tags:
+        - Meetings
+      summary: Get meeting details
+      description: >-
+        Retrieve the details of a meeting. This returns detailed information
+        about the specified meeting including settings, recurrence, and
+        tracking fields.
+      operationId: getMeeting
+      parameters:
+        - $ref: '#/components/parameters/MeetingIdPath'
+        - name: occurrence_id
+          in: query
+          description: Meeting occurrence ID for recurring meetings.
+          schema:
+            type: string
+        - name: show_previous_occurrences
+          in: query
+          description: >-
+            Set to true to view meeting details of all previous occurrences
+            of a recurring meeting.
+          schema:
+            type: boolean
+            default: false
+      responses:
+        '200':
+          description: Successfully retrieved meeting details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MeetingDetails'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      tags:
+        - Meetings
+      summary: Update a meeting
+      description: >-
+        Update the details of a meeting. This can include topic, start time,
+        duration, settings, and other meeting options.
+      operationId: updateMeeting
+      parameters:
+        - $ref: '#/components/parameters/MeetingIdPath'
+        - name: occurrence_id
+          in: query
+          description: Meeting occurrence ID for recurring meeting updates.
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MeetingUpdateRequest'
+      responses:
+        '204':
+          description: Meeting updated successfully.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    delete:
+      tags:
+        - Meetings
+      summary: Delete a meeting
+      description: >-
+        Delete a meeting. This permanently removes the meeting from Zoom.
+      operationId: deleteMeeting
+      parameters:
+        - $ref: '#/components/parameters/MeetingIdPath'
+        - name: occurrence_id
+          in: query
+          description: Meeting occurrence ID for recurring meeting deletion.
+          schema:
+            type: string
+        - name: schedule_for_reminder
+          in: query
+          description: >-
+            Notify host and alternative host about the meeting cancellation
+            via email.
+          schema:
+            type: boolean
+            default: true
+        - name: cancel_meeting_reminder
+          in: query
+          description: >-
+            Notify registrants about the meeting cancellation via email.
+          schema:
+            type: boolean
+            default: false
+      responses:
+        '204':
+          description: Meeting deleted successfully.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /meetings/{meetingId}/status:
+    put:
+      tags:
+        - Meetings
+      summary: Update meeting status
+      description: >-
+        End a meeting by updating its status. This can also recover a
+        deleted meeting within a certain time frame.
+      operationId: updateMeetingStatus
+      parameters:
+        - $ref: '#/components/parameters/MeetingIdPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                action:
+                  type: string
+                  description: >-
+                    The action to take. `end` - End the meeting.
+                    `recover` - Recover a deleted meeting.
+                  enum:
+                    - end
+                    - recover
+      responses:
+        '204':
+          description: Meeting status updated successfully.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /meetings/{meetingId}/registrants:
+    get:
+      tags:
+        - Meeting Registrants
+      summary: List meeting registrants
+      description: >-
+        List all registrants for a meeting. Returns the list of users who
+        registered for the meeting.
+      operationId: listMeetingRegistrants
+      parameters:
+        - $ref: '#/components/parameters/MeetingIdPath'
+        - name: occurrence_id
+          in: query
+          description: Meeting occurrence ID for recurring meetings.
+          schema:
+            type: string
+        - name: status
+          in: query
+          description: Registrant status filter.
+          schema:
+            type: string
+            enum:
+              - pending
+              - approved
+              - denied
+            default: approved
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/NextPageToken'
+      responses:
+        '200':
+          description: Successfully retrieved the list of registrants.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegistrantList'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      tags:
+        - Meeting Registrants
+      summary: Add a meeting registrant
+      description: >-
+        Register a participant for a meeting. A host or alternative host can
+        also add registrants on behalf of other users.
+      operationId: addMeetingRegistrant
+      parameters:
+        - $ref: '#/components/parameters/MeetingIdPath'
+        - name: occurrence_ids
+          in: query
+          description: >-
+            A comma-separated list of occurrence IDs for recurring meetings.
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegistrantCreateRequest'
+      responses:
+        '201':
+          description: Registrant added successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegistrantCreateResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /meetings/{meetingId}/registrants/status:
+    put:
+      tags:
+        - Meeting Registrants
+      summary: Update registrant status
+      description: >-
+        Approve or deny a meeting registrant. Also allows cancellation of
+        a previously approved registrant.
+      operationId: updateMeetingRegistrantStatus
+      parameters:
+        - $ref: '#/components/parameters/MeetingIdPath'
+        - name: occurrence_id
+          in: query
+          description: Meeting occurrence ID for recurring meetings.
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - action
+              properties:
+                action:
+                  type: string
+                  description: Action to take on registrants.
+                  enum:
+                    - approve
+                    - deny
+                    - cancel
+                registrants:
+                  type: array
+                  description: List of registrants to update.
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: Registrant ID.
+                      email:
+                        type: string
+                        description: Registrant email address.
+      responses:
+        '204':
+          description: Registrant status updated successfully.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /meetings/{meetingId}/polls:
+    get:
+      tags:
+        - Meeting Polls
+      summary: List meeting polls
+      description: List all polls for a meeting.
+      operationId: listMeetingPolls
+      parameters:
+        - $ref: '#/components/parameters/MeetingIdPath'
+        - name: anonymous
+          in: query
+          description: Whether to query anonymous polls.
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: Successfully retrieved meeting polls.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_records:
+                    type: integer
+                    description: Total number of polls.
+                  polls:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Poll'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      tags:
+        - Meeting Polls
+      summary: Create a meeting poll
+      description: >-
+        Create a poll for a meeting. Meeting must be a scheduled meeting.
+        Instant meetings do not have polling features enabled.
+      operationId: createMeetingPoll
+      parameters:
+        - $ref: '#/components/parameters/MeetingIdPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PollCreateRequest'
+      responses:
+        '201':
+          description: Poll created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Poll'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /meetings/{meetingId}/polls/{pollId}:
+    get:
+      tags:
+        - Meeting Polls
+      summary: Get a meeting poll
+      description: Retrieve details of a specific meeting poll.
+      operationId: getMeetingPoll
+      parameters:
+        - $ref: '#/components/parameters/MeetingIdPath'
+        - $ref: '#/components/parameters/PollIdPath'
+      responses:
+        '200':
+          description: Successfully retrieved the poll.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Poll'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      tags:
+        - Meeting Polls
+      summary: Update a meeting poll
+      description: Update a specific meeting poll.
+      operationId: updateMeetingPoll
+      parameters:
+        - $ref: '#/components/parameters/MeetingIdPath'
+        - $ref: '#/components/parameters/PollIdPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PollCreateRequest'
+      responses:
+        '204':
+          description: Poll updated successfully.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      tags:
+        - Meeting Polls
+      summary: Delete a meeting poll
+      description: Delete a specific meeting poll.
+      operationId: deleteMeetingPoll
+      parameters:
+        - $ref: '#/components/parameters/MeetingIdPath'
+        - $ref: '#/components/parameters/PollIdPath'
+      responses:
+        '204':
+          description: Poll deleted successfully.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /meetings/{meetingId}/participants:
+    get:
+      tags:
+        - Meeting Participants
+      summary: List meeting participants
+      description: >-
+        List participants from a past meeting instance. Only available for
+        paid accounts with the Dashboard feature enabled.
+      operationId: listMeetingParticipants
+      parameters:
+        - $ref: '#/components/parameters/MeetingIdPath'
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/NextPageToken'
+        - name: include_fields
+          in: query
+          description: >-
+            Provide `registrant_id` to include the registrant_id field in the
+            response.
+          schema:
+            type: string
+            enum:
+              - registrant_id
+      responses:
+        '200':
+          description: Successfully retrieved meeting participants.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ParticipantList'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /meetings/{meetingId}/livestream:
+    patch:
+      tags:
+        - Meeting Live Stream
+      summary: Update a live stream
+      description: >-
+        Update the live stream configuration of a meeting. The meeting host
+        must configure live streaming settings before the meeting starts.
+      operationId: updateMeetingLiveStream
+      parameters:
+        - $ref: '#/components/parameters/MeetingIdPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LiveStreamUpdateRequest'
+      responses:
+        '204':
+          description: Live stream updated successfully.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /meetings/{meetingId}/livestream/status:
+    patch:
+      tags:
+        - Meeting Live Stream
+      summary: Update live stream status
+      description: >-
+        Update the status of a live stream during a meeting. Use this to
+        start or stop live streaming.
+      operationId: updateMeetingLiveStreamStatus
+      parameters:
+        - $ref: '#/components/parameters/MeetingIdPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                action:
+                  type: string
+                  description: Live stream action.
+                  enum:
+                    - start
+                    - stop
+                settings:
+                  type: object
+                  properties:
+                    active_speaker_name:
+                      type: boolean
+                      description: Display active speaker name.
+                    display_name:
+                      type: string
+                      description: Custom display name for the live stream.
+      responses:
+        '204':
+          description: Live stream status updated successfully.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /past_meetings/{meetingId}:
+    get:
+      tags:
+        - Meetings
+      summary: Get past meeting details
+      description: >-
+        Retrieve information about a past meeting. The meeting UUID must be
+        double-encoded if it contains `/` or `//` characters.
+      operationId: getPastMeetingDetails
+      parameters:
+        - name: meetingId
+          in: path
+          required: true
+          description: >-
+            The meeting UUID. Each meeting instance will generate its own UUID.
+            Double-encode if the UUID begins with `/` or contains `//`.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully retrieved past meeting details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PastMeetingDetails'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /past_meetings/{meetingId}/participants:
+    get:
+      tags:
+        - Meeting Participants
+      summary: List past meeting participants
+      description: >-
+        Retrieve information on participants from a past meeting. The API
+        does not return results if the meeting is less than 5 minutes old.
+      operationId: listPastMeetingParticipants
+      parameters:
+        - name: meetingId
+          in: path
+          required: true
+          description: The meeting UUID.
+          schema:
+            type: string
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/NextPageToken'
+      responses:
+        '200':
+          description: Successfully retrieved past meeting participants.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ParticipantList'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /meetings/{meetingId}/recordings:
+    get:
+      tags:
+        - Meeting Recordings
+      summary: Get meeting recordings
+      description: >-
+        Retrieve all recordings for a specific meeting. Cloud recordings
+        are available to paid accounts with cloud recording enabled.
+      operationId: getMeetingRecordings
+      parameters:
+        - $ref: '#/components/parameters/MeetingIdPath'
+        - name: include_fields
+          in: query
+          description: Additional fields to include in the response.
+          schema:
+            type: string
+        - name: ttl
+          in: query
+          description: Time to live in seconds for the download URL.
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successfully retrieved meeting recordings.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecordingList'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      tags:
+        - Meeting Recordings
+      summary: Delete meeting recordings
+      description: >-
+        Delete all recording files of a meeting. The recording files will
+        be moved to trash and permanently deleted after 30 days.
+      operationId: deleteMeetingRecordings
+      parameters:
+        - $ref: '#/components/parameters/MeetingIdPath'
+        - name: action
+          in: query
+          description: >-
+            Delete action. `trash` moves to trash. `delete` permanently
+            deletes.
+          schema:
+            type: string
+            enum:
+              - trash
+              - delete
+            default: trash
+      responses:
+        '204':
+          description: Recordings deleted successfully.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /meetings/{meetingId}/batch_registrants:
+    post:
+      tags:
+        - Meeting Registrants
+      summary: Batch add meeting registrants
+      description: >-
+        Register up to 30 registrants at once for a meeting that requires
+        registration.
+      operationId: batchAddMeetingRegistrants
+      parameters:
+        - $ref: '#/components/parameters/MeetingIdPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                auto_approve:
+                  type: boolean
+                  description: Auto-approve the registrants.
+                registrants:
+                  type: array
+                  maxItems: 30
+                  items:
+                    type: object
+                    required:
+                      - email
+                    properties:
+                      email:
+                        type: string
+                        format: email
+                      first_name:
+                        type: string
+                      last_name:
+                        type: string
+      responses:
+        '201':
+          description: Registrants added successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  registrants:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        email:
+                          type: string
+                        registrant_id:
+                          type: string
+                        participant_pin_code:
+                          type: integer
+                        join_url:
+                          type: string
+                          format: uri
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /meetings/{meetingId}/invitation:
+    get:
+      tags:
+        - Meetings
+      summary: Get meeting invitation
+      description: >-
+        Retrieve the meeting invitation note for a specific meeting.
+      operationId: getMeetingInvitation
+      parameters:
+        - $ref: '#/components/parameters/MeetingIdPath'
+      responses:
+        '200':
+          description: Successfully retrieved the meeting invitation.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  invitation:
+                    type: string
+                    description: Meeting invitation text.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /meetings/{meetingId}/jointoken/live_streaming:
+    get:
+      tags:
+        - Meeting Live Stream
+      summary: Get a meeting's join token for live streaming
+      description: >-
+        Get a meeting's join token to allow live streaming. The join token
+        allows a recording bot or live streaming service to join the meeting.
+      operationId: getMeetingJoinTokenForLiveStreaming
+      parameters:
+        - $ref: '#/components/parameters/MeetingIdPath'
+      responses:
+        '200':
+          description: Successfully retrieved join token.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                    description: The join token.
+                  expire_in:
+                    type: integer
+                    description: Token expiration time in seconds.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: >-
+        Zoom uses OAuth 2.0 for authentication. Server-to-Server OAuth and
+        standard OAuth apps are supported.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://zoom.us/oauth/authorize
+          tokenUrl: https://zoom.us/oauth/token
+          scopes:
+            meeting:read:meeting:admin: Read meeting details (admin)
+            meeting:read:meeting:master: Read meeting details (master)
+            meeting:write:meeting:admin: Write meeting details (admin)
+            meeting:write:meeting:master: Write meeting details (master)
+            meeting:read:list_meetings:admin: List meetings (admin)
+            meeting:write:meeting: Create and update meetings
+            meeting:read:meeting: Read meeting details
+            meeting:delete:meeting: Delete meetings
+            meeting:read:list_registrants:admin: List registrants (admin)
+            meeting:write:registrant:admin: Add registrants (admin)
+            meeting:update:registrant:admin: Update registrant status (admin)
+            meeting:read:poll:admin: Read meeting polls (admin)
+            meeting:write:poll:admin: Write meeting polls (admin)
+            meeting:delete:poll:admin: Delete meeting polls (admin)
+            meeting:read:participant:admin: Read meeting participants (admin)
+            meeting:read:list_past_participants:admin: List past meeting participants (admin)
+            meeting:read:invitation:admin: Read meeting invitation (admin)
+            meeting:update:livestream:admin: Update live stream (admin)
+            cloud_recording:read:list_recording_files:admin: Read recording files (admin)
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: >-
+        Bearer token obtained from OAuth 2.0 Server-to-Server or standard
+        OAuth flow.
+  parameters:
+    UserIdPath:
+      name: userId
+      in: path
+      required: true
+      description: >-
+        The user ID or email address. Use `me` for the current user in
+        user-level apps.
+      schema:
+        type: string
+        examples:
+          - me
+          - jchill@example.com
+          - AbCdEfGhIjKlMnOpQrStUv
+    MeetingIdPath:
+      name: meetingId
+      in: path
+      required: true
+      description: >-
+        The meeting ID. This can be the meeting number (e.g., 85746065) or
+        the meeting UUID.
+      schema:
+        oneOf:
+          - type: integer
+            format: int64
+          - type: string
+    PollIdPath:
+      name: pollId
+      in: path
+      required: true
+      description: The poll ID.
+      schema:
+        type: integer
+        format: int64
+    PageSize:
+      name: page_size
+      in: query
+      description: The number of records returned per API call. Maximum is 300.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 300
+        default: 30
+    PageNumber:
+      name: page_number
+      in: query
+      description: The page number of the current results.
+      schema:
+        type: integer
+        default: 1
+    NextPageToken:
+      name: next_page_token
+      in: query
+      description: >-
+        The next page token to paginate through large result sets. A
+        next_page_token is returned in the response when a result set
+        exceeds the page_size.
+      schema:
+        type: string
+  schemas:
+    MeetingList:
+      type: object
+      properties:
+        page_count:
+          type: integer
+          description: Total number of pages.
+        page_number:
+          type: integer
+          description: Current page number.
+        page_size:
+          type: integer
+          description: Number of records per page.
+        total_records:
+          type: integer
+          description: Total number of meeting records.
+        next_page_token:
+          type: string
+          description: Token for the next page of results.
+        meetings:
+          type: array
+          description: List of meeting objects.
+          items:
+            $ref: '#/components/schemas/MeetingSummary'
+    MeetingSummary:
+      type: object
+      properties:
+        uuid:
+          type: string
+          description: Unique meeting instance ID.
+        id:
+          type: integer
+          format: int64
+          description: Meeting ID (meeting number).
+        host_id:
+          type: string
+          description: ID of the user who is the meeting host.
+        topic:
+          type: string
+          description: Meeting topic.
+        type:
+          $ref: '#/components/schemas/MeetingType'
+        start_time:
+          type: string
+          format: date-time
+          description: Meeting start time in UTC.
+        duration:
+          type: integer
+          description: Meeting duration in minutes.
+        timezone:
+          type: string
+          description: Timezone for the meeting start time.
+        created_at:
+          type: string
+          format: date-time
+          description: Time the meeting was created.
+        join_url:
+          type: string
+          format: uri
+          description: URL for participants to join the meeting.
+        agenda:
+          type: string
+          description: Meeting agenda or description.
+    MeetingType:
+      type: integer
+      description: >-
+        Meeting type: 1 - Instant meeting, 2 - Scheduled meeting,
+        3 - Recurring meeting with no fixed time,
+        8 - Recurring meeting with a fixed time.
+      enum:
+        - 1
+        - 2
+        - 3
+        - 8
+    MeetingCreateRequest:
+      type: object
+      properties:
+        topic:
+          type: string
+          description: Meeting topic. Maximum 200 characters.
+          maxLength: 200
+        type:
+          $ref: '#/components/schemas/MeetingType'
+        pre_schedule:
+          type: boolean
+          description: Whether to create a pre-scheduled meeting.
+          default: false
+        start_time:
+          type: string
+          format: date-time
+          description: >-
+            Meeting start time. Only used for scheduled meetings (type 2)
+            and recurring meetings with a fixed time (type 8). Use UTC
+            format such as 2023-11-25T12:00:00Z.
+        duration:
+          type: integer
+          description: Meeting duration in minutes. Used for scheduled meetings only.
+        schedule_for:
+          type: string
+          description: >-
+            Email address or user ID to schedule the meeting on behalf of.
+        timezone:
+          type: string
+          description: >-
+            Timezone to format start_time (e.g., America/Los_Angeles).
+            If not provided, defaults to the meeting host's timezone.
+        password:
+          type: string
+          description: >-
+            Meeting passcode. May only contain the following characters:
+            a-z A-Z 0-9 @ - _ *. Maximum 10 characters.
+          maxLength: 10
+        default_password:
+          type: boolean
+          description: Use the default passcode set in account settings.
+          default: false
+        agenda:
+          type: string
+          description: Meeting description. Maximum 2000 characters.
+          maxLength: 2000
+        tracking_fields:
+          type: array
+          description: Tracking fields for the meeting.
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+                description: Tracking field name.
+              value:
+                type: string
+                description: Tracking field value.
+        recurrence:
+          $ref: '#/components/schemas/Recurrence'
+        settings:
+          $ref: '#/components/schemas/MeetingSettings'
+        template_id:
+          type: string
+          description: Meeting template ID to use.
+    MeetingCreateResponse:
+      type: object
+      properties:
+        uuid:
+          type: string
+          description: Unique meeting instance ID.
+        id:
+          type: integer
+          format: int64
+          description: Meeting ID (meeting number).
+        host_id:
+          type: string
+          description: ID of the meeting host.
+        host_email:
+          type: string
+          format: email
+          description: Email address of the meeting host.
+        topic:
+          type: string
+          description: Meeting topic.
+        type:
+          $ref: '#/components/schemas/MeetingType'
+        status:
+          type: string
+          description: Meeting status.
+          enum:
+            - waiting
+            - started
+        start_time:
+          type: string
+          format: date-time
+          description: Meeting start time.
+        duration:
+          type: integer
+          description: Meeting duration in minutes.
+        timezone:
+          type: string
+          description: Timezone of the meeting.
+        agenda:
+          type: string
+          description: Meeting agenda.
+        created_at:
+          type: string
+          format: date-time
+          description: Time the meeting was created.
+        start_url:
+          type: string
+          format: uri
+          description: URL for the host to start the meeting.
+        join_url:
+          type: string
+          format: uri
+          description: URL for participants to join the meeting.
+        password:
+          type: string
+          description: Meeting passcode.
+        h323_password:
+          type: string
+          description: H.323/SIP room system passcode.
+        pstn_password:
+          type: string
+          description: Password for PSTN dial-in.
+        encrypted_password:
+          type: string
+          description: Encrypted passcode for the meeting URL.
+        settings:
+          $ref: '#/components/schemas/MeetingSettings'
+        recurrence:
+          $ref: '#/components/schemas/Recurrence'
+        occurrences:
+          type: array
+          items:
+            $ref: '#/components/schemas/Occurrence'
+    MeetingUpdateRequest:
+      type: object
+      properties:
+        topic:
+          type: string
+          description: Meeting topic.
+          maxLength: 200
+        type:
+          $ref: '#/components/schemas/MeetingType'
+        start_time:
+          type: string
+          format: date-time
+          description: Meeting start time.
+        duration:
+          type: integer
+          description: Meeting duration in minutes.
+        schedule_for:
+          type: string
+          description: Email address or user ID to schedule meeting on behalf of.
+        timezone:
+          type: string
+          description: Timezone for start_time.
+        password:
+          type: string
+          description: Meeting passcode.
+          maxLength: 10
+        agenda:
+          type: string
+          description: Meeting description.
+          maxLength: 2000
+        recurrence:
+          $ref: '#/components/schemas/Recurrence'
+        settings:
+          $ref: '#/components/schemas/MeetingSettings'
+        tracking_fields:
+          type: array
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+              value:
+                type: string
+    MeetingDetails:
+      allOf:
+        - $ref: '#/components/schemas/MeetingCreateResponse'
+        - type: object
+          properties:
+            occurrences:
+              type: array
+              description: Array of occurrence objects for recurring meetings.
+              items:
+                $ref: '#/components/schemas/Occurrence'
+            tracking_fields:
+              type: array
+              description: Tracking fields configured for the meeting.
+              items:
+                type: object
+                properties:
+                  field:
+                    type: string
+                  value:
+                    type: string
+                  visible:
+                    type: boolean
+    MeetingSettings:
+      type: object
+      description: Meeting settings and options.
+      properties:
+        host_video:
+          type: boolean
+          description: Start video when the host joins the meeting.
+          default: true
+        participant_video:
+          type: boolean
+          description: Start video when participants join the meeting.
+        cn_meeting:
+          type: boolean
+          description: Host meeting in China.
+          default: false
+        in_meeting:
+          type: boolean
+          description: Host meeting in India.
+          default: false
+        join_before_host:
+          type: boolean
+          description: Allow participants to join before the host.
+          default: false
+        jbh_time:
+          type: integer
+          description: >-
+            Minutes before the host joins that participants can join.
+            0 - any time, 5 - 5 minutes, 10 - 10 minutes.
+          enum:
+            - 0
+            - 5
+            - 10
+        mute_upon_entry:
+          type: boolean
+          description: Mute participants upon entry.
+          default: false
+        watermark:
+          type: boolean
+          description: Add watermark when viewing a shared screen.
+          default: false
+        use_pmi:
+          type: boolean
+          description: Use Personal Meeting ID instead of generated meeting ID.
+          default: false
+        approval_type:
+          type: integer
+          description: >-
+            Registration approval type. 0 - Automatically approve,
+            1 - Manually approve, 2 - No registration required.
+          enum:
+            - 0
+            - 1
+            - 2
+          default: 2
+        registration_type:
+          type: integer
+          description: >-
+            Registration type for recurring meetings. 1 - Register once
+            and attend any, 2 - Register for each, 3 - Register once
+            and choose occurrences.
+          enum:
+            - 1
+            - 2
+            - 3
+          default: 1
+        audio:
+          type: string
+          description: Determine how participants can join the meeting audio.
+          enum:
+            - both
+            - telephony
+            - voip
+            - thirdParty
+          default: both
+        auto_recording:
+          type: string
+          description: Automatic recording configuration.
+          enum:
+            - local
+            - cloud
+            - none
+          default: none
+        enforce_login:
+          type: boolean
+          description: Only authenticated users can join the meeting.
+          default: false
+        enforce_login_domains:
+          type: string
+          description: >-
+            Only users with specific email domain(s) can join. Comma
+            separated for multiple domains.
+        alternative_hosts:
+          type: string
+          description: >-
+            Alternative host email addresses. Comma separated for multiple
+            alternative hosts.
+        alternative_hosts_email_notification:
+          type: boolean
+          description: Send email notification to alternative hosts.
+          default: true
+        close_registration:
+          type: boolean
+          description: Close registration after event date.
+          default: false
+        waiting_room:
+          type: boolean
+          description: Enable the waiting room.
+          default: false
+        global_dial_in_countries:
+          type: array
+          description: List of countries for global dial-in numbers.
+          items:
+            type: string
+        contact_name:
+          type: string
+          description: Contact name for meeting registration.
+        contact_email:
+          type: string
+          format: email
+          description: Contact email for meeting registration.
+        registrants_email_notification:
+          type: boolean
+          description: Send email notifications to registrants.
+          default: true
+        registrants_confirmation_email:
+          type: boolean
+          description: Send confirmation email to registrants.
+          default: true
+        meeting_authentication:
+          type: boolean
+          description: Require authentication to join.
+          default: false
+        authentication_option:
+          type: string
+          description: Meeting authentication option ID.
+        authentication_domains:
+          type: string
+          description: Allowed authentication domains.
+        authentication_name:
+          type: string
+          description: Authentication name set in the authentication profile.
+        show_share_button:
+          type: boolean
+          description: Show social share buttons on the registration page.
+        allow_multiple_devices:
+          type: boolean
+          description: Allow attendees to join from multiple devices.
+        encryption_type:
+          type: string
+          description: Meeting encryption type.
+          enum:
+            - enhanced_encryption
+            - e2ee
+          default: enhanced_encryption
+        approved_or_denied_countries_or_regions:
+          type: object
+          description: Approve or block users from specific countries.
+          properties:
+            enable:
+              type: boolean
+            method:
+              type: string
+              enum:
+                - approve
+                - deny
+            approved_list:
+              type: array
+              items:
+                type: string
+            denied_list:
+              type: array
+              items:
+                type: string
+        breakout_room:
+          type: object
+          description: Breakout room settings.
+          properties:
+            enable:
+              type: boolean
+              description: Enable breakout rooms.
+            rooms:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    description: Breakout room name.
+                  participants:
+                    type: array
+                    description: Email addresses of participants.
+                    items:
+                      type: string
+        language_interpretation:
+          type: object
+          description: Language interpretation settings.
+          properties:
+            enable:
+              type: boolean
+            interpreters:
+              type: array
+              items:
+                type: object
+                properties:
+                  email:
+                    type: string
+                    format: email
+                  languages:
+                    type: string
+                    description: Comma separated language codes.
+        focus_mode:
+          type: boolean
+          description: Enable focus mode.
+        meeting_invitees:
+          type: array
+          description: List of users invited to the meeting.
+          items:
+            type: object
+            properties:
+              email:
+                type: string
+                format: email
+        private_meeting:
+          type: boolean
+          description: Make the meeting private.
+          default: false
+        email_notification:
+          type: boolean
+          description: Send email notification when meeting starts.
+          default: true
+        host_save_video_order:
+          type: boolean
+          description: >-
+            Allow host to save the order of gallery view.
+        continuous_meeting_chat:
+          type: object
+          description: Continuous meeting chat settings.
+          properties:
+            enable:
+              type: boolean
+            auto_add_invited_external_users:
+              type: boolean
+    Recurrence:
+      type: object
+      description: Recurrence settings for recurring meetings.
+      properties:
+        type:
+          type: integer
+          description: >-
+            Recurrence type. 1 - Daily, 2 - Weekly, 3 - Monthly.
+          enum:
+            - 1
+            - 2
+            - 3
+        repeat_interval:
+          type: integer
+          description: >-
+            Interval at which the meeting recurs. For daily, max 90.
+            For weekly, max 12. For monthly, max 3.
+        weekly_days:
+          type: string
+          description: >-
+            Days of the week for weekly recurrence. 1-Sunday through
+            7-Saturday. Comma separated for multiple days.
+        monthly_day:
+          type: integer
+          description: Day of the month for monthly recurrence (1-31).
+        monthly_week:
+          type: integer
+          description: >-
+            Week of the month for monthly recurrence.
+            -1 - Last week, 1 - First, 2 - Second, 3 - Third, 4 - Fourth.
+          enum:
+            - -1
+            - 1
+            - 2
+            - 3
+            - 4
+        monthly_week_day:
+          type: integer
+          description: Day of the week for monthly recurrence. 1-Sunday through 7-Saturday.
+          enum:
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+            - 6
+            - 7
+        end_times:
+          type: integer
+          description: >-
+            Number of times the meeting will recur before ending. Cannot
+            be used with end_date_time. Maximum 365 for daily, 99 for weekly
+            and monthly.
+          maximum: 365
+          default: 1
+        end_date_time:
+          type: string
+          format: date-time
+          description: >-
+            The end date-time for the recurrence. Cannot be used with
+            end_times.
+    Occurrence:
+      type: object
+      description: Meeting occurrence information for recurring meetings.
+      properties:
+        occurrence_id:
+          type: string
+          description: Occurrence ID.
+        start_time:
+          type: string
+          format: date-time
+          description: Start time of this occurrence.
+        duration:
+          type: integer
+          description: Duration of this occurrence in minutes.
+        status:
+          type: string
+          description: Occurrence status.
+          enum:
+            - available
+            - deleted
+    RegistrantCreateRequest:
+      type: object
+      required:
+        - email
+        - first_name
+      properties:
+        email:
+          type: string
+          format: email
+          description: Registrant email address.
+        first_name:
+          type: string
+          description: Registrant first name.
+          maxLength: 64
+        last_name:
+          type: string
+          description: Registrant last name.
+          maxLength: 64
+        address:
+          type: string
+          description: Registrant address.
+        city:
+          type: string
+          description: Registrant city.
+        state:
+          type: string
+          description: Registrant state or province.
+        zip:
+          type: string
+          description: Registrant zip or postal code.
+        country:
+          type: string
+          description: Registrant two-letter country code.
+        phone:
+          type: string
+          description: Registrant phone number.
+        comments:
+          type: string
+          description: Registrant questions and comments.
+        industry:
+          type: string
+          description: Registrant industry.
+        job_title:
+          type: string
+          description: Registrant job title.
+        org:
+          type: string
+          description: Registrant organization.
+        no_of_employees:
+          type: string
+          description: Number of employees.
+          enum:
+            - '1-20'
+            - '21-50'
+            - '51-100'
+            - '101-250'
+            - '251-500'
+            - '501-1,000'
+            - '1,001-5,000'
+            - '5,001-10,000'
+            - 'More than 10,000'
+        purchasing_time_frame:
+          type: string
+          description: Purchasing time frame.
+          enum:
+            - Within a month
+            - 1-3 months
+            - 4-6 months
+            - More than 6 months
+            - No timeframe
+        role_in_purchase_process:
+          type: string
+          description: Role in purchase process.
+          enum:
+            - Decision Maker
+            - Evaluator/Recommender
+            - Influencer
+            - Not involved
+        language:
+          type: string
+          description: Registrant language preference.
+          enum:
+            - en-US
+            - en
+            - zh-CN
+            - zh
+            - es
+            - fr-FR
+            - fr
+            - jp
+            - pt
+            - de
+            - ko
+            - it
+            - vi
+            - pl
+            - tr
+            - id
+            - nl
+            - ru
+            - uk
+            - sv
+        custom_questions:
+          type: array
+          description: Custom question responses.
+          items:
+            type: object
+            properties:
+              title:
+                type: string
+                description: Question title.
+              value:
+                type: string
+                description: Answer to the question.
+        auto_approve:
+          type: boolean
+          description: Auto-approve this registrant.
+    RegistrantCreateResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: Meeting ID.
+        registrant_id:
+          type: string
+          description: Registrant ID.
+        start_time:
+          type: string
+          format: date-time
+          description: Meeting start time.
+        topic:
+          type: string
+          description: Meeting topic.
+        join_url:
+          type: string
+          format: uri
+          description: Unique join URL for this registrant.
+        participant_pin_code:
+          type: integer
+          description: Participant PIN code for phone dial-in.
+    RegistrantList:
+      type: object
+      properties:
+        page_count:
+          type: integer
+          description: Total number of pages.
+        page_number:
+          type: integer
+          description: Current page number.
+        page_size:
+          type: integer
+          description: Number of records per page.
+        total_records:
+          type: integer
+          description: Total number of registrant records.
+        next_page_token:
+          type: string
+          description: Pagination token for the next page.
+        registrants:
+          type: array
+          description: List of registrant objects.
+          items:
+            $ref: '#/components/schemas/Registrant'
+    Registrant:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Registrant ID.
+        email:
+          type: string
+          format: email
+          description: Registrant email address.
+        first_name:
+          type: string
+          description: Registrant first name.
+        last_name:
+          type: string
+          description: Registrant last name.
+        address:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zip:
+          type: string
+        country:
+          type: string
+        phone:
+          type: string
+        industry:
+          type: string
+        org:
+          type: string
+        job_title:
+          type: string
+        purchasing_time_frame:
+          type: string
+        role_in_purchase_process:
+          type: string
+        no_of_employees:
+          type: string
+        comments:
+          type: string
+        status:
+          type: string
+          description: Registrant status.
+          enum:
+            - approved
+            - pending
+            - denied
+        create_time:
+          type: string
+          format: date-time
+          description: Time the registrant registered.
+        join_url:
+          type: string
+          format: uri
+          description: Unique join URL for this registrant.
+    Poll:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: Poll ID.
+        title:
+          type: string
+          description: Poll title.
+        anonymous:
+          type: boolean
+          description: Whether this is an anonymous poll.
+        status:
+          type: string
+          description: Poll status.
+          enum:
+            - notstart
+            - started
+            - ended
+            - sharing
+        poll_type:
+          type: integer
+          description: >-
+            Type of poll. 1 - Poll, 2 - Advanced Poll, 3 - Quiz.
+          enum:
+            - 1
+            - 2
+            - 3
+        questions:
+          type: array
+          description: List of questions in the poll.
+          items:
+            $ref: '#/components/schemas/PollQuestion'
+    PollQuestion:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Question text.
+        type:
+          type: string
+          description: Question type.
+          enum:
+            - single
+            - multiple
+            - matching
+            - rank_order
+            - short_answer
+            - long_answer
+            - fill_in_the_blank
+            - rating_scale
+        answer_required:
+          type: boolean
+          description: Whether an answer is required.
+        answers:
+          type: array
+          description: Available answer options.
+          items:
+            type: string
+        right_answers:
+          type: array
+          description: Correct answers for quiz type polls.
+          items:
+            type: string
+        prompts:
+          type: array
+          description: Prompts for matching and rank order question types.
+          items:
+            type: object
+            properties:
+              prompt_question:
+                type: string
+              prompt_right_answers:
+                type: array
+                items:
+                  type: string
+        rating_min_value:
+          type: integer
+          description: Minimum rating value for rating scale questions.
+        rating_max_value:
+          type: integer
+          description: Maximum rating value for rating scale questions.
+        rating_min_label:
+          type: string
+          description: Label for minimum rating value.
+        rating_max_label:
+          type: string
+          description: Label for maximum rating value.
+        answer_min_character:
+          type: integer
+          description: Minimum characters for short/long answer questions.
+        answer_max_character:
+          type: integer
+          description: Maximum characters for short/long answer questions.
+    PollCreateRequest:
+      type: object
+      properties:
+        title:
+          type: string
+          description: Poll title. Maximum 64 characters.
+          maxLength: 64
+        anonymous:
+          type: boolean
+          description: Whether this is an anonymous poll.
+          default: false
+        poll_type:
+          type: integer
+          description: >-
+            Type of poll. 1 - Poll, 2 - Advanced Poll, 3 - Quiz.
+          enum:
+            - 1
+            - 2
+            - 3
+          default: 1
+        questions:
+          type: array
+          description: List of questions for the poll.
+          items:
+            $ref: '#/components/schemas/PollQuestion'
+    ParticipantList:
+      type: object
+      properties:
+        page_count:
+          type: integer
+        page_size:
+          type: integer
+        total_records:
+          type: integer
+        next_page_token:
+          type: string
+        participants:
+          type: array
+          items:
+            $ref: '#/components/schemas/Participant'
+    Participant:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Participant UUID.
+        user_id:
+          type: string
+          description: Participant user ID if the participant is a Zoom user.
+        name:
+          type: string
+          description: Participant display name.
+        user_email:
+          type: string
+          format: email
+          description: Participant email address.
+        join_time:
+          type: string
+          format: date-time
+          description: Time the participant joined the meeting.
+        leave_time:
+          type: string
+          format: date-time
+          description: Time the participant left the meeting.
+        duration:
+          type: integer
+          description: Participant duration in the meeting (seconds).
+        registrant_id:
+          type: string
+          description: Registrant ID if the participant registered.
+        failover:
+          type: boolean
+          description: Whether failover occurred for this participant.
+        status:
+          type: string
+          description: Participant status.
+          enum:
+            - in_meeting
+            - in_waiting_room
+    LiveStreamUpdateRequest:
+      type: object
+      required:
+        - stream_url
+        - stream_key
+      properties:
+        stream_url:
+          type: string
+          format: uri
+          description: Streaming URL (e.g., RTMP endpoint).
+        stream_key:
+          type: string
+          description: Stream key or name.
+        page_url:
+          type: string
+          format: uri
+          description: The live stream page URL where viewers can watch.
+        resolution:
+          type: string
+          description: >-
+            The live stream resolution. Can be 720p or 1080p.
+          enum:
+            - 720p
+            - 1080p
+    PastMeetingDetails:
+      type: object
+      properties:
+        uuid:
+          type: string
+          description: Unique meeting instance ID.
+        id:
+          type: integer
+          format: int64
+          description: Meeting ID.
+        host_id:
+          type: string
+          description: Host user ID.
+        host_email:
+          type: string
+          format: email
+          description: Host email address.
+        type:
+          $ref: '#/components/schemas/MeetingType'
+        topic:
+          type: string
+          description: Meeting topic.
+        user_name:
+          type: string
+          description: Display name of the meeting host.
+        start_time:
+          type: string
+          format: date-time
+          description: Meeting start time.
+        end_time:
+          type: string
+          format: date-time
+          description: Meeting end time.
+        duration:
+          type: integer
+          description: Meeting duration in minutes.
+        total_minutes:
+          type: integer
+          description: Total meeting minutes across all participants.
+        participants_count:
+          type: integer
+          description: Number of participants.
+    RecordingList:
+      type: object
+      properties:
+        uuid:
+          type: string
+          description: Unique meeting instance ID.
+        id:
+          type: integer
+          format: int64
+          description: Meeting ID.
+        host_id:
+          type: string
+          description: Host user ID.
+        host_email:
+          type: string
+          format: email
+          description: Host email address.
+        topic:
+          type: string
+          description: Meeting topic.
+        type:
+          $ref: '#/components/schemas/MeetingType'
+        start_time:
+          type: string
+          format: date-time
+          description: Meeting start time.
+        timezone:
+          type: string
+          description: Timezone.
+        duration:
+          type: integer
+          description: Meeting duration in minutes.
+        total_size:
+          type: integer
+          format: int64
+          description: Total file size of all recordings in bytes.
+        recording_count:
+          type: integer
+          description: Number of recording files.
+        share_url:
+          type: string
+          format: uri
+          description: Share URL for the recording.
+        recording_files:
+          type: array
+          items:
+            $ref: '#/components/schemas/RecordingFile'
+    RecordingFile:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Recording file ID.
+        meeting_id:
+          type: string
+          description: Meeting ID.
+        recording_start:
+          type: string
+          format: date-time
+          description: Recording start time.
+        recording_end:
+          type: string
+          format: date-time
+          description: Recording end time.
+        file_type:
+          type: string
+          description: Recording file type.
+          enum:
+            - MP4
+            - M4A
+            - CHAT
+            - TRANSCRIPT
+            - CSV
+            - TB
+            - CC
+            - CHAT_MESSAGE
+            - SUMMARY
+        file_extension:
+          type: string
+          description: File extension.
+          enum:
+            - MP4
+            - M4A
+            - TXT
+            - VTT
+            - CSV
+            - JSON
+        file_size:
+          type: number
+          description: File size in bytes.
+        download_url:
+          type: string
+          format: uri
+          description: URL to download the recording file.
+        play_url:
+          type: string
+          format: uri
+          description: URL to play the recording file.
+        status:
+          type: string
+          description: Recording status.
+          enum:
+            - completed
+        recording_type:
+          type: string
+          description: Recording type.
+          enum:
+            - shared_screen_with_speaker_view(CC)
+            - shared_screen_with_speaker_view
+            - shared_screen_with_gallery_view
+            - active_speaker
+            - gallery_view
+            - shared_screen
+            - audio_only
+            - audio_transcript
+            - chat_file
+            - poll
+            - host_video
+            - closed_caption
+            - timeline
+            - sign_interpretation
+            - production_studio
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Error code.
+        message:
+          type: string
+          description: Error message.
+        errors:
+          type: array
+          description: Detailed error messages.
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+              message:
+                type: string
+  responses:
+    BadRequest:
+      description: >-
+        Bad request. The request was invalid or cannot be served.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: >-
+        Unauthorized. The request requires authentication.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: >-
+        Not found. The requested resource could not be found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    TooManyRequests:
+      description: >-
+        Too many requests. You have exceeded the rate limit.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
