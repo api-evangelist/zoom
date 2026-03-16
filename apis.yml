@@ -597,14 +597,9 @@ description: 'Zoom is a communications platform that allows users to connect wit
 
   '
 maintainers:
-- FN: Kin Lane
-  url: http://apievangelist.com
-  email: kin@apievangelist.com
-- type: Organization
-  name: Zoom Video Communications, Inc.
-  url: https://zoom.us
-  email: developer-support@zoom.us
-specificationVersion: '0.18'
+  - FN: Kin Lane
+    email: kin@apievangelist.com
+specificationVersion: '0.19'
 image: https://st1.zoom.us/static/5.16.6-1642/image/new/ZoomLogo.png
 common:
 - url: https://developers.zoom.us/docs/api/rest/getting-started/
