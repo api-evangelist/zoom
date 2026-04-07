@@ -18,7 +18,8 @@ servers:
 security:
   - api_key: []
   - api_secret: []
-tags: []
+tags:
+  - name: Account
 paths:
   /ma/account/billing/update:
     post:

@@ -28,20 +28,20 @@ security:
   - oauth2: []
   - bearerAuth: []
 tags:
+  - name: Meeting Live Stream
+    description: Manage live streaming for Zoom meetings.
+  - name: Meeting Participants
+    description: Manage participants in Zoom meetings.
+  - name: Meeting Polls
+    description: Create and manage polls for Zoom meetings.
+  - name: Meeting Recordings
+    description: Access and manage meeting recordings.
+  - name: Meeting Registrants
+    description: Manage meeting registration and registrants.
   - name: Meetings
     description: Create and manage Zoom meetings.
     externalDocs:
       url: https://developers.zoom.us/docs/api/rest/reference/zoom-api/methods/#tag/Meetings
-  - name: Meeting Participants
-    description: Manage participants in Zoom meetings.
-  - name: Meeting Registrants
-    description: Manage meeting registration and registrants.
-  - name: Meeting Polls
-    description: Create and manage polls for Zoom meetings.
-  - name: Meeting Live Stream
-    description: Manage live streaming for Zoom meetings.
-  - name: Meeting Recordings
-    description: Access and manage meeting recordings.
 paths:
   /users/{userId}/meetings:
     get:

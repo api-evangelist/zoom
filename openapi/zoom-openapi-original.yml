@@ -14,38 +14,37 @@ externalDocs:
   description: Zoom REST API Documentation
   url: https://zoom.github.io/api
 servers:
-- url: https://api.zoom.us/v1
+  - url: https://api.zoom.us/v1
 security:
-- api_key: []
-- api_secret: []
+  - api_key: []
+  - api_secret: []
 tags:
-- name: User
-  description: User operations
-- name: Meeting
-  description: Meeting operations
-- name: Report
-  description: Report operations
-- name: Group
-  description: Group operations
-- name: IM Group
-  description: IM Group operations
-- name: Webinar
-  description: Webinar operations
-- name: Dashboard
-  description: Dashboard operations
-- name: Cloud Recording
-  description: Cloud Recording operations
-- name: Archived Chat
-  description: Archived Chat operations
-- name: Account
-  description: Account operations
-- name: Device
-  description: Device operations
+  - name: Account
+    description: Account operations
+  - name: Chat
+  - name: Cloud Recording
+    description: Cloud Recording operations
+  - name: Dashboard
+    description: Dashboard operations
+  - name: Device
+    description: Device operations
+  - name: Group
+    description: Group operations
+  - name: IM Group
+    description: IM Group operations
+  - name: Meeting
+    description: Meeting operations
+  - name: Report
+    description: Report operations
+  - name: User
+    description: User operations
+  - name: Webinar
+    description: Webinar operations
 paths:
   /chat/get:
     post:
       tags:
-      - Chat
+        - Chat
       description: |+
         Get chat messages for a specified period.
 
@@ -55,16 +54,15 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - access_token
-              - from
-              - session_id
-              - to
+                - access_token
+                - from
+                - session_id
+                - to
               type: object
               properties:
                 access_token:
                   type: string
-                  description: Archived chat messages access token. Admin who has
-                    the view privilege of Archived chat messages will get it.
+                  description: Archived chat messages access token. Admin who has the view privilege of Archived chat messages will get it.
                 session_id:
                   type: string
                   description: Session Id of chat messages.
@@ -76,14 +74,11 @@ paths:
                   description: End date.
                 page_size:
                   type: string
-                  description: The amount of records returns within a single API call.
-                    Defaults to 30. Max of 30 records.
+                  description: The amount of records returns within a single API call. Defaults to 30. Max of 30 records.
                   default: "30"
                 next_page_token:
                   type: string
-                  description: Used to paginate through large result sets.  A next
-                    page token will be returned whenever the set of available chat
-                    history list exceeds 100.  The expiration period is 30 minutes.
+                  description: Used to paginate through large result sets.  A next page token will be returned whenever the set of available chat history list exceeds 100.  The expiration period is 30 minutes.
         required: true
       responses:
         "200":
@@ -99,13 +94,13 @@ paths:
                 page_count: 1
                 next_page_token: ""
                 chat_messages:
-                - message: test1
-                  sender: ""
-                  date_time: 2016-01-18T06:40:56Z
+                  - message: test1
+                    sender: ""
+                    date_time: 2016-01-18T06:40:56Z
   /chat/list:
     post:
       tags:
-      - Chat
+        - Chat
       description: |+
         Get chat history list for a specified time period.
 
@@ -115,15 +110,14 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - access_token
-              - from
-              - to
+                - access_token
+                - from
+                - to
               type: object
               properties:
                 access_token:
                   type: string
-                  description: Archived chat messages access token. Admin who has
-                    the view privilege of Archived chat messages will get it.
+                  description: Archived chat messages access token. Admin who has the view privilege of Archived chat messages will get it.
                 from:
                   type: string
                   description: Start date.
@@ -132,17 +126,14 @@ paths:
                   description: End date.
                 page_size:
                   type: string
-                  description: The amount of records returns within a single API call.
-                    Defaults to 30. Max of 30 records.
+                  description: The amount of records returns within a single API call. Defaults to 30. Max of 30 records.
                   default: "30"
                 email:
                   type: string
                   description: Email query condition.
                 next_page_token:
                   type: string
-                  description: Used to paginate through large result sets.  A next
-                    page token will be returned whenever the set of available chat
-                    history list exceeds 100.  The expiration period is 30 minutes.
+                  description: Used to paginate through large result sets.  A next page token will be returned whenever the set of available chat history list exceeds 100.  The expiration period is 30 minutes.
         required: true
       responses:
         "200":
@@ -156,15 +147,15 @@ paths:
                 page_count: 1
                 next_page_token: ""
                 chat_list:
-                - session_id: unique_id
-                  type: Group
-                  participants: ""
-                  group_name: zoom test1
-                  last_message_send_time: 2016-01-18T06:40:56Z
+                  - session_id: unique_id
+                    type: Group
+                    participants: ""
+                    group_name: zoom test1
+                    last_message_send_time: 2016-01-18T06:40:56Z
   /group/create:
     post:
       tags:
-      - Group
+        - Group
       description: |+
         Create a group on Zoom, return the new group info.
 
@@ -174,7 +165,7 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - name
+                - name
               type: object
               properties:
                 name:
@@ -194,7 +185,7 @@ paths:
   /group/delete:
     post:
       tags:
-      - Group
+        - Group
       description: |+
         Delete a group on Zoom, return the deleted group ID.
 
@@ -204,7 +195,7 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - id
+                - id
               type: object
               properties:
                 id:
@@ -223,7 +214,7 @@ paths:
   /group/edit:
     post:
       tags:
-      - Group
+        - Group
       description: |+
         Edit a group on Zoom, return the new group info.
 
@@ -233,7 +224,7 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - id
+                - id
               type: object
               properties:
                 id:
@@ -256,7 +247,7 @@ paths:
   /group/get:
     post:
       tags:
-      - Group
+        - Group
       description: |+
         Get a group on Zoom via ID, return the group info.
 
@@ -266,7 +257,7 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - id
+                - id
               type: object
               properties:
                 id:
@@ -286,7 +277,7 @@ paths:
   /group/list:
     post:
       tags:
-      - Group
+        - Group
       description: |+
         List all groups on your Zoom account.
 
@@ -296,8 +287,8 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - api_key
-              - api_secret
+                - api_key
+                - api_secret
               type: object
               properties:
                 api_key:
@@ -315,14 +306,14 @@ paths:
               example:
                 total_records: 1
                 groups:
-                - group_id: unique_id
-                  account_id: unique_id
-                  name: Group Test1
-                  total_members: 40
+                  - group_id: unique_id
+                    account_id: unique_id
+                    name: Group Test1
+                    total_members: 40
   /group/member/add:
     post:
       tags:
-      - Group
+        - Group
       description: |+
         Add members to a group on Zoom.
 
@@ -332,8 +323,8 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - id
-              - member_ids
+                - id
+                - member_ids
               type: object
               properties:
                 id:
@@ -355,7 +346,7 @@ paths:
   /group/member/delete:
     post:
       tags:
-      - Group
+        - Group
       description: |+
         Delete members of a group on Zoom.
 
@@ -365,8 +356,8 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - id
-              - member_ids
+                - id
+                - member_ids
               type: object
               properties:
                 id:
@@ -388,7 +379,7 @@ paths:
   /group/member/list:
     post:
       tags:
-      - Group
+        - Group
       description: |+
         Lists the members of a group on Zoom.
 
@@ -398,7 +389,7 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - id
+                - id
               type: object
               properties:
                 id:
@@ -406,13 +397,11 @@ paths:
                   description: Group ID.
                 page_size:
                   type: string
-                  description: The amount of records returns within a single API call.
-                    Defaults to 30.
+                  description: The amount of records returns within a single API call. Defaults to 30.
                   default: "30"
                 page_number:
                   type: string
-                  description: Current page number of returned records. Default to
-                    1.
+                  description: Current page number of returned records. Default to 1.
                   default: "1"
         required: true
       responses:
@@ -426,15 +415,15 @@ paths:
                 page_size: 30
                 total_records: 1
                 members:
-                - id: unique_id
-                  email: email_address
-                  first_name: Zoomie
-                  last_name: Userton
-                  pic_url: https://ssotest.zoom.us/p/6EoubcvJR7eF2grNXJkrHA/f2003a9c-3095-4865-8536-03cc6f211e86-9569
+                  - id: unique_id
+                    email: email_address
+                    first_name: Zoomie
+                    last_name: Userton
+                    pic_url: https://ssotest.zoom.us/p/6EoubcvJR7eF2grNXJkrHA/f2003a9c-3095-4865-8536-03cc6f211e86-9569
   /h323/device/create:
     post:
       tags:
-      - Device
+        - Device
       description: |+
         Create a H.323/SIP Device on your Zoom account.
 
@@ -444,8 +433,8 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - ip
-              - name
+                - ip
+                - name
               type: object
               properties:
                 name:
@@ -460,8 +449,7 @@ paths:
                   default: "1"
                 encryption_type:
                   type: string
-                  description: "Encryption type. 0 means No, 1 means Yes, 2 means\
-                    \ Auto."
+                  description: "Encryption type. 0 means No, 1 means Yes, 2 means Auto."
                   default: "2"
         required: true
       responses:
@@ -478,7 +466,7 @@ paths:
   /h323/device/delete:
     post:
       tags:
-      - Device
+        - Device
       description: |+
         Delete a H.323/SIP Device on your Zoom account.
 
@@ -488,7 +476,7 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - id
+                - id
               type: object
               properties:
                 id:
@@ -506,7 +494,7 @@ paths:
   /h323/device/list:
     post:
       tags:
-      - Device
+        - Device
       description: |+
         List H.323/SIP Devices on your Zoom account.
 
@@ -519,13 +507,11 @@ paths:
               properties:
                 page_size:
                   type: string
-                  description: The amount of records returns within a single API call.
-                    Defaults to 30.
+                  description: The amount of records returns within a single API call. Defaults to 30.
                   default: "30"
                 page_number:
                   type: string
-                  description: Current page number of returned records. Default to
-                    1.
+                  description: Current page number of returned records. Default to 1.
                   default: "1"
       responses:
         "200":
@@ -538,15 +524,15 @@ paths:
                 page_size: 30
                 total_records: 1
                 devices:
-                - id: unique_id
-                  name: New Device
-                  ip: 192.168.1.10
-                  protocol_type: 1
-                  encryption_type: 2
+                  - id: unique_id
+                    name: New Device
+                    ip: 192.168.1.10
+                    protocol_type: 1
+                    encryption_type: 2
   /h323/device/update:
     post:
       tags:
-      - Device
+        - Device
       description: |+
         Update a H.323/SIP Device on your Zoom account.
 
@@ -556,7 +542,7 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - id
+                - id
               type: object
               properties:
                 id:
@@ -574,8 +560,7 @@ paths:
                   default: "1"
                 encryption_type:
                   type: string
-                  description: "Encryption type. 0 means No, 1 means Yes, 2 means\
-                    \ Auto."
+                  description: "Encryption type. 0 means No, 1 means Yes, 2 means Auto."
                   default: "2"
         required: true
       responses:
@@ -589,7 +574,7 @@ paths:
   /im/group/create:
     post:
       tags:
-      - IM Group
+        - IM Group
       description: |+
         Create a IM group on Zoom, return the new group info.
 
@@ -599,7 +584,7 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - name
+                - name
               type: object
               properties:
                 name:
@@ -607,8 +592,7 @@ paths:
                   description: "Group name, must be unique in one account."
                 type:
                   type: string
-                  description: "Group type, Normal: normal group, Restricted: Restricted\
-                    \ group, Shared: Shared group."
+                  description: "Group type, Normal: normal group, Restricted: Restricted group, Shared: Shared group."
                   default: Normal
                 option_search_by_domain:
                   type: boolean
@@ -620,8 +604,7 @@ paths:
                   default: false
                 option_search_by_ma:
                   type: boolean
-                  description: "Others under same master account, including all sub\
-                    \ accounts can search members."
+                  description: "Others under same master account, including all sub accounts can search members."
                   default: false
         required: true
       responses:
@@ -640,7 +623,7 @@ paths:
   /im/group/delete:
     post:
       tags:
-      - IM Group
+        - IM Group
       description: |+
         Delete a IM group on Zoom, return the deleted group ID.
 
@@ -650,7 +633,7 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - id
+                - id
               type: object
               properties:
                 id:
@@ -669,7 +652,7 @@ paths:
   /im/group/edit:
     post:
       tags:
-      - IM Group
+        - IM Group
       description: |+
         Edit a IM group on Zoom, return the new group info.
 
@@ -679,7 +662,7 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - id
+                - id
               type: object
               properties:
                 id:
@@ -690,8 +673,7 @@ paths:
                   description: "Group name, must be unique in one account."
                 type:
                   type: string
-                  description: "Group type, Normal: normal group, Restricted: Restricted\
-                    \ group, Shared: Shared group."
+                  description: "Group type, Normal: normal group, Restricted: Restricted group, Shared: Shared group."
                   default: Normal
                 option_search_by_domain:
                   type: boolean
@@ -703,8 +685,7 @@ paths:
                   default: false
                 option_search_by_ma:
                   type: boolean
-                  description: "Others under same master account, including all sub\
-                    \ accounts can search members."
+                  description: "Others under same master account, including all sub accounts can search members."
                   default: false
         required: true
       responses:
@@ -723,7 +704,7 @@ paths:
   /im/group/get:
     post:
       tags:
-      - IM Group
+        - IM Group
       description: |+
         Get a IM group on Zoom via ID, return the group info.
 
@@ -733,7 +714,7 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - id
+                - id
               type: object
               properties:
                 id:
@@ -756,7 +737,7 @@ paths:
   /im/group/list:
     post:
       tags:
-      - IM Group
+        - IM Group
       description: |+
         List all IM groups on your Zoom account.
 
@@ -766,8 +747,8 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - api_key
-              - api_secret
+                - api_key
+                - api_secret
               type: object
               properties:
                 api_key:
@@ -785,18 +766,18 @@ paths:
               example:
                 total_records: 1
                 groups:
-                - group_id: unique_id
-                  account_id: unique_id
-                  name: Group Test1
-                  total_members: 40
-                  option_search_by_domain: false
-                  option_search_by_account: true
-                  option_search_by_ma_account: false
-                  last_modified_time: 2016-04-16T07:45:41Z
+                  - group_id: unique_id
+                    account_id: unique_id
+                    name: Group Test1
+                    total_members: 40
+                    option_search_by_domain: false
+                    option_search_by_account: true
+                    option_search_by_ma_account: false
+                    last_modified_time: 2016-04-16T07:45:41Z
   /im/group/member/delete:
     post:
       tags:
-      - IM Group
+        - IM Group
       description: |+
         Delete members of a IM group on Zoom.
 
@@ -806,8 +787,8 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - id
-              - member_ids
+                - id
+                - member_ids
               type: object
               properties:
                 id:
@@ -829,7 +810,7 @@ paths:
   /im/group/member/list:
     post:
       tags:
-      - IM Group
+        - IM Group
       description: |+
         Lists the members of a IM group on Zoom.
 
@@ -839,7 +820,7 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - id
+                - id
               type: object
               properties:
                 id:
@@ -847,13 +828,11 @@ paths:
                   description: Group ID.
                 page_size:
                   type: string
-                  description: The amount of records returns within a single API call.
-                    Defaults to 30.
+                  description: The amount of records returns within a single API call. Defaults to 30.
                   default: "30"
                 page_number:
                   type: string
-                  description: Current page number of returned records. Default to
-                    1.
+                  description: Current page number of returned records. Default to 1.
                   default: "1"
         required: true
       responses:
@@ -867,15 +846,15 @@ paths:
                 page_size: 30
                 total_records: 1
                 members:
-                - id: unique_id
-                  email: email_address
-                  first_name: Zoomie
-                  last_name: Userton
-                  pic_url: https://ssotest.zoom.us/p/6EoubcvJR7eF2grNXJkrHA/f2003a9c-3095-4865-8536-03cc6f211e86-9569
+                  - id: unique_id
+                    email: email_address
+                    first_name: Zoomie
+                    last_name: Userton
+                    pic_url: https://ssotest.zoom.us/p/6EoubcvJR7eF2grNXJkrHA/f2003a9c-3095-4865-8536-03cc6f211e86-9569
   /ma/account/billing/update:
     post:
       tags:
-      - Account
+        - Account
       description: |+
         Update Billing Information for a sub account of the master account on Zoom.
 
@@ -885,7 +864,7 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - account_id
+                - account_id
               type: object
               properties:
                 account_id:
@@ -911,13 +890,10 @@ paths:
                   description: Sold To Contact’s city.
                 country:
                   type: string
-                  description: Sold To Contact’s country. For this parameter value
-                    please refer to the id value in country list JSON file
+                  description: Sold To Contact’s country. For this parameter value please refer to the id value in country list JSON file
                 state:
                   type: string
-                  description: "Sold To Contact’s state. If country value is \"US\"\
-                    \ or \"CA\", for this parameter value please refer to the id value\
-                    \ in state list JSON file"
+                  description: "Sold To Contact’s state. If country value is \"US\" or \"CA\", for this parameter value please refer to the id value in state list JSON file"
                 zip:
                   type: string
                   description: Sold To Contact’s zip/postal.
@@ -933,7 +909,7 @@ paths:
   /ma/account/create:
     post:
       tags:
-      - Account
+        - Account
       description: |+
         Create a sub account of the master account on Zoom, return the created sub account id and owner id.
 
@@ -947,17 +923,15 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - email
-              - first_name
-              - last_name
-              - password
+                - email
+                - first_name
+                - last_name
+                - password
               type: object
               properties:
                 email:
                   type: string
-                  description: "A valid email address. It must be unique in Zoom service.\
-                    \ If an email address is existed, a \"user existing\" error message\
-                    \ will be return."
+                  description: "A valid email address. It must be unique in Zoom service. If an email address is existed, a \"user existing\" error message will be return."
                 first_name:
                   type: string
                   description: User’s first name.
@@ -973,8 +947,7 @@ paths:
                   default: false
                 share_rc:
                   type: string
-                  description: "Virtual Room Connector, multiple value separated by\
-                    \ comma."
+                  description: "Virtual Room Connector, multiple value separated by comma."
                 enable_share_mc:
                   type: boolean
                   description: Enable Share Meeting Connector.
@@ -984,13 +957,11 @@ paths:
                   description: "Meeting Connector, multiple value separated by comma."
                 pay_mode:
                   type: string
-                  description: "Who will pay for this account? 0 means Sub Account\
-                    \ Holders Pays, 1 means Master Account Holder Pays."
+                  description: "Who will pay for this account? 0 means Sub Account Holders Pays, 1 means Master Account Holder Pays."
                   default: "1"
                 collection_method:
                   type: string
-                  description: "Collection Method? 0 means Automatic (billing online),\
-                    \ 1 means Manual (send invoice)."
+                  description: "Collection Method? 0 means Automatic (billing online), 1 means Manual (send invoice)."
                   default: "1"
                 enable_pstn:
                   type: boolean
@@ -1002,8 +973,7 @@ paths:
                   default: false
                 enable_enforce_login_sd:
                   type: boolean
-                  description: Only signed-in users with specified domains can join
-                    meetings.
+                  description: Only signed-in users with specified domains can join meetings.
                   default: false
                 enforce_login_domains:
                   type: string
@@ -1037,7 +1007,7 @@ paths:
   /ma/account/delete:
     post:
       tags:
-      - Account
+        - Account
       description: |+
         Delete the sub account.
 
@@ -1047,7 +1017,7 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - account_id
+                - account_id
               type: object
               properties:
                 account_id:
@@ -1065,7 +1035,7 @@ paths:
   /ma/account/get:
     post:
       tags:
-      - Account
+        - Account
       description: |+
         Get a sub account of the master account on Zoom, return the created sub account id and owner id.
 
@@ -1079,7 +1049,7 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - account_id
+                - account_id
               type: object
               properties:
                 account_id:
@@ -1099,7 +1069,7 @@ paths:
   /ma/account/list:
     post:
       tags:
-      - Account
+        - Account
       description: |+
         List all the sub account under the master account.
 
@@ -1109,8 +1079,8 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - api_key
-              - api_secret
+                - api_key
+                - api_secret
               type: object
               properties:
                 api_key:
@@ -1131,13 +1101,13 @@ paths:
                 page_size: 30
                 total_records: 3
                 subAccounts:
-                - id: unique_id
-                  owner_email: email_address
-                  created_at: 2015-01-27T140508Z
+                  - id: unique_id
+                    owner_email: email_address
+                    created_at: 2015-01-27T140508Z
   /ma/account/plan/add:
     post:
       tags:
-      - Account
+        - Account
       description: |+
         Add a plan for a sub account of the master account on Zoom.
 
@@ -1151,8 +1121,8 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - account_id
-              - plan
+                - account_id
+                - plan
               type: object
               properties:
                 account_id:
@@ -1173,7 +1143,7 @@ paths:
   /ma/account/plan/get:
     post:
       tags:
-      - Account
+        - Account
       description: |+
         Get plans information for a sub account of the master account on Zoom.
 
@@ -1183,7 +1153,7 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - account_id
+                - account_id
               type: object
               properties:
                 account_id:
@@ -1216,27 +1186,27 @@ paths:
                   type: roomconnector_yearly
                   hosts: 9
                 plan_large_meeting:
-                - type: large100_monthly
-                  hosts: 9
-                - type: large200_monthly
-                  hosts: 9
-                - type: large300_yearly
-                  hosts: 9
-                - type: large500_yearly
-                  hosts: 9
+                  - type: large100_monthly
+                    hosts: 9
+                  - type: large200_monthly
+                    hosts: 9
+                  - type: large300_yearly
+                    hosts: 9
+                  - type: large500_yearly
+                    hosts: 9
                 plan_webinar:
-                - type: webinar100_monthly
-                  hosts: 9
-                - type: webinar500_yearly
-                  hosts: 9
-                - type: webinar1000_yearly
-                  hosts: 9
-                - type: webinar3000_monthly
-                  hosts: 9
-                - type: webinar5000_monthly
-                  hosts: 9
-                - type: webinar10000_monthly
-                  hosts: 9
+                  - type: webinar100_monthly
+                    hosts: 9
+                  - type: webinar500_yearly
+                    hosts: 9
+                  - type: webinar1000_yearly
+                    hosts: 9
+                  - type: webinar3000_monthly
+                    hosts: 9
+                  - type: webinar5000_monthly
+                    hosts: 9
+                  - type: webinar10000_monthly
+                    hosts: 9
                 plan_recording: cmr_monthly_commitment_500
                 plan_audio:
                   type: tollfree_monthly_commitment_100
@@ -1247,7 +1217,7 @@ paths:
   /ma/account/plan/subscribe:
     post:
       tags:
-      - Account
+        - Account
       description: |+
         Subscribe plans for a sub account of the master account on Zoom.
 
@@ -1257,16 +1227,16 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - account_id
-              - address
-              - city
-              - country
-              - first_name
-              - last_name
-              - phone_number
-              - plan_base
-              - state
-              - zip
+                - account_id
+                - address
+                - city
+                - country
+                - first_name
+                - last_name
+                - phone_number
+                - plan_base
+                - state
+                - zip
               type: object
               properties:
                 account_id:
@@ -1292,13 +1262,10 @@ paths:
                   description: Sold To Contact’s city.
                 country:
                   type: string
-                  description: Sold To Contact’s country. For this parameter value
-                    please refer to the id value in country list JSON file
+                  description: Sold To Contact’s country. For this parameter value please refer to the id value in country list JSON file
                 state:
                   type: string
-                  description: "Sold To Contact’s state. If country value is \"US\"\
-                    \ or \"CA\", for this parameter value please refer to the id value\
-                    \ in state list JSON file"
+                  description: "Sold To Contact’s state. If country value is \"US\" or \"CA\", for this parameter value please refer to the id value in state list JSON file"
                 zip:
                   type: string
                   description: Sold To Contact’s zip/postal.
@@ -1307,28 +1274,22 @@ paths:
                   description: "Base Plan.  See [Plans](#plans) for more details"
                 plan_zoom_rooms:
                   type: string
-                  description: "Additional Zoom Rooms Plan.  See [Plans](#plans) for\
-                    \ more details"
+                  description: "Additional Zoom Rooms Plan.  See [Plans](#plans) for more details"
                 plan_room_connector:
                   type: string
-                  description: "Additional H.323/SIP Room Connector Plan.  See [Plans](#plans)\
-                    \ for more details"
+                  description: "Additional H.323/SIP Room Connector Plan.  See [Plans](#plans) for more details"
                 plan_large_meeting:
                   type: string
-                  description: "Additional Large Meeting Plan.  See [Plans](#plans)\
-                    \ for more details"
+                  description: "Additional Large Meeting Plan.  See [Plans](#plans) for more details"
                 plan_webinar:
                   type: string
-                  description: "Additional Webinar Plan.  See [Plans](#plans) for\
-                    \ more details"
+                  description: "Additional Webinar Plan.  See [Plans](#plans) for more details"
                 plan_recording:
                   type: string
-                  description: "Additional Cloud Recording Plan.  See [Plans](#plans)\
-                    \ for more details"
+                  description: "Additional Cloud Recording Plan.  See [Plans](#plans) for more details"
                 plan_audio:
                   type: string
-                  description: "Additional Audio Conferencing Plan.  See [Plans](#plans)\
-                    \ for more details"
+                  description: "Additional Audio Conferencing Plan.  See [Plans](#plans) for more details"
         required: true
       responses:
         "200":
@@ -1356,25 +1317,25 @@ paths:
                   type: roomconnector_yearly
                   hosts: 9
                 plan_large_meeting:
-                - type: large200_monthly
-                  hosts: 9
-                - type: large300_yearly
-                  hosts: 9
-                - type: large500_yearly
-                  hosts: 9
+                  - type: large200_monthly
+                    hosts: 9
+                  - type: large300_yearly
+                    hosts: 9
+                  - type: large500_yearly
+                    hosts: 9
                 plan_webinar:
-                - type: webinar100_monthly
-                  hosts: 9
-                - type: webinar500_yearly
-                  hosts: 9
-                - type: webinar1000_yearly
-                  hosts: 9
-                - type: webinar3000_monthly
-                  hosts: 9
-                - type: webinar5000_monthly
-                  hosts: 9
-                - type: webinar10000_monthly
-                  hosts: 9
+                  - type: webinar100_monthly
+                    hosts: 9
+                  - type: webinar500_yearly
+                    hosts: 9
+                  - type: webinar1000_yearly
+                    hosts: 9
+                  - type: webinar3000_monthly
+                    hosts: 9
+                  - type: webinar5000_monthly
+                    hosts: 9
+                  - type: webinar10000_monthly
+                    hosts: 9
                 plan_recording: cmr_monthly_commitment_500
                 plan_audio:
                   type: tollfree_monthly_commitment_100
@@ -1385,7 +1346,7 @@ paths:
   /ma/account/plan/update:
     post:
       tags:
-      - Account
+        - Account
       description: |+
         Update a plan for a sub account of the master account on Zoom.
 
@@ -1399,9 +1360,9 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - account_id
-              - plan
-              - type
+                - account_id
+                - plan
+                - type
               type: object
               properties:
                 account_id:
@@ -1413,8 +1374,7 @@ paths:
                   default: "1"
                 plan:
                   type: string
-                  description: "A Base Plan or an Additional Plan. See [Plans](#plans)\
-                    \ for more details"
+                  description: "A Base Plan or an Additional Plan. See [Plans](#plans) for more details"
         required: true
       responses:
         "200":
@@ -1427,7 +1387,7 @@ paths:
   /ma/account/update:
     post:
       tags:
-      - Account
+        - Account
       description: |+
         Update a sub account of the master account on Zoom, return the updated sub account id.
 
@@ -1437,7 +1397,7 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - account_id
+                - account_id
               type: object
               properties:
                 account_id:
@@ -1448,8 +1408,7 @@ paths:
                   description: Enable Share Virtual Room Connector.
                 share_rc:
                   type: string
-                  description: "Virtual Room Connector, multiple value separated by\
-                    \ comma."
+                  description: "Virtual Room Connector, multiple value separated by comma."
                 enable_share_mc:
                   type: string
                   description: Enable Share Meeting Connector.
@@ -1458,20 +1417,17 @@ paths:
                   description: "Meeting Connector, multiple value separated by comma."
                 pay_mode:
                   type: string
-                  description: "Who will pay for this account? 0 means Sub Account\
-                    \ Holders Pays, 1 means Master Account Holder Pays."
+                  description: "Who will pay for this account? 0 means Sub Account Holders Pays, 1 means Master Account Holder Pays."
                 collection_method:
                   type: string
-                  description: "Collection Method? 0 means Automatic (billing online),\
-                    \ 1 means Manual (send invoice)."
+                  description: "Collection Method? 0 means Automatic (billing online), 1 means Manual (send invoice)."
                 enable_pstn:
                   type: boolean
                   description: "The value should be true or false, by default is true."
                   default: true
                 enable_call_out:
                   type: boolean
-                  description: "The value should be true or false. If it is true,\
-                    \ the user under this account will follow MA call out type."
+                  description: "The value should be true or false. If it is true, the user under this account will follow MA call out type."
                   default: false
                 enable_enforce_login:
                   type: boolean
@@ -1479,8 +1435,7 @@ paths:
                   default: false
                 enable_enforce_login_sd:
                   type: boolean
-                  description: Only signed-in users with specified domains can join
-                    meetings.
+                  description: Only signed-in users with specified domains can join meetings.
                   default: false
                 enforce_login_domains:
                   type: string
@@ -1512,7 +1467,7 @@ paths:
   /mc/recording/list:
     post:
       tags:
-      - Cloud Recording
+        - Cloud Recording
       description: |+
         Lists all the cloud recordings meetings on a Meeting Connector
 
@@ -1522,7 +1477,7 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - host_id
+                - host_id
               type: object
               properties:
                 host_id:
@@ -1533,22 +1488,17 @@ paths:
                   description: The meeting number.
                 from:
                   type: string
-                  description: "The meeting start time after this date, MM/dd/yyyy\
-                    \ hh:mm a. For example: 11/05/2014 09:05 pm. Use the host’s time\
-                    \ zone, if host has not set time zone, will use GMT."
+                  description: "The meeting start time after this date, MM/dd/yyyy hh:mm a. For example: 11/05/2014 09:05 pm. Use the host’s time zone, if host has not set time zone, will use GMT."
                 to:
                   type: string
-                  description: "The meeting start time before this date, MM/dd/yyyy\
-                    \ hh:mm a."
+                  description: "The meeting start time before this date, MM/dd/yyyy hh:mm a."
                 page_size:
                   type: string
-                  description: The amount of records returns within a single API call.
-                    Defaults to 30. Max of 300 meetings.
+                  description: The amount of records returns within a single API call. Defaults to 30. Max of 300 meetings.
                   default: "30"
                 page_number:
                   type: string
-                  description: Current page number of returned records. Default to
-                    1.
+                  description: Current page number of returned records. Default to 1.
                   default: "1"
         required: true
       responses:
@@ -1562,29 +1512,29 @@ paths:
                 page_size: 15
                 total_records: 1
                 meetings:
-                - uuid: unique_id
-                  meeting_number: "123456789"
-                  host_id: unique_id
-                  account_id: unique_id
-                  topic: Meeting Topic
-                  start_time: 2014-11-06T04:10:10Z
-                  timezone: America/Los_Angeles
-                  duration: 999
-                  total_size: 4324324324
-                  recording_count: 1
-                  recording_files:
-                  - id: unique_id
-                    meeting_id: unique_id
-                    recording_start: 2014-11-06T04:14:10Z
-                    recording_end: 2014-11-06T04:24:10Z
-                    file_type: M4A
-                    file_size: 432432
-                    play_url: https://brand.zoom.us/recording/play/HzMyuI23bqxlJLVJLrww3L9ZuFeZEvYtG0vQ6pHhp6Twr6GPjX4Qks_CJak7jrU2
-                    download_url: https://brand.zoom.us/recording/download/HzMyuI23bqxlJLVJLrww3L9ZuFeZEvYtG0vQ6pHhp6Twr6GPjX4Qks_CJak7jrU2
+                  - uuid: unique_id
+                    meeting_number: "123456789"
+                    host_id: unique_id
+                    account_id: unique_id
+                    topic: Meeting Topic
+                    start_time: 2014-11-06T04:10:10Z
+                    timezone: America/Los_Angeles
+                    duration: 999
+                    total_size: 4324324324
+                    recording_count: 1
+                    recording_files:
+                      - id: unique_id
+                        meeting_id: unique_id
+                        recording_start: 2014-11-06T04:14:10Z
+                        recording_end: 2014-11-06T04:24:10Z
+                        file_type: M4A
+                        file_size: 432432
+                        play_url: https://brand.zoom.us/recording/play/HzMyuI23bqxlJLVJLrww3L9ZuFeZEvYtG0vQ6pHhp6Twr6GPjX4Qks_CJak7jrU2
+                        download_url: https://brand.zoom.us/recording/download/HzMyuI23bqxlJLVJLrww3L9ZuFeZEvYtG0vQ6pHhp6Twr6GPjX4Qks_CJak7jrU2
   /meeting/create:
     post:
       tags:
-      - Meeting
+        - Meeting
       description: |+
         Create a meeting on Zoom, return the created meeting URL
 
@@ -1594,69 +1544,52 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - host_id
-              - topic
-              - type
+                - host_id
+                - topic
+                - type
               type: object
               properties:
                 host_id:
                   type: string
-                  description: Meeting host user ID. Can be any user under this account.
-                    Cannot be updated after creation.
+                  description: Meeting host user ID. Can be any user under this account. Cannot be updated after creation.
                 type:
                   type: string
-                  description: "Meeting type: 1 means instant meeting (Only used for\
-                    \ host to start it as soon as created). 2 means normal scheduled\
-                    \ meeting. 3 means a recurring meeting with no fixed time. 8 means\
-                    \ a recurring meeting with fixed time."
+                  description: "Meeting type: 1 means instant meeting (Only used for host to start it as soon as created). 2 means normal scheduled meeting. 3 means a recurring meeting with no fixed time. 8 means a recurring meeting with fixed time."
                   default: "2"
                 topic:
                   type: string
                   description: Meeting topic. Max of 300 characters.
                 start_time:
                   type: string
-                  description: "Meeting start time in ISO datetime format. For scheduled\
-                    \ meeting and recurring meeting with fixed time. Should be UTC\
-                    \ time, such as 2012-11-25T12:00:00Z."
+                  description: "Meeting start time in ISO datetime format. For scheduled meeting and recurring meeting with fixed time. Should be UTC time, such as 2012-11-25T12:00:00Z."
                 duration:
                   type: string
                   description: Meeting duration (minutes). For scheduled meeting only.
                 timezone:
                   type: string
-                  description: "Timezone to format start_time, like \"America/Los_Angeles\"\
-                    . For scheduled meeting only. For this parameter value please\
-                    \ refer to the id value in timezone list JSON file."
+                  description: "Timezone to format start_time, like \"America/Los_Angeles\". For scheduled meeting only. For this parameter value please refer to the id value in timezone list JSON file."
                 password:
                   type: string
-                  description: "Meeting password. Password may only contain the following\
-                    \ characters: [a-z A-Z 0-9 @ - _"
+                  description: "Meeting password. Password may only contain the following characters: [a-z A-Z 0-9 @ - _"
                   default: ' 10 characters'
                 recurrence:
                   type: string
-                  description: "Recurrence Meeting Settings. For recurring meeting\
-                    \ with fixed time only. See [Recurrence Object](#recurrence-object)\
-                    \ for more details."
+                  description: "Recurrence Meeting Settings. For recurring meeting with fixed time only. See [Recurrence Object](#recurrence-object) for more details."
                 option_registration:
                   type: boolean
                   description: Registration required.
                   default: false
                 registration_type:
                   type: string
-                  description: "Registration type. 1 means Attendees register once\
-                    \ and can attend any of the occurrences, 2 means Attendees need\
-                    \ to register for each occurrence to attend, 3 means Attendees\
-                    \ register once and can choose one or more occurrences to attend.\
-                    \ For recurring meeting with fixed time only."
+                  description: "Registration type. 1 means Attendees register once and can attend any of the occurrences, 2 means Attendees need to register for each occurrence to attend, 3 means Attendees register once and can choose one or more occurrences to attend. For recurring meeting with fixed time only."
                   default: "1"
                 option_jbh:
                   type: boolean
-                  description: Join meeting before host start the meeting. Only for
-                    scheduled or recurring meetings.
+                  description: Join meeting before host start the meeting. Only for scheduled or recurring meetings.
                   default: false
                 option_start_type:
                   type: string
-                  description: Meeting start type. Can be "video" or "screen_share".
-                    (deprecated)
+                  description: Meeting start type. Can be "video" or "screen_share". (deprecated)
                   default: video
                 option_host_video:
                   type: boolean
@@ -1676,8 +1609,7 @@ paths:
                   default: false
                 option_audio:
                   type: string
-                  description: "Meeting audio options. Can be \"both\", \"telephony\"\
-                    , \"voip\"."
+                  description: "Meeting audio options. Can be \"both\", \"telephony\", \"voip\"."
                   default: both
                 option_enforce_login:
                   type: boolean
@@ -1685,8 +1617,7 @@ paths:
                   default: false
                 option_enforce_login_domains:
                   type: string
-                  description: Only signed-in users with specified domains can join
-                    meetings.
+                  description: Only signed-in users with specified domains can join meetings.
                 option_alternative_hosts:
                   type: string
                   description: Alternative hosts.
@@ -1699,8 +1630,7 @@ paths:
                   default: false
                 option_auto_record_type:
                   type: string
-                  description: "Automatically record type. Can be \"local\", \"cloud\"\
-                    \ or \"none\"."
+                  description: "Automatically record type. Can be \"local\", \"cloud\" or \"none\"."
                   default: local
         required: true
       responses:
@@ -1734,7 +1664,7 @@ paths:
   /meeting/delete:
     post:
       tags:
-      - Meeting
+        - Meeting
       description: |+
         Delete a meeting on Zoom, return the deleted meeting ID.
 
@@ -1744,8 +1674,8 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - host_id
-              - id
+                - host_id
+                - id
               type: object
               properties:
                 id:
@@ -1756,8 +1686,7 @@ paths:
                   description: Meeting host user ID. Can be any user under this account.
                 occurrence_id:
                   type: string
-                  description: "Occurrence ID, could get this value from Meeting Get\
-                    \ API."
+                  description: "Occurrence ID, could get this value from Meeting Get API."
         required: true
       responses:
         "200":
@@ -1770,7 +1699,7 @@ paths:
   /meeting/end:
     post:
       tags:
-      - Meeting
+        - Meeting
       description: |+
         End a meeting on Zoom, return the deleted meeting ID.
 
@@ -1780,8 +1709,8 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - host_id
-              - id
+                - host_id
+                - id
               type: object
               properties:
                 id:
@@ -1802,7 +1731,7 @@ paths:
   /meeting/get:
     post:
       tags:
-      - Meeting
+        - Meeting
       description: |+
         Get a meeting on Zoom via meeting ID, return the meeting info.
 
@@ -1812,8 +1741,8 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - host_id
-              - id
+                - host_id
+                - id
               type: object
               properties:
                 id:
@@ -1855,13 +1784,13 @@ paths:
                 join_url: https://www.zoom.us/j/123456789
                 created_at: 2016-12-20T02:51:42Z
                 occurrences:
-                - occurrence_id: "1483210260000"
-                  start_time: 2017-01-01T02:51:00Z
-                  duration: 60
+                  - occurrence_id: "1483210260000"
+                    start_time: 2017-01-01T02:51:00Z
+                    duration: 60
   /meeting/list:
     post:
       tags:
-      - Meeting
+        - Meeting
       description: |+
         List all the scheduled meetings on Zoom.
 
@@ -1871,7 +1800,7 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - host_id
+                - host_id
               type: object
               properties:
                 host_id:
@@ -1879,13 +1808,11 @@ paths:
                   description: Meeting host user ID. Can be any user under this account.
                 page_size:
                   type: string
-                  description: The amount of records returns within a single API call.
-                    Defaults to 30. Max of 300 meetings.
+                  description: The amount of records returns within a single API call. Defaults to 30. Max of 300 meetings.
                   default: "30"
                 page_number:
                   type: string
-                  description: Current page number of returned records. Default to
-                    1.
+                  description: Current page number of returned records. Default to 1.
                   default: "1"
         required: true
       responses:
@@ -1899,32 +1826,32 @@ paths:
                 page_number: 1
                 page_size: 50
                 meetings:
-                - uuid: unique_id
-                  id: "123456789"
-                  start_url: https://zoom.us/s/123456789?zak=xxxxxx
-                  join_url: https://zoom.us/j/123456789
-                  created_at: 2012-11-25T12:00:00Z
-                  host_id: unique_id
-                  topic: Topic for this meeting
-                  type: 2
-                  start_time: 2012-11-25T12:00:00Z
-                  duration: 30
-                  timezone: America/Los_Angeles
-                  password: "123"
-                  h323_password: "123456"
-                  option_jbh: false
-                  option_start_type: video
-                  option_host_video: false
-                  option_participants_video: false
-                  option_audio: both
-                  option_enforce_login: false
-                  'option_enforce_login_domains ': ""
-                  option_alternative_hosts: ""
-                  status: 0
+                  - uuid: unique_id
+                    id: "123456789"
+                    start_url: https://zoom.us/s/123456789?zak=xxxxxx
+                    join_url: https://zoom.us/j/123456789
+                    created_at: 2012-11-25T12:00:00Z
+                    host_id: unique_id
+                    topic: Topic for this meeting
+                    type: 2
+                    start_time: 2012-11-25T12:00:00Z
+                    duration: 30
+                    timezone: America/Los_Angeles
+                    password: "123"
+                    h323_password: "123456"
+                    option_jbh: false
+                    option_start_type: video
+                    option_host_video: false
+                    option_participants_video: false
+                    option_audio: both
+                    option_enforce_login: false
+                    'option_enforce_login_domains ': ""
+                    option_alternative_hosts: ""
+                    status: 0
   /meeting/live:
     post:
       tags:
-      - Meeting
+        - Meeting
       description: |+
         Lists the live meetings on Zoom.
 
@@ -1934,8 +1861,8 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - api_key
-              - api_secret
+                - api_key
+                - api_secret
               type: object
               properties:
                 api_key:
@@ -1956,32 +1883,32 @@ paths:
                 page_number: 1
                 page_size: 50
                 meetings:
-                - uuid: unique_id
-                  id: "123456789"
-                  start_url: https://zoom.us/s/123456789?zak=xxxxxx
-                  join_url: https://zoom.us/j/123456789
-                  created_at: 2012-11-25T12:00:00Z
-                  host_id: unique_id
-                  topic: Topic for this meeting
-                  type: 2
-                  status: 0
-                  start_time: 2012-11-25T12:00:00Z
-                  duration: 30
-                  timezone: America/Los_Angeles
-                  password: "123"
-                  h323_password: "123456"
-                  option_jbh: false
-                  option_start_type: video
-                  option_host_video: false
-                  option_participants_video: false
-                  option_audio: both
-                  option_enforce_login: false
-                  'option_enforce_login_domains ': ""
-                  option_alternative_hosts: ""
+                  - uuid: unique_id
+                    id: "123456789"
+                    start_url: https://zoom.us/s/123456789?zak=xxxxxx
+                    join_url: https://zoom.us/j/123456789
+                    created_at: 2012-11-25T12:00:00Z
+                    host_id: unique_id
+                    topic: Topic for this meeting
+                    type: 2
+                    status: 0
+                    start_time: 2012-11-25T12:00:00Z
+                    duration: 30
+                    timezone: America/Los_Angeles
+                    password: "123"
+                    h323_password: "123456"
+                    option_jbh: false
+                    option_start_type: video
+                    option_host_video: false
+                    option_participants_video: false
+                    option_audio: both
+                    option_enforce_login: false
+                    'option_enforce_login_domains ': ""
+                    option_alternative_hosts: ""
   /meeting/register:
     post:
       tags:
-      - Meeting
+        - Meeting
       description: |+
         Register for a meeting.
 
@@ -1991,10 +1918,10 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - email
-              - first_name
-              - id
-              - last_name
+                - email
+                - first_name
+                - id
+                - last_name
               type: object
               properties:
                 id:
@@ -2017,8 +1944,7 @@ paths:
                   description: City.
                 country:
                   type: string
-                  description: Country. For this parameter value please refer to the
-                    id value in country list JSON file
+                  description: Country. For this parameter value please refer to the id value in country list JSON file
                 zip:
                   type: string
                   description: Zip/Postal Code.
@@ -2039,35 +1965,25 @@ paths:
                   description: Job Title.
                 purchasing_time_frame:
                   type: string
-                  description: "Purchasing Time Frame, should be \"Within a month\"\
-                    , \"1-3 months\", \"4-6 months\", \"More than 6 months\", \"No\
-                    \ timeframe\"."
+                  description: "Purchasing Time Frame, should be \"Within a month\", \"1-3 months\", \"4-6 months\", \"More than 6 months\", \"No timeframe\"."
                 role_in_purchase_process:
                   type: string
-                  description: "Role in Purchase Process, should be \"Decision Maker\"\
-                    , \"Evaluator/Recommender\", \"Influencer\", \"Not involved\"."
+                  description: "Role in Purchase Process, should be \"Decision Maker\", \"Evaluator/Recommender\", \"Influencer\", \"Not involved\"."
                 no_of_employees:
                   type: string
-                  description: "Number of Employees, should be \"1-20\", \"21-50\"\
-                    , \"51-100\", \"101-250\", \"251-500\", \"501-1,000\", \"1,001-5,000\"\
-                    , \"5,001-10,000\", \"More than 10,000\"."
+                  description: "Number of Employees, should be \"1-20\", \"21-50\", \"51-100\", \"101-250\", \"251-500\", \"501-1,000\", \"1,001-5,000\", \"5,001-10,000\", \"More than 10,000\"."
                 comments:
                   type: string
                   description: Questions & Comments.
                 custom_questions:
                   type: string
-                  description: "Custom Questions, should be JSON format: [{\"title\"\
-                    :\"field_name1\",\"value\":\"xxx\"},{\"title\":\"field_name2\"\
-                    ,\"value\":\"xxx\"}]."
+                  description: "Custom Questions, should be JSON format: [{\"title\":\"field_name1\",\"value\":\"xxx\"},{\"title\":\"field_name2\",\"value\":\"xxx\"}]."
                 language:
                   type: string
-                  description: "Language setting of email. This value should be \"\
-                    en-US\", \"en\", \"zh-CN\", \"zh\", \"en-ES\", \"es\", \"fr-FR\"\
-                    \ or \"fr\"."
+                  description: "Language setting of email. This value should be \"en-US\", \"en\", \"zh-CN\", \"zh\", \"en-ES\", \"es\", \"fr-FR\" or \"fr\"."
                 occurrence_ids:
                   type: string
-                  description: "Occurrence IDs, could get this value from Meeting\
-                    \ Get API."
+                  description: "Occurrence IDs, could get this value from Meeting Get API."
         required: true
       responses:
         "200":
@@ -2083,7 +1999,7 @@ paths:
   /meeting/update:
     post:
       tags:
-      - Meeting
+        - Meeting
       description: |+
         Update meeting info on Zoom via meeting ID.
 
@@ -2093,9 +2009,9 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - host_id
-              - id
-              - type
+                - host_id
+                - id
+                - type
               type: object
               properties:
                 id:
@@ -2103,61 +2019,45 @@ paths:
                   description: Meeting ID.
                 host_id:
                   type: string
-                  description: "Meeting host user ID. Can be any user under this account.\
-                    \ Used to retrieve a meeting, cannot be updated."
+                  description: "Meeting host user ID. Can be any user under this account. Used to retrieve a meeting, cannot be updated."
                 type:
                   type: string
-                  description: "Meeting type: 1 means instant meeting (Only used for\
-                    \ host to start it as soon as created). 2 means normal scheduled\
-                    \ meeting. 3 means a recurring meeting with no fixed time. 8 means\
-                    \ a recurring meeting with fixed time."
+                  description: "Meeting type: 1 means instant meeting (Only used for host to start it as soon as created). 2 means normal scheduled meeting. 3 means a recurring meeting with no fixed time. 8 means a recurring meeting with fixed time."
                   default: "2"
                 topic:
                   type: string
                   description: Meeting topic. Max of 300 characters.
                 start_time:
                   type: string
-                  description: "Meeting start time in ISO datetime format. For scheduled\
-                    \ meeting only. Should be UTC time, such as 2012-11-25T12:00:00Z."
+                  description: "Meeting start time in ISO datetime format. For scheduled meeting only. Should be UTC time, such as 2012-11-25T12:00:00Z."
                 duration:
                   type: string
                   description: Meeting duration (minutes). For scheduled meeting only.
                 timezone:
                   type: string
-                  description: "Timezone to format start_time, like \"America/Los_Angeles\"\
-                    . For scheduled meeting only. For this parameter value please\
-                    \ refer to the id value in timezone list JSON file."
+                  description: "Timezone to format start_time, like \"America/Los_Angeles\". For scheduled meeting only. For this parameter value please refer to the id value in timezone list JSON file."
                 password:
                   type: string
-                  description: "Meeting password. Password may only contain the following\
-                    \ characters: [a-z A-Z 0-9 @ - _"
+                  description: "Meeting password. Password may only contain the following characters: [a-z A-Z 0-9 @ - _"
                   default: ' 10 characters'
                 recurrence:
                   type: string
-                  description: "Recurrence Meeting Settings. For recurring meeting\
-                    \ with fixed time only. See [Recurrence Object](#recurrence-object)\
-                    \ for more details."
+                  description: "Recurrence Meeting Settings. For recurring meeting with fixed time only. See [Recurrence Object](#recurrence-object) for more details."
                 option_registration:
                   type: boolean
                   description: Registration required.
                   default: false
                 registration_type:
                   type: string
-                  description: "Registration type. 1 means Attendees register once\
-                    \ and can attend any of the occurrences, 2 means Attendees need\
-                    \ to register for each occurrence to attend, 3 means Attendees\
-                    \ register once and can choose one or more occurrences to attend.\
-                    \ For recurring meeting with fixed time only."
+                  description: "Registration type. 1 means Attendees register once and can attend any of the occurrences, 2 means Attendees need to register for each occurrence to attend, 3 means Attendees register once and can choose one or more occurrences to attend. For recurring meeting with fixed time only."
                   default: "1"
                 option_jbh:
                   type: boolean
-                  description: Join meeting before host start the meeting. Only for
-                    scheduled or recurring meetings.
+                  description: Join meeting before host start the meeting. Only for scheduled or recurring meetings.
                   default: false
                 option_start_type:
                   type: string
-                  description: Meeting start type. Can be "video" or "screen_share".
-                    (deprecated)
+                  description: Meeting start type. Can be "video" or "screen_share". (deprecated)
                   default: video
                 option_host_video:
                   type: boolean
@@ -2177,8 +2077,7 @@ paths:
                   default: false
                 option_audio:
                   type: string
-                  description: "Meeting audio options. Can be \"both\", \"telephony\"\
-                    , \"voip\"."
+                  description: "Meeting audio options. Can be \"both\", \"telephony\", \"voip\"."
                   default: both
                 option_enforce_login:
                   type: boolean
@@ -2186,8 +2085,7 @@ paths:
                   default: false
                 option_enforce_login_domains:
                   type: string
-                  description: Only signed-in users with specified domains can join
-                    meetings.
+                  description: Only signed-in users with specified domains can join meetings.
                 option_alternative_hosts:
                   type: string
                   description: Alternative hosts.
@@ -2200,8 +2098,7 @@ paths:
                   default: false
                 option_auto_record_type:
                   type: string
-                  description: "Automatically record type. Can be \"local\", \"cloud\"\
-                    \ or \"none\"."
+                  description: "Automatically record type. Can be \"local\", \"cloud\" or \"none\"."
                   default: local
         required: true
       responses:
@@ -2215,7 +2112,7 @@ paths:
   /metrics/crc:
     post:
       tags:
-      - Dashboard
+        - Dashboard
       description: |+
         Get CRC Port usage hour by hour for a specified time period.
 
@@ -2225,8 +2122,8 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - from
-              - to
+                - from
+                - to
               type: object
               properties:
                 from:
@@ -2245,15 +2142,15 @@ paths:
                 from: 2015-03-12
                 to: 2015-03-12
                 crc_ports_usage:
-                - date_time: 2015-03-12
-                  crc_ports_hour_usage:
-                  - hour: "00"
-                    max_usage: 1
-                    total_usage: 3
+                  - date_time: 2015-03-12
+                    crc_ports_hour_usage:
+                      - hour: "00"
+                        max_usage: 1
+                        total_usage: 3
   /metrics/im:
     post:
       tags:
-      - Dashboard
+        - Dashboard
       description: |+
         Get statistics of Zoom IM
 
@@ -2263,8 +2160,8 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - from
-              - to
+                - from
+                - to
               type: object
               properties:
                 from:
@@ -2275,13 +2172,11 @@ paths:
                   description: End date.
                 page_size:
                   type: string
-                  description: The amount of records returns within a single API call.
-                    Defaults to 30. Max of 30 records.
+                  description: The amount of records returns within a single API call. Defaults to 30. Max of 30 records.
                   default: "30"
                 page_number:
                   type: string
-                  description: Current page number of returned records. Default to
-                    1.
+                  description: Current page number of returned records. Default to 1.
                   default: "1"
         required: true
       responses:
@@ -2297,29 +2192,29 @@ paths:
                 page_size: 30
                 total_records: 10
                 users:
-                - user_id: unique_id
-                  user_name: Zoomie Userton
-                  email: email_address
-                  total_send: 0
-                  total_receive: 0
-                  group_send: 0
-                  group_receive: 0
-                  calls_send: 0
-                  calls_receive: 0
-                  files_send: 0
-                  files_receive: 0
-                  images_send: 0
-                  images_receive: 0
-                  voice_send: 0
-                  voice_receive: 0
-                  videos_send: 0
-                  videos_receive: 0
-                  emoji_send: 0
-                  emoji_receive: 0
+                  - user_id: unique_id
+                    user_name: Zoomie Userton
+                    email: email_address
+                    total_send: 0
+                    total_receive: 0
+                    group_send: 0
+                    group_receive: 0
+                    calls_send: 0
+                    calls_receive: 0
+                    files_send: 0
+                    files_receive: 0
+                    images_send: 0
+                    images_receive: 0
+                    voice_send: 0
+                    voice_receive: 0
+                    videos_send: 0
+                    videos_receive: 0
+                    emoji_send: 0
+                    emoji_receive: 0
   /metrics/meetingdetail:
     post:
       tags:
-      - Dashboard
+        - Dashboard
       description: |+
         Get live and past meeting details
 
@@ -2329,26 +2224,23 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - meeting_id
-              - type
+                - meeting_id
+                - type
               type: object
               properties:
                 meeting_id:
                   type: string
-                  description: "The meeting ID Example: ucc69C82Q5mTNyCRWE29Aw== Or\
-                    \ B9C73AF4-2F36-4399-9337-2091584DBD03"
+                  description: "The meeting ID Example: ucc69C82Q5mTNyCRWE29Aw== Or B9C73AF4-2F36-4399-9337-2091584DBD03"
                 type:
                   type: string
                   description: Meeting type. 1 means live meeting. 2 means past meeting.
                 page_size:
                   type: string
-                  description: The amount of records returns within a single API call.
-                    Defaults to 30. Max of 100 records.
+                  description: The amount of records returns within a single API call. Defaults to 30. Max of 100 records.
                   default: "30"
                 page_number:
                   type: string
-                  description: Current page number of returned records. Default to
-                    1.
+                  description: Current page number of returned records. Default to 1.
                   default: "1"
         required: true
       responses:
@@ -2377,24 +2269,24 @@ paths:
                 page_number: 1
                 page_size: 30
                 participants:
-                - id: unique_id
-                  user_id: unique_id
-                  user_name: Zoomie Userton
-                  device: Mac
-                  ip_address: 117.83.222.228
-                  cn: CN
-                  city: Nanjing
-                  network_type: Wifi
-                  join_time: 2017-02-18T01:44:47Z
-                  leave_time: 2017-02-18T01:45:58Z
-                  share_application: true
-                  share_desktop: true
-                  share_whiteboard: true
-                  recording: true
+                  - id: unique_id
+                    user_id: unique_id
+                    user_name: Zoomie Userton
+                    device: Mac
+                    ip_address: 117.83.222.228
+                    cn: CN
+                    city: Nanjing
+                    network_type: Wifi
+                    join_time: 2017-02-18T01:44:47Z
+                    leave_time: 2017-02-18T01:45:58Z
+                    share_application: true
+                    share_desktop: true
+                    share_whiteboard: true
+                    recording: true
   /metrics/meetings:
     post:
       tags:
-      - Dashboard
+        - Dashboard
       description: |+
         Get Live Meetings and past meetings for a specified period
 
@@ -2404,15 +2296,14 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - from
-              - to
-              - type
+                - from
+                - to
+                - type
               type: object
               properties:
                 type:
                   type: string
-                  description: Meeting list type. 1 means live meetings. 2 means past
-                    meetings.
+                  description: Meeting list type. 1 means live meetings. 2 means past meetings.
                   default: "1"
                 from:
                   type: string
@@ -2422,13 +2313,11 @@ paths:
                   description: End date. Only for past meetings.
                 page_size:
                   type: string
-                  description: The amount of records returns within a single API call.
-                    Defaults to 30. Max of 100 meetings.
+                  description: The amount of records returns within a single API call. Defaults to 30. Max of 100 meetings.
                   default: "30"
                 page_number:
                   type: string
-                  description: Current page number of returned records. Default to
-                    1.
+                  description: Current page number of returned records. Default to 1.
                   default: "1"
         required: true
       responses:
@@ -2445,25 +2334,25 @@ paths:
                 total_records: 49
                 type: Past Meetings
                 meetings:
-                - uuid: unique_id
-                  id: "123456789"
-                  host: Zoomie Userton
-                  email: email_address
-                  user_type: Pro
-                  start_time: 2015-08-29T05:36:56Z
-                  end_time: 2015-08-29T06:36:56Z
-                  duration: 4 mins
-                  participants: 2
-                  has_pstn: false
-                  has_voip: true
-                  has_3rd_party_audio: false
-                  has_video: true
-                  has_screen_share: false
-                  recording: 0
+                  - uuid: unique_id
+                    id: "123456789"
+                    host: Zoomie Userton
+                    email: email_address
+                    user_type: Pro
+                    start_time: 2015-08-29T05:36:56Z
+                    end_time: 2015-08-29T06:36:56Z
+                    duration: 4 mins
+                    participants: 2
+                    has_pstn: false
+                    has_voip: true
+                    has_3rd_party_audio: false
+                    has_video: true
+                    has_screen_share: false
+                    recording: 0
   /metrics/qos:
     post:
       tags:
-      - Dashboard
+        - Dashboard
       description: |+
         Get the users quality of service in a Zoom Meeting
 
@@ -2473,8 +2362,8 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - meeting_id
-              - type
+                - meeting_id
+                - type
               type: object
               properties:
                 meeting_id:
@@ -2488,13 +2377,11 @@ paths:
                   description: The user ID to get user qos.
                 page_size:
                   type: string
-                  description: The amount of records returns within a single API call.
-                    Defaults to 10. Max of 10 records.
+                  description: The amount of records returns within a single API call. Defaults to 10. Max of 10 records.
                   default: "10"
                 page_number:
                   type: string
-                  description: Current page number of returned records. Default to
-                    1.
+                  description: Current page number of returned records. Default to 1.
                   default: "1"
         required: true
       responses:
@@ -2512,60 +2399,60 @@ paths:
                 city: Nanjing
                 version: 3.5.35288.1217
                 user_qos:
-                - dateTime: 2015-08-30T06:40:56Z
-                  audio_input:
-                    bitrate: 29 kbps
-                    latency: 39 ms
-                    jitter: 11 ms
-                    avg_loss: 2.5%
-                    max_loss: 5.0%
-                  audio_output:
-                    bitrate: ""
-                    latency: ""
-                    jitter: ""
-                    avg_loss: ""
-                    max_loss: ""
-                  video_input:
-                    bitrate: 77 kbps
-                    latency: 84 ms
-                    jitter: 4 ms
-                    avg_loss: 28.3%
-                    max_loss: 28.3%
-                    resolution: 480*270
-                    frame_rate: 3 fps
-                  video_output:
-                    bitrate: ""
-                    latency: ""
-                    jitter: ""
-                    avg_loss: ""
-                    max_loss: ""
-                    resolution: ""
-                    frame_rate: ""
-                  as_input:
-                    bitrate: ""
-                    latency: ""
-                    jitter: ""
-                    avg_loss: ""
-                    max_loss: ""
-                    resolution: ""
-                    frame_rate: ""
-                  as_output:
-                    bitrate: ""
-                    latency: ""
-                    jitter: ""
-                    avg_loss: ""
-                    max_loss: ""
-                    resolution: ""
-                    frame_rate: ""
-                  cpu_usage:
-                    zoom_min_cpu_usage: 1%
-                    zoom_avg_cpu_usage: 3%
-                    zoom_max_cpu_usage: 5%
-                    system_max_cpu_usage: 20%
+                  - dateTime: 2015-08-30T06:40:56Z
+                    audio_input:
+                      bitrate: 29 kbps
+                      latency: 39 ms
+                      jitter: 11 ms
+                      avg_loss: 2.5%
+                      max_loss: 5.0%
+                    audio_output:
+                      bitrate: ""
+                      latency: ""
+                      jitter: ""
+                      avg_loss: ""
+                      max_loss: ""
+                    video_input:
+                      bitrate: 77 kbps
+                      latency: 84 ms
+                      jitter: 4 ms
+                      avg_loss: 28.3%
+                      max_loss: 28.3%
+                      resolution: 480*270
+                      frame_rate: 3 fps
+                    video_output:
+                      bitrate: ""
+                      latency: ""
+                      jitter: ""
+                      avg_loss: ""
+                      max_loss: ""
+                      resolution: ""
+                      frame_rate: ""
+                    as_input:
+                      bitrate: ""
+                      latency: ""
+                      jitter: ""
+                      avg_loss: ""
+                      max_loss: ""
+                      resolution: ""
+                      frame_rate: ""
+                    as_output:
+                      bitrate: ""
+                      latency: ""
+                      jitter: ""
+                      avg_loss: ""
+                      max_loss: ""
+                      resolution: ""
+                      frame_rate: ""
+                    cpu_usage:
+                      zoom_min_cpu_usage: 1%
+                      zoom_avg_cpu_usage: 3%
+                      zoom_max_cpu_usage: 5%
+                      system_max_cpu_usage: 20%
   /metrics/webinardetail:
     post:
       tags:
-      - Dashboard
+        - Dashboard
       description: |+
         Get live and past webinar details
 
@@ -2575,26 +2462,23 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - meeting_id
-              - type
+                - meeting_id
+                - type
               type: object
               properties:
                 meeting_id:
                   type: string
-                  description: "The meeting ID Example: ucc69C82Q5mTNyCRWE29Aw== Or\
-                    \ B9C73AF4-2F36-4399-9337-2091584DBD03"
+                  description: "The meeting ID Example: ucc69C82Q5mTNyCRWE29Aw== Or B9C73AF4-2F36-4399-9337-2091584DBD03"
                 type:
                   type: string
                   description: Meeting type. 1 means live webinar. 2 means past webinar.
                 page_size:
                   type: string
-                  description: The amount of records returns within a single API call.
-                    Defaults to 30. Max of 100 records.
+                  description: The amount of records returns within a single API call. Defaults to 30. Max of 100 records.
                   default: "30"
                 page_number:
                   type: string
-                  description: Current page number of returned records. Default to
-                    1.
+                  description: Current page number of returned records. Default to 1.
                   default: "1"
         required: true
       responses:
@@ -2623,24 +2507,24 @@ paths:
                 page_number: 1
                 page_size: 30
                 participants:
-                - id: unique_id
-                  user_id: unique_id
-                  user_name: Zoomie Userton
-                  device: Mac
-                  ip_address: 117.83.222.228
-                  cn: CN
-                  city: Nanjing
-                  network_type: Wifi
-                  join_time: 2017-02-18T01:44:47Z
-                  leave_time: 2017-02-18T01:45:58Z
-                  share_application: true
-                  share_desktop: true
-                  share_whiteboard: true
-                  recording: true
+                  - id: unique_id
+                    user_id: unique_id
+                    user_name: Zoomie Userton
+                    device: Mac
+                    ip_address: 117.83.222.228
+                    cn: CN
+                    city: Nanjing
+                    network_type: Wifi
+                    join_time: 2017-02-18T01:44:47Z
+                    leave_time: 2017-02-18T01:45:58Z
+                    share_application: true
+                    share_desktop: true
+                    share_whiteboard: true
+                    recording: true
   /metrics/webinars:
     post:
       tags:
-      - Dashboard
+        - Dashboard
       description: |+
         Get live webinars and past webinars for a specified period.
 
@@ -2650,15 +2534,14 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - from
-              - to
-              - type
+                - from
+                - to
+                - type
               type: object
               properties:
                 type:
                   type: string
-                  description: Webinar list type. 1 means live webinars. 2 means past
-                    webinars.
+                  description: Webinar list type. 1 means live webinars. 2 means past webinars.
                   default: "1"
                 from:
                   type: string
@@ -2668,13 +2551,11 @@ paths:
                   description: End date. Only for past webinars.
                 page_size:
                   type: string
-                  description: The amount of records returns within a single API call.
-                    Defaults to 30. Max of 100 webinars.
+                  description: The amount of records returns within a single API call. Defaults to 30. Max of 100 webinars.
                   default: "30"
                 page_number:
                   type: string
-                  description: Current page number of returned records. Default to
-                    1.
+                  description: Current page number of returned records. Default to 1.
                   default: "1"
         required: true
       responses:
@@ -2691,25 +2572,25 @@ paths:
                 total_records: 49
                 type: Past Webinars
                 meetings:
-                - uuid: unique_id
-                  id: "123456789"
-                  host: Zoomie Userton
-                  email: email_address
-                  user_type: Pro
-                  start_time: 2015-08-29T05:36:56Z
-                  end_time: 2015-08-29T06:36:56Z
-                  duration: 4 mins
-                  participants: 2
-                  has_pstn: false
-                  has_voip: true
-                  has_3rd_party_audio: false
-                  has_video: true
-                  has_screen_share: false
-                  recording: 0
+                  - uuid: unique_id
+                    id: "123456789"
+                    host: Zoomie Userton
+                    email: email_address
+                    user_type: Pro
+                    start_time: 2015-08-29T05:36:56Z
+                    end_time: 2015-08-29T06:36:56Z
+                    duration: 4 mins
+                    participants: 2
+                    has_pstn: false
+                    has_voip: true
+                    has_3rd_party_audio: false
+                    has_video: true
+                    has_screen_share: false
+                    recording: 0
   /metrics/zoomroomdetail:
     post:
       tags:
-      - Dashboard
+        - Dashboard
       description: |+
         Get a Zoom Room on Zoom via Zoom ID, return the Zoom Room info.
 
@@ -2719,15 +2600,14 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - from
-              - id
-              - to
+                - from
+                - id
+                - to
               type: object
               properties:
                 id:
                   type: string
-                  description: "The zoom room ID. Example: ucc69C82Q5mTNyCRWE29Aw==\
-                    \ Or B9C73AF4-2F36-4399-9337-2091584DBD03"
+                  description: "The zoom room ID. Example: ucc69C82Q5mTNyCRWE29Aw== Or B9C73AF4-2F36-4399-9337-2091584DBD03"
                 from:
                   type: string
                   description: Start date.
@@ -2736,13 +2616,11 @@ paths:
                   description: End date.
                 page_size:
                   type: string
-                  description: The amount of records returns within a single API call.
-                    Defaults to 30. Max of 30 records.
+                  description: The amount of records returns within a single API call. Defaults to 30. Max of 30 records.
                   default: "30"
                 page_number:
                   type: string
-                  description: Current page number of returned records. Default to
-                    1.
+                  description: Current page number of returned records. Default to 1.
                   default: "1"
         required: true
       responses:
@@ -2788,25 +2666,25 @@ paths:
                   has_screen_share: false
                   recording: 0
                 past_meetings:
-                - uuid: unique_id
-                  id: "123456789"
-                  host: Zoomie Userton
-                  email: email_address
-                  user_type: ""
-                  start_time: ""
-                  end_time: ""
-                  duration: ""
-                  participants: 1
-                  has_pstn: false
-                  has_voip: false
-                  has_3rd_party_audio: false
-                  has_video: false
-                  has_screen_share: false
-                  recording: 0
+                  - uuid: unique_id
+                    id: "123456789"
+                    host: Zoomie Userton
+                    email: email_address
+                    user_type: ""
+                    start_time: ""
+                    end_time: ""
+                    duration: ""
+                    participants: 1
+                    has_pstn: false
+                    has_voip: false
+                    has_3rd_party_audio: false
+                    has_video: false
+                    has_screen_share: false
+                    recording: 0
   /metrics/zoomrooms:
     post:
       tags:
-      - Dashboard
+        - Dashboard
       description: |+
         List all Zoom Rooms on Zoom.
 
@@ -2819,13 +2697,11 @@ paths:
               properties:
                 page_size:
                   type: string
-                  description: The amount of records returns within a single API call.
-                    Defaults to 30. Max of 30 records.
+                  description: The amount of records returns within a single API call. Defaults to 30. Max of 30 records.
                   default: "30"
                 page_number:
                   type: string
-                  description: Current page number of returned records. Default to
-                    1.
+                  description: Current page number of returned records. Default to 1.
                   default: "1"
       responses:
         "200":
@@ -2838,23 +2714,23 @@ paths:
                 page_size: 30
                 total_records: 2
                 zoom_rooms:
-                - id: unique_id
-                  room_name: zoom room1
-                  email: zoomroom1@zoom.us
-                  account_type: Work Email
-                  passcode: "123"
-                  status: Available
-                  messages:
-                    last_started_time: ""
-                    running_time: ""
-                    selected_microphone: ""
-                    selected_speaker: ""
-                    selected_camera: ""
-                  meeting_id: ""
+                  - id: unique_id
+                    room_name: zoom room1
+                    email: zoomroom1@zoom.us
+                    account_type: Work Email
+                    passcode: "123"
+                    status: Available
+                    messages:
+                      last_started_time: ""
+                      running_time: ""
+                      selected_microphone: ""
+                      selected_speaker: ""
+                      selected_camera: ""
+                    meeting_id: ""
   /recording/delete:
     post:
       tags:
-      - Cloud Recording
+        - Cloud Recording
       description: |+
         Delete recorded meeting either on Zoom cloud or on-premise.
 
@@ -2864,17 +2740,15 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - meeting_id
+                - meeting_id
               type: object
               properties:
                 meeting_id:
                   type: string
-                  description: "The meeting ID. Example: ucc69C82Q5mTNyCRWE29Aw==\
-                    \ Or B9C73AF4-2F36-4399-9337-2091584DBD03"
+                  description: "The meeting ID. Example: ucc69C82Q5mTNyCRWE29Aw== Or B9C73AF4-2F36-4399-9337-2091584DBD03"
                 file_id:
                   type: string
-                  description: "The file ID, if given this, will only delete this\
-                    \ one file, if not given this, will delete all files of the meeting"
+                  description: "The file ID, if given this, will only delete this one file, if not given this, will delete all files of the meeting"
         required: true
       responses:
         "200":
@@ -2887,7 +2761,7 @@ paths:
   /recording/get:
     post:
       tags:
-      - Cloud Recording
+        - Cloud Recording
       description: |+
         Get the recorded meeting on either Zoom cloud or on-prem.
 
@@ -2897,7 +2771,7 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - meeting_id
+                - meeting_id
               type: object
               properties:
                 meeting_id:
@@ -2921,18 +2795,18 @@ paths:
                 total_size: 686496
                 recording_count: 3
                 recording_files:
-                - id: unique_id
-                  meeting_id: unique_id
-                  recording_start: 2015-04-13T01:06:36Z
-                  recording_end: 2015-04-13T01:06:47Z
-                  file_type: MP4
-                  file_size: 438482
-                  play_url: https://brand.zoom.us/recording/play/HzMyuI23bqxlJLVJLrww3L9ZuFeZEvYtG0vQ6pHhp6Twr6GPjX4Qks_CJak7jrU2
-                  download_url: https://brand.zoom.us/recording/download/HzMyuI23bqxlJLVJLrww3L9ZuFeZEvYtG0vQ6pHhp6Twr6GPjX4Qks_CJak7jrU2
+                  - id: unique_id
+                    meeting_id: unique_id
+                    recording_start: 2015-04-13T01:06:36Z
+                    recording_end: 2015-04-13T01:06:47Z
+                    file_type: MP4
+                    file_size: 438482
+                    play_url: https://brand.zoom.us/recording/play/HzMyuI23bqxlJLVJLrww3L9ZuFeZEvYtG0vQ6pHhp6Twr6GPjX4Qks_CJak7jrU2
+                    download_url: https://brand.zoom.us/recording/download/HzMyuI23bqxlJLVJLrww3L9ZuFeZEvYtG0vQ6pHhp6Twr6GPjX4Qks_CJak7jrU2
   /recording/list:
     post:
       tags:
-      - Cloud Recording
+        - Cloud Recording
       description: |+
         List all the cloud recording meetings on Zoom.
 
@@ -2942,7 +2816,7 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - host_id
+                - host_id
               type: object
               properties:
                 host_id:
@@ -2953,22 +2827,17 @@ paths:
                   description: The meeting number.
                 from:
                   type: string
-                  description: "The meeting start time after this date, MM/dd/yyyy\
-                    \ hh:mm a. For example: 11/05/2014 09:05 pm. Use the host’s time\
-                    \ zone, if host has not set time zone, will use GMT."
+                  description: "The meeting start time after this date, MM/dd/yyyy hh:mm a. For example: 11/05/2014 09:05 pm. Use the host’s time zone, if host has not set time zone, will use GMT."
                 to:
                   type: string
-                  description: "The meeting start time before this date, MM/dd/yyyy\
-                    \ hh:mm a."
+                  description: "The meeting start time before this date, MM/dd/yyyy hh:mm a."
                 page_size:
                   type: string
-                  description: The amount of records returns within a single API call.
-                    Defaults to 30. Max of 300 meetings.
+                  description: The amount of records returns within a single API call. Defaults to 30. Max of 300 meetings.
                   default: "30"
                 page_number:
                   type: string
-                  description: Current page number of returned records. Default to
-                    1.
+                  description: Current page number of returned records. Default to 1.
                   default: "1"
         required: true
       responses:
@@ -2982,30 +2851,30 @@ paths:
                 page_size: 15
                 total_records: 1
                 meetings:
-                - uuid: unique_id
-                  meeting_number: "123456789"
-                  host_id: unique_id
-                  account_id: unique_id
-                  topic: Meeting Topic
-                  start_time: 2014-11-06T04:10:10Z
-                  timezone: America/Los_Angeles
-                  duration: 999
-                  total_size: 4324324324
-                  recording_count: 1
-                  recording_files:
-                  - id: unique_id
-                    meeting_id: unique_id
-                    recording_start: 2014-11-06T04:14:10Z
-                    recording_end: 2014-11-06T04:24:10Z
-                    file_type: M4A
-                    file_size: 432432
-                    status: completed
-                    play_url: https://brand.zoom.us/recording/play/HzMyuI23bqxlJLVJLrww3L9ZuFeZEvYtG0vQ6pHhp6Twr6GPjX4Qks_CJak7jrU2
-                    download_url: https://brand.zoom.us/recording/download/HzMyuI23bqxlJLVJLrww3L9ZuFeZEvYtG0vQ6pHhp6Twr6GPjX4Qks_CJak7jrU2
+                  - uuid: unique_id
+                    meeting_number: "123456789"
+                    host_id: unique_id
+                    account_id: unique_id
+                    topic: Meeting Topic
+                    start_time: 2014-11-06T04:10:10Z
+                    timezone: America/Los_Angeles
+                    duration: 999
+                    total_size: 4324324324
+                    recording_count: 1
+                    recording_files:
+                      - id: unique_id
+                        meeting_id: unique_id
+                        recording_start: 2014-11-06T04:14:10Z
+                        recording_end: 2014-11-06T04:24:10Z
+                        file_type: M4A
+                        file_size: 432432
+                        status: completed
+                        play_url: https://brand.zoom.us/recording/play/HzMyuI23bqxlJLVJLrww3L9ZuFeZEvYtG0vQ6pHhp6Twr6GPjX4Qks_CJak7jrU2
+                        download_url: https://brand.zoom.us/recording/download/HzMyuI23bqxlJLVJLrww3L9ZuFeZEvYtG0vQ6pHhp6Twr6GPjX4Qks_CJak7jrU2
   /report/getaccountreport:
     post:
       tags:
-      - Report
+        - Report
       description: |+
         Get account report for a specified period.
 
@@ -3015,8 +2884,8 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - from
-              - to
+                - from
+                - to
               type: object
               properties:
                 from:
@@ -3027,13 +2896,11 @@ paths:
                   description: End date.
                 page_size:
                   type: string
-                  description: The amount of records returns within a single API call.
-                    Defaults to 30. Max of 300 meetings.
+                  description: The amount of records returns within a single API call. Defaults to 30. Max of 300 meetings.
                   default: "30"
                 page_number:
                   type: string
-                  description: Current page number of returned records. Default to
-                    1.
+                  description: Current page number of returned records. Default to 1.
                   default: "1"
         required: true
       responses:
@@ -3052,18 +2919,18 @@ paths:
                 total_participants: 100
                 total_meeting_minutes: 100
                 users:
-                - user_id: bNsPi5hCQ-qOzWn2EeCXJA
-                  email: john@sample.com
-                  type: 2
-                  meetings: 10
-                  participants: 56
-                  meeting_minutes: 300
-                  last_client_version: 1.0.18584.0225
-                  last_login_time: 2013-02-11T08:18:09Z
+                  - user_id: bNsPi5hCQ-qOzWn2EeCXJA
+                    email: john@sample.com
+                    type: 2
+                    meetings: 10
+                    participants: 56
+                    meeting_minutes: 300
+                    last_client_version: 1.0.18584.0225
+                    last_login_time: 2013-02-11T08:18:09Z
   /report/getaudioreport:
     post:
       tags:
-      - Report
+        - Report
       description: |+
         Get user report for a specified period.
 
@@ -3077,8 +2944,8 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - from
-              - to
+                - from
+                - to
               type: object
               properties:
                 from:
@@ -3089,18 +2956,15 @@ paths:
                   description: End date.
                 type:
                   type: string
-                  description: "Audio type: 1 means Toll-free Call-in & Call-out.\
-                    \ 2 means Toll."
+                  description: "Audio type: 1 means Toll-free Call-in & Call-out. 2 means Toll."
                   default: "1"
                 page_size:
                   type: string
-                  description: The amount of records returns within a single API call.
-                    Defaults to 30. Max of 300 meetings.
+                  description: The amount of records returns within a single API call. Defaults to 30. Max of 300 meetings.
                   default: "30"
                 page_number:
                   type: string
-                  description: Current page number of returned records. Default to
-                    1.
+                  description: Current page number of returned records. Default to 1.
                   default: "1"
         required: true
       responses:
@@ -3116,20 +2980,20 @@ paths:
                 page_size: 30
                 total_records: 1
                 telephony_usage:
-                - meeting_id: 2932547621
-                  phone_number: +86 8208
-                  type: call-out
-                  host_name: test
-                  host_email: zoom.test@zoom.us
-                  department: ""
-                  start_time: 2016-01-12T02:25:34Z
-                  end_time: 2016-01-12T02:26:48Z
-                  duration: 2
-                  total: 0.12
+                  - meeting_id: 2932547621
+                    phone_number: +86 8208
+                    type: call-out
+                    host_name: test
+                    host_email: zoom.test@zoom.us
+                    department: ""
+                    start_time: 2016-01-12T02:25:34Z
+                    end_time: 2016-01-12T02:26:48Z
+                    duration: 2
+                    total: 0.12
   /report/getdailyreport:
     post:
       tags:
-      - Report
+        - Report
       description: |+
         Get daily report for one month, can only get daily report for recent 3 months.
 
@@ -3139,8 +3003,8 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - month
-              - year
+                - month
+                - year
               type: object
               properties:
                 year:
@@ -3159,15 +3023,15 @@ paths:
                 year: 2013
                 month: 5
                 dates:
-                - meetings: 0
-                  date: 2013-05-01
-                  new_user: 0
-                  participants: 0
-                  meeting_minutes: 0
+                  - meetings: 0
+                    date: 2013-05-01
+                    new_user: 0
+                    participants: 0
+                    meeting_minutes: 0
   /report/getuserreport:
     post:
       tags:
-      - Report
+        - Report
       description: |+
         Get user report for a specified period.
 
@@ -3177,9 +3041,9 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - from
-              - to
-              - user_id
+                - from
+                - to
+                - user_id
               type: object
               properties:
                 user_id:
@@ -3193,13 +3057,11 @@ paths:
                   description: End date.
                 page_size:
                   type: string
-                  description: The amount of records returns within a single API call.
-                    Defaults to 30. Max of 300 meetings.
+                  description: The amount of records returns within a single API call. Defaults to 30. Max of 300 meetings.
                   default: "30"
                 page_number:
                   type: string
-                  description: Current page number of returned records. Default to
-                    1.
+                  description: Current page number of returned records. Default to 1.
                   default: "1"
         required: true
       responses:
@@ -3215,19 +3077,19 @@ paths:
                 from: 2013-5-19
                 to: 2013-5-20
                 meetings:
-                - number: 111111111
-                  topic: Meeting Topic
-                  start_time: 2013-02-11T08:18:09Z
-                  end_time: 2013-02-11T09:18:09Z
-                  duration: 60
-                  participants:
-                  - name: John
-                    join_time: 2013-02-11T08:30:09Z
-                    leave_time: 2013-02-11T08:50:09Z
+                  - number: 111111111
+                    topic: Meeting Topic
+                    start_time: 2013-02-11T08:18:09Z
+                    end_time: 2013-02-11T09:18:09Z
+                    duration: 60
+                    participants:
+                      - name: John
+                        join_time: 2013-02-11T08:30:09Z
+                        leave_time: 2013-02-11T08:50:09Z
   /user/assistant/delete:
     post:
       tags:
-      - User
+        - User
       description: |+
         Delete a user's assistant.
 
@@ -3256,7 +3118,7 @@ paths:
   /user/assistant/set:
     post:
       tags:
-      - User
+        - User
       description: |+
         Set a user's assistant which can schedule meeting for him.
 
@@ -3266,7 +3128,7 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - assistant_email
+                - assistant_email
               type: object
               properties:
                 id:
@@ -3291,7 +3153,7 @@ paths:
   /user/autocreate:
     post:
       tags:
-      - User
+        - User
       description: |+
         Create a user on Zoom, returns the created user ID.
 
@@ -3309,20 +3171,17 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - email
-              - password
-              - type
+                - email
+                - password
+                - type
               type: object
               properties:
                 email:
                   type: string
-                  description: "A valid email address. It must be unique in Zoom service.\
-                    \ If an email address is existed, a \"user existing\" error message\
-                    \ will be return"
+                  description: "A valid email address. It must be unique in Zoom service. If an email address is existed, a \"user existing\" error message will be return"
                 type:
                   type: string
-                  description: "User’s type. 1 for basic user, 2 for pro user, 3 for\
-                    \ corp user. Basic user can host up to 40 minutes meeting"
+                  description: "User’s type. 1 for basic user, 2 for pro user, 3 for corp user. Basic user can host up to 40 minutes meeting"
                 password:
                   type: string
                   description: User's password
@@ -3358,8 +3217,7 @@ paths:
                   default: false
                 enable_auto_recording:
                   type: boolean
-                  description: "Enable automatic recording. By default, if \"enable_cloud_auto_recording\"\
-                    \ is true, it will become true"
+                  description: "Enable automatic recording. By default, if \"enable_cloud_auto_recording\" is true, it will become true"
                   default: false
                 enable_cloud_auto_recording:
                   type: boolean
@@ -3370,26 +3228,21 @@ paths:
                   description: Referral partner track ID
                 meeting_capacity:
                   type: string
-                  description: "User’s meeting capacity, 0 means following account’\
-                    s meeting capacity"
+                  description: "User’s meeting capacity, 0 means following account’s meeting capacity"
                   default: "0"
                 enable_webinar:
                   type: string
                   description: Enable webinar feature
                 webinar_capacity:
                   type: string
-                  description: "Enable webinar capacity, can be 100, 500, 1000, 3000,\
-                    \ 5000 or 10000, depends on if having related webinar capacity\
-                    \ plan subscription or not"
+                  description: "Enable webinar capacity, can be 100, 500, 1000, 3000, 5000 or 10000, depends on if having related webinar capacity plan subscription or not"
                   default: "0"
                 enable_large:
                   type: string
                   description: Enable large meting feature
                 large_capacity:
                   type: string
-                  description: "Enable large meeting capacity, can be 100, 200, 300\
-                    \ or 500, depends on if having related webinar capacity plan subscription\
-                    \ or not"
+                  description: "Enable large meeting capacity, can be 100, 200, 300 or 500, depends on if having related webinar capacity plan subscription or not"
                   default: "0"
                 disable_feedback:
                   type: boolean
@@ -3429,8 +3282,7 @@ paths:
                   default: false
                 option_enter_exit_chime_type:
                   type: string
-                  description: "Enter/exit chime type. 0 means Heard by all including\
-                    \ host and attendees, 1 means Heard by host only"
+                  description: "Enter/exit chime type. 0 means Heard by all including host and attendees, 1 means Heard by host only"
                   default: "0"
                 disable_cancel_meeting_notification:
                   type: boolean
@@ -3470,8 +3322,7 @@ paths:
                   default: false
                 enable_phone_participants_password:
                   type: boolean
-                  description: Enable Generate and require password for participants
-                    joining by phone
+                  description: Enable Generate and require password for participants joining by phone
                   default: false
                 enable_auto_delete_cmr:
                   type: boolean
@@ -3485,12 +3336,10 @@ paths:
                   description: "Department for user profile, use for repor"
                 group_id:
                   type: string
-                  description: "User Group ID. If set default user group, the parameter’\
-                    s default value is the default user group"
+                  description: "User Group ID. If set default user group, the parameter’s default value is the default user group"
                 imgroup_id:
                   type: string
-                  description: "IM Group ID. If set default im group, the parameter’\
-                    s default value is the default im group"
+                  description: "IM Group ID. If set default im group, the parameter’s default value is the default im group"
         required: true
       responses:
         "200":
@@ -3550,7 +3399,7 @@ paths:
   /user/checkemail:
     post:
       tags:
-      - User
+        - User
       description: |+
         Check if the user email exists.
 
@@ -3560,7 +3409,7 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - email
+                - email
               type: object
               properties:
                 email:
@@ -3577,7 +3426,7 @@ paths:
   /user/checkzpk:
     post:
       tags:
-      - User
+        - User
       description: |+
         Check if the zpk is expired. The zpk is used to authenticate a user.
 
@@ -3587,7 +3436,7 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - zpk
+                - zpk
               type: object
               properties:
                 zpk:
@@ -3604,7 +3453,7 @@ paths:
   /user/create:
     post:
       tags:
-      - User
+        - User
       description: |+
         Create a user on Zoom, returns the created user ID.
 
@@ -3622,19 +3471,16 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - email
-              - type
+                - email
+                - type
               type: object
               properties:
                 email:
                   type: string
-                  description: "A valid email address. It must be unique in Zoom service.\
-                    \ If an email address is existed, a \"user existing\" error message\
-                    \ will be return"
+                  description: "A valid email address. It must be unique in Zoom service. If an email address is existed, a \"user existing\" error message will be return"
                 type:
                   type: string
-                  description: "User’s type. 1 for basic user, 2 for pro user, 3 for\
-                    \ corp user. Basic user can host up to 40 minutes meeting"
+                  description: "User’s type. 1 for basic user, 2 for pro user, 3 for corp user. Basic user can host up to 40 minutes meeting"
                 first_name:
                   type: string
                   description: User's first name
@@ -3667,8 +3513,7 @@ paths:
                   default: false
                 enable_auto_recording:
                   type: boolean
-                  description: "Enable automatic recording. By default, if \"enable_cloud_auto_recording\"\
-                    \ is true, it will become true"
+                  description: "Enable automatic recording. By default, if \"enable_cloud_auto_recording\" is true, it will become true"
                   default: false
                 enable_cloud_auto_recording:
                   type: boolean
@@ -3679,26 +3524,21 @@ paths:
                   description: Referral partner track ID
                 meeting_capacity:
                   type: string
-                  description: "User’s meeting capacity, passing 0 will inherit account’\
-                    s meeting capacity"
+                  description: "User’s meeting capacity, passing 0 will inherit account’s meeting capacity"
                   default: "0"
                 enable_webinar:
                   type: string
                   description: Enable webinar feature
                 webinar_capacity:
                   type: string
-                  description: "Enable webinar capacity, can be 100, 500, 1000, 3000,\
-                    \ 5000 or 10000, depends on if having related webinar capacity\
-                    \ plan subscription or not"
+                  description: "Enable webinar capacity, can be 100, 500, 1000, 3000, 5000 or 10000, depends on if having related webinar capacity plan subscription or not"
                   default: "0"
                 enable_large:
                   type: string
                   description: Enable large meting feature
                 large_capacity:
                   type: string
-                  description: "Enable large meeting capacity, can be 100, 200, 300\
-                    \ or 500, depends on if having related webinar capacity plan subscription\
-                    \ or not"
+                  description: "Enable large meeting capacity, can be 100, 200, 300 or 500, depends on if having related webinar capacity plan subscription or not"
                   default: "0"
                 disable_feedback:
                   type: boolean
@@ -3738,8 +3578,7 @@ paths:
                   default: false
                 option_enter_exit_chime_type:
                   type: string
-                  description: "Enter/exit chime type. 0 means Heard by all including\
-                    \ host and attendees, 1 means Heard by host only"
+                  description: "Enter/exit chime type. 0 means Heard by all including host and attendees, 1 means Heard by host only"
                   default: "0"
                 disable_cancel_meeting_notification:
                   type: boolean
@@ -3779,8 +3618,7 @@ paths:
                   default: false
                 enable_phone_participants_password:
                   type: boolean
-                  description: Enable Generate and require password for participants
-                    joining by phone
+                  description: Enable Generate and require password for participants joining by phone
                   default: false
                 enable_auto_delete_cmr:
                   type: boolean
@@ -3794,12 +3632,10 @@ paths:
                   description: "Department for user profile, use for repor"
                 group_id:
                   type: string
-                  description: "User Group ID. If set default user group, the parameter’\
-                    s default value is the default user group"
+                  description: "User Group ID. If set default user group, the parameter’s default value is the default user group"
                 imgroup_id:
                   type: string
-                  description: "IM Group ID. If set default im group, the parameter’\
-                    s default value is the default im group"
+                  description: "IM Group ID. If set default im group, the parameter’s default value is the default im group"
         required: true
       responses:
         "200":
@@ -3859,7 +3695,7 @@ paths:
   /user/custcreate:
     post:
       tags:
-      - User
+        - User
       description: |+
         Create a user on Zoom, returns the created user ID.
 
@@ -3877,19 +3713,16 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - email
-              - type
+                - email
+                - type
               type: object
               properties:
                 email:
                   type: string
-                  description: "A valid email address. It must be unique in Zoom service.\
-                    \ If an email address is existed, a \"user existing\" error message\
-                    \ will be return"
+                  description: "A valid email address. It must be unique in Zoom service. If an email address is existed, a \"user existing\" error message will be return"
                 type:
                   type: string
-                  description: "User’s type. 1 for basic user, 2 for pro user, 3 for\
-                    \ corp user. Basic user can host up to 40 minutes meeting"
+                  description: "User’s type. 1 for basic user, 2 for pro user, 3 for corp user. Basic user can host up to 40 minutes meeting"
                 first_name:
                   type: string
                   description: User's first name
@@ -3922,8 +3755,7 @@ paths:
                   default: false
                 enable_auto_recording:
                   type: boolean
-                  description: "Enable automatic recording. By default, if \"enable_cloud_auto_recording\"\
-                    \ is true, it will become true"
+                  description: "Enable automatic recording. By default, if \"enable_cloud_auto_recording\" is true, it will become true"
                   default: false
                 enable_cloud_auto_recording:
                   type: boolean
@@ -3934,26 +3766,21 @@ paths:
                   description: Referral partner track ID
                 meeting_capacity:
                   type: string
-                  description: "User’s meeting capacity, 0 means following account’\
-                    s meeting capacity"
+                  description: "User’s meeting capacity, 0 means following account’s meeting capacity"
                   default: "0"
                 enable_webinar:
                   type: string
                   description: Enable webinar feature
                 webinar_capacity:
                   type: string
-                  description: "Enable webinar capacity, can be 100, 500, 1000, 3000,\
-                    \ 5000 or 10000, depends on if having related webinar capacity\
-                    \ plan subscription or not"
+                  description: "Enable webinar capacity, can be 100, 500, 1000, 3000, 5000 or 10000, depends on if having related webinar capacity plan subscription or not"
                   default: "0"
                 enable_large:
                   type: string
                   description: Enable large meting feature
                 large_capacity:
                   type: string
-                  description: "Enable large meeting capacity, can be 100, 200, 300\
-                    \ or 500, depends on if having related webinar capacity plan subscription\
-                    \ or not"
+                  description: "Enable large meeting capacity, can be 100, 200, 300 or 500, depends on if having related webinar capacity plan subscription or not"
                   default: "0"
                 disable_feedback:
                   type: boolean
@@ -3993,8 +3820,7 @@ paths:
                   default: false
                 option_enter_exit_chime_type:
                   type: string
-                  description: "Enter/exit chime type. 0 means Heard by all including\
-                    \ host and attendees, 1 means Heard by host only"
+                  description: "Enter/exit chime type. 0 means Heard by all including host and attendees, 1 means Heard by host only"
                   default: "0"
                 disable_cancel_meeting_notification:
                   type: boolean
@@ -4034,8 +3860,7 @@ paths:
                   default: false
                 enable_phone_participants_password:
                   type: boolean
-                  description: Enable Generate and require password for participants
-                    joining by phone
+                  description: Enable Generate and require password for participants joining by phone
                   default: false
                 enable_auto_delete_cmr:
                   type: boolean
@@ -4049,12 +3874,10 @@ paths:
                   description: "Department for user profile, use for repor"
                 group_id:
                   type: string
-                  description: "User Group ID. If set default user group, the parameter’\
-                    s default value is the default user group"
+                  description: "User Group ID. If set default user group, the parameter’s default value is the default user group"
                 imgroup_id:
                   type: string
-                  description: "IM Group ID. If set default im group, the parameter’\
-                    s default value is the default im group"
+                  description: "IM Group ID. If set default im group, the parameter’s default value is the default im group"
         required: true
       responses:
         "200":
@@ -4114,7 +3937,7 @@ paths:
   /user/activate:
     post:
       tags:
-      - User
+        - User
       description: |+
         Activate a user on Zoom, return the user ID.
 
@@ -4124,7 +3947,7 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - id
+                - id
               type: object
               properties:
                 id:
@@ -4142,7 +3965,7 @@ paths:
   /user/deactivate:
     post:
       tags:
-      - User
+        - User
       description: |+
         Deactivate a user on Zoom, return the user ID.
 
@@ -4152,7 +3975,7 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - id
+                - id
               type: object
               properties:
                 id:
@@ -4170,7 +3993,7 @@ paths:
   /user/delete:
     post:
       tags:
-      - User
+        - User
       description: |+
         Delete a user on Zoom, return the deleted user ID.
 
@@ -4180,7 +4003,7 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - id
+                - id
               type: object
               properties:
                 id:
@@ -4203,7 +4026,7 @@ paths:
   /user/get:
     post:
       tags:
-      - User
+        - User
       description: |+
         Get a user info on Zoom via user ID
 
@@ -4213,9 +4036,9 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - api_key
-              - api_secret
-              - id
+                - api_key
+                - api_secret
+                - id
               type: object
               properties:
                 api_key:
@@ -4277,7 +4100,7 @@ paths:
   /user/getbyemail:
     post:
       tags:
-      - User
+        - User
       description: |+
         Get a user on Zoom via user email address and login type, return the user info.
 
@@ -4287,8 +4110,8 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - email
-              - login_type
+                - email
+                - login_type
               type: object
               properties:
                 email:
@@ -4296,8 +4119,7 @@ paths:
                   description: "Email, String"
                 login_type:
                   type: string
-                  description: "Login type of the email, int SNS_FACEBOOK = 0; SNS_GOOGLE\
-                    \ = 1; SNS_API = 99; SNS_ZOOM = 100; SNS_SSO = 101;"
+                  description: "Login type of the email, int SNS_FACEBOOK = 0; SNS_GOOGLE = 1; SNS_API = 99; SNS_ZOOM = 100; SNS_SSO = 101;"
         required: true
       responses:
         "200":
@@ -4346,7 +4168,7 @@ paths:
   /user/list:
     post:
       tags:
-      - User
+        - User
       description: |+
         List all the users on Zoom
 
@@ -4359,13 +4181,11 @@ paths:
               properties:
                 page_size:
                   type: string
-                  description: The amount of records returns within a single API call.
-                    Max of 300 users.
+                  description: The amount of records returns within a single API call. Max of 300 users.
                   default: "30"
                 page_number:
                   type: string
-                  description: Current page number of returned records. Default to
-                    1.
+                  description: Current page number of returned records. Default to 1.
                   default: "1"
       responses:
         "200":
@@ -4378,43 +4198,43 @@ paths:
                 page_number: 1
                 page_size: 50
                 users:
-                - email: email_address
-                  id: unique_id
-                  created_at: 2012-11-25T12:00:00Z
-                  first_name: Zoomie
-                  last_name: Userton
-                  type: 1
-                  pic_url: https://www.zoom.us/p/bNsPi
-                  disable_chat: false
-                  enable_e2e_encryption: false
-                  enable_silent_mode: true
-                  disable_group_hd: false
-                  disable_recording: false
-                  enable_cmr: false
-                  enable_auto_recording: false
-                  enable_cloud_auto_recording: false
-                  verified: 0
-                  pmi: 2035134243
-                  meeting_capacity: 0
-                  enable_webinar: true
-                  webinar_capacity: 100
-                  enable_large: false
-                  large_capacity: 0
-                  disable_feedback: false
-                  disable_jbh_reminder: true
-                  enable_breakout_room: false
-                  dept: Engineer
-                  timezone: America/Los_Angeles
-                  lastClientVersion: 3.5.44664.0321(mac)
-                  lastLoginTime: 2016-03-23T09:54:41Z
-                  status: 0
-                  token: ""
-                  zpk: ""
-                  zak: ""
+                  - email: email_address
+                    id: unique_id
+                    created_at: 2012-11-25T12:00:00Z
+                    first_name: Zoomie
+                    last_name: Userton
+                    type: 1
+                    pic_url: https://www.zoom.us/p/bNsPi
+                    disable_chat: false
+                    enable_e2e_encryption: false
+                    enable_silent_mode: true
+                    disable_group_hd: false
+                    disable_recording: false
+                    enable_cmr: false
+                    enable_auto_recording: false
+                    enable_cloud_auto_recording: false
+                    verified: 0
+                    pmi: 2035134243
+                    meeting_capacity: 0
+                    enable_webinar: true
+                    webinar_capacity: 100
+                    enable_large: false
+                    large_capacity: 0
+                    disable_feedback: false
+                    disable_jbh_reminder: true
+                    enable_breakout_room: false
+                    dept: Engineer
+                    timezone: America/Los_Angeles
+                    lastClientVersion: 3.5.44664.0321(mac)
+                    lastLoginTime: 2016-03-23T09:54:41Z
+                    status: 0
+                    token: ""
+                    zpk: ""
+                    zak: ""
   /user/pending:
     post:
       tags:
-      - User
+        - User
       description: |+
         List all the pending users on Zoom
 
@@ -4427,13 +4247,11 @@ paths:
               properties:
                 page_size:
                   type: string
-                  description: The amount of records returns within a single API call.
-                    Max of 300 users.
+                  description: The amount of records returns within a single API call. Max of 300 users.
                   default: "30"
                 page_number:
                   type: string
-                  description: Current page number of returned records. Default to
-                    1.
+                  description: Current page number of returned records. Default to 1.
                   default: "1"
       responses:
         "200":
@@ -4446,43 +4264,43 @@ paths:
                 page_number: 1
                 page_size: 50
                 users:
-                - email: email_address
-                  id: unique_id
-                  created_at: 2012-11-25T12:00:00Z
-                  first_name: Zoomie
-                  last_name: Userton
-                  type: 1
-                  pic_url: https://www.zoom.us/p/bNsPi
-                  disable_chat: false
-                  enable_e2e_encryption: false
-                  enable_silent_mode: true
-                  disable_group_hd: false
-                  disable_recording: false
-                  enable_cmr: false
-                  enable_auto_recording: false
-                  enable_cloud_auto_recording: false
-                  verified: 0
-                  pmi: 2035134243
-                  meeting_capacity: 0
-                  enable_webinar: true
-                  webinar_capacity: 100
-                  enable_large: false
-                  large_capacity: 0
-                  disable_feedback: false
-                  disable_jbh_reminder: true
-                  enable_breakout_room: false
-                  dept: Engineer
-                  timezone: America/Los_Angeles
-                  lastClientVersion: 3.5.44664.0321(mac)
-                  lastLoginTime: 2016-03-23T09:54:41Z
-                  status: 0
-                  token: ""
-                  zpk: ""
-                  zak: ""
+                  - email: email_address
+                    id: unique_id
+                    created_at: 2012-11-25T12:00:00Z
+                    first_name: Zoomie
+                    last_name: Userton
+                    type: 1
+                    pic_url: https://www.zoom.us/p/bNsPi
+                    disable_chat: false
+                    enable_e2e_encryption: false
+                    enable_silent_mode: true
+                    disable_group_hd: false
+                    disable_recording: false
+                    enable_cmr: false
+                    enable_auto_recording: false
+                    enable_cloud_auto_recording: false
+                    verified: 0
+                    pmi: 2035134243
+                    meeting_capacity: 0
+                    enable_webinar: true
+                    webinar_capacity: 100
+                    enable_large: false
+                    large_capacity: 0
+                    disable_feedback: false
+                    disable_jbh_reminder: true
+                    enable_breakout_room: false
+                    dept: Engineer
+                    timezone: America/Los_Angeles
+                    lastClientVersion: 3.5.44664.0321(mac)
+                    lastLoginTime: 2016-03-23T09:54:41Z
+                    status: 0
+                    token: ""
+                    zpk: ""
+                    zak: ""
   /user/permanentdelete:
     post:
       tags:
-      - User
+        - User
       description: |+
         Delete a user from Zoom system permanently.
 
@@ -4498,8 +4316,7 @@ paths:
                   description: The user’s user id.
                 email:
                   type: string
-                  description: "The user’s email address. Must have id or email, if\
-                    \ given id, the email is ignored."
+                  description: "The user’s email address. Must have id or email, if given id, the email is ignored."
       responses:
         "200":
           description: Success
@@ -4512,7 +4329,7 @@ paths:
   /user/revoketoken:
     post:
       tags:
-      - User
+        - User
       description: |+
         Revoke a user's SSO token.
 
@@ -4541,7 +4358,7 @@ paths:
   /user/scheduleforhost/list:
     post:
       tags:
-      - User
+        - User
       description: |+
         List assigned schedule privilege for host users.
 
@@ -4566,14 +4383,14 @@ paths:
               example:
                 total_records: 1
                 users:
-                - id: unique_id
-                  email: email_address
-                  first_name: Zoomie
-                  last_name: Userton
+                  - id: unique_id
+                    email: email_address
+                    first_name: Zoomie
+                    last_name: Userton
   /user/ssocreate:
     post:
       tags:
-      - User
+        - User
       description: |+
         Create a SSO user on Zoom, return the created user ID.
 
@@ -4585,8 +4402,8 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - email
-              - type
+                - email
+                - type
               type: object
               properties:
                 email:
@@ -4594,9 +4411,7 @@ paths:
                   description: A valid email address. It must be unique in Zoom service.
                 type:
                   type: string
-                  description: "User’s type. 1 means it is a basic user. 2 means a\
-                    \ pro user, 3 means a corp user. Basic user can host up to 40\
-                    \ minutes meeting."
+                  description: "User’s type. 1 means it is a basic user. 2 means a pro user, 3 means a corp user. Basic user can host up to 40 minutes meeting."
                 first_name:
                   type: string
                   description: User’s first name.
@@ -4605,38 +4420,31 @@ paths:
                   description: User’s last name.
                 meeting_capacity:
                   type: string
-                  description: "User’s meeting capacity, 0 means following account’\
-                    s meeting capacity."
+                  description: "User’s meeting capacity, 0 means following account’s meeting capacity."
                   default: "0"
                 enable_webinar:
                   type: string
                   description: Enable webinar feature true or false.
                 webinar_capacity:
                   type: string
-                  description: "Enable webinar capacity, can be 100, 500, 1000, 3000,\
-                    \ 5000 or 10000, depends on if having related webinar capacity\
-                    \ plan subscription or not."
+                  description: "Enable webinar capacity, can be 100, 500, 1000, 3000, 5000 or 10000, depends on if having related webinar capacity plan subscription or not."
                   default: "0"
                 enable_large:
                   type: string
                   description: Enable large meting feature true or false.
                 large_capacity:
                   type: string
-                  description: "Enable large meeting capacity, can be 100, 200, 300\
-                    \ or 500, depends on if having related webinar capacity plan subscription\
-                    \ or not."
+                  description: "Enable large meeting capacity, can be 100, 200, 300 or 500, depends on if having related webinar capacity plan subscription or not."
                   default: "0"
                 pmi:
                   type: string
                   description: "Personal Meeting ID, long, length must be 10."
                 group_id:
                   type: string
-                  description: "User Group ID. If set default user group, the parameter’\
-                    s default value is the default user group."
+                  description: "User Group ID. If set default user group, the parameter’s default value is the default user group."
                 imgroup_id:
                   type: string
-                  description: "IM Group ID. If set default im group, the parameter’\
-                    s default value is the default im group."
+                  description: "IM Group ID. If set default im group, the parameter’s default value is the default im group."
         required: true
       responses:
         "200":
@@ -4686,7 +4494,7 @@ paths:
   /user/update:
     post:
       tags:
-      - User
+        - User
       description: |+
         Update user info on Zoom via user ID.
 
@@ -4696,7 +4504,7 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - id
+                - id
               type: object
               properties:
                 id:
@@ -4704,9 +4512,7 @@ paths:
                   description: User id.
                 type:
                   type: string
-                  description: "User’s type. 1 means it is a basic user. 2 means a\
-                    \ pro user, 3 means a corp user. Basic user can host up to 40\
-                    \ minutes meeting."
+                  description: "User’s type. 1 means it is a basic user. 2 means a pro user, 3 means a corp user. Basic user can host up to 40 minutes meeting."
                 first_name:
                   type: string
                   description: User’s first name.
@@ -4748,8 +4554,7 @@ paths:
                   description: Enable record an audio only file.
                 enable_auto_recording:
                   type: boolean
-                  description: "Enable automatic recording. By default, if \"enable_cloud_auto_recording\"\
-                    \ is true, it will become true."
+                  description: "Enable automatic recording. By default, if \"enable_cloud_auto_recording\" is true, it will become true."
                   default: false
                 enable_cloud_auto_recording:
                   type: boolean
@@ -4760,26 +4565,21 @@ paths:
                   description: Referral partner track ID.
                 meeting_capacity:
                   type: string
-                  description: "User’s meeting capacity, passing 0 will inherit account’\
-                    s meeting capacity"
+                  description: "User’s meeting capacity, passing 0 will inherit account’s meeting capacity"
                   default: "0"
                 enable_webinar:
                   type: string
                   description: Enable webinar feature true or false.
                 webinar_capacity:
                   type: string
-                  description: "Enable webinar capacity, can be 100, 500, 1000, 3000,\
-                    \ 5000 or 10000, depends on if having related webinar capacity\
-                    \ plan subscription or not."
+                  description: "Enable webinar capacity, can be 100, 500, 1000, 3000, 5000 or 10000, depends on if having related webinar capacity plan subscription or not."
                   default: "0"
                 enable_large:
                   type: string
                   description: Enable large meting feature true or false.
                 large_capacity:
                   type: string
-                  description: "Enable large meeting capacity, can be 100, 200, 300\
-                    \ or 500, depends on if having related webinar capacity plan subscription\
-                    \ or not."
+                  description: "Enable large meeting capacity, can be 100, 200, 300 or 500, depends on if having related webinar capacity plan subscription or not."
                   default: "0"
                 disable_feedback:
                   type: boolean
@@ -4819,8 +4619,7 @@ paths:
                   default: false
                 option_enter_exit_chime_type:
                   type: string
-                  description: "Enter/exit chime type. 0 means Heard by all including\
-                    \ host and attendees, 1 means Heard by host only."
+                  description: "Enter/exit chime type. 0 means Heard by all including host and attendees, 1 means Heard by host only."
                   default: "0"
                 disable_cancel_meeting_notification:
                   type: boolean
@@ -4864,8 +4663,7 @@ paths:
                   default: false
                 enable_phone_participants_password:
                   type: boolean
-                  description: Enable Generate and require password for participants
-                    joining by phone.
+                  description: Enable Generate and require password for participants joining by phone.
                   default: false
                 enable_auto_delete_cmr:
                   type: boolean
@@ -4891,12 +4689,10 @@ paths:
                   description: Host Key should be 6-digit number.
                 group_id:
                   type: string
-                  description: "User Group ID. If set default user group, the parameter’\
-                    s default value is the default user group."
+                  description: "User Group ID. If set default user group, the parameter’s default value is the default user group."
                 imgroup_id:
                   type: string
-                  description: "IM Group ID. If set default im group, the parameter’\
-                    s default value is the default im group."
+                  description: "IM Group ID. If set default im group, the parameter’s default value is the default im group."
                 cms_user_id:
                   type: string
                   description: User ID on external CMS
@@ -4912,7 +4708,7 @@ paths:
   /user/updatepassword:
     post:
       tags:
-      - User
+        - User
       description: |+
         Upload and update user's profile picture on Zoom via user ID.
 
@@ -4922,8 +4718,8 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - id
-              - pic_file
+                - id
+                - pic_file
               type: object
               properties:
                 id:
@@ -4944,7 +4740,7 @@ paths:
   /webinar/attendees/list:
     post:
       tags:
-      - Webinar
+        - Webinar
       description: |+
         Get ended webinar attendees
 
@@ -4954,8 +4750,8 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - host_id
-              - id
+                - host_id
+                - id
               type: object
               properties:
                 id:
@@ -4963,8 +4759,7 @@ paths:
                   description: Webinar ID.
                 host_id:
                   type: string
-                  description: Webinar host user ID. Can be any user who enabled webinar
-                    under this account.
+                  description: Webinar host user ID. Can be any user who enabled webinar under this account.
                 uuid:
                   type: string
                   description: Webinar uuid. It can be fetched by /v1/webinar/uuid/list.
@@ -4976,24 +4771,24 @@ paths:
             application/json:
               example:
                 attendees:
-                - first_name: Zoomie
-                  last_name: Userton
-                  email: email_address
-                  join_time: 2015-09-18T09:41:39Z
-                  leave_time: 2015-09-18T09:42:12Z
-                  time_in_session: "8"
-                  attended: "Yes"
-                  custom_questions:
-                    ssssss: ' sssss'
-                    which one do you like?: sss
-                  questions:
-                    country: US
-                    address: 1234 Some Street
-                    city: Zoomville
+                  - first_name: Zoomie
+                    last_name: Userton
+                    email: email_address
+                    join_time: 2015-09-18T09:41:39Z
+                    leave_time: 2015-09-18T09:42:12Z
+                    time_in_session: "8"
+                    attended: "Yes"
+                    custom_questions:
+                      ssssss: ' sssss'
+                      which one do you like?: sss
+                    questions:
+                      country: US
+                      address: 1234 Some Street
+                      city: Zoomville
   /webinar/create:
     post:
       tags:
-      - Webinar
+        - Webinar
       description: |+
         Create a webinar on Zoom, return the created webinar start and join URL.
 
@@ -5003,81 +4798,51 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - host_id
-              - topic
-              - type
+                - host_id
+                - topic
+                - type
               type: object
               properties:
                 host_id:
                   type: string
-                  description: Webinar host user ID. Can be any user under this account.
-                    Cannot be updated after creation.
+                  description: Webinar host user ID. Can be any user under this account. Cannot be updated after creation.
                 topic:
                   type: string
                   description: Webinar topic. Max of 300 characters.
                 type:
                   type: string
-                  description: "5 webinar, 6 recurrence webinar, 9 recurring webinar(With\
-                    \ Fixed Time)"
+                  description: "5 webinar, 6 recurrence webinar, 9 recurring webinar(With Fixed Time)"
                   default: "5"
                 start_time:
                   type: string
-                  description: "Webinar start time in ISO datetime format. For scheduled\
-                    \ webinar only. Should be UTC time, such as 2012-11-25T12:00:00Z."
+                  description: "Webinar start time in ISO datetime format. For scheduled webinar only. Should be UTC time, such as 2012-11-25T12:00:00Z."
                 duration:
                   type: string
                   description: Webinar duration (minutes). For scheduled webinar only.
                 timezone:
                   type: string
-                  description: "Timezone to format start_time, like \"America/Los_Angeles\"\
-                    . For scheduled Webinar only. For this parameter value please\
-                    \ refer to the id value in timezone list JSON file."
+                  description: "Timezone to format start_time, like \"America/Los_Angeles\". For scheduled Webinar only. For this parameter value please refer to the id value in timezone list JSON file."
                 password:
                   type: string
-                  description: "Webinar password. Password may only contain the following\
-                    \ characters: [a-z A-Z 0-9 @ - _"
+                  description: "Webinar password. Password may only contain the following characters: [a-z A-Z 0-9 @ - _"
                   default: ' 10 characters'
                 recurrence:
                   type: string
-                  description: "Recurrence Webinar Settings. For recurring webinar\
-                    \ with fixed time only. <br><br>\"type\": Recurrence Webinar Type.\
-                    \ 1 means Daily, 2 means Weekly, 3 means Monthly. <br>\"repeat_interval\"\
-                    : Recurrence Webinar Repeat Interval. Defaults to 1. For a Daily\
-                    \ Webinar, max of 90. For a Weekly Webinar, max of 12. For a Monthly\
-                    \ Webinar, max of 3. <br>\"weekly_days\": Recurrence Webinar Occurs\
-                    \ on week days, multiple value separated by comma. 1 means Sunday,\
-                    \ 2 means Monday, 3 means Tuesday, 4 means Wednesday, 5 means\
-                    \ Thursday, 6 means Friday, 7 means Saturday. <br>\"monthly_day\"\
-                    : Recurrence Webinar Occurs on a month day. The value range is\
-                    \ from 1 to 31. <br>\"monthly_week\": Recurrence Webinar Occurs\
-                    \ on the week of a month. -1 means Last week, 1 means First week,\
-                    \ 2 means Second week, 3 means Third week, 4 means Fourth week.\
-                    \ <br>\"monthly_week_day\": Recurrence Webinar Occurs on the week\
-                    \ day of a month. A single value: 1 means Sunday, 2 means Monday,\
-                    \ 3 means Tuesday, 4 means Wednesday, 5 means Thursday, 6 means\
-                    \ Friday, 7 means Saturday. <br>\"end_times\": Recurrence Webinar\
-                    \ End occurrences times. Defaults to 1. Max of 50. <br>\"end_date_time\"\
-                    : Recurrence Webinar End Date. Should be UTC time, such as 2012-11-25T12:00:00Z."
+                  description: "Recurrence Webinar Settings. For recurring webinar with fixed time only. <br><br>\"type\": Recurrence Webinar Type. 1 means Daily, 2 means Weekly, 3 means Monthly. <br>\"repeat_interval\": Recurrence Webinar Repeat Interval. Defaults to 1. For a Daily Webinar, max of 90. For a Weekly Webinar, max of 12. For a Monthly Webinar, max of 3. <br>\"weekly_days\": Recurrence Webinar Occurs on week days, multiple value separated by comma. 1 means Sunday, 2 means Monday, 3 means Tuesday, 4 means Wednesday, 5 means Thursday, 6 means Friday, 7 means Saturday. <br>\"monthly_day\": Recurrence Webinar Occurs on a month day. The value range is from 1 to 31. <br>\"monthly_week\": Recurrence Webinar Occurs on the week of a month. -1 means Last week, 1 means First week, 2 means Second week, 3 means Third week, 4 means Fourth week. <br>\"monthly_week_day\": Recurrence Webinar Occurs on the week day of a month. A single value: 1 means Sunday, 2 means Monday, 3 means Tuesday, 4 means Wednesday, 5 means Thursday, 6 means Friday, 7 means Saturday. <br>\"end_times\": Recurrence Webinar End occurrences times. Defaults to 1. Max of 50. <br>\"end_date_time\": Recurrence Webinar End Date. Should be UTC time, such as 2012-11-25T12:00:00Z."
                 approval_type:
                   type: string
-                  description: Approval type. 0 means Automatically Approve. 1 means
-                    Manually Approve. 2 means No Registration Required.
+                  description: Approval type. 0 means Automatically Approve. 1 means Manually Approve. 2 means No Registration Required.
                   default: "2"
                 registration_type:
                   type: string
-                  description: "Registration type. 1 means Attendees register once\
-                    \ and can attend any of the occurrences, 2 means Attendees need\
-                    \ to register for each occurrence to attend, 3 means Attendees\
-                    \ register once and can choose one or more occurrences to attend.\
-                    \ For recurring meeting with fixed time only."
+                  description: "Registration type. 1 means Attendees register once and can attend any of the occurrences, 2 means Attendees need to register for each occurrence to attend, 3 means Attendees register once and can choose one or more occurrences to attend. For recurring meeting with fixed time only."
                   default: "1"
                 agenda:
                   type: string
                   description: Webinar description.
                 option_audio:
                   type: string
-                  description: "Webinar audio options. Can be \"both\", \"telephony\"\
-                    , \"voip\"."
+                  description: "Webinar audio options. Can be \"both\", \"telephony\", \"voip\"."
                   default: both
                 option_host_video:
                   type: boolean
@@ -5097,8 +4862,7 @@ paths:
                   default: false
                 option_enforce_login_domains:
                   type: string
-                  description: Only signed-in users with specified domains can join
-                    Webinar.
+                  description: Only signed-in users with specified domains can join Webinar.
                 option_alternative_hosts:
                   type: string
                   description: Alternative hosts.
@@ -5107,19 +4871,14 @@ paths:
                   description: Alternative hosts IDs.
                 option_auto_record_type:
                   type: string
-                  description: "Automatically record type. Can be \"local\", \"cloud\"\
-                    \ or \"none\"."
+                  description: "Automatically record type. Can be \"local\", \"cloud\" or \"none\"."
                   default: local
                 panelists:
                   type: string
-                  description: "Webinar Panelists, should be JSON format: [{\"name\"\
-                    :\"xxx\",\"email\":\"test1@zoom.us\"}, {\"name\":\"xxx\",\"email\"\
-                    :\"test2@zoom.us\"}]."
+                  description: "Webinar Panelists, should be JSON format: [{\"name\":\"xxx\",\"email\":\"test1@zoom.us\"}, {\"name\":\"xxx\",\"email\":\"test2@zoom.us\"}]."
                 language:
                   type: string
-                  description: "Language setting of email to panelists. This value\
-                    \ should be \"en-US\", \"en\", \"zh-CN\", \"zh\", \"en-ES\", \"\
-                    es\", \"fr-FR\" or \"fr\"."
+                  description: "Language setting of email to panelists. This value should be \"en-US\", \"en\", \"zh-CN\", \"zh\", \"en-ES\", \"es\", \"fr-FR\" or \"fr\"."
         required: true
       responses:
         "200":
@@ -5149,7 +4908,7 @@ paths:
   /webinar/delete:
     post:
       tags:
-      - Webinar
+        - Webinar
       description: |+
         Delete a webinar on Zoom, return the deleted webinar ID.
 
@@ -5159,8 +4918,8 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - host_id
-              - id
+                - host_id
+                - id
               type: object
               properties:
                 id:
@@ -5168,12 +4927,10 @@ paths:
                   description: Webinar ID.
                 host_id:
                   type: string
-                  description: webinar host user ID. Can be any user who enabled webinar
-                    under this account.
+                  description: webinar host user ID. Can be any user who enabled webinar under this account.
                 occurrence_id:
                   type: string
-                  description: "Occurrence ID, could get this value from Webinar Get\
-                    \ API."
+                  description: "Occurrence ID, could get this value from Webinar Get API."
         required: true
       responses:
         "200":
@@ -5186,7 +4943,7 @@ paths:
   /webinar/end:
     post:
       tags:
-      - Webinar
+        - Webinar
       description: |+
         End a Webinar on Zoom, return the deleted Webinar ID
 
@@ -5196,8 +4953,8 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - host_id
-              - id
+                - host_id
+                - id
               type: object
               properties:
                 id:
@@ -5205,8 +4962,7 @@ paths:
                   description: Webinar ID.
                 host_id:
                   type: string
-                  description: Webinar host user ID. Can be any user who enabled webinar
-                    under this account.
+                  description: Webinar host user ID. Can be any user who enabled webinar under this account.
         required: true
       responses:
         "200":
@@ -5219,7 +4975,7 @@ paths:
   /webinar/get:
     post:
       tags:
-      - Webinar
+        - Webinar
       description: |+
         Get a Webinar on Zoom via Webinar ID, return the Webinar info
 
@@ -5229,8 +4985,8 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - host_id
-              - id
+                - host_id
+                - id
               type: object
               properties:
                 id:
@@ -5238,8 +4994,7 @@ paths:
                   description: Webinar ID.
                 host_id:
                   type: string
-                  description: Webinar host user ID. Can be any user who enabled webinar
-                    under this account.
+                  description: Webinar host user ID. Can be any user who enabled webinar under this account.
         required: true
       responses:
         "200":
@@ -5267,13 +5022,13 @@ paths:
                 option_alternative_hosts: ""
                 status: 0
                 occurrences:
-                - occurrence_id: "1483210260000"
-                  start_time: 2017-01-01T02:51:00Z
-                  duration: 60
+                  - occurrence_id: "1483210260000"
+                    start_time: 2017-01-01T02:51:00Z
+                    duration: 60
   /webinar/list:
     post:
       tags:
-      - Webinar
+        - Webinar
       description: |+
         List all registrationless Webinars on Zoom
 
@@ -5283,22 +5038,19 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - host_id
+                - host_id
               type: object
               properties:
                 host_id:
                   type: string
-                  description: Webinar host user ID. Can be any user who enabled webinar
-                    under this account.
+                  description: Webinar host user ID. Can be any user who enabled webinar under this account.
                 page_size:
                   type: string
-                  description: The amount of records returns within a single API call.
-                    Defaults to 30. Max of 300 meetings.
+                  description: The amount of records returns within a single API call. Defaults to 30. Max of 300 meetings.
                   default: "30"
                 page_number:
                   type: string
-                  description: Current page number of returned records. Default to
-                    1.
+                  description: Current page number of returned records. Default to 1.
                   default: "1"
         required: true
       responses:
@@ -5312,28 +5064,28 @@ paths:
                 page_number: 1
                 page_size: 50
                 webinars:
-                - uuid: unique_id
-                  id: "123456789"
-                  start_url: https://zoom.us/s/123456789?zak=xxxxxx
-                  join_url: https://zoom.us/j/123456789
-                  created_at: 2012-11-25T12:00:00Z
-                  host_id: unique_id
-                  topic: Topic for this meeting
-                  type: 5
-                  start_time: 2012-11-25T12:00:00Z
-                  duration: 30
-                  timezone: America/Los_Angeles
-                  agenda: ""
-                  option_start_type: video
-                  option_audio: both
-                  option_enforce_login: false
-                  'option_enforce_login_domains ': ""
-                  option_alternative_hosts: ""
-                  status: 0
+                  - uuid: unique_id
+                    id: "123456789"
+                    start_url: https://zoom.us/s/123456789?zak=xxxxxx
+                    join_url: https://zoom.us/j/123456789
+                    created_at: 2012-11-25T12:00:00Z
+                    host_id: unique_id
+                    topic: Topic for this meeting
+                    type: 5
+                    start_time: 2012-11-25T12:00:00Z
+                    duration: 30
+                    timezone: America/Los_Angeles
+                    agenda: ""
+                    option_start_type: video
+                    option_audio: both
+                    option_enforce_login: false
+                    'option_enforce_login_domains ': ""
+                    option_alternative_hosts: ""
+                    status: 0
   /webinar/list/registration:
     post:
       tags:
-      - Webinar
+        - Webinar
       description: |+
         List all the upcoming registration-based Webinars on Zoom
 
@@ -5343,22 +5095,19 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - host_id
+                - host_id
               type: object
               properties:
                 host_id:
                   type: string
-                  description: Webinar host user ID. Can be any user who enabled webinar
-                    under this account.
+                  description: Webinar host user ID. Can be any user who enabled webinar under this account.
                 page_size:
                   type: string
-                  description: The amount of records returns within a single API call.
-                    Defaults to 30. Max of 300 meetings.
+                  description: The amount of records returns within a single API call. Defaults to 30. Max of 300 meetings.
                   default: "30"
                 page_number:
                   type: string
-                  description: Current page number of returned records. Default to
-                    1.
+                  description: Current page number of returned records. Default to 1.
                   default: "1"
         required: true
       responses:
@@ -5372,25 +5121,25 @@ paths:
                 page_number: 1
                 page_size: 50
                 webinars:
-                - uuid: unique_id
-                  id: "123456789"
-                  start_url: https://zoom.us/s/123456789?zak=xxxxxx
-                  join_url: https://zoom.us/j/123456789
-                  created_at: 2012-11-25T12:00:00Z
-                  host_id: unique_id
-                  topic: Topic for this Webinar
-                  type: 5
-                  start_time: 2012-11-25T12:00:00Z
-                  duration: 30
-                  timezone: America/Los_Angeles
-                  agenda: ""
-                  option_start_type: video
-                  option_audio: both
-                  status: 0
+                  - uuid: unique_id
+                    id: "123456789"
+                    start_url: https://zoom.us/s/123456789?zak=xxxxxx
+                    join_url: https://zoom.us/j/123456789
+                    created_at: 2012-11-25T12:00:00Z
+                    host_id: unique_id
+                    topic: Topic for this Webinar
+                    type: 5
+                    start_time: 2012-11-25T12:00:00Z
+                    duration: 30
+                    timezone: America/Los_Angeles
+                    agenda: ""
+                    option_start_type: video
+                    option_audio: both
+                    status: 0
   /webinar/panelists:
     post:
       tags:
-      - Webinar
+        - Webinar
       description: |+
         Get all the Webinar Panelists on Zoom
 
@@ -5400,8 +5149,8 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - host_id
-              - id
+                - host_id
+                - id
               type: object
               properties:
                 id:
@@ -5409,8 +5158,7 @@ paths:
                   description: Webinar ID.
                 host_id:
                   type: string
-                  description: Webinar host user ID. Can be any user who enabled webinar
-                    under this account.
+                  description: Webinar host user ID. Can be any user who enabled webinar under this account.
         required: true
       responses:
         "200":
@@ -5420,13 +5168,13 @@ paths:
               example:
                 total_records: 1
                 panelists:
-                - name: Zoomie Userton
-                  email: email_address
-                  join_url: https://www.zoom.us/w/552681828?tk=TMnju_IjiU7Fx3eSkrajn2irvyMBNQ4XCW6cutSPntg.DQEAAAAAIPFBZBYwbzhKUUlXVVN3bW9Ed05QUmdvU2hBAA
+                  - name: Zoomie Userton
+                    email: email_address
+                    join_url: https://www.zoom.us/w/552681828?tk=TMnju_IjiU7Fx3eSkrajn2irvyMBNQ4XCW6cutSPntg.DQEAAAAAIPFBZBYwbzhKUUlXVVN3bW9Ed05QUmdvU2hBAA
   /webinar/polls:
     post:
       tags:
-      - Webinar
+        - Webinar
       description: |+
         Get Ended Webinar Polls
 
@@ -5436,8 +5184,8 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - host_id
-              - id
+                - host_id
+                - id
               type: object
               properties:
                 id:
@@ -5445,8 +5193,7 @@ paths:
                   description: Webinar ID.
                 host_id:
                   type: string
-                  description: Webinar host user ID. Can be any user who enabled webinar
-                    under this account.
+                  description: Webinar host user ID. Can be any user who enabled webinar under this account.
                 uuid:
                   type: string
                   description: Webinar uuid. It can be fetched by /v1/webinar/uuid/list.
@@ -5461,15 +5208,15 @@ paths:
                 uuid: unique_id
                 start_time: 2017-02-09T07:15:48Z
                 questions:
-                - name: Zoomie Userton
-                  email: email_address
-                  question_details:
-                  - question: question?
-                    answer: answer
+                  - name: Zoomie Userton
+                    email: email_address
+                    question_details:
+                      - question: question?
+                        answer: answer
   /webinar/questions:
     post:
       tags:
-      - Webinar
+        - Webinar
       description: |+
         Get Ended Webinar Q&A
 
@@ -5479,8 +5226,8 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - host_id
-              - id
+                - host_id
+                - id
               type: object
               properties:
                 id:
@@ -5488,8 +5235,7 @@ paths:
                   description: Webinar ID.
                 host_id:
                   type: string
-                  description: Webinar host user ID. Can be any user who enabled webinar
-                    under this account.
+                  description: Webinar host user ID. Can be any user who enabled webinar under this account.
                 uuid:
                   type: string
                   description: Webinar uuid. It can be fetched by /v1/webinar/uuid/list.
@@ -5504,15 +5250,15 @@ paths:
                 uuid: unique_id
                 start_time: 2017-02-09T07:15:48Z
                 questions:
-                - name: Zoomie Userton
-                  email: email_address
-                  question_details:
-                  - question: question?
-                    answer: answer
+                  - name: Zoomie Userton
+                    email: email_address
+                    question_details:
+                      - question: question?
+                        answer: answer
   /webinar/register:
     post:
       tags:
-      - Webinar
+        - Webinar
       description: |+
         Register for a webinar
 
@@ -5522,10 +5268,10 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - email
-              - first_name
-              - id
-              - last_name
+                - email
+                - first_name
+                - id
+                - last_name
               type: object
               properties:
                 id:
@@ -5548,8 +5294,7 @@ paths:
                   description: City.
                 country:
                   type: string
-                  description: Country. For this parameter value please refer to the
-                    id value in country list JSON file
+                  description: Country. For this parameter value please refer to the id value in country list JSON file
                 zip:
                   type: string
                   description: Zip/Postal Code.
@@ -5570,35 +5315,25 @@ paths:
                   description: Job Title.
                 purchasing_time_frame:
                   type: string
-                  description: "Purchasing Time Frame, should be \"Within a month\"\
-                    , \"1-3 months\", \"4-6 months\", \"More than 6 months\", \"No\
-                    \ timeframe\"."
+                  description: "Purchasing Time Frame, should be \"Within a month\", \"1-3 months\", \"4-6 months\", \"More than 6 months\", \"No timeframe\"."
                 role_in_purchase_process:
                   type: string
-                  description: "Role in Purchase Process, should be \"Decision Maker\"\
-                    , \"Evaluator/Recommender\", \"Influencer\", \"Not involved\"."
+                  description: "Role in Purchase Process, should be \"Decision Maker\", \"Evaluator/Recommender\", \"Influencer\", \"Not involved\"."
                 no_of_employees:
                   type: string
-                  description: "Number of Employees, should be \"1-20\", \"21-50\"\
-                    , \"51-100\", \"101-250\", \"251-500\", \"501-1,000\", \"1,001-5,000\"\
-                    , \"5,001-10,000\", \"More than 10,000\"."
+                  description: "Number of Employees, should be \"1-20\", \"21-50\", \"51-100\", \"101-250\", \"251-500\", \"501-1,000\", \"1,001-5,000\", \"5,001-10,000\", \"More than 10,000\"."
                 comments:
                   type: string
                   description: Questions & Comments.
                 custom_questions:
                   type: string
-                  description: "Custom Questions, should be JSON format: [{\"title\"\
-                    :\"field_name1\",\"value\":\"xxx\"},{\"title\":\"field_name2\"\
-                    ,\"value\":\"xxx\"}]."
+                  description: "Custom Questions, should be JSON format: [{\"title\":\"field_name1\",\"value\":\"xxx\"},{\"title\":\"field_name2\",\"value\":\"xxx\"}]."
                 language:
                   type: string
-                  description: "Language setting of email. This value should be \"\
-                    en-US\", \"en\", \"zh-CN\", \"zh\", \"en-ES\", \"es\", \"fr-FR\"\
-                    \ or \"fr\"."
+                  description: "Language setting of email. This value should be \"en-US\", \"en\", \"zh-CN\", \"zh\", \"en-ES\", \"es\", \"fr-FR\" or \"fr\"."
                 occurrence_ids:
                   type: string
-                  description: "Occurrence IDs, could get this value from Webinar\
-                    \ Get API."
+                  description: "Occurrence IDs, could get this value from Webinar Get API."
         required: true
       responses:
         "200":
@@ -5614,7 +5349,7 @@ paths:
   /webinar/registrants/approve:
     post:
       tags:
-      - Webinar
+        - Webinar
       description: |+
         Approve pending registrants on Zoom Webinar.
 
@@ -5624,9 +5359,9 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - host_id
-              - id
-              - registrant_ids
+                - host_id
+                - id
+                - registrant_ids
               type: object
               properties:
                 id:
@@ -5634,8 +5369,7 @@ paths:
                   description: Webinar ID.
                 host_id:
                   type: string
-                  description: Webinar host user ID. Can be any user who enabled webinar
-                    under this account.
+                  description: Webinar host user ID. Can be any user who enabled webinar under this account.
                 registrant_ids:
                   type: string
                   description: Pending approval registrant ids.
@@ -5651,7 +5385,7 @@ paths:
   /webinar/registrants/list:
     post:
       tags:
-      - Webinar
+        - Webinar
       description: |+
         List webinar registrants on Zoom, include pending approval registrants and approved registrants.
 
@@ -5661,8 +5395,8 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - host_id
-              - id
+                - host_id
+                - id
               type: object
               properties:
                 id:
@@ -5670,22 +5404,18 @@ paths:
                   description: Webinar ID.
                 host_id:
                   type: string
-                  description: Webinar host user ID. Can be any user who enabled webinar
-                    under this account.
+                  description: Webinar host user ID. Can be any user who enabled webinar under this account.
                 type:
                   type: string
-                  description: "0 means pending approval registrants, 1 means approved\
-                    \ registrants."
+                  description: "0 means pending approval registrants, 1 means approved registrants."
                   default: "0"
                 page_size:
                   type: string
-                  description: The amount of records returns within a single API call.
-                    Defaults to 30.
+                  description: The amount of records returns within a single API call. Defaults to 30.
                   default: "30"
                 page_number:
                   type: string
-                  description: Current page number of returned records. Default to
-                    1.
+                  description: Current page number of returned records. Default to 1.
                   default: "1"
         required: true
       responses:
@@ -5700,15 +5430,15 @@ paths:
                 total_records: 1
                 type: 0
                 users:
-                - id: unique_id
-                  first_name: Zoomie
-                  last_name: Userton
-                  email: email_address
-                  registration_time: 2016-08-18T01:45:26Z
+                  - id: unique_id
+                    first_name: Zoomie
+                    last_name: Userton
+                    email: email_address
+                    registration_time: 2016-08-18T01:45:26Z
   /webinar/registration:
     post:
       tags:
-      - Webinar
+        - Webinar
       description: |+
         Gather Webinar registrants info
 
@@ -5718,8 +5448,8 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - host_id
-              - id
+                - host_id
+                - id
               type: object
               properties:
                 id:
@@ -5727,21 +5457,17 @@ paths:
                   description: Webinar ID.
                 host_id:
                   type: string
-                  description: Webinar host user ID. Can be any user who enabled webinar
-                    under this account.
+                  description: Webinar host user ID. Can be any user who enabled webinar under this account.
                 occurrence_id:
                   type: string
-                  description: "Occurrence ID, could get this value from Webinar Get\
-                    \ API."
+                  description: "Occurrence ID, could get this value from Webinar Get API."
                 page_size:
                   type: string
-                  description: The amount of records returns within a single API call.
-                    Defaults to 30.
+                  description: The amount of records returns within a single API call. Defaults to 30.
                   default: "30"
                 page_number:
                   type: string
-                  description: Current page number of returned records. Default to
-                    1.
+                  description: Current page number of returned records. Default to 1.
                   default: "1"
         required: true
       responses:
@@ -5755,17 +5481,17 @@ paths:
                 page_size: 30
                 total_records: 1
                 attendees:
-                - id: unique_id
-                  first_name: Zoomie
-                  last_name: Userton
-                  create_time: 2015-08-23T03:03:48Z
-                  approval: approved
-                  email: email_address
-                  registration_url: https://api.zoom.us/w/206388466?tk=n8-qbK4ocC73mPjIRlheMksYPxeWAhnktoUZq_xAqg8.DQEAAAAADE088hZKTXcxTllpelFjZXNfNDg0NlNKQ3lRAA
+                  - id: unique_id
+                    first_name: Zoomie
+                    last_name: Userton
+                    create_time: 2015-08-23T03:03:48Z
+                    approval: approved
+                    email: email_address
+                    registration_url: https://api.zoom.us/w/206388466?tk=n8-qbK4ocC73mPjIRlheMksYPxeWAhnktoUZq_xAqg8.DQEAAAAADE088hZKTXcxTllpelFjZXNfNDg0NlNKQ3lRAA
   /webinar/registration/cancel:
     post:
       tags:
-      - Webinar
+        - Webinar
       description: |+
         Cancel Webinar Registration
 
@@ -5775,9 +5501,9 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - host_id
-              - id
-              - registrant_ids
+                - host_id
+                - id
+                - registrant_ids
               type: object
               properties:
                 id:
@@ -5785,16 +5511,13 @@ paths:
                   description: Webinar ID.
                 host_id:
                   type: string
-                  description: Webinar host user ID. Can be any user who enabled webinar
-                    under this account.
+                  description: Webinar host user ID. Can be any user who enabled webinar under this account.
                 occurrence_id:
                   type: string
-                  description: "Occurrence ID, could get this value from Webinar Get\
-                    \ API."
+                  description: "Occurrence ID, could get this value from Webinar Get API."
                 registrant_ids:
                   type: string
-                  description: "Webinar registrant IDs, separated by comma. Max of\
-                    \ 15 registrants."
+                  description: "Webinar registrant IDs, separated by comma. Max of 15 registrants."
         required: true
       responses:
         "200":
@@ -5807,7 +5530,7 @@ paths:
   /webinar/update:
     post:
       tags:
-      - Webinar
+        - Webinar
       description: |+
         Update Webinar info on Zoom via Webinar ID
 
@@ -5817,8 +5540,8 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - host_id
-              - id
+                - host_id
+                - id
               type: object
               properties:
                 id:
@@ -5826,74 +5549,44 @@ paths:
                   description: Webinar ID.
                 host_id:
                   type: string
-                  description: Webinar host user ID. Can be any user under this account.
-                    Cannot be updated after creation.
+                  description: Webinar host user ID. Can be any user under this account. Cannot be updated after creation.
                 topic:
                   type: string
                   description: Webinar topic. Max of 300 characters.
                 type:
                   type: string
-                  description: "5 webinar, 6 recurrence webinar, 9 recurring webinar(With\
-                    \ Fixed Time)"
+                  description: "5 webinar, 6 recurrence webinar, 9 recurring webinar(With Fixed Time)"
                   default: "5"
                 start_time:
                   type: string
-                  description: "Webinar start time in ISO datetime format. For scheduled\
-                    \ webinar only. Should be UTC time, such as 2012-11-25T12:00:00Z."
+                  description: "Webinar start time in ISO datetime format. For scheduled webinar only. Should be UTC time, such as 2012-11-25T12:00:00Z."
                 duration:
                   type: string
                   description: Webinar duration (minutes). For scheduled webinar only.
                 timezone:
                   type: string
-                  description: "Timezone to format start_time, like \"America/Los_Angeles\"\
-                    . For scheduled Webinar only. For this parameter value please\
-                    \ refer to the id value in timezone list JSON file."
+                  description: "Timezone to format start_time, like \"America/Los_Angeles\". For scheduled Webinar only. For this parameter value please refer to the id value in timezone list JSON file."
                 password:
                   type: string
-                  description: "Webinar password. Password may only contain the following\
-                    \ characters: [a-z A-Z 0-9 @ - _"
+                  description: "Webinar password. Password may only contain the following characters: [a-z A-Z 0-9 @ - _"
                   default: ' 10 characters'
                 recurrence:
                   type: string
-                  description: "Recurrence Webinar Settings. For recurring webinar\
-                    \ with fixed time only. <br><br>\"type\": Recurrence Webinar Type.\
-                    \ 1 means Daily, 2 means Weekly, 3 means Monthly. <br>\"repeat_interval\"\
-                    : Recurrence Webinar Repeat Interval. Defaults to 1. For a Daily\
-                    \ Webinar, max of 90. For a Weekly Webinar, max of 12. For a Monthly\
-                    \ Webinar, max of 3. <br>\"weekly_days\": Recurrence Webinar Occurs\
-                    \ on week days, multiple value separated by comma. 1 means Sunday,\
-                    \ 2 means Monday, 3 means Tuesday, 4 means Wednesday, 5 means\
-                    \ Thursday, 6 means Friday, 7 means Saturday. <br>\"monthly_day\"\
-                    : Recurrence Webinar Occurs on a month day. The value range is\
-                    \ from 1 to 31. <br>\"monthly_week\": Recurrence Webinar Occurs\
-                    \ on the week of a month. -1 means Last week, 1 means First week,\
-                    \ 2 means Second week, 3 means Third week, 4 means Fourth week.\
-                    \ <br>\"monthly_week_day\": Recurrence Webinar Occurs on the week\
-                    \ day of a month. A single value: 1 means Sunday, 2 means Monday,\
-                    \ 3 means Tuesday, 4 means Wednesday, 5 means Thursday, 6 means\
-                    \ Friday, 7 means Saturday. <br>\"end_times\": Recurrence Webinar\
-                    \ End occurrences times. Defaults to 1. Max of 50. <br>\"end_date_time\"\
-                    : Recurrence Webinar End Date. Should be UTC time, such as 2012-11-25T12:00:00Z."
+                  description: "Recurrence Webinar Settings. For recurring webinar with fixed time only. <br><br>\"type\": Recurrence Webinar Type. 1 means Daily, 2 means Weekly, 3 means Monthly. <br>\"repeat_interval\": Recurrence Webinar Repeat Interval. Defaults to 1. For a Daily Webinar, max of 90. For a Weekly Webinar, max of 12. For a Monthly Webinar, max of 3. <br>\"weekly_days\": Recurrence Webinar Occurs on week days, multiple value separated by comma. 1 means Sunday, 2 means Monday, 3 means Tuesday, 4 means Wednesday, 5 means Thursday, 6 means Friday, 7 means Saturday. <br>\"monthly_day\": Recurrence Webinar Occurs on a month day. The value range is from 1 to 31. <br>\"monthly_week\": Recurrence Webinar Occurs on the week of a month. -1 means Last week, 1 means First week, 2 means Second week, 3 means Third week, 4 means Fourth week. <br>\"monthly_week_day\": Recurrence Webinar Occurs on the week day of a month. A single value: 1 means Sunday, 2 means Monday, 3 means Tuesday, 4 means Wednesday, 5 means Thursday, 6 means Friday, 7 means Saturday. <br>\"end_times\": Recurrence Webinar End occurrences times. Defaults to 1. Max of 50. <br>\"end_date_time\": Recurrence Webinar End Date. Should be UTC time, such as 2012-11-25T12:00:00Z."
                 approval_type:
                   type: string
-                  description: Approval type. 0 means Automatically Approve. 1 means
-                    Manually Approve. 2 means No Registration Required.
+                  description: Approval type. 0 means Automatically Approve. 1 means Manually Approve. 2 means No Registration Required.
                   default: "2"
                 registration_type:
                   type: string
-                  description: "Registration type. 1 means Attendees register once\
-                    \ and can attend any of the occurrences, 2 means Attendees need\
-                    \ to register for each occurrence to attend, 3 means Attendees\
-                    \ register once and can choose one or more occurrences to attend.\
-                    \ For recurring meeting with fixed time only."
+                  description: "Registration type. 1 means Attendees register once and can attend any of the occurrences, 2 means Attendees need to register for each occurrence to attend, 3 means Attendees register once and can choose one or more occurrences to attend. For recurring meeting with fixed time only."
                   default: "1"
                 agenda:
                   type: string
                   description: Webinar description.
                 option_audio:
                   type: string
-                  description: "Webinar audio options. Can be \"both\", \"telephony\"\
-                    , \"voip\"."
+                  description: "Webinar audio options. Can be \"both\", \"telephony\", \"voip\"."
                   default: both
                 option_host_video:
                   type: boolean
@@ -5912,8 +5605,7 @@ paths:
                   default: false
                 option_enforce_login_domains:
                   type: string
-                  description: Only signed-in users with specified domains can join
-                    Webinar.
+                  description: Only signed-in users with specified domains can join Webinar.
                 option_alternative_hosts:
                   type: string
                   description: Alternative hosts.
@@ -5922,19 +5614,14 @@ paths:
                   description: Alternative hosts IDs.
                 option_auto_record_type:
                   type: string
-                  description: "Automatically record type. Can be \"local\", \"cloud\"\
-                    \ or \"none\"."
+                  description: "Automatically record type. Can be \"local\", \"cloud\" or \"none\"."
                   default: local
                 panelists:
                   type: string
-                  description: "Webinar Panelists, should be JSON format: [{\"name\"\
-                    :\"xxx\",\"email\":\"test1@zoom.us\"}, {\"name\":\"xxx\",\"email\"\
-                    :\"test2@zoom.us\"}]."
+                  description: "Webinar Panelists, should be JSON format: [{\"name\":\"xxx\",\"email\":\"test1@zoom.us\"}, {\"name\":\"xxx\",\"email\":\"test2@zoom.us\"}]."
                 language:
                   type: string
-                  description: "Language setting of email to panelists. This value\
-                    \ should be \"en-US\", \"en\", \"zh-CN\", \"zh\", \"en-ES\", \"\
-                    es\", \"fr-FR\" or \"fr\"."
+                  description: "Language setting of email to panelists. This value should be \"en-US\", \"en\", \"zh-CN\", \"zh\", \"en-ES\", \"es\", \"fr-FR\" or \"fr\"."
         required: true
       responses:
         "200":
@@ -5947,7 +5634,7 @@ paths:
   /webinar/uuid/list:
     post:
       tags:
-      - Webinar
+        - Webinar
       description: |+
         Get ended webinar UUID.
 
@@ -5957,8 +5644,8 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               required:
-              - host_id
-              - id
+                - host_id
+                - id
               type: object
               properties:
                 id:
@@ -5966,8 +5653,7 @@ paths:
                   description: Webinar ID.
                 host_id:
                   type: string
-                  description: Webinar host user ID. Can be any user who enabled webinar
-                    under this account.
+                  description: Webinar host user ID. Can be any user who enabled webinar under this account.
         required: true
       responses:
         "200":
@@ -5976,8 +5662,8 @@ paths:
             application/json:
               example:
                 webinars:
-                - uuid: unique_id
-                  start_time: 2015-08-23T03:03:48Z
+                  - uuid: unique_id
+                    start_time: 2015-08-23T03:03:48Z
 components:
   securitySchemes:
     api_key:

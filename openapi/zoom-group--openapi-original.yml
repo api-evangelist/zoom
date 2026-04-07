@@ -18,7 +18,9 @@ servers:
 security:
   - api_key: []
   - api_secret: []
-tags: []
+tags:
+  - name: Group
+  - name: IM Group
 paths:
   /group/create:
     post:
