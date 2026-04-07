@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  title: ' account/'
+  title: 'Zoom account/'
   description: Needs description.
   contact:
     name: Zoom Developers

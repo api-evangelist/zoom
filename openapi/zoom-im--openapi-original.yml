@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  title: ' im/'
+  title: 'Zoom im/'
   description: Needs description.
   contact:
     name: Zoom Developers

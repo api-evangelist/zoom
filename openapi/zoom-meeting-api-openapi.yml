@@ -47,7 +47,7 @@ paths:
     get:
       tags:
         - Meetings
-      summary: List meetings
+      summary: Zoom List meetings
       description: >-
         List all the meetings that were scheduled for a user. For user-level
         apps, pass the `me` value instead of the userId parameter.
@@ -91,7 +91,7 @@ paths:
     post:
       tags:
         - Meetings
-      summary: Create a meeting
+      summary: Zoom Create a meeting
       description: >-
         Create a meeting for a user. For user-level apps, pass the `me` value
         instead of the userId parameter. A meeting can be scheduled, instant,
@@ -124,7 +124,7 @@ paths:
     get:
       tags:
         - Meetings
-      summary: Get meeting details
+      summary: Zoom Get meeting details
       description: >-
         Retrieve the details of a meeting. This returns detailed information
         about the specified meeting including settings, recurrence, and
@@ -161,7 +161,7 @@ paths:
     patch:
       tags:
         - Meetings
-      summary: Update a meeting
+      summary: Zoom Update a meeting
       description: >-
         Update the details of a meeting. This can include topic, start time,
         duration, settings, and other meeting options.
@@ -193,7 +193,7 @@ paths:
     delete:
       tags:
         - Meetings
-      summary: Delete a meeting
+      summary: Zoom Delete a meeting
       description: >-
         Delete a meeting. This permanently removes the meeting from Zoom.
       operationId: deleteMeeting
@@ -232,7 +232,7 @@ paths:
     put:
       tags:
         - Meetings
-      summary: Update meeting status
+      summary: Zoom Update meeting status
       description: >-
         End a meeting by updating its status. This can also recover a
         deleted meeting within a certain time frame.
@@ -267,7 +267,7 @@ paths:
     get:
       tags:
         - Meeting Registrants
-      summary: List meeting registrants
+      summary: Zoom List meeting registrants
       description: >-
         List all registrants for a meeting. Returns the list of users who
         registered for the meeting.
@@ -307,7 +307,7 @@ paths:
     post:
       tags:
         - Meeting Registrants
-      summary: Add a meeting registrant
+      summary: Zoom Add a meeting registrant
       description: >-
         Register a participant for a meeting. A host or alternative host can
         also add registrants on behalf of other users.
@@ -343,7 +343,7 @@ paths:
     put:
       tags:
         - Meeting Registrants
-      summary: Update registrant status
+      summary: Zoom Update registrant status
       description: >-
         Approve or deny a meeting registrant. Also allows cancellation of
         a previously approved registrant.
@@ -396,7 +396,7 @@ paths:
     get:
       tags:
         - Meeting Polls
-      summary: List meeting polls
+      summary: Zoom List meeting polls
       description: List all polls for a meeting.
       operationId: listMeetingPolls
       parameters:
@@ -430,7 +430,7 @@ paths:
     post:
       tags:
         - Meeting Polls
-      summary: Create a meeting poll
+      summary: Zoom Create a meeting poll
       description: >-
         Create a poll for a meeting. Meeting must be a scheduled meeting.
         Instant meetings do not have polling features enabled.
@@ -460,7 +460,7 @@ paths:
     get:
       tags:
         - Meeting Polls
-      summary: Get a meeting poll
+      summary: Zoom Get a meeting poll
       description: Retrieve details of a specific meeting poll.
       operationId: getMeetingPoll
       parameters:
@@ -482,7 +482,7 @@ paths:
     put:
       tags:
         - Meeting Polls
-      summary: Update a meeting poll
+      summary: Zoom Update a meeting poll
       description: Update a specific meeting poll.
       operationId: updateMeetingPoll
       parameters:
@@ -506,7 +506,7 @@ paths:
     delete:
       tags:
         - Meeting Polls
-      summary: Delete a meeting poll
+      summary: Zoom Delete a meeting poll
       description: Delete a specific meeting poll.
       operationId: deleteMeetingPoll
       parameters:
@@ -525,7 +525,7 @@ paths:
     get:
       tags:
         - Meeting Participants
-      summary: List meeting participants
+      summary: Zoom List meeting participants
       description: >-
         List participants from a past meeting instance. Only available for
         paid accounts with the Dashboard feature enabled.
@@ -560,7 +560,7 @@ paths:
     patch:
       tags:
         - Meeting Live Stream
-      summary: Update a live stream
+      summary: Zoom Update a live stream
       description: >-
         Update the live stream configuration of a meeting. The meeting host
         must configure live streaming settings before the meeting starts.
@@ -586,7 +586,7 @@ paths:
     patch:
       tags:
         - Meeting Live Stream
-      summary: Update live stream status
+      summary: Zoom Update live stream status
       description: >-
         Update the status of a live stream during a meeting. Use this to
         start or stop live streaming.
@@ -628,7 +628,7 @@ paths:
     get:
       tags:
         - Meetings
-      summary: Get past meeting details
+      summary: Zoom Get past meeting details
       description: >-
         Retrieve information about a past meeting. The meeting UUID must be
         double-encoded if it contains `/` or `//` characters.
@@ -659,7 +659,7 @@ paths:
     get:
       tags:
         - Meeting Participants
-      summary: List past meeting participants
+      summary: Zoom List past meeting participants
       description: >-
         Retrieve information on participants from a past meeting. The API
         does not return results if the meeting is less than 5 minutes old.
@@ -690,7 +690,7 @@ paths:
     get:
       tags:
         - Meeting Recordings
-      summary: Get meeting recordings
+      summary: Zoom Get meeting recordings
       description: >-
         Retrieve all recordings for a specific meeting. Cloud recordings
         are available to paid accounts with cloud recording enabled.
@@ -723,7 +723,7 @@ paths:
     delete:
       tags:
         - Meeting Recordings
-      summary: Delete meeting recordings
+      summary: Zoom Delete meeting recordings
       description: >-
         Delete all recording files of a meeting. The recording files will
         be moved to trash and permanently deleted after 30 days.
@@ -754,7 +754,7 @@ paths:
     post:
       tags:
         - Meeting Registrants
-      summary: Batch add meeting registrants
+      summary: Zoom Batch add meeting registrants
       description: >-
         Register up to 30 registrants at once for a meeting that requires
         registration.
@@ -818,7 +818,7 @@ paths:
     get:
       tags:
         - Meetings
-      summary: Get meeting invitation
+      summary: Zoom Get meeting invitation
       description: >-
         Retrieve the meeting invitation note for a specific meeting.
       operationId: getMeetingInvitation
@@ -845,7 +845,7 @@ paths:
     get:
       tags:
         - Meeting Live Stream
-      summary: Get a meeting's join token for live streaming
+      summary: Zoom Get a meeting's join token for live streaming
       description: >-
         Get a meeting's join token to allow live streaming. The join token
         allows a recording bot or live streaming service to join the meeting.

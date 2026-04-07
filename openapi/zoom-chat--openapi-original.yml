@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  title: ' chat/'
+  title: 'Zoom chat/'
   description: Needs description.
   contact:
     name: Zoom Developers

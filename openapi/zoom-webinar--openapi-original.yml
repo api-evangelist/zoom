@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  title: ' webinar/'
+  title: 'Zoom webinar/'
   description: Needs description.
   contact:
     name: Zoom Developers
