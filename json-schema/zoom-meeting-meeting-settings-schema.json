@@ -1,0 +1,168 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MeetingSettings",
+  "type": "object",
+  "description": "Meeting settings and options.",
+  "properties": {
+    "host_video": {
+      "type": "boolean",
+      "description": "Start video when the host joins the meeting."
+    },
+    "participant_video": {
+      "type": "boolean",
+      "description": "Start video when participants join the meeting."
+    },
+    "cn_meeting": {
+      "type": "boolean",
+      "description": "Host meeting in China."
+    },
+    "in_meeting": {
+      "type": "boolean",
+      "description": "Host meeting in India."
+    },
+    "join_before_host": {
+      "type": "boolean",
+      "description": "Allow participants to join before the host."
+    },
+    "jbh_time": {
+      "type": "integer",
+      "description": "Minutes before the host joins that participants can join. 0 - any time, 5 - 5 minutes, 10 - 10 minutes."
+    },
+    "mute_upon_entry": {
+      "type": "boolean",
+      "description": "Mute participants upon entry."
+    },
+    "watermark": {
+      "type": "boolean",
+      "description": "Add watermark when viewing a shared screen."
+    },
+    "use_pmi": {
+      "type": "boolean",
+      "description": "Use Personal Meeting ID instead of generated meeting ID."
+    },
+    "approval_type": {
+      "type": "integer",
+      "description": "Registration approval type. 0 - Automatically approve, 1 - Manually approve, 2 - No registration required."
+    },
+    "registration_type": {
+      "type": "integer",
+      "description": "Registration type for recurring meetings. 1 - Register once and attend any, 2 - Register for each, 3 - Register once and choose occurrences."
+    },
+    "audio": {
+      "type": "string",
+      "description": "Determine how participants can join the meeting audio."
+    },
+    "auto_recording": {
+      "type": "string",
+      "description": "Automatic recording configuration."
+    },
+    "enforce_login": {
+      "type": "boolean",
+      "description": "Only authenticated users can join the meeting."
+    },
+    "enforce_login_domains": {
+      "type": "string",
+      "description": "Only users with specific email domain(s) can join. Comma separated for multiple domains."
+    },
+    "alternative_hosts": {
+      "type": "string",
+      "description": "Alternative host email addresses. Comma separated for multiple alternative hosts."
+    },
+    "alternative_hosts_email_notification": {
+      "type": "boolean",
+      "description": "Send email notification to alternative hosts."
+    },
+    "close_registration": {
+      "type": "boolean",
+      "description": "Close registration after event date."
+    },
+    "waiting_room": {
+      "type": "boolean",
+      "description": "Enable the waiting room."
+    },
+    "global_dial_in_countries": {
+      "type": "array",
+      "description": "List of countries for global dial-in numbers."
+    },
+    "contact_name": {
+      "type": "string",
+      "description": "Contact name for meeting registration."
+    },
+    "contact_email": {
+      "type": "string",
+      "description": "Contact email for meeting registration."
+    },
+    "registrants_email_notification": {
+      "type": "boolean",
+      "description": "Send email notifications to registrants."
+    },
+    "registrants_confirmation_email": {
+      "type": "boolean",
+      "description": "Send confirmation email to registrants."
+    },
+    "meeting_authentication": {
+      "type": "boolean",
+      "description": "Require authentication to join."
+    },
+    "authentication_option": {
+      "type": "string",
+      "description": "Meeting authentication option ID."
+    },
+    "authentication_domains": {
+      "type": "string",
+      "description": "Allowed authentication domains."
+    },
+    "authentication_name": {
+      "type": "string",
+      "description": "Authentication name set in the authentication profile."
+    },
+    "show_share_button": {
+      "type": "boolean",
+      "description": "Show social share buttons on the registration page."
+    },
+    "allow_multiple_devices": {
+      "type": "boolean",
+      "description": "Allow attendees to join from multiple devices."
+    },
+    "encryption_type": {
+      "type": "string",
+      "description": "Meeting encryption type."
+    },
+    "approved_or_denied_countries_or_regions": {
+      "type": "object",
+      "description": "Approve or block users from specific countries."
+    },
+    "breakout_room": {
+      "type": "object",
+      "description": "Breakout room settings."
+    },
+    "language_interpretation": {
+      "type": "object",
+      "description": "Language interpretation settings."
+    },
+    "focus_mode": {
+      "type": "boolean",
+      "description": "Enable focus mode."
+    },
+    "meeting_invitees": {
+      "type": "array",
+      "description": "List of users invited to the meeting."
+    },
+    "private_meeting": {
+      "type": "boolean",
+      "description": "Make the meeting private."
+    },
+    "email_notification": {
+      "type": "boolean",
+      "description": "Send email notification when meeting starts."
+    },
+    "host_save_video_order": {
+      "type": "boolean",
+      "description": "Allow host to save the order of gallery view."
+    },
+    "continuous_meeting_chat": {
+      "type": "object",
+      "description": "Continuous meeting chat settings."
+    }
+  }
+}

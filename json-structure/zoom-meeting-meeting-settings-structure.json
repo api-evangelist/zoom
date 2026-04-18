@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "MeetingSettings",
+  "type": "object",
+  "properties": {
+    "host_video": {
+      "type": "boolean"
+    },
+    "participant_video": {
+      "type": "boolean"
+    },
+    "cn_meeting": {
+      "type": "boolean"
+    },
+    "in_meeting": {
+      "type": "boolean"
+    },
+    "join_before_host": {
+      "type": "boolean"
+    },
+    "jbh_time": {
+      "type": "integer"
+    },
+    "mute_upon_entry": {
+      "type": "boolean"
+    },
+    "watermark": {
+      "type": "boolean"
+    },
+    "use_pmi": {
+      "type": "boolean"
+    },
+    "approval_type": {
+      "type": "integer"
+    },
+    "registration_type": {
+      "type": "integer"
+    },
+    "audio": {
+      "type": "string"
+    },
+    "auto_recording": {
+      "type": "string"
+    },
+    "enforce_login": {
+      "type": "boolean"
+    },
+    "enforce_login_domains": {
+      "type": "string"
+    },
+    "alternative_hosts": {
+      "type": "string"
+    },
+    "alternative_hosts_email_notification": {
+      "type": "boolean"
+    },
+    "close_registration": {
+      "type": "boolean"
+    },
+    "waiting_room": {
+      "type": "boolean"
+    },
+    "global_dial_in_countries": {
+      "type": "array"
+    },
+    "contact_name": {
+      "type": "string"
+    },
+    "contact_email": {
+      "type": "string"
+    },
+    "registrants_email_notification": {
+      "type": "boolean"
+    },
+    "registrants_confirmation_email": {
+      "type": "boolean"
+    },
+    "meeting_authentication": {
+      "type": "boolean"
+    },
+    "authentication_option": {
+      "type": "string"
+    },
+    "authentication_domains": {
+      "type": "string"
+    },
+    "authentication_name": {
+      "type": "string"
+    },
+    "show_share_button": {
+      "type": "boolean"
+    },
+    "allow_multiple_devices": {
+      "type": "boolean"
+    },
+    "encryption_type": {
+      "type": "string"
+    },
+    "approved_or_denied_countries_or_regions": {
+      "type": "object"
+    },
+    "breakout_room": {
+      "type": "object"
+    },
+    "language_interpretation": {
+      "type": "object"
+    },
+    "focus_mode": {
+      "type": "boolean"
+    },
+    "meeting_invitees": {
+      "type": "array"
+    },
+    "private_meeting": {
+      "type": "boolean"
+    },
+    "email_notification": {
+      "type": "boolean"
+    },
+    "host_save_video_order": {
+      "type": "boolean"
+    },
+    "continuous_meeting_chat": {
+      "type": "object"
+    }
+  }
+}

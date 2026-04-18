@@ -1,0 +1,13 @@
+name: zoom API Vocabulary
+provider: zoom
+created: '2026-04-18'
+modified: '2026-04-18'
+operations: 24
+schemas: 24
+tags:
+- Meeting Live Stream
+- Meeting Participants
+- Meeting Polls
+- Meeting Recordings
+- Meeting Registrants
+- Meetings

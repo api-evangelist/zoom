@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RecordingFile",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Recording file ID."
+    },
+    "meeting_id": {
+      "type": "string",
+      "description": "Meeting ID."
+    },
+    "recording_start": {
+      "type": "string",
+      "description": "Recording start time."
+    },
+    "recording_end": {
+      "type": "string",
+      "description": "Recording end time."
+    },
+    "file_type": {
+      "type": "string",
+      "description": "Recording file type."
+    },
+    "file_extension": {
+      "type": "string",
+      "description": "File extension."
+    },
+    "file_size": {
+      "type": "number",
+      "description": "File size in bytes."
+    },
+    "download_url": {
+      "type": "string",
+      "description": "URL to download the recording file."
+    },
+    "play_url": {
+      "type": "string",
+      "description": "URL to play the recording file."
+    },
+    "status": {
+      "type": "string",
+      "description": "Recording status."
+    },
+    "recording_type": {
+      "type": "string",
+      "description": "Recording type."
+    }
+  }
+}

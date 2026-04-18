@@ -1,0 +1,13 @@
+{
+  "id": "abc123",
+  "meeting_id": "500123",
+  "recording_start": "example_value",
+  "recording_end": "example_value",
+  "file_type": "example_value",
+  "file_extension": "example_value",
+  "file_size": 42.5,
+  "download_url": "https://www.example.com",
+  "play_url": "https://www.example.com",
+  "status": "example_value",
+  "recording_type": "example_value"
+}

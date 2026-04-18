@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RegistrantList",
+  "type": "object",
+  "properties": {
+    "page_count": {
+      "type": "integer",
+      "description": "Total number of pages."
+    },
+    "page_number": {
+      "type": "integer",
+      "description": "Current page number."
+    },
+    "page_size": {
+      "type": "integer",
+      "description": "Number of records per page."
+    },
+    "total_records": {
+      "type": "integer",
+      "description": "Total number of registrant records."
+    },
+    "next_page_token": {
+      "type": "string",
+      "description": "Pagination token for the next page."
+    },
+    "registrants": {
+      "type": "array",
+      "description": "List of registrant objects."
+    }
+  }
+}

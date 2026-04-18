@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "MeetingCreateRequest",
+  "type": "object",
+  "properties": {
+    "topic": {
+      "type": "string"
+    },
+    "pre_schedule": {
+      "type": "boolean"
+    },
+    "start_time": {
+      "type": "string"
+    },
+    "duration": {
+      "type": "integer"
+    },
+    "schedule_for": {
+      "type": "string"
+    },
+    "timezone": {
+      "type": "string"
+    },
+    "password": {
+      "type": "string"
+    },
+    "default_password": {
+      "type": "boolean"
+    },
+    "agenda": {
+      "type": "string"
+    },
+    "tracking_fields": {
+      "type": "array"
+    },
+    "template_id": {
+      "type": "string"
+    }
+  }
+}

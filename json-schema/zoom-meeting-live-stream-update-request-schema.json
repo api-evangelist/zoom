@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LiveStreamUpdateRequest",
+  "type": "object",
+  "properties": {
+    "stream_url": {
+      "type": "string",
+      "description": "Streaming URL (e.g., RTMP endpoint)."
+    },
+    "stream_key": {
+      "type": "string",
+      "description": "Stream key or name."
+    },
+    "page_url": {
+      "type": "string",
+      "description": "The live stream page URL where viewers can watch."
+    },
+    "resolution": {
+      "type": "string",
+      "description": "The live stream resolution. Can be 720p or 1080p."
+    }
+  }
+}

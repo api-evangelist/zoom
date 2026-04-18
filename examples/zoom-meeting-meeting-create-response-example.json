@@ -1,0 +1,20 @@
+{
+  "uuid": "500123",
+  "id": "abc123",
+  "host_id": "500123",
+  "host_email": "user@example.com",
+  "topic": "example_value",
+  "status": "example_value",
+  "start_time": "example_value",
+  "duration": 10,
+  "timezone": "example_value",
+  "agenda": "example_value",
+  "created_at": "2026-01-15T10:30:00Z",
+  "start_url": "https://www.example.com",
+  "join_url": "https://www.example.com",
+  "password": "example_value",
+  "h323_password": "example_value",
+  "pstn_password": "example_value",
+  "encrypted_password": "example_value",
+  "occurrences": []
+}

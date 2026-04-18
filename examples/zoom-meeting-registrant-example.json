@@ -1,0 +1,22 @@
+{
+  "id": "abc123",
+  "email": "user@example.com",
+  "first_name": "example_value",
+  "last_name": "example_value",
+  "address": "example_value",
+  "city": "example_value",
+  "state": "example_value",
+  "zip": "example_value",
+  "country": "example_value",
+  "phone": "example_value",
+  "industry": "example_value",
+  "org": "example_value",
+  "job_title": "example_value",
+  "purchasing_time_frame": "example_value",
+  "role_in_purchase_process": "example_value",
+  "no_of_employees": "example_value",
+  "comments": "example_value",
+  "status": "example_value",
+  "create_time": "example_value",
+  "join_url": "https://www.example.com"
+}

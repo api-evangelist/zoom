@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Participant",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Participant UUID."
+    },
+    "user_id": {
+      "type": "string",
+      "description": "Participant user ID if the participant is a Zoom user."
+    },
+    "name": {
+      "type": "string",
+      "description": "Participant display name."
+    },
+    "user_email": {
+      "type": "string",
+      "description": "Participant email address."
+    },
+    "join_time": {
+      "type": "string",
+      "description": "Time the participant joined the meeting."
+    },
+    "leave_time": {
+      "type": "string",
+      "description": "Time the participant left the meeting."
+    },
+    "duration": {
+      "type": "integer",
+      "description": "Participant duration in the meeting (seconds)."
+    },
+    "registrant_id": {
+      "type": "string",
+      "description": "Registrant ID if the participant registered."
+    },
+    "failover": {
+      "type": "boolean",
+      "description": "Whether failover occurred for this participant."
+    },
+    "status": {
+      "type": "string",
+      "description": "Participant status."
+    }
+  }
+}

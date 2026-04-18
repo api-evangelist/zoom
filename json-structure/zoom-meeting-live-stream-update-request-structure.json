@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "LiveStreamUpdateRequest",
+  "type": "object",
+  "properties": {
+    "stream_url": {
+      "type": "string"
+    },
+    "stream_key": {
+      "type": "string"
+    },
+    "page_url": {
+      "type": "string"
+    },
+    "resolution": {
+      "type": "string"
+    }
+  }
+}

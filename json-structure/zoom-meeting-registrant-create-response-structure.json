@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "RegistrantCreateResponse",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "registrant_id": {
+      "type": "string"
+    },
+    "start_time": {
+      "type": "string"
+    },
+    "topic": {
+      "type": "string"
+    },
+    "join_url": {
+      "type": "string"
+    },
+    "participant_pin_code": {
+      "type": "integer"
+    }
+  }
+}

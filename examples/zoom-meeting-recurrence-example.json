@@ -1,0 +1,10 @@
+{
+  "type": 10,
+  "repeat_interval": 10,
+  "weekly_days": "example_value",
+  "monthly_day": 10,
+  "monthly_week": 10,
+  "monthly_week_day": 10,
+  "end_times": 10,
+  "end_date_time": "example_value"
+}

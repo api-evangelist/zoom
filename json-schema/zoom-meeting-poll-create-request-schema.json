@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PollCreateRequest",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Poll title. Maximum 64 characters."
+    },
+    "anonymous": {
+      "type": "boolean",
+      "description": "Whether this is an anonymous poll."
+    },
+    "poll_type": {
+      "type": "integer",
+      "description": "Type of poll. 1 - Poll, 2 - Advanced Poll, 3 - Quiz."
+    },
+    "questions": {
+      "type": "array",
+      "description": "List of questions for the poll."
+    }
+  }
+}

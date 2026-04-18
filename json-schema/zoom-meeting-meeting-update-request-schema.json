@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MeetingUpdateRequest",
+  "type": "object",
+  "properties": {
+    "topic": {
+      "type": "string",
+      "description": "Meeting topic."
+    },
+    "start_time": {
+      "type": "string",
+      "description": "Meeting start time."
+    },
+    "duration": {
+      "type": "integer",
+      "description": "Meeting duration in minutes."
+    },
+    "schedule_for": {
+      "type": "string",
+      "description": "Email address or user ID to schedule meeting on behalf of."
+    },
+    "timezone": {
+      "type": "string",
+      "description": "Timezone for start_time."
+    },
+    "password": {
+      "type": "string",
+      "description": "Meeting passcode."
+    },
+    "agenda": {
+      "type": "string",
+      "description": "Meeting description."
+    },
+    "tracking_fields": {
+      "type": "array"
+    }
+  }
+}

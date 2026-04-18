@@ -1,0 +1,12 @@
+{
+  "id": "abc123",
+  "user_id": "500123",
+  "name": "Example Title",
+  "user_email": "user@example.com",
+  "join_time": "example_value",
+  "leave_time": "example_value",
+  "duration": 10,
+  "registrant_id": "500123",
+  "failover": true,
+  "status": "example_value"
+}

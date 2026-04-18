@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "MeetingCreateResponse",
+  "type": "object",
+  "properties": {
+    "uuid": {
+      "type": "string"
+    },
+    "id": {
+      "type": "integer"
+    },
+    "host_id": {
+      "type": "string"
+    },
+    "host_email": {
+      "type": "string"
+    },
+    "topic": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "start_time": {
+      "type": "string"
+    },
+    "duration": {
+      "type": "integer"
+    },
+    "timezone": {
+      "type": "string"
+    },
+    "agenda": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "start_url": {
+      "type": "string"
+    },
+    "join_url": {
+      "type": "string"
+    },
+    "password": {
+      "type": "string"
+    },
+    "h323_password": {
+      "type": "string"
+    },
+    "pstn_password": {
+      "type": "string"
+    },
+    "encrypted_password": {
+      "type": "string"
+    },
+    "occurrences": {
+      "type": "array"
+    }
+  }
+}

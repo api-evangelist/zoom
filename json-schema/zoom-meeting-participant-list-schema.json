@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ParticipantList",
+  "type": "object",
+  "properties": {
+    "page_count": {
+      "type": "integer"
+    },
+    "page_size": {
+      "type": "integer"
+    },
+    "total_records": {
+      "type": "integer"
+    },
+    "next_page_token": {
+      "type": "string"
+    },
+    "participants": {
+      "type": "array"
+    }
+  }
+}

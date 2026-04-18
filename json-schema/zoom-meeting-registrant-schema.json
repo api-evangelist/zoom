@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Registrant",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Registrant ID."
+    },
+    "email": {
+      "type": "string",
+      "description": "Registrant email address."
+    },
+    "first_name": {
+      "type": "string",
+      "description": "Registrant first name."
+    },
+    "last_name": {
+      "type": "string",
+      "description": "Registrant last name."
+    },
+    "address": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "zip": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "industry": {
+      "type": "string"
+    },
+    "org": {
+      "type": "string"
+    },
+    "job_title": {
+      "type": "string"
+    },
+    "purchasing_time_frame": {
+      "type": "string"
+    },
+    "role_in_purchase_process": {
+      "type": "string"
+    },
+    "no_of_employees": {
+      "type": "string"
+    },
+    "comments": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "description": "Registrant status."
+    },
+    "create_time": {
+      "type": "string",
+      "description": "Time the registrant registered."
+    },
+    "join_url": {
+      "type": "string",
+      "description": "Unique join URL for this registrant."
+    }
+  }
+}

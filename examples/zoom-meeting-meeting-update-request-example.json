@@ -1,0 +1,10 @@
+{
+  "topic": "example_value",
+  "start_time": "example_value",
+  "duration": 10,
+  "schedule_for": "example_value",
+  "timezone": "example_value",
+  "password": "example_value",
+  "agenda": "example_value",
+  "tracking_fields": []
+}

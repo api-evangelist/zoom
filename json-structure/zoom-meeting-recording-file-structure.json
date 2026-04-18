@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "RecordingFile",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "meeting_id": {
+      "type": "string"
+    },
+    "recording_start": {
+      "type": "string"
+    },
+    "recording_end": {
+      "type": "string"
+    },
+    "file_type": {
+      "type": "string"
+    },
+    "file_extension": {
+      "type": "string"
+    },
+    "file_size": {
+      "type": "number"
+    },
+    "download_url": {
+      "type": "string"
+    },
+    "play_url": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "recording_type": {
+      "type": "string"
+    }
+  }
+}

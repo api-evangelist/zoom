@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RecordingList",
+  "type": "object",
+  "properties": {
+    "uuid": {
+      "type": "string",
+      "description": "Unique meeting instance ID."
+    },
+    "id": {
+      "type": "integer",
+      "description": "Meeting ID."
+    },
+    "host_id": {
+      "type": "string",
+      "description": "Host user ID."
+    },
+    "host_email": {
+      "type": "string",
+      "description": "Host email address."
+    },
+    "topic": {
+      "type": "string",
+      "description": "Meeting topic."
+    },
+    "start_time": {
+      "type": "string",
+      "description": "Meeting start time."
+    },
+    "timezone": {
+      "type": "string",
+      "description": "Timezone."
+    },
+    "duration": {
+      "type": "integer",
+      "description": "Meeting duration in minutes."
+    },
+    "total_size": {
+      "type": "integer",
+      "description": "Total file size of all recordings in bytes."
+    },
+    "recording_count": {
+      "type": "integer",
+      "description": "Number of recording files."
+    },
+    "share_url": {
+      "type": "string",
+      "description": "Share URL for the recording."
+    },
+    "recording_files": {
+      "type": "array"
+    }
+  }
+}

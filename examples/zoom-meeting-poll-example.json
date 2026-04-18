@@ -1,0 +1,8 @@
+{
+  "id": "abc123",
+  "title": "Example Title",
+  "anonymous": true,
+  "status": "example_value",
+  "poll_type": 10,
+  "questions": []
+}

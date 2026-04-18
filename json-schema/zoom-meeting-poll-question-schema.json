@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PollQuestion",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Question text."
+    },
+    "type": {
+      "type": "string",
+      "description": "Question type."
+    },
+    "answer_required": {
+      "type": "boolean",
+      "description": "Whether an answer is required."
+    },
+    "answers": {
+      "type": "array",
+      "description": "Available answer options."
+    },
+    "right_answers": {
+      "type": "array",
+      "description": "Correct answers for quiz type polls."
+    },
+    "prompts": {
+      "type": "array",
+      "description": "Prompts for matching and rank order question types."
+    },
+    "rating_min_value": {
+      "type": "integer",
+      "description": "Minimum rating value for rating scale questions."
+    },
+    "rating_max_value": {
+      "type": "integer",
+      "description": "Maximum rating value for rating scale questions."
+    },
+    "rating_min_label": {
+      "type": "string",
+      "description": "Label for minimum rating value."
+    },
+    "rating_max_label": {
+      "type": "string",
+      "description": "Label for maximum rating value."
+    },
+    "answer_min_character": {
+      "type": "integer",
+      "description": "Minimum characters for short/long answer questions."
+    },
+    "answer_max_character": {
+      "type": "integer",
+      "description": "Maximum characters for short/long answer questions."
+    }
+  }
+}

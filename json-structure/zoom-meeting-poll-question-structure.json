@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "PollQuestion",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "answer_required": {
+      "type": "boolean"
+    },
+    "answers": {
+      "type": "array"
+    },
+    "right_answers": {
+      "type": "array"
+    },
+    "prompts": {
+      "type": "array"
+    },
+    "rating_min_value": {
+      "type": "integer"
+    },
+    "rating_max_value": {
+      "type": "integer"
+    },
+    "rating_min_label": {
+      "type": "string"
+    },
+    "rating_max_label": {
+      "type": "string"
+    },
+    "answer_min_character": {
+      "type": "integer"
+    },
+    "answer_max_character": {
+      "type": "integer"
+    }
+  }
+}

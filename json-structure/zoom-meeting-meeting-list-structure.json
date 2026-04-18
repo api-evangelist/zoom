@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "MeetingList",
+  "type": "object",
+  "properties": {
+    "page_count": {
+      "type": "integer"
+    },
+    "page_number": {
+      "type": "integer"
+    },
+    "page_size": {
+      "type": "integer"
+    },
+    "total_records": {
+      "type": "integer"
+    },
+    "next_page_token": {
+      "type": "string"
+    },
+    "meetings": {
+      "type": "array"
+    }
+  }
+}

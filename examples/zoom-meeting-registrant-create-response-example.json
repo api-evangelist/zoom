@@ -1,0 +1,8 @@
+{
+  "id": "abc123",
+  "registrant_id": "500123",
+  "start_time": "example_value",
+  "topic": "example_value",
+  "join_url": "https://www.example.com",
+  "participant_pin_code": 10
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Occurrence",
+  "type": "object",
+  "description": "Meeting occurrence information for recurring meetings.",
+  "properties": {
+    "occurrence_id": {
+      "type": "string",
+      "description": "Occurrence ID."
+    },
+    "start_time": {
+      "type": "string",
+      "description": "Start time of this occurrence."
+    },
+    "duration": {
+      "type": "integer",
+      "description": "Duration of this occurrence in minutes."
+    },
+    "status": {
+      "type": "string",
+      "description": "Occurrence status."
+    }
+  }
+}

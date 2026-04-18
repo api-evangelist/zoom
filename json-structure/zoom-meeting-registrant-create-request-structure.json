@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "RegistrantCreateRequest",
+  "type": "object",
+  "properties": {
+    "email": {
+      "type": "string"
+    },
+    "first_name": {
+      "type": "string"
+    },
+    "last_name": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "zip": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "comments": {
+      "type": "string"
+    },
+    "industry": {
+      "type": "string"
+    },
+    "job_title": {
+      "type": "string"
+    },
+    "org": {
+      "type": "string"
+    },
+    "no_of_employees": {
+      "type": "string"
+    },
+    "purchasing_time_frame": {
+      "type": "string"
+    },
+    "role_in_purchase_process": {
+      "type": "string"
+    },
+    "language": {
+      "type": "string"
+    },
+    "custom_questions": {
+      "type": "array"
+    },
+    "auto_approve": {
+      "type": "boolean"
+    }
+  }
+}

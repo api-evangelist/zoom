@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MeetingSummary",
+  "type": "object",
+  "properties": {
+    "uuid": {
+      "type": "string",
+      "description": "Unique meeting instance ID."
+    },
+    "id": {
+      "type": "integer",
+      "description": "Meeting ID (meeting number)."
+    },
+    "host_id": {
+      "type": "string",
+      "description": "ID of the user who is the meeting host."
+    },
+    "topic": {
+      "type": "string",
+      "description": "Meeting topic."
+    },
+    "start_time": {
+      "type": "string",
+      "description": "Meeting start time in UTC."
+    },
+    "duration": {
+      "type": "integer",
+      "description": "Meeting duration in minutes."
+    },
+    "timezone": {
+      "type": "string",
+      "description": "Timezone for the meeting start time."
+    },
+    "created_at": {
+      "type": "string",
+      "description": "Time the meeting was created."
+    },
+    "join_url": {
+      "type": "string",
+      "description": "URL for participants to join the meeting."
+    },
+    "agenda": {
+      "type": "string",
+      "description": "Meeting agenda or description."
+    }
+  }
+}

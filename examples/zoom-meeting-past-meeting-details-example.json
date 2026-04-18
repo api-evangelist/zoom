@@ -1,0 +1,13 @@
+{
+  "uuid": "500123",
+  "id": "abc123",
+  "host_id": "500123",
+  "host_email": "user@example.com",
+  "topic": "example_value",
+  "user_name": "example_value",
+  "start_time": "example_value",
+  "end_time": "example_value",
+  "duration": 10,
+  "total_minutes": 10,
+  "participants_count": 10
+}

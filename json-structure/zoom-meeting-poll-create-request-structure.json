@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "PollCreateRequest",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "anonymous": {
+      "type": "boolean"
+    },
+    "poll_type": {
+      "type": "integer"
+    },
+    "questions": {
+      "type": "array"
+    }
+  }
+}

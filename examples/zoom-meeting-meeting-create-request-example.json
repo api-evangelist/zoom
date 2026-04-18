@@ -1,0 +1,13 @@
+{
+  "topic": "example_value",
+  "pre_schedule": true,
+  "start_time": "example_value",
+  "duration": 10,
+  "schedule_for": "example_value",
+  "timezone": "example_value",
+  "password": "example_value",
+  "default_password": true,
+  "agenda": "example_value",
+  "tracking_fields": [],
+  "template_id": "500123"
+}

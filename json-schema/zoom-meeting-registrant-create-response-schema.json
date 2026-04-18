@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RegistrantCreateResponse",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Meeting ID."
+    },
+    "registrant_id": {
+      "type": "string",
+      "description": "Registrant ID."
+    },
+    "start_time": {
+      "type": "string",
+      "description": "Meeting start time."
+    },
+    "topic": {
+      "type": "string",
+      "description": "Meeting topic."
+    },
+    "join_url": {
+      "type": "string",
+      "description": "Unique join URL for this registrant."
+    },
+    "participant_pin_code": {
+      "type": "integer",
+      "description": "Participant PIN code for phone dial-in."
+    }
+  }
+}

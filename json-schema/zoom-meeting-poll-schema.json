@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Poll",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Poll ID."
+    },
+    "title": {
+      "type": "string",
+      "description": "Poll title."
+    },
+    "anonymous": {
+      "type": "boolean",
+      "description": "Whether this is an anonymous poll."
+    },
+    "status": {
+      "type": "string",
+      "description": "Poll status."
+    },
+    "poll_type": {
+      "type": "integer",
+      "description": "Type of poll. 1 - Poll, 2 - Advanced Poll, 3 - Quiz."
+    },
+    "questions": {
+      "type": "array",
+      "description": "List of questions in the poll."
+    }
+  }
+}

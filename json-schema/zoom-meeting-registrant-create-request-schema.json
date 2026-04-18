@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RegistrantCreateRequest",
+  "type": "object",
+  "properties": {
+    "email": {
+      "type": "string",
+      "description": "Registrant email address."
+    },
+    "first_name": {
+      "type": "string",
+      "description": "Registrant first name."
+    },
+    "last_name": {
+      "type": "string",
+      "description": "Registrant last name."
+    },
+    "address": {
+      "type": "string",
+      "description": "Registrant address."
+    },
+    "city": {
+      "type": "string",
+      "description": "Registrant city."
+    },
+    "state": {
+      "type": "string",
+      "description": "Registrant state or province."
+    },
+    "zip": {
+      "type": "string",
+      "description": "Registrant zip or postal code."
+    },
+    "country": {
+      "type": "string",
+      "description": "Registrant two-letter country code."
+    },
+    "phone": {
+      "type": "string",
+      "description": "Registrant phone number."
+    },
+    "comments": {
+      "type": "string",
+      "description": "Registrant questions and comments."
+    },
+    "industry": {
+      "type": "string",
+      "description": "Registrant industry."
+    },
+    "job_title": {
+      "type": "string",
+      "description": "Registrant job title."
+    },
+    "org": {
+      "type": "string",
+      "description": "Registrant organization."
+    },
+    "no_of_employees": {
+      "type": "string",
+      "description": "Number of employees."
+    },
+    "purchasing_time_frame": {
+      "type": "string",
+      "description": "Purchasing time frame."
+    },
+    "role_in_purchase_process": {
+      "type": "string",
+      "description": "Role in purchase process."
+    },
+    "language": {
+      "type": "string",
+      "description": "Registrant language preference."
+    },
+    "custom_questions": {
+      "type": "array",
+      "description": "Custom question responses."
+    },
+    "auto_approve": {
+      "type": "boolean",
+      "description": "Auto-approve this registrant."
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "uuid": "500123",
+  "id": "abc123",
+  "host_id": "500123",
+  "host_email": "user@example.com",
+  "topic": "example_value",
+  "start_time": "example_value",
+  "timezone": "example_value",
+  "duration": 10,
+  "total_size": 10,
+  "recording_count": 10,
+  "share_url": "https://www.example.com",
+  "recording_files": []
+}

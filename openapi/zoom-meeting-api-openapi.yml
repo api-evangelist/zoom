@@ -22,59 +22,60 @@ externalDocs:
   description: Zoom Meeting API Documentation
   url: https://developers.zoom.us/docs/api/rest/meeting/
 servers:
-  - url: https://api.zoom.us/v2
-    description: Zoom REST API v2 Production
+- url: https://api.zoom.us/v2
+  description: Zoom REST API v2 Production
 security:
-  - oauth2: []
-  - bearerAuth: []
+- oauth2: []
+- bearerAuth: []
 tags:
-  - name: Meeting Live Stream
-    description: Manage live streaming for Zoom meetings.
-  - name: Meeting Participants
-    description: Manage participants in Zoom meetings.
-  - name: Meeting Polls
-    description: Create and manage polls for Zoom meetings.
-  - name: Meeting Recordings
-    description: Access and manage meeting recordings.
-  - name: Meeting Registrants
-    description: Manage meeting registration and registrants.
-  - name: Meetings
-    description: Create and manage Zoom meetings.
-    externalDocs:
-      url: https://developers.zoom.us/docs/api/rest/reference/zoom-api/methods/#tag/Meetings
+- name: Meeting Live Stream
+  description: Manage live streaming for Zoom meetings.
+- name: Meeting Participants
+  description: Manage participants in Zoom meetings.
+- name: Meeting Polls
+  description: Create and manage polls for Zoom meetings.
+- name: Meeting Recordings
+  description: Access and manage meeting recordings.
+- name: Meeting Registrants
+  description: Manage meeting registration and registrants.
+- name: Meetings
+  description: Create and manage Zoom meetings.
+  externalDocs:
+    url: https://developers.zoom.us/docs/api/rest/reference/zoom-api/methods/#tag/Meetings
 paths:
   /users/{userId}/meetings:
     get:
       tags:
-        - Meetings
-      summary: Zoom List meetings
+      - Meetings
+      summary: Zoom List Meetings
       description: >-
         List all the meetings that were scheduled for a user. For user-level
         apps, pass the `me` value instead of the userId parameter.
       operationId: listMeetings
       parameters:
-        - $ref: '#/components/parameters/UserIdPath'
-        - name: type
-          in: query
-          description: >-
-            The type of meeting. `scheduled` - All valid previous (unexpired)
-            meetings, live meetings, and upcoming scheduled meetings.
-            `live` - All the ongoing meetings.
-            `upcoming` - All upcoming meetings including live meetings.
-            `upcoming_meetings` - All upcoming meetings including live meetings.
-            `previous_meetings` - All the previous meetings.
-          schema:
-            type: string
-            enum:
-              - scheduled
-              - live
-              - upcoming
-              - upcoming_meetings
-              - previous_meetings
-            default: scheduled
-        - $ref: '#/components/parameters/PageSize'
-        - $ref: '#/components/parameters/NextPageToken'
-        - $ref: '#/components/parameters/PageNumber'
+      - $ref: '#/components/parameters/UserIdPath'
+      - name: type
+        in: query
+        description: >-
+          The type of meeting. `scheduled` - All valid previous (unexpired)
+          meetings, live meetings, and upcoming scheduled meetings.
+          `live` - All the ongoing meetings.
+          `upcoming` - All upcoming meetings including live meetings.
+          `upcoming_meetings` - All upcoming meetings including live meetings.
+          `previous_meetings` - All the previous meetings.
+        schema:
+          type: string
+          enum:
+          - scheduled
+          - live
+          - upcoming
+          - upcoming_meetings
+          - previous_meetings
+          default: scheduled
+        example: scheduled
+      - $ref: '#/components/parameters/PageSize'
+      - $ref: '#/components/parameters/NextPageToken'
+      - $ref: '#/components/parameters/PageNumber'
       responses:
         '200':
           description: Successfully retrieved the list of meetings.
@@ -82,29 +83,134 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MeetingList'
+              examples:
+                Listmeetings200Example:
+                  summary: Default listMeetings 200 response
+                  x-microcks-default: true
+                  value:
+                    page_count: 10
+                    page_number: 10
+                    page_size: 10
+                    total_records: 10
+                    next_page_token: example_value
+                    meetings:
+                    - uuid: '500123'
+                      id: abc123
+                      host_id: '500123'
+                      topic: example_value
+                      start_time: '2026-01-15T10:30:00Z'
+                      duration: 10
+                      timezone: example_value
+                      created_at: '2026-01-15T10:30:00Z'
+                      join_url: https://www.example.com
+                      agenda: example_value
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     post:
       tags:
-        - Meetings
-      summary: Zoom Create a meeting
+      - Meetings
+      summary: Zoom Create a Meeting
       description: >-
         Create a meeting for a user. For user-level apps, pass the `me` value
         instead of the userId parameter. A meeting can be scheduled, instant,
         or recurring.
       operationId: createMeeting
       parameters:
-        - $ref: '#/components/parameters/UserIdPath'
+      - $ref: '#/components/parameters/UserIdPath'
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/MeetingCreateRequest'
+            examples:
+              CreatemeetingRequestExample:
+                summary: Default createMeeting request
+                x-microcks-default: true
+                value:
+                  topic: example_value
+                  type: 1
+                  pre_schedule: true
+                  start_time: '2026-01-15T10:30:00Z'
+                  duration: 10
+                  schedule_for: example_value
+                  timezone: example_value
+                  password: example_value
+                  default_password: true
+                  agenda: example_value
+                  tracking_fields:
+                  - field: example_value
+                    value: example_value
+                  recurrence:
+                    type: 1
+                    repeat_interval: 10
+                    weekly_days: example_value
+                    monthly_day: 10
+                    monthly_week: -1
+                    monthly_week_day: 1
+                    end_times: 10
+                    end_date_time: '2026-01-15T10:30:00Z'
+                  settings:
+                    host_video: true
+                    participant_video: true
+                    cn_meeting: true
+                    in_meeting: true
+                    join_before_host: true
+                    jbh_time: 0
+                    mute_upon_entry: true
+                    watermark: true
+                    use_pmi: true
+                    approval_type: 0
+                    registration_type: 1
+                    audio: both
+                    auto_recording: local
+                    enforce_login: true
+                    enforce_login_domains: example_value
+                    alternative_hosts: example_value
+                    alternative_hosts_email_notification: user@example.com
+                    close_registration: true
+                    waiting_room: true
+                    global_dial_in_countries:
+                    - {}
+                    contact_name: example_value
+                    contact_email: user@example.com
+                    registrants_email_notification: user@example.com
+                    registrants_confirmation_email: user@example.com
+                    meeting_authentication: true
+                    authentication_option: example_value
+                    authentication_domains: example_value
+                    authentication_name: example_value
+                    show_share_button: true
+                    allow_multiple_devices: true
+                    encryption_type: enhanced_encryption
+                    approved_or_denied_countries_or_regions:
+                      enable: true
+                      method: approve
+                      approved_list: {}
+                      denied_list: {}
+                    breakout_room:
+                      enable: true
+                      rooms: {}
+                    language_interpretation:
+                      enable: true
+                      interpreters: {}
+                    focus_mode: true
+                    meeting_invitees:
+                    - {}
+                    private_meeting: true
+                    email_notification: user@example.com
+                    host_save_video_order: true
+                    continuous_meeting_chat:
+                      enable: true
+                      auto_add_invited_external_users: true
+                  template_id: '500123'
       responses:
         '201':
           description: Meeting created successfully.
@@ -112,6 +218,96 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MeetingCreateResponse'
+              examples:
+                Createmeeting201Example:
+                  summary: Default createMeeting 201 response
+                  x-microcks-default: true
+                  value:
+                    uuid: '500123'
+                    id: abc123
+                    host_id: '500123'
+                    host_email: user@example.com
+                    topic: example_value
+                    type: 1
+                    status: waiting
+                    start_time: '2026-01-15T10:30:00Z'
+                    duration: 10
+                    timezone: example_value
+                    agenda: example_value
+                    created_at: '2026-01-15T10:30:00Z'
+                    start_url: https://www.example.com
+                    join_url: https://www.example.com
+                    password: example_value
+                    h323_password: example_value
+                    pstn_password: example_value
+                    encrypted_password: example_value
+                    settings:
+                      host_video: true
+                      participant_video: true
+                      cn_meeting: true
+                      in_meeting: true
+                      join_before_host: true
+                      jbh_time: 0
+                      mute_upon_entry: true
+                      watermark: true
+                      use_pmi: true
+                      approval_type: 0
+                      registration_type: 1
+                      audio: both
+                      auto_recording: local
+                      enforce_login: true
+                      enforce_login_domains: example_value
+                      alternative_hosts: example_value
+                      alternative_hosts_email_notification: user@example.com
+                      close_registration: true
+                      waiting_room: true
+                      global_dial_in_countries:
+                      - {}
+                      contact_name: example_value
+                      contact_email: user@example.com
+                      registrants_email_notification: user@example.com
+                      registrants_confirmation_email: user@example.com
+                      meeting_authentication: true
+                      authentication_option: example_value
+                      authentication_domains: example_value
+                      authentication_name: example_value
+                      show_share_button: true
+                      allow_multiple_devices: true
+                      encryption_type: enhanced_encryption
+                      approved_or_denied_countries_or_regions:
+                        enable: true
+                        method: approve
+                        approved_list: {}
+                        denied_list: {}
+                      breakout_room:
+                        enable: true
+                        rooms: {}
+                      language_interpretation:
+                        enable: true
+                        interpreters: {}
+                      focus_mode: true
+                      meeting_invitees:
+                      - {}
+                      private_meeting: true
+                      email_notification: user@example.com
+                      host_save_video_order: true
+                      continuous_meeting_chat:
+                        enable: true
+                        auto_add_invited_external_users: true
+                    recurrence:
+                      type: 1
+                      repeat_interval: 10
+                      weekly_days: example_value
+                      monthly_day: 10
+                      monthly_week: -1
+                      monthly_week_day: 1
+                      end_times: 10
+                      end_date_time: '2026-01-15T10:30:00Z'
+                    occurrences:
+                    - occurrence_id: '500123'
+                      start_time: '2026-01-15T10:30:00Z'
+                      duration: 10
+                      status: available
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -120,31 +316,36 @@ paths:
           $ref: '#/components/responses/NotFound'
         '429':
           $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /meetings/{meetingId}:
     get:
       tags:
-        - Meetings
-      summary: Zoom Get meeting details
+      - Meetings
+      summary: Zoom Get Meeting Details
       description: >-
         Retrieve the details of a meeting. This returns detailed information
         about the specified meeting including settings, recurrence, and
         tracking fields.
       operationId: getMeeting
       parameters:
-        - $ref: '#/components/parameters/MeetingIdPath'
-        - name: occurrence_id
-          in: query
-          description: Meeting occurrence ID for recurring meetings.
-          schema:
-            type: string
-        - name: show_previous_occurrences
-          in: query
-          description: >-
-            Set to true to view meeting details of all previous occurrences
-            of a recurring meeting.
-          schema:
-            type: boolean
-            default: false
+      - $ref: '#/components/parameters/MeetingIdPath'
+      - name: occurrence_id
+        in: query
+        description: Meeting occurrence ID for recurring meetings.
+        schema:
+          type: string
+        example: '500123'
+      - name: show_previous_occurrences
+        in: query
+        description: >-
+          Set to true to view meeting details of all previous occurrences
+          of a recurring meeting.
+        schema:
+          type: boolean
+          default: false
+        example: true
       responses:
         '200':
           description: Successfully retrieved meeting details.
@@ -152,33 +353,120 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MeetingDetails'
+              examples:
+                Getmeeting200Example:
+                  summary: Default getMeeting 200 response
+                  x-microcks-default: true
+                  value: {}
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     patch:
       tags:
-        - Meetings
-      summary: Zoom Update a meeting
+      - Meetings
+      summary: Zoom Update a Meeting
       description: >-
         Update the details of a meeting. This can include topic, start time,
         duration, settings, and other meeting options.
       operationId: updateMeeting
       parameters:
-        - $ref: '#/components/parameters/MeetingIdPath'
-        - name: occurrence_id
-          in: query
-          description: Meeting occurrence ID for recurring meeting updates.
-          schema:
-            type: string
+      - $ref: '#/components/parameters/MeetingIdPath'
+      - name: occurrence_id
+        in: query
+        description: Meeting occurrence ID for recurring meeting updates.
+        schema:
+          type: string
+        example: '500123'
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/MeetingUpdateRequest'
+            examples:
+              UpdatemeetingRequestExample:
+                summary: Default updateMeeting request
+                x-microcks-default: true
+                value:
+                  topic: example_value
+                  type: 1
+                  start_time: '2026-01-15T10:30:00Z'
+                  duration: 10
+                  schedule_for: example_value
+                  timezone: example_value
+                  password: example_value
+                  agenda: example_value
+                  recurrence:
+                    type: 1
+                    repeat_interval: 10
+                    weekly_days: example_value
+                    monthly_day: 10
+                    monthly_week: -1
+                    monthly_week_day: 1
+                    end_times: 10
+                    end_date_time: '2026-01-15T10:30:00Z'
+                  settings:
+                    host_video: true
+                    participant_video: true
+                    cn_meeting: true
+                    in_meeting: true
+                    join_before_host: true
+                    jbh_time: 0
+                    mute_upon_entry: true
+                    watermark: true
+                    use_pmi: true
+                    approval_type: 0
+                    registration_type: 1
+                    audio: both
+                    auto_recording: local
+                    enforce_login: true
+                    enforce_login_domains: example_value
+                    alternative_hosts: example_value
+                    alternative_hosts_email_notification: user@example.com
+                    close_registration: true
+                    waiting_room: true
+                    global_dial_in_countries:
+                    - {}
+                    contact_name: example_value
+                    contact_email: user@example.com
+                    registrants_email_notification: user@example.com
+                    registrants_confirmation_email: user@example.com
+                    meeting_authentication: true
+                    authentication_option: example_value
+                    authentication_domains: example_value
+                    authentication_name: example_value
+                    show_share_button: true
+                    allow_multiple_devices: true
+                    encryption_type: enhanced_encryption
+                    approved_or_denied_countries_or_regions:
+                      enable: true
+                      method: approve
+                      approved_list: {}
+                      denied_list: {}
+                    breakout_room:
+                      enable: true
+                      rooms: {}
+                    language_interpretation:
+                      enable: true
+                      interpreters: {}
+                    focus_mode: true
+                    meeting_invitees:
+                    - {}
+                    private_meeting: true
+                    email_notification: user@example.com
+                    host_save_video_order: true
+                    continuous_meeting_chat:
+                      enable: true
+                      auto_add_invited_external_users: true
+                  tracking_fields:
+                  - field: example_value
+                    value: example_value
       responses:
         '204':
           description: Meeting updated successfully.
@@ -190,35 +478,41 @@ paths:
           $ref: '#/components/responses/NotFound'
         '429':
           $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     delete:
       tags:
-        - Meetings
-      summary: Zoom Delete a meeting
+      - Meetings
+      summary: Zoom Delete a Meeting
       description: >-
         Delete a meeting. This permanently removes the meeting from Zoom.
       operationId: deleteMeeting
       parameters:
-        - $ref: '#/components/parameters/MeetingIdPath'
-        - name: occurrence_id
-          in: query
-          description: Meeting occurrence ID for recurring meeting deletion.
-          schema:
-            type: string
-        - name: schedule_for_reminder
-          in: query
-          description: >-
-            Notify host and alternative host about the meeting cancellation
-            via email.
-          schema:
-            type: boolean
-            default: true
-        - name: cancel_meeting_reminder
-          in: query
-          description: >-
-            Notify registrants about the meeting cancellation via email.
-          schema:
-            type: boolean
-            default: false
+      - $ref: '#/components/parameters/MeetingIdPath'
+      - name: occurrence_id
+        in: query
+        description: Meeting occurrence ID for recurring meeting deletion.
+        schema:
+          type: string
+        example: '500123'
+      - name: schedule_for_reminder
+        in: query
+        description: >-
+          Notify host and alternative host about the meeting cancellation
+          via email.
+        schema:
+          type: boolean
+          default: true
+        example: true
+      - name: cancel_meeting_reminder
+        in: query
+        description: >-
+          Notify registrants about the meeting cancellation via email.
+        schema:
+          type: boolean
+          default: false
+        example: true
       responses:
         '204':
           description: Meeting deleted successfully.
@@ -228,17 +522,20 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /meetings/{meetingId}/status:
     put:
       tags:
-        - Meetings
-      summary: Zoom Update meeting status
+      - Meetings
+      summary: Zoom Update Meeting Status
       description: >-
         End a meeting by updating its status. This can also recover a
         deleted meeting within a certain time frame.
       operationId: updateMeetingStatus
       parameters:
-        - $ref: '#/components/parameters/MeetingIdPath'
+      - $ref: '#/components/parameters/MeetingIdPath'
       requestBody:
         required: true
         content:
@@ -252,8 +549,14 @@ paths:
                     The action to take. `end` - End the meeting.
                     `recover` - Recover a deleted meeting.
                   enum:
-                    - end
-                    - recover
+                  - end
+                  - recover
+            examples:
+              UpdatemeetingstatusRequestExample:
+                summary: Default updateMeetingStatus request
+                x-microcks-default: true
+                value:
+                  action: end
       responses:
         '204':
           description: Meeting status updated successfully.
@@ -263,34 +566,39 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /meetings/{meetingId}/registrants:
     get:
       tags:
-        - Meeting Registrants
-      summary: Zoom List meeting registrants
+      - Meeting Registrants
+      summary: Zoom List Meeting Registrants
       description: >-
         List all registrants for a meeting. Returns the list of users who
         registered for the meeting.
       operationId: listMeetingRegistrants
       parameters:
-        - $ref: '#/components/parameters/MeetingIdPath'
-        - name: occurrence_id
-          in: query
-          description: Meeting occurrence ID for recurring meetings.
-          schema:
-            type: string
-        - name: status
-          in: query
-          description: Registrant status filter.
-          schema:
-            type: string
-            enum:
-              - pending
-              - approved
-              - denied
-            default: approved
-        - $ref: '#/components/parameters/PageSize'
-        - $ref: '#/components/parameters/NextPageToken'
+      - $ref: '#/components/parameters/MeetingIdPath'
+      - name: occurrence_id
+        in: query
+        description: Meeting occurrence ID for recurring meetings.
+        schema:
+          type: string
+        example: '500123'
+      - name: status
+        in: query
+        description: Registrant status filter.
+        schema:
+          type: string
+          enum:
+          - pending
+          - approved
+          - denied
+          default: approved
+        example: pending
+      - $ref: '#/components/parameters/PageSize'
+      - $ref: '#/components/parameters/NextPageToken'
       responses:
         '200':
           description: Successfully retrieved the list of registrants.
@@ -298,34 +606,95 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RegistrantList'
+              examples:
+                Listmeetingregistrants200Example:
+                  summary: Default listMeetingRegistrants 200 response
+                  x-microcks-default: true
+                  value:
+                    page_count: 10
+                    page_number: 10
+                    page_size: 10
+                    total_records: 10
+                    next_page_token: example_value
+                    registrants:
+                    - id: abc123
+                      email: user@example.com
+                      first_name: example_value
+                      last_name: example_value
+                      address: example_value
+                      city: example_value
+                      state: example_value
+                      zip: example_value
+                      country: example_value
+                      phone: example_value
+                      industry: example_value
+                      org: example_value
+                      job_title: example_value
+                      purchasing_time_frame: example_value
+                      role_in_purchase_process: example_value
+                      no_of_employees: example_value
+                      comments: example_value
+                      status: approved
+                      create_time: '2026-01-15T10:30:00Z'
+                      join_url: https://www.example.com
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     post:
       tags:
-        - Meeting Registrants
-      summary: Zoom Add a meeting registrant
+      - Meeting Registrants
+      summary: Zoom Add a Meeting Registrant
       description: >-
         Register a participant for a meeting. A host or alternative host can
         also add registrants on behalf of other users.
       operationId: addMeetingRegistrant
       parameters:
-        - $ref: '#/components/parameters/MeetingIdPath'
-        - name: occurrence_ids
-          in: query
-          description: >-
-            A comma-separated list of occurrence IDs for recurring meetings.
-          schema:
-            type: string
+      - $ref: '#/components/parameters/MeetingIdPath'
+      - name: occurrence_ids
+        in: query
+        description: >-
+          A comma-separated list of occurrence IDs for recurring meetings.
+        schema:
+          type: string
+        example: example_value
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/RegistrantCreateRequest'
+            examples:
+              AddmeetingregistrantRequestExample:
+                summary: Default addMeetingRegistrant request
+                x-microcks-default: true
+                value:
+                  email: user@example.com
+                  first_name: example_value
+                  last_name: example_value
+                  address: example_value
+                  city: example_value
+                  state: example_value
+                  zip: example_value
+                  country: example_value
+                  phone: example_value
+                  comments: example_value
+                  industry: example_value
+                  job_title: example_value
+                  org: example_value
+                  no_of_employees: '1-20'
+                  purchasing_time_frame: Within a month
+                  role_in_purchase_process: Decision Maker
+                  language: en-US
+                  custom_questions:
+                  - title: Example Title
+                    value: example_value
+                  auto_approve: true
       responses:
         '201':
           description: Registrant added successfully.
@@ -333,28 +702,43 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RegistrantCreateResponse'
+              examples:
+                Addmeetingregistrant201Example:
+                  summary: Default addMeetingRegistrant 201 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    registrant_id: '500123'
+                    start_time: '2026-01-15T10:30:00Z'
+                    topic: example_value
+                    join_url: https://www.example.com
+                    participant_pin_code: 10
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /meetings/{meetingId}/registrants/status:
     put:
       tags:
-        - Meeting Registrants
-      summary: Zoom Update registrant status
+      - Meeting Registrants
+      summary: Zoom Update Registrant Status
       description: >-
         Approve or deny a meeting registrant. Also allows cancellation of
         a previously approved registrant.
       operationId: updateMeetingRegistrantStatus
       parameters:
-        - $ref: '#/components/parameters/MeetingIdPath'
-        - name: occurrence_id
-          in: query
-          description: Meeting occurrence ID for recurring meetings.
-          schema:
-            type: string
+      - $ref: '#/components/parameters/MeetingIdPath'
+      - name: occurrence_id
+        in: query
+        description: Meeting occurrence ID for recurring meetings.
+        schema:
+          type: string
+        example: '500123'
       requestBody:
         required: true
         content:
@@ -362,15 +746,15 @@ paths:
             schema:
               type: object
               required:
-                - action
+              - action
               properties:
                 action:
                   type: string
                   description: Action to take on registrants.
                   enum:
-                    - approve
-                    - deny
-                    - cancel
+                  - approve
+                  - deny
+                  - cancel
                 registrants:
                   type: array
                   description: List of registrants to update.
@@ -383,6 +767,15 @@ paths:
                       email:
                         type: string
                         description: Registrant email address.
+            examples:
+              UpdatemeetingregistrantstatusRequestExample:
+                summary: Default updateMeetingRegistrantStatus request
+                x-microcks-default: true
+                value:
+                  action: approve
+                  registrants:
+                  - id: abc123
+                    email: user@example.com
       responses:
         '204':
           description: Registrant status updated successfully.
@@ -392,20 +785,24 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /meetings/{meetingId}/polls:
     get:
       tags:
-        - Meeting Polls
-      summary: Zoom List meeting polls
+      - Meeting Polls
+      summary: Zoom List Meeting Polls
       description: List all polls for a meeting.
       operationId: listMeetingPolls
       parameters:
-        - $ref: '#/components/parameters/MeetingIdPath'
-        - name: anonymous
-          in: query
-          description: Whether to query anonymous polls.
-          schema:
-            type: boolean
+      - $ref: '#/components/parameters/MeetingIdPath'
+      - name: anonymous
+        in: query
+        description: Whether to query anonymous polls.
+        schema:
+          type: boolean
+        example: true
       responses:
         '200':
           description: Successfully retrieved meeting polls.
@@ -421,28 +818,66 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/Poll'
+              examples:
+                Listmeetingpolls200Example:
+                  summary: Default listMeetingPolls 200 response
+                  x-microcks-default: true
+                  value:
+                    total_records: 10
+                    polls:
+                    - id: abc123
+                      title: Example Title
+                      anonymous: true
+                      status: notstart
+                      poll_type: 1
+                      questions:
+                      - {}
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     post:
       tags:
-        - Meeting Polls
-      summary: Zoom Create a meeting poll
+      - Meeting Polls
+      summary: Zoom Create a Meeting Poll
       description: >-
         Create a poll for a meeting. Meeting must be a scheduled meeting.
         Instant meetings do not have polling features enabled.
       operationId: createMeetingPoll
       parameters:
-        - $ref: '#/components/parameters/MeetingIdPath'
+      - $ref: '#/components/parameters/MeetingIdPath'
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/PollCreateRequest'
+            examples:
+              CreatemeetingpollRequestExample:
+                summary: Default createMeetingPoll request
+                x-microcks-default: true
+                value:
+                  title: Example Title
+                  anonymous: true
+                  poll_type: 1
+                  questions:
+                  - name: Example Title
+                    type: single
+                    answer_required: true
+                    answers: {}
+                    right_answers: {}
+                    prompts: {}
+                    rating_min_value: 10
+                    rating_max_value: 10
+                    rating_min_label: example_value
+                    rating_max_label: example_value
+                    answer_min_character: 10
+                    answer_max_character: 10
       responses:
         '201':
           description: Poll created successfully.
@@ -450,22 +885,48 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Poll'
+              examples:
+                Createmeetingpoll201Example:
+                  summary: Default createMeetingPoll 201 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    title: Example Title
+                    anonymous: true
+                    status: notstart
+                    poll_type: 1
+                    questions:
+                    - name: Example Title
+                      type: single
+                      answer_required: true
+                      answers: {}
+                      right_answers: {}
+                      prompts: {}
+                      rating_min_value: 10
+                      rating_max_value: 10
+                      rating_min_label: example_value
+                      rating_max_label: example_value
+                      answer_min_character: 10
+                      answer_max_character: 10
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /meetings/{meetingId}/polls/{pollId}:
     get:
       tags:
-        - Meeting Polls
-      summary: Zoom Get a meeting poll
+      - Meeting Polls
+      summary: Zoom Get a Meeting Poll
       description: Retrieve details of a specific meeting poll.
       operationId: getMeetingPoll
       parameters:
-        - $ref: '#/components/parameters/MeetingIdPath'
-        - $ref: '#/components/parameters/PollIdPath'
+      - $ref: '#/components/parameters/MeetingIdPath'
+      - $ref: '#/components/parameters/PollIdPath'
       responses:
         '200':
           description: Successfully retrieved the poll.
@@ -473,27 +934,74 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Poll'
+              examples:
+                Getmeetingpoll200Example:
+                  summary: Default getMeetingPoll 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    title: Example Title
+                    anonymous: true
+                    status: notstart
+                    poll_type: 1
+                    questions:
+                    - name: Example Title
+                      type: single
+                      answer_required: true
+                      answers: {}
+                      right_answers: {}
+                      prompts: {}
+                      rating_min_value: 10
+                      rating_max_value: 10
+                      rating_min_label: example_value
+                      rating_max_label: example_value
+                      answer_min_character: 10
+                      answer_max_character: 10
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     put:
       tags:
-        - Meeting Polls
-      summary: Zoom Update a meeting poll
+      - Meeting Polls
+      summary: Zoom Update a Meeting Poll
       description: Update a specific meeting poll.
       operationId: updateMeetingPoll
       parameters:
-        - $ref: '#/components/parameters/MeetingIdPath'
-        - $ref: '#/components/parameters/PollIdPath'
+      - $ref: '#/components/parameters/MeetingIdPath'
+      - $ref: '#/components/parameters/PollIdPath'
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/PollCreateRequest'
+            examples:
+              UpdatemeetingpollRequestExample:
+                summary: Default updateMeetingPoll request
+                x-microcks-default: true
+                value:
+                  title: Example Title
+                  anonymous: true
+                  poll_type: 1
+                  questions:
+                  - name: Example Title
+                    type: single
+                    answer_required: true
+                    answers: {}
+                    right_answers: {}
+                    prompts: {}
+                    rating_min_value: 10
+                    rating_max_value: 10
+                    rating_min_label: example_value
+                    rating_max_label: example_value
+                    answer_min_character: 10
+                    answer_max_character: 10
       responses:
         '204':
           description: Poll updated successfully.
@@ -503,15 +1011,18 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     delete:
       tags:
-        - Meeting Polls
-      summary: Zoom Delete a meeting poll
+      - Meeting Polls
+      summary: Zoom Delete a Meeting Poll
       description: Delete a specific meeting poll.
       operationId: deleteMeetingPoll
       parameters:
-        - $ref: '#/components/parameters/MeetingIdPath'
-        - $ref: '#/components/parameters/PollIdPath'
+      - $ref: '#/components/parameters/MeetingIdPath'
+      - $ref: '#/components/parameters/PollIdPath'
       responses:
         '204':
           description: Poll deleted successfully.
@@ -521,28 +1032,32 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /meetings/{meetingId}/participants:
     get:
       tags:
-        - Meeting Participants
-      summary: Zoom List meeting participants
+      - Meeting Participants
+      summary: Zoom List Meeting Participants
       description: >-
         List participants from a past meeting instance. Only available for
         paid accounts with the Dashboard feature enabled.
       operationId: listMeetingParticipants
       parameters:
-        - $ref: '#/components/parameters/MeetingIdPath'
-        - $ref: '#/components/parameters/PageSize'
-        - $ref: '#/components/parameters/NextPageToken'
-        - name: include_fields
-          in: query
-          description: >-
-            Provide `registrant_id` to include the registrant_id field in the
-            response.
-          schema:
-            type: string
-            enum:
-              - registrant_id
+      - $ref: '#/components/parameters/MeetingIdPath'
+      - $ref: '#/components/parameters/PageSize'
+      - $ref: '#/components/parameters/NextPageToken'
+      - name: include_fields
+        in: query
+        description: >-
+          Provide `registrant_id` to include the registrant_id field in the
+          response.
+        schema:
+          type: string
+          enum:
+          - registrant_id
+        example: registrant_id
       responses:
         '200':
           description: Successfully retrieved meeting participants.
@@ -550,29 +1065,61 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ParticipantList'
+              examples:
+                Listmeetingparticipants200Example:
+                  summary: Default listMeetingParticipants 200 response
+                  x-microcks-default: true
+                  value:
+                    page_count: 10
+                    page_size: 10
+                    total_records: 10
+                    next_page_token: example_value
+                    participants:
+                    - id: abc123
+                      user_id: '500123'
+                      name: Example Title
+                      user_email: user@example.com
+                      join_time: '2026-01-15T10:30:00Z'
+                      leave_time: '2026-01-15T10:30:00Z'
+                      duration: 10
+                      registrant_id: '500123'
+                      failover: true
+                      status: in_meeting
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /meetings/{meetingId}/livestream:
     patch:
       tags:
-        - Meeting Live Stream
-      summary: Zoom Update a live stream
+      - Meeting Live Stream
+      summary: Zoom Update a Live Stream
       description: >-
         Update the live stream configuration of a meeting. The meeting host
         must configure live streaming settings before the meeting starts.
       operationId: updateMeetingLiveStream
       parameters:
-        - $ref: '#/components/parameters/MeetingIdPath'
+      - $ref: '#/components/parameters/MeetingIdPath'
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/LiveStreamUpdateRequest'
+            examples:
+              UpdatemeetinglivestreamRequestExample:
+                summary: Default updateMeetingLiveStream request
+                x-microcks-default: true
+                value:
+                  stream_url: https://www.example.com
+                  stream_key: example_value
+                  page_url: https://www.example.com
+                  resolution: 720p
       responses:
         '204':
           description: Live stream updated successfully.
@@ -582,17 +1129,20 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /meetings/{meetingId}/livestream/status:
     patch:
       tags:
-        - Meeting Live Stream
-      summary: Zoom Update live stream status
+      - Meeting Live Stream
+      summary: Zoom Update Live Stream Status
       description: >-
         Update the status of a live stream during a meeting. Use this to
         start or stop live streaming.
       operationId: updateMeetingLiveStreamStatus
       parameters:
-        - $ref: '#/components/parameters/MeetingIdPath'
+      - $ref: '#/components/parameters/MeetingIdPath'
       requestBody:
         required: true
         content:
@@ -604,8 +1154,8 @@ paths:
                   type: string
                   description: Live stream action.
                   enum:
-                    - start
-                    - stop
+                  - start
+                  - stop
                 settings:
                   type: object
                   properties:
@@ -615,6 +1165,15 @@ paths:
                     display_name:
                       type: string
                       description: Custom display name for the live stream.
+            examples:
+              UpdatemeetinglivestreamstatusRequestExample:
+                summary: Default updateMeetingLiveStreamStatus request
+                x-microcks-default: true
+                value:
+                  action: start
+                  settings:
+                    active_speaker_name: true
+                    display_name: example_value
       responses:
         '204':
           description: Live stream status updated successfully.
@@ -624,24 +1183,28 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /past_meetings/{meetingId}:
     get:
       tags:
-        - Meetings
-      summary: Zoom Get past meeting details
+      - Meetings
+      summary: Zoom Get Past Meeting Details
       description: >-
         Retrieve information about a past meeting. The meeting UUID must be
         double-encoded if it contains `/` or `//` characters.
       operationId: getPastMeetingDetails
       parameters:
-        - name: meetingId
-          in: path
-          required: true
-          description: >-
-            The meeting UUID. Each meeting instance will generate its own UUID.
-            Double-encode if the UUID begins with `/` or contains `//`.
-          schema:
-            type: string
+      - name: meetingId
+        in: path
+        required: true
+        description: >-
+          The meeting UUID. Each meeting instance will generate its own UUID.
+          Double-encode if the UUID begins with `/` or contains `//`.
+        schema:
+          type: string
+        example: '500123'
       responses:
         '200':
           description: Successfully retrieved past meeting details.
@@ -649,30 +1212,51 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PastMeetingDetails'
+              examples:
+                Getpastmeetingdetails200Example:
+                  summary: Default getPastMeetingDetails 200 response
+                  x-microcks-default: true
+                  value:
+                    uuid: '500123'
+                    id: abc123
+                    host_id: '500123'
+                    host_email: user@example.com
+                    type: 1
+                    topic: example_value
+                    user_name: example_value
+                    start_time: '2026-01-15T10:30:00Z'
+                    end_time: '2026-01-15T10:30:00Z'
+                    duration: 10
+                    total_minutes: 10
+                    participants_count: 10
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /past_meetings/{meetingId}/participants:
     get:
       tags:
-        - Meeting Participants
-      summary: Zoom List past meeting participants
+      - Meeting Participants
+      summary: Zoom List Past Meeting Participants
       description: >-
         Retrieve information on participants from a past meeting. The API
         does not return results if the meeting is less than 5 minutes old.
       operationId: listPastMeetingParticipants
       parameters:
-        - name: meetingId
-          in: path
-          required: true
-          description: The meeting UUID.
-          schema:
-            type: string
-        - $ref: '#/components/parameters/PageSize'
-        - $ref: '#/components/parameters/NextPageToken'
+      - name: meetingId
+        in: path
+        required: true
+        description: The meeting UUID.
+        schema:
+          type: string
+        example: '500123'
+      - $ref: '#/components/parameters/PageSize'
+      - $ref: '#/components/parameters/NextPageToken'
       responses:
         '200':
           description: Successfully retrieved past meeting participants.
@@ -680,33 +1264,58 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ParticipantList'
+              examples:
+                Listpastmeetingparticipants200Example:
+                  summary: Default listPastMeetingParticipants 200 response
+                  x-microcks-default: true
+                  value:
+                    page_count: 10
+                    page_size: 10
+                    total_records: 10
+                    next_page_token: example_value
+                    participants:
+                    - id: abc123
+                      user_id: '500123'
+                      name: Example Title
+                      user_email: user@example.com
+                      join_time: '2026-01-15T10:30:00Z'
+                      leave_time: '2026-01-15T10:30:00Z'
+                      duration: 10
+                      registrant_id: '500123'
+                      failover: true
+                      status: in_meeting
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /meetings/{meetingId}/recordings:
     get:
       tags:
-        - Meeting Recordings
-      summary: Zoom Get meeting recordings
+      - Meeting Recordings
+      summary: Zoom Get Meeting Recordings
       description: >-
         Retrieve all recordings for a specific meeting. Cloud recordings
         are available to paid accounts with cloud recording enabled.
       operationId: getMeetingRecordings
       parameters:
-        - $ref: '#/components/parameters/MeetingIdPath'
-        - name: include_fields
-          in: query
-          description: Additional fields to include in the response.
-          schema:
-            type: string
-        - name: ttl
-          in: query
-          description: Time to live in seconds for the download URL.
-          schema:
-            type: integer
+      - $ref: '#/components/parameters/MeetingIdPath'
+      - name: include_fields
+        in: query
+        description: Additional fields to include in the response.
+        schema:
+          type: string
+        example: example_value
+      - name: ttl
+        in: query
+        description: Time to live in seconds for the download URL.
+        schema:
+          type: integer
+        example: 10
       responses:
         '200':
           description: Successfully retrieved meeting recordings.
@@ -714,33 +1323,66 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RecordingList'
+              examples:
+                Getmeetingrecordings200Example:
+                  summary: Default getMeetingRecordings 200 response
+                  x-microcks-default: true
+                  value:
+                    uuid: '500123'
+                    id: abc123
+                    host_id: '500123'
+                    host_email: user@example.com
+                    topic: example_value
+                    type: 1
+                    start_time: '2026-01-15T10:30:00Z'
+                    timezone: example_value
+                    duration: 10
+                    total_size: 10
+                    recording_count: 10
+                    share_url: https://www.example.com
+                    recording_files:
+                    - id: abc123
+                      meeting_id: '500123'
+                      recording_start: '2026-01-15T10:30:00Z'
+                      recording_end: '2026-01-15T10:30:00Z'
+                      file_type: MP4
+                      file_extension: MP4
+                      file_size: 42.5
+                      download_url: https://www.example.com
+                      play_url: https://www.example.com
+                      status: completed
+                      recording_type: shared_screen_with_speaker_view(CC)
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     delete:
       tags:
-        - Meeting Recordings
-      summary: Zoom Delete meeting recordings
+      - Meeting Recordings
+      summary: Zoom Delete Meeting Recordings
       description: >-
         Delete all recording files of a meeting. The recording files will
         be moved to trash and permanently deleted after 30 days.
       operationId: deleteMeetingRecordings
       parameters:
-        - $ref: '#/components/parameters/MeetingIdPath'
-        - name: action
-          in: query
-          description: >-
-            Delete action. `trash` moves to trash. `delete` permanently
-            deletes.
-          schema:
-            type: string
-            enum:
-              - trash
-              - delete
-            default: trash
+      - $ref: '#/components/parameters/MeetingIdPath'
+      - name: action
+        in: query
+        description: >-
+          Delete action. `trash` moves to trash. `delete` permanently
+          deletes.
+        schema:
+          type: string
+          enum:
+          - trash
+          - delete
+          default: trash
+        example: trash
       responses:
         '204':
           description: Recordings deleted successfully.
@@ -750,17 +1392,20 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /meetings/{meetingId}/batch_registrants:
     post:
       tags:
-        - Meeting Registrants
-      summary: Zoom Batch add meeting registrants
+      - Meeting Registrants
+      summary: Zoom Batch Add Meeting Registrants
       description: >-
         Register up to 30 registrants at once for a meeting that requires
         registration.
       operationId: batchAddMeetingRegistrants
       parameters:
-        - $ref: '#/components/parameters/MeetingIdPath'
+      - $ref: '#/components/parameters/MeetingIdPath'
       requestBody:
         required: true
         content:
@@ -777,7 +1422,7 @@ paths:
                   items:
                     type: object
                     required:
-                      - email
+                    - email
                     properties:
                       email:
                         type: string
@@ -786,6 +1431,16 @@ paths:
                         type: string
                       last_name:
                         type: string
+            examples:
+              BatchaddmeetingregistrantsRequestExample:
+                summary: Default batchAddMeetingRegistrants request
+                x-microcks-default: true
+                value:
+                  auto_approve: true
+                  registrants:
+                  - email: user@example.com
+                    first_name: example_value
+                    last_name: example_value
       responses:
         '201':
           description: Registrants added successfully.
@@ -808,22 +1463,35 @@ paths:
                         join_url:
                           type: string
                           format: uri
+              examples:
+                Batchaddmeetingregistrants201Example:
+                  summary: Default batchAddMeetingRegistrants 201 response
+                  x-microcks-default: true
+                  value:
+                    registrants:
+                    - email: user@example.com
+                      registrant_id: '500123'
+                      participant_pin_code: 10
+                      join_url: https://www.example.com
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /meetings/{meetingId}/invitation:
     get:
       tags:
-        - Meetings
-      summary: Zoom Get meeting invitation
+      - Meetings
+      summary: Zoom Get Meeting Invitation
       description: >-
         Retrieve the meeting invitation note for a specific meeting.
       operationId: getMeetingInvitation
       parameters:
-        - $ref: '#/components/parameters/MeetingIdPath'
+      - $ref: '#/components/parameters/MeetingIdPath'
       responses:
         '200':
           description: Successfully retrieved the meeting invitation.
@@ -835,23 +1503,32 @@ paths:
                   invitation:
                     type: string
                     description: Meeting invitation text.
+              examples:
+                Getmeetinginvitation200Example:
+                  summary: Default getMeetingInvitation 200 response
+                  x-microcks-default: true
+                  value:
+                    invitation: example_value
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /meetings/{meetingId}/jointoken/live_streaming:
     get:
       tags:
-        - Meeting Live Stream
-      summary: Zoom Get a meeting's join token for live streaming
+      - Meeting Live Stream
+      summary: Zoom Get a Meeting's Join Token for Live Streaming
       description: >-
         Get a meeting's join token to allow live streaming. The join token
         allows a recording bot or live streaming service to join the meeting.
       operationId: getMeetingJoinTokenForLiveStreaming
       parameters:
-        - $ref: '#/components/parameters/MeetingIdPath'
+      - $ref: '#/components/parameters/MeetingIdPath'
       responses:
         '200':
           description: Successfully retrieved join token.
@@ -866,12 +1543,22 @@ paths:
                   expire_in:
                     type: integer
                     description: Token expiration time in seconds.
+              examples:
+                Getmeetingjointokenforlivestreaming200Example:
+                  summary: Default getMeetingJoinTokenForLiveStreaming 200 response
+                  x-microcks-default: true
+                  value:
+                    token: example_value
+                    expire_in: 10
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
 components:
   securitySchemes:
     oauth2:
@@ -921,9 +1608,9 @@ components:
       schema:
         type: string
         examples:
-          - me
-          - jchill@example.com
-          - AbCdEfGhIjKlMnOpQrStUv
+        - me
+        - jchill@example.com
+        - AbCdEfGhIjKlMnOpQrStUv
     MeetingIdPath:
       name: meetingId
       in: path
@@ -933,9 +1620,9 @@ components:
         the meeting UUID.
       schema:
         oneOf:
-          - type: integer
-            format: int64
-          - type: string
+        - type: integer
+          format: int64
+        - type: string
     PollIdPath:
       name: pollId
       in: path
@@ -976,62 +1663,78 @@ components:
         page_count:
           type: integer
           description: Total number of pages.
+          example: 10
         page_number:
           type: integer
           description: Current page number.
+          example: 10
         page_size:
           type: integer
           description: Number of records per page.
+          example: 10
         total_records:
           type: integer
           description: Total number of meeting records.
+          example: 10
         next_page_token:
           type: string
           description: Token for the next page of results.
+          example: example_value
         meetings:
           type: array
           description: List of meeting objects.
           items:
             $ref: '#/components/schemas/MeetingSummary'
+          example: []
     MeetingSummary:
       type: object
       properties:
         uuid:
           type: string
           description: Unique meeting instance ID.
+          example: '500123'
         id:
           type: integer
           format: int64
           description: Meeting ID (meeting number).
+          example: abc123
         host_id:
           type: string
           description: ID of the user who is the meeting host.
+          example: '500123'
         topic:
           type: string
           description: Meeting topic.
+          example: example_value
         type:
           $ref: '#/components/schemas/MeetingType'
         start_time:
           type: string
           format: date-time
           description: Meeting start time in UTC.
+          example: '2026-01-15T10:30:00Z'
         duration:
           type: integer
           description: Meeting duration in minutes.
+          example: 10
         timezone:
           type: string
           description: Timezone for the meeting start time.
+          example: example_value
         created_at:
           type: string
           format: date-time
           description: Time the meeting was created.
+          example: '2026-01-15T10:30:00Z'
         join_url:
           type: string
           format: uri
           description: URL for participants to join the meeting.
+          example: https://www.example.com
         agenda:
           type: string
           description: Meeting agenda or description.
+          example: example_value
     MeetingType:
       type: integer
       description: >-
@@ -1039,10 +1742,10 @@ components:
         3 - Recurring meeting with no fixed time,
         8 - Recurring meeting with a fixed time.
       enum:
-        - 1
-        - 2
-        - 3
-        - 8
+      - 1
+      - 2
+      - 3
+      - 8
     MeetingCreateRequest:
       type: object
       properties:
@@ -1050,12 +1753,14 @@ components:
           type: string
           description: Meeting topic. Maximum 200 characters.
           maxLength: 200
+          example: example_value
         type:
           $ref: '#/components/schemas/MeetingType'
         pre_schedule:
           type: boolean
           description: Whether to create a pre-scheduled meeting.
           default: false
+          example: true
         start_time:
           type: string
           format: date-time
@@ -1063,32 +1768,39 @@ components:
             Meeting start time. Only used for scheduled meetings (type 2)
             and recurring meetings with a fixed time (type 8). Use UTC
             format such as 2023-11-25T12:00:00Z.
+          example: '2026-01-15T10:30:00Z'
         duration:
           type: integer
           description: Meeting duration in minutes. Used for scheduled meetings only.
+          example: 10
         schedule_for:
           type: string
           description: >-
             Email address or user ID to schedule the meeting on behalf of.
+          example: example_value
         timezone:
           type: string
           description: >-
             Timezone to format start_time (e.g., America/Los_Angeles).
             If not provided, defaults to the meeting host's timezone.
+          example: example_value
         password:
           type: string
           description: >-
             Meeting passcode. May only contain the following characters:
             a-z A-Z 0-9 @ - _ *. Maximum 10 characters.
           maxLength: 10
+          example: example_value
         default_password:
           type: boolean
           description: Use the default passcode set in account settings.
           default: false
+          example: true
         agenda:
           type: string
           description: Meeting description. Maximum 2000 characters.
           maxLength: 2000
+          example: example_value
         tracking_fields:
           type: array
           description: Tracking fields for the meeting.
@@ -1101,6 +1813,7 @@ components:
               value:
                 type: string
                 description: Tracking field value.
+          example: []
         recurrence:
           $ref: '#/components/schemas/Recurrence'
         settings:
@@ -1108,71 +1821,89 @@ components:
         template_id:
           type: string
           description: Meeting template ID to use.
+          example: '500123'
     MeetingCreateResponse:
       type: object
       properties:
         uuid:
           type: string
           description: Unique meeting instance ID.
+          example: '500123'
         id:
           type: integer
           format: int64
           description: Meeting ID (meeting number).
+          example: abc123
         host_id:
           type: string
           description: ID of the meeting host.
+          example: '500123'
         host_email:
           type: string
           format: email
           description: Email address of the meeting host.
+          example: user@example.com
         topic:
           type: string
           description: Meeting topic.
+          example: example_value
         type:
           $ref: '#/components/schemas/MeetingType'
         status:
           type: string
           description: Meeting status.
           enum:
-            - waiting
-            - started
+          - waiting
+          - started
+          example: waiting
         start_time:
           type: string
           format: date-time
           description: Meeting start time.
+          example: '2026-01-15T10:30:00Z'
         duration:
           type: integer
           description: Meeting duration in minutes.
+          example: 10
         timezone:
           type: string
           description: Timezone of the meeting.
+          example: example_value
         agenda:
           type: string
           description: Meeting agenda.
+          example: example_value
         created_at:
           type: string
           format: date-time
           description: Time the meeting was created.
+          example: '2026-01-15T10:30:00Z'
         start_url:
           type: string
           format: uri
           description: URL for the host to start the meeting.
+          example: https://www.example.com
         join_url:
           type: string
           format: uri
           description: URL for participants to join the meeting.
+          example: https://www.example.com
         password:
           type: string
           description: Meeting passcode.
+          example: example_value
         h323_password:
           type: string
           description: H.323/SIP room system passcode.
+          example: example_value
         pstn_password:
           type: string
           description: Password for PSTN dial-in.
+          example: example_value
         encrypted_password:
           type: string
           description: Encrypted passcode for the meeting URL.
+          example: example_value
         settings:
           $ref: '#/components/schemas/MeetingSettings'
         recurrence:
@@ -1181,6 +1912,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Occurrence'
+          example: []
     MeetingUpdateRequest:
       type: object
       properties:
@@ -1188,29 +1920,36 @@ components:
           type: string
           description: Meeting topic.
           maxLength: 200
+          example: example_value
         type:
           $ref: '#/components/schemas/MeetingType'
         start_time:
           type: string
           format: date-time
           description: Meeting start time.
+          example: '2026-01-15T10:30:00Z'
         duration:
           type: integer
           description: Meeting duration in minutes.
+          example: 10
         schedule_for:
           type: string
           description: Email address or user ID to schedule meeting on behalf of.
+          example: example_value
         timezone:
           type: string
           description: Timezone for start_time.
+          example: example_value
         password:
           type: string
           description: Meeting passcode.
           maxLength: 10
+          example: example_value
         agenda:
           type: string
           description: Meeting description.
           maxLength: 2000
+          example: example_value
         recurrence:
           $ref: '#/components/schemas/Recurrence'
         settings:
@@ -1224,28 +1963,29 @@ components:
                 type: string
               value:
                 type: string
+          example: []
     MeetingDetails:
       allOf:
-        - $ref: '#/components/schemas/MeetingCreateResponse'
-        - type: object
-          properties:
-            occurrences:
-              type: array
-              description: Array of occurrence objects for recurring meetings.
-              items:
-                $ref: '#/components/schemas/Occurrence'
-            tracking_fields:
-              type: array
-              description: Tracking fields configured for the meeting.
-              items:
-                type: object
-                properties:
-                  field:
-                    type: string
-                  value:
-                    type: string
-                  visible:
-                    type: boolean
+      - $ref: '#/components/schemas/MeetingCreateResponse'
+      - type: object
+        properties:
+          occurrences:
+            type: array
+            description: Array of occurrence objects for recurring meetings.
+            items:
+              $ref: '#/components/schemas/Occurrence'
+          tracking_fields:
+            type: array
+            description: Tracking fields configured for the meeting.
+            items:
+              type: object
+              properties:
+                field:
+                  type: string
+                value:
+                  type: string
+                visible:
+                  type: boolean
     MeetingSettings:
       type: object
       description: Meeting settings and options.
@@ -1254,52 +1994,62 @@ components:
           type: boolean
           description: Start video when the host joins the meeting.
           default: true
+          example: true
         participant_video:
           type: boolean
           description: Start video when participants join the meeting.
+          example: true
         cn_meeting:
           type: boolean
           description: Host meeting in China.
           default: false
+          example: true
         in_meeting:
           type: boolean
           description: Host meeting in India.
           default: false
+          example: true
         join_before_host:
           type: boolean
           description: Allow participants to join before the host.
           default: false
+          example: true
         jbh_time:
           type: integer
           description: >-
             Minutes before the host joins that participants can join.
             0 - any time, 5 - 5 minutes, 10 - 10 minutes.
           enum:
-            - 0
-            - 5
-            - 10
+          - 0
+          - 5
+          - 10
+          example: 0
         mute_upon_entry:
           type: boolean
           description: Mute participants upon entry.
           default: false
+          example: true
         watermark:
           type: boolean
           description: Add watermark when viewing a shared screen.
           default: false
+          example: true
         use_pmi:
           type: boolean
           description: Use Personal Meeting ID instead of generated meeting ID.
           default: false
+          example: true
         approval_type:
           type: integer
           description: >-
             Registration approval type. 0 - Automatically approve,
             1 - Manually approve, 2 - No registration required.
           enum:
-            - 0
-            - 1
-            - 2
+          - 0
+          - 1
+          - 2
           default: 2
+          example: 0
         registration_type:
           type: integer
           description: >-
@@ -1307,99 +2057,120 @@ components:
             and attend any, 2 - Register for each, 3 - Register once
             and choose occurrences.
           enum:
-            - 1
-            - 2
-            - 3
+          - 1
+          - 2
+          - 3
           default: 1
+          example: 1
         audio:
           type: string
           description: Determine how participants can join the meeting audio.
           enum:
-            - both
-            - telephony
-            - voip
-            - thirdParty
+          - both
+          - telephony
+          - voip
+          - thirdParty
           default: both
+          example: both
         auto_recording:
           type: string
           description: Automatic recording configuration.
           enum:
-            - local
-            - cloud
-            - none
+          - local
+          - cloud
+          - none
           default: none
+          example: local
         enforce_login:
           type: boolean
           description: Only authenticated users can join the meeting.
           default: false
+          example: true
         enforce_login_domains:
           type: string
           description: >-
             Only users with specific email domain(s) can join. Comma
             separated for multiple domains.
+          example: example_value
         alternative_hosts:
           type: string
           description: >-
             Alternative host email addresses. Comma separated for multiple
             alternative hosts.
+          example: example_value
         alternative_hosts_email_notification:
           type: boolean
           description: Send email notification to alternative hosts.
           default: true
+          example: user@example.com
         close_registration:
           type: boolean
           description: Close registration after event date.
           default: false
+          example: true
         waiting_room:
           type: boolean
           description: Enable the waiting room.
           default: false
+          example: true
         global_dial_in_countries:
           type: array
           description: List of countries for global dial-in numbers.
           items:
             type: string
+          example: []
         contact_name:
           type: string
           description: Contact name for meeting registration.
+          example: example_value
         contact_email:
           type: string
           format: email
           description: Contact email for meeting registration.
+          example: user@example.com
         registrants_email_notification:
           type: boolean
           description: Send email notifications to registrants.
           default: true
+          example: user@example.com
         registrants_confirmation_email:
           type: boolean
           description: Send confirmation email to registrants.
           default: true
+          example: user@example.com
         meeting_authentication:
           type: boolean
           description: Require authentication to join.
           default: false
+          example: true
         authentication_option:
           type: string
           description: Meeting authentication option ID.
+          example: example_value
         authentication_domains:
           type: string
           description: Allowed authentication domains.
+          example: example_value
         authentication_name:
           type: string
           description: Authentication name set in the authentication profile.
+          example: example_value
         show_share_button:
           type: boolean
           description: Show social share buttons on the registration page.
+          example: true
         allow_multiple_devices:
           type: boolean
           description: Allow attendees to join from multiple devices.
+          example: true
         encryption_type:
           type: string
           description: Meeting encryption type.
           enum:
-            - enhanced_encryption
-            - e2ee
+          - enhanced_encryption
+          - e2ee
           default: enhanced_encryption
+          example: enhanced_encryption
         approved_or_denied_countries_or_regions:
           type: object
           description: Approve or block users from specific countries.
@@ -1409,8 +2180,8 @@ components:
             method:
               type: string
               enum:
-                - approve
-                - deny
+              - approve
+              - deny
             approved_list:
               type: array
               items:
@@ -1419,6 +2190,7 @@ components:
               type: array
               items:
                 type: string
+          example: example_value
         breakout_room:
           type: object
           description: Breakout room settings.
@@ -1439,6 +2211,7 @@ components:
                     description: Email addresses of participants.
                     items:
                       type: string
+          example: example_value
         language_interpretation:
           type: object
           description: Language interpretation settings.
@@ -1456,9 +2229,11 @@ components:
                   languages:
                     type: string
                     description: Comma separated language codes.
+          example: example_value
         focus_mode:
           type: boolean
           description: Enable focus mode.
+          example: true
         meeting_invitees:
           type: array
           description: List of users invited to the meeting.
@@ -1468,18 +2243,22 @@ components:
               email:
                 type: string
                 format: email
+          example: []
         private_meeting:
           type: boolean
           description: Make the meeting private.
           default: false
+          example: true
         email_notification:
           type: boolean
           description: Send email notification when meeting starts.
           default: true
+          example: user@example.com
         host_save_video_order:
           type: boolean
           description: >-
             Allow host to save the order of gallery view.
+          example: true
         continuous_meeting_chat:
           type: object
           description: Continuous meeting chat settings.
@@ -1488,6 +2267,7 @@ components:
               type: boolean
             auto_add_invited_external_users:
               type: boolean
+          example: example_value
     Recurrence:
       type: object
       description: Recurrence settings for recurring meetings.
@@ -1497,44 +2277,50 @@ components:
           description: >-
             Recurrence type. 1 - Daily, 2 - Weekly, 3 - Monthly.
           enum:
-            - 1
-            - 2
-            - 3
+          - 1
+          - 2
+          - 3
+          example: 1
         repeat_interval:
           type: integer
           description: >-
             Interval at which the meeting recurs. For daily, max 90.
             For weekly, max 12. For monthly, max 3.
+          example: 10
         weekly_days:
           type: string
           description: >-
             Days of the week for weekly recurrence. 1-Sunday through
             7-Saturday. Comma separated for multiple days.
+          example: example_value
         monthly_day:
           type: integer
           description: Day of the month for monthly recurrence (1-31).
+          example: 10
         monthly_week:
           type: integer
           description: >-
             Week of the month for monthly recurrence.
             -1 - Last week, 1 - First, 2 - Second, 3 - Third, 4 - Fourth.
           enum:
-            - -1
-            - 1
-            - 2
-            - 3
-            - 4
+          - -1
+          - 1
+          - 2
+          - 3
+          - 4
+          example: -1
         monthly_week_day:
           type: integer
           description: Day of the week for monthly recurrence. 1-Sunday through 7-Saturday.
           enum:
-            - 1
-            - 2
-            - 3
-            - 4
-            - 5
-            - 6
-            - 7
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          example: 1
         end_times:
           type: integer
           description: >-
@@ -1543,12 +2329,14 @@ components:
             and monthly.
           maximum: 365
           default: 1
+          example: 10
         end_date_time:
           type: string
           format: date-time
           description: >-
             The end date-time for the recurrence. Cannot be used with
             end_times.
+          example: '2026-01-15T10:30:00Z'
     Occurrence:
       type: object
       description: Meeting occurrence information for recurring meetings.
@@ -1556,121 +2344,142 @@ components:
         occurrence_id:
           type: string
           description: Occurrence ID.
+          example: '500123'
         start_time:
           type: string
           format: date-time
           description: Start time of this occurrence.
+          example: '2026-01-15T10:30:00Z'
         duration:
           type: integer
           description: Duration of this occurrence in minutes.
+          example: 10
         status:
           type: string
           description: Occurrence status.
           enum:
-            - available
-            - deleted
+          - available
+          - deleted
+          example: available
     RegistrantCreateRequest:
       type: object
       required:
-        - email
-        - first_name
+      - email
+      - first_name
       properties:
         email:
           type: string
           format: email
           description: Registrant email address.
+          example: user@example.com
         first_name:
           type: string
           description: Registrant first name.
           maxLength: 64
+          example: example_value
         last_name:
           type: string
           description: Registrant last name.
           maxLength: 64
+          example: example_value
         address:
           type: string
           description: Registrant address.
+          example: example_value
         city:
           type: string
           description: Registrant city.
+          example: example_value
         state:
           type: string
           description: Registrant state or province.
+          example: example_value
         zip:
           type: string
           description: Registrant zip or postal code.
+          example: example_value
         country:
           type: string
           description: Registrant two-letter country code.
+          example: example_value
         phone:
           type: string
           description: Registrant phone number.
+          example: example_value
         comments:
           type: string
           description: Registrant questions and comments.
+          example: example_value
         industry:
           type: string
           description: Registrant industry.
+          example: example_value
         job_title:
           type: string
           description: Registrant job title.
+          example: example_value
         org:
           type: string
           description: Registrant organization.
+          example: example_value
         no_of_employees:
           type: string
           description: Number of employees.
           enum:
-            - '1-20'
-            - '21-50'
-            - '51-100'
-            - '101-250'
-            - '251-500'
-            - '501-1,000'
-            - '1,001-5,000'
-            - '5,001-10,000'
-            - 'More than 10,000'
+          - '1-20'
+          - '21-50'
+          - '51-100'
+          - '101-250'
+          - '251-500'
+          - '501-1,000'
+          - '1,001-5,000'
+          - '5,001-10,000'
+          - 'More than 10,000'
+          example: '1-20'
         purchasing_time_frame:
           type: string
           description: Purchasing time frame.
           enum:
-            - Within a month
-            - 1-3 months
-            - 4-6 months
-            - More than 6 months
-            - No timeframe
+          - Within a month
+          - 1-3 months
+          - 4-6 months
+          - More than 6 months
+          - No timeframe
+          example: Within a month
         role_in_purchase_process:
           type: string
           description: Role in purchase process.
           enum:
-            - Decision Maker
-            - Evaluator/Recommender
-            - Influencer
-            - Not involved
+          - Decision Maker
+          - Evaluator/Recommender
+          - Influencer
+          - Not involved
+          example: Decision Maker
         language:
           type: string
           description: Registrant language preference.
           enum:
-            - en-US
-            - en
-            - zh-CN
-            - zh
-            - es
-            - fr-FR
-            - fr
-            - jp
-            - pt
-            - de
-            - ko
-            - it
-            - vi
-            - pl
-            - tr
-            - id
-            - nl
-            - ru
-            - uk
-            - sv
+          - en-US
+          - en
+          - zh-CN
+          - zh
+          - es
+          - fr-FR
+          - fr
+          - jp
+          - pt
+          - de
+          - ko
+          - it
+          - vi
+          - pl
+          - tr
+          - id
+          - nl
+          - ru
+          - uk
+          - sv
+          example: en-US
         custom_questions:
           type: array
           description: Custom question responses.
@@ -1683,9 +2492,11 @@ components:
               value:
                 type: string
                 description: Answer to the question.
+          example: []
         auto_approve:
           type: boolean
           description: Auto-approve this registrant.
+          example: true
     RegistrantCreateResponse:
       type: object
       properties:
@@ -1693,103 +2504,135 @@ components:
           type: integer
           format: int64
           description: Meeting ID.
+          example: abc123
         registrant_id:
           type: string
           description: Registrant ID.
+          example: '500123'
         start_time:
           type: string
           format: date-time
           description: Meeting start time.
+          example: '2026-01-15T10:30:00Z'
         topic:
           type: string
           description: Meeting topic.
+          example: example_value
         join_url:
           type: string
           format: uri
           description: Unique join URL for this registrant.
+          example: https://www.example.com
         participant_pin_code:
           type: integer
           description: Participant PIN code for phone dial-in.
+          example: 10
     RegistrantList:
       type: object
       properties:
         page_count:
           type: integer
           description: Total number of pages.
+          example: 10
         page_number:
           type: integer
           description: Current page number.
+          example: 10
         page_size:
           type: integer
           description: Number of records per page.
+          example: 10
         total_records:
           type: integer
           description: Total number of registrant records.
+          example: 10
         next_page_token:
           type: string
           description: Pagination token for the next page.
+          example: example_value
         registrants:
           type: array
           description: List of registrant objects.
           items:
             $ref: '#/components/schemas/Registrant'
+          example: []
     Registrant:
       type: object
       properties:
         id:
           type: string
           description: Registrant ID.
+          example: abc123
         email:
           type: string
           format: email
           description: Registrant email address.
+          example: user@example.com
         first_name:
           type: string
           description: Registrant first name.
+          example: example_value
         last_name:
           type: string
           description: Registrant last name.
+          example: example_value
         address:
           type: string
+          example: example_value
         city:
           type: string
+          example: example_value
         state:
           type: string
+          example: example_value
         zip:
           type: string
+          example: example_value
         country:
           type: string
+          example: example_value
         phone:
           type: string
+          example: example_value
         industry:
           type: string
+          example: example_value
         org:
           type: string
+          example: example_value
         job_title:
           type: string
+          example: example_value
         purchasing_time_frame:
           type: string
+          example: example_value
         role_in_purchase_process:
           type: string
+          example: example_value
         no_of_employees:
           type: string
+          example: example_value
         comments:
           type: string
+          example: example_value
         status:
           type: string
           description: Registrant status.
           enum:
-            - approved
-            - pending
-            - denied
+          - approved
+          - pending
+          - denied
+          example: approved
         create_time:
           type: string
           format: date-time
           description: Time the registrant registered.
+          example: '2026-01-15T10:30:00Z'
         join_url:
           type: string
           format: uri
           description: Unique join URL for this registrant.
+          example: https://www.example.com
     Poll:
       type: object
       properties:
@@ -1797,64 +2640,75 @@ components:
           type: integer
           format: int64
           description: Poll ID.
+          example: abc123
         title:
           type: string
           description: Poll title.
+          example: Example Title
         anonymous:
           type: boolean
           description: Whether this is an anonymous poll.
+          example: true
         status:
           type: string
           description: Poll status.
           enum:
-            - notstart
-            - started
-            - ended
-            - sharing
+          - notstart
+          - started
+          - ended
+          - sharing
+          example: notstart
         poll_type:
           type: integer
           description: >-
             Type of poll. 1 - Poll, 2 - Advanced Poll, 3 - Quiz.
           enum:
-            - 1
-            - 2
-            - 3
+          - 1
+          - 2
+          - 3
+          example: 1
         questions:
           type: array
           description: List of questions in the poll.
           items:
             $ref: '#/components/schemas/PollQuestion'
+          example: []
     PollQuestion:
       type: object
       properties:
         name:
           type: string
           description: Question text.
+          example: Example Title
         type:
           type: string
           description: Question type.
           enum:
-            - single
-            - multiple
-            - matching
-            - rank_order
-            - short_answer
-            - long_answer
-            - fill_in_the_blank
-            - rating_scale
+          - single
+          - multiple
+          - matching
+          - rank_order
+          - short_answer
+          - long_answer
+          - fill_in_the_blank
+          - rating_scale
+          example: single
         answer_required:
           type: boolean
           description: Whether an answer is required.
+          example: true
         answers:
           type: array
           description: Available answer options.
           items:
             type: string
+          example: []
         right_answers:
           type: array
           description: Correct answers for quiz type polls.
           items:
             type: string
+          example: []
         prompts:
           type: array
           description: Prompts for matching and rank order question types.
@@ -1867,24 +2721,31 @@ components:
                 type: array
                 items:
                   type: string
+          example: []
         rating_min_value:
           type: integer
           description: Minimum rating value for rating scale questions.
+          example: 10
         rating_max_value:
           type: integer
           description: Maximum rating value for rating scale questions.
+          example: 10
         rating_min_label:
           type: string
           description: Label for minimum rating value.
+          example: example_value
         rating_max_label:
           type: string
           description: Label for maximum rating value.
+          example: example_value
         answer_min_character:
           type: integer
           description: Minimum characters for short/long answer questions.
+          example: 10
         answer_max_character:
           type: integer
           description: Maximum characters for short/long answer questions.
+          example: 10
     PollCreateRequest:
       type: object
       properties:
@@ -1892,275 +2753,334 @@ components:
           type: string
           description: Poll title. Maximum 64 characters.
           maxLength: 64
+          example: Example Title
         anonymous:
           type: boolean
           description: Whether this is an anonymous poll.
           default: false
+          example: true
         poll_type:
           type: integer
           description: >-
             Type of poll. 1 - Poll, 2 - Advanced Poll, 3 - Quiz.
           enum:
-            - 1
-            - 2
-            - 3
+          - 1
+          - 2
+          - 3
           default: 1
+          example: 1
         questions:
           type: array
           description: List of questions for the poll.
           items:
             $ref: '#/components/schemas/PollQuestion'
+          example: []
     ParticipantList:
       type: object
       properties:
         page_count:
           type: integer
+          example: 10
         page_size:
           type: integer
+          example: 10
         total_records:
           type: integer
+          example: 10
         next_page_token:
           type: string
+          example: example_value
         participants:
           type: array
           items:
             $ref: '#/components/schemas/Participant'
+          example: []
     Participant:
       type: object
       properties:
         id:
           type: string
           description: Participant UUID.
+          example: abc123
         user_id:
           type: string
           description: Participant user ID if the participant is a Zoom user.
+          example: '500123'
         name:
           type: string
           description: Participant display name.
+          example: Example Title
         user_email:
           type: string
           format: email
           description: Participant email address.
+          example: user@example.com
         join_time:
           type: string
           format: date-time
           description: Time the participant joined the meeting.
+          example: '2026-01-15T10:30:00Z'
         leave_time:
           type: string
           format: date-time
           description: Time the participant left the meeting.
+          example: '2026-01-15T10:30:00Z'
         duration:
           type: integer
           description: Participant duration in the meeting (seconds).
+          example: 10
         registrant_id:
           type: string
           description: Registrant ID if the participant registered.
+          example: '500123'
         failover:
           type: boolean
           description: Whether failover occurred for this participant.
+          example: true
         status:
           type: string
           description: Participant status.
           enum:
-            - in_meeting
-            - in_waiting_room
+          - in_meeting
+          - in_waiting_room
+          example: in_meeting
     LiveStreamUpdateRequest:
       type: object
       required:
-        - stream_url
-        - stream_key
+      - stream_url
+      - stream_key
       properties:
         stream_url:
           type: string
           format: uri
           description: Streaming URL (e.g., RTMP endpoint).
+          example: https://www.example.com
         stream_key:
           type: string
           description: Stream key or name.
+          example: example_value
         page_url:
           type: string
           format: uri
           description: The live stream page URL where viewers can watch.
+          example: https://www.example.com
         resolution:
           type: string
           description: >-
             The live stream resolution. Can be 720p or 1080p.
           enum:
-            - 720p
-            - 1080p
+          - 720p
+          - 1080p
+          example: 720p
     PastMeetingDetails:
       type: object
       properties:
         uuid:
           type: string
           description: Unique meeting instance ID.
+          example: '500123'
         id:
           type: integer
           format: int64
           description: Meeting ID.
+          example: abc123
         host_id:
           type: string
           description: Host user ID.
+          example: '500123'
         host_email:
           type: string
           format: email
           description: Host email address.
+          example: user@example.com
         type:
           $ref: '#/components/schemas/MeetingType'
         topic:
           type: string
           description: Meeting topic.
+          example: example_value
         user_name:
           type: string
           description: Display name of the meeting host.
+          example: example_value
         start_time:
           type: string
           format: date-time
           description: Meeting start time.
+          example: '2026-01-15T10:30:00Z'
         end_time:
           type: string
           format: date-time
           description: Meeting end time.
+          example: '2026-01-15T10:30:00Z'
         duration:
           type: integer
           description: Meeting duration in minutes.
+          example: 10
         total_minutes:
           type: integer
           description: Total meeting minutes across all participants.
+          example: 10
         participants_count:
           type: integer
           description: Number of participants.
+          example: 10
     RecordingList:
       type: object
       properties:
         uuid:
           type: string
           description: Unique meeting instance ID.
+          example: '500123'
         id:
           type: integer
           format: int64
           description: Meeting ID.
+          example: abc123
         host_id:
           type: string
           description: Host user ID.
+          example: '500123'
         host_email:
           type: string
           format: email
           description: Host email address.
+          example: user@example.com
         topic:
           type: string
           description: Meeting topic.
+          example: example_value
         type:
           $ref: '#/components/schemas/MeetingType'
         start_time:
           type: string
           format: date-time
           description: Meeting start time.
+          example: '2026-01-15T10:30:00Z'
         timezone:
           type: string
           description: Timezone.
+          example: example_value
         duration:
           type: integer
           description: Meeting duration in minutes.
+          example: 10
         total_size:
           type: integer
           format: int64
           description: Total file size of all recordings in bytes.
+          example: 10
         recording_count:
           type: integer
           description: Number of recording files.
+          example: 10
         share_url:
           type: string
           format: uri
           description: Share URL for the recording.
+          example: https://www.example.com
         recording_files:
           type: array
           items:
             $ref: '#/components/schemas/RecordingFile'
+          example: []
     RecordingFile:
       type: object
       properties:
         id:
           type: string
           description: Recording file ID.
+          example: abc123
         meeting_id:
           type: string
           description: Meeting ID.
+          example: '500123'
         recording_start:
           type: string
           format: date-time
           description: Recording start time.
+          example: '2026-01-15T10:30:00Z'
         recording_end:
           type: string
           format: date-time
           description: Recording end time.
+          example: '2026-01-15T10:30:00Z'
         file_type:
           type: string
           description: Recording file type.
           enum:
-            - MP4
-            - M4A
-            - CHAT
-            - TRANSCRIPT
-            - CSV
-            - TB
-            - CC
-            - CHAT_MESSAGE
-            - SUMMARY
+          - MP4
+          - M4A
+          - CHAT
+          - TRANSCRIPT
+          - CSV
+          - TB
+          - CC
+          - CHAT_MESSAGE
+          - SUMMARY
+          example: MP4
         file_extension:
           type: string
           description: File extension.
           enum:
-            - MP4
-            - M4A
-            - TXT
-            - VTT
-            - CSV
-            - JSON
+          - MP4
+          - M4A
+          - TXT
+          - VTT
+          - CSV
+          - JSON
+          example: MP4
         file_size:
           type: number
           description: File size in bytes.
+          example: 42.5
         download_url:
           type: string
           format: uri
           description: URL to download the recording file.
+          example: https://www.example.com
         play_url:
           type: string
           format: uri
           description: URL to play the recording file.
+          example: https://www.example.com
         status:
           type: string
           description: Recording status.
           enum:
-            - completed
+          - completed
+          example: completed
         recording_type:
           type: string
           description: Recording type.
           enum:
-            - shared_screen_with_speaker_view(CC)
-            - shared_screen_with_speaker_view
-            - shared_screen_with_gallery_view
-            - active_speaker
-            - gallery_view
-            - shared_screen
-            - audio_only
-            - audio_transcript
-            - chat_file
-            - poll
-            - host_video
-            - closed_caption
-            - timeline
-            - sign_interpretation
-            - production_studio
+          - shared_screen_with_speaker_view(CC)
+          - shared_screen_with_speaker_view
+          - shared_screen_with_gallery_view
+          - active_speaker
+          - gallery_view
+          - shared_screen
+          - audio_only
+          - audio_transcript
+          - chat_file
+          - poll
+          - host_video
+          - closed_caption
+          - timeline
+          - sign_interpretation
+          - production_studio
+          example: shared_screen_with_speaker_view(CC)
     ErrorResponse:
       type: object
       properties:
         code:
           type: integer
           description: Error code.
+          example: 10
         message:
           type: string
           description: Error message.
+          example: example_value
         errors:
           type: array
           description: Detailed error messages.
@@ -2171,6 +3091,7 @@ components:
                 type: string
               message:
                 type: string
+          example: []
   responses:
     BadRequest:
       description: >-

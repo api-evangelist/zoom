@@ -1,0 +1,14 @@
+{
+  "name": "Example Title",
+  "type": "example_value",
+  "answer_required": true,
+  "answers": [],
+  "right_answers": [],
+  "prompts": [],
+  "rating_min_value": 10,
+  "rating_max_value": 10,
+  "rating_min_label": "example_value",
+  "rating_max_label": "example_value",
+  "answer_min_character": 10,
+  "answer_max_character": 10
+}

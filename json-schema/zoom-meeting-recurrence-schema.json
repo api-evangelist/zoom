@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Recurrence",
+  "type": "object",
+  "description": "Recurrence settings for recurring meetings.",
+  "properties": {
+    "type": {
+      "type": "integer",
+      "description": "Recurrence type. 1 - Daily, 2 - Weekly, 3 - Monthly."
+    },
+    "repeat_interval": {
+      "type": "integer",
+      "description": "Interval at which the meeting recurs. For daily, max 90. For weekly, max 12. For monthly, max 3."
+    },
+    "weekly_days": {
+      "type": "string",
+      "description": "Days of the week for weekly recurrence. 1-Sunday through 7-Saturday. Comma separated for multiple days."
+    },
+    "monthly_day": {
+      "type": "integer",
+      "description": "Day of the month for monthly recurrence (1-31)."
+    },
+    "monthly_week": {
+      "type": "integer",
+      "description": "Week of the month for monthly recurrence. -1 - Last week, 1 - First, 2 - Second, 3 - Third, 4 - Fourth."
+    },
+    "monthly_week_day": {
+      "type": "integer",
+      "description": "Day of the week for monthly recurrence. 1-Sunday through 7-Saturday."
+    },
+    "end_times": {
+      "type": "integer",
+      "description": "Number of times the meeting will recur before ending. Cannot be used with end_date_time. Maximum 365 for daily, 99 for weekly and monthly."
+    },
+    "end_date_time": {
+      "type": "string",
+      "description": "The end date-time for the recurrence. Cannot be used with end_times."
+    }
+  }
+}
