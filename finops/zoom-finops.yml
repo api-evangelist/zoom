@@ -1,0 +1,60 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Zoom
+providerId: zoom
+created: '2026-05-04'
+modified: '2026-05-04'
+reconciled: true
+tags:
+  - FinOps
+  - FOCUS
+  - Video Conferencing
+description: FOCUS-aligned FinOps for Zoom.
+sources:
+  - https://zoom.us/pricing
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Zoom
+serviceCategory: Video Conferencing
+billingModel:
+  pricingCategory: Per-Seat Subscription
+  billingFrequency: Monthly
+  billingCurrency: USD
+focusColumns:
+  ServiceName: Zoom
+  ServiceCategory: Video Conferencing
+  ProviderName: Zoom
+  PublisherName: Zoom
+  BillingCurrency: USD
+meters:
+  - name: user_seats
+    unit: seat-month
+    aggregation: max
+    dimensions:
+      - plan
+  - name: cloud_recording_storage
+    unit: GB-month
+    aggregation: max
+  - name: phone_minutes
+    unit: minute
+    aggregation: sum
+  - name: webinar_attendees
+    unit: attendee
+    aggregation: sum
+  - name: events_attendees
+    unit: attendee
+    aggregation: sum
+principles:
+  - name: Visibility
+    description: Track Zoom consumption monthly via admin/billing exports.
+  - name: Allocation
+    description: Tag seats/usage to teams or cost centers for chargeback.
+  - name: Optimization
+    description: Right-size tier and seat count quarterly; reclaim inactive seats.
+  - name: Accountability
+    description: Set spend alerts and renew at observed active utilization.

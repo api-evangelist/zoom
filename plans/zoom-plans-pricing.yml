@@ -1,0 +1,118 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Zoom
+providerId: zoom
+created: '2026-05-04'
+modified: '2026-05-04'
+reconciled: true
+tags:
+  - Video Conferencing
+  - Communications
+  - Webinars
+description: Zoom Workplace per-user pricing across Basic/Pro/Business/Enterprise.
+sources:
+  - https://zoom.us/pricing
+plans:
+  - id: zoom-basic
+    name: Basic
+    type: freemium
+    description: Free; 40-min limit on group meetings.
+    entries:
+      - label: Per user
+        name: seat
+        type: subscription
+        metric: user
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: true
+    elements:
+      - name: 40-min meeting cap
+      - name: Up to 100 participants
+      - name: Whiteboard basic
+  - id: zoom-pro
+    name: Pro
+    type: paid
+    description: $13.33/user/mo annual ($16.99 monthly).
+    entries:
+      - label: Per user (annual)
+        name: seat
+        type: subscription
+        metric: user
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '13.33'
+        userMultiplied: true
+      - label: Per user (monthly)
+        name: seat
+        type: subscription
+        metric: user
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '16.99'
+        userMultiplied: true
+    elements:
+      - name: 30-hr meetings
+      - name: 100 participants
+      - name: 5 GB cloud recording
+      - name: Whiteboard
+      - name: Email/chat support
+  - id: zoom-business
+    name: Business
+    type: paid
+    description: $18.33/user/mo annual ($21.99 monthly). Min 10 licenses.
+    entries:
+      - label: Per user (annual)
+        name: seat
+        type: subscription
+        metric: user
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '18.33'
+        userMultiplied: true
+      - label: Per user (monthly)
+        name: seat
+        type: subscription
+        metric: user
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '21.99'
+        userMultiplied: true
+    elements:
+      - name: 300 participants
+      - name: SSO
+      - name: Managed domains
+      - name: Branding
+      - name: Cloud recording transcripts
+  - id: zoom-enterprise
+    name: Enterprise
+    type: enterprise
+    description: $19.99/user/mo (~250-license minimum).
+    entries:
+      - label: Per user (custom)
+        name: seat
+        type: subscription
+        metric: user
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '19.99'
+        userMultiplied: true
+    elements:
+      - name: Unlimited cloud storage
+      - name: 1,000 participants
+      - name: Webinars 500
+      - name: Dedicated CSM
+      - name: Customer-managed key

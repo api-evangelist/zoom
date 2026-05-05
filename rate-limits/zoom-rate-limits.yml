@@ -1,0 +1,45 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Zoom
+providerId: zoom
+created: '2026-05-04'
+modified: '2026-05-04'
+reconciled: true
+tags:
+  - Rate Limiting
+  - Video Conferencing
+description: Zoom REST API rate limits by category.
+sources:
+  - https://zoom.us/pricing
+  - https://developers.zoom.us/docs/api/#rate-limits
+headers:
+  retryAfter: Retry-After
+responseCodes:
+  throttled: 429
+limits:
+  - name: Light category
+    scope: app
+    metric: requests_per_second
+    limit: 30
+    timeFrame: second
+  - name: Medium category
+    scope: app
+    metric: requests_per_second
+    limit: 60
+    timeFrame: second
+  - name: Heavy category
+    scope: app
+    metric: requests_per_second
+    limit: 80
+    timeFrame: second
+  - name: Resource-intensive
+    scope: app
+    metric: requests_per_minute
+    limit: 20
+    timeFrame: minute
+  - name: Daily limit per app
+    scope: app
+    metric: requests_per_day
+    limit: 100000
+    timeFrame: day
