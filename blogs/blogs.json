@@ -1,0 +1,13 @@
+{
+  "repo": "zoom",
+  "feeds": [
+    {
+      "source": "https://developers.zoom.us/blog/",
+      "feed_url": "https://developers.zoom.us/blog/rss.xml",
+      "saved": 10,
+      "title": "Zoom Developers Blog"
+    }
+  ],
+  "post_count": 10,
+  "fetched": "2026-05-03T23:38:36Z"
+}
