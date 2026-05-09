@@ -3,11 +3,11 @@
   "feeds": [
     {
       "source": "https://developers.zoom.us/blog/",
-      "feed_url": "https://developers.zoom.us/blog/rss.xml",
-      "saved": 10,
-      "title": "Zoom Developers Blog"
+      "feed_url": "https://developers.zoom.us/blog/atom.xml",
+      "title": "Zoom Developers Blog",
+      "saved": 0
     }
   ],
   "post_count": 10,
-  "fetched": "2026-05-03T23:38:36Z"
+  "fetched": "2026-05-09T20:17:51Z"
 }
