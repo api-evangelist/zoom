@@ -1,0 +1,121 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zoom Meeting API — Meeting Participants
+  description: 'Zoom Meeting API — Meeting Participants. 2 operations. Lead operation: Zoom List Meeting Participants. Self-contained
+    Naftiko capability covering one Zoom business surface.'
+  tags:
+  - Zoom
+  - Meeting Participants
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZOOM_API_KEY: ZOOM_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: meeting-meeting-participants
+    baseUri: https://api.zoom.us/v2
+    description: Zoom Meeting API — Meeting Participants business capability. Self-contained, no shared references.
+    resources:
+    - name: meetings-meetingId-participants
+      path: /meetings/{meetingId}/participants
+      operations:
+      - name: listmeetingparticipants
+        method: GET
+        description: Zoom List Meeting Participants
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: include_fields
+          in: query
+          type: string
+          description: Provide `registrant_id` to include the registrant_id field in the response.
+    - name: past_meetings-meetingId-participants
+      path: /past_meetings/{meetingId}/participants
+      operations:
+      - name: listpastmeetingparticipants
+        method: GET
+        description: Zoom List Past Meeting Participants
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: meetingId
+          in: path
+          type: string
+          description: The meeting UUID.
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.ZOOM_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: meeting-meeting-participants-rest
+    port: 8080
+    description: REST adapter for Zoom Meeting API — Meeting Participants. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/meetings/{meetingid}/participants
+      name: meetings-meetingid-participants
+      description: REST surface for meetings-meetingId-participants.
+      operations:
+      - method: GET
+        name: listmeetingparticipants
+        description: Zoom List Meeting Participants
+        call: meeting-meeting-participants.listmeetingparticipants
+        with:
+          include_fields: rest.include_fields
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/past-meetings/{meetingid}/participants
+      name: past-meetings-meetingid-participants
+      description: REST surface for past_meetings-meetingId-participants.
+      operations:
+      - method: GET
+        name: listpastmeetingparticipants
+        description: Zoom List Past Meeting Participants
+        call: meeting-meeting-participants.listpastmeetingparticipants
+        with:
+          meetingId: rest.meetingId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: meeting-meeting-participants-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zoom Meeting API — Meeting Participants. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: zoom-list-meeting-participants
+      description: Zoom List Meeting Participants
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: meeting-meeting-participants.listmeetingparticipants
+      with:
+        include_fields: tools.include_fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zoom-list-past-meeting-participants
+      description: Zoom List Past Meeting Participants
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: meeting-meeting-participants.listpastmeetingparticipants
+      with:
+        meetingId: tools.meetingId
+      outputParameters:
+      - type: object
+        mapping: $.

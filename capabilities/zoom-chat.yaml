@@ -1,0 +1,124 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zoom REST API — Chat
+  description: 'Zoom REST API — Chat. 2 operations. Lead operation: Chat. Self-contained Naftiko capability covering one Zoom
+    business surface.'
+  tags:
+  - Zoom
+  - Chat
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZOOM_API_KEY: ZOOM_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: zoom-chat
+    baseUri: https://api.zoom.us/v1
+    description: Zoom REST API — Chat business capability. Self-contained, no shared references.
+    resources:
+    - name: chat-get
+      path: /chat/get
+      operations:
+      - name: chatget
+        method: POST
+        description: Get chat messages for a specified period.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: chat-list
+      path: /chat/list
+      operations:
+      - name: chatlist
+        method: POST
+        description: Get chat history list for a specified time period.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: api_key
+      value: '{{env.ZOOM_API_KEY}}'
+      placement: query
+  exposes:
+  - type: rest
+    namespace: zoom-chat-rest
+    port: 8080
+    description: REST adapter for Zoom REST API — Chat. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/chat/get
+      name: chat-get
+      description: REST surface for chat-get.
+      operations:
+      - method: POST
+        name: chatget
+        description: Get chat messages for a specified period.
+        call: zoom-chat.chatget
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/chat/list
+      name: chat-list
+      description: REST surface for chat-list.
+      operations:
+      - method: POST
+        name: chatlist
+        description: Get chat history list for a specified time period.
+        call: zoom-chat.chatlist
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: zoom-chat-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zoom REST API — Chat. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: get-chat-messages-specified-period
+      description: Get chat messages for a specified period.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: zoom-chat.chatget
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-chat-history-list-specified
+      description: Get chat history list for a specified time period.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: zoom-chat.chatlist
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

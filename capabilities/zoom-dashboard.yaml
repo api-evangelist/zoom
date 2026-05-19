@@ -1,0 +1,418 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zoom REST API — Dashboard
+  description: 'Zoom REST API — Dashboard. 9 operations. Lead operation: Dashboard. Self-contained Naftiko capability covering
+    one Zoom business surface.'
+  tags:
+  - Zoom
+  - Dashboard
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZOOM_API_KEY: ZOOM_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: zoom-dashboard
+    baseUri: https://api.zoom.us/v1
+    description: Zoom REST API — Dashboard business capability. Self-contained, no shared references.
+    resources:
+    - name: metrics-crc
+      path: /metrics/crc
+      operations:
+      - name: dashboardcrc
+        method: POST
+        description: Get CRC Port usage hour by hour for a specified time period.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: metrics-im
+      path: /metrics/im
+      operations:
+      - name: dashboardim
+        method: POST
+        description: Get statistics of Zoom IM
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: metrics-meetingdetail
+      path: /metrics/meetingdetail
+      operations:
+      - name: dashboardmeetingdetail
+        method: POST
+        description: Get live and past meeting details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: metrics-meetings
+      path: /metrics/meetings
+      operations:
+      - name: dashboardmeetings
+        method: POST
+        description: Get Live Meetings and past meetings for a specified period
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: metrics-qos
+      path: /metrics/qos
+      operations:
+      - name: dashboardqos
+        method: POST
+        description: Get the users quality of service in a Zoom Meeting
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: metrics-webinardetail
+      path: /metrics/webinardetail
+      operations:
+      - name: dashboardwebinardetail
+        method: POST
+        description: Get live and past webinar details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: metrics-webinars
+      path: /metrics/webinars
+      operations:
+      - name: dashboardwebinars
+        method: POST
+        description: Get live webinars and past webinars for a specified period.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: metrics-zoomroomdetail
+      path: /metrics/zoomroomdetail
+      operations:
+      - name: dashboardzoomroomdetail
+        method: POST
+        description: Get a Zoom Room on Zoom via Zoom ID, return the Zoom Room info.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: metrics-zoomrooms
+      path: /metrics/zoomrooms
+      operations:
+      - name: dashboardzoomrooms
+        method: POST
+        description: List all Zoom Rooms on Zoom.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    authentication:
+      type: apikey
+      key: api_key
+      value: '{{env.ZOOM_API_KEY}}'
+      placement: query
+  exposes:
+  - type: rest
+    namespace: zoom-dashboard-rest
+    port: 8080
+    description: REST adapter for Zoom REST API — Dashboard. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/metrics/crc
+      name: metrics-crc
+      description: REST surface for metrics-crc.
+      operations:
+      - method: POST
+        name: dashboardcrc
+        description: Get CRC Port usage hour by hour for a specified time period.
+        call: zoom-dashboard.dashboardcrc
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/metrics/im
+      name: metrics-im
+      description: REST surface for metrics-im.
+      operations:
+      - method: POST
+        name: dashboardim
+        description: Get statistics of Zoom IM
+        call: zoom-dashboard.dashboardim
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/metrics/meetingdetail
+      name: metrics-meetingdetail
+      description: REST surface for metrics-meetingdetail.
+      operations:
+      - method: POST
+        name: dashboardmeetingdetail
+        description: Get live and past meeting details
+        call: zoom-dashboard.dashboardmeetingdetail
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/metrics/meetings
+      name: metrics-meetings
+      description: REST surface for metrics-meetings.
+      operations:
+      - method: POST
+        name: dashboardmeetings
+        description: Get Live Meetings and past meetings for a specified period
+        call: zoom-dashboard.dashboardmeetings
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/metrics/qos
+      name: metrics-qos
+      description: REST surface for metrics-qos.
+      operations:
+      - method: POST
+        name: dashboardqos
+        description: Get the users quality of service in a Zoom Meeting
+        call: zoom-dashboard.dashboardqos
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/metrics/webinardetail
+      name: metrics-webinardetail
+      description: REST surface for metrics-webinardetail.
+      operations:
+      - method: POST
+        name: dashboardwebinardetail
+        description: Get live and past webinar details
+        call: zoom-dashboard.dashboardwebinardetail
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/metrics/webinars
+      name: metrics-webinars
+      description: REST surface for metrics-webinars.
+      operations:
+      - method: POST
+        name: dashboardwebinars
+        description: Get live webinars and past webinars for a specified period.
+        call: zoom-dashboard.dashboardwebinars
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/metrics/zoomroomdetail
+      name: metrics-zoomroomdetail
+      description: REST surface for metrics-zoomroomdetail.
+      operations:
+      - method: POST
+        name: dashboardzoomroomdetail
+        description: Get a Zoom Room on Zoom via Zoom ID, return the Zoom Room info.
+        call: zoom-dashboard.dashboardzoomroomdetail
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/metrics/zoomrooms
+      name: metrics-zoomrooms
+      description: REST surface for metrics-zoomrooms.
+      operations:
+      - method: POST
+        name: dashboardzoomrooms
+        description: List all Zoom Rooms on Zoom.
+        call: zoom-dashboard.dashboardzoomrooms
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: zoom-dashboard-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zoom REST API — Dashboard. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: get-crc-port-usage-hour
+      description: Get CRC Port usage hour by hour for a specified time period.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: zoom-dashboard.dashboardcrc
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-statistics-zoom-im
+      description: Get statistics of Zoom IM
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: zoom-dashboard.dashboardim
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-live-and-past-meeting
+      description: Get live and past meeting details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: zoom-dashboard.dashboardmeetingdetail
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-live-meetings-and-past
+      description: Get Live Meetings and past meetings for a specified period
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: zoom-dashboard.dashboardmeetings
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-users-quality-service-zoom
+      description: Get the users quality of service in a Zoom Meeting
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: zoom-dashboard.dashboardqos
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-live-and-past-webinar
+      description: Get live and past webinar details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: zoom-dashboard.dashboardwebinardetail
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-live-webinars-and-past
+      description: Get live webinars and past webinars for a specified period.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: zoom-dashboard.dashboardwebinars
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-zoom-room-zoom-zoom
+      description: Get a Zoom Room on Zoom via Zoom ID, return the Zoom Room info.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: zoom-dashboard.dashboardzoomroomdetail
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-all-zoom-rooms-zoom
+      description: List all Zoom Rooms on Zoom.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: zoom-dashboard.dashboardzoomrooms
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,203 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zoom device/ — Device
+  description: 'Zoom device/ — Device. 4 operations. Lead operation: Device. Self-contained Naftiko capability covering one
+    Zoom business surface.'
+  tags:
+  - Zoom
+  - Device
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZOOM_API_KEY: ZOOM_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: device--device
+    baseUri: https://api.zoom.us/v1
+    description: Zoom device/ — Device business capability. Self-contained, no shared references.
+    resources:
+    - name: h323-device-create
+      path: /h323/device/create
+      operations:
+      - name: devicedevicecreate
+        method: POST
+        description: Create a H.323/SIP Device on your Zoom account.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: h323-device-delete
+      path: /h323/device/delete
+      operations:
+      - name: devicedevicedelete
+        method: POST
+        description: Delete a H.323/SIP Device on your Zoom account.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: h323-device-list
+      path: /h323/device/list
+      operations:
+      - name: devicedevicelist
+        method: POST
+        description: List H.323/SIP Devices on your Zoom account.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: h323-device-update
+      path: /h323/device/update
+      operations:
+      - name: devicedeviceupdate
+        method: POST
+        description: Update a H.323/SIP Device on your Zoom account.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: device--device-rest
+    port: 8080
+    description: REST adapter for Zoom device/ — Device. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/h323/device/create
+      name: h323-device-create
+      description: REST surface for h323-device-create.
+      operations:
+      - method: POST
+        name: devicedevicecreate
+        description: Create a H.323/SIP Device on your Zoom account.
+        call: device--device.devicedevicecreate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/h323/device/delete
+      name: h323-device-delete
+      description: REST surface for h323-device-delete.
+      operations:
+      - method: POST
+        name: devicedevicedelete
+        description: Delete a H.323/SIP Device on your Zoom account.
+        call: device--device.devicedevicedelete
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/h323/device/list
+      name: h323-device-list
+      description: REST surface for h323-device-list.
+      operations:
+      - method: POST
+        name: devicedevicelist
+        description: List H.323/SIP Devices on your Zoom account.
+        call: device--device.devicedevicelist
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/h323/device/update
+      name: h323-device-update
+      description: REST surface for h323-device-update.
+      operations:
+      - method: POST
+        name: devicedeviceupdate
+        description: Update a H.323/SIP Device on your Zoom account.
+        call: device--device.devicedeviceupdate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: device--device-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zoom device/ — Device. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: create-h-323-sip-device-your
+      description: Create a H.323/SIP Device on your Zoom account.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: device--device.devicedevicecreate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-h-323-sip-device-your
+      description: Delete a H.323/SIP Device on your Zoom account.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: device--device.devicedevicedelete
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-h-323-sip-devices-your
+      description: List H.323/SIP Devices on your Zoom account.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: device--device.devicedevicelist
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-h-323-sip-device-your
+      description: Update a H.323/SIP Device on your Zoom account.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: device--device.devicedeviceupdate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

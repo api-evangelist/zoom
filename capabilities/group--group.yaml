@@ -1,0 +1,371 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zoom group/ — Group
+  description: 'Zoom group/ — Group. 8 operations. Lead operation: Group. Self-contained Naftiko capability covering one Zoom
+    business surface.'
+  tags:
+  - Zoom
+  - Group
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZOOM_API_KEY: ZOOM_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: group--group
+    baseUri: https://api.zoom.us/v1
+    description: Zoom group/ — Group business capability. Self-contained, no shared references.
+    resources:
+    - name: group-create
+      path: /group/create
+      operations:
+      - name: groupcreate
+        method: POST
+        description: Create a group on Zoom, return the new group info.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: group-delete
+      path: /group/delete
+      operations:
+      - name: groupdelete
+        method: POST
+        description: Delete a group on Zoom, return the deleted group ID.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: group-edit
+      path: /group/edit
+      operations:
+      - name: groupedit
+        method: POST
+        description: Edit a group on Zoom, return the new group info.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: group-get
+      path: /group/get
+      operations:
+      - name: groupget
+        method: POST
+        description: Get a group on Zoom via ID, return the group info.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: group-list
+      path: /group/list
+      operations:
+      - name: grouplist
+        method: POST
+        description: List all groups on your Zoom account.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: group-member-add
+      path: /group/member/add
+      operations:
+      - name: groupmemberadd
+        method: POST
+        description: Add members to a group on Zoom.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: group-member-delete
+      path: /group/member/delete
+      operations:
+      - name: groupmemberdelete
+        method: POST
+        description: Delete members of a group on Zoom.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: group-member-list
+      path: /group/member/list
+      operations:
+      - name: groupmemberlist
+        method: POST
+        description: Lists the members of a group on Zoom.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: group--group-rest
+    port: 8080
+    description: REST adapter for Zoom group/ — Group. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/group/create
+      name: group-create
+      description: REST surface for group-create.
+      operations:
+      - method: POST
+        name: groupcreate
+        description: Create a group on Zoom, return the new group info.
+        call: group--group.groupcreate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/group/delete
+      name: group-delete
+      description: REST surface for group-delete.
+      operations:
+      - method: POST
+        name: groupdelete
+        description: Delete a group on Zoom, return the deleted group ID.
+        call: group--group.groupdelete
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/group/edit
+      name: group-edit
+      description: REST surface for group-edit.
+      operations:
+      - method: POST
+        name: groupedit
+        description: Edit a group on Zoom, return the new group info.
+        call: group--group.groupedit
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/group/get
+      name: group-get
+      description: REST surface for group-get.
+      operations:
+      - method: POST
+        name: groupget
+        description: Get a group on Zoom via ID, return the group info.
+        call: group--group.groupget
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/group/list
+      name: group-list
+      description: REST surface for group-list.
+      operations:
+      - method: POST
+        name: grouplist
+        description: List all groups on your Zoom account.
+        call: group--group.grouplist
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/group/member/add
+      name: group-member-add
+      description: REST surface for group-member-add.
+      operations:
+      - method: POST
+        name: groupmemberadd
+        description: Add members to a group on Zoom.
+        call: group--group.groupmemberadd
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/group/member/delete
+      name: group-member-delete
+      description: REST surface for group-member-delete.
+      operations:
+      - method: POST
+        name: groupmemberdelete
+        description: Delete members of a group on Zoom.
+        call: group--group.groupmemberdelete
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/group/member/list
+      name: group-member-list
+      description: REST surface for group-member-list.
+      operations:
+      - method: POST
+        name: groupmemberlist
+        description: Lists the members of a group on Zoom.
+        call: group--group.groupmemberlist
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: group--group-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zoom group/ — Group. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: create-group-zoom-return-new
+      description: Create a group on Zoom, return the new group info.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: group--group.groupcreate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-group-zoom-return-deleted
+      description: Delete a group on Zoom, return the deleted group ID.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: group--group.groupdelete
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: edit-group-zoom-return-new
+      description: Edit a group on Zoom, return the new group info.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: group--group.groupedit
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-group-zoom-id-return
+      description: Get a group on Zoom via ID, return the group info.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: group--group.groupget
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-all-groups-your-zoom
+      description: List all groups on your Zoom account.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: group--group.grouplist
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-members-group-zoom
+      description: Add members to a group on Zoom.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: group--group.groupmemberadd
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-members-group-zoom
+      description: Delete members of a group on Zoom.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: group--group.groupmemberdelete
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: lists-members-group-zoom
+      description: Lists the members of a group on Zoom.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: group--group.groupmemberlist
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

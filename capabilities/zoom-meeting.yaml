@@ -1,0 +1,376 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zoom REST API — Meeting
+  description: 'Zoom REST API — Meeting. 8 operations. Lead operation: Meeting. Self-contained Naftiko capability covering
+    one Zoom business surface.'
+  tags:
+  - Zoom
+  - Meeting
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZOOM_API_KEY: ZOOM_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: zoom-meeting
+    baseUri: https://api.zoom.us/v1
+    description: Zoom REST API — Meeting business capability. Self-contained, no shared references.
+    resources:
+    - name: meeting-create
+      path: /meeting/create
+      operations:
+      - name: meetingcreate
+        method: POST
+        description: Create a meeting on Zoom, return the created meeting URL
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: meeting-delete
+      path: /meeting/delete
+      operations:
+      - name: meetingdelete
+        method: POST
+        description: Delete a meeting on Zoom, return the deleted meeting ID.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: meeting-end
+      path: /meeting/end
+      operations:
+      - name: meetingend
+        method: POST
+        description: End a meeting on Zoom, return the deleted meeting ID.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: meeting-get
+      path: /meeting/get
+      operations:
+      - name: meetingget
+        method: POST
+        description: Get a meeting on Zoom via meeting ID, return the meeting info.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: meeting-list
+      path: /meeting/list
+      operations:
+      - name: meetinglist
+        method: POST
+        description: List all the scheduled meetings on Zoom.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: meeting-live
+      path: /meeting/live
+      operations:
+      - name: meetinglive
+        method: POST
+        description: Lists the live meetings on Zoom.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: meeting-register
+      path: /meeting/register
+      operations:
+      - name: meetingregister
+        method: POST
+        description: Register for a meeting.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: meeting-update
+      path: /meeting/update
+      operations:
+      - name: meetingupdate
+        method: POST
+        description: Update meeting info on Zoom via meeting ID.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: api_key
+      value: '{{env.ZOOM_API_KEY}}'
+      placement: query
+  exposes:
+  - type: rest
+    namespace: zoom-meeting-rest
+    port: 8080
+    description: REST adapter for Zoom REST API — Meeting. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/meeting/create
+      name: meeting-create
+      description: REST surface for meeting-create.
+      operations:
+      - method: POST
+        name: meetingcreate
+        description: Create a meeting on Zoom, return the created meeting URL
+        call: zoom-meeting.meetingcreate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/meeting/delete
+      name: meeting-delete
+      description: REST surface for meeting-delete.
+      operations:
+      - method: POST
+        name: meetingdelete
+        description: Delete a meeting on Zoom, return the deleted meeting ID.
+        call: zoom-meeting.meetingdelete
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/meeting/end
+      name: meeting-end
+      description: REST surface for meeting-end.
+      operations:
+      - method: POST
+        name: meetingend
+        description: End a meeting on Zoom, return the deleted meeting ID.
+        call: zoom-meeting.meetingend
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/meeting/get
+      name: meeting-get
+      description: REST surface for meeting-get.
+      operations:
+      - method: POST
+        name: meetingget
+        description: Get a meeting on Zoom via meeting ID, return the meeting info.
+        call: zoom-meeting.meetingget
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/meeting/list
+      name: meeting-list
+      description: REST surface for meeting-list.
+      operations:
+      - method: POST
+        name: meetinglist
+        description: List all the scheduled meetings on Zoom.
+        call: zoom-meeting.meetinglist
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/meeting/live
+      name: meeting-live
+      description: REST surface for meeting-live.
+      operations:
+      - method: POST
+        name: meetinglive
+        description: Lists the live meetings on Zoom.
+        call: zoom-meeting.meetinglive
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/meeting/register
+      name: meeting-register
+      description: REST surface for meeting-register.
+      operations:
+      - method: POST
+        name: meetingregister
+        description: Register for a meeting.
+        call: zoom-meeting.meetingregister
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/meeting/update
+      name: meeting-update
+      description: REST surface for meeting-update.
+      operations:
+      - method: POST
+        name: meetingupdate
+        description: Update meeting info on Zoom via meeting ID.
+        call: zoom-meeting.meetingupdate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: zoom-meeting-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zoom REST API — Meeting. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: create-meeting-zoom-return-created
+      description: Create a meeting on Zoom, return the created meeting URL
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: zoom-meeting.meetingcreate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-meeting-zoom-return-deleted
+      description: Delete a meeting on Zoom, return the deleted meeting ID.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: zoom-meeting.meetingdelete
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: end-meeting-zoom-return-deleted
+      description: End a meeting on Zoom, return the deleted meeting ID.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: zoom-meeting.meetingend
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-meeting-zoom-meeting-id
+      description: Get a meeting on Zoom via meeting ID, return the meeting info.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: zoom-meeting.meetingget
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-all-scheduled-meetings-zoom
+      description: List all the scheduled meetings on Zoom.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: zoom-meeting.meetinglist
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: lists-live-meetings-zoom
+      description: Lists the live meetings on Zoom.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: zoom-meeting.meetinglive
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: register-meeting
+      description: Register for a meeting.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: zoom-meeting.meetingregister
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-meeting-info-zoom-meeting
+      description: Update meeting info on Zoom via meeting ID.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: zoom-meeting.meetingupdate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

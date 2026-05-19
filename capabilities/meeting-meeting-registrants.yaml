@@ -1,0 +1,216 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zoom Meeting API — Meeting Registrants
+  description: 'Zoom Meeting API — Meeting Registrants. 4 operations. Lead operation: Zoom Batch Add Meeting Registrants.
+    Self-contained Naftiko capability covering one Zoom business surface.'
+  tags:
+  - Zoom
+  - Meeting Registrants
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZOOM_API_KEY: ZOOM_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: meeting-meeting-registrants
+    baseUri: https://api.zoom.us/v2
+    description: Zoom Meeting API — Meeting Registrants business capability. Self-contained, no shared references.
+    resources:
+    - name: meetings-meetingId-batch_registrants
+      path: /meetings/{meetingId}/batch_registrants
+      operations:
+      - name: batchaddmeetingregistrants
+        method: POST
+        description: Zoom Batch Add Meeting Registrants
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: meetings-meetingId-registrants
+      path: /meetings/{meetingId}/registrants
+      operations:
+      - name: listmeetingregistrants
+        method: GET
+        description: Zoom List Meeting Registrants
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: occurrence_id
+          in: query
+          type: string
+          description: Meeting occurrence ID for recurring meetings.
+        - name: status
+          in: query
+          type: string
+          description: Registrant status filter.
+      - name: addmeetingregistrant
+        method: POST
+        description: Zoom Add a Meeting Registrant
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: occurrence_ids
+          in: query
+          type: string
+          description: A comma-separated list of occurrence IDs for recurring meetings.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: meetings-meetingId-registrants-status
+      path: /meetings/{meetingId}/registrants/status
+      operations:
+      - name: updatemeetingregistrantstatus
+        method: PUT
+        description: Zoom Update Registrant Status
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: occurrence_id
+          in: query
+          type: string
+          description: Meeting occurrence ID for recurring meetings.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.ZOOM_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: meeting-meeting-registrants-rest
+    port: 8080
+    description: REST adapter for Zoom Meeting API — Meeting Registrants. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/meetings/{meetingid}/batch-registrants
+      name: meetings-meetingid-batch-registrants
+      description: REST surface for meetings-meetingId-batch_registrants.
+      operations:
+      - method: POST
+        name: batchaddmeetingregistrants
+        description: Zoom Batch Add Meeting Registrants
+        call: meeting-meeting-registrants.batchaddmeetingregistrants
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/meetings/{meetingid}/registrants
+      name: meetings-meetingid-registrants
+      description: REST surface for meetings-meetingId-registrants.
+      operations:
+      - method: GET
+        name: listmeetingregistrants
+        description: Zoom List Meeting Registrants
+        call: meeting-meeting-registrants.listmeetingregistrants
+        with:
+          occurrence_id: rest.occurrence_id
+          status: rest.status
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: addmeetingregistrant
+        description: Zoom Add a Meeting Registrant
+        call: meeting-meeting-registrants.addmeetingregistrant
+        with:
+          occurrence_ids: rest.occurrence_ids
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/meetings/{meetingid}/registrants/status
+      name: meetings-meetingid-registrants-status
+      description: REST surface for meetings-meetingId-registrants-status.
+      operations:
+      - method: PUT
+        name: updatemeetingregistrantstatus
+        description: Zoom Update Registrant Status
+        call: meeting-meeting-registrants.updatemeetingregistrantstatus
+        with:
+          occurrence_id: rest.occurrence_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: meeting-meeting-registrants-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zoom Meeting API — Meeting Registrants. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: zoom-batch-add-meeting-registrants
+      description: Zoom Batch Add Meeting Registrants
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: meeting-meeting-registrants.batchaddmeetingregistrants
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zoom-list-meeting-registrants
+      description: Zoom List Meeting Registrants
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: meeting-meeting-registrants.listmeetingregistrants
+      with:
+        occurrence_id: tools.occurrence_id
+        status: tools.status
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zoom-add-meeting-registrant
+      description: Zoom Add a Meeting Registrant
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: meeting-meeting-registrants.addmeetingregistrant
+      with:
+        occurrence_ids: tools.occurrence_ids
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zoom-update-registrant-status
+      description: Zoom Update Registrant Status
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: meeting-meeting-registrants.updatemeetingregistrantstatus
+      with:
+        occurrence_id: tools.occurrence_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

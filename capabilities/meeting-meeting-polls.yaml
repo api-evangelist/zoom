@@ -1,0 +1,206 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zoom Meeting API — Meeting Polls
+  description: 'Zoom Meeting API — Meeting Polls. 5 operations. Lead operation: Zoom List Meeting Polls. Self-contained Naftiko
+    capability covering one Zoom business surface.'
+  tags:
+  - Zoom
+  - Meeting Polls
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ZOOM_API_KEY: ZOOM_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: meeting-meeting-polls
+    baseUri: https://api.zoom.us/v2
+    description: Zoom Meeting API — Meeting Polls business capability. Self-contained, no shared references.
+    resources:
+    - name: meetings-meetingId-polls
+      path: /meetings/{meetingId}/polls
+      operations:
+      - name: listmeetingpolls
+        method: GET
+        description: Zoom List Meeting Polls
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: anonymous
+          in: query
+          type: boolean
+          description: Whether to query anonymous polls.
+      - name: createmeetingpoll
+        method: POST
+        description: Zoom Create a Meeting Poll
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: meetings-meetingId-polls-pollId
+      path: /meetings/{meetingId}/polls/{pollId}
+      operations:
+      - name: getmeetingpoll
+        method: GET
+        description: Zoom Get a Meeting Poll
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatemeetingpoll
+        method: PUT
+        description: Zoom Update a Meeting Poll
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletemeetingpoll
+        method: DELETE
+        description: Zoom Delete a Meeting Poll
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.ZOOM_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: meeting-meeting-polls-rest
+    port: 8080
+    description: REST adapter for Zoom Meeting API — Meeting Polls. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/meetings/{meetingid}/polls
+      name: meetings-meetingid-polls
+      description: REST surface for meetings-meetingId-polls.
+      operations:
+      - method: GET
+        name: listmeetingpolls
+        description: Zoom List Meeting Polls
+        call: meeting-meeting-polls.listmeetingpolls
+        with:
+          anonymous: rest.anonymous
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createmeetingpoll
+        description: Zoom Create a Meeting Poll
+        call: meeting-meeting-polls.createmeetingpoll
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/meetings/{meetingid}/polls/{pollid}
+      name: meetings-meetingid-polls-pollid
+      description: REST surface for meetings-meetingId-polls-pollId.
+      operations:
+      - method: GET
+        name: getmeetingpoll
+        description: Zoom Get a Meeting Poll
+        call: meeting-meeting-polls.getmeetingpoll
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatemeetingpoll
+        description: Zoom Update a Meeting Poll
+        call: meeting-meeting-polls.updatemeetingpoll
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletemeetingpoll
+        description: Zoom Delete a Meeting Poll
+        call: meeting-meeting-polls.deletemeetingpoll
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: meeting-meeting-polls-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Zoom Meeting API — Meeting Polls. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: zoom-list-meeting-polls
+      description: Zoom List Meeting Polls
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: meeting-meeting-polls.listmeetingpolls
+      with:
+        anonymous: tools.anonymous
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zoom-create-meeting-poll
+      description: Zoom Create a Meeting Poll
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: meeting-meeting-polls.createmeetingpoll
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zoom-get-meeting-poll
+      description: Zoom Get a Meeting Poll
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: meeting-meeting-polls.getmeetingpoll
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zoom-update-meeting-poll
+      description: Zoom Update a Meeting Poll
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: meeting-meeting-polls.updatemeetingpoll
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: zoom-delete-meeting-poll
+      description: Zoom Delete a Meeting Poll
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: meeting-meeting-polls.deletemeetingpoll
+      outputParameters:
+      - type: object
+        mapping: $.
