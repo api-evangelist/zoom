@@ -945,6 +945,8 @@ common:
   - name: Agent Skills
     url: https://developers.zoom.us/blog/announcing-agent-skills
     type: AgentSkill
+  - type: LLMsTxt
+    url: https://developers.zoom.us/llms.txt
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
