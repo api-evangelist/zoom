@@ -1,0 +1,93 @@
+arazzo: 1.0.1
+info:
+  title: Zoom Approve Pending Meeting Registrants
+  summary: Find pending meeting registrants and approve them, branching when none are pending.
+  description: >-
+    Lists the pending registrants for a meeting and branches on the result: when
+    at least one registrant is awaiting approval it issues an approve action for
+    the whole pending batch, and when none are pending it ends without making any
+    change. The list step captures the pending registrant collection used to
+    decide the branch. Every request is spelled out inline so the flow can be read
+    and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: meetingApi
+  url: ../openapi/zoom-meeting-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: approve-pending-registrants
+  summary: List pending meeting registrants and approve them when any exist.
+  description: >-
+    Calls listMeetingRegistrants filtered to pending, and only when the list is
+    non-empty calls updateMeetingRegistrantStatus with the approve action.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - meetingId
+    properties:
+      accessToken:
+        type: string
+        description: OAuth bearer access token for the Zoom REST API.
+      meetingId:
+        type: string
+        description: The meeting id whose pending registrants should be approved.
+  steps:
+  - stepId: listPending
+    description: >-
+      List the registrants for the meeting whose status is pending, so they can
+      be approved.
+    operationId: listMeetingRegistrants
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: meetingId
+      in: path
+      value: $inputs.meetingId
+    - name: status
+      in: query
+      value: pending
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      registrants: $response.body#/registrants
+      totalRecords: $response.body#/total_records
+    onSuccess:
+    - name: hasPending
+      type: goto
+      stepId: approvePending
+      criteria:
+      - context: $response.body
+        condition: $.registrants.length > 0
+        type: jsonpath
+    - name: noPending
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.registrants.length == 0
+        type: jsonpath
+  - stepId: approvePending
+    description: >-
+      Approve the pending registrants returned by the list step using the approve
+      action.
+    operationId: updateMeetingRegistrantStatus
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: meetingId
+      in: path
+      value: $inputs.meetingId
+    requestBody:
+      contentType: application/json
+      payload:
+        action: approve
+        registrants: $steps.listPending.outputs.registrants
+    successCriteria:
+    - condition: $statusCode == 204
+    outputs:
+      approvedStatus: $statusCode
+  outputs:
+    pendingCount: $steps.listPending.outputs.totalRecords
+    approvedStatus: $steps.approvePending.outputs.approvedStatus

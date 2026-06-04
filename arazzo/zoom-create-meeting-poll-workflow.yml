@@ -1,0 +1,117 @@
+arazzo: 1.0.1
+info:
+  title: Zoom Create and Confirm a Meeting Poll
+  summary: Schedule a meeting, attach a poll to it, and read the poll back.
+  description: >-
+    Schedules a meeting (polls require a scheduled, not instant, meeting), creates
+    a single-choice poll on it, and then reads the poll back by id to confirm the
+    saved questions. The create-meeting step captures the meeting id, the
+    create-poll step captures the new poll id, and the get-poll step confirms the
+    persisted poll. Every request is spelled out inline so the flow can be read and
+    executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: meetingApi
+  url: ../openapi/zoom-meeting-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: create-meeting-poll
+  summary: Create a scheduled meeting, add a poll, and confirm the poll.
+  description: >-
+    Calls createMeeting to schedule a meeting, createMeetingPoll to attach a poll,
+    and getMeetingPoll to confirm the persisted poll.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - userId
+    - topic
+    - pollTitle
+    - questionName
+    properties:
+      accessToken:
+        type: string
+        description: OAuth bearer access token for the Zoom REST API.
+      userId:
+        type: string
+        description: The user id to schedule the meeting for, or "me".
+      topic:
+        type: string
+        description: The meeting topic.
+      startTime:
+        type: string
+        description: Meeting start time in ISO 8601 UTC format.
+      pollTitle:
+        type: string
+        description: Title for the poll.
+      questionName:
+        type: string
+        description: Text of the single-choice poll question.
+  steps:
+  - stepId: createMeeting
+    description: Schedule a meeting so a poll can be attached to it.
+    operationId: createMeeting
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: userId
+      in: path
+      value: $inputs.userId
+    requestBody:
+      contentType: application/json
+      payload:
+        topic: $inputs.topic
+        type: 2
+        start_time: $inputs.startTime
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      meetingId: $response.body#/id
+  - stepId: createPoll
+    description: >-
+      Create a single-choice poll on the meeting with one required question.
+    operationId: createMeetingPoll
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: meetingId
+      in: path
+      value: $steps.createMeeting.outputs.meetingId
+    requestBody:
+      contentType: application/json
+      payload:
+        title: $inputs.pollTitle
+        anonymous: false
+        poll_type: 1
+        questions:
+        - name: $inputs.questionName
+          type: single
+          answer_required: true
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      pollId: $response.body#/id
+      status: $response.body#/status
+  - stepId: confirmPoll
+    description: Read the created poll back by id to confirm the persisted questions.
+    operationId: getMeetingPoll
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: meetingId
+      in: path
+      value: $steps.createMeeting.outputs.meetingId
+    - name: pollId
+      in: path
+      value: $steps.createPoll.outputs.pollId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      title: $response.body#/title
+      questions: $response.body#/questions
+  outputs:
+    meetingId: $steps.createMeeting.outputs.meetingId
+    pollId: $steps.createPoll.outputs.pollId

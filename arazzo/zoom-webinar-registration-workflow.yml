@@ -1,0 +1,113 @@
+arazzo: 1.0.1
+info:
+  title: Zoom Webinar Registration
+  summary: Create a webinar, register an attendee, and list the registrants.
+  description: >-
+    Schedules a webinar that requires manual approval, registers a single attendee
+    for it, and then lists the webinar registrants to confirm the new entry. The
+    create step captures the new webinar id, the register step captures the
+    registrant id and personal join URL, and the list step reads back the
+    registrant roster. This legacy Zoom API authenticates with api_key and
+    api_secret form fields rather than a bearer token, so credentials are supplied
+    inline in each request body. Every request is spelled out inline so the flow
+    can be read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: webinarApi
+  url: ../openapi/zoom-webinar--openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: register-attendee-for-webinar
+  summary: Create a webinar, register an attendee, and confirm the roster.
+  description: >-
+    Calls webinarCreate to schedule the webinar, webinarRegister to enroll one
+    attendee, and webinarRegistrantsList to confirm the registrant roster.
+  inputs:
+    type: object
+    required:
+    - apiKey
+    - apiSecret
+    - hostId
+    - topic
+    - type
+    - email
+    - firstName
+    - lastName
+    properties:
+      apiKey:
+        type: string
+        description: Zoom API key used to authenticate the legacy API.
+      apiSecret:
+        type: string
+        description: Zoom API secret used to authenticate the legacy API.
+      hostId:
+        type: string
+        description: The webinar host user id.
+      topic:
+        type: string
+        description: Webinar topic.
+      type:
+        type: string
+        description: Webinar type. 5 webinar, 6 recurring, 9 recurring with fixed time.
+      email:
+        type: string
+        description: Registrant email address.
+      firstName:
+        type: string
+        description: Registrant first name.
+      lastName:
+        type: string
+        description: Registrant last name.
+  steps:
+  - stepId: createWebinar
+    description: >-
+      Schedule the webinar with manual approval (approval_type 1) so registrants
+      can be reviewed.
+    operationId: webinarCreate
+    requestBody:
+      contentType: application/x-www-form-urlencoded
+      payload:
+        api_key: $inputs.apiKey
+        api_secret: $inputs.apiSecret
+        host_id: $inputs.hostId
+        topic: $inputs.topic
+        type: $inputs.type
+        approval_type: '1'
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      webinarId: $response.body#/id
+  - stepId: registerAttendee
+    description: Register the supplied attendee for the webinar.
+    operationId: webinarRegister
+    requestBody:
+      contentType: application/x-www-form-urlencoded
+      payload:
+        id: $steps.createWebinar.outputs.webinarId
+        email: $inputs.email
+        first_name: $inputs.firstName
+        last_name: $inputs.lastName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      registrantId: $response.body#/registrant_id
+      joinUrl: $response.body#/join_url
+  - stepId: listRegistrants
+    description: List the webinar registrants to confirm the new attendee is present.
+    operationId: webinarRegistrantsList
+    requestBody:
+      contentType: application/x-www-form-urlencoded
+      payload:
+        api_key: $inputs.apiKey
+        api_secret: $inputs.apiSecret
+        host_id: $inputs.hostId
+        id: $steps.createWebinar.outputs.webinarId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      totalRecords: $response.body#/total_records
+      users: $response.body#/users
+  outputs:
+    webinarId: $steps.createWebinar.outputs.webinarId
+    registrantId: $steps.registerAttendee.outputs.registrantId
+    joinUrl: $steps.registerAttendee.outputs.joinUrl

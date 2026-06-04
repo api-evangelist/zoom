@@ -1,0 +1,74 @@
+arazzo: 1.0.1
+info:
+  title: Zoom Past Meeting Attendance Report
+  summary: Read a past meeting's summary and then list everyone who attended.
+  description: >-
+    Retrieves the summary of a completed meeting by its instance UUID and then
+    lists the participants who attended that instance. The summary step confirms
+    the meeting ran and captures its UUID and participant count, and the
+    participants step reads the per-attendee join and leave times. Every request is
+    spelled out inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: meetingApi
+  url: ../openapi/zoom-meeting-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: past-meeting-attendance
+  summary: Get a past meeting's details and list its participants.
+  description: >-
+    Calls getPastMeetingDetails for a meeting instance UUID, then
+    listPastMeetingParticipants to enumerate the attendees of that instance.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - meetingUuid
+    properties:
+      accessToken:
+        type: string
+        description: OAuth bearer access token for the Zoom REST API.
+      meetingUuid:
+        type: string
+        description: >-
+          The past meeting instance UUID. Double-encode it if it begins with a
+          slash or contains a double slash.
+  steps:
+  - stepId: getPastDetails
+    description: Retrieve the summary information for the completed meeting instance.
+    operationId: getPastMeetingDetails
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: meetingId
+      in: path
+      value: $inputs.meetingUuid
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      uuid: $response.body#/uuid
+      participantsCount: $response.body#/participants_count
+      totalMinutes: $response.body#/total_minutes
+  - stepId: listParticipants
+    description: List the participants who attended the completed meeting instance.
+    operationId: listPastMeetingParticipants
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: meetingId
+      in: path
+      value: $inputs.meetingUuid
+    - name: page_size
+      in: query
+      value: 100
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      participants: $response.body#/participants
+      totalRecords: $response.body#/total_records
+  outputs:
+    participantsCount: $steps.getPastDetails.outputs.participantsCount
+    participants: $steps.listParticipants.outputs.participants

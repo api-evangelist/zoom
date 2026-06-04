@@ -1,0 +1,94 @@
+arazzo: 1.0.1
+info:
+  title: Zoom Create and Confirm a Meeting
+  summary: Schedule a meeting for a user and read it back to confirm the saved details.
+  description: >-
+    Schedules a meeting for a Zoom user and then re-reads the created meeting to
+    confirm the topic, start time, and join URL that Zoom persisted. The create
+    step captures the new meeting id, which the confirmation step uses to fetch
+    the full meeting record. Every request is spelled out inline so the flow can
+    be read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: meetingApi
+  url: ../openapi/zoom-meeting-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: create-and-confirm-meeting
+  summary: Create a scheduled meeting for a user and confirm it by reading it back.
+  description: >-
+    Calls createMeeting to schedule a meeting for the supplied user, then calls
+    getMeeting with the returned meeting id to confirm the persisted details.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - userId
+    - topic
+    properties:
+      accessToken:
+        type: string
+        description: OAuth bearer access token for the Zoom REST API.
+      userId:
+        type: string
+        description: The user id to schedule the meeting for, or "me" for user-level apps.
+      topic:
+        type: string
+        description: The meeting topic.
+      startTime:
+        type: string
+        description: Meeting start time in ISO 8601 UTC format, e.g. 2026-01-15T10:30:00Z.
+      duration:
+        type: integer
+        description: Meeting duration in minutes.
+      timezone:
+        type: string
+        description: Timezone used to interpret start_time, e.g. America/Los_Angeles.
+  steps:
+  - stepId: createMeeting
+    description: >-
+      Schedule a meeting (type 2) for the supplied user with the given topic,
+      start time, and duration.
+    operationId: createMeeting
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: userId
+      in: path
+      value: $inputs.userId
+    requestBody:
+      contentType: application/json
+      payload:
+        topic: $inputs.topic
+        type: 2
+        start_time: $inputs.startTime
+        duration: $inputs.duration
+        timezone: $inputs.timezone
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      meetingId: $response.body#/id
+      joinUrl: $response.body#/join_url
+      startUrl: $response.body#/start_url
+  - stepId: confirmMeeting
+    description: >-
+      Read the created meeting back by id to confirm the persisted topic, start
+      time, and settings.
+    operationId: getMeeting
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: meetingId
+      in: path
+      value: $steps.createMeeting.outputs.meetingId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      topic: $response.body#/topic
+      status: $response.body#/status
+  outputs:
+    meetingId: $steps.createMeeting.outputs.meetingId
+    joinUrl: $steps.createMeeting.outputs.joinUrl
+    startUrl: $steps.createMeeting.outputs.startUrl

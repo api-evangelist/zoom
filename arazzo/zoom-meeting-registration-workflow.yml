@@ -1,0 +1,128 @@
+arazzo: 1.0.1
+info:
+  title: Zoom Meeting Registration
+  summary: Create a registration-required meeting, register an attendee, and list registrants.
+  description: >-
+    Schedules a meeting that requires registration, adds a single registrant to
+    it, and then lists the meeting registrants to confirm the new entry. The
+    create step turns on registration via the approval and registration settings,
+    the add step captures the registrant id and personal join URL, and the list
+    step reads back the registrant roster. Every request is spelled out inline so
+    the flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: meetingApi
+  url: ../openapi/zoom-meeting-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: register-attendee-for-meeting
+  summary: Create a registration meeting, add a registrant, and confirm the roster.
+  description: >-
+    Calls createMeeting with registration enabled, addMeetingRegistrant to enroll
+    one attendee, and listMeetingRegistrants to confirm the registrant appears in
+    the approved roster.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - userId
+    - topic
+    - email
+    - firstName
+    properties:
+      accessToken:
+        type: string
+        description: OAuth bearer access token for the Zoom REST API.
+      userId:
+        type: string
+        description: The user id to schedule the meeting for, or "me".
+      topic:
+        type: string
+        description: The meeting topic.
+      startTime:
+        type: string
+        description: Meeting start time in ISO 8601 UTC format.
+      email:
+        type: string
+        description: Registrant email address.
+      firstName:
+        type: string
+        description: Registrant first name.
+      lastName:
+        type: string
+        description: Registrant last name.
+  steps:
+  - stepId: createMeeting
+    description: >-
+      Schedule a meeting with registration required (registration_type 1 and
+      approval_type 0 for automatic approval).
+    operationId: createMeeting
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: userId
+      in: path
+      value: $inputs.userId
+    requestBody:
+      contentType: application/json
+      payload:
+        topic: $inputs.topic
+        type: 2
+        start_time: $inputs.startTime
+        settings:
+          approval_type: 0
+          registration_type: 1
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      meetingId: $response.body#/id
+  - stepId: addRegistrant
+    description: >-
+      Register the supplied attendee for the meeting and capture the registrant
+      id and personal join URL.
+    operationId: addMeetingRegistrant
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: meetingId
+      in: path
+      value: $steps.createMeeting.outputs.meetingId
+    requestBody:
+      contentType: application/json
+      payload:
+        email: $inputs.email
+        first_name: $inputs.firstName
+        last_name: $inputs.lastName
+        auto_approve: true
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      registrantId: $response.body#/registrant_id
+      joinUrl: $response.body#/join_url
+  - stepId: listRegistrants
+    description: >-
+      List the approved registrants for the meeting to confirm the new attendee
+      is present.
+    operationId: listMeetingRegistrants
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: meetingId
+      in: path
+      value: $steps.createMeeting.outputs.meetingId
+    - name: status
+      in: query
+      value: approved
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      totalRecords: $response.body#/total_records
+      registrants: $response.body#/registrants
+  outputs:
+    meetingId: $steps.createMeeting.outputs.meetingId
+    registrantId: $steps.addRegistrant.outputs.registrantId
+    joinUrl: $steps.addRegistrant.outputs.joinUrl

@@ -1,0 +1,107 @@
+arazzo: 1.0.1
+info:
+  title: Zoom Create and Confirm a Webinar
+  summary: Schedule a webinar, read it back, and list its panelists.
+  description: >-
+    Schedules a webinar for a host, reads the webinar back to confirm the saved
+    topic and join URL, and then lists the webinar's panelists. The create step
+    captures the new webinar id, which the get and panelists steps reuse along with
+    the host id. This legacy Zoom API authenticates with api_key and api_secret
+    form fields rather than a bearer token, so credentials are supplied inline in
+    each request body. Every request is spelled out inline so the flow can be read
+    and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: webinarApi
+  url: ../openapi/zoom-webinar--openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: create-and-confirm-webinar
+  summary: Create a webinar, confirm it by reading it back, and list its panelists.
+  description: >-
+    Calls webinarCreate to schedule the webinar, webinarGet to confirm the
+    persisted details, and webinarPanelists to list the panelists.
+  inputs:
+    type: object
+    required:
+    - apiKey
+    - apiSecret
+    - hostId
+    - topic
+    - type
+    properties:
+      apiKey:
+        type: string
+        description: Zoom API key used to authenticate the legacy API.
+      apiSecret:
+        type: string
+        description: Zoom API secret used to authenticate the legacy API.
+      hostId:
+        type: string
+        description: The webinar host user id.
+      topic:
+        type: string
+        description: Webinar topic, up to 300 characters.
+      type:
+        type: string
+        description: Webinar type. 5 webinar, 6 recurring, 9 recurring with fixed time.
+      startTime:
+        type: string
+        description: Webinar start time in ISO 8601 UTC format.
+      duration:
+        type: string
+        description: Webinar duration in minutes.
+  steps:
+  - stepId: createWebinar
+    description: Schedule the webinar for the host and capture the new webinar id.
+    operationId: webinarCreate
+    requestBody:
+      contentType: application/x-www-form-urlencoded
+      payload:
+        api_key: $inputs.apiKey
+        api_secret: $inputs.apiSecret
+        host_id: $inputs.hostId
+        topic: $inputs.topic
+        type: $inputs.type
+        start_time: $inputs.startTime
+        duration: $inputs.duration
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      webinarId: $response.body#/id
+      joinUrl: $response.body#/join_url
+      startUrl: $response.body#/start_url
+  - stepId: getWebinar
+    description: Read the webinar back to confirm the persisted topic and schedule.
+    operationId: webinarGet
+    requestBody:
+      contentType: application/x-www-form-urlencoded
+      payload:
+        api_key: $inputs.apiKey
+        api_secret: $inputs.apiSecret
+        host_id: $inputs.hostId
+        id: $steps.createWebinar.outputs.webinarId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      topic: $response.body#/topic
+      status: $response.body#/status
+  - stepId: listPanelists
+    description: List the panelists currently assigned to the webinar.
+    operationId: webinarPanelists
+    requestBody:
+      contentType: application/x-www-form-urlencoded
+      payload:
+        api_key: $inputs.apiKey
+        api_secret: $inputs.apiSecret
+        host_id: $inputs.hostId
+        id: $steps.createWebinar.outputs.webinarId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      totalRecords: $response.body#/total_records
+      panelists: $response.body#/panelists
+  outputs:
+    webinarId: $steps.createWebinar.outputs.webinarId
+    joinUrl: $steps.createWebinar.outputs.joinUrl
+    panelists: $steps.listPanelists.outputs.panelists

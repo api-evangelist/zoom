@@ -1,0 +1,115 @@
+arazzo: 1.0.1
+info:
+  title: Zoom Onboard a User With a First Meeting
+  summary: Provision a new user and schedule their first meeting in one flow.
+  description: >-
+    Provisions a new Zoom user with the legacy user API and then schedules that
+    user's first meeting with the modern Meeting REST API, reading the created
+    meeting back to confirm it. The user-create step captures the new user id,
+    which is passed as the host of the new meeting. The two APIs authenticate
+    differently: the legacy user API uses api_key and api_secret form fields, while
+    the Meeting REST API uses an OAuth bearer token, so both credential styles are
+    supplied inline. Every request is spelled out inline so the flow can be read
+    and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: userApi
+  url: ../openapi/zoom-user--openapi-original.yml
+  type: openapi
+- name: meetingApi
+  url: ../openapi/zoom-meeting-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: onboard-user-with-meeting
+  summary: Create a user, schedule their first meeting, and confirm it.
+  description: >-
+    Calls userCreate to provision the user, createMeeting to schedule a meeting
+    hosted by that user, and getMeeting to confirm the persisted meeting.
+  inputs:
+    type: object
+    required:
+    - apiKey
+    - apiSecret
+    - accessToken
+    - email
+    - type
+    - topic
+    properties:
+      apiKey:
+        type: string
+        description: Zoom API key used to authenticate the legacy user API.
+      apiSecret:
+        type: string
+        description: Zoom API secret used to authenticate the legacy user API.
+      accessToken:
+        type: string
+        description: OAuth bearer access token for the Zoom Meeting REST API.
+      email:
+        type: string
+        description: A unique, valid email address for the new user.
+      type:
+        type: string
+        description: User type. 1 basic, 2 pro, 3 corp.
+      topic:
+        type: string
+        description: Topic for the user's first meeting.
+      startTime:
+        type: string
+        description: Meeting start time in ISO 8601 UTC format.
+  steps:
+  - stepId: createUser
+    description: Provision the new user and capture the returned user id.
+    operationId: userCreate
+    requestBody:
+      contentType: application/x-www-form-urlencoded
+      payload:
+        api_key: $inputs.apiKey
+        api_secret: $inputs.apiSecret
+        email: $inputs.email
+        type: $inputs.type
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      userId: $response.body#/id
+  - stepId: createMeeting
+    description: >-
+      Schedule the user's first meeting, using the new user id as the meeting
+      host path parameter.
+    operationId: createMeeting
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: userId
+      in: path
+      value: $steps.createUser.outputs.userId
+    requestBody:
+      contentType: application/json
+      payload:
+        topic: $inputs.topic
+        type: 2
+        start_time: $inputs.startTime
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      meetingId: $response.body#/id
+      joinUrl: $response.body#/join_url
+  - stepId: confirmMeeting
+    description: Read the created meeting back to confirm it was scheduled for the user.
+    operationId: getMeeting
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: meetingId
+      in: path
+      value: $steps.createMeeting.outputs.meetingId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      hostId: $response.body#/host_id
+      topic: $response.body#/topic
+  outputs:
+    userId: $steps.createUser.outputs.userId
+    meetingId: $steps.createMeeting.outputs.meetingId
+    joinUrl: $steps.createMeeting.outputs.joinUrl

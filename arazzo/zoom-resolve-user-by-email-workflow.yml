@@ -1,0 +1,77 @@
+arazzo: 1.0.1
+info:
+  title: Zoom Resolve a User by Email
+  summary: Look up a user by email address and fetch their full profile by id.
+  description: >-
+    Resolves a Zoom user from an email address and login type, then reads the full
+    user profile back using the id returned by the lookup. The lookup step captures
+    the user id, which the profile step uses to fetch the complete record. This
+    legacy Zoom API authenticates with api_key and api_secret form fields rather
+    than a bearer token, so credentials are supplied inline in each request body.
+    Every request is spelled out inline so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: userApi
+  url: ../openapi/zoom-user--openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: resolve-user-by-email
+  summary: Find a user by email and fetch the full profile by id.
+  description: >-
+    Calls userGetbyemail to resolve the user id from an email address, then userGet
+    to read the full profile.
+  inputs:
+    type: object
+    required:
+    - apiKey
+    - apiSecret
+    - email
+    - loginType
+    properties:
+      apiKey:
+        type: string
+        description: Zoom API key used to authenticate the legacy API.
+      apiSecret:
+        type: string
+        description: Zoom API secret used to authenticate the legacy API.
+      email:
+        type: string
+        description: The email address to resolve.
+      loginType:
+        type: string
+        description: >-
+          Login type of the email. 0 Facebook, 1 Google, 99 API, 100 Zoom,
+          101 SSO.
+  steps:
+  - stepId: lookupByEmail
+    description: Resolve the user id from the supplied email and login type.
+    operationId: userGetbyemail
+    requestBody:
+      contentType: application/x-www-form-urlencoded
+      payload:
+        email: $inputs.email
+        login_type: $inputs.loginType
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      userId: $response.body#/id
+  - stepId: getProfile
+    description: Read the full user profile back using the resolved id.
+    operationId: userGet
+    requestBody:
+      contentType: application/x-www-form-urlencoded
+      payload:
+        api_key: $inputs.apiKey
+        api_secret: $inputs.apiSecret
+        id: $steps.lookupByEmail.outputs.userId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      email: $response.body#/email
+      type: $response.body#/type
+      pmi: $response.body#/pmi
+      timezone: $response.body#/timezone
+  outputs:
+    userId: $steps.lookupByEmail.outputs.userId
+    pmi: $steps.getProfile.outputs.pmi

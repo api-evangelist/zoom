@@ -1,0 +1,84 @@
+arazzo: 1.0.1
+info:
+  title: Zoom Provision and Confirm a User
+  summary: Create a Zoom user and read the new user back to confirm provisioning.
+  description: >-
+    Provisions a new Zoom user and then reads the user back by the returned id to
+    confirm the account was created with the expected email and type. The create
+    step captures the new user id, which the confirmation step uses to fetch the
+    full user record. This legacy Zoom API authenticates with api_key and
+    api_secret form fields rather than a bearer token, so credentials are supplied
+    inline in each request body. Every request is spelled out inline so the flow
+    can be read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: userApi
+  url: ../openapi/zoom-user--openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: create-and-get-user
+  summary: Provision a Zoom user and confirm by reading it back by id.
+  description: >-
+    Calls userCreate to provision the user, then userGet with the returned id to
+    confirm the persisted account details.
+  inputs:
+    type: object
+    required:
+    - apiKey
+    - apiSecret
+    - email
+    - type
+    properties:
+      apiKey:
+        type: string
+        description: Zoom API key used to authenticate the legacy API.
+      apiSecret:
+        type: string
+        description: Zoom API secret used to authenticate the legacy API.
+      email:
+        type: string
+        description: A unique, valid email address for the new user.
+      type:
+        type: string
+        description: User type. 1 basic, 2 pro, 3 corp.
+      firstName:
+        type: string
+        description: The user's first name.
+      lastName:
+        type: string
+        description: The user's last name.
+  steps:
+  - stepId: createUser
+    description: Provision the user account and capture the returned user id.
+    operationId: userCreate
+    requestBody:
+      contentType: application/x-www-form-urlencoded
+      payload:
+        api_key: $inputs.apiKey
+        api_secret: $inputs.apiSecret
+        email: $inputs.email
+        type: $inputs.type
+        first_name: $inputs.firstName
+        last_name: $inputs.lastName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      userId: $response.body#/id
+  - stepId: getUser
+    description: Read the new user back by id to confirm the persisted account.
+    operationId: userGet
+    requestBody:
+      contentType: application/x-www-form-urlencoded
+      payload:
+        api_key: $inputs.apiKey
+        api_secret: $inputs.apiSecret
+        id: $steps.createUser.outputs.userId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      email: $response.body#/email
+      type: $response.body#/type
+      accountId: $response.body#/account_id
+  outputs:
+    userId: $steps.createUser.outputs.userId
+    email: $steps.getUser.outputs.email

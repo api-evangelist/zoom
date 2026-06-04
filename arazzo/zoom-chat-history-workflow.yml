@@ -1,0 +1,87 @@
+arazzo: 1.0.1
+info:
+  title: Zoom Archived Chat History Drill-Down
+  summary: List archived chat sessions, then read the messages of the first session, branching when none exist.
+  description: >-
+    Lists the archived chat sessions for a date range and branches on the result:
+    when at least one session is returned it reads the messages of the first
+    session, and when no sessions exist it ends without further calls. The list step
+    captures the first session id used by the messages step. This archive API
+    authenticates with an archived-messages access_token form field, supplied
+    inline in each request body. Every request is spelled out inline so the flow can
+    be read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: chatApi
+  url: ../openapi/zoom-chat--openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: chat-history-drill-down
+  summary: List archived chat sessions and read the first session's messages.
+  description: >-
+    Calls chatList for a date range and, only when sessions exist, calls chatGet
+    for the first session id to read its messages.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - from
+    - to
+    properties:
+      accessToken:
+        type: string
+        description: Archived chat messages access token.
+      from:
+        type: string
+        description: Start date, e.g. 2026-05-01.
+      to:
+        type: string
+        description: End date, e.g. 2026-05-07.
+  steps:
+  - stepId: listSessions
+    description: >-
+      List the archived chat sessions for the date range and capture the first
+      session id.
+    operationId: chatList
+    requestBody:
+      contentType: application/x-www-form-urlencoded
+      payload:
+        access_token: $inputs.accessToken
+        from: $inputs.from
+        to: $inputs.to
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      firstSessionId: $response.body#/chat_list/0/session_id
+    onSuccess:
+    - name: hasSessions
+      type: goto
+      stepId: getMessages
+      criteria:
+      - context: $response.body
+        condition: $.chat_list.length > 0
+        type: jsonpath
+    - name: noSessions
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.chat_list.length == 0
+        type: jsonpath
+  - stepId: getMessages
+    description: Read the chat messages for the first session over the same date range.
+    operationId: chatGet
+    requestBody:
+      contentType: application/x-www-form-urlencoded
+      payload:
+        access_token: $inputs.accessToken
+        session_id: $steps.listSessions.outputs.firstSessionId
+        from: $inputs.from
+        to: $inputs.to
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      groupName: $response.body#/group_name
+      chatMessages: $response.body#/chat_messages
+  outputs:
+    firstSessionId: $steps.listSessions.outputs.firstSessionId
+    chatMessages: $steps.getMessages.outputs.chatMessages

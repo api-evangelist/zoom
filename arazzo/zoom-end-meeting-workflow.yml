@@ -1,0 +1,70 @@
+arazzo: 1.0.1
+info:
+  title: Zoom End a Live Meeting
+  summary: End an in-progress meeting and confirm its status changed.
+  description: >-
+    Ends a live meeting by issuing the end action against the meeting status
+    resource, then reads the meeting back to observe the resulting status. The
+    status update returns no content on success, so the confirmation step is used
+    to surface the meeting's reported state. Every request is spelled out inline so
+    the flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: meetingApi
+  url: ../openapi/zoom-meeting-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: end-meeting
+  summary: End a live meeting and read its status back.
+  description: >-
+    Calls updateMeetingStatus with the end action and then getMeeting to observe
+    the meeting status after ending.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - meetingId
+    properties:
+      accessToken:
+        type: string
+        description: OAuth bearer access token for the Zoom REST API.
+      meetingId:
+        type: string
+        description: The id of the live meeting to end.
+  steps:
+  - stepId: endMeeting
+    description: End the meeting by issuing the end action on the status resource.
+    operationId: updateMeetingStatus
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: meetingId
+      in: path
+      value: $inputs.meetingId
+    requestBody:
+      contentType: application/json
+      payload:
+        action: end
+    successCriteria:
+    - condition: $statusCode == 204
+    outputs:
+      endStatus: $statusCode
+  - stepId: confirmEnded
+    description: Read the meeting back to observe the status after ending it.
+    operationId: getMeeting
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: meetingId
+      in: path
+      value: $inputs.meetingId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      status: $response.body#/status
+  outputs:
+    endStatus: $steps.endMeeting.outputs.endStatus
+    status: $steps.confirmEnded.outputs.status

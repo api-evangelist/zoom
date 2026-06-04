@@ -1,0 +1,86 @@
+arazzo: 1.0.1
+info:
+  title: Zoom Retrieve Meeting Recordings
+  summary: Fetch a meeting's cloud recordings and branch when no recordings exist.
+  description: >-
+    Retrieves the cloud recordings for a meeting and branches on the result: when
+    one or more recording files are present it reads the meeting invitation note
+    for context alongside the recordings, and when no recordings exist it ends
+    without further calls. The recordings step captures the recording file
+    collection used to decide the branch. Every request is spelled out inline so
+    the flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: meetingApi
+  url: ../openapi/zoom-meeting-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: retrieve-meeting-recordings
+  summary: Get a meeting's recordings and, when present, also fetch its invitation.
+  description: >-
+    Calls getMeetingRecordings and, only when recording files are returned, calls
+    getMeetingInvitation to attach the meeting invitation note.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - meetingId
+    properties:
+      accessToken:
+        type: string
+        description: OAuth bearer access token for the Zoom REST API.
+      meetingId:
+        type: string
+        description: The meeting id or UUID whose recordings should be retrieved.
+  steps:
+  - stepId: getRecordings
+    description: Retrieve all cloud recording files for the meeting.
+    operationId: getMeetingRecordings
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: meetingId
+      in: path
+      value: $inputs.meetingId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      recordingFiles: $response.body#/recording_files
+      totalSize: $response.body#/total_size
+      shareUrl: $response.body#/share_url
+    onSuccess:
+    - name: hasRecordings
+      type: goto
+      stepId: getInvitation
+      criteria:
+      - context: $response.body
+        condition: $.recording_files.length > 0
+        type: jsonpath
+    - name: noRecordings
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.recording_files.length == 0
+        type: jsonpath
+  - stepId: getInvitation
+    description: >-
+      Fetch the meeting invitation note to provide context alongside the
+      recordings.
+    operationId: getMeetingInvitation
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: meetingId
+      in: path
+      value: $inputs.meetingId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      invitation: $response.body#/invitation
+  outputs:
+    recordingFiles: $steps.getRecordings.outputs.recordingFiles
+    shareUrl: $steps.getRecordings.outputs.shareUrl
+    invitation: $steps.getInvitation.outputs.invitation

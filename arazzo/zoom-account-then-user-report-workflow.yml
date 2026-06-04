@@ -1,0 +1,83 @@
+arazzo: 1.0.1
+info:
+  title: Zoom Account Report Then User Drill-Down
+  summary: Pull an account usage report, then drill into the first user's meeting report.
+  description: >-
+    Pulls the account-level usage report for a date range and then drills into the
+    first user listed in that report to pull their detailed per-meeting report for
+    the same range. The account step captures the first user's id, which the user
+    step uses as the report subject. This legacy Zoom API authenticates with
+    api_key and api_secret form fields rather than a bearer token, so credentials
+    are supplied inline in each request body. Every request is spelled out inline so
+    the flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: reportApi
+  url: ../openapi/zoom-report--openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: account-then-user-report
+  summary: Get the account report and drill into the first user's meeting report.
+  description: >-
+    Calls reportGetaccountreport for the date range, then reportGetuserreport for
+    the first user listed in the account report.
+  inputs:
+    type: object
+    required:
+    - apiKey
+    - apiSecret
+    - from
+    - to
+    properties:
+      apiKey:
+        type: string
+        description: Zoom API key used to authenticate the legacy API.
+      apiSecret:
+        type: string
+        description: Zoom API secret used to authenticate the legacy API.
+      from:
+        type: string
+        description: Report start date, e.g. 2026-05-01.
+      to:
+        type: string
+        description: Report end date, e.g. 2026-05-31.
+  steps:
+  - stepId: accountReport
+    description: >-
+      Pull the account usage report for the date range and capture the first
+      user listed.
+    operationId: reportGetaccountreport
+    requestBody:
+      contentType: application/x-www-form-urlencoded
+      payload:
+        api_key: $inputs.apiKey
+        api_secret: $inputs.apiSecret
+        from: $inputs.from
+        to: $inputs.to
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      totalMeetings: $response.body#/total_meetings
+      firstUserId: $response.body#/users/0/user_id
+  - stepId: userReport
+    description: >-
+      Pull the detailed per-meeting report for the first user from the account
+      report over the same date range.
+    operationId: reportGetuserreport
+    requestBody:
+      contentType: application/x-www-form-urlencoded
+      payload:
+        api_key: $inputs.apiKey
+        api_secret: $inputs.apiSecret
+        user_id: $steps.accountReport.outputs.firstUserId
+        from: $inputs.from
+        to: $inputs.to
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      totalRecords: $response.body#/total_records
+      meetings: $response.body#/meetings
+  outputs:
+    totalMeetings: $steps.accountReport.outputs.totalMeetings
+    userMeetings: $steps.userReport.outputs.meetings

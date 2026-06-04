@@ -1,0 +1,58 @@
+arazzo: 1.0.1
+info:
+  title: Zoom Inspect and Delete a Recording
+  summary: Fetch a meeting's recording, confirm its files, then delete it.
+  description: >-
+    Inspects a meeting's cloud recording to confirm what files exist and then
+    deletes the recording. The inspect step confirms the recording and captures the
+    file count so the delete step is only meaningful when there is something to
+    remove. This legacy Zoom API authenticates with api_key and api_secret form
+    fields rather than a bearer token, so credentials are supplied inline in each
+    request body. Every request is spelled out inline so the flow can be read and
+    executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: recordingApi
+  url: ../openapi/zoom-recording--openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: inspect-and-delete-recording
+  summary: Confirm a meeting's recording files and then delete the recording.
+  description: >-
+    Calls recordingGet to confirm the recording and its file count, then
+    recordingDelete to remove the recording for that meeting.
+  inputs:
+    type: object
+    required:
+    - meetingId
+    properties:
+      meetingId:
+        type: string
+        description: The meeting id whose recording should be inspected and deleted.
+  steps:
+  - stepId: getRecording
+    description: Fetch the meeting recording and capture its file count.
+    operationId: recordingGet
+    requestBody:
+      contentType: application/x-www-form-urlencoded
+      payload:
+        meeting_id: $inputs.meetingId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      recordingCount: $response.body#/recording_count
+      uuid: $response.body#/uuid
+  - stepId: deleteRecording
+    description: Delete all recording files for the meeting.
+    operationId: recordingDelete
+    requestBody:
+      contentType: application/x-www-form-urlencoded
+      payload:
+        meeting_id: $inputs.meetingId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      deletedAt: $response.body#/deleted_at
+  outputs:
+    recordingCount: $steps.getRecording.outputs.recordingCount
+    deletedAt: $steps.deleteRecording.outputs.deletedAt

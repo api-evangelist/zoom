@@ -1,0 +1,85 @@
+arazzo: 1.0.1
+info:
+  title: Zoom List and Retrieve a Cloud Recording
+  summary: List a host's cloud recordings and fetch the first one's files, branching when none exist.
+  description: >-
+    Lists the cloud recordings for a host and branches on the result: when at least
+    one recorded meeting is returned it fetches the recording files for the first
+    meeting, and when the host has no recordings it ends without further calls. The
+    list step captures the first recorded meeting's UUID used by the get step. This
+    legacy Zoom API authenticates with api_key and api_secret form fields rather
+    than a bearer token, so credentials are supplied inline in each request body.
+    Every request is spelled out inline so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: recordingApi
+  url: ../openapi/zoom-recording--openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: list-and-get-recording
+  summary: List a host's cloud recordings and fetch the first meeting's files.
+  description: >-
+    Calls recordingList for a host and, only when recordings exist, calls
+    recordingGet for the first recorded meeting.
+  inputs:
+    type: object
+    required:
+    - apiKey
+    - apiSecret
+    - hostId
+    properties:
+      apiKey:
+        type: string
+        description: Zoom API key used to authenticate the legacy API.
+      apiSecret:
+        type: string
+        description: Zoom API secret used to authenticate the legacy API.
+      hostId:
+        type: string
+        description: The meeting host user id whose cloud recordings to list.
+  steps:
+  - stepId: listRecordings
+    description: List the cloud recording meetings for the host.
+    operationId: recordingList
+    requestBody:
+      contentType: application/x-www-form-urlencoded
+      payload:
+        api_key: $inputs.apiKey
+        api_secret: $inputs.apiSecret
+        host_id: $inputs.hostId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      totalRecords: $response.body#/total_records
+      firstMeetingId: $response.body#/meetings/0/meeting_number
+    onSuccess:
+    - name: hasRecordings
+      type: goto
+      stepId: getRecording
+      criteria:
+      - context: $response.body
+        condition: $.meetings.length > 0
+        type: jsonpath
+    - name: noRecordings
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.meetings.length == 0
+        type: jsonpath
+  - stepId: getRecording
+    description: Fetch the recording files for the first recorded meeting.
+    operationId: recordingGet
+    requestBody:
+      contentType: application/x-www-form-urlencoded
+      payload:
+        meeting_id: $steps.listRecordings.outputs.firstMeetingId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      recordingCount: $response.body#/recording_count
+      recordingFiles: $response.body#/recording_files
+      totalSize: $response.body#/total_size
+  outputs:
+    totalRecords: $steps.listRecordings.outputs.totalRecords
+    recordingFiles: $steps.getRecording.outputs.recordingFiles

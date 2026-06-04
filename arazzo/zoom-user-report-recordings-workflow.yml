@@ -1,0 +1,85 @@
+arazzo: 1.0.1
+info:
+  title: Zoom User Report With Recordings
+  summary: Pull a user's meeting report and list that same user's cloud recordings.
+  description: >-
+    Pulls a user's per-meeting usage report for a date range and then lists that
+    same user's cloud recordings, giving a combined view of what the user hosted
+    and what was recorded. The report step confirms the user has meeting activity,
+    and the recordings step enumerates their cloud recordings. Both legacy Zoom
+    APIs authenticate with api_key and api_secret form fields rather than a bearer
+    token, so credentials are supplied inline in each request body. Every request is
+    spelled out inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: reportApi
+  url: ../openapi/zoom-report--openapi-original.yml
+  type: openapi
+- name: recordingApi
+  url: ../openapi/zoom-recording--openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: user-report-with-recordings
+  summary: Pull a user's meeting report and list the same user's cloud recordings.
+  description: >-
+    Calls reportGetuserreport for a user and date range, then recordingList for the
+    same user to enumerate their cloud recordings.
+  inputs:
+    type: object
+    required:
+    - apiKey
+    - apiSecret
+    - userId
+    - from
+    - to
+    properties:
+      apiKey:
+        type: string
+        description: Zoom API key used to authenticate the legacy API.
+      apiSecret:
+        type: string
+        description: Zoom API secret used to authenticate the legacy API.
+      userId:
+        type: string
+        description: The user id used as both report subject and recording host.
+      from:
+        type: string
+        description: Report start date, e.g. 2026-05-01.
+      to:
+        type: string
+        description: Report end date, e.g. 2026-05-31.
+  steps:
+  - stepId: userReport
+    description: Pull the per-meeting usage report for the user over the date range.
+    operationId: reportGetuserreport
+    requestBody:
+      contentType: application/x-www-form-urlencoded
+      payload:
+        api_key: $inputs.apiKey
+        api_secret: $inputs.apiSecret
+        user_id: $inputs.userId
+        from: $inputs.from
+        to: $inputs.to
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      totalRecords: $response.body#/total_records
+      meetings: $response.body#/meetings
+  - stepId: listRecordings
+    description: List the cloud recordings hosted by the same user.
+    operationId: recordingList
+    requestBody:
+      contentType: application/x-www-form-urlencoded
+      payload:
+        api_key: $inputs.apiKey
+        api_secret: $inputs.apiSecret
+        host_id: $inputs.userId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      recordingTotal: $response.body#/total_records
+      meetings: $response.body#/meetings
+  outputs:
+    reportedMeetings: $steps.userReport.outputs.meetings
+    recordedMeetings: $steps.listRecordings.outputs.meetings

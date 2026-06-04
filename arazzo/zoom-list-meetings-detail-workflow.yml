@@ -1,0 +1,91 @@
+arazzo: 1.0.1
+info:
+  title: Zoom List Meetings and Inspect the First
+  summary: List a user's meetings and fetch the first meeting's details, branching when none exist.
+  description: >-
+    Lists the meetings scheduled for a user and branches on the result: when at
+    least one meeting is returned it fetches the full details of the first meeting,
+    and when the user has no meetings it ends without further calls. The list step
+    captures the first meeting id used by the detail step. Every request is spelled
+    out inline so the flow can be read and executed without opening the underlying
+    OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: meetingApi
+  url: ../openapi/zoom-meeting-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: list-meetings-and-inspect-first
+  summary: List a user's meetings and fetch the first meeting's details.
+  description: >-
+    Calls listMeetings for a user and, only when meetings exist, calls getMeeting
+    for the first meeting id to read its full details.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - userId
+    properties:
+      accessToken:
+        type: string
+        description: OAuth bearer access token for the Zoom REST API.
+      userId:
+        type: string
+        description: The user id whose meetings to list, or "me".
+      type:
+        type: string
+        description: >-
+          The meeting list filter, e.g. scheduled, live, upcoming, or
+          previous_meetings.
+  steps:
+  - stepId: listMeetings
+    description: List the meetings scheduled for the user and capture the first id.
+    operationId: listMeetings
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: userId
+      in: path
+      value: $inputs.userId
+    - name: type
+      in: query
+      value: $inputs.type
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      totalRecords: $response.body#/total_records
+      firstMeetingId: $response.body#/meetings/0/id
+    onSuccess:
+    - name: hasMeetings
+      type: goto
+      stepId: getFirstMeeting
+      criteria:
+      - context: $response.body
+        condition: $.meetings.length > 0
+        type: jsonpath
+    - name: noMeetings
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.meetings.length == 0
+        type: jsonpath
+  - stepId: getFirstMeeting
+    description: Fetch the full details of the first meeting returned by the list step.
+    operationId: getMeeting
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: meetingId
+      in: path
+      value: $steps.listMeetings.outputs.firstMeetingId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      topic: $response.body#/topic
+      joinUrl: $response.body#/join_url
+      status: $response.body#/status
+  outputs:
+    totalRecords: $steps.listMeetings.outputs.totalRecords
+    firstMeetingTopic: $steps.getFirstMeeting.outputs.topic

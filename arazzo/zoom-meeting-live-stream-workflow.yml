@@ -1,0 +1,96 @@
+arazzo: 1.0.1
+info:
+  title: Zoom Configure and Start a Meeting Live Stream
+  summary: Set a meeting's live stream destination and then start streaming.
+  description: >-
+    Configures the live stream destination (stream URL, key, and page URL) for a
+    meeting and then starts the live stream with a custom display name. Live stream
+    settings must be configured before the stream can be started, so the
+    configuration step runs first and the start step follows. Both endpoints return
+    no content on success. Every request is spelled out inline so the flow can be
+    read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: meetingApi
+  url: ../openapi/zoom-meeting-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: configure-and-start-live-stream
+  summary: Configure a meeting's live stream destination and start streaming.
+  description: >-
+    Calls updateMeetingLiveStream to set the destination, then
+    updateMeetingLiveStreamStatus with the start action to begin streaming.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - meetingId
+    - streamUrl
+    - streamKey
+    properties:
+      accessToken:
+        type: string
+        description: OAuth bearer access token for the Zoom REST API.
+      meetingId:
+        type: string
+        description: The id of the meeting to live stream.
+      streamUrl:
+        type: string
+        description: The RTMP/RTMPS streaming URL of the destination service.
+      streamKey:
+        type: string
+        description: The stream key for the destination service.
+      pageUrl:
+        type: string
+        description: The public page URL where viewers watch the live stream.
+      displayName:
+        type: string
+        description: Custom display name shown on the live stream.
+  steps:
+  - stepId: configureLiveStream
+    description: >-
+      Set the live stream destination URL, key, and viewer page URL on the
+      meeting before streaming can start.
+    operationId: updateMeetingLiveStream
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: meetingId
+      in: path
+      value: $inputs.meetingId
+    requestBody:
+      contentType: application/json
+      payload:
+        stream_url: $inputs.streamUrl
+        stream_key: $inputs.streamKey
+        page_url: $inputs.pageUrl
+        resolution: 720p
+    successCriteria:
+    - condition: $statusCode == 204
+    outputs:
+      configureStatus: $statusCode
+  - stepId: startLiveStream
+    description: Start the live stream using the start action and a custom display name.
+    operationId: updateMeetingLiveStreamStatus
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: meetingId
+      in: path
+      value: $inputs.meetingId
+    requestBody:
+      contentType: application/json
+      payload:
+        action: start
+        settings:
+          active_speaker_name: true
+          display_name: $inputs.displayName
+    successCriteria:
+    - condition: $statusCode == 204
+    outputs:
+      startStatus: $statusCode
+  outputs:
+    configureStatus: $steps.configureLiveStream.outputs.configureStatus
+    startStatus: $steps.startLiveStream.outputs.startStatus

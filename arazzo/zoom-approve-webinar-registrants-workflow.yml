@@ -1,0 +1,96 @@
+arazzo: 1.0.1
+info:
+  title: Zoom Approve Pending Webinar Registrants
+  summary: List pending webinar registrants and approve them, branching when none are pending.
+  description: >-
+    Lists the pending-approval registrants for a webinar and branches on the
+    result: when at least one registrant is awaiting approval it approves the
+    captured registrant id, and when none are pending it ends without making any
+    change. The list step requests the pending set (type 0) and captures the first
+    pending registrant id used by the approve step. This legacy Zoom API
+    authenticates with api_key and api_secret form fields rather than a bearer
+    token, so credentials are supplied inline in each request body. Every request
+    is spelled out inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: webinarApi
+  url: ../openapi/zoom-webinar--openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: approve-pending-webinar-registrants
+  summary: List pending webinar registrants and approve them when any exist.
+  description: >-
+    Calls webinarRegistrantsList for the pending set and, only when it is
+    non-empty, calls webinarRegistrantsApprove with the pending registrant id.
+  inputs:
+    type: object
+    required:
+    - apiKey
+    - apiSecret
+    - hostId
+    - webinarId
+    properties:
+      apiKey:
+        type: string
+        description: Zoom API key used to authenticate the legacy API.
+      apiSecret:
+        type: string
+        description: Zoom API secret used to authenticate the legacy API.
+      hostId:
+        type: string
+        description: The webinar host user id.
+      webinarId:
+        type: string
+        description: The webinar id whose pending registrants should be approved.
+  steps:
+  - stepId: listPending
+    description: >-
+      List the pending-approval registrants (type 0) for the webinar so they can
+      be approved.
+    operationId: webinarRegistrantsList
+    requestBody:
+      contentType: application/x-www-form-urlencoded
+      payload:
+        api_key: $inputs.apiKey
+        api_secret: $inputs.apiSecret
+        host_id: $inputs.hostId
+        id: $inputs.webinarId
+        type: '0'
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      totalRecords: $response.body#/total_records
+      firstPendingId: $response.body#/users/0/id
+    onSuccess:
+    - name: hasPending
+      type: goto
+      stepId: approvePending
+      criteria:
+      - context: $response.body
+        condition: $.users.length > 0
+        type: jsonpath
+    - name: noPending
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.users.length == 0
+        type: jsonpath
+  - stepId: approvePending
+    description: Approve the first pending registrant returned by the list step.
+    operationId: webinarRegistrantsApprove
+    requestBody:
+      contentType: application/x-www-form-urlencoded
+      payload:
+        api_key: $inputs.apiKey
+        api_secret: $inputs.apiSecret
+        host_id: $inputs.hostId
+        id: $inputs.webinarId
+        registrant_ids: $steps.listPending.outputs.firstPendingId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      updatedAt: $response.body#/updated_at
+  outputs:
+    pendingCount: $steps.listPending.outputs.totalRecords
+    updatedAt: $steps.approvePending.outputs.updatedAt
