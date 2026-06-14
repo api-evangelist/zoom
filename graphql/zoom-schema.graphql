@@ -1,0 +1,1483 @@
+"""
+Zoom GraphQL Schema — Conceptual
+Derived from the Zoom REST API (https://developers.zoom.us/docs/api/).
+No native public GraphQL endpoint exists for Zoom. This schema models the
+Zoom data surface for use with GraphQL gateways, code generation, or API
+design reference.
+"""
+
+# ---------------------------------------------------------------------------
+# Scalars
+# ---------------------------------------------------------------------------
+
+scalar DateTime
+scalar Date
+scalar URL
+scalar JSON
+
+# ---------------------------------------------------------------------------
+# Enums
+# ---------------------------------------------------------------------------
+
+enum MeetingType {
+  INSTANT
+  SCHEDULED
+  RECURRING_NO_FIXED_TIME
+  RECURRING_FIXED_TIME
+  PERSONAL_MEETING_ROOM
+}
+
+enum MeetingStatus {
+  WAITING
+  STARTED
+  FINISHED
+}
+
+enum WebinarType {
+  WEBINAR
+  RECURRING_WEBINAR_NO_FIXED_TIME
+  RECURRING_WEBINAR_FIXED_TIME
+}
+
+enum WebinarStatus {
+  AVAILABLE
+  UNAVAILABLE
+  ENDED
+}
+
+enum UserStatus {
+  ACTIVE
+  INACTIVE
+  PENDING
+}
+
+enum UserType {
+  BASIC
+  LICENSED
+  ON_PREM
+}
+
+enum RecordingStatus {
+  PROCESSING
+  COMPLETED
+  FAILED
+}
+
+enum RecordingFileType {
+  MP4
+  M4A
+  TIMELINE
+  TRANSCRIPT
+  CHAT
+  CC
+  CSV
+  SUMMARY
+}
+
+enum RegistrantStatus {
+  PENDING
+  APPROVED
+  DENIED
+}
+
+enum ChatChannelType {
+  PUBLIC_CHANNEL
+  PRIVATE_CHANNEL
+  DIRECT_MESSAGE
+  GROUP_MESSAGE
+  CONTACT_CENTER
+}
+
+enum ParticipantStatus {
+  IN_MEETING
+  IN_WAITING_ROOM
+  LEFT
+}
+
+enum PollQuestionType {
+  SINGLE_CHOICE
+  MULTIPLE_CHOICE
+  SHORT_ANSWER
+  LONG_ANSWER
+  RATING_SCALE
+  RANKED_CHOICE
+}
+
+enum PollStatus {
+  NOTSTART
+  STARTED
+  ENDED
+  SHARING
+}
+
+enum ApprovalType {
+  AUTOMATIC
+  MANUAL
+  NO_REGISTRATION
+}
+
+enum AudioType {
+  BOTH
+  TELEPHONY
+  VOIP
+  THIRD_PARTY
+}
+
+enum PhoneNumberType {
+  MOBILE
+  FAX
+  WORK
+  HOME
+  DIRECT_NUMBER
+}
+
+enum BreakoutRoomStatus {
+  OPEN
+  CLOSED
+}
+
+enum PaneltistStatus {
+  ACTIVE
+  PENDING
+}
+
+enum InterpreterLanguage {
+  US
+  CN
+  JP
+  DE
+  FR
+  RU
+  PT
+  ES
+  KO
+  IT
+  VI
+  HI
+  NL
+  AR
+  PL
+}
+
+enum SentimentType {
+  POSITIVE
+  NEGATIVE
+  NEUTRAL
+  MIXED
+}
+
+# ---------------------------------------------------------------------------
+# Core Types
+# ---------------------------------------------------------------------------
+
+type Account {
+  id: ID!
+  ownerEmail: String!
+  ownerName: String
+  vanityName: String
+  accountNumber: String
+  accountType: String
+  createdAt: DateTime
+  options: AccountOptions
+  settings: AccountSettings
+  users: UserConnection
+  groups: [Group!]
+  plan: Plan
+  billingInfo: BillingInfo
+  phoneNumbers: [PhoneNumber!]
+}
+
+type AccountOptions {
+  shareMeetingRecordings: Boolean
+  requirePasswordForScheduledMeeting: Boolean
+  requirePasswordForInstantMeeting: Boolean
+  requirePasswordForPmi: Boolean
+  meetingCapacity: Int
+  largeCapacity: Boolean
+  cloudRecording: Boolean
+  autoRecording: Boolean
+  record3rdPartyAudio: Boolean
+}
+
+type AccountSettings {
+  scheduleMeeting: MeetingSettings
+  emailNotification: JSON
+  security: JSON
+  recording: JSON
+  telephony: JSON
+  integrations: JSON
+  feature: JSON
+}
+
+type User {
+  id: ID!
+  email: String!
+  firstName: String
+  lastName: String
+  displayName: String
+  type: UserType!
+  status: UserStatus!
+  personalMeetingId: String
+  timezone: String
+  dept: String
+  language: String
+  phone: String
+  picUrl: URL
+  accountId: ID
+  createdAt: DateTime
+  lastLoginTime: DateTime
+  lastClientVersion: String
+  groupIds: [ID!]
+  imGroupIds: [ID!]
+  settings: UserSettings
+  meetings: MeetingConnection
+  webinars: [Webinar!]
+  recordings: CloudRecordingConnection
+  phoneNumbers: [PhoneNumber!]
+  assistants: [UserAssistant!]
+  schedulers: [UserScheduler!]
+}
+
+type UserConnection {
+  totalRecords: Int
+  pageCount: Int
+  pageNumber: Int
+  pageSize: Int
+  nodes: [User!]!
+}
+
+type UserSettings {
+  scheduleMeeting: MeetingSettings
+  inMeeting: JSON
+  emailNotification: JSON
+  recording: JSON
+  telephony: JSON
+  feature: JSON
+}
+
+type UserAssistant {
+  id: ID
+  email: String
+}
+
+type UserScheduler {
+  id: ID
+  email: String
+  pmi: String
+}
+
+type Group {
+  id: ID!
+  name: String!
+  totalMembers: Int
+  members: [GroupMember!]
+}
+
+type GroupMember {
+  id: ID
+  email: String
+  firstName: String
+  lastName: String
+  type: UserType
+}
+
+type Contact {
+  id: ID!
+  email: String
+  firstName: String
+  lastName: String
+  displayName: String
+  picUrl: URL
+  phoneNumbers: [PhoneNumber!]
+  directNumbers: [String!]
+  extensionNumber: String
+  imGroupIds: [ID!]
+  presenceStatus: String
+}
+
+# ---------------------------------------------------------------------------
+# Meeting Types
+# ---------------------------------------------------------------------------
+
+type Meeting {
+  id: ID!
+  uuid: String
+  hostId: ID!
+  host: User
+  topic: String!
+  type: MeetingType!
+  status: MeetingStatus
+  startTime: DateTime
+  duration: Int
+  timezone: String
+  agenda: String
+  createdAt: DateTime
+  startUrl: URL
+  joinUrl: URL
+  password: String
+  h323Password: String
+  pstnPassword: String
+  encryptedPassword: String
+  settings: MeetingSettings
+  recurrence: Recurrence
+  occurrences: [Occurrence!]
+  trackingFields: [TrackingField!]
+  registrants: RegistrantConnection
+  participants: ParticipantConnection
+  polls: [Poll!]
+  breakoutRooms: [BreakoutRoom!]
+  livestream: Livestream
+  recordings: CloudRecordingConnection
+  invitees: [MeetingInvitee!]
+  registrationUrl: URL
+  waitingRoom: Boolean
+  template: MeetingTemplate
+  summary: MeetingAISummary
+}
+
+type MeetingConnection {
+  totalRecords: Int
+  pageCount: Int
+  pageNumber: Int
+  pageSize: Int
+  nextPageToken: String
+  nodes: [Meeting!]!
+}
+
+type MeetingSettings {
+  hostVideo: Boolean
+  participantVideo: Boolean
+  cnMeeting: Boolean
+  inMeeting: Boolean
+  joinBeforeHost: Boolean
+  muteUponEntry: Boolean
+  watermark: Boolean
+  usePmi: Boolean
+  approvalType: ApprovalType
+  registrationType: Int
+  audio: AudioType
+  autoRecording: String
+  enforceLogin: Boolean
+  enforceLoginDomains: String
+  alternativeHosts: String
+  closeRegistration: Boolean
+  waitingRoom: Boolean
+  globalDialInCountries: [String!]
+  globalDialInNumbers: [DialInNumber!]
+  contactName: String
+  contactEmail: String
+  registrantsEmailNotification: Boolean
+  meetingAuthentication: Boolean
+  authenticationOption: String
+  authenticationDomains: String
+  showShareButton: Boolean
+  allowMultipleDevices: Boolean
+  encryptionType: String
+  focusMode: Boolean
+  privateChat: Boolean
+  breakoutRoom: Boolean
+  registrantConfirmationEmail: Boolean
+  jbhTime: Int
+}
+
+type MeetingPolicy {
+  id: ID!
+  name: String
+  description: String
+  settings: JSON
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type MeetingTemplate {
+  id: ID!
+  name: String!
+  type: MeetingType
+  settings: MeetingSettings
+}
+
+type MeetingInvitee {
+  email: String!
+}
+
+type MeetingAISummary {
+  meetingId: ID
+  meetingUuid: String
+  summaryStartTime: DateTime
+  summaryEndTime: DateTime
+  summaryContent: String
+  nextSteps: [String!]
+  keywords: [String!]
+  sentiment: SentimentAnalysis
+}
+
+type Recurrence {
+  type: Int
+  repeatInterval: Int
+  weeklyDays: String
+  monthlyDay: Int
+  monthlyWeek: Int
+  monthlyWeekDay: Int
+  endTimes: Int
+  endDateTime: DateTime
+}
+
+type Occurrence {
+  occurrenceId: String!
+  startTime: DateTime
+  duration: Int
+  status: String
+}
+
+type TrackingField {
+  field: String!
+  value: String
+  visible: Boolean
+}
+
+type DialInNumber {
+  country: String
+  countryName: String
+  city: String
+  number: String
+  type: String
+}
+
+# ---------------------------------------------------------------------------
+# Webinar Types
+# ---------------------------------------------------------------------------
+
+type Webinar {
+  id: ID!
+  uuid: String
+  hostId: ID!
+  host: User
+  topic: String!
+  type: WebinarType!
+  status: WebinarStatus
+  startTime: DateTime
+  duration: Int
+  timezone: String
+  agenda: String
+  createdAt: DateTime
+  startUrl: URL
+  joinUrl: URL
+  registrationUrl: URL
+  password: String
+  settings: WebinarSettings
+  recurrence: Recurrence
+  occurrences: [Occurrence!]
+  trackingFields: [TrackingField!]
+  panelists: [Panelist!]
+  registrants: RegistrantConnection
+  polls: [Poll!]
+  questions: [WebinarQuestion!]
+  qaSessions: [QA!]
+  recordings: CloudRecordingConnection
+}
+
+type WebinarSettings {
+  hostVideo: Boolean
+  pandelistsVideo: Boolean
+  practiceSession: Boolean
+  hd_video: Boolean
+  approvalType: ApprovalType
+  registrationType: Int
+  audio: AudioType
+  autoRecording: String
+  enforceLogin: Boolean
+  enforceLoginDomains: String
+  alternativeHosts: String
+  closeRegistration: Boolean
+  showShareButton: Boolean
+  allowMultipleDevices: Boolean
+  onDemand: Boolean
+  globalDialInCountries: [String!]
+  contactName: String
+  contactEmail: String
+  registrantsConfirmationEmail: Boolean
+  registrantsRestrictNumber: Int
+  notifyRegistrants: Boolean
+  postWebinarSurvey: Boolean
+  surveyUrl: URL
+  registrantsEmailNotification: Boolean
+  meetingAuthentication: Boolean
+  questionAndAnswer: WebinarQASettings
+}
+
+type WebinarQASettings {
+  enable: Boolean
+  allowSubmitQuestions: Boolean
+  allowAnonymousQuestions: Boolean
+  questionVisibility: String
+  allowViewAllQuestions: Boolean
+  allowUpvoteQuestion: Boolean
+  allowCommentQuestion: Boolean
+}
+
+type WebinarQuestion {
+  fieldName: String
+  fieldType: String
+  required: Boolean
+}
+
+type Panelist {
+  id: ID
+  email: String
+  name: String
+  joinUrl: URL
+  status: PaneltistStatus
+  virtualBackgroundId: ID
+}
+
+# ---------------------------------------------------------------------------
+# Registrant Types
+# ---------------------------------------------------------------------------
+
+type Registrant {
+  id: ID!
+  email: String!
+  firstName: String!
+  lastName: String
+  address: String
+  city: String
+  country: String
+  zip: String
+  state: String
+  phone: String
+  industry: String
+  org: String
+  jobTitle: String
+  purchasingTimeFrame: String
+  roleInPurchaseProcess: String
+  noOfEmployees: String
+  comments: String
+  status: RegistrantStatus!
+  createTime: DateTime
+  joinUrl: URL
+  customQuestions: [CustomQuestionAnswer!]
+}
+
+type RegistrantConnection {
+  totalRecords: Int
+  pageCount: Int
+  pageNumber: Int
+  pageSize: Int
+  nextPageToken: String
+  nodes: [Registrant!]!
+}
+
+type CustomQuestionAnswer {
+  title: String!
+  value: String
+}
+
+# ---------------------------------------------------------------------------
+# Participant Types
+# ---------------------------------------------------------------------------
+
+type Participant {
+  id: ID
+  userId: ID
+  name: String
+  userEmail: String
+  joinTime: DateTime
+  leaveTime: DateTime
+  duration: Int
+  attentivenessScore: String
+  failover: Boolean
+  status: ParticipantStatus
+  location: String
+  networkType: String
+  microphone: String
+  camera: String
+  speaker: String
+  dataCenter: String
+  connectionType: String
+  ipAddress: String
+  version: String
+  leaveReason: String
+  registrantId: ID
+}
+
+type ParticipantConnection {
+  totalRecords: Int
+  pageCount: Int
+  pageNumber: Int
+  nextPageToken: String
+  nodes: [Participant!]!
+}
+
+# ---------------------------------------------------------------------------
+# Poll Types
+# ---------------------------------------------------------------------------
+
+type Poll {
+  id: ID!
+  status: PollStatus
+  anonymous: Boolean
+  pollType: Int
+  title: String!
+  questions: [PollQuestion!]!
+}
+
+type PollQuestion {
+  name: String!
+  type: PollQuestionType!
+  answerRequired: Boolean
+  answers: [String!]
+  showAsDropdown: Boolean
+  ratingMinValue: Int
+  ratingMaxValue: Int
+  ratingMinLabel: String
+  ratingMaxLabel: String
+  rightAnswers: [String!]
+  caseSensitive: Boolean
+}
+
+# ---------------------------------------------------------------------------
+# Q&A Types
+# ---------------------------------------------------------------------------
+
+type QA {
+  email: String
+  name: String
+  questionDetails: [QAAnswer!]!
+  userId: ID
+}
+
+type QAAnswer {
+  questionId: String
+  question: String
+  questionDetails: String
+  answer: String
+  answeredBy: String
+  answeredByEmail: String
+  answeredAt: DateTime
+  live: Boolean
+  voted: Int
+}
+
+# ---------------------------------------------------------------------------
+# Breakout Room Types
+# ---------------------------------------------------------------------------
+
+type BreakoutRoom {
+  id: ID!
+  name: String!
+  status: BreakoutRoomStatus
+  participants: [Participant!]
+  capacity: Int
+}
+
+# ---------------------------------------------------------------------------
+# Livestream Types
+# ---------------------------------------------------------------------------
+
+type Livestream {
+  streamUrl: URL!
+  streamKey: String!
+  pageUrl: URL
+  resolution: String
+}
+
+# ---------------------------------------------------------------------------
+# Recording Types
+# ---------------------------------------------------------------------------
+
+type CloudRecording {
+  id: ID!
+  uuid: String
+  accountId: ID
+  hostId: ID
+  host: User
+  topic: String
+  type: MeetingType
+  startTime: DateTime
+  timezone: String
+  duration: Int
+  totalSize: Int
+  recordingCount: Int
+  shareUrl: URL
+  recordingFiles: [RecordingFile!]
+  password: String
+  recordingPlayPasscode: String
+  downloadAccessToken: String
+  status: RecordingStatus
+  onPremiseRecordings: [OnPremiseRecording!]
+  participant_audio_files: [ParticipantAudioFile!]
+  summary: SmartRecordingSummary
+}
+
+type CloudRecordingConnection {
+  totalRecords: Int
+  nextPageToken: String
+  nodes: [CloudRecording!]!
+}
+
+type RecordingFile {
+  id: ID!
+  meetingId: String
+  recordingStart: DateTime
+  recordingEnd: DateTime
+  fileType: RecordingFileType
+  fileExtension: String
+  fileSize: Int
+  playUrl: URL
+  downloadUrl: URL
+  status: RecordingStatus
+  deletedTime: DateTime
+  recordingType: String
+}
+
+type OnPremiseRecording {
+  id: ID!
+  fileId: String
+  fileName: String
+  fileType: String
+  fileSize: Int
+  status: String
+}
+
+type ParticipantAudioFile {
+  id: ID!
+  recordingStart: DateTime
+  recordingEnd: DateTime
+  fileName: String
+  fileType: String
+  fileSize: Int
+  playUrl: URL
+  downloadUrl: URL
+  status: RecordingStatus
+}
+
+type AudioTranscript {
+  meetingId: String
+  recordingId: ID
+  content: String
+  sentences: [TranscriptSentence!]
+}
+
+type TranscriptSentence {
+  userId: ID
+  userName: String
+  startTime: DateTime
+  endTime: DateTime
+  text: String
+}
+
+type SmartRecordingSummary {
+  meetingHost: String
+  meetingTopic: String
+  meetingStartTime: DateTime
+  meetingEndTime: DateTime
+  summaryOverview: String
+  summaryDetails: [SmartRecordingSummaryDetail!]
+  nextSteps: [String!]
+}
+
+type SmartRecordingSummaryDetail {
+  label: String
+  summary: String
+}
+
+# ---------------------------------------------------------------------------
+# Chat Types
+# ---------------------------------------------------------------------------
+
+type ChatChannel {
+  id: ID!
+  name: String
+  type: ChatChannelType!
+  channelSettings: ChatChannelSettings
+  totalMembers: Int
+  members: [ChatMember!]
+  messages: ChatMessageConnection
+  createdAt: DateTime
+}
+
+type ChatChannelSettings {
+  addMemberPermission: Int
+  postPermission: Int
+  mentionAllPermission: Int
+  sendFilePermission: Int
+  shareChannelPermission: Int
+}
+
+type ChatMember {
+  id: ID
+  email: String
+  firstName: String
+  lastName: String
+  name: String
+  role: String
+}
+
+type ChatMessage {
+  id: ID!
+  message: String
+  sender: String
+  senderId: ID
+  timestamp: DateTime
+  fileIds: [String!]
+  reactions: [Reaction!]
+  mentions: [Mention!]
+  replyMainMessageId: ID
+  replyCount: Int
+  atItems: [MentionItem!]
+  richText: String
+}
+
+type ChatMessageConnection {
+  nextPageToken: String
+  nodes: [ChatMessage!]!
+}
+
+type Reaction {
+  emoji: String!
+  totalCount: Int
+  senders: [ReactionSender!]
+}
+
+type ReactionSender {
+  userId: ID
+  sendTime: DateTime
+}
+
+type Mention {
+  id: ID
+  email: String
+  type: String
+}
+
+type MentionItem {
+  at: String
+  startPosition: Int
+  endPosition: Int
+  userId: ID
+}
+
+type File {
+  id: ID!
+  name: String!
+  fileSize: Int
+  fileType: String
+  downloadUrl: URL
+  uploadTime: DateTime
+  uploader: String
+  channelId: ID
+}
+
+# ---------------------------------------------------------------------------
+# Reporting and Dashboard Types
+# ---------------------------------------------------------------------------
+
+type Dashboard {
+  meetings: DashboardMeetingConnection
+  webinars: DashboardWebinarConnection
+  zoomRooms: [DashboardZoomRoom!]
+  cloudRecordings: CloudRecordingUsage
+}
+
+type DashboardMeetingConnection {
+  totalRecords: Int
+  pageCount: Int
+  pageNumber: Int
+  pageSize: Int
+  nextPageToken: String
+  nodes: [DashboardMeeting!]!
+}
+
+type DashboardMeeting {
+  id: ID
+  uuid: String
+  topic: String
+  host: String
+  email: String
+  userId: ID
+  hostId: ID
+  startTime: DateTime
+  endTime: DateTime
+  duration: Int
+  participants: Int
+  hasVoip: Boolean
+  hasTelephony: Boolean
+  hasRecording: Boolean
+  hasSip: Boolean
+  hasVideo: Boolean
+  hasScreenShare: Boolean
+  encrypted: Boolean
+  trackingFields: [TrackingField!]
+}
+
+type DashboardWebinarConnection {
+  totalRecords: Int
+  nextPageToken: String
+  nodes: [DashboardWebinar!]!
+}
+
+type DashboardWebinar {
+  id: ID
+  uuid: String
+  topic: String
+  host: String
+  email: String
+  hostId: ID
+  startTime: DateTime
+  endTime: DateTime
+  duration: Int
+  participants: Int
+  dept: String
+}
+
+type DashboardZoomRoom {
+  id: ID
+  roomName: String
+  email: String
+  accountType: String
+  passcode: String
+  status: String
+  healthIssues: [String!]
+}
+
+type CloudRecordingUsage {
+  date: Date
+  usage: Float
+  freeUsage: Float
+  planUsage: Float
+}
+
+type Report {
+  from: Date
+  to: Date
+  nextPageToken: String
+}
+
+type DailyUsage {
+  date: Date
+  newUsers: Int
+  meetings: Int
+  participants: Int
+  meetingMinutes: Int
+}
+
+type ActivityReport {
+  email: String
+  userId: ID
+  name: String
+  type: String
+  date: Date
+  clientType: String
+  ipAddress: String
+  version: String
+  location: String
+}
+
+type MeetingReport {
+  meetingId: ID
+  uuid: String
+  topic: String
+  hostId: ID
+  hostEmail: String
+  duration: Int
+  totalMinutes: Int
+  participantsCount: Int
+  startTime: DateTime
+  endTime: DateTime
+}
+
+# ---------------------------------------------------------------------------
+# Phone Types
+# ---------------------------------------------------------------------------
+
+type PhoneNumber {
+  id: ID!
+  number: String!
+  displayNumber: String
+  type: PhoneNumberType
+  source: String
+  assignedTo: JSON
+  capability: [String!]
+  carrier: JSON
+  location: String
+  status: String
+  siteId: ID
+}
+
+type SIPPhone {
+  id: ID!
+  userId: ID!
+  authorizationName: String
+  domain: String
+  password: String
+  proxy: String
+  voiceMailGreeting: String
+  registrationExpireTime: Int
+}
+
+# ---------------------------------------------------------------------------
+# Plan and Billing Types
+# ---------------------------------------------------------------------------
+
+type Plan {
+  type: String
+  hosts: Int
+  nextCycleAt: DateTime
+  currentCycleLeft: Int
+}
+
+type BillingInfo {
+  firstName: String
+  lastName: String
+  email: String
+  phone: String
+  address: String
+  apt: String
+  city: String
+  country: String
+  zip: String
+  state: String
+  cc: String
+  ccName: String
+  ccNumber: String
+  ccExpiry: String
+}
+
+# ---------------------------------------------------------------------------
+# Interpretation and Subtitle Types
+# ---------------------------------------------------------------------------
+
+type Interpretation {
+  enable: Boolean
+  interpreters: [Interpreter!]
+}
+
+type Interpreter {
+  email: String!
+  languages: [InterpreterLanguage!]!
+}
+
+type Subtitle {
+  autoTranscribing: Boolean
+  viewFullTranscript: Boolean
+}
+
+type VirtualBackground {
+  id: ID!
+  name: String
+  isDefault: Boolean
+  type: String
+  size: Int
+  date: DateTime
+}
+
+# ---------------------------------------------------------------------------
+# AI and Intelligence Types
+# ---------------------------------------------------------------------------
+
+type SentimentAnalysis {
+  overall: SentimentType
+  score: Float
+  breakdown: [SentimentBreakdown!]
+}
+
+type SentimentBreakdown {
+  label: SentimentType
+  score: Float
+  timeRange: TimeRange
+}
+
+type TimeRange {
+  startTime: DateTime
+  endTime: DateTime
+}
+
+type MeetingAI {
+  meetingId: ID!
+  uuid: String
+  aiFeatures: [String!]
+  summary: MeetingAISummary
+  transcript: AudioTranscript
+  sentiment: SentimentAnalysis
+  smartChapters: [SmartChapter!]
+}
+
+type SmartChapter {
+  title: String
+  startTime: DateTime
+  endTime: DateTime
+  summary: String
+}
+
+# ---------------------------------------------------------------------------
+# Root Query Type
+# ---------------------------------------------------------------------------
+
+type Query {
+  # Account
+  account(accountId: ID!): Account
+  accountSettings(accountId: ID!): AccountSettings
+
+  # Users
+  user(userId: ID!): User
+  userByEmail(email: String!): User
+  users(
+    status: UserStatus
+    pageSize: Int
+    pageNumber: Int
+    nextPageToken: String
+    roleId: ID
+    groupId: ID
+  ): UserConnection
+
+  # Groups
+  group(groupId: ID!): Group
+  groups: [Group!]
+
+  # Contacts
+  contact(contactId: ID!): Contact
+  contacts(nextPageToken: String, pageSize: Int): [Contact!]
+
+  # Meetings
+  meeting(meetingId: ID!): Meeting
+  meetings(
+    userId: ID!
+    type: String
+    pageSize: Int
+    nextPageToken: String
+  ): MeetingConnection
+  pastMeeting(meetingUuid: String!): Meeting
+  pastMeetingParticipants(meetingUuid: String!, nextPageToken: String): ParticipantConnection
+  meetingPoll(meetingId: ID!, pollId: ID!): Poll
+  meetingPolls(meetingId: ID!): [Poll!]
+  meetingRegistrants(meetingId: ID!, status: RegistrantStatus): RegistrantConnection
+  meetingTemplates(userId: ID!): [MeetingTemplate!]
+
+  # Webinars
+  webinar(webinarId: ID!): Webinar
+  webinars(userId: ID!, pageSize: Int, nextPageToken: String): [Webinar!]
+  webinarRegistrants(webinarId: ID!, status: RegistrantStatus): RegistrantConnection
+  webinarPanelists(webinarId: ID!): [Panelist!]
+  webinarPolls(webinarId: ID!): [Poll!]
+  webinarQA(webinarId: String!): [QA!]
+
+  # Recordings
+  cloudRecording(meetingId: ID!): CloudRecording
+  cloudRecordingsByUser(
+    userId: ID!
+    from: Date
+    to: Date
+    nextPageToken: String
+  ): CloudRecordingConnection
+  recordingTranscript(meetingId: ID!): AudioTranscript
+
+  # Chat
+  chatChannel(channelId: ID!): ChatChannel
+  chatChannels(userId: ID!, nextPageToken: String, pageSize: Int): [ChatChannel!]
+  chatMessages(
+    userId: ID!
+    toContact: String
+    toChannel: ID
+    fromDate: DateTime
+    toDate: DateTime
+    nextPageToken: String
+  ): ChatMessageConnection
+  chatFiles(userId: ID!, nextPageToken: String): [File!]
+
+  # Dashboard & Reports
+  dashboardMeetings(from: Date!, to: Date!, nextPageToken: String): DashboardMeetingConnection
+  dashboardWebinars(from: Date!, to: Date!, nextPageToken: String): DashboardWebinarConnection
+  dashboardZoomRooms(nextPageToken: String): [DashboardZoomRoom!]
+  reportDaily(userId: ID!, year: Int!, month: Int!): [DailyUsage!]
+  reportMeetings(userId: ID!, from: Date!, to: Date!): [MeetingReport!]
+  reportActivities(from: Date!, to: Date!, nextPageToken: String): [ActivityReport!]
+
+  # Phone
+  phoneNumber(phoneNumberId: ID!): PhoneNumber
+  phoneNumbers(nextPageToken: String, pageSize: Int): [PhoneNumber!]
+  sipPhone(sipPhoneId: ID!): SIPPhone
+  sipPhones(userId: ID): [SIPPhone!]
+
+  # AI
+  meetingAI(meetingId: ID!): MeetingAI
+  meetingAISummary(meetingId: ID!): MeetingAISummary
+
+  # Virtual Backgrounds
+  virtualBackgrounds(userId: ID!): [VirtualBackground!]
+}
+
+# ---------------------------------------------------------------------------
+# Root Mutation Type
+# ---------------------------------------------------------------------------
+
+type Mutation {
+  # Meetings
+  createMeeting(userId: ID!, input: CreateMeetingInput!): Meeting
+  updateMeeting(meetingId: ID!, input: UpdateMeetingInput!): Meeting
+  deleteMeeting(meetingId: ID!): Boolean
+  endMeeting(meetingId: ID!): Boolean
+  addMeetingRegistrant(meetingId: ID!, input: RegistrantInput!): Registrant
+  approveMeetingRegistrant(meetingId: ID!, registrantId: ID!): Registrant
+  denyMeetingRegistrant(meetingId: ID!, registrantId: ID!): Registrant
+  createMeetingPoll(meetingId: ID!, input: PollInput!): Poll
+  updateMeetingPoll(meetingId: ID!, pollId: ID!, input: PollInput!): Poll
+  deleteMeetingPoll(meetingId: ID!, pollId: ID!): Boolean
+  updateMeetingLivestream(meetingId: ID!, input: LivestreamInput!): Livestream
+  startMeetingLivestream(meetingId: ID!): Boolean
+
+  # Webinars
+  createWebinar(userId: ID!, input: CreateWebinarInput!): Webinar
+  updateWebinar(webinarId: ID!, input: UpdateWebinarInput!): Webinar
+  deleteWebinar(webinarId: ID!): Boolean
+  addWebinarRegistrant(webinarId: ID!, input: RegistrantInput!): Registrant
+  approveWebinarRegistrant(webinarId: ID!, registrantId: ID!): Registrant
+  addWebinarPanelist(webinarId: ID!, input: PanelistInput!): Panelist
+  removeWebinarPanelist(webinarId: ID!, panelistId: ID!): Boolean
+  createWebinarPoll(webinarId: ID!, input: PollInput!): Poll
+
+  # Users
+  createUser(input: CreateUserInput!): User
+  updateUser(userId: ID!, input: UpdateUserInput!): User
+  deleteUser(userId: ID!, transferEmail: String): Boolean
+  deactivateUser(userId: ID!): Boolean
+  updateUserPassword(userId: ID!, password: String!): Boolean
+  assignUserAssistants(userId: ID!, assistants: [AssistantInput!]!): [UserAssistant!]
+
+  # Groups
+  createGroup(name: String!): Group
+  updateGroup(groupId: ID!, name: String!): Group
+  deleteGroup(groupId: ID!): Boolean
+  addGroupMembers(groupId: ID!, members: [ID!]!): Group
+  removeGroupMember(groupId: ID!, memberId: ID!): Boolean
+
+  # Recordings
+  deleteCloudRecording(meetingId: ID!): Boolean
+  deleteRecordingFile(meetingId: ID!, recordingId: ID!): Boolean
+  recoverCloudRecording(meetingId: ID!): Boolean
+
+  # Chat
+  sendChatMessage(userId: ID!, input: ChatMessageInput!): ChatMessage
+  deleteChatMessage(userId: ID!, messageId: ID!): Boolean
+  createChatChannel(userId: ID!, input: ChatChannelInput!): ChatChannel
+  updateChatChannel(channelId: ID!, input: ChatChannelInput!): ChatChannel
+  deleteChatChannel(channelId: ID!): Boolean
+  inviteChatChannelMembers(channelId: ID!, members: [ID!]!): Boolean
+  removeChatChannelMember(channelId: ID!, memberId: ID!): Boolean
+
+  # Phone
+  assignPhoneNumber(userId: ID!, phoneNumberId: ID!): PhoneNumber
+  unassignPhoneNumber(userId: ID!, phoneNumberId: ID!): Boolean
+  addSIPPhone(input: SIPPhoneInput!): SIPPhone
+  deleteSIPPhone(sipPhoneId: ID!): Boolean
+}
+
+# ---------------------------------------------------------------------------
+# Input Types
+# ---------------------------------------------------------------------------
+
+input CreateMeetingInput {
+  topic: String!
+  type: MeetingType
+  startTime: DateTime
+  duration: Int
+  scheduleFor: String
+  timezone: String
+  password: String
+  agenda: String
+  trackingFields: [TrackingFieldInput!]
+  recurrence: RecurrenceInput
+  settings: MeetingSettingsInput
+  templateId: ID
+}
+
+input UpdateMeetingInput {
+  topic: String
+  type: MeetingType
+  startTime: DateTime
+  duration: Int
+  timezone: String
+  password: String
+  agenda: String
+  trackingFields: [TrackingFieldInput!]
+  recurrence: RecurrenceInput
+  settings: MeetingSettingsInput
+}
+
+input MeetingSettingsInput {
+  hostVideo: Boolean
+  participantVideo: Boolean
+  joinBeforeHost: Boolean
+  muteUponEntry: Boolean
+  watermark: Boolean
+  usePmi: Boolean
+  approvalType: ApprovalType
+  audio: AudioType
+  autoRecording: String
+  enforceLogin: Boolean
+  waitingRoom: Boolean
+  alternativeHosts: String
+  breakoutRoom: Boolean
+  focusMode: Boolean
+}
+
+input RecurrenceInput {
+  type: Int!
+  repeatInterval: Int
+  weeklyDays: String
+  monthlyDay: Int
+  monthlyWeek: Int
+  monthlyWeekDay: Int
+  endTimes: Int
+  endDateTime: DateTime
+}
+
+input TrackingFieldInput {
+  field: String!
+  value: String
+}
+
+input CreateWebinarInput {
+  topic: String!
+  type: WebinarType
+  startTime: DateTime
+  duration: Int
+  timezone: String
+  password: String
+  agenda: String
+  recurrence: RecurrenceInput
+  settings: WebinarSettingsInput
+  trackingFields: [TrackingFieldInput!]
+}
+
+input UpdateWebinarInput {
+  topic: String
+  startTime: DateTime
+  duration: Int
+  timezone: String
+  password: String
+  agenda: String
+  settings: WebinarSettingsInput
+}
+
+input WebinarSettingsInput {
+  hostVideo: Boolean
+  pandelistsVideo: Boolean
+  practiceSession: Boolean
+  approvalType: ApprovalType
+  audio: AudioType
+  autoRecording: String
+  enforceLogin: Boolean
+  closeRegistration: Boolean
+  onDemand: Boolean
+  registrantsConfirmationEmail: Boolean
+}
+
+input RegistrantInput {
+  email: String!
+  firstName: String!
+  lastName: String
+  address: String
+  city: String
+  country: String
+  zip: String
+  state: String
+  phone: String
+  industry: String
+  org: String
+  jobTitle: String
+  comments: String
+  customQuestions: [CustomQuestionInput!]
+}
+
+input CustomQuestionInput {
+  title: String!
+  value: String!
+}
+
+input PollInput {
+  title: String!
+  anonymous: Boolean
+  pollType: Int
+  questions: [PollQuestionInput!]!
+}
+
+input PollQuestionInput {
+  name: String!
+  type: PollQuestionType!
+  answerRequired: Boolean
+  answers: [String!]
+  showAsDropdown: Boolean
+  ratingMinValue: Int
+  ratingMaxValue: Int
+  ratingMinLabel: String
+  ratingMaxLabel: String
+}
+
+input PanelistInput {
+  email: String!
+  name: String
+}
+
+input LivestreamInput {
+  streamUrl: URL!
+  streamKey: String!
+  pageUrl: URL
+  resolution: String
+}
+
+input CreateUserInput {
+  email: String!
+  type: UserType!
+  firstName: String
+  lastName: String
+  password: String
+  timezone: String
+  dept: String
+  language: String
+}
+
+input UpdateUserInput {
+  firstName: String
+  lastName: String
+  type: UserType
+  timezone: String
+  dept: String
+  language: String
+  phone: String
+}
+
+input AssistantInput {
+  email: String!
+}
+
+input ChatMessageInput {
+  toContact: String
+  toChannel: ID
+  message: String!
+  fileIds: [String!]
+  replyMainMessageId: ID
+  atItems: [MentionItemInput!]
+}
+
+input MentionItemInput {
+  at: String!
+  startPosition: Int!
+  endPosition: Int!
+  userId: ID
+}
+
+input ChatChannelInput {
+  name: String
+  type: ChatChannelType
+  memberEmails: [String!]
+}
+
+input SIPPhoneInput {
+  userId: ID!
+  authorizationName: String!
+  domain: String!
+  password: String!
+  proxy: String!
+  voiceMailGreeting: String
+  registrationExpireTime: Int
+}
