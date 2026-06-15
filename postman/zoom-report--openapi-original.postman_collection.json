@@ -1,0 +1,577 @@
+{
+  "info": {
+    "_postman_id": "af8d4295-dcfc-411a-8730-b07118ccefa4",
+    "name": "Zoom report/",
+    "description": "Needs description.\n\nContact Support:\n Name: Zoom Developers\n Email: developer@zoom.us",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:22:31.000Z",
+    "updatedAt": "2026-06-05T15:22:31.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-af8d4295-dcfc-411a-8730-b07118ccefa4"
+  },
+  "item": [
+    {
+      "name": "report",
+      "item": [
+        {
+          "name": "getaccountreport",
+          "item": [
+            {
+              "name": "report Getaccountreport",
+              "id": "6b4316c8-f4bd-4880-b6fc-6caf9e6d9564",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) Start date.",
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) End date.",
+                      "key": "to",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The amount of records returns within a single API call. Defaults to 30. Max of 300 meetings.",
+                      "key": "page_size",
+                      "value": "30"
+                    },
+                    {
+                      "description": "Current page number of returned records. Default to 1.",
+                      "key": "page_number",
+                      "value": "1"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/report/getaccountreport",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "report",
+                    "getaccountreport"
+                  ]
+                },
+                "description": "Get account report for a specified period.\n\n"
+              },
+              "response": [
+                {
+                  "id": "76e414fa-ec02-4fab-af9e-59dd5d9fee86",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Start date.",
+                          "key": "from",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) End date.",
+                          "key": "to",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The amount of records returns within a single API call. Defaults to 30. Max of 300 meetings.",
+                          "key": "page_size",
+                          "value": "30"
+                        },
+                        {
+                          "description": "Current page number of returned records. Default to 1.",
+                          "key": "page_number",
+                          "value": "1"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/report/getaccountreport",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "report",
+                        "getaccountreport"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"example\": {\n    \"page_count\": 1,\n    \"page_number\": 1,\n    \"page_size\": 30,\n    \"total_records\": 5,\n    \"from\": \"2013-5-19\",\n    \"to\": \"2013-5-20\",\n    \"total_meetings\": 50,\n    \"total_participants\": 100,\n    \"total_meeting_minutes\": 100,\n    \"users\": [\n      {\n        \"user_id\": \"bNsPi5hCQ-qOzWn2EeCXJA\",\n        \"email\": \"john@sample.com\",\n        \"type\": 2,\n        \"meetings\": 10,\n        \"participants\": 56,\n        \"meeting_minutes\": 300,\n        \"last_client_version\": \"1.0.18584.0225\",\n        \"last_login_time\": \"2013-02-11T08:18:09.000Z\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-06-05T15:22:31.000Z",
+                  "updatedAt": "2026-06-05T15:22:31.000Z",
+                  "uid": "35240-76e414fa-ec02-4fab-af9e-59dd5d9fee86"
+                }
+              ],
+              "createdAt": "2026-06-05T15:22:31.000Z",
+              "updatedAt": "2026-06-05T15:22:31.000Z",
+              "uid": "35240-6b4316c8-f4bd-4880-b6fc-6caf9e6d9564"
+            }
+          ],
+          "id": "7feea95f-4836-48d4-8240-7a32caa5efb6",
+          "createdAt": "2026-06-05T15:22:31.000Z",
+          "updatedAt": "2026-06-05T15:22:31.000Z",
+          "uid": "35240-7feea95f-4836-48d4-8240-7a32caa5efb6"
+        },
+        {
+          "name": "getaudioreport",
+          "item": [
+            {
+              "name": "report Getaudioreport",
+              "id": "ee68b5f9-81eb-475d-a7ee-504b8aa10317",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) Start date.",
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) End date.",
+                      "key": "to",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Audio type: 1 means Toll-free Call-in & Call-out. 2 means Toll.",
+                      "key": "type",
+                      "value": "1"
+                    },
+                    {
+                      "description": "The amount of records returns within a single API call. Defaults to 30. Max of 300 meetings.",
+                      "key": "page_size",
+                      "value": "30"
+                    },
+                    {
+                      "description": "Current page number of returned records. Default to 1.",
+                      "key": "page_number",
+                      "value": "1"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/report/getaudioreport",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "report",
+                    "getaudioreport"
+                  ]
+                },
+                "description": "Get user report for a specified period.\n\n<aside class=\"notice\">Toll Report API is provided for enabled 'Toll Report' option.</aside>\n\n<aside class=\"notice\">We will report a maximum of one month. For example, if \"from\" is set to \"2015-08-05\" and \"to\" is \"2015-10-10\" we will adjust \"from\" to \"2015-09-10\"</aside>\n\n"
+              },
+              "response": [
+                {
+                  "id": "4e51da78-1ffb-4218-9c17-f14d78fbfc88",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Start date.",
+                          "key": "from",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) End date.",
+                          "key": "to",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Audio type: 1 means Toll-free Call-in & Call-out. 2 means Toll.",
+                          "key": "type",
+                          "value": "1"
+                        },
+                        {
+                          "description": "The amount of records returns within a single API call. Defaults to 30. Max of 300 meetings.",
+                          "key": "page_size",
+                          "value": "30"
+                        },
+                        {
+                          "description": "Current page number of returned records. Default to 1.",
+                          "key": "page_number",
+                          "value": "1"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/report/getaudioreport",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "report",
+                        "getaudioreport"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "null",
+                  "createdAt": "2026-06-05T15:22:31.000Z",
+                  "updatedAt": "2026-06-05T15:22:31.000Z",
+                  "uid": "35240-4e51da78-1ffb-4218-9c17-f14d78fbfc88"
+                }
+              ],
+              "createdAt": "2026-06-05T15:22:31.000Z",
+              "updatedAt": "2026-06-05T15:22:31.000Z",
+              "uid": "35240-ee68b5f9-81eb-475d-a7ee-504b8aa10317"
+            }
+          ],
+          "id": "890afb85-4b0d-4801-b254-88ef49e7d74a",
+          "createdAt": "2026-06-05T15:22:31.000Z",
+          "updatedAt": "2026-06-05T15:22:31.000Z",
+          "uid": "35240-890afb85-4b0d-4801-b254-88ef49e7d74a"
+        },
+        {
+          "name": "getdailyreport",
+          "item": [
+            {
+              "name": "report Getdailyreport",
+              "id": "2a50c1ca-f7f5-4d3a-bc05-a9140ba8d18a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) Month for this report.",
+                      "key": "month",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Year for this report.",
+                      "key": "year",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/report/getdailyreport",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "report",
+                    "getdailyreport"
+                  ]
+                },
+                "description": "Get daily report for one month, can only get daily report for recent 3 months.\n\n"
+              },
+              "response": [
+                {
+                  "id": "4b919324-4047-4857-a86c-59c73791cfdd",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Month for this report.",
+                          "key": "month",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Year for this report.",
+                          "key": "year",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/report/getdailyreport",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "report",
+                        "getdailyreport"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"example\": {\n    \"year\": 2013,\n    \"month\": 5,\n    \"dates\": [\n      {\n        \"meetings\": 0,\n        \"date\": \"2013-05-01T00:00:00.000Z\",\n        \"new_user\": 0,\n        \"participants\": 0,\n        \"meeting_minutes\": 0\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-06-05T15:22:31.000Z",
+                  "updatedAt": "2026-06-05T15:22:31.000Z",
+                  "uid": "35240-4b919324-4047-4857-a86c-59c73791cfdd"
+                }
+              ],
+              "createdAt": "2026-06-05T15:22:31.000Z",
+              "updatedAt": "2026-06-05T15:22:31.000Z",
+              "uid": "35240-2a50c1ca-f7f5-4d3a-bc05-a9140ba8d18a"
+            }
+          ],
+          "id": "6da18b4c-1d19-49fe-8587-472ba6ccfe4b",
+          "createdAt": "2026-06-05T15:22:31.000Z",
+          "updatedAt": "2026-06-05T15:22:31.000Z",
+          "uid": "35240-6da18b4c-1d19-49fe-8587-472ba6ccfe4b"
+        },
+        {
+          "name": "getuserreport",
+          "item": [
+            {
+              "name": "report Getuserreport",
+              "id": "b3d4e272-a24f-4755-9508-bfa50ce6825f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) Start date.",
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) End date.",
+                      "key": "to",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The user to generate the report.",
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The amount of records returns within a single API call. Defaults to 30. Max of 300 meetings.",
+                      "key": "page_size",
+                      "value": "30"
+                    },
+                    {
+                      "description": "Current page number of returned records. Default to 1.",
+                      "key": "page_number",
+                      "value": "1"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/report/getuserreport",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "report",
+                    "getuserreport"
+                  ]
+                },
+                "description": "Get user report for a specified period.\n\n"
+              },
+              "response": [
+                {
+                  "id": "a33c30b1-5bcd-46e3-ada7-eefc61f2ed9e",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Start date.",
+                          "key": "from",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) End date.",
+                          "key": "to",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) The user to generate the report.",
+                          "key": "user_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The amount of records returns within a single API call. Defaults to 30. Max of 300 meetings.",
+                          "key": "page_size",
+                          "value": "30"
+                        },
+                        {
+                          "description": "Current page number of returned records. Default to 1.",
+                          "key": "page_number",
+                          "value": "1"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/report/getuserreport",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "report",
+                        "getuserreport"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"example\": {\n    \"page_count\": 1,\n    \"page_number\": 1,\n    \"page_size\": 30,\n    \"total_records\": 5,\n    \"from\": \"2013-5-19\",\n    \"to\": \"2013-5-20\",\n    \"meetings\": [\n      {\n        \"number\": 111111111,\n        \"topic\": \"Meeting Topic\",\n        \"start_time\": \"2013-02-11T08:18:09.000Z\",\n        \"end_time\": \"2013-02-11T09:18:09.000Z\",\n        \"duration\": 60,\n        \"participants\": [\n          {\n            \"name\": \"John\",\n            \"join_time\": \"2013-02-11T08:30:09.000Z\",\n            \"leave_time\": \"2013-02-11T08:50:09.000Z\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-06-05T15:22:31.000Z",
+                  "updatedAt": "2026-06-05T15:22:31.000Z",
+                  "uid": "35240-a33c30b1-5bcd-46e3-ada7-eefc61f2ed9e"
+                }
+              ],
+              "createdAt": "2026-06-05T15:22:31.000Z",
+              "updatedAt": "2026-06-05T15:22:31.000Z",
+              "uid": "35240-b3d4e272-a24f-4755-9508-bfa50ce6825f"
+            }
+          ],
+          "id": "578b7173-3ca2-42d1-a150-1e59839cb515",
+          "createdAt": "2026-06-05T15:22:31.000Z",
+          "updatedAt": "2026-06-05T15:22:31.000Z",
+          "uid": "35240-578b7173-3ca2-42d1-a150-1e59839cb515"
+        }
+      ],
+      "id": "32d0de6c-fc9c-44e5-93d3-cf27b39f9dda",
+      "createdAt": "2026-06-05T15:22:31.000Z",
+      "updatedAt": "2026-06-05T15:22:31.000Z",
+      "uid": "35240-32d0de6c-fc9c-44e5-93d3-cf27b39f9dda"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.zoom.us/v1"
+    }
+  ]
+}

@@ -1,0 +1,1595 @@
+{
+  "info": {
+    "_postman_id": "eeb22f37-b37b-48e5-b888-644ca33a79e4",
+    "name": "Zoom meeting/",
+    "description": "Needs description.\n\nContact Support:\n Name: Zoom Developers\n Email: developer@zoom.us",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:22:27.000Z",
+    "updatedAt": "2026-06-05T15:22:27.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-eeb22f37-b37b-48e5-b888-644ca33a79e4"
+  },
+  "item": [
+    {
+      "name": "meeting",
+      "item": [
+        {
+          "name": "create",
+          "item": [
+            {
+              "name": "meeting Create",
+              "id": "492f1227-b40c-4367-b7b1-de2accfdf4e0",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) Meeting host user ID. Can be any user under this account. Cannot be updated after creation.",
+                      "key": "host_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Meeting topic. Max of 300 characters.",
+                      "key": "topic",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Meeting type: 1 means instant meeting (Only used for host to start it as soon as created). 2 means normal scheduled meeting. 3 means a recurring meeting with no fixed time. 8 means a recurring meeting with fixed time.",
+                      "key": "type",
+                      "value": "2"
+                    },
+                    {
+                      "description": "Meeting start time in ISO datetime format. For scheduled meeting and recurring meeting with fixed time. Should be UTC time, such as 2012-11-25T12:00:00Z.",
+                      "key": "start_time",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Meeting duration (minutes). For scheduled meeting only.",
+                      "key": "duration",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Timezone to format start_time, like \"America/Los_Angeles\". For scheduled meeting only. For this parameter value please refer to the id value in timezone list JSON file.",
+                      "key": "timezone",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Meeting password. Password may only contain the following characters: [a-z A-Z 0-9 @ - _",
+                      "key": "password",
+                      "value": " 10 characters"
+                    },
+                    {
+                      "description": "Recurrence Meeting Settings. For recurring meeting with fixed time only. See [Recurrence Object](#recurrence-object) for more details.",
+                      "key": "recurrence",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Registration required.",
+                      "key": "option_registration",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Registration type. 1 means Attendees register once and can attend any of the occurrences, 2 means Attendees need to register for each occurrence to attend, 3 means Attendees register once and can choose one or more occurrences to attend. For recurring meeting with fixed time only.",
+                      "key": "registration_type",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Join meeting before host start the meeting. Only for scheduled or recurring meetings.",
+                      "key": "option_jbh",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Meeting start type. Can be \"video\" or \"screen_share\". (deprecated)",
+                      "key": "option_start_type",
+                      "value": "video"
+                    },
+                    {
+                      "description": "Start video when host join meeting.",
+                      "key": "option_host_video",
+                      "value": "true"
+                    },
+                    {
+                      "description": "Start video when participants join meeting.",
+                      "key": "option_participants_video",
+                      "value": "true"
+                    },
+                    {
+                      "description": "Host meeting in China.",
+                      "key": "option_cn_meeting",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Host meeting in India.",
+                      "key": "option_in_meeting",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Meeting audio options. Can be \"both\", \"telephony\", \"voip\".",
+                      "key": "option_audio",
+                      "value": "both"
+                    },
+                    {
+                      "description": "Only signed-in users can join this meeting.",
+                      "key": "option_enforce_login",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Only signed-in users with specified domains can join meetings.",
+                      "key": "option_enforce_login_domains",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Alternative hosts.",
+                      "key": "option_alternative_hosts",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Alternative hosts IDs.",
+                      "key": "option_alternative_host_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Use Personal Meeting ID. Only for scheduled meetings.",
+                      "key": "option_use_pmi",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Automatically record type. Can be \"local\", \"cloud\" or \"none\".",
+                      "key": "option_auto_record_type",
+                      "value": "local"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/meeting/create",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "meeting",
+                    "create"
+                  ]
+                },
+                "description": "Create a meeting on Zoom, return the created meeting URL\n\n"
+              },
+              "response": [
+                {
+                  "id": "e08620b9-c99c-451d-b4d2-2c2f3a39e42f",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Meeting host user ID. Can be any user under this account. Cannot be updated after creation.",
+                          "key": "host_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Meeting topic. Max of 300 characters.",
+                          "key": "topic",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Meeting type: 1 means instant meeting (Only used for host to start it as soon as created). 2 means normal scheduled meeting. 3 means a recurring meeting with no fixed time. 8 means a recurring meeting with fixed time.",
+                          "key": "type",
+                          "value": "2"
+                        },
+                        {
+                          "description": "Meeting start time in ISO datetime format. For scheduled meeting and recurring meeting with fixed time. Should be UTC time, such as 2012-11-25T12:00:00Z.",
+                          "key": "start_time",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Meeting duration (minutes). For scheduled meeting only.",
+                          "key": "duration",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Timezone to format start_time, like \"America/Los_Angeles\". For scheduled meeting only. For this parameter value please refer to the id value in timezone list JSON file.",
+                          "key": "timezone",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Meeting password. Password may only contain the following characters: [a-z A-Z 0-9 @ - _",
+                          "key": "password",
+                          "value": " 10 characters"
+                        },
+                        {
+                          "description": "Recurrence Meeting Settings. For recurring meeting with fixed time only. See [Recurrence Object](#recurrence-object) for more details.",
+                          "key": "recurrence",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Registration required.",
+                          "key": "option_registration",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Registration type. 1 means Attendees register once and can attend any of the occurrences, 2 means Attendees need to register for each occurrence to attend, 3 means Attendees register once and can choose one or more occurrences to attend. For recurring meeting with fixed time only.",
+                          "key": "registration_type",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Join meeting before host start the meeting. Only for scheduled or recurring meetings.",
+                          "key": "option_jbh",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Meeting start type. Can be \"video\" or \"screen_share\". (deprecated)",
+                          "key": "option_start_type",
+                          "value": "video"
+                        },
+                        {
+                          "description": "Start video when host join meeting.",
+                          "key": "option_host_video",
+                          "value": "true"
+                        },
+                        {
+                          "description": "Start video when participants join meeting.",
+                          "key": "option_participants_video",
+                          "value": "true"
+                        },
+                        {
+                          "description": "Host meeting in China.",
+                          "key": "option_cn_meeting",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Host meeting in India.",
+                          "key": "option_in_meeting",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Meeting audio options. Can be \"both\", \"telephony\", \"voip\".",
+                          "key": "option_audio",
+                          "value": "both"
+                        },
+                        {
+                          "description": "Only signed-in users can join this meeting.",
+                          "key": "option_enforce_login",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Only signed-in users with specified domains can join meetings.",
+                          "key": "option_enforce_login_domains",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Alternative hosts.",
+                          "key": "option_alternative_hosts",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Alternative hosts IDs.",
+                          "key": "option_alternative_host_ids",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Use Personal Meeting ID. Only for scheduled meetings.",
+                          "key": "option_use_pmi",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Automatically record type. Can be \"local\", \"cloud\" or \"none\".",
+                          "key": "option_auto_record_type",
+                          "value": "local"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/meeting/create",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "meeting",
+                        "create"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"example\": {\n    \"uuid\": \"unique_id\",\n    \"start_url\": \"https://zoom.us/s/123456789?zak=xxxxxx\",\n    \"join_url\": \"https://zoom.us/j/123456789\",\n    \"created_at\": \"2012-11-25T12:00:00.000Z\",\n    \"host_id\": \"unique_id\",\n    \"topic\": \"Topic for this meeting\",\n    \"type\": 2,\n    \"option_jbh\": false,\n    \"option_start_type\": \"video\",\n    \"start_time\": \"2012-11-25T12:00:00.000Z\",\n    \"duration\": 30,\n    \"timezone\": \"America/Los_Angeles\",\n    \"password\": \"123\",\n    \"h323_password\": \"123456\",\n    \"option_host_video\": false,\n    \"option_participants_video\": false,\n    \"option_audio\": \"both\",\n    \"option_enforce_login\": false,\n    \"option_enforce_login_domains \": \"\",\n    \"option_alternative_hosts\": \"\",\n    \"status\": 0\n  }\n}",
+                  "createdAt": "2026-06-05T15:22:27.000Z",
+                  "updatedAt": "2026-06-05T15:22:27.000Z",
+                  "uid": "35240-e08620b9-c99c-451d-b4d2-2c2f3a39e42f"
+                }
+              ],
+              "createdAt": "2026-06-05T15:22:27.000Z",
+              "updatedAt": "2026-06-05T15:22:27.000Z",
+              "uid": "35240-492f1227-b40c-4367-b7b1-de2accfdf4e0"
+            }
+          ],
+          "id": "f50acd79-63bb-4138-8332-dbf32b2e02ea",
+          "createdAt": "2026-06-05T15:22:27.000Z",
+          "updatedAt": "2026-06-05T15:22:27.000Z",
+          "uid": "35240-f50acd79-63bb-4138-8332-dbf32b2e02ea"
+        },
+        {
+          "name": "delete",
+          "item": [
+            {
+              "name": "meeting Delete",
+              "id": "ea1ebcf1-d345-4b0f-9750-20b6b6d4c1eb",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) Meeting host user ID. Can be any user under this account.",
+                      "key": "host_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Meeting ID.",
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Occurrence ID, could get this value from Meeting Get API.",
+                      "key": "occurrence_id",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/meeting/delete",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "meeting",
+                    "delete"
+                  ]
+                },
+                "description": "Delete a meeting on Zoom, return the deleted meeting ID.\n\n"
+              },
+              "response": [
+                {
+                  "id": "8c74fb9a-b6d3-49d6-b4f8-2c0b38dc2f3b",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Meeting host user ID. Can be any user under this account.",
+                          "key": "host_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Meeting ID.",
+                          "key": "id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Occurrence ID, could get this value from Meeting Get API.",
+                          "key": "occurrence_id",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/meeting/delete",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "meeting",
+                        "delete"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"example\": {\n    \"deleted_at\": \"2012-11-25T12:00:00.000Z\"\n  }\n}",
+                  "createdAt": "2026-06-05T15:22:27.000Z",
+                  "updatedAt": "2026-06-05T15:22:27.000Z",
+                  "uid": "35240-8c74fb9a-b6d3-49d6-b4f8-2c0b38dc2f3b"
+                }
+              ],
+              "createdAt": "2026-06-05T15:22:27.000Z",
+              "updatedAt": "2026-06-05T15:22:27.000Z",
+              "uid": "35240-ea1ebcf1-d345-4b0f-9750-20b6b6d4c1eb"
+            }
+          ],
+          "id": "fc5863a9-a5e7-4d5f-9974-3187db3fad7b",
+          "createdAt": "2026-06-05T15:22:27.000Z",
+          "updatedAt": "2026-06-05T15:22:27.000Z",
+          "uid": "35240-fc5863a9-a5e7-4d5f-9974-3187db3fad7b"
+        },
+        {
+          "name": "end",
+          "item": [
+            {
+              "name": "meeting End",
+              "id": "15e9b689-fc5b-4911-9e4c-42fb27f1c359",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) Meeting host user ID. Can be any user under this account.",
+                      "key": "host_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Meeting ID.",
+                      "key": "id",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/meeting/end",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "meeting",
+                    "end"
+                  ]
+                },
+                "description": "End a meeting on Zoom, return the deleted meeting ID.\n\n"
+              },
+              "response": [
+                {
+                  "id": "4ea9c406-4a14-4180-b212-687cd6edd31b",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Meeting host user ID. Can be any user under this account.",
+                          "key": "host_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Meeting ID.",
+                          "key": "id",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/meeting/end",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "meeting",
+                        "end"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"example\": {\n    \"ended_at\": \"2012-11-25T12:00:00.000Z\"\n  }\n}",
+                  "createdAt": "2026-06-05T15:22:27.000Z",
+                  "updatedAt": "2026-06-05T15:22:27.000Z",
+                  "uid": "35240-4ea9c406-4a14-4180-b212-687cd6edd31b"
+                }
+              ],
+              "createdAt": "2026-06-05T15:22:27.000Z",
+              "updatedAt": "2026-06-05T15:22:27.000Z",
+              "uid": "35240-15e9b689-fc5b-4911-9e4c-42fb27f1c359"
+            }
+          ],
+          "id": "804a71bb-da66-459e-a2a2-f758044f0161",
+          "createdAt": "2026-06-05T15:22:27.000Z",
+          "updatedAt": "2026-06-05T15:22:27.000Z",
+          "uid": "35240-804a71bb-da66-459e-a2a2-f758044f0161"
+        },
+        {
+          "name": "get",
+          "item": [
+            {
+              "name": "meeting Get",
+              "id": "e4d8d520-6d3c-4d6c-b442-fff170830f46",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) Meeting host user ID. Can be any user under this account.",
+                      "key": "host_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Meeting ID.",
+                      "key": "id",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/meeting/get",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "meeting",
+                    "get"
+                  ]
+                },
+                "description": "Get a meeting on Zoom via meeting ID, return the meeting info.\n\n"
+              },
+              "response": [
+                {
+                  "id": "e11e2a47-407c-440d-bf9a-0ac67c3cac7f",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Meeting host user ID. Can be any user under this account.",
+                          "key": "host_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Meeting ID.",
+                          "key": "id",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/meeting/get",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "meeting",
+                        "get"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"example\": {\n    \"uuid\": \"unique_id\",\n    \"host_id\": \"unique_id\",\n    \"topic\": \"Zoom Meeting\",\n    \"password\": \"\",\n    \"h323_password\": \"\",\n    \"status\": 0,\n    \"option_jbh\": false,\n    \"option_start_type\": \"video\",\n    \"option_host_video\": true,\n    \"option_participants_video\": true,\n    \"option_cn_meeting\": false,\n    \"option_enforce_login\": false,\n    \"option_enforce_login_domains\": \"\",\n    \"option_in_meeting\": false,\n    \"option_audio\": \"both\",\n    \"option_alternative_hosts\": \"\",\n    \"option_use_pmi\": false,\n    \"type\": 8,\n    \"start_time\": \"\",\n    \"duration\": 0,\n    \"timezone\": \"Asia/Hong_Kong\",\n    \"start_url\": \"https://www.zoom.us/s/123456789?zak=xxxxxx\",\n    \"join_url\": \"https://www.zoom.us/j/123456789\",\n    \"created_at\": \"2016-12-20T02:51:42.000Z\",\n    \"occurrences\": [\n      {\n        \"occurrence_id\": \"1483210260000\",\n        \"start_time\": \"2017-01-01T02:51:00.000Z\",\n        \"duration\": 60\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-06-05T15:22:27.000Z",
+                  "updatedAt": "2026-06-05T15:22:27.000Z",
+                  "uid": "35240-e11e2a47-407c-440d-bf9a-0ac67c3cac7f"
+                }
+              ],
+              "createdAt": "2026-06-05T15:22:27.000Z",
+              "updatedAt": "2026-06-05T15:22:27.000Z",
+              "uid": "35240-e4d8d520-6d3c-4d6c-b442-fff170830f46"
+            }
+          ],
+          "id": "4b835b55-7f7f-4fbd-a418-7b326ae473a7",
+          "createdAt": "2026-06-05T15:22:27.000Z",
+          "updatedAt": "2026-06-05T15:22:27.000Z",
+          "uid": "35240-4b835b55-7f7f-4fbd-a418-7b326ae473a7"
+        },
+        {
+          "name": "list",
+          "item": [
+            {
+              "name": "meeting List",
+              "id": "08192620-5c1a-46ac-b4b2-196203284899",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) Meeting host user ID. Can be any user under this account.",
+                      "key": "host_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The amount of records returns within a single API call. Defaults to 30. Max of 300 meetings.",
+                      "key": "page_size",
+                      "value": "30"
+                    },
+                    {
+                      "description": "Current page number of returned records. Default to 1.",
+                      "key": "page_number",
+                      "value": "1"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/meeting/list",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "meeting",
+                    "list"
+                  ]
+                },
+                "description": "List all the scheduled meetings on Zoom.\n\n"
+              },
+              "response": [
+                {
+                  "id": "d0c25080-a944-4cfc-b667-2247fac001bc",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Meeting host user ID. Can be any user under this account.",
+                          "key": "host_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The amount of records returns within a single API call. Defaults to 30. Max of 300 meetings.",
+                          "key": "page_size",
+                          "value": "30"
+                        },
+                        {
+                          "description": "Current page number of returned records. Default to 1.",
+                          "key": "page_number",
+                          "value": "1"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/meeting/list",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "meeting",
+                        "list"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"example\": {\n    \"page_count\": 5,\n    \"total_records\": 235,\n    \"page_number\": 1,\n    \"page_size\": 50,\n    \"meetings\": [\n      {\n        \"uuid\": \"unique_id\",\n        \"start_url\": \"https://zoom.us/s/123456789?zak=xxxxxx\",\n        \"join_url\": \"https://zoom.us/j/123456789\",\n        \"created_at\": \"2012-11-25T12:00:00.000Z\",\n        \"host_id\": \"unique_id\",\n        \"topic\": \"Topic for this meeting\",\n        \"type\": 2,\n        \"start_time\": \"2012-11-25T12:00:00.000Z\",\n        \"duration\": 30,\n        \"timezone\": \"America/Los_Angeles\",\n        \"password\": \"123\",\n        \"h323_password\": \"123456\",\n        \"option_jbh\": false,\n        \"option_start_type\": \"video\",\n        \"option_host_video\": false,\n        \"option_participants_video\": false,\n        \"option_audio\": \"both\",\n        \"option_enforce_login\": false,\n        \"option_enforce_login_domains \": \"\",\n        \"option_alternative_hosts\": \"\",\n        \"status\": 0\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-06-05T15:22:27.000Z",
+                  "updatedAt": "2026-06-05T15:22:27.000Z",
+                  "uid": "35240-d0c25080-a944-4cfc-b667-2247fac001bc"
+                }
+              ],
+              "createdAt": "2026-06-05T15:22:27.000Z",
+              "updatedAt": "2026-06-05T15:22:27.000Z",
+              "uid": "35240-08192620-5c1a-46ac-b4b2-196203284899"
+            }
+          ],
+          "id": "27805a67-e58c-4151-85d9-14dce17a9587",
+          "createdAt": "2026-06-05T15:22:27.000Z",
+          "updatedAt": "2026-06-05T15:22:27.000Z",
+          "uid": "35240-27805a67-e58c-4151-85d9-14dce17a9587"
+        },
+        {
+          "name": "live",
+          "item": [
+            {
+              "name": "meeting Live",
+              "id": "490f5f81-5801-46c2-a3df-01ae26feba93",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) Your API Key",
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Your API Secret",
+                      "key": "api_secret",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/meeting/live",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "meeting",
+                    "live"
+                  ]
+                },
+                "description": "Lists the live meetings on Zoom.\n\n"
+              },
+              "response": [
+                {
+                  "id": "a87bfbb5-a659-4f88-ba59-fca6deb7734b",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Your API Key",
+                          "key": "api_key",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Your API Secret",
+                          "key": "api_secret",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/meeting/live",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "meeting",
+                        "live"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"example\": {\n    \"page_count\": 5,\n    \"total_records\": 235,\n    \"page_number\": 1,\n    \"page_size\": 50,\n    \"meetings\": [\n      {\n        \"uuid\": \"unique_id\",\n        \"start_url\": \"https://zoom.us/s/123456789?zak=xxxxxx\",\n        \"join_url\": \"https://zoom.us/j/123456789\",\n        \"created_at\": \"2012-11-25T12:00:00.000Z\",\n        \"host_id\": \"unique_id\",\n        \"topic\": \"Topic for this meeting\",\n        \"type\": 2,\n        \"status\": 0,\n        \"start_time\": \"2012-11-25T12:00:00.000Z\",\n        \"duration\": 30,\n        \"timezone\": \"America/Los_Angeles\",\n        \"password\": \"123\",\n        \"h323_password\": \"123456\",\n        \"option_jbh\": false,\n        \"option_start_type\": \"video\",\n        \"option_host_video\": false,\n        \"option_participants_video\": false,\n        \"option_audio\": \"both\",\n        \"option_enforce_login\": false,\n        \"option_enforce_login_domains \": \"\",\n        \"option_alternative_hosts\": \"\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-06-05T15:22:27.000Z",
+                  "updatedAt": "2026-06-05T15:22:27.000Z",
+                  "uid": "35240-a87bfbb5-a659-4f88-ba59-fca6deb7734b"
+                }
+              ],
+              "createdAt": "2026-06-05T15:22:27.000Z",
+              "updatedAt": "2026-06-05T15:22:27.000Z",
+              "uid": "35240-490f5f81-5801-46c2-a3df-01ae26feba93"
+            }
+          ],
+          "id": "d4d2978d-e75a-43ed-b2f6-27145092ca22",
+          "createdAt": "2026-06-05T15:22:27.000Z",
+          "updatedAt": "2026-06-05T15:22:27.000Z",
+          "uid": "35240-d4d2978d-e75a-43ed-b2f6-27145092ca22"
+        },
+        {
+          "name": "register",
+          "item": [
+            {
+              "name": "meeting Register",
+              "id": "4e4b6668-608d-4a0b-986f-b131d57484d8",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) A valid email address.",
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) User\u2019s first name.",
+                      "key": "first_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Meeting ID.",
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) User\u2019s last name.",
+                      "key": "last_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Address.",
+                      "key": "address",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "City.",
+                      "key": "city",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Country. For this parameter value please refer to the id value in country list JSON file",
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Zip/Postal Code.",
+                      "key": "zip",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "State/Province.",
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Phone.",
+                      "key": "phone",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Industry.",
+                      "key": "industry",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Organization.",
+                      "key": "org",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Job Title.",
+                      "key": "job_title",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Purchasing Time Frame, should be \"Within a month\", \"1-3 months\", \"4-6 months\", \"More than 6 months\", \"No timeframe\".",
+                      "key": "purchasing_time_frame",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Role in Purchase Process, should be \"Decision Maker\", \"Evaluator/Recommender\", \"Influencer\", \"Not involved\".",
+                      "key": "role_in_purchase_process",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Number of Employees, should be \"1-20\", \"21-50\", \"51-100\", \"101-250\", \"251-500\", \"501-1,000\", \"1,001-5,000\", \"5,001-10,000\", \"More than 10,000\".",
+                      "key": "no_of_employees",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Questions & Comments.",
+                      "key": "comments",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom Questions, should be JSON format: [{\"title\":\"field_name1\",\"value\":\"xxx\"},{\"title\":\"field_name2\",\"value\":\"xxx\"}].",
+                      "key": "custom_questions",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Language setting of email. This value should be \"en-US\", \"en\", \"zh-CN\", \"zh\", \"en-ES\", \"es\", \"fr-FR\" or \"fr\".",
+                      "key": "language",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Occurrence IDs, could get this value from Meeting Get API.",
+                      "key": "occurrence_ids",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/meeting/register",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "meeting",
+                    "register"
+                  ]
+                },
+                "description": "Register for a meeting.\n\n"
+              },
+              "response": [
+                {
+                  "id": "3f1b1855-cfc5-486d-8b58-6a9bff4c0f71",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) A valid email address.",
+                          "key": "email",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) User\u2019s first name.",
+                          "key": "first_name",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Meeting ID.",
+                          "key": "id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) User\u2019s last name.",
+                          "key": "last_name",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Address.",
+                          "key": "address",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "City.",
+                          "key": "city",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Country. For this parameter value please refer to the id value in country list JSON file",
+                          "key": "country",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Zip/Postal Code.",
+                          "key": "zip",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "State/Province.",
+                          "key": "state",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Phone.",
+                          "key": "phone",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Industry.",
+                          "key": "industry",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Organization.",
+                          "key": "org",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Job Title.",
+                          "key": "job_title",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Purchasing Time Frame, should be \"Within a month\", \"1-3 months\", \"4-6 months\", \"More than 6 months\", \"No timeframe\".",
+                          "key": "purchasing_time_frame",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Role in Purchase Process, should be \"Decision Maker\", \"Evaluator/Recommender\", \"Influencer\", \"Not involved\".",
+                          "key": "role_in_purchase_process",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Number of Employees, should be \"1-20\", \"21-50\", \"51-100\", \"101-250\", \"251-500\", \"501-1,000\", \"1,001-5,000\", \"5,001-10,000\", \"More than 10,000\".",
+                          "key": "no_of_employees",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Questions & Comments.",
+                          "key": "comments",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Custom Questions, should be JSON format: [{\"title\":\"field_name1\",\"value\":\"xxx\"},{\"title\":\"field_name2\",\"value\":\"xxx\"}].",
+                          "key": "custom_questions",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Language setting of email. This value should be \"en-US\", \"en\", \"zh-CN\", \"zh\", \"en-ES\", \"es\", \"fr-FR\" or \"fr\".",
+                          "key": "language",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Occurrence IDs, could get this value from Meeting Get API.",
+                          "key": "occurrence_ids",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/meeting/register",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "meeting",
+                        "register"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"example\": {\n    \"registrant_id\": \"unique_id\",\n    \"topic\": \"meeting registration\",\n    \"start_time\": \"2016-02-21T04:00:00.000Z\",\n    \"join_url\": \"https://www.zoom.us/w/869275230?tk=2DsQiu6nZVsZVATrPLvXgqPvw8mmKyxgAGaDMizLv34.DQEAAAAAM9AWXhZ2Nm5vRjIyMlRoUzE3ZktWM3l4cHVRAA\"\n  }\n}",
+                  "createdAt": "2026-06-05T15:22:27.000Z",
+                  "updatedAt": "2026-06-05T15:22:27.000Z",
+                  "uid": "35240-3f1b1855-cfc5-486d-8b58-6a9bff4c0f71"
+                }
+              ],
+              "createdAt": "2026-06-05T15:22:27.000Z",
+              "updatedAt": "2026-06-05T15:22:27.000Z",
+              "uid": "35240-4e4b6668-608d-4a0b-986f-b131d57484d8"
+            }
+          ],
+          "id": "5c1d2087-b678-4aee-a0e8-5d5ead89010f",
+          "createdAt": "2026-06-05T15:22:27.000Z",
+          "updatedAt": "2026-06-05T15:22:27.000Z",
+          "uid": "35240-5c1d2087-b678-4aee-a0e8-5d5ead89010f"
+        },
+        {
+          "name": "update",
+          "item": [
+            {
+              "name": "meeting Update",
+              "id": "099a9c27-6e32-406f-8d6e-a97eef5c2081",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) Meeting host user ID. Can be any user under this account. Used to retrieve a meeting, cannot be updated.",
+                      "key": "host_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Meeting ID.",
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Meeting type: 1 means instant meeting (Only used for host to start it as soon as created). 2 means normal scheduled meeting. 3 means a recurring meeting with no fixed time. 8 means a recurring meeting with fixed time.",
+                      "key": "type",
+                      "value": "2"
+                    },
+                    {
+                      "description": "Meeting topic. Max of 300 characters.",
+                      "key": "topic",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Meeting start time in ISO datetime format. For scheduled meeting only. Should be UTC time, such as 2012-11-25T12:00:00Z.",
+                      "key": "start_time",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Meeting duration (minutes). For scheduled meeting only.",
+                      "key": "duration",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Timezone to format start_time, like \"America/Los_Angeles\". For scheduled meeting only. For this parameter value please refer to the id value in timezone list JSON file.",
+                      "key": "timezone",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Meeting password. Password may only contain the following characters: [a-z A-Z 0-9 @ - _",
+                      "key": "password",
+                      "value": " 10 characters"
+                    },
+                    {
+                      "description": "Recurrence Meeting Settings. For recurring meeting with fixed time only. See [Recurrence Object](#recurrence-object) for more details.",
+                      "key": "recurrence",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Registration required.",
+                      "key": "option_registration",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Registration type. 1 means Attendees register once and can attend any of the occurrences, 2 means Attendees need to register for each occurrence to attend, 3 means Attendees register once and can choose one or more occurrences to attend. For recurring meeting with fixed time only.",
+                      "key": "registration_type",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Join meeting before host start the meeting. Only for scheduled or recurring meetings.",
+                      "key": "option_jbh",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Meeting start type. Can be \"video\" or \"screen_share\". (deprecated)",
+                      "key": "option_start_type",
+                      "value": "video"
+                    },
+                    {
+                      "description": "Start video when host join meeting.",
+                      "key": "option_host_video",
+                      "value": "true"
+                    },
+                    {
+                      "description": "Start video when participants join meeting.",
+                      "key": "option_participants_video",
+                      "value": "true"
+                    },
+                    {
+                      "description": "Host meeting in China.",
+                      "key": "option_cn_meeting",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Host meeting in India.",
+                      "key": "option_in_meeting",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Meeting audio options. Can be \"both\", \"telephony\", \"voip\".",
+                      "key": "option_audio",
+                      "value": "both"
+                    },
+                    {
+                      "description": "Only signed-in users can join this meeting.",
+                      "key": "option_enforce_login",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Only signed-in users with specified domains can join meetings.",
+                      "key": "option_enforce_login_domains",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Alternative hosts.",
+                      "key": "option_alternative_hosts",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Alternative hosts IDs.",
+                      "key": "option_alternative_host_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Use Personal Meeting ID. Only for scheduled meetings.",
+                      "key": "option_use_pmi",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Automatically record type. Can be \"local\", \"cloud\" or \"none\".",
+                      "key": "option_auto_record_type",
+                      "value": "local"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/meeting/update",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "meeting",
+                    "update"
+                  ]
+                },
+                "description": "Update meeting info on Zoom via meeting ID.\n\n"
+              },
+              "response": [
+                {
+                  "id": "eda0731f-5954-49ef-93a8-14e064ba56f7",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Meeting host user ID. Can be any user under this account. Used to retrieve a meeting, cannot be updated.",
+                          "key": "host_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Meeting ID.",
+                          "key": "id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Meeting type: 1 means instant meeting (Only used for host to start it as soon as created). 2 means normal scheduled meeting. 3 means a recurring meeting with no fixed time. 8 means a recurring meeting with fixed time.",
+                          "key": "type",
+                          "value": "2"
+                        },
+                        {
+                          "description": "Meeting topic. Max of 300 characters.",
+                          "key": "topic",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Meeting start time in ISO datetime format. For scheduled meeting only. Should be UTC time, such as 2012-11-25T12:00:00Z.",
+                          "key": "start_time",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Meeting duration (minutes). For scheduled meeting only.",
+                          "key": "duration",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Timezone to format start_time, like \"America/Los_Angeles\". For scheduled meeting only. For this parameter value please refer to the id value in timezone list JSON file.",
+                          "key": "timezone",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Meeting password. Password may only contain the following characters: [a-z A-Z 0-9 @ - _",
+                          "key": "password",
+                          "value": " 10 characters"
+                        },
+                        {
+                          "description": "Recurrence Meeting Settings. For recurring meeting with fixed time only. See [Recurrence Object](#recurrence-object) for more details.",
+                          "key": "recurrence",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Registration required.",
+                          "key": "option_registration",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Registration type. 1 means Attendees register once and can attend any of the occurrences, 2 means Attendees need to register for each occurrence to attend, 3 means Attendees register once and can choose one or more occurrences to attend. For recurring meeting with fixed time only.",
+                          "key": "registration_type",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Join meeting before host start the meeting. Only for scheduled or recurring meetings.",
+                          "key": "option_jbh",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Meeting start type. Can be \"video\" or \"screen_share\". (deprecated)",
+                          "key": "option_start_type",
+                          "value": "video"
+                        },
+                        {
+                          "description": "Start video when host join meeting.",
+                          "key": "option_host_video",
+                          "value": "true"
+                        },
+                        {
+                          "description": "Start video when participants join meeting.",
+                          "key": "option_participants_video",
+                          "value": "true"
+                        },
+                        {
+                          "description": "Host meeting in China.",
+                          "key": "option_cn_meeting",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Host meeting in India.",
+                          "key": "option_in_meeting",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Meeting audio options. Can be \"both\", \"telephony\", \"voip\".",
+                          "key": "option_audio",
+                          "value": "both"
+                        },
+                        {
+                          "description": "Only signed-in users can join this meeting.",
+                          "key": "option_enforce_login",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Only signed-in users with specified domains can join meetings.",
+                          "key": "option_enforce_login_domains",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Alternative hosts.",
+                          "key": "option_alternative_hosts",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Alternative hosts IDs.",
+                          "key": "option_alternative_host_ids",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Use Personal Meeting ID. Only for scheduled meetings.",
+                          "key": "option_use_pmi",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Automatically record type. Can be \"local\", \"cloud\" or \"none\".",
+                          "key": "option_auto_record_type",
+                          "value": "local"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/meeting/update",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "meeting",
+                        "update"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"example\": {\n    \"updated_at\": \"2012-11-25T12:00:00.000Z\"\n  }\n}",
+                  "createdAt": "2026-06-05T15:22:27.000Z",
+                  "updatedAt": "2026-06-05T15:22:27.000Z",
+                  "uid": "35240-eda0731f-5954-49ef-93a8-14e064ba56f7"
+                }
+              ],
+              "createdAt": "2026-06-05T15:22:27.000Z",
+              "updatedAt": "2026-06-05T15:22:27.000Z",
+              "uid": "35240-099a9c27-6e32-406f-8d6e-a97eef5c2081"
+            }
+          ],
+          "id": "9fb12f5c-7094-43be-a2ee-8429c40414ad",
+          "createdAt": "2026-06-05T15:22:27.000Z",
+          "updatedAt": "2026-06-05T15:22:27.000Z",
+          "uid": "35240-9fb12f5c-7094-43be-a2ee-8429c40414ad"
+        }
+      ],
+      "id": "7c1327b1-7580-4216-8e0c-a29b00d4cef2",
+      "createdAt": "2026-06-05T15:22:27.000Z",
+      "updatedAt": "2026-06-05T15:22:27.000Z",
+      "uid": "35240-7c1327b1-7580-4216-8e0c-a29b00d4cef2"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.zoom.us/v1"
+    }
+  ]
+}

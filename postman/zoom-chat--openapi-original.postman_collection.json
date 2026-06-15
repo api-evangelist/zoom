@@ -1,0 +1,343 @@
+{
+  "info": {
+    "_postman_id": "c0e6c7df-fdb0-4af9-811a-56a75cd92a30",
+    "name": "Zoom chat/",
+    "description": "Needs description.\n\nContact Support:\n Name: Zoom Developers\n Email: developer@zoom.us",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:21:47.000Z",
+    "updatedAt": "2026-06-05T15:21:47.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c0e6c7df-fdb0-4af9-811a-56a75cd92a30"
+  },
+  "item": [
+    {
+      "name": "chat",
+      "item": [
+        {
+          "name": "get",
+          "item": [
+            {
+              "name": "chat Get",
+              "id": "16154bd5-daff-4ec7-b1d8-4977439e1780",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) Archived chat messages access token. Admin who has the view privilege of Archived chat messages will get it.",
+                      "key": "access_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Start date.",
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Session Id of chat messages.",
+                      "key": "session_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) End date.",
+                      "key": "to",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The amount of records returns within a single API call. Defaults to 30. Max of 30 records.",
+                      "key": "page_size",
+                      "value": "30"
+                    },
+                    {
+                      "description": "Used to paginate through large result sets.  A next page token will be returned whenever the set of available chat history list exceeds 100.  The expiration period is 30 minutes.",
+                      "key": "next_page_token",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/chat/get",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "chat",
+                    "get"
+                  ]
+                },
+                "description": "Get chat messages for a specified period.\n\n"
+              },
+              "response": [
+                {
+                  "id": "e92c1a84-de49-4d58-9d6d-0bdb63470d89",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Archived chat messages access token. Admin who has the view privilege of Archived chat messages will get it.",
+                          "key": "access_token",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Start date.",
+                          "key": "from",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Session Id of chat messages.",
+                          "key": "session_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) End date.",
+                          "key": "to",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The amount of records returns within a single API call. Defaults to 30. Max of 30 records.",
+                          "key": "page_size",
+                          "value": "30"
+                        },
+                        {
+                          "description": "Used to paginate through large result sets.  A next page token will be returned whenever the set of available chat history list exceeds 100.  The expiration period is 30 minutes.",
+                          "key": "next_page_token",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/chat/get",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "chat",
+                        "get"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"example\": {\n    \"session_id\": \"unique_id\",\n    \"group_name\": \"zoom\",\n    \"from\": \"2016-01-16T00:00:00.000Z\",\n    \"to\": \"2016-01-22T00:00:00.000Z\",\n    \"page_size\": 30,\n    \"page_count\": 1,\n    \"next_page_token\": \"\",\n    \"chat_messages\": [\n      {\n        \"message\": \"test1\",\n        \"sender\": \"\",\n        \"date_time\": \"2016-01-18T06:40:56.000Z\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-06-05T15:21:47.000Z",
+                  "updatedAt": "2026-06-05T15:21:47.000Z",
+                  "uid": "35240-e92c1a84-de49-4d58-9d6d-0bdb63470d89"
+                }
+              ],
+              "createdAt": "2026-06-05T15:21:47.000Z",
+              "updatedAt": "2026-06-05T15:21:47.000Z",
+              "uid": "35240-16154bd5-daff-4ec7-b1d8-4977439e1780"
+            }
+          ],
+          "id": "c6bcac9d-a9b4-4dd2-933d-7e067ca0bd2c",
+          "createdAt": "2026-06-05T15:21:47.000Z",
+          "updatedAt": "2026-06-05T15:21:47.000Z",
+          "uid": "35240-c6bcac9d-a9b4-4dd2-933d-7e067ca0bd2c"
+        },
+        {
+          "name": "list",
+          "item": [
+            {
+              "name": "chat List",
+              "id": "74f7f03c-1c31-4603-ad6e-16269a270591",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) Archived chat messages access token. Admin who has the view privilege of Archived chat messages will get it.",
+                      "key": "access_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Start date.",
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) End date.",
+                      "key": "to",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The amount of records returns within a single API call. Defaults to 30. Max of 30 records.",
+                      "key": "page_size",
+                      "value": "30"
+                    },
+                    {
+                      "description": "Email query condition.",
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Used to paginate through large result sets.  A next page token will be returned whenever the set of available chat history list exceeds 100.  The expiration period is 30 minutes.",
+                      "key": "next_page_token",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/chat/list",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "chat",
+                    "list"
+                  ]
+                },
+                "description": "Get chat history list for a specified time period.\n\n"
+              },
+              "response": [
+                {
+                  "id": "f8e2612c-99e7-4f7c-b022-d5b321f04e94",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Archived chat messages access token. Admin who has the view privilege of Archived chat messages will get it.",
+                          "key": "access_token",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Start date.",
+                          "key": "from",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) End date.",
+                          "key": "to",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The amount of records returns within a single API call. Defaults to 30. Max of 30 records.",
+                          "key": "page_size",
+                          "value": "30"
+                        },
+                        {
+                          "description": "Email query condition.",
+                          "key": "email",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Used to paginate through large result sets.  A next page token will be returned whenever the set of available chat history list exceeds 100.  The expiration period is 30 minutes.",
+                          "key": "next_page_token",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/chat/list",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "chat",
+                        "list"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "null",
+                  "createdAt": "2026-06-05T15:21:47.000Z",
+                  "updatedAt": "2026-06-05T15:21:47.000Z",
+                  "uid": "35240-f8e2612c-99e7-4f7c-b022-d5b321f04e94"
+                }
+              ],
+              "createdAt": "2026-06-05T15:21:47.000Z",
+              "updatedAt": "2026-06-05T15:21:47.000Z",
+              "uid": "35240-74f7f03c-1c31-4603-ad6e-16269a270591"
+            }
+          ],
+          "id": "0aa102f6-3622-4ed1-8ce4-720366274c95",
+          "createdAt": "2026-06-05T15:21:47.000Z",
+          "updatedAt": "2026-06-05T15:21:47.000Z",
+          "uid": "35240-0aa102f6-3622-4ed1-8ce4-720366274c95"
+        }
+      ],
+      "id": "a3c2621b-a1c1-42b2-a7bd-f57eff595e0c",
+      "createdAt": "2026-06-05T15:21:47.000Z",
+      "updatedAt": "2026-06-05T15:21:47.000Z",
+      "uid": "35240-a3c2621b-a1c1-42b2-a7bd-f57eff595e0c"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.zoom.us/v1"
+    }
+  ]
+}

@@ -1,0 +1,587 @@
+{
+  "info": {
+    "_postman_id": "6e48624f-c9ee-4f68-9a6f-a508d2f5c34e",
+    "name": "Zoom recording/",
+    "description": "Needs description.\n\nContact Support:\n Name: Zoom Developers\n Email: developer@zoom.us",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:22:22.000Z",
+    "updatedAt": "2026-06-05T15:22:22.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-6e48624f-c9ee-4f68-9a6f-a508d2f5c34e"
+  },
+  "item": [
+    {
+      "name": "mc",
+      "item": [
+        {
+          "name": "recording",
+          "item": [
+            {
+              "name": "list",
+              "item": [
+                {
+                  "name": "mc Recording List",
+                  "id": "cd6d2b22-cd33-452a-9714-cc0a367e3242",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Meeting host user ID. Can be any user under this account.",
+                          "key": "host_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The meeting number.",
+                          "key": "meeting_number",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The meeting start time after this date, MM/dd/yyyy hh:mm a. For example: 11/05/2014 09:05 pm. Use the host\u2019s time zone, if host has not set time zone, will use GMT.",
+                          "key": "from",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The meeting start time before this date, MM/dd/yyyy hh:mm a.",
+                          "key": "to",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The amount of records returns within a single API call. Defaults to 30. Max of 300 meetings.",
+                          "key": "page_size",
+                          "value": "30"
+                        },
+                        {
+                          "description": "Current page number of returned records. Default to 1.",
+                          "key": "page_number",
+                          "value": "1"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/mc/recording/list",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "mc",
+                        "recording",
+                        "list"
+                      ]
+                    },
+                    "description": "Lists all the cloud recordings meetings on a Meeting Connector\n\n"
+                  },
+                  "response": [
+                    {
+                      "id": "6e1844a3-783e-45f6-95b4-933de495a1fd",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) Meeting host user ID. Can be any user under this account.",
+                              "key": "host_id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The meeting number.",
+                              "key": "meeting_number",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The meeting start time after this date, MM/dd/yyyy hh:mm a. For example: 11/05/2014 09:05 pm. Use the host\u2019s time zone, if host has not set time zone, will use GMT.",
+                              "key": "from",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The meeting start time before this date, MM/dd/yyyy hh:mm a.",
+                              "key": "to",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The amount of records returns within a single API call. Defaults to 30. Max of 300 meetings.",
+                              "key": "page_size",
+                              "value": "30"
+                            },
+                            {
+                              "description": "Current page number of returned records. Default to 1.",
+                              "key": "page_number",
+                              "value": "1"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/mc/recording/list",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "mc",
+                            "recording",
+                            "list"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"example\": {\n    \"page_count\": 1,\n    \"page_number\": 1,\n    \"page_size\": 15,\n    \"total_records\": 1,\n    \"meetings\": [\n      {\n        \"uuid\": \"unique_id\",\n        \"meeting_number\": \"123456789\",\n        \"host_id\": \"unique_id\",\n        \"account_id\": \"unique_id\",\n        \"topic\": \"Meeting Topic\",\n        \"start_time\": \"2014-11-06T04:10:10.000Z\",\n        \"timezone\": \"America/Los_Angeles\",\n        \"duration\": 999,\n        \"total_size\": 4324324324,\n        \"recording_count\": 1,\n        \"recording_files\": [\n          {\n            \"meeting_id\": \"unique_id\",\n            \"recording_start\": \"2014-11-06T04:14:10.000Z\",\n            \"recording_end\": \"2014-11-06T04:24:10.000Z\",\n            \"file_type\": \"M4A\",\n            \"file_size\": 432432,\n            \"play_url\": \"https://brand.zoom.us/recording/play/HzMyuI23bqxlJLVJLrww3L9ZuFeZEvYtG0vQ6pHhp6Twr6GPjX4Qks_CJak7jrU2\",\n            \"download_url\": \"https://brand.zoom.us/recording/download/HzMyuI23bqxlJLVJLrww3L9ZuFeZEvYtG0vQ6pHhp6Twr6GPjX4Qks_CJak7jrU2\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-06-05T15:22:23.000Z",
+                      "updatedAt": "2026-06-05T15:22:23.000Z",
+                      "uid": "35240-6e1844a3-783e-45f6-95b4-933de495a1fd"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:22:23.000Z",
+                  "updatedAt": "2026-06-05T15:22:23.000Z",
+                  "uid": "35240-cd6d2b22-cd33-452a-9714-cc0a367e3242"
+                }
+              ],
+              "id": "3d05fe67-fa98-4cdd-9d18-52bcac8e2f9a",
+              "createdAt": "2026-06-05T15:22:23.000Z",
+              "updatedAt": "2026-06-05T15:22:23.000Z",
+              "uid": "35240-3d05fe67-fa98-4cdd-9d18-52bcac8e2f9a"
+            }
+          ],
+          "id": "0bc32f30-d41f-4d04-b578-7668dece48af",
+          "createdAt": "2026-06-05T15:22:23.000Z",
+          "updatedAt": "2026-06-05T15:22:23.000Z",
+          "uid": "35240-0bc32f30-d41f-4d04-b578-7668dece48af"
+        }
+      ],
+      "id": "9e86afc5-c804-4020-b59b-196e078618d1",
+      "createdAt": "2026-06-05T15:22:23.000Z",
+      "updatedAt": "2026-06-05T15:22:23.000Z",
+      "uid": "35240-9e86afc5-c804-4020-b59b-196e078618d1"
+    },
+    {
+      "name": "recording",
+      "item": [
+        {
+          "name": "delete",
+          "item": [
+            {
+              "name": "recording Delete",
+              "id": "8be8cbda-c5e5-4f54-a04f-077a7164131a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) The meeting ID. Example: ucc69C82Q5mTNyCRWE29Aw== Or B9C73AF4-2F36-4399-9337-2091584DBD03",
+                      "key": "meeting_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The file ID, if given this, will only delete this one file, if not given this, will delete all files of the meeting",
+                      "key": "file_id",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/recording/delete",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "recording",
+                    "delete"
+                  ]
+                },
+                "description": "Delete recorded meeting either on Zoom cloud or on-premise.\n\n"
+              },
+              "response": [
+                {
+                  "id": "0da2fa06-208a-49c7-932f-a50d15817d6a",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) The meeting ID. Example: ucc69C82Q5mTNyCRWE29Aw== Or B9C73AF4-2F36-4399-9337-2091584DBD03",
+                          "key": "meeting_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The file ID, if given this, will only delete this one file, if not given this, will delete all files of the meeting",
+                          "key": "file_id",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/recording/delete",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "recording",
+                        "delete"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"example\": {\n    \"deleted_at\": \"2012-11-25T12:00:00.000Z\"\n  }\n}",
+                  "createdAt": "2026-06-05T15:22:23.000Z",
+                  "updatedAt": "2026-06-05T15:22:23.000Z",
+                  "uid": "35240-0da2fa06-208a-49c7-932f-a50d15817d6a"
+                }
+              ],
+              "createdAt": "2026-06-05T15:22:23.000Z",
+              "updatedAt": "2026-06-05T15:22:23.000Z",
+              "uid": "35240-8be8cbda-c5e5-4f54-a04f-077a7164131a"
+            }
+          ],
+          "id": "39ea2cfe-5d1e-4535-9cd8-e71eaf62b44f",
+          "createdAt": "2026-06-05T15:22:23.000Z",
+          "updatedAt": "2026-06-05T15:22:23.000Z",
+          "uid": "35240-39ea2cfe-5d1e-4535-9cd8-e71eaf62b44f"
+        },
+        {
+          "name": "get",
+          "item": [
+            {
+              "name": "recording Get",
+              "id": "5979a3d8-accf-45b3-9294-ea43bd460250",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) The meeting ID.",
+                      "key": "meeting_id",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/recording/get",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "recording",
+                    "get"
+                  ]
+                },
+                "description": "Get the recorded meeting on either Zoom cloud or on-prem.\n\n"
+              },
+              "response": [
+                {
+                  "id": "ffc94a4f-44a4-4ee5-919d-5f31f9909a1f",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) The meeting ID.",
+                          "key": "meeting_id",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/recording/get",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "recording",
+                        "get"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"example\": {\n    \"uuid\": \"unique_id\",\n    \"meeting_number\": \"123456789\",\n    \"host_id\": \"unique_id\",\n    \"account_id\": \"unique_id\",\n    \"topic\": \"Meeting Topic\",\n    \"start_time\": \"2015-04-13T01:06:04.000Z\",\n    \"timezone\": \"UTC\",\n    \"duration\": 1,\n    \"total_size\": 686496,\n    \"recording_count\": 3,\n    \"recording_files\": [\n      {\n        \"meeting_id\": \"unique_id\",\n        \"recording_start\": \"2015-04-13T01:06:36.000Z\",\n        \"recording_end\": \"2015-04-13T01:06:47.000Z\",\n        \"file_type\": \"MP4\",\n        \"file_size\": 438482,\n        \"play_url\": \"https://brand.zoom.us/recording/play/HzMyuI23bqxlJLVJLrww3L9ZuFeZEvYtG0vQ6pHhp6Twr6GPjX4Qks_CJak7jrU2\",\n        \"download_url\": \"https://brand.zoom.us/recording/download/HzMyuI23bqxlJLVJLrww3L9ZuFeZEvYtG0vQ6pHhp6Twr6GPjX4Qks_CJak7jrU2\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-06-05T15:22:23.000Z",
+                  "updatedAt": "2026-06-05T15:22:23.000Z",
+                  "uid": "35240-ffc94a4f-44a4-4ee5-919d-5f31f9909a1f"
+                }
+              ],
+              "createdAt": "2026-06-05T15:22:23.000Z",
+              "updatedAt": "2026-06-05T15:22:23.000Z",
+              "uid": "35240-5979a3d8-accf-45b3-9294-ea43bd460250"
+            }
+          ],
+          "id": "2650dfd0-9cd6-48b0-9fd1-dcfef09a8836",
+          "createdAt": "2026-06-05T15:22:23.000Z",
+          "updatedAt": "2026-06-05T15:22:23.000Z",
+          "uid": "35240-2650dfd0-9cd6-48b0-9fd1-dcfef09a8836"
+        },
+        {
+          "name": "list",
+          "item": [
+            {
+              "name": "recording List",
+              "id": "c79b6e59-f70f-40fc-ade8-558a3ef61901",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) Meeting host user ID. Can be any user under this account.",
+                      "key": "host_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The meeting number.",
+                      "key": "meeting_number",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The meeting start time after this date, MM/dd/yyyy hh:mm a. For example: 11/05/2014 09:05 pm. Use the host\u2019s time zone, if host has not set time zone, will use GMT.",
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The meeting start time before this date, MM/dd/yyyy hh:mm a.",
+                      "key": "to",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The amount of records returns within a single API call. Defaults to 30. Max of 300 meetings.",
+                      "key": "page_size",
+                      "value": "30"
+                    },
+                    {
+                      "description": "Current page number of returned records. Default to 1.",
+                      "key": "page_number",
+                      "value": "1"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/recording/list",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "recording",
+                    "list"
+                  ]
+                },
+                "description": "List all the cloud recording meetings on Zoom.\n\n"
+              },
+              "response": [
+                {
+                  "id": "78711e94-c817-4cc3-9672-df496e7b91bd",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Meeting host user ID. Can be any user under this account.",
+                          "key": "host_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The meeting number.",
+                          "key": "meeting_number",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The meeting start time after this date, MM/dd/yyyy hh:mm a. For example: 11/05/2014 09:05 pm. Use the host\u2019s time zone, if host has not set time zone, will use GMT.",
+                          "key": "from",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The meeting start time before this date, MM/dd/yyyy hh:mm a.",
+                          "key": "to",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The amount of records returns within a single API call. Defaults to 30. Max of 300 meetings.",
+                          "key": "page_size",
+                          "value": "30"
+                        },
+                        {
+                          "description": "Current page number of returned records. Default to 1.",
+                          "key": "page_number",
+                          "value": "1"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/recording/list",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "recording",
+                        "list"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"example\": {\n    \"page_count\": 1,\n    \"page_number\": 1,\n    \"page_size\": 15,\n    \"total_records\": 1,\n    \"meetings\": [\n      {\n        \"uuid\": \"unique_id\",\n        \"meeting_number\": \"123456789\",\n        \"host_id\": \"unique_id\",\n        \"account_id\": \"unique_id\",\n        \"topic\": \"Meeting Topic\",\n        \"start_time\": \"2014-11-06T04:10:10.000Z\",\n        \"timezone\": \"America/Los_Angeles\",\n        \"duration\": 999,\n        \"total_size\": 4324324324,\n        \"recording_count\": 1,\n        \"recording_files\": [\n          {\n            \"meeting_id\": \"unique_id\",\n            \"recording_start\": \"2014-11-06T04:14:10.000Z\",\n            \"recording_end\": \"2014-11-06T04:24:10.000Z\",\n            \"file_type\": \"M4A\",\n            \"file_size\": 432432,\n            \"status\": \"completed\",\n            \"play_url\": \"https://brand.zoom.us/recording/play/HzMyuI23bqxlJLVJLrww3L9ZuFeZEvYtG0vQ6pHhp6Twr6GPjX4Qks_CJak7jrU2\",\n            \"download_url\": \"https://brand.zoom.us/recording/download/HzMyuI23bqxlJLVJLrww3L9ZuFeZEvYtG0vQ6pHhp6Twr6GPjX4Qks_CJak7jrU2\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-06-05T15:22:23.000Z",
+                  "updatedAt": "2026-06-05T15:22:23.000Z",
+                  "uid": "35240-78711e94-c817-4cc3-9672-df496e7b91bd"
+                }
+              ],
+              "createdAt": "2026-06-05T15:22:23.000Z",
+              "updatedAt": "2026-06-05T15:22:23.000Z",
+              "uid": "35240-c79b6e59-f70f-40fc-ade8-558a3ef61901"
+            }
+          ],
+          "id": "fbf783be-ae3d-4939-a5ad-d082cf0bf8e5",
+          "createdAt": "2026-06-05T15:22:23.000Z",
+          "updatedAt": "2026-06-05T15:22:23.000Z",
+          "uid": "35240-fbf783be-ae3d-4939-a5ad-d082cf0bf8e5"
+        }
+      ],
+      "id": "4f0a9087-7278-43e4-a00c-c1ef7f463317",
+      "createdAt": "2026-06-05T15:22:23.000Z",
+      "updatedAt": "2026-06-05T15:22:23.000Z",
+      "uid": "35240-4f0a9087-7278-43e4-a00c-c1ef7f463317"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.zoom.us/v1"
+    }
+  ]
+}

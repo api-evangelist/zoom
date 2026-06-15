@@ -1,0 +1,1884 @@
+{
+  "info": {
+    "_postman_id": "f3d11b3f-5248-4d92-a313-66a1de432b7e",
+    "name": "Zoom group/",
+    "description": "Needs description.\n\nContact Support:\n Name: Zoom Developers\n Email: developer@zoom.us",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:21:48.000Z",
+    "updatedAt": "2026-06-05T15:21:48.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f3d11b3f-5248-4d92-a313-66a1de432b7e"
+  },
+  "item": [
+    {
+      "name": "group",
+      "item": [
+        {
+          "name": "create",
+          "item": [
+            {
+              "name": "group Create",
+              "id": "1aace19b-beb6-4f64-aabc-4af8ee129d29",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) Group name, must be unique in one account.",
+                      "key": "name",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/group/create",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "group",
+                    "create"
+                  ]
+                },
+                "description": "Create a group on Zoom, return the new group info.\n\n"
+              },
+              "response": [
+                {
+                  "id": "56114d2a-d43e-466a-b520-ba3ec4bbe664",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Group name, must be unique in one account.",
+                          "key": "name",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/group/create",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "group",
+                        "create"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"example\": {\n    \"group_id\": \"unique_id\",\n    \"account_id\": \"unique_id\",\n    \"name\": \"New Group Test\",\n    \"total_members\": 0\n  }\n}",
+                  "createdAt": "2026-06-05T15:21:48.000Z",
+                  "updatedAt": "2026-06-05T15:21:48.000Z",
+                  "uid": "35240-56114d2a-d43e-466a-b520-ba3ec4bbe664"
+                }
+              ],
+              "createdAt": "2026-06-05T15:21:48.000Z",
+              "updatedAt": "2026-06-05T15:21:48.000Z",
+              "uid": "35240-1aace19b-beb6-4f64-aabc-4af8ee129d29"
+            }
+          ],
+          "id": "0e669430-92e5-4d9b-99dd-7ef4e74ef21b",
+          "createdAt": "2026-06-05T15:21:48.000Z",
+          "updatedAt": "2026-06-05T15:21:48.000Z",
+          "uid": "35240-0e669430-92e5-4d9b-99dd-7ef4e74ef21b"
+        },
+        {
+          "name": "delete",
+          "item": [
+            {
+              "name": "group Delete",
+              "id": "9556a7d1-7e5e-4cb3-9c68-50781de28e20",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) Group ID.",
+                      "key": "id",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/group/delete",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "group",
+                    "delete"
+                  ]
+                },
+                "description": "Delete a group on Zoom, return the deleted group ID.\n\n"
+              },
+              "response": [
+                {
+                  "id": "3c9bb7ae-17a3-4c01-8c8f-2bbb9b3a008b",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Group ID.",
+                          "key": "id",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/group/delete",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "group",
+                        "delete"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"example\": {\n    \"deleted_at\": \"2015-08-20T08:41:58.000Z\",\n    \"deleted_count\": 1\n  }\n}",
+                  "createdAt": "2026-06-05T15:21:48.000Z",
+                  "updatedAt": "2026-06-05T15:21:48.000Z",
+                  "uid": "35240-3c9bb7ae-17a3-4c01-8c8f-2bbb9b3a008b"
+                }
+              ],
+              "createdAt": "2026-06-05T15:21:48.000Z",
+              "updatedAt": "2026-06-05T15:21:48.000Z",
+              "uid": "35240-9556a7d1-7e5e-4cb3-9c68-50781de28e20"
+            }
+          ],
+          "id": "22333b27-615a-4558-86cc-90d786a0d299",
+          "createdAt": "2026-06-05T15:21:48.000Z",
+          "updatedAt": "2026-06-05T15:21:48.000Z",
+          "uid": "35240-22333b27-615a-4558-86cc-90d786a0d299"
+        },
+        {
+          "name": "edit",
+          "item": [
+            {
+              "name": "group Edit",
+              "id": "7f070d92-4cf3-46c0-ad8f-7a126228fc75",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) Group ID.",
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Group name, must be unique in one account.",
+                      "key": "name",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/group/edit",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "group",
+                    "edit"
+                  ]
+                },
+                "description": "Edit a group on Zoom, return the new group info.\n\n"
+              },
+              "response": [
+                {
+                  "id": "ce0b7d2a-9466-4d8f-b8fd-42858ae56262",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Group ID.",
+                          "key": "id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Group name, must be unique in one account.",
+                          "key": "name",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/group/edit",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "group",
+                        "edit"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"example\": {\n    \"group_id\": \"unique_id\",\n    \"account_id\": \"unique_id\",\n    \"name\": \"New Group Test\",\n    \"total_members\": 0\n  }\n}",
+                  "createdAt": "2026-06-05T15:21:48.000Z",
+                  "updatedAt": "2026-06-05T15:21:48.000Z",
+                  "uid": "35240-ce0b7d2a-9466-4d8f-b8fd-42858ae56262"
+                }
+              ],
+              "createdAt": "2026-06-05T15:21:48.000Z",
+              "updatedAt": "2026-06-05T15:21:48.000Z",
+              "uid": "35240-7f070d92-4cf3-46c0-ad8f-7a126228fc75"
+            }
+          ],
+          "id": "28fa870c-1f0c-468d-942e-6cd7a21b41fd",
+          "createdAt": "2026-06-05T15:21:48.000Z",
+          "updatedAt": "2026-06-05T15:21:48.000Z",
+          "uid": "35240-28fa870c-1f0c-468d-942e-6cd7a21b41fd"
+        },
+        {
+          "name": "get",
+          "item": [
+            {
+              "name": "group Get",
+              "id": "8e0c56b5-19fc-4118-8299-0385f8ac4de8",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) Group ID.",
+                      "key": "id",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/group/get",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "group",
+                    "get"
+                  ]
+                },
+                "description": "Get a group on Zoom via ID, return the group info.\n\n"
+              },
+              "response": [
+                {
+                  "id": "f13af662-f1c7-4a53-a412-201b88f57a3d",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Group ID.",
+                          "key": "id",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/group/get",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "group",
+                        "get"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"example\": {\n    \"group_id\": \"unique_id\",\n    \"account_id\": \"unique_id\",\n    \"name\": \"Group Test\",\n    \"total_members\": 2\n  }\n}",
+                  "createdAt": "2026-06-05T15:21:48.000Z",
+                  "updatedAt": "2026-06-05T15:21:48.000Z",
+                  "uid": "35240-f13af662-f1c7-4a53-a412-201b88f57a3d"
+                }
+              ],
+              "createdAt": "2026-06-05T15:21:48.000Z",
+              "updatedAt": "2026-06-05T15:21:48.000Z",
+              "uid": "35240-8e0c56b5-19fc-4118-8299-0385f8ac4de8"
+            }
+          ],
+          "id": "6d049609-d147-46f5-9ce1-143332bd9092",
+          "createdAt": "2026-06-05T15:21:48.000Z",
+          "updatedAt": "2026-06-05T15:21:48.000Z",
+          "uid": "35240-6d049609-d147-46f5-9ce1-143332bd9092"
+        },
+        {
+          "name": "list",
+          "item": [
+            {
+              "name": "group List",
+              "id": "312fce58-51a1-4df2-925d-739fa1c61623",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) Your API Key",
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Your API Secret",
+                      "key": "api_secret",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/group/list",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "group",
+                    "list"
+                  ]
+                },
+                "description": "List all groups on your Zoom account.\n\n"
+              },
+              "response": [
+                {
+                  "id": "53fdad70-3a75-42f9-a3de-461120bfea16",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Your API Key",
+                          "key": "api_key",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Your API Secret",
+                          "key": "api_secret",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/group/list",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "group",
+                        "list"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"example\": {\n    \"total_records\": 1,\n    \"groups\": [\n      {\n        \"group_id\": \"unique_id\",\n        \"account_id\": \"unique_id\",\n        \"name\": \"Group Test1\",\n        \"total_members\": 40\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-06-05T15:21:48.000Z",
+                  "updatedAt": "2026-06-05T15:21:48.000Z",
+                  "uid": "35240-53fdad70-3a75-42f9-a3de-461120bfea16"
+                }
+              ],
+              "createdAt": "2026-06-05T15:21:48.000Z",
+              "updatedAt": "2026-06-05T15:21:48.000Z",
+              "uid": "35240-312fce58-51a1-4df2-925d-739fa1c61623"
+            }
+          ],
+          "id": "3105228c-b93d-4c93-8450-c31cbe4236ac",
+          "createdAt": "2026-06-05T15:21:48.000Z",
+          "updatedAt": "2026-06-05T15:21:48.000Z",
+          "uid": "35240-3105228c-b93d-4c93-8450-c31cbe4236ac"
+        },
+        {
+          "name": "member",
+          "item": [
+            {
+              "name": "add",
+              "item": [
+                {
+                  "name": "group Member Add",
+                  "id": "9911536c-ddaf-4811-94d9-c0a9b8f40c1f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Group ID.",
+                          "key": "id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) The member IDs, separated by comma",
+                          "key": "member_ids",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/group/member/add",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "group",
+                        "member",
+                        "add"
+                      ]
+                    },
+                    "description": "Add members to a group on Zoom.\n\n"
+                  },
+                  "response": [
+                    {
+                      "id": "e562ad2a-378d-4b35-9db6-fc874f8b0dc3",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) Group ID.",
+                              "key": "id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) The member IDs, separated by comma",
+                              "key": "member_ids",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/group/member/add",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "group",
+                            "member",
+                            "add"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"example\": {\n    \"add_at\": \"2015-08-20T08:57:38.000Z\",\n    \"add_count\": 2\n  }\n}",
+                      "createdAt": "2026-06-05T15:21:48.000Z",
+                      "updatedAt": "2026-06-05T15:21:48.000Z",
+                      "uid": "35240-e562ad2a-378d-4b35-9db6-fc874f8b0dc3"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:21:48.000Z",
+                  "updatedAt": "2026-06-05T15:21:48.000Z",
+                  "uid": "35240-9911536c-ddaf-4811-94d9-c0a9b8f40c1f"
+                }
+              ],
+              "id": "f46dee6c-8a6e-4999-80a3-4380d93036ad",
+              "createdAt": "2026-06-05T15:21:48.000Z",
+              "updatedAt": "2026-06-05T15:21:48.000Z",
+              "uid": "35240-f46dee6c-8a6e-4999-80a3-4380d93036ad"
+            },
+            {
+              "name": "delete",
+              "item": [
+                {
+                  "name": "group Member Delete",
+                  "id": "14b4410e-d0d9-44ea-b030-bb3f1cf3166f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Group ID.",
+                          "key": "id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) The member IDs, separated by comma",
+                          "key": "member_ids",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/group/member/delete",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "group",
+                        "member",
+                        "delete"
+                      ]
+                    },
+                    "description": "Delete members of a group on Zoom.\n\n"
+                  },
+                  "response": [
+                    {
+                      "id": "0806fddb-2add-4423-82d6-942727c8f6e9",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) Group ID.",
+                              "key": "id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) The member IDs, separated by comma",
+                              "key": "member_ids",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/group/member/delete",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "group",
+                            "member",
+                            "delete"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"example\": {\n    \"deleted_at\": \"2015-08-20T08:57:38.000Z\",\n    \"deleted_count\": 2\n  }\n}",
+                      "createdAt": "2026-06-05T15:21:48.000Z",
+                      "updatedAt": "2026-06-05T15:21:48.000Z",
+                      "uid": "35240-0806fddb-2add-4423-82d6-942727c8f6e9"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:21:48.000Z",
+                  "updatedAt": "2026-06-05T15:21:48.000Z",
+                  "uid": "35240-14b4410e-d0d9-44ea-b030-bb3f1cf3166f"
+                }
+              ],
+              "id": "c8053aad-89ff-4e4a-a0a8-d1347ad02e04",
+              "createdAt": "2026-06-05T15:21:48.000Z",
+              "updatedAt": "2026-06-05T15:21:48.000Z",
+              "uid": "35240-c8053aad-89ff-4e4a-a0a8-d1347ad02e04"
+            },
+            {
+              "name": "list",
+              "item": [
+                {
+                  "name": "group Member List",
+                  "id": "0f7b5f3a-9e2e-42c5-ba48-d71eca0e982f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Group ID.",
+                          "key": "id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The amount of records returns within a single API call. Defaults to 30.",
+                          "key": "page_size",
+                          "value": "30"
+                        },
+                        {
+                          "description": "Current page number of returned records. Default to 1.",
+                          "key": "page_number",
+                          "value": "1"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/group/member/list",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "group",
+                        "member",
+                        "list"
+                      ]
+                    },
+                    "description": "Lists the members of a group on Zoom.\n\n"
+                  },
+                  "response": [
+                    {
+                      "id": "f0ed957b-f179-4e52-aea3-f3547b14d530",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) Group ID.",
+                              "key": "id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The amount of records returns within a single API call. Defaults to 30.",
+                              "key": "page_size",
+                              "value": "30"
+                            },
+                            {
+                              "description": "Current page number of returned records. Default to 1.",
+                              "key": "page_number",
+                              "value": "1"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/group/member/list",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "group",
+                            "member",
+                            "list"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"example\": {\n    \"page_count\": 1,\n    \"page_number\": 1,\n    \"page_size\": 30,\n    \"total_records\": 1,\n    \"members\": [\n      {\n        \"email\": \"email_address\",\n        \"first_name\": \"Zoomie\",\n        \"last_name\": \"Userton\",\n        \"pic_url\": \"https://ssotest.zoom.us/p/6EoubcvJR7eF2grNXJkrHA/f2003a9c-3095-4865-8536-03cc6f211e86-9569\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-06-05T15:21:48.000Z",
+                      "updatedAt": "2026-06-05T15:21:48.000Z",
+                      "uid": "35240-f0ed957b-f179-4e52-aea3-f3547b14d530"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:21:48.000Z",
+                  "updatedAt": "2026-06-05T15:21:48.000Z",
+                  "uid": "35240-0f7b5f3a-9e2e-42c5-ba48-d71eca0e982f"
+                }
+              ],
+              "id": "794694af-81f3-462e-ae58-7a77cf6e7ae7",
+              "createdAt": "2026-06-05T15:21:48.000Z",
+              "updatedAt": "2026-06-05T15:21:48.000Z",
+              "uid": "35240-794694af-81f3-462e-ae58-7a77cf6e7ae7"
+            }
+          ],
+          "id": "3ab1bb86-add0-448e-b320-a2e1ebeec8f7",
+          "createdAt": "2026-06-05T15:21:48.000Z",
+          "updatedAt": "2026-06-05T15:21:48.000Z",
+          "uid": "35240-3ab1bb86-add0-448e-b320-a2e1ebeec8f7"
+        }
+      ],
+      "id": "a2414f1e-1295-4987-86f9-ab5b3c930c8c",
+      "createdAt": "2026-06-05T15:21:48.000Z",
+      "updatedAt": "2026-06-05T15:21:48.000Z",
+      "uid": "35240-a2414f1e-1295-4987-86f9-ab5b3c930c8c"
+    },
+    {
+      "name": "im",
+      "item": [
+        {
+          "name": "group",
+          "item": [
+            {
+              "name": "create",
+              "item": [
+                {
+                  "name": "im Group Group Create",
+                  "id": "dfc52f26-0583-473c-af4b-c8b3c9bac557",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Group name, must be unique in one account.",
+                          "key": "name",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Group type, Normal: normal group, Restricted: Restricted group, Shared: Shared group.",
+                          "key": "type",
+                          "value": "Normal"
+                        },
+                        {
+                          "description": "Others in the same email domain can search members.",
+                          "key": "option_search_by_domain",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Others under same account can search members.",
+                          "key": "option_search_by_account",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Others under same master account, including all sub accounts can search members.",
+                          "key": "option_search_by_ma",
+                          "value": "false"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/im/group/create",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "im",
+                        "group",
+                        "create"
+                      ]
+                    },
+                    "description": "Create a IM group on Zoom, return the new group info.\n\n"
+                  },
+                  "response": [
+                    {
+                      "id": "cdd1edb1-21be-477d-b04e-432de4089ee8",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) Group name, must be unique in one account.",
+                              "key": "name",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Group type, Normal: normal group, Restricted: Restricted group, Shared: Shared group.",
+                              "key": "type",
+                              "value": "Normal"
+                            },
+                            {
+                              "description": "Others in the same email domain can search members.",
+                              "key": "option_search_by_domain",
+                              "value": "false"
+                            },
+                            {
+                              "description": "Others under same account can search members.",
+                              "key": "option_search_by_account",
+                              "value": "false"
+                            },
+                            {
+                              "description": "Others under same master account, including all sub accounts can search members.",
+                              "key": "option_search_by_ma",
+                              "value": "false"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/im/group/create",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "im",
+                            "group",
+                            "create"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"example\": {\n    \"group_id\": \"unique_id\",\n    \"account_id\": \"unique_id\",\n    \"name\": \"New Group Test\",\n    \"total_members\": 0,\n    \"option_search_by_domain\": false,\n    \"option_search_by_account\": false,\n    \"option_search_by_ma_account\": false\n  }\n}",
+                      "createdAt": "2026-06-05T15:21:48.000Z",
+                      "updatedAt": "2026-06-05T15:21:48.000Z",
+                      "uid": "35240-cdd1edb1-21be-477d-b04e-432de4089ee8"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:21:48.000Z",
+                  "updatedAt": "2026-06-05T15:21:48.000Z",
+                  "uid": "35240-dfc52f26-0583-473c-af4b-c8b3c9bac557"
+                }
+              ],
+              "id": "c537dadf-710d-47a6-b299-96e5084572ef",
+              "createdAt": "2026-06-05T15:21:48.000Z",
+              "updatedAt": "2026-06-05T15:21:48.000Z",
+              "uid": "35240-c537dadf-710d-47a6-b299-96e5084572ef"
+            },
+            {
+              "name": "delete",
+              "item": [
+                {
+                  "name": "im Group Group Delete",
+                  "id": "96bf65db-9197-465b-8e82-4dad24b7ef86",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Group ID.",
+                          "key": "id",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/im/group/delete",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "im",
+                        "group",
+                        "delete"
+                      ]
+                    },
+                    "description": "Delete a IM group on Zoom, return the deleted group ID.\n\n"
+                  },
+                  "response": [
+                    {
+                      "id": "37e0a76c-28e8-4345-b358-26b1b814fcda",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) Group ID.",
+                              "key": "id",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/im/group/delete",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "im",
+                            "group",
+                            "delete"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"example\": {\n    \"deleted_at\": \"2015-08-20T08:41:58.000Z\",\n    \"deleted_count\": 1\n  }\n}",
+                      "createdAt": "2026-06-05T15:21:48.000Z",
+                      "updatedAt": "2026-06-05T15:21:48.000Z",
+                      "uid": "35240-37e0a76c-28e8-4345-b358-26b1b814fcda"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:21:48.000Z",
+                  "updatedAt": "2026-06-05T15:21:48.000Z",
+                  "uid": "35240-96bf65db-9197-465b-8e82-4dad24b7ef86"
+                }
+              ],
+              "id": "307cc173-b5b6-44b7-856f-4eb65d5a3bff",
+              "createdAt": "2026-06-05T15:21:48.000Z",
+              "updatedAt": "2026-06-05T15:21:48.000Z",
+              "uid": "35240-307cc173-b5b6-44b7-856f-4eb65d5a3bff"
+            },
+            {
+              "name": "edit",
+              "item": [
+                {
+                  "name": "im Group Group Edit",
+                  "id": "816d9d10-f3e0-490c-a438-1c47558269e3",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Group ID.",
+                          "key": "id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Group name, must be unique in one account.",
+                          "key": "name",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Group type, Normal: normal group, Restricted: Restricted group, Shared: Shared group.",
+                          "key": "type",
+                          "value": "Normal"
+                        },
+                        {
+                          "description": "Others in the same email domain can search members.",
+                          "key": "option_search_by_domain",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Others under same account can search members.",
+                          "key": "option_search_by_account",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Others under same master account, including all sub accounts can search members.",
+                          "key": "option_search_by_ma",
+                          "value": "false"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/im/group/edit",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "im",
+                        "group",
+                        "edit"
+                      ]
+                    },
+                    "description": "Edit a IM group on Zoom, return the new group info.\n\n"
+                  },
+                  "response": [
+                    {
+                      "id": "e0d1fdde-f5c2-4c65-a14f-7f9385f0d107",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) Group ID.",
+                              "key": "id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Group name, must be unique in one account.",
+                              "key": "name",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Group type, Normal: normal group, Restricted: Restricted group, Shared: Shared group.",
+                              "key": "type",
+                              "value": "Normal"
+                            },
+                            {
+                              "description": "Others in the same email domain can search members.",
+                              "key": "option_search_by_domain",
+                              "value": "false"
+                            },
+                            {
+                              "description": "Others under same account can search members.",
+                              "key": "option_search_by_account",
+                              "value": "false"
+                            },
+                            {
+                              "description": "Others under same master account, including all sub accounts can search members.",
+                              "key": "option_search_by_ma",
+                              "value": "false"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/im/group/edit",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "im",
+                            "group",
+                            "edit"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"example\": {\n    \"group_id\": \"unique_id\",\n    \"account_id\": \"unique_id\",\n    \"name\": \"New Group Test\",\n    \"total_members\": 0,\n    \"option_search_by_domain\": false,\n    \"option_search_by_account\": true,\n    \"option_search_by_ma_account\": false\n  }\n}",
+                      "createdAt": "2026-06-05T15:21:48.000Z",
+                      "updatedAt": "2026-06-05T15:21:48.000Z",
+                      "uid": "35240-e0d1fdde-f5c2-4c65-a14f-7f9385f0d107"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:21:48.000Z",
+                  "updatedAt": "2026-06-05T15:21:48.000Z",
+                  "uid": "35240-816d9d10-f3e0-490c-a438-1c47558269e3"
+                }
+              ],
+              "id": "38850772-0e17-4d6d-a223-088a76040a62",
+              "createdAt": "2026-06-05T15:21:48.000Z",
+              "updatedAt": "2026-06-05T15:21:48.000Z",
+              "uid": "35240-38850772-0e17-4d6d-a223-088a76040a62"
+            },
+            {
+              "name": "get",
+              "item": [
+                {
+                  "name": "im Group Group Get",
+                  "id": "89d38013-b7fc-4a1b-a165-57326c2a141f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Group ID.",
+                          "key": "id",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/im/group/get",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "im",
+                        "group",
+                        "get"
+                      ]
+                    },
+                    "description": "Get a IM group on Zoom via ID, return the group info.\n\n"
+                  },
+                  "response": [
+                    {
+                      "id": "74c6728a-4310-479d-8fc9-817566f9f2db",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) Group ID.",
+                              "key": "id",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/im/group/get",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "im",
+                            "group",
+                            "get"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"example\": {\n    \"group_id\": \"unique_id\",\n    \"account_id\": \"unique_id\",\n    \"name\": \"Group Test\",\n    \"total_members\": 2,\n    \"option_search_by_domain\": false,\n    \"option_search_by_account\": true,\n    \"option_search_by_ma_account\": false\n  }\n}",
+                      "createdAt": "2026-06-05T15:21:48.000Z",
+                      "updatedAt": "2026-06-05T15:21:48.000Z",
+                      "uid": "35240-74c6728a-4310-479d-8fc9-817566f9f2db"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:21:48.000Z",
+                  "updatedAt": "2026-06-05T15:21:48.000Z",
+                  "uid": "35240-89d38013-b7fc-4a1b-a165-57326c2a141f"
+                }
+              ],
+              "id": "1436a146-f97b-4f3f-a26e-4912566fb1c2",
+              "createdAt": "2026-06-05T15:21:48.000Z",
+              "updatedAt": "2026-06-05T15:21:48.000Z",
+              "uid": "35240-1436a146-f97b-4f3f-a26e-4912566fb1c2"
+            },
+            {
+              "name": "list",
+              "item": [
+                {
+                  "name": "im Group Group List",
+                  "id": "2a232980-7b8c-4b0b-8cec-d4abe428ce47",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Your API Key",
+                          "key": "api_key",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Your API Secret",
+                          "key": "api_secret",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/im/group/list",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "im",
+                        "group",
+                        "list"
+                      ]
+                    },
+                    "description": "List all IM groups on your Zoom account.\n\n"
+                  },
+                  "response": [
+                    {
+                      "id": "a3f34d39-fba9-43b3-a31c-97f5133feadf",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) Your API Key",
+                              "key": "api_key",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) Your API Secret",
+                              "key": "api_secret",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/im/group/list",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "im",
+                            "group",
+                            "list"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"example\": {\n    \"total_records\": 1,\n    \"groups\": [\n      {\n        \"group_id\": \"unique_id\",\n        \"account_id\": \"unique_id\",\n        \"name\": \"Group Test1\",\n        \"total_members\": 40,\n        \"option_search_by_domain\": false,\n        \"option_search_by_account\": true,\n        \"option_search_by_ma_account\": false,\n        \"last_modified_time\": \"2016-04-16T07:45:41.000Z\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-06-05T15:21:48.000Z",
+                      "updatedAt": "2026-06-05T15:21:48.000Z",
+                      "uid": "35240-a3f34d39-fba9-43b3-a31c-97f5133feadf"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:21:48.000Z",
+                  "updatedAt": "2026-06-05T15:21:48.000Z",
+                  "uid": "35240-2a232980-7b8c-4b0b-8cec-d4abe428ce47"
+                }
+              ],
+              "id": "ce19a138-1f69-4c8d-9eb8-9cdf1826621d",
+              "createdAt": "2026-06-05T15:21:48.000Z",
+              "updatedAt": "2026-06-05T15:21:48.000Z",
+              "uid": "35240-ce19a138-1f69-4c8d-9eb8-9cdf1826621d"
+            },
+            {
+              "name": "member",
+              "item": [
+                {
+                  "name": "delete",
+                  "item": [
+                    {
+                      "name": "im Group Group Member Delete",
+                      "id": "fb32ec3a-2bfe-41d1-8a7c-be7bdef32207",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) Group ID.",
+                              "key": "id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) The member IDs, separated by comma",
+                              "key": "member_ids",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/im/group/member/delete",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "im",
+                            "group",
+                            "member",
+                            "delete"
+                          ]
+                        },
+                        "description": "Delete members of a IM group on Zoom.\n\n"
+                      },
+                      "response": [
+                        {
+                          "id": "21fe9586-ddfd-4db1-8d83-558813915b12",
+                          "name": "Success",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "urlencoded",
+                              "urlencoded": [
+                                {
+                                  "description": "(Required) Group ID.",
+                                  "key": "id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "(Required) The member IDs, separated by comma",
+                                  "key": "member_ids",
+                                  "value": "<string>"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/im/group/member/delete",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "im",
+                                "group",
+                                "member",
+                                "delete"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"example\": {\n    \"deleted_at\": \"2015-08-20T08:57:38.000Z\",\n    \"deleted_count\": 2\n  }\n}",
+                          "createdAt": "2026-06-05T15:21:48.000Z",
+                          "updatedAt": "2026-06-05T15:21:48.000Z",
+                          "uid": "35240-21fe9586-ddfd-4db1-8d83-558813915b12"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:21:48.000Z",
+                      "updatedAt": "2026-06-05T15:21:48.000Z",
+                      "uid": "35240-fb32ec3a-2bfe-41d1-8a7c-be7bdef32207"
+                    }
+                  ],
+                  "id": "53ddaa9a-93fa-488f-bcb5-14058ae284f6",
+                  "createdAt": "2026-06-05T15:21:48.000Z",
+                  "updatedAt": "2026-06-05T15:21:48.000Z",
+                  "uid": "35240-53ddaa9a-93fa-488f-bcb5-14058ae284f6"
+                },
+                {
+                  "name": "list",
+                  "item": [
+                    {
+                      "name": "im Group Group Member List",
+                      "id": "6efe4b26-49a5-49c1-a936-4e5efd0f0f3d",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) Group ID.",
+                              "key": "id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The amount of records returns within a single API call. Defaults to 30.",
+                              "key": "page_size",
+                              "value": "30"
+                            },
+                            {
+                              "description": "Current page number of returned records. Default to 1.",
+                              "key": "page_number",
+                              "value": "1"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/im/group/member/list",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "im",
+                            "group",
+                            "member",
+                            "list"
+                          ]
+                        },
+                        "description": "Lists the members of a IM group on Zoom.\n\n"
+                      },
+                      "response": [
+                        {
+                          "id": "bd4b5324-df9f-48a5-8361-8d4b40742301",
+                          "name": "Success",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "urlencoded",
+                              "urlencoded": [
+                                {
+                                  "description": "(Required) Group ID.",
+                                  "key": "id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The amount of records returns within a single API call. Defaults to 30.",
+                                  "key": "page_size",
+                                  "value": "30"
+                                },
+                                {
+                                  "description": "Current page number of returned records. Default to 1.",
+                                  "key": "page_number",
+                                  "value": "1"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/im/group/member/list",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "im",
+                                "group",
+                                "member",
+                                "list"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"example\": {\n    \"page_count\": 1,\n    \"page_number\": 1,\n    \"page_size\": 30,\n    \"total_records\": 1,\n    \"members\": [\n      {\n        \"email\": \"email_address\",\n        \"first_name\": \"Zoomie\",\n        \"last_name\": \"Userton\",\n        \"pic_url\": \"https://ssotest.zoom.us/p/6EoubcvJR7eF2grNXJkrHA/f2003a9c-3095-4865-8536-03cc6f211e86-9569\"\n      }\n    ]\n  }\n}",
+                          "createdAt": "2026-06-05T15:21:48.000Z",
+                          "updatedAt": "2026-06-05T15:21:48.000Z",
+                          "uid": "35240-bd4b5324-df9f-48a5-8361-8d4b40742301"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:21:48.000Z",
+                      "updatedAt": "2026-06-05T15:21:48.000Z",
+                      "uid": "35240-6efe4b26-49a5-49c1-a936-4e5efd0f0f3d"
+                    }
+                  ],
+                  "id": "84516846-f014-49ba-9c60-f1d8cdc0ab2b",
+                  "createdAt": "2026-06-05T15:21:48.000Z",
+                  "updatedAt": "2026-06-05T15:21:48.000Z",
+                  "uid": "35240-84516846-f014-49ba-9c60-f1d8cdc0ab2b"
+                }
+              ],
+              "id": "0d71c3a1-8b63-4921-bc5c-55893fdff412",
+              "createdAt": "2026-06-05T15:21:48.000Z",
+              "updatedAt": "2026-06-05T15:21:48.000Z",
+              "uid": "35240-0d71c3a1-8b63-4921-bc5c-55893fdff412"
+            }
+          ],
+          "id": "1e3c89c1-f371-4750-a08d-4181f8463132",
+          "createdAt": "2026-06-05T15:21:48.000Z",
+          "updatedAt": "2026-06-05T15:21:48.000Z",
+          "uid": "35240-1e3c89c1-f371-4750-a08d-4181f8463132"
+        }
+      ],
+      "id": "1268c0d0-b1a6-4717-bb1e-874e0a40391f",
+      "createdAt": "2026-06-05T15:21:48.000Z",
+      "updatedAt": "2026-06-05T15:21:48.000Z",
+      "uid": "35240-1268c0d0-b1a6-4717-bb1e-874e0a40391f"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.zoom.us/v1"
+    }
+  ]
+}

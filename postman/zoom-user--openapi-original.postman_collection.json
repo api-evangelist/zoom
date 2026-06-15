@@ -1,0 +1,4213 @@
+{
+  "info": {
+    "_postman_id": "b6e710a5-0ccb-4c40-bd30-07fb374a354a",
+    "name": "Zoom user/",
+    "description": "Needs description.\n\nContact Support:\n Name: Zoom Developers\n Email: developer@zoom.us",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:22:33.000Z",
+    "updatedAt": "2026-06-05T15:22:33.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b6e710a5-0ccb-4c40-bd30-07fb374a354a"
+  },
+  "item": [
+    {
+      "name": "user",
+      "item": [
+        {
+          "name": "assistant",
+          "item": [
+            {
+              "name": "delete",
+              "item": [
+                {
+                  "name": "user Assistant Delete",
+                  "id": "7ffb5a38-6d01-41ab-a4f8-c47794da4c73",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "The host\u2019s user id.",
+                          "key": "id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The host\u2019s email address.",
+                          "key": "host_email",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/user/assistant/delete",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "assistant",
+                        "delete"
+                      ]
+                    },
+                    "description": "Delete a user's assistant.\n\n"
+                  },
+                  "response": [
+                    {
+                      "id": "83314c24-d359-48f6-80e8-d5629d33e0c5",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "The host\u2019s user id.",
+                              "key": "id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The host\u2019s email address.",
+                              "key": "host_email",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/user/assistant/delete",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user",
+                            "assistant",
+                            "delete"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"example\": {\n    \"host_email\": \"email_address\",\n    \"updated_at\": \"2013-09-02T12:00:00.000Z\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:22:33.000Z",
+                      "updatedAt": "2026-06-05T15:22:33.000Z",
+                      "uid": "35240-83314c24-d359-48f6-80e8-d5629d33e0c5"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:22:33.000Z",
+                  "updatedAt": "2026-06-05T15:22:33.000Z",
+                  "uid": "35240-7ffb5a38-6d01-41ab-a4f8-c47794da4c73"
+                }
+              ],
+              "id": "9b410dbb-aa7e-4147-87f8-457d50aa6f39",
+              "createdAt": "2026-06-05T15:22:33.000Z",
+              "updatedAt": "2026-06-05T15:22:33.000Z",
+              "uid": "35240-9b410dbb-aa7e-4147-87f8-457d50aa6f39"
+            },
+            {
+              "name": "set",
+              "item": [
+                {
+                  "name": "user Assistant Set",
+                  "id": "0943016b-9d8f-416a-bc8a-87abf54df428",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) The assistant\u2019s email address.",
+                          "key": "assistant_email",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The host\u2019s user id.",
+                          "key": "id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The host\u2019s email address. ",
+                          "key": "host_email",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/user/assistant/set",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "assistant",
+                        "set"
+                      ]
+                    },
+                    "description": "Set a user's assistant which can schedule meeting for him.\n\n"
+                  },
+                  "response": [
+                    {
+                      "id": "deff4d77-ae9e-42ff-bd17-76529843f775",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) The assistant\u2019s email address.",
+                              "key": "assistant_email",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The host\u2019s user id.",
+                              "key": "id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The host\u2019s email address. ",
+                              "key": "host_email",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/user/assistant/set",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user",
+                            "assistant",
+                            "set"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"example\": {\n    \"host_email\": \"email_address\",\n    \"updated_at\": \"2013-09-02T12:00:00.000Z\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:22:33.000Z",
+                      "updatedAt": "2026-06-05T15:22:33.000Z",
+                      "uid": "35240-deff4d77-ae9e-42ff-bd17-76529843f775"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:22:33.000Z",
+                  "updatedAt": "2026-06-05T15:22:33.000Z",
+                  "uid": "35240-0943016b-9d8f-416a-bc8a-87abf54df428"
+                }
+              ],
+              "id": "6786102f-a808-4261-aea6-4fce1a0049ff",
+              "createdAt": "2026-06-05T15:22:33.000Z",
+              "updatedAt": "2026-06-05T15:22:33.000Z",
+              "uid": "35240-6786102f-a808-4261-aea6-4fce1a0049ff"
+            }
+          ],
+          "id": "bfb8ab0c-39cc-4f5a-b157-af335f304f47",
+          "createdAt": "2026-06-05T15:22:33.000Z",
+          "updatedAt": "2026-06-05T15:22:33.000Z",
+          "uid": "35240-bfb8ab0c-39cc-4f5a-b157-af335f304f47"
+        },
+        {
+          "name": "autocreate",
+          "item": [
+            {
+              "name": "user Autocreate",
+              "id": "d2d86c03-1bfc-4575-8ed5-4868e677d3bc",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) A valid email address. It must be unique in Zoom service. If an email address is existed, a \"user existing\" error message will be return",
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) User's password",
+                      "key": "password",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) User\u2019s type. 1 for basic user, 2 for pro user, 3 for corp user. Basic user can host up to 40 minutes meeting",
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "User's first name",
+                      "key": "first_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "User's last name",
+                      "key": "last_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Disable in-meeting chat",
+                      "key": "disable_chat",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable end-to-end encryption",
+                      "key": "enable_e2e_encryption",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable attendee on-hold",
+                      "key": "enable_silent_mode",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Disable Group HD",
+                      "key": "disable_group_hd",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Disable recording",
+                      "key": "disable_recording",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable cloud meeting record",
+                      "key": "enable_cmr",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable automatic recording. By default, if \"enable_cloud_auto_recording\" is true, it will become true",
+                      "key": "enable_auto_recording",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable cloud automatic recording",
+                      "key": "enable_cloud_auto_recording",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Referral partner track ID",
+                      "key": "track_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "User\u2019s meeting capacity, 0 means following account\u2019s meeting capacity",
+                      "key": "meeting_capacity",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Enable webinar feature",
+                      "key": "enable_webinar",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Enable webinar capacity, can be 100, 500, 1000, 3000, 5000 or 10000, depends on if having related webinar capacity plan subscription or not",
+                      "key": "webinar_capacity",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Enable large meting feature",
+                      "key": "enable_large",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Enable large meeting capacity, can be 100, 200, 300 or 500, depends on if having related webinar capacity plan subscription or not",
+                      "key": "large_capacity",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Disable feedback",
+                      "key": "disable_feedback",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Disable jbh email reminder",
+                      "key": "disable_jbh_reminder",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable breakout room",
+                      "key": "enable_breakout_room",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable polling for meeting",
+                      "key": "enable_polling",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable Annotation",
+                      "key": "enable_annotation",
+                      "value": "true"
+                    },
+                    {
+                      "description": "Enable Share dual camera",
+                      "key": "enable_share_dual_camera",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable Far end camera control",
+                      "key": "enable_far_end_camera_control",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Disable Private chat",
+                      "key": "disable_private_chat",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable Enter/exit chime",
+                      "key": "enable_enter_exit_chime",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enter/exit chime type. 0 means Heard by all including host and attendees, 1 means Heard by host only",
+                      "key": "option_enter_exit_chime_type",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Disable email notification when a meeting is cancelled",
+                      "key": "disable_cancel_meeting_notification",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable Remote support",
+                      "key": "enable_remote_support",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable File transfer",
+                      "key": "enable_file_transfer",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable Virtual background",
+                      "key": "enable_virtual_background",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable Attention tracking",
+                      "key": "enable_attention_tracking",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable Waiting room",
+                      "key": "enable_waiting_room",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable Closed caption",
+                      "key": "enable_closed_caption",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable Co-host",
+                      "key": "enable_co_host",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable Auto saving chats",
+                      "key": "enable_auto_saving_chats",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable Generate and require password for participants joining by phone",
+                      "key": "enable_phone_participants_password",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable Auto delete cloud recordings",
+                      "key": "enable_auto_delete_cmr",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Auto delete cloud recordings after days",
+                      "key": "auto_delete_cmr_days",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Department for user profile, use for repor",
+                      "key": "dept",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "User Group ID. If set default user group, the parameter\u2019s default value is the default user group",
+                      "key": "group_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "IM Group ID. If set default im group, the parameter\u2019s default value is the default im group",
+                      "key": "imgroup_id",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/user/autocreate",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    "autocreate"
+                  ]
+                },
+                "description": "Create a user on Zoom, returns the created user ID.\n\n<aside class=\"notice\">\nThe API is provided for enterprise customer who has a managed domain\n</aside>\n\n<aside class=\"warning\">\nThis feature is disabled by default because of the security risk involved in creating a user who does not belong to your domain without notifying the user. You need to contact Zoom customer support if you want to use this API\n</aside>\n\n"
+              },
+              "response": [
+                {
+                  "id": "2236d003-887b-4fe6-a91a-e3c19c7a6f21",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) A valid email address. It must be unique in Zoom service. If an email address is existed, a \"user existing\" error message will be return",
+                          "key": "email",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) User's password",
+                          "key": "password",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) User\u2019s type. 1 for basic user, 2 for pro user, 3 for corp user. Basic user can host up to 40 minutes meeting",
+                          "key": "type",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "User's first name",
+                          "key": "first_name",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "User's last name",
+                          "key": "last_name",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Disable in-meeting chat",
+                          "key": "disable_chat",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable end-to-end encryption",
+                          "key": "enable_e2e_encryption",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable attendee on-hold",
+                          "key": "enable_silent_mode",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Disable Group HD",
+                          "key": "disable_group_hd",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Disable recording",
+                          "key": "disable_recording",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable cloud meeting record",
+                          "key": "enable_cmr",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable automatic recording. By default, if \"enable_cloud_auto_recording\" is true, it will become true",
+                          "key": "enable_auto_recording",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable cloud automatic recording",
+                          "key": "enable_cloud_auto_recording",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Referral partner track ID",
+                          "key": "track_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "User\u2019s meeting capacity, 0 means following account\u2019s meeting capacity",
+                          "key": "meeting_capacity",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Enable webinar feature",
+                          "key": "enable_webinar",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Enable webinar capacity, can be 100, 500, 1000, 3000, 5000 or 10000, depends on if having related webinar capacity plan subscription or not",
+                          "key": "webinar_capacity",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Enable large meting feature",
+                          "key": "enable_large",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Enable large meeting capacity, can be 100, 200, 300 or 500, depends on if having related webinar capacity plan subscription or not",
+                          "key": "large_capacity",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Disable feedback",
+                          "key": "disable_feedback",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Disable jbh email reminder",
+                          "key": "disable_jbh_reminder",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable breakout room",
+                          "key": "enable_breakout_room",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable polling for meeting",
+                          "key": "enable_polling",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable Annotation",
+                          "key": "enable_annotation",
+                          "value": "true"
+                        },
+                        {
+                          "description": "Enable Share dual camera",
+                          "key": "enable_share_dual_camera",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable Far end camera control",
+                          "key": "enable_far_end_camera_control",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Disable Private chat",
+                          "key": "disable_private_chat",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable Enter/exit chime",
+                          "key": "enable_enter_exit_chime",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enter/exit chime type. 0 means Heard by all including host and attendees, 1 means Heard by host only",
+                          "key": "option_enter_exit_chime_type",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Disable email notification when a meeting is cancelled",
+                          "key": "disable_cancel_meeting_notification",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable Remote support",
+                          "key": "enable_remote_support",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable File transfer",
+                          "key": "enable_file_transfer",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable Virtual background",
+                          "key": "enable_virtual_background",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable Attention tracking",
+                          "key": "enable_attention_tracking",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable Waiting room",
+                          "key": "enable_waiting_room",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable Closed caption",
+                          "key": "enable_closed_caption",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable Co-host",
+                          "key": "enable_co_host",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable Auto saving chats",
+                          "key": "enable_auto_saving_chats",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable Generate and require password for participants joining by phone",
+                          "key": "enable_phone_participants_password",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable Auto delete cloud recordings",
+                          "key": "enable_auto_delete_cmr",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Auto delete cloud recordings after days",
+                          "key": "auto_delete_cmr_days",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Department for user profile, use for repor",
+                          "key": "dept",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "User Group ID. If set default user group, the parameter\u2019s default value is the default user group",
+                          "key": "group_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "IM Group ID. If set default im group, the parameter\u2019s default value is the default im group",
+                          "key": "imgroup_id",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/user/autocreate",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "autocreate"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"example\": {\n    \"email\": \"email_address\",\n    \"created_at\": \"2012-11-25T12:00:00.000Z\",\n    \"first_name\": \"Zoomie\",\n    \"last_name\": \"Userton\",\n    \"pic_url\": \"\",\n    \"type\": 1,\n    \"disable_chat\": false,\n    \"enable_e2e_encryption\": false,\n    \"enable_silent_mode\": true,\n    \"disable_group_hd\": false,\n    \"disable_recording\": false,\n    \"enable_cmr\": false,\n    \"enable_auto_recording\": false,\n    \"enable_cloud_auto_recording\": false,\n    \"verified\": 1,\n    \"pmi\": 2035134243,\n    \"meeting_capacity\": 0,\n    \"enable_webinar\": false,\n    \"webinar_capacity\": 0,\n    \"enable_large\": false,\n    \"large_capacity\": 0,\n    \"disable_feedback\": false,\n    \"disable_jbh_reminder\": true,\n    \"enable_breakout_room\": true,\n    \"enable_polling\": false,\n    \"enable_annotation\": false,\n    \"enable_share_dual_camera\": false,\n    \"enable_far_end_camera_control\": false,\n    \"disable_private_chat\": false,\n    \"enable_enter_exit_chime\": false,\n    \"disable_cancel_meeting_notification\": false,\n    \"enable_remote_support\": false,\n    \"enable_file_transfer\": false,\n    \"enable_virtual_background\": false,\n    \"enable_attention_tracking\": false,\n    \"enable_waiting_room\": false,\n    \"enable_closed_caption\": false,\n    \"enable_co_host\": false,\n    \"enable_auto_saving_chats\": false,\n    \"enable_phone_participants_password\": false,\n    \"enable_auto_delete_cmr\": true,\n    \"auto_delete_cmr_days\": 30,\n    \"dept\": \"Engineer\",\n    \"lastClientVersion\": \"\",\n    \"lastLoginTime\": \"\",\n    \"token\": \"\",\n    \"zpk\": \"\",\n    \"zak\": \"\"\n  }\n}",
+                  "createdAt": "2026-06-05T15:22:33.000Z",
+                  "updatedAt": "2026-06-05T15:22:33.000Z",
+                  "uid": "35240-2236d003-887b-4fe6-a91a-e3c19c7a6f21"
+                }
+              ],
+              "createdAt": "2026-06-05T15:22:33.000Z",
+              "updatedAt": "2026-06-05T15:22:33.000Z",
+              "uid": "35240-d2d86c03-1bfc-4575-8ed5-4868e677d3bc"
+            }
+          ],
+          "id": "ff412b00-d2ac-4ecf-b40b-bbbea7be6639",
+          "createdAt": "2026-06-05T15:22:33.000Z",
+          "updatedAt": "2026-06-05T15:22:33.000Z",
+          "uid": "35240-ff412b00-d2ac-4ecf-b40b-bbbea7be6639"
+        },
+        {
+          "name": "checkemail",
+          "item": [
+            {
+              "name": "user Checkemail",
+              "id": "5eced4c7-e4cc-49df-b965-882dc23bb001",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) User email.",
+                      "key": "email",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/user/checkemail",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    "checkemail"
+                  ]
+                },
+                "description": "Check if the user email exists.\n\n"
+              },
+              "response": [
+                {
+                  "id": "73f393aa-2773-4ae3-8395-de5686850024",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) User email.",
+                          "key": "email",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/user/checkemail",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "checkemail"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"example\": {\n    \"existed_email\": true\n  }\n}",
+                  "createdAt": "2026-06-05T15:22:33.000Z",
+                  "updatedAt": "2026-06-05T15:22:33.000Z",
+                  "uid": "35240-73f393aa-2773-4ae3-8395-de5686850024"
+                }
+              ],
+              "createdAt": "2026-06-05T15:22:33.000Z",
+              "updatedAt": "2026-06-05T15:22:33.000Z",
+              "uid": "35240-5eced4c7-e4cc-49df-b965-882dc23bb001"
+            }
+          ],
+          "id": "7bab8670-61dd-4dea-873a-59843677e550",
+          "createdAt": "2026-06-05T15:22:33.000Z",
+          "updatedAt": "2026-06-05T15:22:33.000Z",
+          "uid": "35240-7bab8670-61dd-4dea-873a-59843677e550"
+        },
+        {
+          "name": "checkzpk",
+          "item": [
+            {
+              "name": "user Checkzpk",
+              "id": "03576d07-f380-4f05-9e5e-35d6ee769222",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) User zpk.",
+                      "key": "zpk",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/user/checkzpk",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    "checkzpk"
+                  ]
+                },
+                "description": "Check if the zpk is expired. The zpk is used to authenticate a user.\n\n"
+              },
+              "response": [
+                {
+                  "id": "fdde8e40-9e21-4a86-95b3-a95cdf07d7bd",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) User zpk.",
+                          "key": "zpk",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/user/checkzpk",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "checkzpk"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"example\": {\n    \"expire_in\": 7187\n  }\n}",
+                  "createdAt": "2026-06-05T15:22:33.000Z",
+                  "updatedAt": "2026-06-05T15:22:33.000Z",
+                  "uid": "35240-fdde8e40-9e21-4a86-95b3-a95cdf07d7bd"
+                }
+              ],
+              "createdAt": "2026-06-05T15:22:33.000Z",
+              "updatedAt": "2026-06-05T15:22:33.000Z",
+              "uid": "35240-03576d07-f380-4f05-9e5e-35d6ee769222"
+            }
+          ],
+          "id": "ae12e6e2-f406-4636-bed9-55629b411176",
+          "createdAt": "2026-06-05T15:22:33.000Z",
+          "updatedAt": "2026-06-05T15:22:33.000Z",
+          "uid": "35240-ae12e6e2-f406-4636-bed9-55629b411176"
+        },
+        {
+          "name": "create",
+          "item": [
+            {
+              "name": "user Create",
+              "id": "b12ab976-7f31-4a6a-b685-ecf1a3dd9aa8",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) A valid email address. It must be unique in Zoom service. If an email address is existed, a \"user existing\" error message will be return",
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) User\u2019s type. 1 for basic user, 2 for pro user, 3 for corp user. Basic user can host up to 40 minutes meeting",
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "User's first name",
+                      "key": "first_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "User's last name",
+                      "key": "last_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Disable in-meeting chat",
+                      "key": "disable_chat",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable end-to-end encryption",
+                      "key": "enable_e2e_encryption",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable attendee on-hold",
+                      "key": "enable_silent_mode",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Disable Group HD",
+                      "key": "disable_group_hd",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Disable recording",
+                      "key": "disable_recording",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable cloud meeting record",
+                      "key": "enable_cmr",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable automatic recording. By default, if \"enable_cloud_auto_recording\" is true, it will become true",
+                      "key": "enable_auto_recording",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable cloud automatic recording",
+                      "key": "enable_cloud_auto_recording",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Referral partner track ID",
+                      "key": "track_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "User\u2019s meeting capacity, passing 0 will inherit account\u2019s meeting capacity",
+                      "key": "meeting_capacity",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Enable webinar feature",
+                      "key": "enable_webinar",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Enable webinar capacity, can be 100, 500, 1000, 3000, 5000 or 10000, depends on if having related webinar capacity plan subscription or not",
+                      "key": "webinar_capacity",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Enable large meting feature",
+                      "key": "enable_large",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Enable large meeting capacity, can be 100, 200, 300 or 500, depends on if having related webinar capacity plan subscription or not",
+                      "key": "large_capacity",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Disable feedback",
+                      "key": "disable_feedback",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Disable jbh email reminder",
+                      "key": "disable_jbh_reminder",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable breakout room",
+                      "key": "enable_breakout_room",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable polling for meeting",
+                      "key": "enable_polling",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable Annotation",
+                      "key": "enable_annotation",
+                      "value": "true"
+                    },
+                    {
+                      "description": "Enable Share dual camera",
+                      "key": "enable_share_dual_camera",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable Far end camera control",
+                      "key": "enable_far_end_camera_control",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Disable Private chat",
+                      "key": "disable_private_chat",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable Enter/exit chime",
+                      "key": "enable_enter_exit_chime",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enter/exit chime type. 0 means Heard by all including host and attendees, 1 means Heard by host only",
+                      "key": "option_enter_exit_chime_type",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Disable email notification when a meeting is cancelled",
+                      "key": "disable_cancel_meeting_notification",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable Remote support",
+                      "key": "enable_remote_support",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable File transfer",
+                      "key": "enable_file_transfer",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable Virtual background",
+                      "key": "enable_virtual_background",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable Attention tracking",
+                      "key": "enable_attention_tracking",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable Waiting room",
+                      "key": "enable_waiting_room",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable Closed caption",
+                      "key": "enable_closed_caption",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable Co-host",
+                      "key": "enable_co_host",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable Auto saving chats",
+                      "key": "enable_auto_saving_chats",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable Generate and require password for participants joining by phone",
+                      "key": "enable_phone_participants_password",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable Auto delete cloud recordings",
+                      "key": "enable_auto_delete_cmr",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Auto delete cloud recordings after days",
+                      "key": "auto_delete_cmr_days",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Department for user profile, use for repor",
+                      "key": "dept",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "User Group ID. If set default user group, the parameter\u2019s default value is the default user group",
+                      "key": "group_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "IM Group ID. If set default im group, the parameter\u2019s default value is the default im group",
+                      "key": "imgroup_id",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/user/create",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    "create"
+                  ]
+                },
+                "description": "Create a user on Zoom, returns the created user ID.\n\n<aside class=\"notice\">\nYour account must have this privilege to provisioning user. Zoom only assigns this privilege to a trusted partner\n</aside>\n\n<aside class=\"notice\">\nUser will get an email sent from Zoom. There is a confirmation link in this email. User will then need to click this link to activate their account to the Zoom service. The user can set or change their password in Zoom.\n</aside>\n\n"
+              },
+              "response": [
+                {
+                  "id": "3d3acc0a-bdd4-49b5-bca7-a4111ea705f0",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) A valid email address. It must be unique in Zoom service. If an email address is existed, a \"user existing\" error message will be return",
+                          "key": "email",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) User\u2019s type. 1 for basic user, 2 for pro user, 3 for corp user. Basic user can host up to 40 minutes meeting",
+                          "key": "type",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "User's first name",
+                          "key": "first_name",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "User's last name",
+                          "key": "last_name",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Disable in-meeting chat",
+                          "key": "disable_chat",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable end-to-end encryption",
+                          "key": "enable_e2e_encryption",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable attendee on-hold",
+                          "key": "enable_silent_mode",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Disable Group HD",
+                          "key": "disable_group_hd",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Disable recording",
+                          "key": "disable_recording",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable cloud meeting record",
+                          "key": "enable_cmr",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable automatic recording. By default, if \"enable_cloud_auto_recording\" is true, it will become true",
+                          "key": "enable_auto_recording",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable cloud automatic recording",
+                          "key": "enable_cloud_auto_recording",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Referral partner track ID",
+                          "key": "track_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "User\u2019s meeting capacity, passing 0 will inherit account\u2019s meeting capacity",
+                          "key": "meeting_capacity",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Enable webinar feature",
+                          "key": "enable_webinar",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Enable webinar capacity, can be 100, 500, 1000, 3000, 5000 or 10000, depends on if having related webinar capacity plan subscription or not",
+                          "key": "webinar_capacity",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Enable large meting feature",
+                          "key": "enable_large",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Enable large meeting capacity, can be 100, 200, 300 or 500, depends on if having related webinar capacity plan subscription or not",
+                          "key": "large_capacity",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Disable feedback",
+                          "key": "disable_feedback",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Disable jbh email reminder",
+                          "key": "disable_jbh_reminder",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable breakout room",
+                          "key": "enable_breakout_room",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable polling for meeting",
+                          "key": "enable_polling",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable Annotation",
+                          "key": "enable_annotation",
+                          "value": "true"
+                        },
+                        {
+                          "description": "Enable Share dual camera",
+                          "key": "enable_share_dual_camera",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable Far end camera control",
+                          "key": "enable_far_end_camera_control",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Disable Private chat",
+                          "key": "disable_private_chat",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable Enter/exit chime",
+                          "key": "enable_enter_exit_chime",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enter/exit chime type. 0 means Heard by all including host and attendees, 1 means Heard by host only",
+                          "key": "option_enter_exit_chime_type",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Disable email notification when a meeting is cancelled",
+                          "key": "disable_cancel_meeting_notification",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable Remote support",
+                          "key": "enable_remote_support",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable File transfer",
+                          "key": "enable_file_transfer",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable Virtual background",
+                          "key": "enable_virtual_background",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable Attention tracking",
+                          "key": "enable_attention_tracking",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable Waiting room",
+                          "key": "enable_waiting_room",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable Closed caption",
+                          "key": "enable_closed_caption",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable Co-host",
+                          "key": "enable_co_host",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable Auto saving chats",
+                          "key": "enable_auto_saving_chats",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable Generate and require password for participants joining by phone",
+                          "key": "enable_phone_participants_password",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable Auto delete cloud recordings",
+                          "key": "enable_auto_delete_cmr",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Auto delete cloud recordings after days",
+                          "key": "auto_delete_cmr_days",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Department for user profile, use for repor",
+                          "key": "dept",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "User Group ID. If set default user group, the parameter\u2019s default value is the default user group",
+                          "key": "group_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "IM Group ID. If set default im group, the parameter\u2019s default value is the default im group",
+                          "key": "imgroup_id",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/user/create",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "create"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"example\": {\n    \"email\": \"email_address\",\n    \"created_at\": \"2012-11-25T12:00:00.000Z\",\n    \"first_name\": \"Zoom\",\n    \"last_name\": \"User\",\n    \"pic_url\": \"\",\n    \"type\": 1,\n    \"disable_chat\": false,\n    \"enable_e2e_encryption\": false,\n    \"enable_silent_mode\": true,\n    \"disable_group_hd\": false,\n    \"disable_recording\": false,\n    \"enable_cmr\": false,\n    \"enable_auto_recording\": false,\n    \"enable_cloud_auto_recording\": false,\n    \"verified\": 1,\n    \"pmi\": 2035134243,\n    \"meeting_capacity\": 0,\n    \"enable_webinar\": false,\n    \"webinar_capacity\": 0,\n    \"enable_large\": false,\n    \"large_capacity\": 0,\n    \"disable_feedback\": false,\n    \"disable_jbh_reminder\": true,\n    \"enable_breakout_room\": true,\n    \"enable_polling\": false,\n    \"enable_annotation\": false,\n    \"enable_share_dual_camera\": false,\n    \"enable_far_end_camera_control\": false,\n    \"disable_private_chat\": false,\n    \"enable_enter_exit_chime\": false,\n    \"disable_cancel_meeting_notification\": false,\n    \"enable_remote_support\": false,\n    \"enable_file_transfer\": false,\n    \"enable_virtual_background\": false,\n    \"enable_attention_tracking\": false,\n    \"enable_waiting_room\": false,\n    \"enable_closed_caption\": false,\n    \"enable_co_host\": false,\n    \"enable_auto_saving_chats\": false,\n    \"enable_phone_participants_password\": false,\n    \"enable_auto_delete_cmr\": true,\n    \"auto_delete_cmr_days\": 30,\n    \"dept\": \"Engineer\",\n    \"lastClientVersion\": \"\",\n    \"lastLoginTime\": \"\",\n    \"token\": \"\",\n    \"zpk\": \"\",\n    \"zak\": \"\"\n  }\n}",
+                  "createdAt": "2026-06-05T15:22:33.000Z",
+                  "updatedAt": "2026-06-05T15:22:33.000Z",
+                  "uid": "35240-3d3acc0a-bdd4-49b5-bca7-a4111ea705f0"
+                }
+              ],
+              "createdAt": "2026-06-05T15:22:33.000Z",
+              "updatedAt": "2026-06-05T15:22:33.000Z",
+              "uid": "35240-b12ab976-7f31-4a6a-b685-ecf1a3dd9aa8"
+            }
+          ],
+          "id": "6b840ef5-849f-498b-b97e-b8de0e04f16d",
+          "createdAt": "2026-06-05T15:22:33.000Z",
+          "updatedAt": "2026-06-05T15:22:33.000Z",
+          "uid": "35240-6b840ef5-849f-498b-b97e-b8de0e04f16d"
+        },
+        {
+          "name": "custcreate",
+          "item": [
+            {
+              "name": "user Custcreate",
+              "id": "accb34a1-7093-4924-89f0-8d157758a413",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) A valid email address. It must be unique in Zoom service. If an email address is existed, a \"user existing\" error message will be return",
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) User\u2019s type. 1 for basic user, 2 for pro user, 3 for corp user. Basic user can host up to 40 minutes meeting",
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "User's first name",
+                      "key": "first_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "User's last name",
+                      "key": "last_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Disable in-meeting chat",
+                      "key": "disable_chat",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable end-to-end encryption",
+                      "key": "enable_e2e_encryption",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable attendee on-hold",
+                      "key": "enable_silent_mode",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Disable Group HD",
+                      "key": "disable_group_hd",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Disable recording",
+                      "key": "disable_recording",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable cloud meeting record",
+                      "key": "enable_cmr",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable automatic recording. By default, if \"enable_cloud_auto_recording\" is true, it will become true",
+                      "key": "enable_auto_recording",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable cloud automatic recording",
+                      "key": "enable_cloud_auto_recording",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Referral partner track ID",
+                      "key": "track_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "User\u2019s meeting capacity, 0 means following account\u2019s meeting capacity",
+                      "key": "meeting_capacity",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Enable webinar feature",
+                      "key": "enable_webinar",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Enable webinar capacity, can be 100, 500, 1000, 3000, 5000 or 10000, depends on if having related webinar capacity plan subscription or not",
+                      "key": "webinar_capacity",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Enable large meting feature",
+                      "key": "enable_large",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Enable large meeting capacity, can be 100, 200, 300 or 500, depends on if having related webinar capacity plan subscription or not",
+                      "key": "large_capacity",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Disable feedback",
+                      "key": "disable_feedback",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Disable jbh email reminder",
+                      "key": "disable_jbh_reminder",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable breakout room",
+                      "key": "enable_breakout_room",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable polling for meeting",
+                      "key": "enable_polling",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable Annotation",
+                      "key": "enable_annotation",
+                      "value": "true"
+                    },
+                    {
+                      "description": "Enable Share dual camera",
+                      "key": "enable_share_dual_camera",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable Far end camera control",
+                      "key": "enable_far_end_camera_control",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Disable Private chat",
+                      "key": "disable_private_chat",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable Enter/exit chime",
+                      "key": "enable_enter_exit_chime",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enter/exit chime type. 0 means Heard by all including host and attendees, 1 means Heard by host only",
+                      "key": "option_enter_exit_chime_type",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Disable email notification when a meeting is cancelled",
+                      "key": "disable_cancel_meeting_notification",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable Remote support",
+                      "key": "enable_remote_support",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable File transfer",
+                      "key": "enable_file_transfer",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable Virtual background",
+                      "key": "enable_virtual_background",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable Attention tracking",
+                      "key": "enable_attention_tracking",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable Waiting room",
+                      "key": "enable_waiting_room",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable Closed caption",
+                      "key": "enable_closed_caption",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable Co-host",
+                      "key": "enable_co_host",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable Auto saving chats",
+                      "key": "enable_auto_saving_chats",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable Generate and require password for participants joining by phone",
+                      "key": "enable_phone_participants_password",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable Auto delete cloud recordings",
+                      "key": "enable_auto_delete_cmr",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Auto delete cloud recordings after days",
+                      "key": "auto_delete_cmr_days",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Department for user profile, use for repor",
+                      "key": "dept",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "User Group ID. If set default user group, the parameter\u2019s default value is the default user group",
+                      "key": "group_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "IM Group ID. If set default im group, the parameter\u2019s default value is the default im group",
+                      "key": "imgroup_id",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/user/custcreate",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    "custcreate"
+                  ]
+                },
+                "description": "Create a user on Zoom, returns the created user ID.\n\n<aside class=\"notice\">\nThe API is provided for API plan only\n</aside>\n\n<aside class=\"notice\">\nUser created in this way has no password and is not able to log into the Zoom web site or client\n</aside>\n\n"
+              },
+              "response": [
+                {
+                  "id": "a64b8971-6c67-44ae-89ec-2ffd1ec71186",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) A valid email address. It must be unique in Zoom service. If an email address is existed, a \"user existing\" error message will be return",
+                          "key": "email",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) User\u2019s type. 1 for basic user, 2 for pro user, 3 for corp user. Basic user can host up to 40 minutes meeting",
+                          "key": "type",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "User's first name",
+                          "key": "first_name",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "User's last name",
+                          "key": "last_name",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Disable in-meeting chat",
+                          "key": "disable_chat",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable end-to-end encryption",
+                          "key": "enable_e2e_encryption",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable attendee on-hold",
+                          "key": "enable_silent_mode",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Disable Group HD",
+                          "key": "disable_group_hd",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Disable recording",
+                          "key": "disable_recording",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable cloud meeting record",
+                          "key": "enable_cmr",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable automatic recording. By default, if \"enable_cloud_auto_recording\" is true, it will become true",
+                          "key": "enable_auto_recording",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable cloud automatic recording",
+                          "key": "enable_cloud_auto_recording",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Referral partner track ID",
+                          "key": "track_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "User\u2019s meeting capacity, 0 means following account\u2019s meeting capacity",
+                          "key": "meeting_capacity",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Enable webinar feature",
+                          "key": "enable_webinar",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Enable webinar capacity, can be 100, 500, 1000, 3000, 5000 or 10000, depends on if having related webinar capacity plan subscription or not",
+                          "key": "webinar_capacity",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Enable large meting feature",
+                          "key": "enable_large",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Enable large meeting capacity, can be 100, 200, 300 or 500, depends on if having related webinar capacity plan subscription or not",
+                          "key": "large_capacity",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Disable feedback",
+                          "key": "disable_feedback",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Disable jbh email reminder",
+                          "key": "disable_jbh_reminder",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable breakout room",
+                          "key": "enable_breakout_room",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable polling for meeting",
+                          "key": "enable_polling",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable Annotation",
+                          "key": "enable_annotation",
+                          "value": "true"
+                        },
+                        {
+                          "description": "Enable Share dual camera",
+                          "key": "enable_share_dual_camera",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable Far end camera control",
+                          "key": "enable_far_end_camera_control",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Disable Private chat",
+                          "key": "disable_private_chat",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable Enter/exit chime",
+                          "key": "enable_enter_exit_chime",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enter/exit chime type. 0 means Heard by all including host and attendees, 1 means Heard by host only",
+                          "key": "option_enter_exit_chime_type",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Disable email notification when a meeting is cancelled",
+                          "key": "disable_cancel_meeting_notification",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable Remote support",
+                          "key": "enable_remote_support",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable File transfer",
+                          "key": "enable_file_transfer",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable Virtual background",
+                          "key": "enable_virtual_background",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable Attention tracking",
+                          "key": "enable_attention_tracking",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable Waiting room",
+                          "key": "enable_waiting_room",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable Closed caption",
+                          "key": "enable_closed_caption",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable Co-host",
+                          "key": "enable_co_host",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable Auto saving chats",
+                          "key": "enable_auto_saving_chats",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable Generate and require password for participants joining by phone",
+                          "key": "enable_phone_participants_password",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable Auto delete cloud recordings",
+                          "key": "enable_auto_delete_cmr",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Auto delete cloud recordings after days",
+                          "key": "auto_delete_cmr_days",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Department for user profile, use for repor",
+                          "key": "dept",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "User Group ID. If set default user group, the parameter\u2019s default value is the default user group",
+                          "key": "group_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "IM Group ID. If set default im group, the parameter\u2019s default value is the default im group",
+                          "key": "imgroup_id",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/user/custcreate",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "custcreate"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"example\": {\n    \"email\": \"email_address\",\n    \"created_at\": \"2012-11-25T12:00:00.000Z\",\n    \"first_name\": \"Zoomie\",\n    \"last_name\": \"Userton\",\n    \"pic_url\": \"\",\n    \"type\": 1,\n    \"disable_chat\": false,\n    \"enable_e2e_encryption\": false,\n    \"enable_silent_mode\": true,\n    \"disable_group_hd\": false,\n    \"disable_recording\": false,\n    \"enable_cmr\": false,\n    \"enable_auto_recording\": false,\n    \"enable_cloud_auto_recording\": false,\n    \"verified\": 1,\n    \"pmi\": 2035134243,\n    \"meeting_capacity\": 0,\n    \"enable_webinar\": false,\n    \"webinar_capacity\": 0,\n    \"enable_large\": false,\n    \"large_capacity\": 0,\n    \"disable_feedback\": false,\n    \"disable_jbh_reminder\": true,\n    \"enable_breakout_room\": true,\n    \"enable_polling\": false,\n    \"enable_annotation\": false,\n    \"enable_share_dual_camera\": false,\n    \"enable_far_end_camera_control\": false,\n    \"disable_private_chat\": false,\n    \"enable_enter_exit_chime\": false,\n    \"disable_cancel_meeting_notification\": false,\n    \"enable_remote_support\": false,\n    \"enable_file_transfer\": false,\n    \"enable_virtual_background\": false,\n    \"enable_attention_tracking\": false,\n    \"enable_waiting_room\": false,\n    \"enable_closed_caption\": false,\n    \"enable_co_host\": false,\n    \"enable_auto_saving_chats\": false,\n    \"enable_phone_participants_password\": false,\n    \"enable_auto_delete_cmr\": true,\n    \"auto_delete_cmr_days\": 30,\n    \"dept\": \"Engineer\",\n    \"lastClientVersion\": \"\",\n    \"lastLoginTime\": \"\",\n    \"token\": \"\",\n    \"zpk\": \"\",\n    \"zak\": \"\"\n  }\n}",
+                  "createdAt": "2026-06-05T15:22:33.000Z",
+                  "updatedAt": "2026-06-05T15:22:33.000Z",
+                  "uid": "35240-a64b8971-6c67-44ae-89ec-2ffd1ec71186"
+                }
+              ],
+              "createdAt": "2026-06-05T15:22:33.000Z",
+              "updatedAt": "2026-06-05T15:22:33.000Z",
+              "uid": "35240-accb34a1-7093-4924-89f0-8d157758a413"
+            }
+          ],
+          "id": "c226a6cf-bcd4-4e22-8625-7c667905e6ca",
+          "createdAt": "2026-06-05T15:22:33.000Z",
+          "updatedAt": "2026-06-05T15:22:33.000Z",
+          "uid": "35240-c226a6cf-bcd4-4e22-8625-7c667905e6ca"
+        },
+        {
+          "name": "activate",
+          "item": [
+            {
+              "name": "user Activate",
+              "id": "d6f66b52-5490-45b6-b4ad-4ad3243410c2",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) User id.",
+                      "key": "id",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/user/activate",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    "activate"
+                  ]
+                },
+                "description": "Activate a user on Zoom, return the user ID.\n\n"
+              },
+              "response": [
+                {
+                  "id": "22a33614-62ed-4e62-99a4-333b98573edf",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) User id.",
+                          "key": "id",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/user/activate",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "activate"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"example\": {\n    \"activated_at\": \"2012-11-25T12:00:00.000Z\"\n  }\n}",
+                  "createdAt": "2026-06-05T15:22:33.000Z",
+                  "updatedAt": "2026-06-05T15:22:33.000Z",
+                  "uid": "35240-22a33614-62ed-4e62-99a4-333b98573edf"
+                }
+              ],
+              "createdAt": "2026-06-05T15:22:33.000Z",
+              "updatedAt": "2026-06-05T15:22:33.000Z",
+              "uid": "35240-d6f66b52-5490-45b6-b4ad-4ad3243410c2"
+            }
+          ],
+          "id": "986c09e1-fb27-41de-883b-130874845a0f",
+          "createdAt": "2026-06-05T15:22:33.000Z",
+          "updatedAt": "2026-06-05T15:22:33.000Z",
+          "uid": "35240-986c09e1-fb27-41de-883b-130874845a0f"
+        },
+        {
+          "name": "deactivate",
+          "item": [
+            {
+              "name": "user Deactivate",
+              "id": "9758b89e-0fe8-4e10-a40d-313bcc454f0d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) User id.",
+                      "key": "id",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/user/deactivate",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    "deactivate"
+                  ]
+                },
+                "description": "Deactivate a user on Zoom, return the user ID.\n\n"
+              },
+              "response": [
+                {
+                  "id": "f4cadf2f-aa1a-4045-8ba1-a1b837a6c7b6",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) User id.",
+                          "key": "id",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/user/deactivate",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "deactivate"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"example\": {\n    \"deactivated_at\": \"2012-11-25T12:00:00.000Z\"\n  }\n}",
+                  "createdAt": "2026-06-05T15:22:33.000Z",
+                  "updatedAt": "2026-06-05T15:22:33.000Z",
+                  "uid": "35240-f4cadf2f-aa1a-4045-8ba1-a1b837a6c7b6"
+                }
+              ],
+              "createdAt": "2026-06-05T15:22:33.000Z",
+              "updatedAt": "2026-06-05T15:22:33.000Z",
+              "uid": "35240-9758b89e-0fe8-4e10-a40d-313bcc454f0d"
+            }
+          ],
+          "id": "9cd32f2c-8ee0-4f7a-9dbf-7811a9a0bb6b",
+          "createdAt": "2026-06-05T15:22:33.000Z",
+          "updatedAt": "2026-06-05T15:22:33.000Z",
+          "uid": "35240-9cd32f2c-8ee0-4f7a-9dbf-7811a9a0bb6b"
+        },
+        {
+          "name": "delete",
+          "item": [
+            {
+              "name": "user Delete",
+              "id": "eac3de72-ce16-4b95-8d78-b9b1f1bfecec",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) User id.",
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "0 means existing user, 1 means pending user.",
+                      "key": "type",
+                      "value": "0"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/user/delete",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    "delete"
+                  ]
+                },
+                "description": "Delete a user on Zoom, return the deleted user ID.\n\n"
+              },
+              "response": [
+                {
+                  "id": "a1471c9a-7b1e-4c39-8619-bcde05fc17b2",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) User id.",
+                          "key": "id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "0 means existing user, 1 means pending user.",
+                          "key": "type",
+                          "value": "0"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/user/delete",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "delete"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"example\": {\n    \"account_id\": \" unique_id\",\n    \"deleted_at\": \"2012-11-25T12:00:00.000Z\"\n  }\n}",
+                  "createdAt": "2026-06-05T15:22:33.000Z",
+                  "updatedAt": "2026-06-05T15:22:33.000Z",
+                  "uid": "35240-a1471c9a-7b1e-4c39-8619-bcde05fc17b2"
+                }
+              ],
+              "createdAt": "2026-06-05T15:22:33.000Z",
+              "updatedAt": "2026-06-05T15:22:33.000Z",
+              "uid": "35240-eac3de72-ce16-4b95-8d78-b9b1f1bfecec"
+            }
+          ],
+          "id": "ac56edbd-eece-42c3-abf9-dd1fa4fdf3d4",
+          "createdAt": "2026-06-05T15:22:33.000Z",
+          "updatedAt": "2026-06-05T15:22:33.000Z",
+          "uid": "35240-ac56edbd-eece-42c3-abf9-dd1fa4fdf3d4"
+        },
+        {
+          "name": "get",
+          "item": [
+            {
+              "name": "user Get",
+              "id": "2b4e7097-6e0c-4ac0-96cb-8927106caa7b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) API Key",
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) API Secret",
+                      "key": "api_secret",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) User ID",
+                      "key": "id",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/user/get",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    "get"
+                  ]
+                },
+                "description": "Get a user info on Zoom via user ID\n\n"
+              },
+              "response": [
+                {
+                  "id": "9c957b99-298f-4bbc-8087-53b92e65e48f",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) API Key",
+                          "key": "api_key",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) API Secret",
+                          "key": "api_secret",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) User ID",
+                          "key": "id",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/user/get",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "get"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"example\": {\n    \"email\": \"email_address\",\n    \"account_id\": \"8af3444232345\",\n    \"created_at\": \"2012-11-25T12:00:00.000Z\",\n    \"first_name\": \"Zoomie\",\n    \"last_name\": \"Userton\",\n    \"type\": 1,\n    \"token\": \"adlfjadslfkjasdkljfkjalkadfskjdsafkjdfsajkllajsdfaljsdf\",\n    \"pic_url\": \"https://www.zoom.us/p/bNsPi\",\n    \"disable_chat\": false,\n    \"enable_e2e_encryption\": false,\n    \"enable_silent_mode\": true,\n    \"disable_group_hd\": false,\n    \"disable_recording\": false,\n    \"enable_cmr\": false,\n    \"enable_record_speaker_view\": false,\n    \"enable_record_gallery_view\": false,\n    \"enable_record_audio_file\": false,\n    \"enable_auto_recording\": false,\n    \"enable_cloud_auto_recording\": false,\n    \"verified\": 1,\n    \"pmi\": 2035134243,\n    \"vanity_url\": \"https://zoom.us/my/test\",\n    \"meeting_capacity\": 0,\n    \"enable_webinar\": true,\n    \"webinar_capacity\": 100,\n    \"enable_large\": false,\n    \"large_capacity\": 0,\n    \"disable_feedback\": false,\n    \"disable_jbh_reminder\": true,\n    \"enable_breakout_room\": true,\n    \"enable_polling\": false,\n    \"enable_annotation\": false,\n    \"dept\": \"Engineer\",\n    \"timezone\": \"America/Los_Angeles\",\n    \"lastClientVersion\": \"3.5.44664.0321(mac)\",\n    \"lastLoginTime\": \"2016-03-23T09:54:41.000Z\",\n    \"status\": 0,\n    \"zpk\": \"ABzyF_DKLzVcPd-5Wu6zCwlZ3978jn7ZcTHONHrP7Vs.BwYAAAFTY-4XnwAAHCAkMTRlMzRjYzUtMjJmZC00MTQ1LTg2MzUtZmVmYjk3ZDI0NGMyFlYydzlQTzgxUl8yS1pmREtvTWVybVEWVjJ3OVBPODFSXzJLWmZES29NZXJtUQxzb3BoaWUgc3VuNjZkALM0VUVtMTFHTmh3cGFTWlJNMGkxYjhXSXNIZEIzbXZ0VlZwOGg0Q1Jhb1B3LkJnSWdUMjlLVG1KR1YySjNTVnBDZDFwUlpXb3Zhamh1TUUwd2VVVkVaU3QyTDNCQVpUSTNabVJtWkRNNFpqSmhZall5TXpRMk9XVTVOMkUwT1RNeVlUa3lPV1UyTlRnMk5qTm1OV0prT0RVek5URmhNR1l5WTJObVpUTTVNV0V6TTJabU1RQQAAFi1YZ0gzWVg2VDNTZmRqVEI5dEJLMXcAAgE\",\n    \"zak\": \"eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjbGllbnQiLCJ1aWQiOiJXWGpRbkRNRVFzdWNVNXYxWXlIV0lBIiwiaXNzIjoid2ViIiwic3R5IjoxMDAsImNsdCI6MCwic3RrIjoiUGpuNXItSEJVb0tXd2lBQVFOR1FndnFKNWVLY19zV1l3VHBHNjdJQm00SS5CZ1FnVDI5S1RtSkdWMkozU1ZwQ2QxcFJaV292YWpodU1FMHdlVVZFWlN0MkwzQkFaVEkzWm1SbVpETTRaakpoWWpZeU16UTJPV1U1TjJFME9UTXlZVGt5T1dVMk5UZzJOak5tTldKa09EVXpOVEZoTUdZeVkyTm1aVE01TVdFek0yWm1NUUFnZFVvemNIQndjRnA1WTBaSFYybEZjbTFoYlZwSEt6VTRkMFprY2pWS1VXOEEiLCJleHAiOjE1MjYyNzQ1NzUsImlhdCI6MTUyNjI2NzM3NSwiYWlkIjoiWG1XeGlnZFVSZWVnTW9ibHY3d3FUQSIsImNpZCI6IiJ9.oMMmw50xEfD2IVaSfxap1OlSbczto-KAM\"\n  }\n}",
+                  "createdAt": "2026-06-05T15:22:33.000Z",
+                  "updatedAt": "2026-06-05T15:22:33.000Z",
+                  "uid": "35240-9c957b99-298f-4bbc-8087-53b92e65e48f"
+                }
+              ],
+              "createdAt": "2026-06-05T15:22:33.000Z",
+              "updatedAt": "2026-06-05T15:22:33.000Z",
+              "uid": "35240-2b4e7097-6e0c-4ac0-96cb-8927106caa7b"
+            }
+          ],
+          "id": "f15b7623-f0fa-453d-912c-2ad2800f4fbd",
+          "createdAt": "2026-06-05T15:22:33.000Z",
+          "updatedAt": "2026-06-05T15:22:33.000Z",
+          "uid": "35240-f15b7623-f0fa-453d-912c-2ad2800f4fbd"
+        },
+        {
+          "name": "getbyemail",
+          "item": [
+            {
+              "name": "user Getbyemail",
+              "id": "330a87e6-5cc8-4720-88fc-395d0d50f4e5",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) Email, String",
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Login type of the email, int SNS_FACEBOOK = 0; SNS_GOOGLE = 1; SNS_API = 99; SNS_ZOOM = 100; SNS_SSO = 101;",
+                      "key": "login_type",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/user/getbyemail",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    "getbyemail"
+                  ]
+                },
+                "description": "Get a user on Zoom via user email address and login type, return the user info.\n\n"
+              },
+              "response": [
+                {
+                  "id": "d06aea05-43b6-4da3-9263-9be05b3b7864",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Email, String",
+                          "key": "email",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Login type of the email, int SNS_FACEBOOK = 0; SNS_GOOGLE = 1; SNS_API = 99; SNS_ZOOM = 100; SNS_SSO = 101;",
+                          "key": "login_type",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/user/getbyemail",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "getbyemail"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"example\": {\n    \"email\": \"email_address\",\n    \"created_at\": \"2012-11-25T12:00:00.000Z\",\n    \"first_name\": \"Zoomie\",\n    \"last_name\": \"Userton\",\n    \"type\": 1,\n    \"token\": \"adlfjadslfkjasdkljfkjalkadfskjdsafkjdfsajkllajsdfaljsdf\",\n    \"pic_url\": \"https://www.zoom.us/p/bNsPi\",\n    \"disable_chat\": false,\n    \"enable_e2e_encryption\": false,\n    \"enable_silent_mode\": true,\n    \"disable_group_hd\": false,\n    \"disable_recording\": false,\n    \"enable_cmr\": false,\n    \"enable_record_speaker_view\": false,\n    \"enable_record_gallery_view\": false,\n    \"enable_record_audio_file\": false,\n    \"enable_auto_recording\": false,\n    \"enable_cloud_auto_recording\": false,\n    \"verified\": 1,\n    \"pmi\": 2035134243,\n    \"vanity_url\": \"https://zoom.us/my/test\",\n    \"meeting_capacity\": 0,\n    \"enable_webinar\": true,\n    \"webinar_capacity\": 100,\n    \"enable_large\": false,\n    \"large_capacity\": 0,\n    \"disable_feedback\": false,\n    \"disable_jbh_reminder\": true,\n    \"enable_breakout_room\": true,\n    \"enable_polling\": false,\n    \"enable_annotation\": false,\n    \"dept\": \"Engineer\",\n    \"lastClientVersion\": \"3.5.44664.0321(mac)\",\n    \"lastLoginTime\": \"2016-03-23T09:54:41.000Z\",\n    \"status\": 0,\n    \"zpk\": \"ABzyF_DKLzVcPd-5Wu6zCwlZ3978jn7ZcTHONHrP7Vs.BwYAAAFTY-4XnwAAHCAkMTRlMzRjYzUtMjJmZC00MTQ1LTg2MzUtZmVmYjk3ZDI0NGMyFlYydzlQTzgxUl8yS1pmREtvTWVybVEWVjJ3OVBPODFSXzJLWmZES29NZXJtUQxzb3BoaWUgc3VuNjZkALM0VUVtMTFHTmh3cGFTWlJNMGkxYjhXSXNIZEIzbXZ0VlZwOGg0Q1Jhb1B3LkJnSWdUMjlLVG1KR1YySjNTVnBDZDFwUlpXb3Zhamh1TUUwd2VVVkVaU3QyTDNCQVpUSTNabVJtWkRNNFpqSmhZall5TXpRMk9XVTVOMkUwT1RNeVlUa3lPV1UyTlRnMk5qTm1OV0prT0RVek5URmhNR1l5WTJObVpUTTVNV0V6TTJabU1RQQAAFi1YZ0gzWVg2VDNTZmRqVEI5dEJLMXcAAgE\",\n    \"zak\": \"eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjbGllbnQiLCJ1aWQiOiJXWGpRbkRNRVFzdWNVNXYxWXlIV0lBIiwiaXNzIjoid2ViIiwic3R5IjoxMDAsImNsdCI6MCwic3RrIjoiUGpuNXItSEJVb0tXd2lBQVFOR1FndnFKNWVLY19zV1l3VHBHNjdJQm00SS5CZ1FnVDI5S1RtSkdWMkozU1ZwQ2QxcFJaV292YWpodU1FMHdlVVZFWlN0MkwzQkFaVEkzWm1SbVpETTRaakpoWWpZeU16UTJPV1U1TjJFME9UTXlZVGt5T1dVMk5UZzJOak5tTldKa09EVXpOVEZoTUdZeVkyTm1aVE01TVdFek0yWm1NUUFnZFVvemNIQndjRnA1WTBaSFYybEZjbTFoYlZwSEt6VTRkMFprY2pWS1VXOEEiLCJleHAiOjE1MjYyNzQ1NzUsImlhdCI6MTUyNjI2NzM3NSwiYWlkIjoiWG1XeGlnZFVSZWVnTW9ibHY3d3FUQSIsImNpZCI6IiJ9.oMMmw50xEfD2IVaSfxap1OlSbczto-KAM\"\n  }\n}",
+                  "createdAt": "2026-06-05T15:22:33.000Z",
+                  "updatedAt": "2026-06-05T15:22:33.000Z",
+                  "uid": "35240-d06aea05-43b6-4da3-9263-9be05b3b7864"
+                }
+              ],
+              "createdAt": "2026-06-05T15:22:33.000Z",
+              "updatedAt": "2026-06-05T15:22:33.000Z",
+              "uid": "35240-330a87e6-5cc8-4720-88fc-395d0d50f4e5"
+            }
+          ],
+          "id": "60d0b892-d7a5-4304-9ad2-eb380bc509ca",
+          "createdAt": "2026-06-05T15:22:33.000Z",
+          "updatedAt": "2026-06-05T15:22:33.000Z",
+          "uid": "35240-60d0b892-d7a5-4304-9ad2-eb380bc509ca"
+        },
+        {
+          "name": "list",
+          "item": [
+            {
+              "name": "user List",
+              "id": "662730d6-457c-4855-ae1d-411526c75ec6",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "The amount of records returns within a single API call. Max of 300 users.",
+                      "key": "page_size",
+                      "value": "30"
+                    },
+                    {
+                      "description": "Current page number of returned records. Default to 1.",
+                      "key": "page_number",
+                      "value": "1"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/user/list",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    "list"
+                  ]
+                },
+                "description": "List all the users on Zoom\n\n"
+              },
+              "response": [
+                {
+                  "id": "8a161e68-25d4-4d69-b222-2ab9affe9a7a",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "The amount of records returns within a single API call. Max of 300 users.",
+                          "key": "page_size",
+                          "value": "30"
+                        },
+                        {
+                          "description": "Current page number of returned records. Default to 1.",
+                          "key": "page_number",
+                          "value": "1"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/user/list",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "list"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"example\": {\n    \"page_count\": 5,\n    \"total_records\": 235,\n    \"page_number\": 1,\n    \"page_size\": 50,\n    \"users\": [\n      {\n        \"email\": \"email_address\",\n        \"created_at\": \"2012-11-25T12:00:00.000Z\",\n        \"first_name\": \"Zoomie\",\n        \"last_name\": \"Userton\",\n        \"type\": 1,\n        \"pic_url\": \"https://www.zoom.us/p/bNsPi\",\n        \"disable_chat\": false,\n        \"enable_e2e_encryption\": false,\n        \"enable_silent_mode\": true,\n        \"disable_group_hd\": false,\n        \"disable_recording\": false,\n        \"enable_cmr\": false,\n        \"enable_auto_recording\": false,\n        \"enable_cloud_auto_recording\": false,\n        \"verified\": 0,\n        \"pmi\": 2035134243,\n        \"meeting_capacity\": 0,\n        \"enable_webinar\": true,\n        \"webinar_capacity\": 100,\n        \"enable_large\": false,\n        \"large_capacity\": 0,\n        \"disable_feedback\": false,\n        \"disable_jbh_reminder\": true,\n        \"enable_breakout_room\": false,\n        \"dept\": \"Engineer\",\n        \"timezone\": \"America/Los_Angeles\",\n        \"lastClientVersion\": \"3.5.44664.0321(mac)\",\n        \"lastLoginTime\": \"2016-03-23T09:54:41.000Z\",\n        \"status\": 0,\n        \"token\": \"\",\n        \"zpk\": \"\",\n        \"zak\": \"\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-06-05T15:22:33.000Z",
+                  "updatedAt": "2026-06-05T15:22:33.000Z",
+                  "uid": "35240-8a161e68-25d4-4d69-b222-2ab9affe9a7a"
+                }
+              ],
+              "createdAt": "2026-06-05T15:22:33.000Z",
+              "updatedAt": "2026-06-05T15:22:33.000Z",
+              "uid": "35240-662730d6-457c-4855-ae1d-411526c75ec6"
+            }
+          ],
+          "id": "5f2e8f9f-644d-44fc-b423-f5bcf2fb23d5",
+          "createdAt": "2026-06-05T15:22:33.000Z",
+          "updatedAt": "2026-06-05T15:22:33.000Z",
+          "uid": "35240-5f2e8f9f-644d-44fc-b423-f5bcf2fb23d5"
+        },
+        {
+          "name": "pending",
+          "item": [
+            {
+              "name": "user Pending",
+              "id": "03121c88-f1f7-4aef-83ac-e7f2dd416463",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "The amount of records returns within a single API call. Max of 300 users.",
+                      "key": "page_size",
+                      "value": "30"
+                    },
+                    {
+                      "description": "Current page number of returned records. Default to 1.",
+                      "key": "page_number",
+                      "value": "1"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/user/pending",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    "pending"
+                  ]
+                },
+                "description": "List all the pending users on Zoom\n\n"
+              },
+              "response": [
+                {
+                  "id": "dc8a7505-82ad-4880-8500-7c156044c5ef",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "The amount of records returns within a single API call. Max of 300 users.",
+                          "key": "page_size",
+                          "value": "30"
+                        },
+                        {
+                          "description": "Current page number of returned records. Default to 1.",
+                          "key": "page_number",
+                          "value": "1"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/user/pending",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "pending"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"example\": {\n    \"page_count\": 5,\n    \"total_records\": 235,\n    \"page_number\": 1,\n    \"page_size\": 50,\n    \"users\": [\n      {\n        \"email\": \"email_address\",\n        \"created_at\": \"2012-11-25T12:00:00.000Z\",\n        \"first_name\": \"Zoomie\",\n        \"last_name\": \"Userton\",\n        \"type\": 1,\n        \"pic_url\": \"https://www.zoom.us/p/bNsPi\",\n        \"disable_chat\": false,\n        \"enable_e2e_encryption\": false,\n        \"enable_silent_mode\": true,\n        \"disable_group_hd\": false,\n        \"disable_recording\": false,\n        \"enable_cmr\": false,\n        \"enable_auto_recording\": false,\n        \"enable_cloud_auto_recording\": false,\n        \"verified\": 0,\n        \"pmi\": 2035134243,\n        \"meeting_capacity\": 0,\n        \"enable_webinar\": true,\n        \"webinar_capacity\": 100,\n        \"enable_large\": false,\n        \"large_capacity\": 0,\n        \"disable_feedback\": false,\n        \"disable_jbh_reminder\": true,\n        \"enable_breakout_room\": false,\n        \"dept\": \"Engineer\",\n        \"timezone\": \"America/Los_Angeles\",\n        \"lastClientVersion\": \"3.5.44664.0321(mac)\",\n        \"lastLoginTime\": \"2016-03-23T09:54:41.000Z\",\n        \"status\": 0,\n        \"token\": \"\",\n        \"zpk\": \"\",\n        \"zak\": \"\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-06-05T15:22:33.000Z",
+                  "updatedAt": "2026-06-05T15:22:33.000Z",
+                  "uid": "35240-dc8a7505-82ad-4880-8500-7c156044c5ef"
+                }
+              ],
+              "createdAt": "2026-06-05T15:22:33.000Z",
+              "updatedAt": "2026-06-05T15:22:33.000Z",
+              "uid": "35240-03121c88-f1f7-4aef-83ac-e7f2dd416463"
+            }
+          ],
+          "id": "37688624-427c-4d72-b549-25f0eefd8250",
+          "createdAt": "2026-06-05T15:22:33.000Z",
+          "updatedAt": "2026-06-05T15:22:33.000Z",
+          "uid": "35240-37688624-427c-4d72-b549-25f0eefd8250"
+        },
+        {
+          "name": "permanentdelete",
+          "item": [
+            {
+              "name": "user Permanentdelete",
+              "id": "e0bff418-ebee-4e17-b05f-c5a7031fbc16",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "The user\u2019s user id.",
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The user\u2019s email address. Must have id or email, if given id, the email is ignored.",
+                      "key": "email",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/user/permanentdelete",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    "permanentdelete"
+                  ]
+                },
+                "description": "Delete a user from Zoom system permanently.\n\n"
+              },
+              "response": [
+                {
+                  "id": "6957806e-51c9-40a0-a7e8-64a49c07882d",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "The user\u2019s user id.",
+                          "key": "id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The user\u2019s email address. Must have id or email, if given id, the email is ignored.",
+                          "key": "email",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/user/permanentdelete",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "permanentdelete"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"example\": {\n    \"email\": \"email_address\",\n    \"deleted_at\": \"2013-09-02T12:00:00.000Z\"\n  }\n}",
+                  "createdAt": "2026-06-05T15:22:33.000Z",
+                  "updatedAt": "2026-06-05T15:22:33.000Z",
+                  "uid": "35240-6957806e-51c9-40a0-a7e8-64a49c07882d"
+                }
+              ],
+              "createdAt": "2026-06-05T15:22:33.000Z",
+              "updatedAt": "2026-06-05T15:22:33.000Z",
+              "uid": "35240-e0bff418-ebee-4e17-b05f-c5a7031fbc16"
+            }
+          ],
+          "id": "a6172bf1-86b3-4ae7-aacc-6ffa083b3712",
+          "createdAt": "2026-06-05T15:22:33.000Z",
+          "updatedAt": "2026-06-05T15:22:33.000Z",
+          "uid": "35240-a6172bf1-86b3-4ae7-aacc-6ffa083b3712"
+        },
+        {
+          "name": "revoketoken",
+          "item": [
+            {
+              "name": "user Revoketoken",
+              "id": "14c01d39-e6e3-4189-95a9-c04cb63e5bc7",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "The SSO user\u2019s user id.",
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The SSO user\u2019s email address.",
+                      "key": "email",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/user/revoketoken",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    "revoketoken"
+                  ]
+                },
+                "description": "Revoke a user's SSO token.\n\n"
+              },
+              "response": [
+                {
+                  "id": "d6197365-6fd9-42fe-8711-a0f1cf7972b3",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "The SSO user\u2019s user id.",
+                          "key": "id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The SSO user\u2019s email address.",
+                          "key": "email",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/user/revoketoken",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "revoketoken"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"example\": {\n    \"email\": \"email_address\",\n    \"updated_at\": \"2013-09-02T12:00:00.000Z\"\n  }\n}",
+                  "createdAt": "2026-06-05T15:22:33.000Z",
+                  "updatedAt": "2026-06-05T15:22:33.000Z",
+                  "uid": "35240-d6197365-6fd9-42fe-8711-a0f1cf7972b3"
+                }
+              ],
+              "createdAt": "2026-06-05T15:22:33.000Z",
+              "updatedAt": "2026-06-05T15:22:33.000Z",
+              "uid": "35240-14c01d39-e6e3-4189-95a9-c04cb63e5bc7"
+            }
+          ],
+          "id": "8c6e1cb3-06f7-4a9c-96b8-b55ad3a2d18f",
+          "createdAt": "2026-06-05T15:22:33.000Z",
+          "updatedAt": "2026-06-05T15:22:33.000Z",
+          "uid": "35240-8c6e1cb3-06f7-4a9c-96b8-b55ad3a2d18f"
+        },
+        {
+          "name": "scheduleforhost",
+          "item": [
+            {
+              "name": "list",
+              "item": [
+                {
+                  "name": "user Scheduleforhost List",
+                  "id": "71567dda-c763-4bb9-88f1-1b85a9e62aa0",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "The host\u2019s user id.",
+                          "key": "id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The host\u2019s email address.",
+                          "key": "host_email",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/user/scheduleforhost/list",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "scheduleforhost",
+                        "list"
+                      ]
+                    },
+                    "description": "List assigned schedule privilege for host users.\n\n"
+                  },
+                  "response": [
+                    {
+                      "id": "382594a0-55bb-458f-9bf1-eef4a185ffa2",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "The host\u2019s user id.",
+                              "key": "id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The host\u2019s email address.",
+                              "key": "host_email",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/user/scheduleforhost/list",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user",
+                            "scheduleforhost",
+                            "list"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"example\": {\n    \"total_records\": 1,\n    \"users\": [\n      {\n        \"email\": \"email_address\",\n        \"first_name\": \"Zoomie\",\n        \"last_name\": \"Userton\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-06-05T15:22:33.000Z",
+                      "updatedAt": "2026-06-05T15:22:33.000Z",
+                      "uid": "35240-382594a0-55bb-458f-9bf1-eef4a185ffa2"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:22:33.000Z",
+                  "updatedAt": "2026-06-05T15:22:33.000Z",
+                  "uid": "35240-71567dda-c763-4bb9-88f1-1b85a9e62aa0"
+                }
+              ],
+              "id": "f25453bb-11e4-49bf-a0d3-3993a235e5e0",
+              "createdAt": "2026-06-05T15:22:33.000Z",
+              "updatedAt": "2026-06-05T15:22:33.000Z",
+              "uid": "35240-f25453bb-11e4-49bf-a0d3-3993a235e5e0"
+            }
+          ],
+          "id": "1ce9865b-f9be-4448-8258-4978150b3496",
+          "createdAt": "2026-06-05T15:22:33.000Z",
+          "updatedAt": "2026-06-05T15:22:33.000Z",
+          "uid": "35240-1ce9865b-f9be-4448-8258-4978150b3496"
+        },
+        {
+          "name": "ssocreate",
+          "item": [
+            {
+              "name": "user Ssocreate",
+              "id": "bb67df88-afb7-4c22-b69f-b0c9f0640ea9",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) A valid email address. It must be unique in Zoom service.",
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) User\u2019s type. 1 means it is a basic user. 2 means a pro user, 3 means a corp user. Basic user can host up to 40 minutes meeting.",
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "User\u2019s first name.",
+                      "key": "first_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "User\u2019s last name.",
+                      "key": "last_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "User\u2019s meeting capacity, 0 means following account\u2019s meeting capacity.",
+                      "key": "meeting_capacity",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Enable webinar feature true or false.",
+                      "key": "enable_webinar",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Enable webinar capacity, can be 100, 500, 1000, 3000, 5000 or 10000, depends on if having related webinar capacity plan subscription or not.",
+                      "key": "webinar_capacity",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Enable large meting feature true or false.",
+                      "key": "enable_large",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Enable large meeting capacity, can be 100, 200, 300 or 500, depends on if having related webinar capacity plan subscription or not.",
+                      "key": "large_capacity",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Personal Meeting ID, long, length must be 10.",
+                      "key": "pmi",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "User Group ID. If set default user group, the parameter\u2019s default value is the default user group.",
+                      "key": "group_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "IM Group ID. If set default im group, the parameter\u2019s default value is the default im group.",
+                      "key": "imgroup_id",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/user/ssocreate",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    "ssocreate"
+                  ]
+                },
+                "description": "Create a SSO user on Zoom, return the created user ID.\n\n<aside class=\"notice\">The API is provided for enabled 'Pre-provisioning SSO User' option. User created in this way has no password. If it is not a basic user, will generate a Personal Vanity URL using user name (no domain) of the provisioning email. If user name or pmi is invalid or occupied, will use random number/random personal vanity URL.</aside>\n\n"
+              },
+              "response": [
+                {
+                  "id": "5c2ccce7-a9c3-43b2-981f-aa835301691b",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) A valid email address. It must be unique in Zoom service.",
+                          "key": "email",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) User\u2019s type. 1 means it is a basic user. 2 means a pro user, 3 means a corp user. Basic user can host up to 40 minutes meeting.",
+                          "key": "type",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "User\u2019s first name.",
+                          "key": "first_name",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "User\u2019s last name.",
+                          "key": "last_name",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "User\u2019s meeting capacity, 0 means following account\u2019s meeting capacity.",
+                          "key": "meeting_capacity",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Enable webinar feature true or false.",
+                          "key": "enable_webinar",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Enable webinar capacity, can be 100, 500, 1000, 3000, 5000 or 10000, depends on if having related webinar capacity plan subscription or not.",
+                          "key": "webinar_capacity",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Enable large meting feature true or false.",
+                          "key": "enable_large",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Enable large meeting capacity, can be 100, 200, 300 or 500, depends on if having related webinar capacity plan subscription or not.",
+                          "key": "large_capacity",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Personal Meeting ID, long, length must be 10.",
+                          "key": "pmi",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "User Group ID. If set default user group, the parameter\u2019s default value is the default user group.",
+                          "key": "group_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "IM Group ID. If set default im group, the parameter\u2019s default value is the default im group.",
+                          "key": "imgroup_id",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/user/ssocreate",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "ssocreate"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"example\": {\n    \"email\": \"email_address\",\n    \"first_name\": \"Zoomie\",\n    \"last_name\": \"Userton\",\n    \"pic_url\": \"\",\n    \"type\": 2,\n    \"disable_chat\": true,\n    \"disable_private_chat\": false,\n    \"enable_e2e_encryption\": false,\n    \"enable_silent_mode\": true,\n    \"disable_group_hd\": false,\n    \"disable_recording\": true,\n    \"enable_cmr\": false,\n    \"enable_record_speaker_view\": false,\n    \"enable_record_gallery_view\": false,\n    \"enable_record_audio_file\": false,\n    \"enable_auto_recording\": false,\n    \"enable_cloud_auto_recording\": false,\n    \"verified\": 0,\n    \"pmi\": 0,\n    \"vanity_url\": \"https://abc.zoom.us/my/test126\",\n    \"meeting_capacity\": 0,\n    \"enable_webinar\": true,\n    \"webinar_capacity\": 100,\n    \"enable_large\": false,\n    \"large_capacity\": 0,\n    \"disable_feedback\": false,\n    \"disable_jbh_reminder\": false,\n    \"enable_breakout_room\": true,\n    \"enable_polling\": false,\n    \"enable_annotation\": false,\n    \"dept\": \"Engineer\",\n    \"timezone\": \"\",\n    \"created_at\": \"2015-03-12T05:45:45.000Z\",\n    \"lastClientVersion\": \"\",\n    \"lastLoginTime\": \"\",\n    \"token\": \"\",\n    \"zpk\": \"\",\n    \"zak\": \"\"\n  }\n}",
+                  "createdAt": "2026-06-05T15:22:33.000Z",
+                  "updatedAt": "2026-06-05T15:22:33.000Z",
+                  "uid": "35240-5c2ccce7-a9c3-43b2-981f-aa835301691b"
+                }
+              ],
+              "createdAt": "2026-06-05T15:22:33.000Z",
+              "updatedAt": "2026-06-05T15:22:33.000Z",
+              "uid": "35240-bb67df88-afb7-4c22-b69f-b0c9f0640ea9"
+            }
+          ],
+          "id": "3ef94678-e78f-4962-8236-7bd9fca51374",
+          "createdAt": "2026-06-05T15:22:33.000Z",
+          "updatedAt": "2026-06-05T15:22:33.000Z",
+          "uid": "35240-3ef94678-e78f-4962-8236-7bd9fca51374"
+        },
+        {
+          "name": "update",
+          "item": [
+            {
+              "name": "user Update",
+              "id": "573355de-a694-4239-aab8-cbb085a0589e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) User id.",
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "User\u2019s type. 1 means it is a basic user. 2 means a pro user, 3 means a corp user. Basic user can host up to 40 minutes meeting.",
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "User\u2019s first name.",
+                      "key": "first_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "User\u2019s last name.",
+                      "key": "last_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Disable in-meeting chat.",
+                      "key": "disable_chat",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable end-to-end encryption.",
+                      "key": "enable_e2e_encryption",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable attendee on-hold.",
+                      "key": "enable_silent_mode",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Disable Group HD.",
+                      "key": "disable_group_hd",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Disable recording.",
+                      "key": "disable_recording",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable cloud meeting record.",
+                      "key": "enable_cmr",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable record the active speaker view.",
+                      "key": "enable_record_speaker_view",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Enable record the gallery view.",
+                      "key": "enable_record_gallery_view",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Enable record an audio only file.",
+                      "key": "enable_record_audio_file",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Enable automatic recording. By default, if \"enable_cloud_auto_recording\" is true, it will become true.",
+                      "key": "enable_auto_recording",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable cloud automatic recording.",
+                      "key": "enable_cloud_auto_recording",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Referral partner track ID.",
+                      "key": "track_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "User\u2019s meeting capacity, passing 0 will inherit account\u2019s meeting capacity",
+                      "key": "meeting_capacity",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Enable webinar feature true or false.",
+                      "key": "enable_webinar",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Enable webinar capacity, can be 100, 500, 1000, 3000, 5000 or 10000, depends on if having related webinar capacity plan subscription or not.",
+                      "key": "webinar_capacity",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Enable large meting feature true or false.",
+                      "key": "enable_large",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Enable large meeting capacity, can be 100, 200, 300 or 500, depends on if having related webinar capacity plan subscription or not.",
+                      "key": "large_capacity",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Disable feedback.",
+                      "key": "disable_feedback",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Disable jbh email reminder.",
+                      "key": "disable_jbh_reminder",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable breakout room.",
+                      "key": "enable_breakout_room",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable polling for meeting.",
+                      "key": "enable_polling",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable Annotation.",
+                      "key": "enable_annotation",
+                      "value": "true"
+                    },
+                    {
+                      "description": "Enable Share dual camera.",
+                      "key": "enable_share_dual_camera",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable Far end camera control.",
+                      "key": "enable_far_end_camera_control",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Disable Private chat.",
+                      "key": "disable_private_chat",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable Enter/exit chime.",
+                      "key": "enable_enter_exit_chime",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enter/exit chime type. 0 means Heard by all including host and attendees, 1 means Heard by host only.",
+                      "key": "option_enter_exit_chime_type",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Disable email notification when a meeting is cancelled.",
+                      "key": "disable_cancel_meeting_notification",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable Remote support.",
+                      "key": "enable_remote_support",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable File transfer.",
+                      "key": "enable_file_transfer",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable Virtual background.",
+                      "key": "enable_virtual_background",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable Attention tracking.",
+                      "key": "enable_attention_tracking",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable Waiting room.",
+                      "key": "enable_waiting_room",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable Use Personal Meeting ID for instant meetings.",
+                      "key": "enable_use_pmi",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable Closed caption.",
+                      "key": "enable_closed_caption",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable Co-host.",
+                      "key": "enable_co_host",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable Auto saving chats.",
+                      "key": "enable_auto_saving_chats",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable Generate and require password for participants joining by phone.",
+                      "key": "enable_phone_participants_password",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Enable Auto delete cloud recordings.",
+                      "key": "enable_auto_delete_cmr",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Auto delete cloud recordings after days.",
+                      "key": "auto_delete_cmr_days",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Personal Meeting ID, long, length must be 10.",
+                      "key": "pmi",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Department for user profile, use for report.",
+                      "key": "dept",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The time zone id for user profile.",
+                      "key": "timezone",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Personal meeting room name.",
+                      "key": "vanity_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Host Key should be 6-digit number.",
+                      "key": "host_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "User Group ID. If set default user group, the parameter\u2019s default value is the default user group.",
+                      "key": "group_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "IM Group ID. If set default im group, the parameter\u2019s default value is the default im group.",
+                      "key": "imgroup_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "User ID on external CMS",
+                      "key": "cms_user_id",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/user/update",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    "update"
+                  ]
+                },
+                "description": "Update user info on Zoom via user ID.\n\n"
+              },
+              "response": [
+                {
+                  "id": "c31e0010-8325-4f75-a8aa-a241f37fe2ae",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) User id.",
+                          "key": "id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "User\u2019s type. 1 means it is a basic user. 2 means a pro user, 3 means a corp user. Basic user can host up to 40 minutes meeting.",
+                          "key": "type",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "User\u2019s first name.",
+                          "key": "first_name",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "User\u2019s last name.",
+                          "key": "last_name",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Disable in-meeting chat.",
+                          "key": "disable_chat",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable end-to-end encryption.",
+                          "key": "enable_e2e_encryption",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable attendee on-hold.",
+                          "key": "enable_silent_mode",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Disable Group HD.",
+                          "key": "disable_group_hd",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Disable recording.",
+                          "key": "disable_recording",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable cloud meeting record.",
+                          "key": "enable_cmr",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable record the active speaker view.",
+                          "key": "enable_record_speaker_view",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Enable record the gallery view.",
+                          "key": "enable_record_gallery_view",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Enable record an audio only file.",
+                          "key": "enable_record_audio_file",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Enable automatic recording. By default, if \"enable_cloud_auto_recording\" is true, it will become true.",
+                          "key": "enable_auto_recording",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable cloud automatic recording.",
+                          "key": "enable_cloud_auto_recording",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Referral partner track ID.",
+                          "key": "track_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "User\u2019s meeting capacity, passing 0 will inherit account\u2019s meeting capacity",
+                          "key": "meeting_capacity",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Enable webinar feature true or false.",
+                          "key": "enable_webinar",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Enable webinar capacity, can be 100, 500, 1000, 3000, 5000 or 10000, depends on if having related webinar capacity plan subscription or not.",
+                          "key": "webinar_capacity",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Enable large meting feature true or false.",
+                          "key": "enable_large",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Enable large meeting capacity, can be 100, 200, 300 or 500, depends on if having related webinar capacity plan subscription or not.",
+                          "key": "large_capacity",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Disable feedback.",
+                          "key": "disable_feedback",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Disable jbh email reminder.",
+                          "key": "disable_jbh_reminder",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable breakout room.",
+                          "key": "enable_breakout_room",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable polling for meeting.",
+                          "key": "enable_polling",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable Annotation.",
+                          "key": "enable_annotation",
+                          "value": "true"
+                        },
+                        {
+                          "description": "Enable Share dual camera.",
+                          "key": "enable_share_dual_camera",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable Far end camera control.",
+                          "key": "enable_far_end_camera_control",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Disable Private chat.",
+                          "key": "disable_private_chat",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable Enter/exit chime.",
+                          "key": "enable_enter_exit_chime",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enter/exit chime type. 0 means Heard by all including host and attendees, 1 means Heard by host only.",
+                          "key": "option_enter_exit_chime_type",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Disable email notification when a meeting is cancelled.",
+                          "key": "disable_cancel_meeting_notification",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable Remote support.",
+                          "key": "enable_remote_support",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable File transfer.",
+                          "key": "enable_file_transfer",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable Virtual background.",
+                          "key": "enable_virtual_background",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable Attention tracking.",
+                          "key": "enable_attention_tracking",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable Waiting room.",
+                          "key": "enable_waiting_room",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable Use Personal Meeting ID for instant meetings.",
+                          "key": "enable_use_pmi",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable Closed caption.",
+                          "key": "enable_closed_caption",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable Co-host.",
+                          "key": "enable_co_host",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable Auto saving chats.",
+                          "key": "enable_auto_saving_chats",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable Generate and require password for participants joining by phone.",
+                          "key": "enable_phone_participants_password",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Enable Auto delete cloud recordings.",
+                          "key": "enable_auto_delete_cmr",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Auto delete cloud recordings after days.",
+                          "key": "auto_delete_cmr_days",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Personal Meeting ID, long, length must be 10.",
+                          "key": "pmi",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Department for user profile, use for report.",
+                          "key": "dept",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The time zone id for user profile.",
+                          "key": "timezone",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Personal meeting room name.",
+                          "key": "vanity_name",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Host Key should be 6-digit number.",
+                          "key": "host_key",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "User Group ID. If set default user group, the parameter\u2019s default value is the default user group.",
+                          "key": "group_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "IM Group ID. If set default im group, the parameter\u2019s default value is the default im group.",
+                          "key": "imgroup_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "User ID on external CMS",
+                          "key": "cms_user_id",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/user/update",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "update"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"example\": {\n    \"updated_at\": \"2012-11-25T12:00:00.000Z\"\n  }\n}",
+                  "createdAt": "2026-06-05T15:22:33.000Z",
+                  "updatedAt": "2026-06-05T15:22:33.000Z",
+                  "uid": "35240-c31e0010-8325-4f75-a8aa-a241f37fe2ae"
+                }
+              ],
+              "createdAt": "2026-06-05T15:22:33.000Z",
+              "updatedAt": "2026-06-05T15:22:33.000Z",
+              "uid": "35240-573355de-a694-4239-aab8-cbb085a0589e"
+            }
+          ],
+          "id": "3a98d6f6-f52f-4d5b-b6be-96842805c96c",
+          "createdAt": "2026-06-05T15:22:33.000Z",
+          "updatedAt": "2026-06-05T15:22:33.000Z",
+          "uid": "35240-3a98d6f6-f52f-4d5b-b6be-96842805c96c"
+        },
+        {
+          "name": "updatepassword",
+          "item": [
+            {
+              "name": "user Updatepassword",
+              "id": "675ece23-4ba6-440c-a8ab-84e458a58e51",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) User id.",
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) User picture file, must be a jpg/jpeg file.",
+                      "key": "pic_file",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/user/updatepassword",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    "updatepassword"
+                  ]
+                },
+                "description": "Upload and update user's profile picture on Zoom via user ID.\n\n"
+              },
+              "response": [
+                {
+                  "id": "32926628-399f-41c2-b542-ce26015464b4",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) User id.",
+                          "key": "id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) User picture file, must be a jpg/jpeg file.",
+                          "key": "pic_file",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/user/updatepassword",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "updatepassword"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"example\": {\n    \"updated_at\": \"2013-09-02T12:00:00.000Z\"\n  }\n}",
+                  "createdAt": "2026-06-05T15:22:33.000Z",
+                  "updatedAt": "2026-06-05T15:22:33.000Z",
+                  "uid": "35240-32926628-399f-41c2-b542-ce26015464b4"
+                }
+              ],
+              "createdAt": "2026-06-05T15:22:33.000Z",
+              "updatedAt": "2026-06-05T15:22:33.000Z",
+              "uid": "35240-675ece23-4ba6-440c-a8ab-84e458a58e51"
+            }
+          ],
+          "id": "09cda0ca-8fef-4e4d-93eb-729deb84ea88",
+          "createdAt": "2026-06-05T15:22:33.000Z",
+          "updatedAt": "2026-06-05T15:22:33.000Z",
+          "uid": "35240-09cda0ca-8fef-4e4d-93eb-729deb84ea88"
+        }
+      ],
+      "id": "87a0e207-5a40-492b-9ca2-06ea53b73770",
+      "createdAt": "2026-06-05T15:22:33.000Z",
+      "updatedAt": "2026-06-05T15:22:33.000Z",
+      "uid": "35240-87a0e207-5a40-492b-9ca2-06ea53b73770"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.zoom.us/v1"
+    }
+  ]
+}

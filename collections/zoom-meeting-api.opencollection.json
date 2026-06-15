@@ -1,0 +1,734 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zoom Meeting API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://zoom.us/oauth/authorize",
+      "accessTokenUrl": "https://zoom.us/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Meetings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zoom List Meetings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.zoom.us/v2/users/:userId/meetings",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "The user ID or email address. Use `me` for the current user in user-level apps."
+              },
+              {
+                "name": "type",
+                "value": "scheduled",
+                "type": "query",
+                "description": "The type of meeting. `scheduled` - All valid previous (unexpired) meetings, live meetings, and upcoming scheduled meetings. `live` - All the ongoing meetings. `upcoming` - All upcoming meetings including live meetings. `upcoming_meetings` - All upcoming meetings including live meetings. `previous_meetings` - All the previous meetings."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned per API call. Maximum is 300."
+              },
+              {
+                "name": "next_page_token",
+                "value": "",
+                "type": "query",
+                "description": "The next page token to paginate through large result sets. A next_page_token is returned in the response when a result set exceeds the page_size."
+              },
+              {
+                "name": "page_number",
+                "value": "",
+                "type": "query",
+                "description": "The page number of the current results."
+              }
+            ]
+          },
+          "docs": "List all the meetings that were scheduled for a user. For user-level apps, pass the `me` value instead of the userId parameter."
+        },
+        {
+          "info": {
+            "name": "Zoom Create a Meeting",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v2/users/:userId/meetings",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "The user ID or email address. Use `me` for the current user in user-level apps."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a meeting for a user. For user-level apps, pass the `me` value instead of the userId parameter. A meeting can be scheduled, instant, or recurring."
+        },
+        {
+          "info": {
+            "name": "Zoom Get Meeting Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.zoom.us/v2/meetings/:meetingId",
+            "params": [
+              {
+                "name": "meetingId",
+                "value": "",
+                "type": "path",
+                "description": "The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+              },
+              {
+                "name": "occurrence_id",
+                "value": "500123",
+                "type": "query",
+                "description": "Meeting occurrence ID for recurring meetings."
+              },
+              {
+                "name": "show_previous_occurrences",
+                "value": "true",
+                "type": "query",
+                "description": "Set to true to view meeting details of all previous occurrences of a recurring meeting."
+              }
+            ]
+          },
+          "docs": "Retrieve the details of a meeting. This returns detailed information about the specified meeting including settings, recurrence, and tracking fields."
+        },
+        {
+          "info": {
+            "name": "Zoom Update a Meeting",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.zoom.us/v2/meetings/:meetingId",
+            "params": [
+              {
+                "name": "meetingId",
+                "value": "",
+                "type": "path",
+                "description": "The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+              },
+              {
+                "name": "occurrence_id",
+                "value": "500123",
+                "type": "query",
+                "description": "Meeting occurrence ID for recurring meeting updates."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the details of a meeting. This can include topic, start time, duration, settings, and other meeting options."
+        },
+        {
+          "info": {
+            "name": "Zoom Delete a Meeting",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.zoom.us/v2/meetings/:meetingId",
+            "params": [
+              {
+                "name": "meetingId",
+                "value": "",
+                "type": "path",
+                "description": "The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+              },
+              {
+                "name": "occurrence_id",
+                "value": "500123",
+                "type": "query",
+                "description": "Meeting occurrence ID for recurring meeting deletion."
+              },
+              {
+                "name": "schedule_for_reminder",
+                "value": "true",
+                "type": "query",
+                "description": "Notify host and alternative host about the meeting cancellation via email."
+              },
+              {
+                "name": "cancel_meeting_reminder",
+                "value": "true",
+                "type": "query",
+                "description": "Notify registrants about the meeting cancellation via email."
+              }
+            ]
+          },
+          "docs": "Delete a meeting. This permanently removes the meeting from Zoom."
+        },
+        {
+          "info": {
+            "name": "Zoom Update Meeting Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.zoom.us/v2/meetings/:meetingId/status",
+            "params": [
+              {
+                "name": "meetingId",
+                "value": "",
+                "type": "path",
+                "description": "The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "End a meeting by updating its status. This can also recover a deleted meeting within a certain time frame."
+        },
+        {
+          "info": {
+            "name": "Zoom Get Past Meeting Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.zoom.us/v2/past_meetings/:meetingId",
+            "params": [
+              {
+                "name": "meetingId",
+                "value": "500123",
+                "type": "path",
+                "description": "The meeting UUID. Each meeting instance will generate its own UUID. Double-encode if the UUID begins with `/` or contains `//`."
+              }
+            ]
+          },
+          "docs": "Retrieve information about a past meeting. The meeting UUID must be double-encoded if it contains `/` or `//` characters."
+        },
+        {
+          "info": {
+            "name": "Zoom Get Meeting Invitation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.zoom.us/v2/meetings/:meetingId/invitation",
+            "params": [
+              {
+                "name": "meetingId",
+                "value": "",
+                "type": "path",
+                "description": "The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+              }
+            ]
+          },
+          "docs": "Retrieve the meeting invitation note for a specific meeting."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Meeting Registrants",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zoom List Meeting Registrants",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.zoom.us/v2/meetings/:meetingId/registrants",
+            "params": [
+              {
+                "name": "meetingId",
+                "value": "",
+                "type": "path",
+                "description": "The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+              },
+              {
+                "name": "occurrence_id",
+                "value": "500123",
+                "type": "query",
+                "description": "Meeting occurrence ID for recurring meetings."
+              },
+              {
+                "name": "status",
+                "value": "pending",
+                "type": "query",
+                "description": "Registrant status filter."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned per API call. Maximum is 300."
+              },
+              {
+                "name": "next_page_token",
+                "value": "",
+                "type": "query",
+                "description": "The next page token to paginate through large result sets. A next_page_token is returned in the response when a result set exceeds the page_size."
+              }
+            ]
+          },
+          "docs": "List all registrants for a meeting. Returns the list of users who registered for the meeting."
+        },
+        {
+          "info": {
+            "name": "Zoom Add a Meeting Registrant",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v2/meetings/:meetingId/registrants",
+            "params": [
+              {
+                "name": "meetingId",
+                "value": "",
+                "type": "path",
+                "description": "The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+              },
+              {
+                "name": "occurrence_ids",
+                "value": "example_value",
+                "type": "query",
+                "description": "A comma-separated list of occurrence IDs for recurring meetings."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Register a participant for a meeting. A host or alternative host can also add registrants on behalf of other users."
+        },
+        {
+          "info": {
+            "name": "Zoom Update Registrant Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.zoom.us/v2/meetings/:meetingId/registrants/status",
+            "params": [
+              {
+                "name": "meetingId",
+                "value": "",
+                "type": "path",
+                "description": "The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+              },
+              {
+                "name": "occurrence_id",
+                "value": "500123",
+                "type": "query",
+                "description": "Meeting occurrence ID for recurring meetings."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Approve or deny a meeting registrant. Also allows cancellation of a previously approved registrant."
+        },
+        {
+          "info": {
+            "name": "Zoom Batch Add Meeting Registrants",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v2/meetings/:meetingId/batch_registrants",
+            "params": [
+              {
+                "name": "meetingId",
+                "value": "",
+                "type": "path",
+                "description": "The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Register up to 30 registrants at once for a meeting that requires registration."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Meeting Polls",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zoom List Meeting Polls",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.zoom.us/v2/meetings/:meetingId/polls",
+            "params": [
+              {
+                "name": "meetingId",
+                "value": "",
+                "type": "path",
+                "description": "The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+              },
+              {
+                "name": "anonymous",
+                "value": "true",
+                "type": "query",
+                "description": "Whether to query anonymous polls."
+              }
+            ]
+          },
+          "docs": "List all polls for a meeting."
+        },
+        {
+          "info": {
+            "name": "Zoom Create a Meeting Poll",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v2/meetings/:meetingId/polls",
+            "params": [
+              {
+                "name": "meetingId",
+                "value": "",
+                "type": "path",
+                "description": "The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a poll for a meeting. Meeting must be a scheduled meeting. Instant meetings do not have polling features enabled."
+        },
+        {
+          "info": {
+            "name": "Zoom Get a Meeting Poll",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.zoom.us/v2/meetings/:meetingId/polls/:pollId",
+            "params": [
+              {
+                "name": "meetingId",
+                "value": "",
+                "type": "path",
+                "description": "The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+              },
+              {
+                "name": "pollId",
+                "value": "",
+                "type": "path",
+                "description": "The poll ID."
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific meeting poll."
+        },
+        {
+          "info": {
+            "name": "Zoom Update a Meeting Poll",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.zoom.us/v2/meetings/:meetingId/polls/:pollId",
+            "params": [
+              {
+                "name": "meetingId",
+                "value": "",
+                "type": "path",
+                "description": "The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+              },
+              {
+                "name": "pollId",
+                "value": "",
+                "type": "path",
+                "description": "The poll ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a specific meeting poll."
+        },
+        {
+          "info": {
+            "name": "Zoom Delete a Meeting Poll",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.zoom.us/v2/meetings/:meetingId/polls/:pollId",
+            "params": [
+              {
+                "name": "meetingId",
+                "value": "",
+                "type": "path",
+                "description": "The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+              },
+              {
+                "name": "pollId",
+                "value": "",
+                "type": "path",
+                "description": "The poll ID."
+              }
+            ]
+          },
+          "docs": "Delete a specific meeting poll."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Meeting Participants",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zoom List Meeting Participants",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.zoom.us/v2/meetings/:meetingId/participants",
+            "params": [
+              {
+                "name": "meetingId",
+                "value": "",
+                "type": "path",
+                "description": "The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned per API call. Maximum is 300."
+              },
+              {
+                "name": "next_page_token",
+                "value": "",
+                "type": "query",
+                "description": "The next page token to paginate through large result sets. A next_page_token is returned in the response when a result set exceeds the page_size."
+              },
+              {
+                "name": "include_fields",
+                "value": "registrant_id",
+                "type": "query",
+                "description": "Provide `registrant_id` to include the registrant_id field in the response."
+              }
+            ]
+          },
+          "docs": "List participants from a past meeting instance. Only available for paid accounts with the Dashboard feature enabled."
+        },
+        {
+          "info": {
+            "name": "Zoom List Past Meeting Participants",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.zoom.us/v2/past_meetings/:meetingId/participants",
+            "params": [
+              {
+                "name": "meetingId",
+                "value": "500123",
+                "type": "path",
+                "description": "The meeting UUID."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned per API call. Maximum is 300."
+              },
+              {
+                "name": "next_page_token",
+                "value": "",
+                "type": "query",
+                "description": "The next page token to paginate through large result sets. A next_page_token is returned in the response when a result set exceeds the page_size."
+              }
+            ]
+          },
+          "docs": "Retrieve information on participants from a past meeting. The API does not return results if the meeting is less than 5 minutes old."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Meeting Live Stream",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zoom Update a Live Stream",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.zoom.us/v2/meetings/:meetingId/livestream",
+            "params": [
+              {
+                "name": "meetingId",
+                "value": "",
+                "type": "path",
+                "description": "The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the live stream configuration of a meeting. The meeting host must configure live streaming settings before the meeting starts."
+        },
+        {
+          "info": {
+            "name": "Zoom Update Live Stream Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.zoom.us/v2/meetings/:meetingId/livestream/status",
+            "params": [
+              {
+                "name": "meetingId",
+                "value": "",
+                "type": "path",
+                "description": "The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the status of a live stream during a meeting. Use this to start or stop live streaming."
+        },
+        {
+          "info": {
+            "name": "Zoom Get a Meeting's Join Token for Live Streaming",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.zoom.us/v2/meetings/:meetingId/jointoken/live_streaming",
+            "params": [
+              {
+                "name": "meetingId",
+                "value": "",
+                "type": "path",
+                "description": "The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+              }
+            ]
+          },
+          "docs": "Get a meeting's join token to allow live streaming. The join token allows a recording bot or live streaming service to join the meeting."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Meeting Recordings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zoom Get Meeting Recordings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.zoom.us/v2/meetings/:meetingId/recordings",
+            "params": [
+              {
+                "name": "meetingId",
+                "value": "",
+                "type": "path",
+                "description": "The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+              },
+              {
+                "name": "include_fields",
+                "value": "example_value",
+                "type": "query",
+                "description": "Additional fields to include in the response."
+              },
+              {
+                "name": "ttl",
+                "value": "10",
+                "type": "query",
+                "description": "Time to live in seconds for the download URL."
+              }
+            ]
+          },
+          "docs": "Retrieve all recordings for a specific meeting. Cloud recordings are available to paid accounts with cloud recording enabled."
+        },
+        {
+          "info": {
+            "name": "Zoom Delete Meeting Recordings",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.zoom.us/v2/meetings/:meetingId/recordings",
+            "params": [
+              {
+                "name": "meetingId",
+                "value": "",
+                "type": "path",
+                "description": "The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+              },
+              {
+                "name": "action",
+                "value": "trash",
+                "type": "query",
+                "description": "Delete action. `trash` moves to trash. `delete` permanently deletes."
+              }
+            ]
+          },
+          "docs": "Delete all recording files of a meeting. The recording files will be moved to trash and permanently deleted after 30 days."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

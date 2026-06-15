@@ -1,0 +1,554 @@
+{
+  "info": {
+    "_postman_id": "7555cc3b-87a6-4ee0-aca2-71eff21f0274",
+    "name": "Zoom device/",
+    "description": "Needs description.\n\nContact Support:\n Name: Zoom Developers\n Email: developer@zoom.us",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:21:49.000Z",
+    "updatedAt": "2026-06-05T15:21:49.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-7555cc3b-87a6-4ee0-aca2-71eff21f0274"
+  },
+  "item": [
+    {
+      "name": "h323",
+      "item": [
+        {
+          "name": "device",
+          "item": [
+            {
+              "name": "create",
+              "item": [
+                {
+                  "name": "device Device Create",
+                  "id": "f173315e-9a57-4518-a7da-f5baaa213fae",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) IP Address or H.323 Extension.",
+                          "key": "ip",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Display Name.",
+                          "key": "name",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Protocol type. 1 means H.323, 2 means SIP.",
+                          "key": "protocol_type",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Encryption type. 0 means No, 1 means Yes, 2 means Auto.",
+                          "key": "encryption_type",
+                          "value": "2"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/h323/device/create",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "h323",
+                        "device",
+                        "create"
+                      ]
+                    },
+                    "description": "Create a H.323/SIP Device on your Zoom account.\n\n"
+                  },
+                  "response": [
+                    {
+                      "id": "6ceb277a-06a5-4239-a8db-d8f736486378",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) IP Address or H.323 Extension.",
+                              "key": "ip",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) Display Name.",
+                              "key": "name",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Protocol type. 1 means H.323, 2 means SIP.",
+                              "key": "protocol_type",
+                              "value": "1"
+                            },
+                            {
+                              "description": "Encryption type. 0 means No, 1 means Yes, 2 means Auto.",
+                              "key": "encryption_type",
+                              "value": "2"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/h323/device/create",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "h323",
+                            "device",
+                            "create"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"example\": {\n    \"name\": \"New Device\",\n    \"ip\": \"192.168.1.10\",\n    \"protocol_type\": 1,\n    \"encryption_type\": 2\n  }\n}",
+                      "createdAt": "2026-06-05T15:21:49.000Z",
+                      "updatedAt": "2026-06-05T15:21:49.000Z",
+                      "uid": "35240-6ceb277a-06a5-4239-a8db-d8f736486378"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:21:49.000Z",
+                  "updatedAt": "2026-06-05T15:21:49.000Z",
+                  "uid": "35240-f173315e-9a57-4518-a7da-f5baaa213fae"
+                }
+              ],
+              "id": "60f81927-94d5-447c-8ad1-e17530c7d1c5",
+              "createdAt": "2026-06-05T15:21:49.000Z",
+              "updatedAt": "2026-06-05T15:21:49.000Z",
+              "uid": "35240-60f81927-94d5-447c-8ad1-e17530c7d1c5"
+            },
+            {
+              "name": "delete",
+              "item": [
+                {
+                  "name": "device Device Delete",
+                  "id": "00ad8e1b-f264-43e4-bdc3-2d56e947969e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Device ID.",
+                          "key": "id",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/h323/device/delete",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "h323",
+                        "device",
+                        "delete"
+                      ]
+                    },
+                    "description": "Delete a H.323/SIP Device on your Zoom account.\n\n"
+                  },
+                  "response": [
+                    {
+                      "id": "ee438a77-f7a1-4493-91cd-98bd4cbdcac2",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) Device ID.",
+                              "key": "id",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/h323/device/delete",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "h323",
+                            "device",
+                            "delete"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"example\": {\n    \"deleted_at\": \"2017-03-14T09:27:15.000Z\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:21:49.000Z",
+                      "updatedAt": "2026-06-05T15:21:49.000Z",
+                      "uid": "35240-ee438a77-f7a1-4493-91cd-98bd4cbdcac2"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:21:49.000Z",
+                  "updatedAt": "2026-06-05T15:21:49.000Z",
+                  "uid": "35240-00ad8e1b-f264-43e4-bdc3-2d56e947969e"
+                }
+              ],
+              "id": "b8491420-dea2-495f-9cd5-d79fdd079ff6",
+              "createdAt": "2026-06-05T15:21:49.000Z",
+              "updatedAt": "2026-06-05T15:21:49.000Z",
+              "uid": "35240-b8491420-dea2-495f-9cd5-d79fdd079ff6"
+            },
+            {
+              "name": "list",
+              "item": [
+                {
+                  "name": "device Device List",
+                  "id": "f5faa9a4-126d-4090-8323-db2ccdafe552",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "The amount of records returns within a single API call. Defaults to 30.",
+                          "key": "page_size",
+                          "value": "30"
+                        },
+                        {
+                          "description": "Current page number of returned records. Default to 1.",
+                          "key": "page_number",
+                          "value": "1"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/h323/device/list",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "h323",
+                        "device",
+                        "list"
+                      ]
+                    },
+                    "description": "List H.323/SIP Devices on your Zoom account.\n\n"
+                  },
+                  "response": [
+                    {
+                      "id": "a68fbb24-f85f-4212-8321-65a3433c1984",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "The amount of records returns within a single API call. Defaults to 30.",
+                              "key": "page_size",
+                              "value": "30"
+                            },
+                            {
+                              "description": "Current page number of returned records. Default to 1.",
+                              "key": "page_number",
+                              "value": "1"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/h323/device/list",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "h323",
+                            "device",
+                            "list"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"example\": {\n    \"page_count\": 1,\n    \"page_number\": 1,\n    \"page_size\": 30,\n    \"total_records\": 1,\n    \"devices\": [\n      {\n        \"name\": \"New Device\",\n        \"ip\": \"192.168.1.10\",\n        \"protocol_type\": 1,\n        \"encryption_type\": 2\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-06-05T15:21:49.000Z",
+                      "updatedAt": "2026-06-05T15:21:49.000Z",
+                      "uid": "35240-a68fbb24-f85f-4212-8321-65a3433c1984"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:21:49.000Z",
+                  "updatedAt": "2026-06-05T15:21:49.000Z",
+                  "uid": "35240-f5faa9a4-126d-4090-8323-db2ccdafe552"
+                }
+              ],
+              "id": "3f5df894-53b8-4de0-ad44-ae06097a127a",
+              "createdAt": "2026-06-05T15:21:49.000Z",
+              "updatedAt": "2026-06-05T15:21:49.000Z",
+              "uid": "35240-3f5df894-53b8-4de0-ad44-ae06097a127a"
+            },
+            {
+              "name": "update",
+              "item": [
+                {
+                  "name": "device Device Update",
+                  "id": "08abe2fa-3a49-42bd-a929-2df71e5b64b2",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Device ID.",
+                          "key": "id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Display Name.",
+                          "key": "name",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "IP Address or H.323 Extension.",
+                          "key": "ip",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Protocol type. 1 means H.323, 2 means SIP.",
+                          "key": "protocol_type",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Encryption type. 0 means No, 1 means Yes, 2 means Auto.",
+                          "key": "encryption_type",
+                          "value": "2"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/h323/device/update",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "h323",
+                        "device",
+                        "update"
+                      ]
+                    },
+                    "description": "Update a H.323/SIP Device on your Zoom account.\n\n"
+                  },
+                  "response": [
+                    {
+                      "id": "18e497f3-e0d6-4ac8-958f-c6fbb45abe4d",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) Device ID.",
+                              "key": "id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Display Name.",
+                              "key": "name",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "IP Address or H.323 Extension.",
+                              "key": "ip",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Protocol type. 1 means H.323, 2 means SIP.",
+                              "key": "protocol_type",
+                              "value": "1"
+                            },
+                            {
+                              "description": "Encryption type. 0 means No, 1 means Yes, 2 means Auto.",
+                              "key": "encryption_type",
+                              "value": "2"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/h323/device/update",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "h323",
+                            "device",
+                            "update"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"example\": {\n    \"updated_at\": \"2017-03-14T09:27:03.000Z\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:21:49.000Z",
+                      "updatedAt": "2026-06-05T15:21:49.000Z",
+                      "uid": "35240-18e497f3-e0d6-4ac8-958f-c6fbb45abe4d"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:21:49.000Z",
+                  "updatedAt": "2026-06-05T15:21:49.000Z",
+                  "uid": "35240-08abe2fa-3a49-42bd-a929-2df71e5b64b2"
+                }
+              ],
+              "id": "95ac243b-3646-4875-b09e-a1f8d2099c1c",
+              "createdAt": "2026-06-05T15:21:49.000Z",
+              "updatedAt": "2026-06-05T15:21:49.000Z",
+              "uid": "35240-95ac243b-3646-4875-b09e-a1f8d2099c1c"
+            }
+          ],
+          "id": "7875536e-1755-4c44-ba3e-3bc8ca42c326",
+          "createdAt": "2026-06-05T15:21:49.000Z",
+          "updatedAt": "2026-06-05T15:21:49.000Z",
+          "uid": "35240-7875536e-1755-4c44-ba3e-3bc8ca42c326"
+        }
+      ],
+      "id": "314ad45d-6a57-49b2-bbce-4730fddafdfd",
+      "createdAt": "2026-06-05T15:21:49.000Z",
+      "updatedAt": "2026-06-05T15:21:49.000Z",
+      "uid": "35240-314ad45d-6a57-49b2-bbce-4730fddafdfd"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.zoom.us/v1"
+    }
+  ]
+}
