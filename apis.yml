@@ -226,53 +226,53 @@ apis:
     url: json-structure/zoom-meeting-recording-file-structure.json
   - type: JSONStructure
     url: json-structure/zoom-meeting-error-response-structure.json
-  - type: Example
+  - type: Examples
     url: examples/zoom-meeting-meeting-list-example.json
-  - type: Example
+  - type: Examples
     url: examples/zoom-meeting-meeting-summary-example.json
-  - type: Example
+  - type: Examples
     url: examples/zoom-meeting-meeting-type-example.json
-  - type: Example
+  - type: Examples
     url: examples/zoom-meeting-meeting-create-request-example.json
-  - type: Example
+  - type: Examples
     url: examples/zoom-meeting-meeting-create-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/zoom-meeting-meeting-update-request-example.json
-  - type: Example
+  - type: Examples
     url: examples/zoom-meeting-meeting-details-example.json
-  - type: Example
+  - type: Examples
     url: examples/zoom-meeting-meeting-settings-example.json
-  - type: Example
+  - type: Examples
     url: examples/zoom-meeting-recurrence-example.json
-  - type: Example
+  - type: Examples
     url: examples/zoom-meeting-occurrence-example.json
-  - type: Example
+  - type: Examples
     url: examples/zoom-meeting-registrant-create-request-example.json
-  - type: Example
+  - type: Examples
     url: examples/zoom-meeting-registrant-create-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/zoom-meeting-registrant-list-example.json
-  - type: Example
+  - type: Examples
     url: examples/zoom-meeting-registrant-example.json
-  - type: Example
+  - type: Examples
     url: examples/zoom-meeting-poll-example.json
-  - type: Example
+  - type: Examples
     url: examples/zoom-meeting-poll-question-example.json
-  - type: Example
+  - type: Examples
     url: examples/zoom-meeting-poll-create-request-example.json
-  - type: Example
+  - type: Examples
     url: examples/zoom-meeting-participant-list-example.json
-  - type: Example
+  - type: Examples
     url: examples/zoom-meeting-participant-example.json
-  - type: Example
+  - type: Examples
     url: examples/zoom-meeting-live-stream-update-request-example.json
-  - type: Example
+  - type: Examples
     url: examples/zoom-meeting-past-meeting-details-example.json
-  - type: Example
+  - type: Examples
     url: examples/zoom-meeting-recording-list-example.json
-  - type: Example
+  - type: Examples
     url: examples/zoom-meeting-recording-file-example.json
-  - type: Example
+  - type: Examples
     url: examples/zoom-meeting-error-response-example.json
   - type: JSONLD
     url: json-ld/zoom-meeting-context.jsonld
@@ -797,7 +797,7 @@ apis:
     url: https://developers.zoom.us/docs/api/video-sdk/
   - type: APIReference
     url: https://developers.zoom.us/docs/api/rest/zoom-video-sdk-api/
-  - type: SDK
+  - type: SDKs
     url: https://developers.zoom.us/docs/video-sdk/
 - aid: zoom:zoom-meeting-sdk
   name: Zoom Meeting SDK
@@ -815,7 +815,7 @@ apis:
   properties:
   - type: Documentation
     url: https://developers.zoom.us/docs/meeting-sdk/
-  - type: SDK
+  - type: SDKs
     url: https://developers.zoom.us/docs/meeting-sdk/web/
 - aid: zoom:zoom-cobrowse-sdk-api
   name: Zoom Cobrowse SDK API
@@ -835,82 +835,72 @@ apis:
 common:
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/zoom/overview
-- type: ArazzoWorkflows
-  url: arazzo/
-  workflows:
-  - url: arazzo/zoom-account-then-user-report-workflow.yml
-    name: Zoom Account Report Then User Drill-Down
-    summary: Pull an account usage report, then drill into the first user's meeting
-      report.
-  - url: arazzo/zoom-approve-meeting-registrants-workflow.yml
-    name: Zoom Approve Pending Meeting Registrants
-    summary: Find pending meeting registrants and approve them, branching when none
-      are pending.
-  - url: arazzo/zoom-approve-webinar-registrants-workflow.yml
-    name: Zoom Approve Pending Webinar Registrants
-    summary: List pending webinar registrants and approve them, branching when none
-      are pending.
-  - url: arazzo/zoom-batch-register-attendees-workflow.yml
-    name: Zoom Batch Register Meeting Attendees
-    summary: Add a batch of registrants to a meeting and confirm the roster.
-  - url: arazzo/zoom-chat-history-workflow.yml
-    name: Zoom Archived Chat History Drill-Down
-    summary: List archived chat sessions, then read the messages of the first session,
-      branching when none exist.
-  - url: arazzo/zoom-create-and-confirm-meeting-workflow.yml
-    name: Zoom Create and Confirm a Meeting
-    summary: Schedule a meeting for a user and read it back to confirm the saved details.
-  - url: arazzo/zoom-create-and-confirm-webinar-workflow.yml
-    name: Zoom Create and Confirm a Webinar
-    summary: Schedule a webinar, read it back, and list its panelists.
-  - url: arazzo/zoom-create-and-get-user-workflow.yml
-    name: Zoom Provision and Confirm a User
-    summary: Create a Zoom user and read the new user back to confirm provisioning.
-  - url: arazzo/zoom-create-meeting-poll-workflow.yml
-    name: Zoom Create and Confirm a Meeting Poll
-    summary: Schedule a meeting, attach a poll to it, and read the poll back.
-  - url: arazzo/zoom-delete-recording-workflow.yml
-    name: Zoom Inspect and Delete a Recording
-    summary: Fetch a meeting's recording, confirm its files, then delete it.
-  - url: arazzo/zoom-end-meeting-workflow.yml
-    name: Zoom End a Live Meeting
-    summary: End an in-progress meeting and confirm its status changed.
-  - url: arazzo/zoom-list-and-get-recording-workflow.yml
-    name: Zoom List and Retrieve a Cloud Recording
-    summary: List a host's cloud recordings and fetch the first one's files, branching
-      when none exist.
-  - url: arazzo/zoom-list-meetings-detail-workflow.yml
-    name: Zoom List Meetings and Inspect the First
-    summary: List a user's meetings and fetch the first meeting's details, branching
-      when none exist.
-  - url: arazzo/zoom-meeting-live-stream-workflow.yml
-    name: Zoom Configure and Start a Meeting Live Stream
-    summary: Set a meeting's live stream destination and then start streaming.
-  - url: arazzo/zoom-meeting-recordings-workflow.yml
-    name: Zoom Retrieve Meeting Recordings
-    summary: Fetch a meeting's cloud recordings and branch when no recordings exist.
-  - url: arazzo/zoom-meeting-registration-workflow.yml
-    name: Zoom Meeting Registration
-    summary: Create a registration-required meeting, register an attendee, and list
-      registrants.
-  - url: arazzo/zoom-onboard-user-with-meeting-workflow.yml
-    name: Zoom Onboard a User With a First Meeting
-    summary: Provision a new user and schedule their first meeting in one flow.
-  - url: arazzo/zoom-past-meeting-report-workflow.yml
-    name: Zoom Past Meeting Attendance Report
-    summary: Read a past meeting's summary and then list everyone who attended.
-  - url: arazzo/zoom-resolve-user-by-email-workflow.yml
-    name: Zoom Resolve a User by Email
-    summary: Look up a user by email address and fetch their full profile by id.
-  - url: arazzo/zoom-update-meeting-workflow.yml
-    name: Zoom Update a Meeting
-    summary: Patch a meeting's topic and schedule, then read it back to confirm.
-  - url: arazzo/zoom-user-report-recordings-workflow.yml
-    name: Zoom User Report With Recordings
-    summary: Pull a user's meeting report and list that same user's cloud recordings.
-  - url: arazzo/zoom-webinar-registration-workflow.yml
-    name: Zoom Webinar Registration
-    summary: Create a webinar, register an attendee, and list the registrants.
+- type: Arazzo
+  url: arazzo/zoom-account-then-user-report-workflow.yml
+  name: Zoom Account Report Then User Drill-Down
+- type: Arazzo
+  url: arazzo/zoom-approve-meeting-registrants-workflow.yml
+  name: Zoom Approve Pending Meeting Registrants
+- type: Arazzo
+  url: arazzo/zoom-approve-webinar-registrants-workflow.yml
+  name: Zoom Approve Pending Webinar Registrants
+- type: Arazzo
+  url: arazzo/zoom-batch-register-attendees-workflow.yml
+  name: Zoom Batch Register Meeting Attendees
+- type: Arazzo
+  url: arazzo/zoom-chat-history-workflow.yml
+  name: Zoom Archived Chat History Drill-Down
+- type: Arazzo
+  url: arazzo/zoom-create-and-confirm-meeting-workflow.yml
+  name: Zoom Create and Confirm a Meeting
+- type: Arazzo
+  url: arazzo/zoom-create-and-confirm-webinar-workflow.yml
+  name: Zoom Create and Confirm a Webinar
+- type: Arazzo
+  url: arazzo/zoom-create-and-get-user-workflow.yml
+  name: Zoom Provision and Confirm a User
+- type: Arazzo
+  url: arazzo/zoom-create-meeting-poll-workflow.yml
+  name: Zoom Create and Confirm a Meeting Poll
+- type: Arazzo
+  url: arazzo/zoom-delete-recording-workflow.yml
+  name: Zoom Inspect and Delete a Recording
+- type: Arazzo
+  url: arazzo/zoom-end-meeting-workflow.yml
+  name: Zoom End a Live Meeting
+- type: Arazzo
+  url: arazzo/zoom-list-and-get-recording-workflow.yml
+  name: Zoom List and Retrieve a Cloud Recording
+- type: Arazzo
+  url: arazzo/zoom-list-meetings-detail-workflow.yml
+  name: Zoom List Meetings and Inspect the First
+- type: Arazzo
+  url: arazzo/zoom-meeting-live-stream-workflow.yml
+  name: Zoom Configure and Start a Meeting Live Stream
+- type: Arazzo
+  url: arazzo/zoom-meeting-recordings-workflow.yml
+  name: Zoom Retrieve Meeting Recordings
+- type: Arazzo
+  url: arazzo/zoom-meeting-registration-workflow.yml
+  name: Zoom Meeting Registration
+- type: Arazzo
+  url: arazzo/zoom-onboard-user-with-meeting-workflow.yml
+  name: Zoom Onboard a User With a First Meeting
+- type: Arazzo
+  url: arazzo/zoom-past-meeting-report-workflow.yml
+  name: Zoom Past Meeting Attendance Report
+- type: Arazzo
+  url: arazzo/zoom-resolve-user-by-email-workflow.yml
+  name: Zoom Resolve a User by Email
+- type: Arazzo
+  url: arazzo/zoom-update-meeting-workflow.yml
+  name: Zoom Update a Meeting
+- type: Arazzo
+  url: arazzo/zoom-user-report-recordings-workflow.yml
+  name: Zoom User Report With Recordings
+- type: Arazzo
+  url: arazzo/zoom-webinar-registration-workflow.yml
+  name: Zoom Webinar Registration
 - type: LinkedIn
   url: https://www.linkedin.com/company/zoom-video-communications
 - type: GettingStarted
@@ -921,7 +911,7 @@ common:
   url: https://developers.zoom.us/docs/api/rest/rate-limits/
 - type: ChangeLog
   url: https://developers.zoom.us/docs/api/rest/changelog/
-- type: SDK
+- type: SDKs
   url: https://developers.zoom.us/docs/api/rest/sdks/
 - type: Support
   url: https://devsupport.zoom.us/hc/en-us
@@ -939,9 +929,9 @@ common:
   url: https://developers.zoom.us/blog/
 - type: Marketplace
   url: https://marketplace.zoom.us/
-- type: SignUp
+- type: Signup
   url: https://developers.zoom.us/docs/build/account/
-- type: Errors
+- type: ErrorCodes
   url: https://developers.zoom.us/docs/api/errors/
 - type: GitHubRepository
   url: https://github.com/zoom/api
@@ -1011,8 +1001,8 @@ common:
     description: Automate workflows between Zoom and 5,000+ apps with no-code integrations.
 - name: Agent Skills
   url: https://developers.zoom.us/blog/announcing-agent-skills
-  type: AgentSkill
-- type: LLMsTxt
+  type: AgentSkills
+- type: LlmsText
   url: https://developers.zoom.us/llms.txt
 maintainers:
 - FN: Kin Lane
