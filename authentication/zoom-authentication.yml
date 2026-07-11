@@ -1,0 +1,43 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/zoom-meeting-api-openapi.yml, openapi/zoom-openapi-original.yml
+summary:
+  types:
+  - apiKey
+  - http
+  - oauth2
+  api_key_in:
+  - query
+  oauth2_flows:
+  - authorizationCode
+schemes:
+- name: oauth2
+  type: oauth2
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://zoom.us/oauth/authorize
+    tokenUrl: https://zoom.us/oauth/token
+    scopes: 19
+  description: Zoom uses OAuth 2.0 for authentication. Server-to-Server OAuth and standard OAuth
+    apps are supported.
+  sources:
+  - openapi/zoom-meeting-api-openapi.yml
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  description: Bearer token obtained from OAuth 2.0 Server-to-Server or standard OAuth flow.
+  sources:
+  - openapi/zoom-meeting-api-openapi.yml
+- name: api_key
+  type: apiKey
+  in: query
+  parameter: api_key
+  sources:
+  - openapi/zoom-openapi-original.yml
+- name: api_secret
+  type: apiKey
+  in: query
+  parameter: api_secret
+  sources:
+  - openapi/zoom-openapi-original.yml

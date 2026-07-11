@@ -833,6 +833,10 @@ apis:
   - type: Documentation
     url: https://developers.zoom.us/docs/api/cobrowse-sdk/
 common:
+- type: VulnerabilityDisclosure
+  url: security/zoom-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/zoom-domain-security.yml
 - type: Authentication
   url: authentication/zoom-authentication.yml
 - type: OAuthScopes
