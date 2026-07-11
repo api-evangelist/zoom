@@ -1,0 +1,127 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/zoom-meeting-api-openapi.yml
+schemes:
+- name: oauth2
+  source: openapi/zoom-meeting-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://zoom.us/oauth/authorize
+    tokenUrl: https://zoom.us/oauth/token
+  description: Zoom uses OAuth 2.0 for authentication. Server-to-Server OAuth and standard OAuth
+    apps are supported.
+scopes:
+- scope: cloud_recording:read:list_recording_files:admin
+  description: Read recording files (admin)
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/zoom-meeting-api-openapi.yml
+- scope: meeting:delete:meeting
+  description: Delete meetings
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/zoom-meeting-api-openapi.yml
+- scope: meeting:delete:poll:admin
+  description: Delete meeting polls (admin)
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/zoom-meeting-api-openapi.yml
+- scope: meeting:read:invitation:admin
+  description: Read meeting invitation (admin)
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/zoom-meeting-api-openapi.yml
+- scope: meeting:read:list_meetings:admin
+  description: List meetings (admin)
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/zoom-meeting-api-openapi.yml
+- scope: meeting:read:list_past_participants:admin
+  description: List past meeting participants (admin)
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/zoom-meeting-api-openapi.yml
+- scope: meeting:read:list_registrants:admin
+  description: List registrants (admin)
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/zoom-meeting-api-openapi.yml
+- scope: meeting:read:meeting
+  description: Read meeting details
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/zoom-meeting-api-openapi.yml
+- scope: meeting:read:meeting:admin
+  description: Read meeting details (admin)
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/zoom-meeting-api-openapi.yml
+- scope: meeting:read:meeting:master
+  description: Read meeting details (master)
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/zoom-meeting-api-openapi.yml
+- scope: meeting:read:participant:admin
+  description: Read meeting participants (admin)
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/zoom-meeting-api-openapi.yml
+- scope: meeting:read:poll:admin
+  description: Read meeting polls (admin)
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/zoom-meeting-api-openapi.yml
+- scope: meeting:update:livestream:admin
+  description: Update live stream (admin)
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/zoom-meeting-api-openapi.yml
+- scope: meeting:update:registrant:admin
+  description: Update registrant status (admin)
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/zoom-meeting-api-openapi.yml
+- scope: meeting:write:meeting
+  description: Create and update meetings
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/zoom-meeting-api-openapi.yml
+- scope: meeting:write:meeting:admin
+  description: Write meeting details (admin)
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/zoom-meeting-api-openapi.yml
+- scope: meeting:write:meeting:master
+  description: Write meeting details (master)
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/zoom-meeting-api-openapi.yml
+- scope: meeting:write:poll:admin
+  description: Write meeting polls (admin)
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/zoom-meeting-api-openapi.yml
+- scope: meeting:write:registrant:admin
+  description: Add registrants (admin)
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/zoom-meeting-api-openapi.yml

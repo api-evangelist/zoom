@@ -833,6 +833,10 @@ apis:
   - type: Documentation
     url: https://developers.zoom.us/docs/api/cobrowse-sdk/
 common:
+- type: Authentication
+  url: authentication/zoom-authentication.yml
+- type: OAuthScopes
+  url: scopes/zoom-scopes.yml
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/zoom/overview
 - type: Arazzo
