@@ -1,0 +1,327 @@
+openapi: 3.0.1
+info:
+  title: Zoom / Account Meeting Recordings API
+  description: Needs description.
+  contact:
+    name: Zoom Developers
+    url: https://zoom.us/developer
+    email: developer@zoom.us
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  version: 1.0.0
+servers:
+- url: https://api.zoom.us/v1
+security:
+- api_key: []
+- api_secret: []
+tags:
+- name: Meeting Recordings
+  description: Access and manage meeting recordings.
+paths:
+  /meetings/{meetingId}/recordings:
+    get:
+      tags:
+      - Meeting Recordings
+      summary: Zoom Get Meeting Recordings
+      description: Retrieve all recordings for a specific meeting. Cloud recordings are available to paid accounts with cloud recording enabled.
+      operationId: getMeetingRecordings
+      parameters:
+      - $ref: '#/components/parameters/MeetingIdPath'
+      - name: include_fields
+        in: query
+        description: Additional fields to include in the response.
+        schema:
+          type: string
+        example: example_value
+      - name: ttl
+        in: query
+        description: Time to live in seconds for the download URL.
+        schema:
+          type: integer
+        example: 10
+      responses:
+        '200':
+          description: Successfully retrieved meeting recordings.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecordingList'
+              examples:
+                Getmeetingrecordings200Example:
+                  summary: Default getMeetingRecordings 200 response
+                  x-microcks-default: true
+                  value:
+                    uuid: '500123'
+                    id: abc123
+                    host_id: '500123'
+                    host_email: user@example.com
+                    topic: example_value
+                    type: 1
+                    start_time: '2026-01-15T10:30:00Z'
+                    timezone: example_value
+                    duration: 10
+                    total_size: 10
+                    recording_count: 10
+                    share_url: https://www.example.com
+                    recording_files:
+                    - id: abc123
+                      meeting_id: '500123'
+                      recording_start: '2026-01-15T10:30:00Z'
+                      recording_end: '2026-01-15T10:30:00Z'
+                      file_type: MP4
+                      file_extension: MP4
+                      file_size: 42.5
+                      download_url: https://www.example.com
+                      play_url: https://www.example.com
+                      status: completed
+                      recording_type: shared_screen_with_speaker_view(CC)
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      tags:
+      - Meeting Recordings
+      summary: Zoom Delete Meeting Recordings
+      description: Delete all recording files of a meeting. The recording files will be moved to trash and permanently deleted after 30 days.
+      operationId: deleteMeetingRecordings
+      parameters:
+      - $ref: '#/components/parameters/MeetingIdPath'
+      - name: action
+        in: query
+        description: Delete action. `trash` moves to trash. `delete` permanently deletes.
+        schema:
+          type: string
+          enum:
+          - trash
+          - delete
+          default: trash
+        example: trash
+      responses:
+        '204':
+          description: Recordings deleted successfully.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    RecordingList:
+      type: object
+      properties:
+        uuid:
+          type: string
+          description: Unique meeting instance ID.
+          example: '500123'
+        id:
+          type: integer
+          format: int64
+          description: Meeting ID.
+          example: abc123
+        host_id:
+          type: string
+          description: Host user ID.
+          example: '500123'
+        host_email:
+          type: string
+          format: email
+          description: Host email address.
+          example: user@example.com
+        topic:
+          type: string
+          description: Meeting topic.
+          example: example_value
+        type:
+          $ref: '#/components/schemas/MeetingType'
+        start_time:
+          type: string
+          format: date-time
+          description: Meeting start time.
+          example: '2026-01-15T10:30:00Z'
+        timezone:
+          type: string
+          description: Timezone.
+          example: example_value
+        duration:
+          type: integer
+          description: Meeting duration in minutes.
+          example: 10
+        total_size:
+          type: integer
+          format: int64
+          description: Total file size of all recordings in bytes.
+          example: 10
+        recording_count:
+          type: integer
+          description: Number of recording files.
+          example: 10
+        share_url:
+          type: string
+          format: uri
+          description: Share URL for the recording.
+          example: https://www.example.com
+        recording_files:
+          type: array
+          items:
+            $ref: '#/components/schemas/RecordingFile'
+          example: []
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Error code.
+          example: 10
+        message:
+          type: string
+          description: Error message.
+          example: example_value
+        errors:
+          type: array
+          description: Detailed error messages.
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+              message:
+                type: string
+          example: []
+    RecordingFile:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Recording file ID.
+          example: abc123
+        meeting_id:
+          type: string
+          description: Meeting ID.
+          example: '500123'
+        recording_start:
+          type: string
+          format: date-time
+          description: Recording start time.
+          example: '2026-01-15T10:30:00Z'
+        recording_end:
+          type: string
+          format: date-time
+          description: Recording end time.
+          example: '2026-01-15T10:30:00Z'
+        file_type:
+          type: string
+          description: Recording file type.
+          enum:
+          - MP4
+          - M4A
+          - CHAT
+          - TRANSCRIPT
+          - CSV
+          - TB
+          - CC
+          - CHAT_MESSAGE
+          - SUMMARY
+          example: MP4
+        file_extension:
+          type: string
+          description: File extension.
+          enum:
+          - MP4
+          - M4A
+          - TXT
+          - VTT
+          - CSV
+          - JSON
+          example: MP4
+        file_size:
+          type: number
+          description: File size in bytes.
+          example: 42.5
+        download_url:
+          type: string
+          format: uri
+          description: URL to download the recording file.
+          example: https://www.example.com
+        play_url:
+          type: string
+          format: uri
+          description: URL to play the recording file.
+          example: https://www.example.com
+        status:
+          type: string
+          description: Recording status.
+          enum:
+          - completed
+          example: completed
+        recording_type:
+          type: string
+          description: Recording type.
+          enum:
+          - shared_screen_with_speaker_view(CC)
+          - shared_screen_with_speaker_view
+          - shared_screen_with_gallery_view
+          - active_speaker
+          - gallery_view
+          - shared_screen
+          - audio_only
+          - audio_transcript
+          - chat_file
+          - poll
+          - host_video
+          - closed_caption
+          - timeline
+          - sign_interpretation
+          - production_studio
+          example: shared_screen_with_speaker_view(CC)
+    MeetingType:
+      type: integer
+      description: 'Meeting type: 1 - Instant meeting, 2 - Scheduled meeting, 3 - Recurring meeting with no fixed time, 8 - Recurring meeting with a fixed time.'
+      enum:
+      - 1
+      - 2
+      - 3
+      - 8
+  parameters:
+    MeetingIdPath:
+      name: meetingId
+      in: path
+      required: true
+      description: The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID.
+      schema:
+        oneOf:
+        - type: integer
+          format: int64
+        - type: string
+  responses:
+    Unauthorized:
+      description: Unauthorized. The request requires authentication.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Bad request. The request was invalid or cannot be served.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Not found. The requested resource could not be found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+externalDocs:
+  description: Zoom REST API Documentation
+  url: https://zoom.github.io/api

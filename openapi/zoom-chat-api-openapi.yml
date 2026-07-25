@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  title: 'Zoom chat/'
+  title: Zoom / Account Chat API
   description: Needs description.
   contact:
     name: Zoom Developers
@@ -10,41 +10,37 @@ info:
     name: MIT
     url: https://opensource.org/licenses/MIT
   version: 1.0.0
-externalDocs:
-  description: Zoom REST API Documentation
-  url: https://zoom.github.io/api
 servers:
-  - url: https://api.zoom.us/v1
+- url: https://api.zoom.us/v1
 security:
-  - api_key: []
-  - api_secret: []
+- api_key: []
+- api_secret: []
 tags:
-  - name: Chat
+- name: Chat
 paths:
   /chat/get:
     post:
       tags:
-        - Chat
-      description: |+
-        Get chat messages for a specified period.
+      - Chat
+      description: 'Get chat messages for a specified period.
 
+
+        '
       operationId: chatGet
       requestBody:
         content:
           application/x-www-form-urlencoded:
             schema:
               required:
-                - access_token
-                - from
-                - session_id
-                - to
+              - access_token
+              - from
+              - session_id
+              - to
               type: object
               properties:
                 access_token:
                   type: string
-                  description: >-
-                    Archived chat messages access token. Admin who has the view
-                    privilege of Archived chat messages will get it.
+                  description: Archived chat messages access token. Admin who has the view privilege of Archived chat messages will get it.
                 session_id:
                   type: string
                   description: Session Id of chat messages.
@@ -56,17 +52,11 @@ paths:
                   description: End date.
                 page_size:
                   type: string
-                  description: >-
-                    The amount of records returns within a single API call.
-                    Defaults to 30. Max of 30 records.
+                  description: The amount of records returns within a single API call. Defaults to 30. Max of 30 records.
                   default: '30'
                 next_page_token:
                   type: string
-                  description: >-
-                    Used to paginate through large result sets.  A next page
-                    token will be returned whenever the set of available chat
-                    history list exceeds 100.  The expiration period is 30
-                    minutes.
+                  description: Used to paginate through large result sets.  A next page token will be returned whenever the set of available chat history list exceeds 100.  The expiration period is 30 minutes.
         required: true
       responses:
         '200':
@@ -82,32 +72,31 @@ paths:
                 page_count: 1
                 next_page_token: ''
                 chat_messages:
-                  - message: test1
-                    sender: ''
-                    date_time: '2016-01-18T06:40:56.000Z'
+                - message: test1
+                  sender: ''
+                  date_time: '2016-01-18T06:40:56.000Z'
   /chat/list:
     post:
       tags:
-        - Chat
-      description: |+
-        Get chat history list for a specified time period.
+      - Chat
+      description: 'Get chat history list for a specified time period.
 
+
+        '
       operationId: chatList
       requestBody:
         content:
           application/x-www-form-urlencoded:
             schema:
               required:
-                - access_token
-                - from
-                - to
+              - access_token
+              - from
+              - to
               type: object
               properties:
                 access_token:
                   type: string
-                  description: >-
-                    Archived chat messages access token. Admin who has the view
-                    privilege of Archived chat messages will get it.
+                  description: Archived chat messages access token. Admin who has the view privilege of Archived chat messages will get it.
                 from:
                   type: string
                   description: Start date.
@@ -116,20 +105,14 @@ paths:
                   description: End date.
                 page_size:
                   type: string
-                  description: >-
-                    The amount of records returns within a single API call.
-                    Defaults to 30. Max of 30 records.
+                  description: The amount of records returns within a single API call. Defaults to 30. Max of 30 records.
                   default: '30'
                 email:
                   type: string
                   description: Email query condition.
                 next_page_token:
                   type: string
-                  description: >-
-                    Used to paginate through large result sets.  A next page
-                    token will be returned whenever the set of available chat
-                    history list exceeds 100.  The expiration period is 30
-                    minutes.
+                  description: Used to paginate through large result sets.  A next page token will be returned whenever the set of available chat history list exceeds 100.  The expiration period is 30 minutes.
         required: true
       responses:
         '200':
@@ -143,10 +126,11 @@ paths:
                 page_count: 1
                 next_page_token: ''
                 chat_list:
-                  - session_id: unique_id
-                    type: Group
-                    participants: ''
-                    group_name: zoom test1
-                    last_message_send_time: '2016-01-18T06:40:56.000Z'
-components:
-  schemas: {}
+                - session_id: unique_id
+                  type: Group
+                  participants: ''
+                  group_name: zoom test1
+                  last_message_send_time: '2016-01-18T06:40:56.000Z'
+externalDocs:
+  description: Zoom REST API Documentation
+  url: https://zoom.github.io/api

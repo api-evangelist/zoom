@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  title: 'Zoom user/'
+  title: Zoom / Account User API
   description: Needs description.
   contact:
     name: Zoom Developers
@@ -10,24 +10,23 @@ info:
     name: MIT
     url: https://opensource.org/licenses/MIT
   version: 1.0.0
-externalDocs:
-  description: Zoom REST API Documentation
-  url: https://zoom.github.io/api
 servers:
-  - url: https://api.zoom.us/v1
+- url: https://api.zoom.us/v1
 security:
-  - api_key: []
-  - api_secret: []
+- api_key: []
+- api_secret: []
 tags:
-  - name: User
+- name: User
+  description: User operations
 paths:
   /user/assistant/delete:
     post:
       tags:
-        - User
-      description: |+
-        Delete a user's assistant.
+      - User
+      description: 'Delete a user''s assistant.
 
+
+        '
       operationId: userAssistantDelete
       requestBody:
         content:
@@ -49,21 +48,22 @@ paths:
               example:
                 id: unique_id
                 host_email: email_address
-                updated_at: '2013-09-02T12:00:00.000Z'
+                updated_at: 2013-09-02 12:00:00+00:00
   /user/assistant/set:
     post:
       tags:
-        - User
-      description: |+
-        Set a user's assistant which can schedule meeting for him.
+      - User
+      description: 'Set a user''s assistant which can schedule meeting for him.
 
+
+        '
       operationId: userAssistantSet
       requestBody:
         content:
           application/x-www-form-urlencoded:
             schema:
               required:
-                - assistant_email
+              - assistant_email
               type: object
               properties:
                 id:
@@ -84,13 +84,12 @@ paths:
               example:
                 id: unique_id
                 host_email: email_address
-                updated_at: '2013-09-02T12:00:00.000Z'
+                updated_at: 2013-09-02 12:00:00+00:00
   /user/autocreate:
     post:
       tags:
-        - User
-      description: >+
-        Create a user on Zoom, returns the created user ID.
+      - User
+      description: 'Create a user on Zoom, returns the created user ID.
 
 
         <aside class="notice">
@@ -102,35 +101,29 @@ paths:
 
         <aside class="warning">
 
-        This feature is disabled by default because of the security risk
-        involved in creating a user who does not belong to your domain without
-        notifying the user. You need to contact Zoom customer support if you
-        want to use this API
+        This feature is disabled by default because of the security risk involved in creating a user who does not belong to your domain without notifying the user. You need to contact Zoom customer support if you want to use this API
 
         </aside>
 
+
+        '
       operationId: userAutocreate
       requestBody:
         content:
           application/x-www-form-urlencoded:
             schema:
               required:
-                - email
-                - password
-                - type
+              - email
+              - password
+              - type
               type: object
               properties:
                 email:
                   type: string
-                  description: >-
-                    A valid email address. It must be unique in Zoom service. If
-                    an email address is existed, a "user existing" error message
-                    will be return
+                  description: A valid email address. It must be unique in Zoom service. If an email address is existed, a "user existing" error message will be return
                 type:
                   type: string
-                  description: >-
-                    User’s type. 1 for basic user, 2 for pro user, 3 for corp
-                    user. Basic user can host up to 40 minutes meeting
+                  description: User’s type. 1 for basic user, 2 for pro user, 3 for corp user. Basic user can host up to 40 minutes meeting
                 password:
                   type: string
                   description: User's password
@@ -166,9 +159,7 @@ paths:
                   default: false
                 enable_auto_recording:
                   type: boolean
-                  description: >-
-                    Enable automatic recording. By default, if
-                    "enable_cloud_auto_recording" is true, it will become true
+                  description: Enable automatic recording. By default, if "enable_cloud_auto_recording" is true, it will become true
                   default: false
                 enable_cloud_auto_recording:
                   type: boolean
@@ -179,29 +170,21 @@ paths:
                   description: Referral partner track ID
                 meeting_capacity:
                   type: string
-                  description: >-
-                    User’s meeting capacity, 0 means following account’s meeting
-                    capacity
+                  description: User’s meeting capacity, 0 means following account’s meeting capacity
                   default: '0'
                 enable_webinar:
                   type: string
                   description: Enable webinar feature
                 webinar_capacity:
                   type: string
-                  description: >-
-                    Enable webinar capacity, can be 100, 500, 1000, 3000, 5000
-                    or 10000, depends on if having related webinar capacity plan
-                    subscription or not
+                  description: Enable webinar capacity, can be 100, 500, 1000, 3000, 5000 or 10000, depends on if having related webinar capacity plan subscription or not
                   default: '0'
                 enable_large:
                   type: string
                   description: Enable large meting feature
                 large_capacity:
                   type: string
-                  description: >-
-                    Enable large meeting capacity, can be 100, 200, 300 or 500,
-                    depends on if having related webinar capacity plan
-                    subscription or not
+                  description: Enable large meeting capacity, can be 100, 200, 300 or 500, depends on if having related webinar capacity plan subscription or not
                   default: '0'
                 disable_feedback:
                   type: boolean
@@ -241,9 +224,7 @@ paths:
                   default: false
                 option_enter_exit_chime_type:
                   type: string
-                  description: >-
-                    Enter/exit chime type. 0 means Heard by all including host
-                    and attendees, 1 means Heard by host only
+                  description: Enter/exit chime type. 0 means Heard by all including host and attendees, 1 means Heard by host only
                   default: '0'
                 disable_cancel_meeting_notification:
                   type: boolean
@@ -283,9 +264,7 @@ paths:
                   default: false
                 enable_phone_participants_password:
                   type: boolean
-                  description: >-
-                    Enable Generate and require password for participants
-                    joining by phone
+                  description: Enable Generate and require password for participants joining by phone
                   default: false
                 enable_auto_delete_cmr:
                   type: boolean
@@ -299,14 +278,10 @@ paths:
                   description: Department for user profile, use for repor
                 group_id:
                   type: string
-                  description: >-
-                    User Group ID. If set default user group, the parameter’s
-                    default value is the default user group
+                  description: User Group ID. If set default user group, the parameter’s default value is the default user group
                 imgroup_id:
                   type: string
-                  description: >-
-                    IM Group ID. If set default im group, the parameter’s
-                    default value is the default im group
+                  description: IM Group ID. If set default im group, the parameter’s default value is the default im group
         required: true
       responses:
         '200':
@@ -316,7 +291,7 @@ paths:
               example:
                 email: email_address
                 id: unique_id
-                created_at: '2012-11-25T12:00:00.000Z'
+                created_at: 2012-11-25 12:00:00+00:00
                 first_name: Zoomie
                 last_name: Userton
                 pic_url: ''
@@ -366,17 +341,18 @@ paths:
   /user/checkemail:
     post:
       tags:
-        - User
-      description: |+
-        Check if the user email exists.
+      - User
+      description: 'Check if the user email exists.
 
+
+        '
       operationId: userCheckemail
       requestBody:
         content:
           application/x-www-form-urlencoded:
             schema:
               required:
-                - email
+              - email
               type: object
               properties:
                 email:
@@ -393,17 +369,18 @@ paths:
   /user/checkzpk:
     post:
       tags:
-        - User
-      description: |+
-        Check if the zpk is expired. The zpk is used to authenticate a user.
+      - User
+      description: 'Check if the zpk is expired. The zpk is used to authenticate a user.
 
+
+        '
       operationId: userCheckzpk
       requestBody:
         content:
           application/x-www-form-urlencoded:
             schema:
               required:
-                - zpk
+              - zpk
               type: object
               properties:
                 zpk:
@@ -420,49 +397,41 @@ paths:
   /user/create:
     post:
       tags:
-        - User
-      description: >+
-        Create a user on Zoom, returns the created user ID.
+      - User
+      description: 'Create a user on Zoom, returns the created user ID.
 
 
         <aside class="notice">
 
-        Your account must have this privilege to provisioning user. Zoom only
-        assigns this privilege to a trusted partner
+        Your account must have this privilege to provisioning user. Zoom only assigns this privilege to a trusted partner
 
         </aside>
 
 
         <aside class="notice">
 
-        User will get an email sent from Zoom. There is a confirmation link in
-        this email. User will then need to click this link to activate their
-        account to the Zoom service. The user can set or change their password
-        in Zoom.
+        User will get an email sent from Zoom. There is a confirmation link in this email. User will then need to click this link to activate their account to the Zoom service. The user can set or change their password in Zoom.
 
         </aside>
 
+
+        '
       operationId: userCreate
       requestBody:
         content:
           application/x-www-form-urlencoded:
             schema:
               required:
-                - email
-                - type
+              - email
+              - type
               type: object
               properties:
                 email:
                   type: string
-                  description: >-
-                    A valid email address. It must be unique in Zoom service. If
-                    an email address is existed, a "user existing" error message
-                    will be return
+                  description: A valid email address. It must be unique in Zoom service. If an email address is existed, a "user existing" error message will be return
                 type:
                   type: string
-                  description: >-
-                    User’s type. 1 for basic user, 2 for pro user, 3 for corp
-                    user. Basic user can host up to 40 minutes meeting
+                  description: User’s type. 1 for basic user, 2 for pro user, 3 for corp user. Basic user can host up to 40 minutes meeting
                 first_name:
                   type: string
                   description: User's first name
@@ -495,9 +464,7 @@ paths:
                   default: false
                 enable_auto_recording:
                   type: boolean
-                  description: >-
-                    Enable automatic recording. By default, if
-                    "enable_cloud_auto_recording" is true, it will become true
+                  description: Enable automatic recording. By default, if "enable_cloud_auto_recording" is true, it will become true
                   default: false
                 enable_cloud_auto_recording:
                   type: boolean
@@ -508,29 +475,21 @@ paths:
                   description: Referral partner track ID
                 meeting_capacity:
                   type: string
-                  description: >-
-                    User’s meeting capacity, passing 0 will inherit account’s
-                    meeting capacity
+                  description: User’s meeting capacity, passing 0 will inherit account’s meeting capacity
                   default: '0'
                 enable_webinar:
                   type: string
                   description: Enable webinar feature
                 webinar_capacity:
                   type: string
-                  description: >-
-                    Enable webinar capacity, can be 100, 500, 1000, 3000, 5000
-                    or 10000, depends on if having related webinar capacity plan
-                    subscription or not
+                  description: Enable webinar capacity, can be 100, 500, 1000, 3000, 5000 or 10000, depends on if having related webinar capacity plan subscription or not
                   default: '0'
                 enable_large:
                   type: string
                   description: Enable large meting feature
                 large_capacity:
                   type: string
-                  description: >-
-                    Enable large meeting capacity, can be 100, 200, 300 or 500,
-                    depends on if having related webinar capacity plan
-                    subscription or not
+                  description: Enable large meeting capacity, can be 100, 200, 300 or 500, depends on if having related webinar capacity plan subscription or not
                   default: '0'
                 disable_feedback:
                   type: boolean
@@ -570,9 +529,7 @@ paths:
                   default: false
                 option_enter_exit_chime_type:
                   type: string
-                  description: >-
-                    Enter/exit chime type. 0 means Heard by all including host
-                    and attendees, 1 means Heard by host only
+                  description: Enter/exit chime type. 0 means Heard by all including host and attendees, 1 means Heard by host only
                   default: '0'
                 disable_cancel_meeting_notification:
                   type: boolean
@@ -612,9 +569,7 @@ paths:
                   default: false
                 enable_phone_participants_password:
                   type: boolean
-                  description: >-
-                    Enable Generate and require password for participants
-                    joining by phone
+                  description: Enable Generate and require password for participants joining by phone
                   default: false
                 enable_auto_delete_cmr:
                   type: boolean
@@ -628,14 +583,10 @@ paths:
                   description: Department for user profile, use for repor
                 group_id:
                   type: string
-                  description: >-
-                    User Group ID. If set default user group, the parameter’s
-                    default value is the default user group
+                  description: User Group ID. If set default user group, the parameter’s default value is the default user group
                 imgroup_id:
                   type: string
-                  description: >-
-                    IM Group ID. If set default im group, the parameter’s
-                    default value is the default im group
+                  description: IM Group ID. If set default im group, the parameter’s default value is the default im group
         required: true
       responses:
         '200':
@@ -645,7 +596,7 @@ paths:
               example:
                 email: email_address
                 id: unique_id
-                created_at: '2012-11-25T12:00:00.000Z'
+                created_at: 2012-11-25 12:00:00+00:00
                 first_name: Zoom
                 last_name: User
                 pic_url: ''
@@ -695,9 +646,8 @@ paths:
   /user/custcreate:
     post:
       tags:
-        - User
-      description: >+
-        Create a user on Zoom, returns the created user ID.
+      - User
+      description: 'Create a user on Zoom, returns the created user ID.
 
 
         <aside class="notice">
@@ -709,32 +659,28 @@ paths:
 
         <aside class="notice">
 
-        User created in this way has no password and is not able to log into the
-        Zoom web site or client
+        User created in this way has no password and is not able to log into the Zoom web site or client
 
         </aside>
 
+
+        '
       operationId: userCustcreate
       requestBody:
         content:
           application/x-www-form-urlencoded:
             schema:
               required:
-                - email
-                - type
+              - email
+              - type
               type: object
               properties:
                 email:
                   type: string
-                  description: >-
-                    A valid email address. It must be unique in Zoom service. If
-                    an email address is existed, a "user existing" error message
-                    will be return
+                  description: A valid email address. It must be unique in Zoom service. If an email address is existed, a "user existing" error message will be return
                 type:
                   type: string
-                  description: >-
-                    User’s type. 1 for basic user, 2 for pro user, 3 for corp
-                    user. Basic user can host up to 40 minutes meeting
+                  description: User’s type. 1 for basic user, 2 for pro user, 3 for corp user. Basic user can host up to 40 minutes meeting
                 first_name:
                   type: string
                   description: User's first name
@@ -767,9 +713,7 @@ paths:
                   default: false
                 enable_auto_recording:
                   type: boolean
-                  description: >-
-                    Enable automatic recording. By default, if
-                    "enable_cloud_auto_recording" is true, it will become true
+                  description: Enable automatic recording. By default, if "enable_cloud_auto_recording" is true, it will become true
                   default: false
                 enable_cloud_auto_recording:
                   type: boolean
@@ -780,29 +724,21 @@ paths:
                   description: Referral partner track ID
                 meeting_capacity:
                   type: string
-                  description: >-
-                    User’s meeting capacity, 0 means following account’s meeting
-                    capacity
+                  description: User’s meeting capacity, 0 means following account’s meeting capacity
                   default: '0'
                 enable_webinar:
                   type: string
                   description: Enable webinar feature
                 webinar_capacity:
                   type: string
-                  description: >-
-                    Enable webinar capacity, can be 100, 500, 1000, 3000, 5000
-                    or 10000, depends on if having related webinar capacity plan
-                    subscription or not
+                  description: Enable webinar capacity, can be 100, 500, 1000, 3000, 5000 or 10000, depends on if having related webinar capacity plan subscription or not
                   default: '0'
                 enable_large:
                   type: string
                   description: Enable large meting feature
                 large_capacity:
                   type: string
-                  description: >-
-                    Enable large meeting capacity, can be 100, 200, 300 or 500,
-                    depends on if having related webinar capacity plan
-                    subscription or not
+                  description: Enable large meeting capacity, can be 100, 200, 300 or 500, depends on if having related webinar capacity plan subscription or not
                   default: '0'
                 disable_feedback:
                   type: boolean
@@ -842,9 +778,7 @@ paths:
                   default: false
                 option_enter_exit_chime_type:
                   type: string
-                  description: >-
-                    Enter/exit chime type. 0 means Heard by all including host
-                    and attendees, 1 means Heard by host only
+                  description: Enter/exit chime type. 0 means Heard by all including host and attendees, 1 means Heard by host only
                   default: '0'
                 disable_cancel_meeting_notification:
                   type: boolean
@@ -884,9 +818,7 @@ paths:
                   default: false
                 enable_phone_participants_password:
                   type: boolean
-                  description: >-
-                    Enable Generate and require password for participants
-                    joining by phone
+                  description: Enable Generate and require password for participants joining by phone
                   default: false
                 enable_auto_delete_cmr:
                   type: boolean
@@ -900,14 +832,10 @@ paths:
                   description: Department for user profile, use for repor
                 group_id:
                   type: string
-                  description: >-
-                    User Group ID. If set default user group, the parameter’s
-                    default value is the default user group
+                  description: User Group ID. If set default user group, the parameter’s default value is the default user group
                 imgroup_id:
                   type: string
-                  description: >-
-                    IM Group ID. If set default im group, the parameter’s
-                    default value is the default im group
+                  description: IM Group ID. If set default im group, the parameter’s default value is the default im group
         required: true
       responses:
         '200':
@@ -917,7 +845,7 @@ paths:
               example:
                 email: email_address
                 id: unique_id
-                created_at: '2012-11-25T12:00:00.000Z'
+                created_at: 2012-11-25 12:00:00+00:00
                 first_name: Zoomie
                 last_name: Userton
                 pic_url: ''
@@ -967,17 +895,18 @@ paths:
   /user/activate:
     post:
       tags:
-        - User
-      description: |+
-        Activate a user on Zoom, return the user ID.
+      - User
+      description: 'Activate a user on Zoom, return the user ID.
 
+
+        '
       operationId: userActivate
       requestBody:
         content:
           application/x-www-form-urlencoded:
             schema:
               required:
-                - id
+              - id
               type: object
               properties:
                 id:
@@ -991,21 +920,22 @@ paths:
             application/json:
               example:
                 id: unique_id
-                activated_at: '2012-11-25T12:00:00.000Z'
+                activated_at: 2012-11-25 12:00:00+00:00
   /user/deactivate:
     post:
       tags:
-        - User
-      description: |+
-        Deactivate a user on Zoom, return the user ID.
+      - User
+      description: 'Deactivate a user on Zoom, return the user ID.
 
+
+        '
       operationId: userDeactivate
       requestBody:
         content:
           application/x-www-form-urlencoded:
             schema:
               required:
-                - id
+              - id
               type: object
               properties:
                 id:
@@ -1019,21 +949,22 @@ paths:
             application/json:
               example:
                 id: unique_id
-                deactivated_at: '2012-11-25T12:00:00.000Z'
+                deactivated_at: 2012-11-25 12:00:00+00:00
   /user/delete:
     post:
       tags:
-        - User
-      description: |+
-        Delete a user on Zoom, return the deleted user ID.
+      - User
+      description: 'Delete a user on Zoom, return the deleted user ID.
 
+
+        '
       operationId: userDelete
       requestBody:
         content:
           application/x-www-form-urlencoded:
             schema:
               required:
-                - id
+              - id
               type: object
               properties:
                 id:
@@ -1052,23 +983,24 @@ paths:
               example:
                 id: unique_id
                 account_id: ' unique_id'
-                deleted_at: '2012-11-25T12:00:00.000Z'
+                deleted_at: 2012-11-25 12:00:00+00:00
   /user/get:
     post:
       tags:
-        - User
-      description: |+
-        Get a user info on Zoom via user ID
+      - User
+      description: 'Get a user info on Zoom via user ID
 
+
+        '
       operationId: userGet
       requestBody:
         content:
           application/x-www-form-urlencoded:
             schema:
               required:
-                - api_key
-                - api_secret
-                - id
+              - api_key
+              - api_secret
+              - id
               type: object
               properties:
                 api_key:
@@ -1090,7 +1022,7 @@ paths:
                 email: email_address
                 id: unique_id
                 account_id: 8af3444232345
-                created_at: '2012-11-25T12:00:00.000Z'
+                created_at: 2012-11-25 12:00:00+00:00
                 first_name: Zoomie
                 last_name: Userton
                 type: 1
@@ -1123,28 +1055,26 @@ paths:
                 dept: Engineer
                 timezone: America/Los_Angeles
                 lastClientVersion: 3.5.44664.0321(mac)
-                lastLoginTime: '2016-03-23T09:54:41.000Z'
+                lastLoginTime: 2016-03-23 09:54:41+00:00
                 status: 0
-                zpk: >-
-                  ABzyF_DKLzVcPd-5Wu6zCwlZ3978jn7ZcTHONHrP7Vs.BwYAAAFTY-4XnwAAHCAkMTRlMzRjYzUtMjJmZC00MTQ1LTg2MzUtZmVmYjk3ZDI0NGMyFlYydzlQTzgxUl8yS1pmREtvTWVybVEWVjJ3OVBPODFSXzJLWmZES29NZXJtUQxzb3BoaWUgc3VuNjZkALM0VUVtMTFHTmh3cGFTWlJNMGkxYjhXSXNIZEIzbXZ0VlZwOGg0Q1Jhb1B3LkJnSWdUMjlLVG1KR1YySjNTVnBDZDFwUlpXb3Zhamh1TUUwd2VVVkVaU3QyTDNCQVpUSTNabVJtWkRNNFpqSmhZall5TXpRMk9XVTVOMkUwT1RNeVlUa3lPV1UyTlRnMk5qTm1OV0prT0RVek5URmhNR1l5WTJObVpUTTVNV0V6TTJabU1RQQAAFi1YZ0gzWVg2VDNTZmRqVEI5dEJLMXcAAgE
-                zak: >-
-                  eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjbGllbnQiLCJ1aWQiOiJXWGpRbkRNRVFzdWNVNXYxWXlIV0lBIiwiaXNzIjoid2ViIiwic3R5IjoxMDAsImNsdCI6MCwic3RrIjoiUGpuNXItSEJVb0tXd2lBQVFOR1FndnFKNWVLY19zV1l3VHBHNjdJQm00SS5CZ1FnVDI5S1RtSkdWMkozU1ZwQ2QxcFJaV292YWpodU1FMHdlVVZFWlN0MkwzQkFaVEkzWm1SbVpETTRaakpoWWpZeU16UTJPV1U1TjJFME9UTXlZVGt5T1dVMk5UZzJOak5tTldKa09EVXpOVEZoTUdZeVkyTm1aVE01TVdFek0yWm1NUUFnZFVvemNIQndjRnA1WTBaSFYybEZjbTFoYlZwSEt6VTRkMFprY2pWS1VXOEEiLCJleHAiOjE1MjYyNzQ1NzUsImlhdCI6MTUyNjI2NzM3NSwiYWlkIjoiWG1XeGlnZFVSZWVnTW9ibHY3d3FUQSIsImNpZCI6IiJ9.oMMmw50xEfD2IVaSfxap1OlSbczto-KAM
+                zpk: ABzyF_DKLzVcPd-5Wu6zCwlZ3978jn7ZcTHONHrP7Vs.BwYAAAFTY-4XnwAAHCAkMTRlMzRjYzUtMjJmZC00MTQ1LTg2MzUtZmVmYjk3ZDI0NGMyFlYydzlQTzgxUl8yS1pmREtvTWVybVEWVjJ3OVBPODFSXzJLWmZES29NZXJtUQxzb3BoaWUgc3VuNjZkALM0VUVtMTFHTmh3cGFTWlJNMGkxYjhXSXNIZEIzbXZ0VlZwOGg0Q1Jhb1B3LkJnSWdUMjlLVG1KR1YySjNTVnBDZDFwUlpXb3Zhamh1TUUwd2VVVkVaU3QyTDNCQVpUSTNabVJtWkRNNFpqSmhZall5TXpRMk9XVTVOMkUwT1RNeVlUa3lPV1UyTlRnMk5qTm1OV0prT0RVek5URmhNR1l5WTJObVpUTTVNV0V6TTJabU1RQQAAFi1YZ0gzWVg2VDNTZmRqVEI5dEJLMXcAAgE
+                zak: eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjbGllbnQiLCJ1aWQiOiJXWGpRbkRNRVFzdWNVNXYxWXlIV0lBIiwiaXNzIjoid2ViIiwic3R5IjoxMDAsImNsdCI6MCwic3RrIjoiUGpuNXItSEJVb0tXd2lBQVFOR1FndnFKNWVLY19zV1l3VHBHNjdJQm00SS5CZ1FnVDI5S1RtSkdWMkozU1ZwQ2QxcFJaV292YWpodU1FMHdlVVZFWlN0MkwzQkFaVEkzWm1SbVpETTRaakpoWWpZeU16UTJPV1U1TjJFME9UTXlZVGt5T1dVMk5UZzJOak5tTldKa09EVXpOVEZoTUdZeVkyTm1aVE01TVdFek0yWm1NUUFnZFVvemNIQndjRnA1WTBaSFYybEZjbTFoYlZwSEt6VTRkMFprY2pWS1VXOEEiLCJleHAiOjE1MjYyNzQ1NzUsImlhdCI6MTUyNjI2NzM3NSwiYWlkIjoiWG1XeGlnZFVSZWVnTW9ibHY3d3FUQSIsImNpZCI6IiJ9.oMMmw50xEfD2IVaSfxap1OlSbczto-KAM
   /user/getbyemail:
     post:
       tags:
-        - User
-      description: >+
-        Get a user on Zoom via user email address and login type, return the
-        user info.
+      - User
+      description: 'Get a user on Zoom via user email address and login type, return the user info.
 
+
+        '
       operationId: userGetbyemail
       requestBody:
         content:
           application/x-www-form-urlencoded:
             schema:
               required:
-                - email
-                - login_type
+              - email
+              - login_type
               type: object
               properties:
                 email:
@@ -1152,9 +1082,7 @@ paths:
                   description: Email, String
                 login_type:
                   type: string
-                  description: >-
-                    Login type of the email, int SNS_FACEBOOK = 0; SNS_GOOGLE =
-                    1; SNS_API = 99; SNS_ZOOM = 100; SNS_SSO = 101;
+                  description: Login type of the email, int SNS_FACEBOOK = 0; SNS_GOOGLE = 1; SNS_API = 99; SNS_ZOOM = 100; SNS_SSO = 101;
         required: true
       responses:
         '200':
@@ -1164,7 +1092,7 @@ paths:
               example:
                 email: email_address
                 id: unique_id
-                created_at: '2012-11-25T12:00:00.000Z'
+                created_at: 2012-11-25 12:00:00+00:00
                 first_name: Zoomie
                 last_name: Userton
                 type: 1
@@ -1196,19 +1124,18 @@ paths:
                 enable_annotation: false
                 dept: Engineer
                 lastClientVersion: 3.5.44664.0321(mac)
-                lastLoginTime: '2016-03-23T09:54:41.000Z'
+                lastLoginTime: 2016-03-23 09:54:41+00:00
                 status: 0
-                zpk: >-
-                  ABzyF_DKLzVcPd-5Wu6zCwlZ3978jn7ZcTHONHrP7Vs.BwYAAAFTY-4XnwAAHCAkMTRlMzRjYzUtMjJmZC00MTQ1LTg2MzUtZmVmYjk3ZDI0NGMyFlYydzlQTzgxUl8yS1pmREtvTWVybVEWVjJ3OVBPODFSXzJLWmZES29NZXJtUQxzb3BoaWUgc3VuNjZkALM0VUVtMTFHTmh3cGFTWlJNMGkxYjhXSXNIZEIzbXZ0VlZwOGg0Q1Jhb1B3LkJnSWdUMjlLVG1KR1YySjNTVnBDZDFwUlpXb3Zhamh1TUUwd2VVVkVaU3QyTDNCQVpUSTNabVJtWkRNNFpqSmhZall5TXpRMk9XVTVOMkUwT1RNeVlUa3lPV1UyTlRnMk5qTm1OV0prT0RVek5URmhNR1l5WTJObVpUTTVNV0V6TTJabU1RQQAAFi1YZ0gzWVg2VDNTZmRqVEI5dEJLMXcAAgE
-                zak: >-
-                  eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjbGllbnQiLCJ1aWQiOiJXWGpRbkRNRVFzdWNVNXYxWXlIV0lBIiwiaXNzIjoid2ViIiwic3R5IjoxMDAsImNsdCI6MCwic3RrIjoiUGpuNXItSEJVb0tXd2lBQVFOR1FndnFKNWVLY19zV1l3VHBHNjdJQm00SS5CZ1FnVDI5S1RtSkdWMkozU1ZwQ2QxcFJaV292YWpodU1FMHdlVVZFWlN0MkwzQkFaVEkzWm1SbVpETTRaakpoWWpZeU16UTJPV1U1TjJFME9UTXlZVGt5T1dVMk5UZzJOak5tTldKa09EVXpOVEZoTUdZeVkyTm1aVE01TVdFek0yWm1NUUFnZFVvemNIQndjRnA1WTBaSFYybEZjbTFoYlZwSEt6VTRkMFprY2pWS1VXOEEiLCJleHAiOjE1MjYyNzQ1NzUsImlhdCI6MTUyNjI2NzM3NSwiYWlkIjoiWG1XeGlnZFVSZWVnTW9ibHY3d3FUQSIsImNpZCI6IiJ9.oMMmw50xEfD2IVaSfxap1OlSbczto-KAM
+                zpk: ABzyF_DKLzVcPd-5Wu6zCwlZ3978jn7ZcTHONHrP7Vs.BwYAAAFTY-4XnwAAHCAkMTRlMzRjYzUtMjJmZC00MTQ1LTg2MzUtZmVmYjk3ZDI0NGMyFlYydzlQTzgxUl8yS1pmREtvTWVybVEWVjJ3OVBPODFSXzJLWmZES29NZXJtUQxzb3BoaWUgc3VuNjZkALM0VUVtMTFHTmh3cGFTWlJNMGkxYjhXSXNIZEIzbXZ0VlZwOGg0Q1Jhb1B3LkJnSWdUMjlLVG1KR1YySjNTVnBDZDFwUlpXb3Zhamh1TUUwd2VVVkVaU3QyTDNCQVpUSTNabVJtWkRNNFpqSmhZall5TXpRMk9XVTVOMkUwT1RNeVlUa3lPV1UyTlRnMk5qTm1OV0prT0RVek5URmhNR1l5WTJObVpUTTVNV0V6TTJabU1RQQAAFi1YZ0gzWVg2VDNTZmRqVEI5dEJLMXcAAgE
+                zak: eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjbGllbnQiLCJ1aWQiOiJXWGpRbkRNRVFzdWNVNXYxWXlIV0lBIiwiaXNzIjoid2ViIiwic3R5IjoxMDAsImNsdCI6MCwic3RrIjoiUGpuNXItSEJVb0tXd2lBQVFOR1FndnFKNWVLY19zV1l3VHBHNjdJQm00SS5CZ1FnVDI5S1RtSkdWMkozU1ZwQ2QxcFJaV292YWpodU1FMHdlVVZFWlN0MkwzQkFaVEkzWm1SbVpETTRaakpoWWpZeU16UTJPV1U1TjJFME9UTXlZVGt5T1dVMk5UZzJOak5tTldKa09EVXpOVEZoTUdZeVkyTm1aVE01TVdFek0yWm1NUUFnZFVvemNIQndjRnA1WTBaSFYybEZjbTFoYlZwSEt6VTRkMFprY2pWS1VXOEEiLCJleHAiOjE1MjYyNzQ1NzUsImlhdCI6MTUyNjI2NzM3NSwiYWlkIjoiWG1XeGlnZFVSZWVnTW9ibHY3d3FUQSIsImNpZCI6IiJ9.oMMmw50xEfD2IVaSfxap1OlSbczto-KAM
   /user/list:
     post:
       tags:
-        - User
-      description: |+
-        List all the users on Zoom
+      - User
+      description: 'List all the users on Zoom
 
+
+        '
       operationId: userList
       requestBody:
         content:
@@ -1218,9 +1145,7 @@ paths:
               properties:
                 page_size:
                   type: string
-                  description: >-
-                    The amount of records returns within a single API call. Max
-                    of 300 users.
+                  description: The amount of records returns within a single API call. Max of 300 users.
                   default: '30'
                 page_number:
                   type: string
@@ -1237,46 +1162,47 @@ paths:
                 page_number: 1
                 page_size: 50
                 users:
-                  - email: email_address
-                    id: unique_id
-                    created_at: '2012-11-25T12:00:00.000Z'
-                    first_name: Zoomie
-                    last_name: Userton
-                    type: 1
-                    pic_url: https://www.zoom.us/p/bNsPi
-                    disable_chat: false
-                    enable_e2e_encryption: false
-                    enable_silent_mode: true
-                    disable_group_hd: false
-                    disable_recording: false
-                    enable_cmr: false
-                    enable_auto_recording: false
-                    enable_cloud_auto_recording: false
-                    verified: 0
-                    pmi: 2035134243
-                    meeting_capacity: 0
-                    enable_webinar: true
-                    webinar_capacity: 100
-                    enable_large: false
-                    large_capacity: 0
-                    disable_feedback: false
-                    disable_jbh_reminder: true
-                    enable_breakout_room: false
-                    dept: Engineer
-                    timezone: America/Los_Angeles
-                    lastClientVersion: 3.5.44664.0321(mac)
-                    lastLoginTime: '2016-03-23T09:54:41.000Z'
-                    status: 0
-                    token: ''
-                    zpk: ''
-                    zak: ''
+                - email: email_address
+                  id: unique_id
+                  created_at: 2012-11-25 12:00:00+00:00
+                  first_name: Zoomie
+                  last_name: Userton
+                  type: 1
+                  pic_url: https://www.zoom.us/p/bNsPi
+                  disable_chat: false
+                  enable_e2e_encryption: false
+                  enable_silent_mode: true
+                  disable_group_hd: false
+                  disable_recording: false
+                  enable_cmr: false
+                  enable_auto_recording: false
+                  enable_cloud_auto_recording: false
+                  verified: 0
+                  pmi: 2035134243
+                  meeting_capacity: 0
+                  enable_webinar: true
+                  webinar_capacity: 100
+                  enable_large: false
+                  large_capacity: 0
+                  disable_feedback: false
+                  disable_jbh_reminder: true
+                  enable_breakout_room: false
+                  dept: Engineer
+                  timezone: America/Los_Angeles
+                  lastClientVersion: 3.5.44664.0321(mac)
+                  lastLoginTime: 2016-03-23 09:54:41+00:00
+                  status: 0
+                  token: ''
+                  zpk: ''
+                  zak: ''
   /user/pending:
     post:
       tags:
-        - User
-      description: |+
-        List all the pending users on Zoom
+      - User
+      description: 'List all the pending users on Zoom
 
+
+        '
       operationId: userPending
       requestBody:
         content:
@@ -1286,9 +1212,7 @@ paths:
               properties:
                 page_size:
                   type: string
-                  description: >-
-                    The amount of records returns within a single API call. Max
-                    of 300 users.
+                  description: The amount of records returns within a single API call. Max of 300 users.
                   default: '30'
                 page_number:
                   type: string
@@ -1305,46 +1229,47 @@ paths:
                 page_number: 1
                 page_size: 50
                 users:
-                  - email: email_address
-                    id: unique_id
-                    created_at: '2012-11-25T12:00:00.000Z'
-                    first_name: Zoomie
-                    last_name: Userton
-                    type: 1
-                    pic_url: https://www.zoom.us/p/bNsPi
-                    disable_chat: false
-                    enable_e2e_encryption: false
-                    enable_silent_mode: true
-                    disable_group_hd: false
-                    disable_recording: false
-                    enable_cmr: false
-                    enable_auto_recording: false
-                    enable_cloud_auto_recording: false
-                    verified: 0
-                    pmi: 2035134243
-                    meeting_capacity: 0
-                    enable_webinar: true
-                    webinar_capacity: 100
-                    enable_large: false
-                    large_capacity: 0
-                    disable_feedback: false
-                    disable_jbh_reminder: true
-                    enable_breakout_room: false
-                    dept: Engineer
-                    timezone: America/Los_Angeles
-                    lastClientVersion: 3.5.44664.0321(mac)
-                    lastLoginTime: '2016-03-23T09:54:41.000Z'
-                    status: 0
-                    token: ''
-                    zpk: ''
-                    zak: ''
+                - email: email_address
+                  id: unique_id
+                  created_at: 2012-11-25 12:00:00+00:00
+                  first_name: Zoomie
+                  last_name: Userton
+                  type: 1
+                  pic_url: https://www.zoom.us/p/bNsPi
+                  disable_chat: false
+                  enable_e2e_encryption: false
+                  enable_silent_mode: true
+                  disable_group_hd: false
+                  disable_recording: false
+                  enable_cmr: false
+                  enable_auto_recording: false
+                  enable_cloud_auto_recording: false
+                  verified: 0
+                  pmi: 2035134243
+                  meeting_capacity: 0
+                  enable_webinar: true
+                  webinar_capacity: 100
+                  enable_large: false
+                  large_capacity: 0
+                  disable_feedback: false
+                  disable_jbh_reminder: true
+                  enable_breakout_room: false
+                  dept: Engineer
+                  timezone: America/Los_Angeles
+                  lastClientVersion: 3.5.44664.0321(mac)
+                  lastLoginTime: 2016-03-23 09:54:41+00:00
+                  status: 0
+                  token: ''
+                  zpk: ''
+                  zak: ''
   /user/permanentdelete:
     post:
       tags:
-        - User
-      description: |+
-        Delete a user from Zoom system permanently.
+      - User
+      description: 'Delete a user from Zoom system permanently.
 
+
+        '
       operationId: userPermanentdelete
       requestBody:
         content:
@@ -1357,9 +1282,7 @@ paths:
                   description: The user’s user id.
                 email:
                   type: string
-                  description: >-
-                    The user’s email address. Must have id or email, if given
-                    id, the email is ignored.
+                  description: The user’s email address. Must have id or email, if given id, the email is ignored.
       responses:
         '200':
           description: Success
@@ -1368,14 +1291,15 @@ paths:
               example:
                 id: unique_id
                 email: email_address
-                deleted_at: '2013-09-02T12:00:00.000Z'
+                deleted_at: 2013-09-02 12:00:00+00:00
   /user/revoketoken:
     post:
       tags:
-        - User
-      description: |+
-        Revoke a user's SSO token.
+      - User
+      description: 'Revoke a user''s SSO token.
 
+
+        '
       operationId: userRevoketoken
       requestBody:
         content:
@@ -1397,14 +1321,15 @@ paths:
               example:
                 id: unique_id
                 email: email_address
-                updated_at: '2013-09-02T12:00:00.000Z'
+                updated_at: 2013-09-02 12:00:00+00:00
   /user/scheduleforhost/list:
     post:
       tags:
-        - User
-      description: |+
-        List assigned schedule privilege for host users.
+      - User
+      description: 'List assigned schedule privilege for host users.
 
+
+        '
       operationId: userScheduleforhostList
       requestBody:
         content:
@@ -1426,32 +1351,29 @@ paths:
               example:
                 total_records: 1
                 users:
-                  - id: unique_id
-                    email: email_address
-                    first_name: Zoomie
-                    last_name: Userton
+                - id: unique_id
+                  email: email_address
+                  first_name: Zoomie
+                  last_name: Userton
   /user/ssocreate:
     post:
       tags:
-        - User
-      description: >+
-        Create a SSO user on Zoom, return the created user ID.
+      - User
+      description: 'Create a SSO user on Zoom, return the created user ID.
 
 
-        <aside class="notice">The API is provided for enabled 'Pre-provisioning
-        SSO User' option. User created in this way has no password. If it is not
-        a basic user, will generate a Personal Vanity URL using user name (no
-        domain) of the provisioning email. If user name or pmi is invalid or
-        occupied, will use random number/random personal vanity URL.</aside>
+        <aside class="notice">The API is provided for enabled ''Pre-provisioning SSO User'' option. User created in this way has no password. If it is not a basic user, will generate a Personal Vanity URL using user name (no domain) of the provisioning email. If user name or pmi is invalid or occupied, will use random number/random personal vanity URL.</aside>
 
+
+        '
       operationId: userSsocreate
       requestBody:
         content:
           application/x-www-form-urlencoded:
             schema:
               required:
-                - email
-                - type
+              - email
+              - type
               type: object
               properties:
                 email:
@@ -1459,10 +1381,7 @@ paths:
                   description: A valid email address. It must be unique in Zoom service.
                 type:
                   type: string
-                  description: >-
-                    User’s type. 1 means it is a basic user. 2 means a pro user,
-                    3 means a corp user. Basic user can host up to 40 minutes
-                    meeting.
+                  description: User’s type. 1 means it is a basic user. 2 means a pro user, 3 means a corp user. Basic user can host up to 40 minutes meeting.
                 first_name:
                   type: string
                   description: User’s first name.
@@ -1471,43 +1390,31 @@ paths:
                   description: User’s last name.
                 meeting_capacity:
                   type: string
-                  description: >-
-                    User’s meeting capacity, 0 means following account’s meeting
-                    capacity.
+                  description: User’s meeting capacity, 0 means following account’s meeting capacity.
                   default: '0'
                 enable_webinar:
                   type: string
                   description: Enable webinar feature true or false.
                 webinar_capacity:
                   type: string
-                  description: >-
-                    Enable webinar capacity, can be 100, 500, 1000, 3000, 5000
-                    or 10000, depends on if having related webinar capacity plan
-                    subscription or not.
+                  description: Enable webinar capacity, can be 100, 500, 1000, 3000, 5000 or 10000, depends on if having related webinar capacity plan subscription or not.
                   default: '0'
                 enable_large:
                   type: string
                   description: Enable large meting feature true or false.
                 large_capacity:
                   type: string
-                  description: >-
-                    Enable large meeting capacity, can be 100, 200, 300 or 500,
-                    depends on if having related webinar capacity plan
-                    subscription or not.
+                  description: Enable large meeting capacity, can be 100, 200, 300 or 500, depends on if having related webinar capacity plan subscription or not.
                   default: '0'
                 pmi:
                   type: string
                   description: Personal Meeting ID, long, length must be 10.
                 group_id:
                   type: string
-                  description: >-
-                    User Group ID. If set default user group, the parameter’s
-                    default value is the default user group.
+                  description: User Group ID. If set default user group, the parameter’s default value is the default user group.
                 imgroup_id:
                   type: string
-                  description: >-
-                    IM Group ID. If set default im group, the parameter’s
-                    default value is the default im group.
+                  description: IM Group ID. If set default im group, the parameter’s default value is the default im group.
         required: true
       responses:
         '200':
@@ -1548,7 +1455,7 @@ paths:
                 enable_annotation: false
                 dept: Engineer
                 timezone: ''
-                created_at: '2015-03-12T05:45:45.000Z'
+                created_at: 2015-03-12 05:45:45+00:00
                 lastClientVersion: ''
                 lastLoginTime: ''
                 token: ''
@@ -1557,17 +1464,18 @@ paths:
   /user/update:
     post:
       tags:
-        - User
-      description: |+
-        Update user info on Zoom via user ID.
+      - User
+      description: 'Update user info on Zoom via user ID.
 
+
+        '
       operationId: userUpdate
       requestBody:
         content:
           application/x-www-form-urlencoded:
             schema:
               required:
-                - id
+              - id
               type: object
               properties:
                 id:
@@ -1575,10 +1483,7 @@ paths:
                   description: User id.
                 type:
                   type: string
-                  description: >-
-                    User’s type. 1 means it is a basic user. 2 means a pro user,
-                    3 means a corp user. Basic user can host up to 40 minutes
-                    meeting.
+                  description: User’s type. 1 means it is a basic user. 2 means a pro user, 3 means a corp user. Basic user can host up to 40 minutes meeting.
                 first_name:
                   type: string
                   description: User’s first name.
@@ -1620,9 +1525,7 @@ paths:
                   description: Enable record an audio only file.
                 enable_auto_recording:
                   type: boolean
-                  description: >-
-                    Enable automatic recording. By default, if
-                    "enable_cloud_auto_recording" is true, it will become true.
+                  description: Enable automatic recording. By default, if "enable_cloud_auto_recording" is true, it will become true.
                   default: false
                 enable_cloud_auto_recording:
                   type: boolean
@@ -1633,29 +1536,21 @@ paths:
                   description: Referral partner track ID.
                 meeting_capacity:
                   type: string
-                  description: >-
-                    User’s meeting capacity, passing 0 will inherit account’s
-                    meeting capacity
+                  description: User’s meeting capacity, passing 0 will inherit account’s meeting capacity
                   default: '0'
                 enable_webinar:
                   type: string
                   description: Enable webinar feature true or false.
                 webinar_capacity:
                   type: string
-                  description: >-
-                    Enable webinar capacity, can be 100, 500, 1000, 3000, 5000
-                    or 10000, depends on if having related webinar capacity plan
-                    subscription or not.
+                  description: Enable webinar capacity, can be 100, 500, 1000, 3000, 5000 or 10000, depends on if having related webinar capacity plan subscription or not.
                   default: '0'
                 enable_large:
                   type: string
                   description: Enable large meting feature true or false.
                 large_capacity:
                   type: string
-                  description: >-
-                    Enable large meeting capacity, can be 100, 200, 300 or 500,
-                    depends on if having related webinar capacity plan
-                    subscription or not.
+                  description: Enable large meeting capacity, can be 100, 200, 300 or 500, depends on if having related webinar capacity plan subscription or not.
                   default: '0'
                 disable_feedback:
                   type: boolean
@@ -1695,9 +1590,7 @@ paths:
                   default: false
                 option_enter_exit_chime_type:
                   type: string
-                  description: >-
-                    Enter/exit chime type. 0 means Heard by all including host
-                    and attendees, 1 means Heard by host only.
+                  description: Enter/exit chime type. 0 means Heard by all including host and attendees, 1 means Heard by host only.
                   default: '0'
                 disable_cancel_meeting_notification:
                   type: boolean
@@ -1741,9 +1634,7 @@ paths:
                   default: false
                 enable_phone_participants_password:
                   type: boolean
-                  description: >-
-                    Enable Generate and require password for participants
-                    joining by phone.
+                  description: Enable Generate and require password for participants joining by phone.
                   default: false
                 enable_auto_delete_cmr:
                   type: boolean
@@ -1769,14 +1660,10 @@ paths:
                   description: Host Key should be 6-digit number.
                 group_id:
                   type: string
-                  description: >-
-                    User Group ID. If set default user group, the parameter’s
-                    default value is the default user group.
+                  description: User Group ID. If set default user group, the parameter’s default value is the default user group.
                 imgroup_id:
                   type: string
-                  description: >-
-                    IM Group ID. If set default im group, the parameter’s
-                    default value is the default im group.
+                  description: IM Group ID. If set default im group, the parameter’s default value is the default im group.
                 cms_user_id:
                   type: string
                   description: User ID on external CMS
@@ -1788,22 +1675,23 @@ paths:
             application/json:
               example:
                 id: unique_id
-                updated_at: '2012-11-25T12:00:00.000Z'
+                updated_at: 2012-11-25 12:00:00+00:00
   /user/updatepassword:
     post:
       tags:
-        - User
-      description: |+
-        Upload and update user's profile picture on Zoom via user ID.
+      - User
+      description: 'Upload and update user''s profile picture on Zoom via user ID.
 
+
+        '
       operationId: userUpdatepassword
       requestBody:
         content:
           application/x-www-form-urlencoded:
             schema:
               required:
-                - id
-                - pic_file
+              - id
+              - pic_file
               type: object
               properties:
                 id:
@@ -1820,6 +1708,7 @@ paths:
             application/json:
               example:
                 id: unique_id
-                updated_at: '2013-09-02T12:00:00.000Z'
-components:
-  schemas: {}
+                updated_at: 2013-09-02 12:00:00+00:00
+externalDocs:
+  description: Zoom REST API Documentation
+  url: https://zoom.github.io/api

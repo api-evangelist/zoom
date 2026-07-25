@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  title: 'Zoom device/'
+  title: Zoom / Account Device API
   description: Needs description.
   contact:
     name: Zoom Developers
@@ -10,32 +10,30 @@ info:
     name: MIT
     url: https://opensource.org/licenses/MIT
   version: 1.0.0
-externalDocs:
-  description: Zoom REST API Documentation
-  url: https://zoom.github.io/api
 servers:
-  - url: https://api.zoom.us/v1
+- url: https://api.zoom.us/v1
 security:
-  - api_key: []
-  - api_secret: []
+- api_key: []
+- api_secret: []
 tags:
-  - name: Device
+- name: Device
 paths:
   /h323/device/create:
     post:
       tags:
-        - Device
-      description: |+
-        Create a H.323/SIP Device on your Zoom account.
+      - Device
+      description: 'Create a H.323/SIP Device on your Zoom account.
 
+
+        '
       operationId: deviceDeviceCreate
       requestBody:
         content:
           application/x-www-form-urlencoded:
             schema:
               required:
-                - ip
-                - name
+              - ip
+              - name
               type: object
               properties:
                 name:
@@ -67,17 +65,18 @@ paths:
   /h323/device/delete:
     post:
       tags:
-        - Device
-      description: |+
-        Delete a H.323/SIP Device on your Zoom account.
+      - Device
+      description: 'Delete a H.323/SIP Device on your Zoom account.
 
+
+        '
       operationId: deviceDeviceDelete
       requestBody:
         content:
           application/x-www-form-urlencoded:
             schema:
               required:
-                - id
+              - id
               type: object
               properties:
                 id:
@@ -95,10 +94,11 @@ paths:
   /h323/device/list:
     post:
       tags:
-        - Device
-      description: |+
-        List H.323/SIP Devices on your Zoom account.
+      - Device
+      description: 'List H.323/SIP Devices on your Zoom account.
 
+
+        '
       operationId: deviceDeviceList
       requestBody:
         content:
@@ -108,9 +108,7 @@ paths:
               properties:
                 page_size:
                   type: string
-                  description: >-
-                    The amount of records returns within a single API call.
-                    Defaults to 30.
+                  description: The amount of records returns within a single API call. Defaults to 30.
                   default: '30'
                 page_number:
                   type: string
@@ -127,25 +125,26 @@ paths:
                 page_size: 30
                 total_records: 1
                 devices:
-                  - id: unique_id
-                    name: New Device
-                    ip: 192.168.1.10
-                    protocol_type: 1
-                    encryption_type: 2
+                - id: unique_id
+                  name: New Device
+                  ip: 192.168.1.10
+                  protocol_type: 1
+                  encryption_type: 2
   /h323/device/update:
     post:
       tags:
-        - Device
-      description: |+
-        Update a H.323/SIP Device on your Zoom account.
+      - Device
+      description: 'Update a H.323/SIP Device on your Zoom account.
 
+
+        '
       operationId: deviceDeviceUpdate
       requestBody:
         content:
           application/x-www-form-urlencoded:
             schema:
               required:
-                - id
+              - id
               type: object
               properties:
                 id:
@@ -174,5 +173,6 @@ paths:
               example:
                 id: unique_id
                 updated_at: '2017-03-14T09:27:03.000Z'
-components:
-  schemas: {}
+externalDocs:
+  description: Zoom REST API Documentation
+  url: https://zoom.github.io/api

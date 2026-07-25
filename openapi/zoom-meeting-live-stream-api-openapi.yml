@@ -1,0 +1,232 @@
+openapi: 3.0.1
+info:
+  title: Zoom / Account Meeting Live Stream API
+  description: Needs description.
+  contact:
+    name: Zoom Developers
+    url: https://zoom.us/developer
+    email: developer@zoom.us
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  version: 1.0.0
+servers:
+- url: https://api.zoom.us/v1
+security:
+- api_key: []
+- api_secret: []
+tags:
+- name: Meeting Live Stream
+  description: Manage live streaming for Zoom meetings.
+paths:
+  /meetings/{meetingId}/livestream:
+    patch:
+      tags:
+      - Meeting Live Stream
+      summary: Zoom Update a Live Stream
+      description: Update the live stream configuration of a meeting. The meeting host must configure live streaming settings before the meeting starts.
+      operationId: updateMeetingLiveStream
+      parameters:
+      - $ref: '#/components/parameters/MeetingIdPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LiveStreamUpdateRequest'
+            examples:
+              UpdatemeetinglivestreamRequestExample:
+                summary: Default updateMeetingLiveStream request
+                x-microcks-default: true
+                value:
+                  stream_url: https://www.example.com
+                  stream_key: example_value
+                  page_url: https://www.example.com
+                  resolution: 720p
+      responses:
+        '204':
+          description: Live stream updated successfully.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /meetings/{meetingId}/livestream/status:
+    patch:
+      tags:
+      - Meeting Live Stream
+      summary: Zoom Update Live Stream Status
+      description: Update the status of a live stream during a meeting. Use this to start or stop live streaming.
+      operationId: updateMeetingLiveStreamStatus
+      parameters:
+      - $ref: '#/components/parameters/MeetingIdPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                action:
+                  type: string
+                  description: Live stream action.
+                  enum:
+                  - start
+                  - stop
+                settings:
+                  type: object
+                  properties:
+                    active_speaker_name:
+                      type: boolean
+                      description: Display active speaker name.
+                    display_name:
+                      type: string
+                      description: Custom display name for the live stream.
+            examples:
+              UpdatemeetinglivestreamstatusRequestExample:
+                summary: Default updateMeetingLiveStreamStatus request
+                x-microcks-default: true
+                value:
+                  action: start
+                  settings:
+                    active_speaker_name: true
+                    display_name: example_value
+      responses:
+        '204':
+          description: Live stream status updated successfully.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /meetings/{meetingId}/jointoken/live_streaming:
+    get:
+      tags:
+      - Meeting Live Stream
+      summary: Zoom Get a Meeting's Join Token for Live Streaming
+      description: Get a meeting's join token to allow live streaming. The join token allows a recording bot or live streaming service to join the meeting.
+      operationId: getMeetingJoinTokenForLiveStreaming
+      parameters:
+      - $ref: '#/components/parameters/MeetingIdPath'
+      responses:
+        '200':
+          description: Successfully retrieved join token.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                    description: The join token.
+                  expire_in:
+                    type: integer
+                    description: Token expiration time in seconds.
+              examples:
+                Getmeetingjointokenforlivestreaming200Example:
+                  summary: Default getMeetingJoinTokenForLiveStreaming 200 response
+                  x-microcks-default: true
+                  value:
+                    token: example_value
+                    expire_in: 10
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  parameters:
+    MeetingIdPath:
+      name: meetingId
+      in: path
+      required: true
+      description: The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID.
+      schema:
+        oneOf:
+        - type: integer
+          format: int64
+        - type: string
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Error code.
+          example: 10
+        message:
+          type: string
+          description: Error message.
+          example: example_value
+        errors:
+          type: array
+          description: Detailed error messages.
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+              message:
+                type: string
+          example: []
+    LiveStreamUpdateRequest:
+      type: object
+      required:
+      - stream_url
+      - stream_key
+      properties:
+        stream_url:
+          type: string
+          format: uri
+          description: Streaming URL (e.g., RTMP endpoint).
+          example: https://www.example.com
+        stream_key:
+          type: string
+          description: Stream key or name.
+          example: example_value
+        page_url:
+          type: string
+          format: uri
+          description: The live stream page URL where viewers can watch.
+          example: https://www.example.com
+        resolution:
+          type: string
+          description: The live stream resolution. Can be 720p or 1080p.
+          enum:
+          - 720p
+          - 1080p
+          example: 720p
+  responses:
+    Unauthorized:
+      description: Unauthorized. The request requires authentication.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Bad request. The request was invalid or cannot be served.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Not found. The requested resource could not be found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+externalDocs:
+  description: Zoom REST API Documentation
+  url: https://zoom.github.io/api

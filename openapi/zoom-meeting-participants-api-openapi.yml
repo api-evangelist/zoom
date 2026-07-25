@@ -1,0 +1,270 @@
+openapi: 3.0.1
+info:
+  title: Zoom / Account Meeting Participants API
+  description: Needs description.
+  contact:
+    name: Zoom Developers
+    url: https://zoom.us/developer
+    email: developer@zoom.us
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  version: 1.0.0
+servers:
+- url: https://api.zoom.us/v1
+security:
+- api_key: []
+- api_secret: []
+tags:
+- name: Meeting Participants
+  description: Manage participants in Zoom meetings.
+paths:
+  /meetings/{meetingId}/participants:
+    get:
+      tags:
+      - Meeting Participants
+      summary: Zoom List Meeting Participants
+      description: List participants from a past meeting instance. Only available for paid accounts with the Dashboard feature enabled.
+      operationId: listMeetingParticipants
+      parameters:
+      - $ref: '#/components/parameters/MeetingIdPath'
+      - $ref: '#/components/parameters/PageSize'
+      - $ref: '#/components/parameters/NextPageToken'
+      - name: include_fields
+        in: query
+        description: Provide `registrant_id` to include the registrant_id field in the response.
+        schema:
+          type: string
+          enum:
+          - registrant_id
+        example: registrant_id
+      responses:
+        '200':
+          description: Successfully retrieved meeting participants.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ParticipantList'
+              examples:
+                Listmeetingparticipants200Example:
+                  summary: Default listMeetingParticipants 200 response
+                  x-microcks-default: true
+                  value:
+                    page_count: 10
+                    page_size: 10
+                    total_records: 10
+                    next_page_token: example_value
+                    participants:
+                    - id: abc123
+                      user_id: '500123'
+                      name: Example Title
+                      user_email: user@example.com
+                      join_time: '2026-01-15T10:30:00Z'
+                      leave_time: '2026-01-15T10:30:00Z'
+                      duration: 10
+                      registrant_id: '500123'
+                      failover: true
+                      status: in_meeting
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /past_meetings/{meetingId}/participants:
+    get:
+      tags:
+      - Meeting Participants
+      summary: Zoom List Past Meeting Participants
+      description: Retrieve information on participants from a past meeting. The API does not return results if the meeting is less than 5 minutes old.
+      operationId: listPastMeetingParticipants
+      parameters:
+      - name: meetingId
+        in: path
+        required: true
+        description: The meeting UUID.
+        schema:
+          type: string
+        example: '500123'
+      - $ref: '#/components/parameters/PageSize'
+      - $ref: '#/components/parameters/NextPageToken'
+      responses:
+        '200':
+          description: Successfully retrieved past meeting participants.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ParticipantList'
+              examples:
+                Listpastmeetingparticipants200Example:
+                  summary: Default listPastMeetingParticipants 200 response
+                  x-microcks-default: true
+                  value:
+                    page_count: 10
+                    page_size: 10
+                    total_records: 10
+                    next_page_token: example_value
+                    participants:
+                    - id: abc123
+                      user_id: '500123'
+                      name: Example Title
+                      user_email: user@example.com
+                      join_time: '2026-01-15T10:30:00Z'
+                      leave_time: '2026-01-15T10:30:00Z'
+                      duration: 10
+                      registrant_id: '500123'
+                      failover: true
+                      status: in_meeting
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Participant:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Participant UUID.
+          example: abc123
+        user_id:
+          type: string
+          description: Participant user ID if the participant is a Zoom user.
+          example: '500123'
+        name:
+          type: string
+          description: Participant display name.
+          example: Example Title
+        user_email:
+          type: string
+          format: email
+          description: Participant email address.
+          example: user@example.com
+        join_time:
+          type: string
+          format: date-time
+          description: Time the participant joined the meeting.
+          example: '2026-01-15T10:30:00Z'
+        leave_time:
+          type: string
+          format: date-time
+          description: Time the participant left the meeting.
+          example: '2026-01-15T10:30:00Z'
+        duration:
+          type: integer
+          description: Participant duration in the meeting (seconds).
+          example: 10
+        registrant_id:
+          type: string
+          description: Registrant ID if the participant registered.
+          example: '500123'
+        failover:
+          type: boolean
+          description: Whether failover occurred for this participant.
+          example: true
+        status:
+          type: string
+          description: Participant status.
+          enum:
+          - in_meeting
+          - in_waiting_room
+          example: in_meeting
+    ParticipantList:
+      type: object
+      properties:
+        page_count:
+          type: integer
+          example: 10
+        page_size:
+          type: integer
+          example: 10
+        total_records:
+          type: integer
+          example: 10
+        next_page_token:
+          type: string
+          example: example_value
+        participants:
+          type: array
+          items:
+            $ref: '#/components/schemas/Participant'
+          example: []
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Error code.
+          example: 10
+        message:
+          type: string
+          description: Error message.
+          example: example_value
+        errors:
+          type: array
+          description: Detailed error messages.
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+              message:
+                type: string
+          example: []
+  parameters:
+    NextPageToken:
+      name: next_page_token
+      in: query
+      description: The next page token to paginate through large result sets. A next_page_token is returned in the response when a result set exceeds the page_size.
+      schema:
+        type: string
+    MeetingIdPath:
+      name: meetingId
+      in: path
+      required: true
+      description: The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID.
+      schema:
+        oneOf:
+        - type: integer
+          format: int64
+        - type: string
+    PageSize:
+      name: page_size
+      in: query
+      description: The number of records returned per API call. Maximum is 300.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 300
+        default: 30
+  responses:
+    Unauthorized:
+      description: Unauthorized. The request requires authentication.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Bad request. The request was invalid or cannot be served.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Not found. The requested resource could not be found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+externalDocs:
+  description: Zoom REST API Documentation
+  url: https://zoom.github.io/api

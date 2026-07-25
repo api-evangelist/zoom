@@ -1,0 +1,662 @@
+openapi: 3.0.1
+info:
+  title: Zoom / Account Meeting Registrants API
+  description: Needs description.
+  contact:
+    name: Zoom Developers
+    url: https://zoom.us/developer
+    email: developer@zoom.us
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  version: 1.0.0
+servers:
+- url: https://api.zoom.us/v1
+security:
+- api_key: []
+- api_secret: []
+tags:
+- name: Meeting Registrants
+  description: Manage meeting registration and registrants.
+paths:
+  /meetings/{meetingId}/registrants:
+    get:
+      tags:
+      - Meeting Registrants
+      summary: Zoom List Meeting Registrants
+      description: List all registrants for a meeting. Returns the list of users who registered for the meeting.
+      operationId: listMeetingRegistrants
+      parameters:
+      - $ref: '#/components/parameters/MeetingIdPath'
+      - name: occurrence_id
+        in: query
+        description: Meeting occurrence ID for recurring meetings.
+        schema:
+          type: string
+        example: '500123'
+      - name: status
+        in: query
+        description: Registrant status filter.
+        schema:
+          type: string
+          enum:
+          - pending
+          - approved
+          - denied
+          default: approved
+        example: pending
+      - $ref: '#/components/parameters/PageSize'
+      - $ref: '#/components/parameters/NextPageToken'
+      responses:
+        '200':
+          description: Successfully retrieved the list of registrants.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegistrantList'
+              examples:
+                Listmeetingregistrants200Example:
+                  summary: Default listMeetingRegistrants 200 response
+                  x-microcks-default: true
+                  value:
+                    page_count: 10
+                    page_number: 10
+                    page_size: 10
+                    total_records: 10
+                    next_page_token: example_value
+                    registrants:
+                    - id: abc123
+                      email: user@example.com
+                      first_name: example_value
+                      last_name: example_value
+                      address: example_value
+                      city: example_value
+                      state: example_value
+                      zip: example_value
+                      country: example_value
+                      phone: example_value
+                      industry: example_value
+                      org: example_value
+                      job_title: example_value
+                      purchasing_time_frame: example_value
+                      role_in_purchase_process: example_value
+                      no_of_employees: example_value
+                      comments: example_value
+                      status: approved
+                      create_time: '2026-01-15T10:30:00Z'
+                      join_url: https://www.example.com
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      tags:
+      - Meeting Registrants
+      summary: Zoom Add a Meeting Registrant
+      description: Register a participant for a meeting. A host or alternative host can also add registrants on behalf of other users.
+      operationId: addMeetingRegistrant
+      parameters:
+      - $ref: '#/components/parameters/MeetingIdPath'
+      - name: occurrence_ids
+        in: query
+        description: A comma-separated list of occurrence IDs for recurring meetings.
+        schema:
+          type: string
+        example: example_value
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegistrantCreateRequest'
+            examples:
+              AddmeetingregistrantRequestExample:
+                summary: Default addMeetingRegistrant request
+                x-microcks-default: true
+                value:
+                  email: user@example.com
+                  first_name: example_value
+                  last_name: example_value
+                  address: example_value
+                  city: example_value
+                  state: example_value
+                  zip: example_value
+                  country: example_value
+                  phone: example_value
+                  comments: example_value
+                  industry: example_value
+                  job_title: example_value
+                  org: example_value
+                  no_of_employees: 1-20
+                  purchasing_time_frame: Within a month
+                  role_in_purchase_process: Decision Maker
+                  language: en-US
+                  custom_questions:
+                  - title: Example Title
+                    value: example_value
+                  auto_approve: true
+      responses:
+        '201':
+          description: Registrant added successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegistrantCreateResponse'
+              examples:
+                Addmeetingregistrant201Example:
+                  summary: Default addMeetingRegistrant 201 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    registrant_id: '500123'
+                    start_time: '2026-01-15T10:30:00Z'
+                    topic: example_value
+                    join_url: https://www.example.com
+                    participant_pin_code: 10
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /meetings/{meetingId}/registrants/status:
+    put:
+      tags:
+      - Meeting Registrants
+      summary: Zoom Update Registrant Status
+      description: Approve or deny a meeting registrant. Also allows cancellation of a previously approved registrant.
+      operationId: updateMeetingRegistrantStatus
+      parameters:
+      - $ref: '#/components/parameters/MeetingIdPath'
+      - name: occurrence_id
+        in: query
+        description: Meeting occurrence ID for recurring meetings.
+        schema:
+          type: string
+        example: '500123'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              properties:
+                action:
+                  type: string
+                  description: Action to take on registrants.
+                  enum:
+                  - approve
+                  - deny
+                  - cancel
+                registrants:
+                  type: array
+                  description: List of registrants to update.
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: Registrant ID.
+                      email:
+                        type: string
+                        description: Registrant email address.
+            examples:
+              UpdatemeetingregistrantstatusRequestExample:
+                summary: Default updateMeetingRegistrantStatus request
+                x-microcks-default: true
+                value:
+                  action: approve
+                  registrants:
+                  - id: abc123
+                    email: user@example.com
+      responses:
+        '204':
+          description: Registrant status updated successfully.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /meetings/{meetingId}/batch_registrants:
+    post:
+      tags:
+      - Meeting Registrants
+      summary: Zoom Batch Add Meeting Registrants
+      description: Register up to 30 registrants at once for a meeting that requires registration.
+      operationId: batchAddMeetingRegistrants
+      parameters:
+      - $ref: '#/components/parameters/MeetingIdPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                auto_approve:
+                  type: boolean
+                  description: Auto-approve the registrants.
+                registrants:
+                  type: array
+                  maxItems: 30
+                  items:
+                    type: object
+                    required:
+                    - email
+                    properties:
+                      email:
+                        type: string
+                        format: email
+                      first_name:
+                        type: string
+                      last_name:
+                        type: string
+            examples:
+              BatchaddmeetingregistrantsRequestExample:
+                summary: Default batchAddMeetingRegistrants request
+                x-microcks-default: true
+                value:
+                  auto_approve: true
+                  registrants:
+                  - email: user@example.com
+                    first_name: example_value
+                    last_name: example_value
+      responses:
+        '201':
+          description: Registrants added successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  registrants:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        email:
+                          type: string
+                        registrant_id:
+                          type: string
+                        participant_pin_code:
+                          type: integer
+                        join_url:
+                          type: string
+                          format: uri
+              examples:
+                Batchaddmeetingregistrants201Example:
+                  summary: Default batchAddMeetingRegistrants 201 response
+                  x-microcks-default: true
+                  value:
+                    registrants:
+                    - email: user@example.com
+                      registrant_id: '500123'
+                      participant_pin_code: 10
+                      join_url: https://www.example.com
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  parameters:
+    NextPageToken:
+      name: next_page_token
+      in: query
+      description: The next page token to paginate through large result sets. A next_page_token is returned in the response when a result set exceeds the page_size.
+      schema:
+        type: string
+    MeetingIdPath:
+      name: meetingId
+      in: path
+      required: true
+      description: The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID.
+      schema:
+        oneOf:
+        - type: integer
+          format: int64
+        - type: string
+    PageSize:
+      name: page_size
+      in: query
+      description: The number of records returned per API call. Maximum is 300.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 300
+        default: 30
+  schemas:
+    RegistrantCreateRequest:
+      type: object
+      required:
+      - email
+      - first_name
+      properties:
+        email:
+          type: string
+          format: email
+          description: Registrant email address.
+          example: user@example.com
+        first_name:
+          type: string
+          description: Registrant first name.
+          maxLength: 64
+          example: example_value
+        last_name:
+          type: string
+          description: Registrant last name.
+          maxLength: 64
+          example: example_value
+        address:
+          type: string
+          description: Registrant address.
+          example: example_value
+        city:
+          type: string
+          description: Registrant city.
+          example: example_value
+        state:
+          type: string
+          description: Registrant state or province.
+          example: example_value
+        zip:
+          type: string
+          description: Registrant zip or postal code.
+          example: example_value
+        country:
+          type: string
+          description: Registrant two-letter country code.
+          example: example_value
+        phone:
+          type: string
+          description: Registrant phone number.
+          example: example_value
+        comments:
+          type: string
+          description: Registrant questions and comments.
+          example: example_value
+        industry:
+          type: string
+          description: Registrant industry.
+          example: example_value
+        job_title:
+          type: string
+          description: Registrant job title.
+          example: example_value
+        org:
+          type: string
+          description: Registrant organization.
+          example: example_value
+        no_of_employees:
+          type: string
+          description: Number of employees.
+          enum:
+          - 1-20
+          - 21-50
+          - 51-100
+          - 101-250
+          - 251-500
+          - 501-1,000
+          - 1,001-5,000
+          - 5,001-10,000
+          - More than 10,000
+          example: 1-20
+        purchasing_time_frame:
+          type: string
+          description: Purchasing time frame.
+          enum:
+          - Within a month
+          - 1-3 months
+          - 4-6 months
+          - More than 6 months
+          - No timeframe
+          example: Within a month
+        role_in_purchase_process:
+          type: string
+          description: Role in purchase process.
+          enum:
+          - Decision Maker
+          - Evaluator/Recommender
+          - Influencer
+          - Not involved
+          example: Decision Maker
+        language:
+          type: string
+          description: Registrant language preference.
+          enum:
+          - en-US
+          - en
+          - zh-CN
+          - zh
+          - es
+          - fr-FR
+          - fr
+          - jp
+          - pt
+          - de
+          - ko
+          - it
+          - vi
+          - pl
+          - tr
+          - id
+          - nl
+          - ru
+          - uk
+          - sv
+          example: en-US
+        custom_questions:
+          type: array
+          description: Custom question responses.
+          items:
+            type: object
+            properties:
+              title:
+                type: string
+                description: Question title.
+              value:
+                type: string
+                description: Answer to the question.
+          example: []
+        auto_approve:
+          type: boolean
+          description: Auto-approve this registrant.
+          example: true
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Error code.
+          example: 10
+        message:
+          type: string
+          description: Error message.
+          example: example_value
+        errors:
+          type: array
+          description: Detailed error messages.
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+              message:
+                type: string
+          example: []
+    Registrant:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Registrant ID.
+          example: abc123
+        email:
+          type: string
+          format: email
+          description: Registrant email address.
+          example: user@example.com
+        first_name:
+          type: string
+          description: Registrant first name.
+          example: example_value
+        last_name:
+          type: string
+          description: Registrant last name.
+          example: example_value
+        address:
+          type: string
+          example: example_value
+        city:
+          type: string
+          example: example_value
+        state:
+          type: string
+          example: example_value
+        zip:
+          type: string
+          example: example_value
+        country:
+          type: string
+          example: example_value
+        phone:
+          type: string
+          example: example_value
+        industry:
+          type: string
+          example: example_value
+        org:
+          type: string
+          example: example_value
+        job_title:
+          type: string
+          example: example_value
+        purchasing_time_frame:
+          type: string
+          example: example_value
+        role_in_purchase_process:
+          type: string
+          example: example_value
+        no_of_employees:
+          type: string
+          example: example_value
+        comments:
+          type: string
+          example: example_value
+        status:
+          type: string
+          description: Registrant status.
+          enum:
+          - approved
+          - pending
+          - denied
+          example: approved
+        create_time:
+          type: string
+          format: date-time
+          description: Time the registrant registered.
+          example: '2026-01-15T10:30:00Z'
+        join_url:
+          type: string
+          format: uri
+          description: Unique join URL for this registrant.
+          example: https://www.example.com
+    RegistrantList:
+      type: object
+      properties:
+        page_count:
+          type: integer
+          description: Total number of pages.
+          example: 10
+        page_number:
+          type: integer
+          description: Current page number.
+          example: 10
+        page_size:
+          type: integer
+          description: Number of records per page.
+          example: 10
+        total_records:
+          type: integer
+          description: Total number of registrant records.
+          example: 10
+        next_page_token:
+          type: string
+          description: Pagination token for the next page.
+          example: example_value
+        registrants:
+          type: array
+          description: List of registrant objects.
+          items:
+            $ref: '#/components/schemas/Registrant'
+          example: []
+    RegistrantCreateResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: Meeting ID.
+          example: abc123
+        registrant_id:
+          type: string
+          description: Registrant ID.
+          example: '500123'
+        start_time:
+          type: string
+          format: date-time
+          description: Meeting start time.
+          example: '2026-01-15T10:30:00Z'
+        topic:
+          type: string
+          description: Meeting topic.
+          example: example_value
+        join_url:
+          type: string
+          format: uri
+          description: Unique join URL for this registrant.
+          example: https://www.example.com
+        participant_pin_code:
+          type: integer
+          description: Participant PIN code for phone dial-in.
+          example: 10
+  responses:
+    Unauthorized:
+      description: Unauthorized. The request requires authentication.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Bad request. The request was invalid or cannot be served.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Not found. The requested resource could not be found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+externalDocs:
+  description: Zoom REST API Documentation
+  url: https://zoom.github.io/api

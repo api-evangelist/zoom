@@ -1,0 +1,471 @@
+openapi: 3.0.1
+info:
+  title: Zoom / Account Meeting Polls API
+  description: Needs description.
+  contact:
+    name: Zoom Developers
+    url: https://zoom.us/developer
+    email: developer@zoom.us
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  version: 1.0.0
+servers:
+- url: https://api.zoom.us/v1
+security:
+- api_key: []
+- api_secret: []
+tags:
+- name: Meeting Polls
+  description: Create and manage polls for Zoom meetings.
+paths:
+  /meetings/{meetingId}/polls:
+    get:
+      tags:
+      - Meeting Polls
+      summary: Zoom List Meeting Polls
+      description: List all polls for a meeting.
+      operationId: listMeetingPolls
+      parameters:
+      - $ref: '#/components/parameters/MeetingIdPath'
+      - name: anonymous
+        in: query
+        description: Whether to query anonymous polls.
+        schema:
+          type: boolean
+        example: true
+      responses:
+        '200':
+          description: Successfully retrieved meeting polls.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_records:
+                    type: integer
+                    description: Total number of polls.
+                  polls:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Poll'
+              examples:
+                Listmeetingpolls200Example:
+                  summary: Default listMeetingPolls 200 response
+                  x-microcks-default: true
+                  value:
+                    total_records: 10
+                    polls:
+                    - id: abc123
+                      title: Example Title
+                      anonymous: true
+                      status: notstart
+                      poll_type: 1
+                      questions:
+                      - {}
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      tags:
+      - Meeting Polls
+      summary: Zoom Create a Meeting Poll
+      description: Create a poll for a meeting. Meeting must be a scheduled meeting. Instant meetings do not have polling features enabled.
+      operationId: createMeetingPoll
+      parameters:
+      - $ref: '#/components/parameters/MeetingIdPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PollCreateRequest'
+            examples:
+              CreatemeetingpollRequestExample:
+                summary: Default createMeetingPoll request
+                x-microcks-default: true
+                value:
+                  title: Example Title
+                  anonymous: true
+                  poll_type: 1
+                  questions:
+                  - name: Example Title
+                    type: single
+                    answer_required: true
+                    answers: {}
+                    right_answers: {}
+                    prompts: {}
+                    rating_min_value: 10
+                    rating_max_value: 10
+                    rating_min_label: example_value
+                    rating_max_label: example_value
+                    answer_min_character: 10
+                    answer_max_character: 10
+      responses:
+        '201':
+          description: Poll created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Poll'
+              examples:
+                Createmeetingpoll201Example:
+                  summary: Default createMeetingPoll 201 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    title: Example Title
+                    anonymous: true
+                    status: notstart
+                    poll_type: 1
+                    questions:
+                    - name: Example Title
+                      type: single
+                      answer_required: true
+                      answers: {}
+                      right_answers: {}
+                      prompts: {}
+                      rating_min_value: 10
+                      rating_max_value: 10
+                      rating_min_label: example_value
+                      rating_max_label: example_value
+                      answer_min_character: 10
+                      answer_max_character: 10
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /meetings/{meetingId}/polls/{pollId}:
+    get:
+      tags:
+      - Meeting Polls
+      summary: Zoom Get a Meeting Poll
+      description: Retrieve details of a specific meeting poll.
+      operationId: getMeetingPoll
+      parameters:
+      - $ref: '#/components/parameters/MeetingIdPath'
+      - $ref: '#/components/parameters/PollIdPath'
+      responses:
+        '200':
+          description: Successfully retrieved the poll.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Poll'
+              examples:
+                Getmeetingpoll200Example:
+                  summary: Default getMeetingPoll 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    title: Example Title
+                    anonymous: true
+                    status: notstart
+                    poll_type: 1
+                    questions:
+                    - name: Example Title
+                      type: single
+                      answer_required: true
+                      answers: {}
+                      right_answers: {}
+                      prompts: {}
+                      rating_min_value: 10
+                      rating_max_value: 10
+                      rating_min_label: example_value
+                      rating_max_label: example_value
+                      answer_min_character: 10
+                      answer_max_character: 10
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    put:
+      tags:
+      - Meeting Polls
+      summary: Zoom Update a Meeting Poll
+      description: Update a specific meeting poll.
+      operationId: updateMeetingPoll
+      parameters:
+      - $ref: '#/components/parameters/MeetingIdPath'
+      - $ref: '#/components/parameters/PollIdPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PollCreateRequest'
+            examples:
+              UpdatemeetingpollRequestExample:
+                summary: Default updateMeetingPoll request
+                x-microcks-default: true
+                value:
+                  title: Example Title
+                  anonymous: true
+                  poll_type: 1
+                  questions:
+                  - name: Example Title
+                    type: single
+                    answer_required: true
+                    answers: {}
+                    right_answers: {}
+                    prompts: {}
+                    rating_min_value: 10
+                    rating_max_value: 10
+                    rating_min_label: example_value
+                    rating_max_label: example_value
+                    answer_min_character: 10
+                    answer_max_character: 10
+      responses:
+        '204':
+          description: Poll updated successfully.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      tags:
+      - Meeting Polls
+      summary: Zoom Delete a Meeting Poll
+      description: Delete a specific meeting poll.
+      operationId: deleteMeetingPoll
+      parameters:
+      - $ref: '#/components/parameters/MeetingIdPath'
+      - $ref: '#/components/parameters/PollIdPath'
+      responses:
+        '204':
+          description: Poll deleted successfully.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    PollCreateRequest:
+      type: object
+      properties:
+        title:
+          type: string
+          description: Poll title. Maximum 64 characters.
+          maxLength: 64
+          example: Example Title
+        anonymous:
+          type: boolean
+          description: Whether this is an anonymous poll.
+          default: false
+          example: true
+        poll_type:
+          type: integer
+          description: Type of poll. 1 - Poll, 2 - Advanced Poll, 3 - Quiz.
+          enum:
+          - 1
+          - 2
+          - 3
+          default: 1
+          example: 1
+        questions:
+          type: array
+          description: List of questions for the poll.
+          items:
+            $ref: '#/components/schemas/PollQuestion'
+          example: []
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Error code.
+          example: 10
+        message:
+          type: string
+          description: Error message.
+          example: example_value
+        errors:
+          type: array
+          description: Detailed error messages.
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+              message:
+                type: string
+          example: []
+    Poll:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: Poll ID.
+          example: abc123
+        title:
+          type: string
+          description: Poll title.
+          example: Example Title
+        anonymous:
+          type: boolean
+          description: Whether this is an anonymous poll.
+          example: true
+        status:
+          type: string
+          description: Poll status.
+          enum:
+          - notstart
+          - started
+          - ended
+          - sharing
+          example: notstart
+        poll_type:
+          type: integer
+          description: Type of poll. 1 - Poll, 2 - Advanced Poll, 3 - Quiz.
+          enum:
+          - 1
+          - 2
+          - 3
+          example: 1
+        questions:
+          type: array
+          description: List of questions in the poll.
+          items:
+            $ref: '#/components/schemas/PollQuestion'
+          example: []
+    PollQuestion:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Question text.
+          example: Example Title
+        type:
+          type: string
+          description: Question type.
+          enum:
+          - single
+          - multiple
+          - matching
+          - rank_order
+          - short_answer
+          - long_answer
+          - fill_in_the_blank
+          - rating_scale
+          example: single
+        answer_required:
+          type: boolean
+          description: Whether an answer is required.
+          example: true
+        answers:
+          type: array
+          description: Available answer options.
+          items:
+            type: string
+          example: []
+        right_answers:
+          type: array
+          description: Correct answers for quiz type polls.
+          items:
+            type: string
+          example: []
+        prompts:
+          type: array
+          description: Prompts for matching and rank order question types.
+          items:
+            type: object
+            properties:
+              prompt_question:
+                type: string
+              prompt_right_answers:
+                type: array
+                items:
+                  type: string
+          example: []
+        rating_min_value:
+          type: integer
+          description: Minimum rating value for rating scale questions.
+          example: 10
+        rating_max_value:
+          type: integer
+          description: Maximum rating value for rating scale questions.
+          example: 10
+        rating_min_label:
+          type: string
+          description: Label for minimum rating value.
+          example: example_value
+        rating_max_label:
+          type: string
+          description: Label for maximum rating value.
+          example: example_value
+        answer_min_character:
+          type: integer
+          description: Minimum characters for short/long answer questions.
+          example: 10
+        answer_max_character:
+          type: integer
+          description: Maximum characters for short/long answer questions.
+          example: 10
+  parameters:
+    MeetingIdPath:
+      name: meetingId
+      in: path
+      required: true
+      description: The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID.
+      schema:
+        oneOf:
+        - type: integer
+          format: int64
+        - type: string
+    PollIdPath:
+      name: pollId
+      in: path
+      required: true
+      description: The poll ID.
+      schema:
+        type: integer
+        format: int64
+  responses:
+    Unauthorized:
+      description: Unauthorized. The request requires authentication.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Bad request. The request was invalid or cannot be served.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Not found. The requested resource could not be found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+externalDocs:
+  description: Zoom REST API Documentation
+  url: https://zoom.github.io/api
