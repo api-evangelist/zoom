@@ -46,7 +46,7 @@ apis:
   - Register
   properties:
   - type: OpenAPI
-    url: openapi/zoom-meeting--openapi-original.yml
+    url: openapi/_original/zoom-meeting--openapi-original.yml
   - type: OpenAPI
     url: openapi/zoom-meeting-api-openapi.yml
   - type: AsyncAPI
