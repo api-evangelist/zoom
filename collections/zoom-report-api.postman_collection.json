@@ -1,0 +1,612 @@
+{
+  "item": [
+    {
+      "id": "29234e97-1e88-4d79-94fd-c43a4c3a8f0d",
+      "name": "Report",
+      "description": {
+        "content": "Report operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bf2d7fde-74bc-42d6-bfa8-1a8ce820cf99",
+          "name": "report Getaccountreport",
+          "request": {
+            "name": "report Getaccountreport",
+            "description": {
+              "content": "Get account report for a specified period.\n\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "report",
+                "getaccountreport"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<string>",
+                  "description": "(Required) Start date."
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<string>",
+                  "description": "(Required) End date."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "30",
+                  "description": "The amount of records returns within a single API call. Defaults to 30. Max of 300 meetings."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_number",
+                  "value": "1",
+                  "description": "Current page number of returned records. Default to 1."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f055a018-b71c-4009-a50c-04bd083a8b59",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "report",
+                    "getaccountreport"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Start date.",
+                        "type": "text/plain"
+                      },
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) End date.",
+                        "type": "text/plain"
+                      },
+                      "key": "to",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The amount of records returns within a single API call. Defaults to 30. Max of 300 meetings.",
+                        "type": "text/plain"
+                      },
+                      "key": "page_size",
+                      "value": "30"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Current page number of returned records. Default to 1.",
+                        "type": "text/plain"
+                      },
+                      "key": "page_number",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_count\": 1,\n  \"page_number\": 1,\n  \"page_size\": 30,\n  \"total_records\": 5,\n  \"from\": \"2013-5-19\",\n  \"to\": \"2013-5-20\",\n  \"total_meetings\": 50,\n  \"total_participants\": 100,\n  \"total_meeting_minutes\": 100,\n  \"users\": [\n    {\n      \"user_id\": \"bNsPi5hCQ-qOzWn2EeCXJA\",\n      \"email\": \"john@sample.com\",\n      \"type\": 2,\n      \"meetings\": 10,\n      \"participants\": 56,\n      \"meeting_minutes\": 300,\n      \"last_client_version\": \"1.0.18584.0225\",\n      \"last_login_time\": \"2013-02-11 08:18:09+00:00\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3802a5ee-8a2c-40c6-a5f1-8575a13cb6af",
+          "name": "report Getaudioreport",
+          "request": {
+            "name": "report Getaudioreport",
+            "description": {
+              "content": "Get user report for a specified period.\n\n<aside class=\"notice\">Toll Report API is provided for enabled 'Toll Report' option.</aside>\n\n<aside class=\"notice\">We will report a maximum of one month. For example, if \"from\" is set to \"2015-08-05\" and \"to\" is \"2015-10-10\" we will adjust \"from\" to \"2015-09-10\"</aside>\n\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "report",
+                "getaudioreport"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<string>",
+                  "description": "(Required) Start date."
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<string>",
+                  "description": "(Required) End date."
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "1",
+                  "description": "Audio type: 1 means Toll-free Call-in & Call-out. 2 means Toll."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "30",
+                  "description": "The amount of records returns within a single API call. Defaults to 30. Max of 300 meetings."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_number",
+                  "value": "1",
+                  "description": "Current page number of returned records. Default to 1."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "cb8ff8ee-484f-4e14-8875-a37e42a07179",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "report",
+                    "getaudioreport"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Start date.",
+                        "type": "text/plain"
+                      },
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) End date.",
+                        "type": "text/plain"
+                      },
+                      "key": "to",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Audio type: 1 means Toll-free Call-in & Call-out. 2 means Toll.",
+                        "type": "text/plain"
+                      },
+                      "key": "type",
+                      "value": "1"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The amount of records returns within a single API call. Defaults to 30. Max of 300 meetings.",
+                        "type": "text/plain"
+                      },
+                      "key": "page_size",
+                      "value": "30"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Current page number of returned records. Default to 1.",
+                        "type": "text/plain"
+                      },
+                      "key": "page_number",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"from\": \"2016-01-08\",\n  \"to\": \"2016-01-21\",\n  \"page_count\": 1,\n  \"page_number\": 1,\n  \"page_size\": 30,\n  \"total_records\": 1,\n  \"telephony_usage\": [\n    {\n      \"meeting_id\": 2932547621,\n      \"phone_number\": \"+86 8208\",\n      \"type\": \"call-out\",\n      \"host_name\": \"test\",\n      \"host_email\": \"zoom.test@zoom.us\",\n      \"department\": \"\",\n      \"start_time\": \"2016-01-12 02:25:34+00:00\",\n      \"end_time\": \"2016-01-12 02:26:48+00:00\",\n      \"duration\": 2,\n      \"total\": 0.12\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "652566b5-b683-4806-8a17-be6a493b68c7",
+          "name": "report Getdailyreport",
+          "request": {
+            "name": "report Getdailyreport",
+            "description": {
+              "content": "Get daily report for one month, can only get daily report for recent 3 months.\n\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "report",
+                "getdailyreport"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "month",
+                  "value": "<string>",
+                  "description": "(Required) Month for this report."
+                },
+                {
+                  "disabled": false,
+                  "key": "year",
+                  "value": "<string>",
+                  "description": "(Required) Year for this report."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "71f61f74-5312-4033-ac72-918219981a29",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "report",
+                    "getdailyreport"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Month for this report.",
+                        "type": "text/plain"
+                      },
+                      "key": "month",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Year for this report.",
+                        "type": "text/plain"
+                      },
+                      "key": "year",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"year\": 2013,\n  \"month\": 5,\n  \"dates\": [\n    {\n      \"meetings\": 0,\n      \"date\": \"2013-05-01\",\n      \"new_user\": 0,\n      \"participants\": 0,\n      \"meeting_minutes\": 0\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "35114516-d213-48da-a556-826e343e759c",
+          "name": "report Getuserreport",
+          "request": {
+            "name": "report Getuserreport",
+            "description": {
+              "content": "Get user report for a specified period.\n\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "report",
+                "getuserreport"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<string>",
+                  "description": "(Required) Start date."
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<string>",
+                  "description": "(Required) End date."
+                },
+                {
+                  "disabled": false,
+                  "key": "user_id",
+                  "value": "<string>",
+                  "description": "(Required) The user to generate the report."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "30",
+                  "description": "The amount of records returns within a single API call. Defaults to 30. Max of 300 meetings."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_number",
+                  "value": "1",
+                  "description": "Current page number of returned records. Default to 1."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "021b688f-34a5-46a3-97e5-6456c4da5b4c",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "report",
+                    "getuserreport"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Start date.",
+                        "type": "text/plain"
+                      },
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) End date.",
+                        "type": "text/plain"
+                      },
+                      "key": "to",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The user to generate the report.",
+                        "type": "text/plain"
+                      },
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The amount of records returns within a single API call. Defaults to 30. Max of 300 meetings.",
+                        "type": "text/plain"
+                      },
+                      "key": "page_size",
+                      "value": "30"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Current page number of returned records. Default to 1.",
+                        "type": "text/plain"
+                      },
+                      "key": "page_number",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_count\": 1,\n  \"page_number\": 1,\n  \"page_size\": 30,\n  \"total_records\": 5,\n  \"from\": \"2013-5-19\",\n  \"to\": \"2013-5-20\",\n  \"meetings\": [\n    {\n      \"number\": 111111111,\n      \"topic\": \"Meeting Topic\",\n      \"start_time\": \"2013-02-11 08:18:09+00:00\",\n      \"end_time\": \"2013-02-11 09:18:09+00:00\",\n      \"duration\": 60,\n      \"participants\": [\n        {\n          \"name\": \"John\",\n          \"join_time\": \"2013-02-11 08:30:09+00:00\",\n          \"leave_time\": \"2013-02-11 08:50:09+00:00\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.zoom.us/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4d9464ad-345b-4962-9be0-a36300bb9577",
+    "name": "Zoom / Account Report API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Needs description.\n\nContact Support:\n Name: Zoom Developers\n Email: developer@zoom.us",
+      "type": "text/plain"
+    }
+  }
+}

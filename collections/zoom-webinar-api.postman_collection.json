@@ -1,0 +1,3109 @@
+{
+  "item": [
+    {
+      "id": "b0a2686c-106a-4cf0-a927-ad4908d6f610",
+      "name": "Webinar",
+      "description": {
+        "content": "Webinar operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ee459885-2ffb-4a39-a9c3-efbeb075f1a2",
+          "name": "webinar Attendees List",
+          "request": {
+            "name": "webinar Attendees List",
+            "description": {
+              "content": "Get ended webinar attendees\n\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "webinar",
+                "attendees",
+                "list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "host_id",
+                  "value": "<string>",
+                  "description": "(Required) Webinar host user ID. Can be any user who enabled webinar under this account."
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "(Required) Webinar ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "uuid",
+                  "value": "<string>",
+                  "description": "Webinar uuid. It can be fetched by /v1/webinar/uuid/list."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9dc3098e-fa1a-4e31-9a6a-a94511263db2",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webinar",
+                    "attendees",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Webinar host user ID. Can be any user who enabled webinar under this account.",
+                        "type": "text/plain"
+                      },
+                      "key": "host_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Webinar ID.",
+                        "type": "text/plain"
+                      },
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Webinar uuid. It can be fetched by /v1/webinar/uuid/list.",
+                        "type": "text/plain"
+                      },
+                      "key": "uuid",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"attendees\": [\n    {\n      \"first_name\": \"Zoomie\",\n      \"last_name\": \"Userton\",\n      \"email\": \"email_address\",\n      \"join_time\": \"2015-09-18 09:41:39+00:00\",\n      \"leave_time\": \"2015-09-18 09:42:12+00:00\",\n      \"time_in_session\": \"8\",\n      \"attended\": \"Yes\",\n      \"custom_questions\": {\n        \"ssssss\": \" sssss\",\n        \"which one do you like?\": \"sss\"\n      },\n      \"questions\": {\n        \"country\": \"US\",\n        \"address\": \"1234 Some Street\",\n        \"city\": \"Zoomville\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7954c5ac-d5e3-43e1-a867-91df3fe4ee5c",
+          "name": "webinar Create",
+          "request": {
+            "name": "webinar Create",
+            "description": {
+              "content": "Create a webinar on Zoom, return the created webinar start and join URL.\n\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "webinar",
+                "create"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "host_id",
+                  "value": "<string>",
+                  "description": "(Required) Webinar host user ID. Can be any user under this account. Cannot be updated after creation."
+                },
+                {
+                  "disabled": false,
+                  "key": "topic",
+                  "value": "<string>",
+                  "description": "(Required) Webinar topic. Max of 300 characters."
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "5",
+                  "description": "(Required) 5 webinar, 6 recurrence webinar, 9 recurring webinar(With Fixed Time)"
+                },
+                {
+                  "disabled": false,
+                  "key": "start_time",
+                  "value": "<string>",
+                  "description": "Webinar start time in ISO datetime format. For scheduled webinar only. Should be UTC time, such as 2012-11-25T12:00:00Z."
+                },
+                {
+                  "disabled": false,
+                  "key": "duration",
+                  "value": "<string>",
+                  "description": "Webinar duration (minutes). For scheduled webinar only."
+                },
+                {
+                  "disabled": false,
+                  "key": "timezone",
+                  "value": "<string>",
+                  "description": "Timezone to format start_time, like \"America/Los_Angeles\". For scheduled Webinar only. For this parameter value please refer to the id value in timezone list JSON file."
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": " 10 characters",
+                  "description": "Webinar password. Password may only contain the following characters: [a-z A-Z 0-9 @ - _"
+                },
+                {
+                  "disabled": false,
+                  "key": "recurrence",
+                  "value": "<string>",
+                  "description": "Recurrence Webinar Settings. For recurring webinar with fixed time only. <br><br>\"type\": Recurrence Webinar Type. 1 means Daily, 2 means Weekly, 3 means Monthly. <br>\"repeat_interval\": Recurrence Webinar Repeat Interval. Defaults to 1. For a Daily Webinar, max of 90. For a Weekly Webinar, max of 12. For a Monthly Webinar, max of 3. <br>\"weekly_days\": Recurrence Webinar Occurs on week days, multiple value separated by comma. 1 means Sunday, 2 means Monday, 3 means Tuesday, 4 means Wednesday, 5 means Thursday, 6 means Friday, 7 means Saturday. <br>\"monthly_day\": Recurrence Webinar Occurs on a month day. The value range is from 1 to 31. <br>\"monthly_week\": Recurrence Webinar Occurs on the week of a month. -1 means Last week, 1 means First week, 2 means Second week, 3 means Third week, 4 means Fourth week. <br>\"monthly_week_day\": Recurrence Webinar Occurs on the week day of a month. A single value: 1 means Sunday, 2 means Monday, 3 means Tuesday, 4 means Wednesday, 5 means Thursday, 6 means Friday, 7 means Saturday. <br>\"end_times\": Recurrence Webinar End occurrences times. Defaults to 1. Max of 50. <br>\"end_date_time\": Recurrence Webinar End Date. Should be UTC time, such as 2012-11-25T12:00:00Z."
+                },
+                {
+                  "disabled": false,
+                  "key": "approval_type",
+                  "value": "2",
+                  "description": "Approval type. 0 means Automatically Approve. 1 means Manually Approve. 2 means No Registration Required."
+                },
+                {
+                  "disabled": false,
+                  "key": "registration_type",
+                  "value": "1",
+                  "description": "Registration type. 1 means Attendees register once and can attend any of the occurrences, 2 means Attendees need to register for each occurrence to attend, 3 means Attendees register once and can choose one or more occurrences to attend. For recurring meeting with fixed time only."
+                },
+                {
+                  "disabled": false,
+                  "key": "agenda",
+                  "value": "<string>",
+                  "description": "Webinar description."
+                },
+                {
+                  "disabled": false,
+                  "key": "option_audio",
+                  "value": "both",
+                  "description": "Webinar audio options. Can be \"both\", \"telephony\", \"voip\"."
+                },
+                {
+                  "disabled": false,
+                  "key": "option_host_video",
+                  "value": "true",
+                  "description": "Start video when host join Webinar."
+                },
+                {
+                  "disabled": false,
+                  "key": "option_panelist_video",
+                  "value": "true",
+                  "description": "Start video when panelist join Webinar."
+                },
+                {
+                  "disabled": false,
+                  "key": "option_practice_session",
+                  "value": "false",
+                  "description": "Enable Practice Session."
+                },
+                {
+                  "disabled": false,
+                  "key": "option_enforce_login",
+                  "value": "false",
+                  "description": "Only signed-in users can join this Webinar."
+                },
+                {
+                  "disabled": false,
+                  "key": "option_enforce_login_domains",
+                  "value": "<string>",
+                  "description": "Only signed-in users with specified domains can join Webinar."
+                },
+                {
+                  "disabled": false,
+                  "key": "option_alternative_hosts",
+                  "value": "<string>",
+                  "description": "Alternative hosts."
+                },
+                {
+                  "disabled": false,
+                  "key": "option_alternative_host_ids",
+                  "value": "<string>",
+                  "description": "Alternative hosts IDs."
+                },
+                {
+                  "disabled": false,
+                  "key": "option_auto_record_type",
+                  "value": "local",
+                  "description": "Automatically record type. Can be \"local\", \"cloud\" or \"none\"."
+                },
+                {
+                  "disabled": false,
+                  "key": "panelists",
+                  "value": "<string>",
+                  "description": "Webinar Panelists, should be JSON format: [{\"name\":\"xxx\",\"email\":\"test1@zoom.us\"}, {\"name\":\"xxx\",\"email\":\"test2@zoom.us\"}]."
+                },
+                {
+                  "disabled": false,
+                  "key": "language",
+                  "value": "<string>",
+                  "description": "Language setting of email to panelists. This value should be \"en-US\", \"en\", \"zh-CN\", \"zh\", \"en-ES\", \"es\", \"fr-FR\" or \"fr\"."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ccbd0cb7-5180-442a-b614-dff78d0041fb",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webinar",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Webinar host user ID. Can be any user under this account. Cannot be updated after creation.",
+                        "type": "text/plain"
+                      },
+                      "key": "host_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Webinar topic. Max of 300 characters.",
+                        "type": "text/plain"
+                      },
+                      "key": "topic",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) 5 webinar, 6 recurrence webinar, 9 recurring webinar(With Fixed Time)",
+                        "type": "text/plain"
+                      },
+                      "key": "type",
+                      "value": "5"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Webinar start time in ISO datetime format. For scheduled webinar only. Should be UTC time, such as 2012-11-25T12:00:00Z.",
+                        "type": "text/plain"
+                      },
+                      "key": "start_time",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Webinar duration (minutes). For scheduled webinar only.",
+                        "type": "text/plain"
+                      },
+                      "key": "duration",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Timezone to format start_time, like \"America/Los_Angeles\". For scheduled Webinar only. For this parameter value please refer to the id value in timezone list JSON file.",
+                        "type": "text/plain"
+                      },
+                      "key": "timezone",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Webinar password. Password may only contain the following characters: [a-z A-Z 0-9 @ - _",
+                        "type": "text/plain"
+                      },
+                      "key": "password",
+                      "value": " 10 characters"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Recurrence Webinar Settings. For recurring webinar with fixed time only. <br><br>\"type\": Recurrence Webinar Type. 1 means Daily, 2 means Weekly, 3 means Monthly. <br>\"repeat_interval\": Recurrence Webinar Repeat Interval. Defaults to 1. For a Daily Webinar, max of 90. For a Weekly Webinar, max of 12. For a Monthly Webinar, max of 3. <br>\"weekly_days\": Recurrence Webinar Occurs on week days, multiple value separated by comma. 1 means Sunday, 2 means Monday, 3 means Tuesday, 4 means Wednesday, 5 means Thursday, 6 means Friday, 7 means Saturday. <br>\"monthly_day\": Recurrence Webinar Occurs on a month day. The value range is from 1 to 31. <br>\"monthly_week\": Recurrence Webinar Occurs on the week of a month. -1 means Last week, 1 means First week, 2 means Second week, 3 means Third week, 4 means Fourth week. <br>\"monthly_week_day\": Recurrence Webinar Occurs on the week day of a month. A single value: 1 means Sunday, 2 means Monday, 3 means Tuesday, 4 means Wednesday, 5 means Thursday, 6 means Friday, 7 means Saturday. <br>\"end_times\": Recurrence Webinar End occurrences times. Defaults to 1. Max of 50. <br>\"end_date_time\": Recurrence Webinar End Date. Should be UTC time, such as 2012-11-25T12:00:00Z.",
+                        "type": "text/plain"
+                      },
+                      "key": "recurrence",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Approval type. 0 means Automatically Approve. 1 means Manually Approve. 2 means No Registration Required.",
+                        "type": "text/plain"
+                      },
+                      "key": "approval_type",
+                      "value": "2"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Registration type. 1 means Attendees register once and can attend any of the occurrences, 2 means Attendees need to register for each occurrence to attend, 3 means Attendees register once and can choose one or more occurrences to attend. For recurring meeting with fixed time only.",
+                        "type": "text/plain"
+                      },
+                      "key": "registration_type",
+                      "value": "1"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Webinar description.",
+                        "type": "text/plain"
+                      },
+                      "key": "agenda",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Webinar audio options. Can be \"both\", \"telephony\", \"voip\".",
+                        "type": "text/plain"
+                      },
+                      "key": "option_audio",
+                      "value": "both"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Start video when host join Webinar.",
+                        "type": "text/plain"
+                      },
+                      "key": "option_host_video",
+                      "value": "true"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Start video when panelist join Webinar.",
+                        "type": "text/plain"
+                      },
+                      "key": "option_panelist_video",
+                      "value": "true"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Enable Practice Session.",
+                        "type": "text/plain"
+                      },
+                      "key": "option_practice_session",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Only signed-in users can join this Webinar.",
+                        "type": "text/plain"
+                      },
+                      "key": "option_enforce_login",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Only signed-in users with specified domains can join Webinar.",
+                        "type": "text/plain"
+                      },
+                      "key": "option_enforce_login_domains",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Alternative hosts.",
+                        "type": "text/plain"
+                      },
+                      "key": "option_alternative_hosts",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Alternative hosts IDs.",
+                        "type": "text/plain"
+                      },
+                      "key": "option_alternative_host_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Automatically record type. Can be \"local\", \"cloud\" or \"none\".",
+                        "type": "text/plain"
+                      },
+                      "key": "option_auto_record_type",
+                      "value": "local"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Webinar Panelists, should be JSON format: [{\"name\":\"xxx\",\"email\":\"test1@zoom.us\"}, {\"name\":\"xxx\",\"email\":\"test2@zoom.us\"}].",
+                        "type": "text/plain"
+                      },
+                      "key": "panelists",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Language setting of email to panelists. This value should be \"en-US\", \"en\", \"zh-CN\", \"zh\", \"en-ES\", \"es\", \"fr-FR\" or \"fr\".",
+                        "type": "text/plain"
+                      },
+                      "key": "language",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uuid\": \"unique_id\",\n  \"id\": \"123456789\",\n  \"host_id\": \"unique_id\",\n  \"topic\": \"create webinar via rest api\",\n  \"agenda\": \"\",\n  \"status\": 0,\n  \"option_start_type\": \"video\",\n  \"option_audio\": \"both\",\n  \"option_enforce_login\": false,\n  \"option_enforce_login_domains \": \"\",\n  \"option_alternative_hosts\": \"\",\n  \"type\": 5,\n  \"start_time\": \" 2015-02-08T12:50:30Z\",\n  \"duration\": 0,\n  \"timezone\": \"America/Los_Angeles\",\n  \"start_url\": \"https://zoom.us/s/123456789?zak=xxxxxx\",\n  \"join_url\": \"https://zoom.us/j/123456789\",\n  \"registration_url\": \"\",\n  \"created_at\": \"2015-01-22 07:09:49+00:00\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aafd2cfb-d583-4a66-a74d-bd964d763f50",
+          "name": "webinar Delete",
+          "request": {
+            "name": "webinar Delete",
+            "description": {
+              "content": "Delete a webinar on Zoom, return the deleted webinar ID.\n\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "webinar",
+                "delete"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "host_id",
+                  "value": "<string>",
+                  "description": "(Required) webinar host user ID. Can be any user who enabled webinar under this account."
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "(Required) Webinar ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "occurrence_id",
+                  "value": "<string>",
+                  "description": "Occurrence ID, could get this value from Webinar Get API."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1a017c09-20e3-474a-aac6-719a7efe7871",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webinar",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) webinar host user ID. Can be any user who enabled webinar under this account.",
+                        "type": "text/plain"
+                      },
+                      "key": "host_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Webinar ID.",
+                        "type": "text/plain"
+                      },
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Occurrence ID, could get this value from Webinar Get API.",
+                        "type": "text/plain"
+                      },
+                      "key": "occurrence_id",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"123456789\",\n  \"deleted_at\": \"2012-11-25 12:00:00+00:00\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "96826c4b-baf0-4892-bfc6-2373960f9548",
+          "name": "webinar End",
+          "request": {
+            "name": "webinar End",
+            "description": {
+              "content": "End a Webinar on Zoom, return the deleted Webinar ID\n\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "webinar",
+                "end"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "host_id",
+                  "value": "<string>",
+                  "description": "(Required) Webinar host user ID. Can be any user who enabled webinar under this account."
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "(Required) Webinar ID."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9f96c10e-23b0-490e-a5b0-57c25f4a33bd",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webinar",
+                    "end"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Webinar host user ID. Can be any user who enabled webinar under this account.",
+                        "type": "text/plain"
+                      },
+                      "key": "host_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Webinar ID.",
+                        "type": "text/plain"
+                      },
+                      "key": "id",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"123456789\",\n  \"ended_at\": \"2012-11-25 12:00:00+00:00\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2651d5f6-0c3b-483a-8a37-e429ee5313ea",
+          "name": "webinar Get",
+          "request": {
+            "name": "webinar Get",
+            "description": {
+              "content": "Get a Webinar on Zoom via Webinar ID, return the Webinar info\n\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "webinar",
+                "get"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "host_id",
+                  "value": "<string>",
+                  "description": "(Required) Webinar host user ID. Can be any user who enabled webinar under this account."
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "(Required) Webinar ID."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "365f1c7f-94b3-4d6b-b9fc-6cbf59a5b9cc",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webinar",
+                    "get"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Webinar host user ID. Can be any user who enabled webinar under this account.",
+                        "type": "text/plain"
+                      },
+                      "key": "host_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Webinar ID.",
+                        "type": "text/plain"
+                      },
+                      "key": "id",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uuid\": \"unique_id\",\n  \"id\": \"123456789\",\n  \"start_url\": \"https://zoom.us/s/123456789?zak=xxxxxx\",\n  \"join_url\": \"https://zoom.us/j/123456789\",\n  \"registration_url\": \"\",\n  \"created_at\": \"2012-11-25 12:00:00+00:00\",\n  \"host_id\": \"unique_id\",\n  \"topic\": \"Topic for this meeting\",\n  \"type\": 5,\n  \"start_time\": \"2012-11-25 12:00:00+00:00\",\n  \"duration\": 30,\n  \"timezone\": \"America/Los_Angeles\",\n  \"agenda\": \"\",\n  \"option_start_type\": \"video\",\n  \"option_audio\": \"both\",\n  \"option_enforce_login\": false,\n  \"option_enforce_login_domains \": \"\",\n  \"option_alternative_hosts\": \"\",\n  \"status\": 0,\n  \"occurrences\": [\n    {\n      \"occurrence_id\": \"1483210260000\",\n      \"start_time\": \"2017-01-01 02:51:00+00:00\",\n      \"duration\": 60\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "00266513-0378-4e92-abfb-40e3dc164698",
+          "name": "webinar List",
+          "request": {
+            "name": "webinar List",
+            "description": {
+              "content": "List all registrationless Webinars on Zoom\n\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "webinar",
+                "list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "host_id",
+                  "value": "<string>",
+                  "description": "(Required) Webinar host user ID. Can be any user who enabled webinar under this account."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "30",
+                  "description": "The amount of records returns within a single API call. Defaults to 30. Max of 300 meetings."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_number",
+                  "value": "1",
+                  "description": "Current page number of returned records. Default to 1."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ca037919-0e72-41db-bc22-62f930c40c2c",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webinar",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Webinar host user ID. Can be any user who enabled webinar under this account.",
+                        "type": "text/plain"
+                      },
+                      "key": "host_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The amount of records returns within a single API call. Defaults to 30. Max of 300 meetings.",
+                        "type": "text/plain"
+                      },
+                      "key": "page_size",
+                      "value": "30"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Current page number of returned records. Default to 1.",
+                        "type": "text/plain"
+                      },
+                      "key": "page_number",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_count\": 5,\n  \"total_records\": 235,\n  \"page_number\": 1,\n  \"page_size\": 50,\n  \"webinars\": [\n    {\n      \"uuid\": \"unique_id\",\n      \"id\": \"123456789\",\n      \"start_url\": \"https://zoom.us/s/123456789?zak=xxxxxx\",\n      \"join_url\": \"https://zoom.us/j/123456789\",\n      \"created_at\": \"2012-11-25 12:00:00+00:00\",\n      \"host_id\": \"unique_id\",\n      \"topic\": \"Topic for this meeting\",\n      \"type\": 5,\n      \"start_time\": \"2012-11-25 12:00:00+00:00\",\n      \"duration\": 30,\n      \"timezone\": \"America/Los_Angeles\",\n      \"agenda\": \"\",\n      \"option_start_type\": \"video\",\n      \"option_audio\": \"both\",\n      \"option_enforce_login\": false,\n      \"option_enforce_login_domains \": \"\",\n      \"option_alternative_hosts\": \"\",\n      \"status\": 0\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3ae60aab-1ab2-4272-ac0d-c0b469087a31",
+          "name": "webinar List Registration",
+          "request": {
+            "name": "webinar List Registration",
+            "description": {
+              "content": "List all the upcoming registration-based Webinars on Zoom\n\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "webinar",
+                "list",
+                "registration"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "host_id",
+                  "value": "<string>",
+                  "description": "(Required) Webinar host user ID. Can be any user who enabled webinar under this account."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "30",
+                  "description": "The amount of records returns within a single API call. Defaults to 30. Max of 300 meetings."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_number",
+                  "value": "1",
+                  "description": "Current page number of returned records. Default to 1."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "12018edb-bddb-48e0-ab10-6e34100b953c",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webinar",
+                    "list",
+                    "registration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Webinar host user ID. Can be any user who enabled webinar under this account.",
+                        "type": "text/plain"
+                      },
+                      "key": "host_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The amount of records returns within a single API call. Defaults to 30. Max of 300 meetings.",
+                        "type": "text/plain"
+                      },
+                      "key": "page_size",
+                      "value": "30"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Current page number of returned records. Default to 1.",
+                        "type": "text/plain"
+                      },
+                      "key": "page_number",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_count\": 5,\n  \"total_records\": 235,\n  \"page_number\": 1,\n  \"page_size\": 50,\n  \"webinars\": [\n    {\n      \"uuid\": \"unique_id\",\n      \"id\": \"123456789\",\n      \"start_url\": \"https://zoom.us/s/123456789?zak=xxxxxx\",\n      \"join_url\": \"https://zoom.us/j/123456789\",\n      \"created_at\": \"2012-11-25 12:00:00+00:00\",\n      \"host_id\": \"unique_id\",\n      \"topic\": \"Topic for this Webinar\",\n      \"type\": 5,\n      \"start_time\": \"2012-11-25 12:00:00+00:00\",\n      \"duration\": 30,\n      \"timezone\": \"America/Los_Angeles\",\n      \"agenda\": \"\",\n      \"option_start_type\": \"video\",\n      \"option_audio\": \"both\",\n      \"status\": 0\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "828ee633-3609-4c15-a7df-d5226ce42702",
+          "name": "webinar Panelists",
+          "request": {
+            "name": "webinar Panelists",
+            "description": {
+              "content": "Get all the Webinar Panelists on Zoom\n\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "webinar",
+                "panelists"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "host_id",
+                  "value": "<string>",
+                  "description": "(Required) Webinar host user ID. Can be any user who enabled webinar under this account."
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "(Required) Webinar ID."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f7199112-24f0-427b-b1a8-086e989fedad",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webinar",
+                    "panelists"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Webinar host user ID. Can be any user who enabled webinar under this account.",
+                        "type": "text/plain"
+                      },
+                      "key": "host_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Webinar ID.",
+                        "type": "text/plain"
+                      },
+                      "key": "id",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total_records\": 1,\n  \"panelists\": [\n    {\n      \"name\": \"Zoomie Userton\",\n      \"email\": \"email_address\",\n      \"join_url\": \"https://www.zoom.us/w/552681828?tk=TMnju_IjiU7Fx3eSkrajn2irvyMBNQ4XCW6cutSPntg.DQEAAAAAIPFBZBYwbzhKUUlXVVN3bW9Ed05QUmdvU2hBAA\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9e4ceead-ec44-46aa-a5e0-a4016ee96f59",
+          "name": "webinar Polls",
+          "request": {
+            "name": "webinar Polls",
+            "description": {
+              "content": "Get Ended Webinar Polls\n\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "webinar",
+                "polls"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "host_id",
+                  "value": "<string>",
+                  "description": "(Required) Webinar host user ID. Can be any user who enabled webinar under this account."
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "(Required) Webinar ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "uuid",
+                  "value": "<string>",
+                  "description": "Webinar uuid. It can be fetched by /v1/webinar/uuid/list."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "13feb28d-6908-4c5c-a9f4-36b18152dd81",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webinar",
+                    "polls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Webinar host user ID. Can be any user who enabled webinar under this account.",
+                        "type": "text/plain"
+                      },
+                      "key": "host_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Webinar ID.",
+                        "type": "text/plain"
+                      },
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Webinar uuid. It can be fetched by /v1/webinar/uuid/list.",
+                        "type": "text/plain"
+                      },
+                      "key": "uuid",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"123456789\",\n  \"uuid\": \"unique_id\",\n  \"start_time\": \"2017-02-09 07:15:48+00:00\",\n  \"questions\": [\n    {\n      \"name\": \"Zoomie Userton\",\n      \"email\": \"email_address\",\n      \"question_details\": [\n        {\n          \"question\": \"question?\",\n          \"answer\": \"answer\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a034cdc1-3b36-4a50-a7c8-e4712e5e0542",
+          "name": "webinar Questions",
+          "request": {
+            "name": "webinar Questions",
+            "description": {
+              "content": "Get Ended Webinar Q&A\n\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "webinar",
+                "questions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "host_id",
+                  "value": "<string>",
+                  "description": "(Required) Webinar host user ID. Can be any user who enabled webinar under this account."
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "(Required) Webinar ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "uuid",
+                  "value": "<string>",
+                  "description": "Webinar uuid. It can be fetched by /v1/webinar/uuid/list."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "312eca35-aa67-479c-8c26-d84b970c3f07",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webinar",
+                    "questions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Webinar host user ID. Can be any user who enabled webinar under this account.",
+                        "type": "text/plain"
+                      },
+                      "key": "host_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Webinar ID.",
+                        "type": "text/plain"
+                      },
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Webinar uuid. It can be fetched by /v1/webinar/uuid/list.",
+                        "type": "text/plain"
+                      },
+                      "key": "uuid",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"123456789\",\n  \"uuid\": \"unique_id\",\n  \"start_time\": \"2017-02-09 07:15:48+00:00\",\n  \"questions\": [\n    {\n      \"name\": \"Zoomie Userton\",\n      \"email\": \"email_address\",\n      \"question_details\": [\n        {\n          \"question\": \"question?\",\n          \"answer\": \"answer\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "00b45471-8b6f-4824-8299-448578326ab3",
+          "name": "webinar Register",
+          "request": {
+            "name": "webinar Register",
+            "description": {
+              "content": "Register for a webinar\n\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "webinar",
+                "register"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "email",
+                  "value": "<string>",
+                  "description": "(Required) A valid email address."
+                },
+                {
+                  "disabled": false,
+                  "key": "first_name",
+                  "value": "<string>",
+                  "description": "(Required) User’s first name."
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "(Required) Webinar ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "last_name",
+                  "value": "<string>",
+                  "description": "(Required) User’s last name."
+                },
+                {
+                  "disabled": false,
+                  "key": "address",
+                  "value": "<string>",
+                  "description": "Address."
+                },
+                {
+                  "disabled": false,
+                  "key": "city",
+                  "value": "<string>",
+                  "description": "City."
+                },
+                {
+                  "disabled": false,
+                  "key": "country",
+                  "value": "<string>",
+                  "description": "Country. For this parameter value please refer to the id value in country list JSON file"
+                },
+                {
+                  "disabled": false,
+                  "key": "zip",
+                  "value": "<string>",
+                  "description": "Zip/Postal Code."
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>",
+                  "description": "State/Province."
+                },
+                {
+                  "disabled": false,
+                  "key": "phone",
+                  "value": "<string>",
+                  "description": "Phone."
+                },
+                {
+                  "disabled": false,
+                  "key": "industry",
+                  "value": "<string>",
+                  "description": "Industry."
+                },
+                {
+                  "disabled": false,
+                  "key": "org",
+                  "value": "<string>",
+                  "description": "Organization."
+                },
+                {
+                  "disabled": false,
+                  "key": "job_title",
+                  "value": "<string>",
+                  "description": "Job Title."
+                },
+                {
+                  "disabled": false,
+                  "key": "purchasing_time_frame",
+                  "value": "<string>",
+                  "description": "Purchasing Time Frame, should be \"Within a month\", \"1-3 months\", \"4-6 months\", \"More than 6 months\", \"No timeframe\"."
+                },
+                {
+                  "disabled": false,
+                  "key": "role_in_purchase_process",
+                  "value": "<string>",
+                  "description": "Role in Purchase Process, should be \"Decision Maker\", \"Evaluator/Recommender\", \"Influencer\", \"Not involved\"."
+                },
+                {
+                  "disabled": false,
+                  "key": "no_of_employees",
+                  "value": "<string>",
+                  "description": "Number of Employees, should be \"1-20\", \"21-50\", \"51-100\", \"101-250\", \"251-500\", \"501-1,000\", \"1,001-5,000\", \"5,001-10,000\", \"More than 10,000\"."
+                },
+                {
+                  "disabled": false,
+                  "key": "comments",
+                  "value": "<string>",
+                  "description": "Questions & Comments."
+                },
+                {
+                  "disabled": false,
+                  "key": "custom_questions",
+                  "value": "<string>",
+                  "description": "Custom Questions, should be JSON format: [{\"title\":\"field_name1\",\"value\":\"xxx\"},{\"title\":\"field_name2\",\"value\":\"xxx\"}]."
+                },
+                {
+                  "disabled": false,
+                  "key": "language",
+                  "value": "<string>",
+                  "description": "Language setting of email. This value should be \"en-US\", \"en\", \"zh-CN\", \"zh\", \"en-ES\", \"es\", \"fr-FR\" or \"fr\"."
+                },
+                {
+                  "disabled": false,
+                  "key": "occurrence_ids",
+                  "value": "<string>",
+                  "description": "Occurrence IDs, could get this value from Webinar Get API."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3ce5f29a-54aa-4336-bbdb-45b86fda1423",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webinar",
+                    "register"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) A valid email address.",
+                        "type": "text/plain"
+                      },
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) User’s first name.",
+                        "type": "text/plain"
+                      },
+                      "key": "first_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Webinar ID.",
+                        "type": "text/plain"
+                      },
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) User’s last name.",
+                        "type": "text/plain"
+                      },
+                      "key": "last_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Address.",
+                        "type": "text/plain"
+                      },
+                      "key": "address",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "City.",
+                        "type": "text/plain"
+                      },
+                      "key": "city",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Country. For this parameter value please refer to the id value in country list JSON file",
+                        "type": "text/plain"
+                      },
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Zip/Postal Code.",
+                        "type": "text/plain"
+                      },
+                      "key": "zip",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "State/Province.",
+                        "type": "text/plain"
+                      },
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Phone.",
+                        "type": "text/plain"
+                      },
+                      "key": "phone",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Industry.",
+                        "type": "text/plain"
+                      },
+                      "key": "industry",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Organization.",
+                        "type": "text/plain"
+                      },
+                      "key": "org",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Job Title.",
+                        "type": "text/plain"
+                      },
+                      "key": "job_title",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Purchasing Time Frame, should be \"Within a month\", \"1-3 months\", \"4-6 months\", \"More than 6 months\", \"No timeframe\".",
+                        "type": "text/plain"
+                      },
+                      "key": "purchasing_time_frame",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Role in Purchase Process, should be \"Decision Maker\", \"Evaluator/Recommender\", \"Influencer\", \"Not involved\".",
+                        "type": "text/plain"
+                      },
+                      "key": "role_in_purchase_process",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Number of Employees, should be \"1-20\", \"21-50\", \"51-100\", \"101-250\", \"251-500\", \"501-1,000\", \"1,001-5,000\", \"5,001-10,000\", \"More than 10,000\".",
+                        "type": "text/plain"
+                      },
+                      "key": "no_of_employees",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Questions & Comments.",
+                        "type": "text/plain"
+                      },
+                      "key": "comments",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Custom Questions, should be JSON format: [{\"title\":\"field_name1\",\"value\":\"xxx\"},{\"title\":\"field_name2\",\"value\":\"xxx\"}].",
+                        "type": "text/plain"
+                      },
+                      "key": "custom_questions",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Language setting of email. This value should be \"en-US\", \"en\", \"zh-CN\", \"zh\", \"en-ES\", \"es\", \"fr-FR\" or \"fr\".",
+                        "type": "text/plain"
+                      },
+                      "key": "language",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Occurrence IDs, could get this value from Webinar Get API.",
+                        "type": "text/plain"
+                      },
+                      "key": "occurrence_ids",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"registrant_id\": \"unique_id\",\n  \"id\": \"123456789\",\n  \"topic\": \"webinar registration\",\n  \"start_time\": \"2016-02-21 04:00:00+00:00\",\n  \"join_url\": \"https://www.zoom.us/w/123456789?tk=2DsQiu6nZVsZVATrPLvXgqPvw8mmKyxgAGaDMizLv34.DQEAAAAAM9AWXhZ2Nm5vRjIyMlRoUzE3ZktWM3l4cHVRAA\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1dac2579-bcc1-4277-8067-0424e237791b",
+          "name": "webinar Registrants Approve",
+          "request": {
+            "name": "webinar Registrants Approve",
+            "description": {
+              "content": "Approve pending registrants on Zoom Webinar.\n\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "webinar",
+                "registrants",
+                "approve"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "host_id",
+                  "value": "<string>",
+                  "description": "(Required) Webinar host user ID. Can be any user who enabled webinar under this account."
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "(Required) Webinar ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "registrant_ids",
+                  "value": "<string>",
+                  "description": "(Required) Pending approval registrant ids."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8f7cf35c-3ec9-4ad3-99a5-1c9f78530295",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webinar",
+                    "registrants",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Webinar host user ID. Can be any user who enabled webinar under this account.",
+                        "type": "text/plain"
+                      },
+                      "key": "host_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Webinar ID.",
+                        "type": "text/plain"
+                      },
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Pending approval registrant ids.",
+                        "type": "text/plain"
+                      },
+                      "key": "registrant_ids",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"421431292\",\n  \"updated_at\": \"2016-08-18 02:11:40+00:00\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d87427f8-151a-4fdd-b629-6e6e7e8e4517",
+          "name": "webinar Registrants List",
+          "request": {
+            "name": "webinar Registrants List",
+            "description": {
+              "content": "List webinar registrants on Zoom, include pending approval registrants and approved registrants.\n\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "webinar",
+                "registrants",
+                "list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "host_id",
+                  "value": "<string>",
+                  "description": "(Required) Webinar host user ID. Can be any user who enabled webinar under this account."
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "(Required) Webinar ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "0",
+                  "description": "0 means pending approval registrants, 1 means approved registrants."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "30",
+                  "description": "The amount of records returns within a single API call. Defaults to 30."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_number",
+                  "value": "1",
+                  "description": "Current page number of returned records. Default to 1."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a1b49744-5eeb-4900-a137-ec15bd9600ce",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webinar",
+                    "registrants",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Webinar host user ID. Can be any user who enabled webinar under this account.",
+                        "type": "text/plain"
+                      },
+                      "key": "host_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Webinar ID.",
+                        "type": "text/plain"
+                      },
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "0 means pending approval registrants, 1 means approved registrants.",
+                        "type": "text/plain"
+                      },
+                      "key": "type",
+                      "value": "0"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The amount of records returns within a single API call. Defaults to 30.",
+                        "type": "text/plain"
+                      },
+                      "key": "page_size",
+                      "value": "30"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Current page number of returned records. Default to 1.",
+                        "type": "text/plain"
+                      },
+                      "key": "page_number",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_count\": 1,\n  \"page_number\": 1,\n  \"page_size\": 30,\n  \"total_records\": 1,\n  \"type\": 0,\n  \"users\": [\n    {\n      \"id\": \"unique_id\",\n      \"first_name\": \"Zoomie\",\n      \"last_name\": \"Userton\",\n      \"email\": \"email_address\",\n      \"registration_time\": \"2016-08-18 01:45:26+00:00\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4dede5d8-4499-4401-a055-88dbeac2675e",
+          "name": "webinar Registration",
+          "request": {
+            "name": "webinar Registration",
+            "description": {
+              "content": "Gather Webinar registrants info\n\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "webinar",
+                "registration"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "host_id",
+                  "value": "<string>",
+                  "description": "(Required) Webinar host user ID. Can be any user who enabled webinar under this account."
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "(Required) Webinar ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "occurrence_id",
+                  "value": "<string>",
+                  "description": "Occurrence ID, could get this value from Webinar Get API."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "30",
+                  "description": "The amount of records returns within a single API call. Defaults to 30."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_number",
+                  "value": "1",
+                  "description": "Current page number of returned records. Default to 1."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b3d93451-4729-4d69-b51a-6e7ca330ba9d",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webinar",
+                    "registration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Webinar host user ID. Can be any user who enabled webinar under this account.",
+                        "type": "text/plain"
+                      },
+                      "key": "host_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Webinar ID.",
+                        "type": "text/plain"
+                      },
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Occurrence ID, could get this value from Webinar Get API.",
+                        "type": "text/plain"
+                      },
+                      "key": "occurrence_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The amount of records returns within a single API call. Defaults to 30.",
+                        "type": "text/plain"
+                      },
+                      "key": "page_size",
+                      "value": "30"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Current page number of returned records. Default to 1.",
+                        "type": "text/plain"
+                      },
+                      "key": "page_number",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_count\": 1,\n  \"page_number\": 1,\n  \"page_size\": 30,\n  \"total_records\": 1,\n  \"attendees\": [\n    {\n      \"id\": \"unique_id\",\n      \"first_name\": \"Zoomie\",\n      \"last_name\": \"Userton\",\n      \"create_time\": \"2015-08-23 03:03:48+00:00\",\n      \"approval\": \"approved\",\n      \"email\": \"email_address\",\n      \"registration_url\": \"https://api.zoom.us/w/206388466?tk=n8-qbK4ocC73mPjIRlheMksYPxeWAhnktoUZq_xAqg8.DQEAAAAADE088hZKTXcxTllpelFjZXNfNDg0NlNKQ3lRAA\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8b0c18e3-dcf1-4d8e-9608-fbcebcd83556",
+          "name": "webinar Registration Cancel",
+          "request": {
+            "name": "webinar Registration Cancel",
+            "description": {
+              "content": "Cancel Webinar Registration\n\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "webinar",
+                "registration",
+                "cancel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "host_id",
+                  "value": "<string>",
+                  "description": "(Required) Webinar host user ID. Can be any user who enabled webinar under this account."
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "(Required) Webinar ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "registrant_ids",
+                  "value": "<string>",
+                  "description": "(Required) Webinar registrant IDs, separated by comma. Max of 15 registrants."
+                },
+                {
+                  "disabled": false,
+                  "key": "occurrence_id",
+                  "value": "<string>",
+                  "description": "Occurrence ID, could get this value from Webinar Get API."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1f1ae961-0e29-4c04-8d1e-143908fda9f8",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webinar",
+                    "registration",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Webinar host user ID. Can be any user who enabled webinar under this account.",
+                        "type": "text/plain"
+                      },
+                      "key": "host_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Webinar ID.",
+                        "type": "text/plain"
+                      },
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Webinar registrant IDs, separated by comma. Max of 15 registrants.",
+                        "type": "text/plain"
+                      },
+                      "key": "registrant_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Occurrence ID, could get this value from Webinar Get API.",
+                        "type": "text/plain"
+                      },
+                      "key": "occurrence_id",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"844495467\",\n  \"updated_at\": \"2016-11-29 01:26:43+00:00\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ee9999cb-5c5b-4d81-a35b-d66e1332c65a",
+          "name": "webinar Update",
+          "request": {
+            "name": "webinar Update",
+            "description": {
+              "content": "Update Webinar info on Zoom via Webinar ID\n\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "webinar",
+                "update"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "host_id",
+                  "value": "<string>",
+                  "description": "(Required) Webinar host user ID. Can be any user under this account. Cannot be updated after creation."
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "(Required) Webinar ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "topic",
+                  "value": "<string>",
+                  "description": "Webinar topic. Max of 300 characters."
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "5",
+                  "description": "5 webinar, 6 recurrence webinar, 9 recurring webinar(With Fixed Time)"
+                },
+                {
+                  "disabled": false,
+                  "key": "start_time",
+                  "value": "<string>",
+                  "description": "Webinar start time in ISO datetime format. For scheduled webinar only. Should be UTC time, such as 2012-11-25T12:00:00Z."
+                },
+                {
+                  "disabled": false,
+                  "key": "duration",
+                  "value": "<string>",
+                  "description": "Webinar duration (minutes). For scheduled webinar only."
+                },
+                {
+                  "disabled": false,
+                  "key": "timezone",
+                  "value": "<string>",
+                  "description": "Timezone to format start_time, like \"America/Los_Angeles\". For scheduled Webinar only. For this parameter value please refer to the id value in timezone list JSON file."
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": " 10 characters",
+                  "description": "Webinar password. Password may only contain the following characters: [a-z A-Z 0-9 @ - _"
+                },
+                {
+                  "disabled": false,
+                  "key": "recurrence",
+                  "value": "<string>",
+                  "description": "Recurrence Webinar Settings. For recurring webinar with fixed time only. <br><br>\"type\": Recurrence Webinar Type. 1 means Daily, 2 means Weekly, 3 means Monthly. <br>\"repeat_interval\": Recurrence Webinar Repeat Interval. Defaults to 1. For a Daily Webinar, max of 90. For a Weekly Webinar, max of 12. For a Monthly Webinar, max of 3. <br>\"weekly_days\": Recurrence Webinar Occurs on week days, multiple value separated by comma. 1 means Sunday, 2 means Monday, 3 means Tuesday, 4 means Wednesday, 5 means Thursday, 6 means Friday, 7 means Saturday. <br>\"monthly_day\": Recurrence Webinar Occurs on a month day. The value range is from 1 to 31. <br>\"monthly_week\": Recurrence Webinar Occurs on the week of a month. -1 means Last week, 1 means First week, 2 means Second week, 3 means Third week, 4 means Fourth week. <br>\"monthly_week_day\": Recurrence Webinar Occurs on the week day of a month. A single value: 1 means Sunday, 2 means Monday, 3 means Tuesday, 4 means Wednesday, 5 means Thursday, 6 means Friday, 7 means Saturday. <br>\"end_times\": Recurrence Webinar End occurrences times. Defaults to 1. Max of 50. <br>\"end_date_time\": Recurrence Webinar End Date. Should be UTC time, such as 2012-11-25T12:00:00Z."
+                },
+                {
+                  "disabled": false,
+                  "key": "approval_type",
+                  "value": "2",
+                  "description": "Approval type. 0 means Automatically Approve. 1 means Manually Approve. 2 means No Registration Required."
+                },
+                {
+                  "disabled": false,
+                  "key": "registration_type",
+                  "value": "1",
+                  "description": "Registration type. 1 means Attendees register once and can attend any of the occurrences, 2 means Attendees need to register for each occurrence to attend, 3 means Attendees register once and can choose one or more occurrences to attend. For recurring meeting with fixed time only."
+                },
+                {
+                  "disabled": false,
+                  "key": "agenda",
+                  "value": "<string>",
+                  "description": "Webinar description."
+                },
+                {
+                  "disabled": false,
+                  "key": "option_audio",
+                  "value": "both",
+                  "description": "Webinar audio options. Can be \"both\", \"telephony\", \"voip\"."
+                },
+                {
+                  "disabled": false,
+                  "key": "option_host_video",
+                  "value": "true",
+                  "description": "Start video when host join Webinar."
+                },
+                {
+                  "disabled": false,
+                  "key": "option_panelist_video",
+                  "value": "true",
+                  "description": "Start video when panelist join Webinar."
+                },
+                {
+                  "disabled": false,
+                  "key": "option_practice_session",
+                  "value": "<string>",
+                  "description": "Enable Practice Session."
+                },
+                {
+                  "disabled": false,
+                  "key": "option_enforce_login",
+                  "value": "false",
+                  "description": "Only signed-in users can join this Webinar."
+                },
+                {
+                  "disabled": false,
+                  "key": "option_enforce_login_domains",
+                  "value": "<string>",
+                  "description": "Only signed-in users with specified domains can join Webinar."
+                },
+                {
+                  "disabled": false,
+                  "key": "option_alternative_hosts",
+                  "value": "<string>",
+                  "description": "Alternative hosts."
+                },
+                {
+                  "disabled": false,
+                  "key": "option_alternative_host_ids",
+                  "value": "<string>",
+                  "description": "Alternative hosts IDs."
+                },
+                {
+                  "disabled": false,
+                  "key": "option_auto_record_type",
+                  "value": "local",
+                  "description": "Automatically record type. Can be \"local\", \"cloud\" or \"none\"."
+                },
+                {
+                  "disabled": false,
+                  "key": "panelists",
+                  "value": "<string>",
+                  "description": "Webinar Panelists, should be JSON format: [{\"name\":\"xxx\",\"email\":\"test1@zoom.us\"}, {\"name\":\"xxx\",\"email\":\"test2@zoom.us\"}]."
+                },
+                {
+                  "disabled": false,
+                  "key": "language",
+                  "value": "<string>",
+                  "description": "Language setting of email to panelists. This value should be \"en-US\", \"en\", \"zh-CN\", \"zh\", \"en-ES\", \"es\", \"fr-FR\" or \"fr\"."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c800a0f3-8c1c-4f08-ab6c-d01fa913c124",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webinar",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Webinar host user ID. Can be any user under this account. Cannot be updated after creation.",
+                        "type": "text/plain"
+                      },
+                      "key": "host_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Webinar ID.",
+                        "type": "text/plain"
+                      },
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Webinar topic. Max of 300 characters.",
+                        "type": "text/plain"
+                      },
+                      "key": "topic",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "5 webinar, 6 recurrence webinar, 9 recurring webinar(With Fixed Time)",
+                        "type": "text/plain"
+                      },
+                      "key": "type",
+                      "value": "5"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Webinar start time in ISO datetime format. For scheduled webinar only. Should be UTC time, such as 2012-11-25T12:00:00Z.",
+                        "type": "text/plain"
+                      },
+                      "key": "start_time",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Webinar duration (minutes). For scheduled webinar only.",
+                        "type": "text/plain"
+                      },
+                      "key": "duration",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Timezone to format start_time, like \"America/Los_Angeles\". For scheduled Webinar only. For this parameter value please refer to the id value in timezone list JSON file.",
+                        "type": "text/plain"
+                      },
+                      "key": "timezone",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Webinar password. Password may only contain the following characters: [a-z A-Z 0-9 @ - _",
+                        "type": "text/plain"
+                      },
+                      "key": "password",
+                      "value": " 10 characters"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Recurrence Webinar Settings. For recurring webinar with fixed time only. <br><br>\"type\": Recurrence Webinar Type. 1 means Daily, 2 means Weekly, 3 means Monthly. <br>\"repeat_interval\": Recurrence Webinar Repeat Interval. Defaults to 1. For a Daily Webinar, max of 90. For a Weekly Webinar, max of 12. For a Monthly Webinar, max of 3. <br>\"weekly_days\": Recurrence Webinar Occurs on week days, multiple value separated by comma. 1 means Sunday, 2 means Monday, 3 means Tuesday, 4 means Wednesday, 5 means Thursday, 6 means Friday, 7 means Saturday. <br>\"monthly_day\": Recurrence Webinar Occurs on a month day. The value range is from 1 to 31. <br>\"monthly_week\": Recurrence Webinar Occurs on the week of a month. -1 means Last week, 1 means First week, 2 means Second week, 3 means Third week, 4 means Fourth week. <br>\"monthly_week_day\": Recurrence Webinar Occurs on the week day of a month. A single value: 1 means Sunday, 2 means Monday, 3 means Tuesday, 4 means Wednesday, 5 means Thursday, 6 means Friday, 7 means Saturday. <br>\"end_times\": Recurrence Webinar End occurrences times. Defaults to 1. Max of 50. <br>\"end_date_time\": Recurrence Webinar End Date. Should be UTC time, such as 2012-11-25T12:00:00Z.",
+                        "type": "text/plain"
+                      },
+                      "key": "recurrence",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Approval type. 0 means Automatically Approve. 1 means Manually Approve. 2 means No Registration Required.",
+                        "type": "text/plain"
+                      },
+                      "key": "approval_type",
+                      "value": "2"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Registration type. 1 means Attendees register once and can attend any of the occurrences, 2 means Attendees need to register for each occurrence to attend, 3 means Attendees register once and can choose one or more occurrences to attend. For recurring meeting with fixed time only.",
+                        "type": "text/plain"
+                      },
+                      "key": "registration_type",
+                      "value": "1"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Webinar description.",
+                        "type": "text/plain"
+                      },
+                      "key": "agenda",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Webinar audio options. Can be \"both\", \"telephony\", \"voip\".",
+                        "type": "text/plain"
+                      },
+                      "key": "option_audio",
+                      "value": "both"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Start video when host join Webinar.",
+                        "type": "text/plain"
+                      },
+                      "key": "option_host_video",
+                      "value": "true"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Start video when panelist join Webinar.",
+                        "type": "text/plain"
+                      },
+                      "key": "option_panelist_video",
+                      "value": "true"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Enable Practice Session.",
+                        "type": "text/plain"
+                      },
+                      "key": "option_practice_session",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Only signed-in users can join this Webinar.",
+                        "type": "text/plain"
+                      },
+                      "key": "option_enforce_login",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Only signed-in users with specified domains can join Webinar.",
+                        "type": "text/plain"
+                      },
+                      "key": "option_enforce_login_domains",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Alternative hosts.",
+                        "type": "text/plain"
+                      },
+                      "key": "option_alternative_hosts",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Alternative hosts IDs.",
+                        "type": "text/plain"
+                      },
+                      "key": "option_alternative_host_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Automatically record type. Can be \"local\", \"cloud\" or \"none\".",
+                        "type": "text/plain"
+                      },
+                      "key": "option_auto_record_type",
+                      "value": "local"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Webinar Panelists, should be JSON format: [{\"name\":\"xxx\",\"email\":\"test1@zoom.us\"}, {\"name\":\"xxx\",\"email\":\"test2@zoom.us\"}].",
+                        "type": "text/plain"
+                      },
+                      "key": "panelists",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Language setting of email to panelists. This value should be \"en-US\", \"en\", \"zh-CN\", \"zh\", \"en-ES\", \"es\", \"fr-FR\" or \"fr\".",
+                        "type": "text/plain"
+                      },
+                      "key": "language",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"123456789\",\n  \"updated_at\": \"2012-11-25 12:00:00+00:00\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "574515cf-623c-409c-8388-3a0a1c1f1d35",
+          "name": "webinar Uuid List",
+          "request": {
+            "name": "webinar Uuid List",
+            "description": {
+              "content": "Get ended webinar UUID.\n\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "webinar",
+                "uuid",
+                "list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "host_id",
+                  "value": "<string>",
+                  "description": "(Required) Webinar host user ID. Can be any user who enabled webinar under this account."
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "(Required) Webinar ID."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d3c467eb-c9bf-4c39-95bd-4a9662ca76ae",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webinar",
+                    "uuid",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Webinar host user ID. Can be any user who enabled webinar under this account.",
+                        "type": "text/plain"
+                      },
+                      "key": "host_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Webinar ID.",
+                        "type": "text/plain"
+                      },
+                      "key": "id",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"webinars\": [\n    {\n      \"uuid\": \"unique_id\",\n      \"start_time\": \"2015-08-23 03:03:48+00:00\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.zoom.us/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "5d24b7b5-f663-4b62-8d2b-338a0c8c2ca2",
+    "name": "Zoom / Account Webinar API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Needs description.\n\nContact Support:\n Name: Zoom Developers\n Email: developer@zoom.us",
+      "type": "text/plain"
+    }
+  }
+}

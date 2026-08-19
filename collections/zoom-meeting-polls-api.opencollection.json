@@ -1,0 +1,145 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zoom / Account Meeting Polls API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Meeting Polls",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zoom List Meeting Polls",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.zoom.us/v1/meetings/:meetingId/polls",
+            "params": [
+              {
+                "name": "meetingId",
+                "value": "",
+                "type": "path",
+                "description": "The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+              },
+              {
+                "name": "anonymous",
+                "value": "true",
+                "type": "query",
+                "description": "Whether to query anonymous polls."
+              }
+            ]
+          },
+          "docs": "List all polls for a meeting."
+        },
+        {
+          "info": {
+            "name": "Zoom Create a Meeting Poll",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v1/meetings/:meetingId/polls",
+            "params": [
+              {
+                "name": "meetingId",
+                "value": "",
+                "type": "path",
+                "description": "The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a poll for a meeting. Meeting must be a scheduled meeting. Instant meetings do not have polling features enabled."
+        },
+        {
+          "info": {
+            "name": "Zoom Get a Meeting Poll",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.zoom.us/v1/meetings/:meetingId/polls/:pollId",
+            "params": [
+              {
+                "name": "meetingId",
+                "value": "",
+                "type": "path",
+                "description": "The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+              },
+              {
+                "name": "pollId",
+                "value": "",
+                "type": "path",
+                "description": "The poll ID."
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific meeting poll."
+        },
+        {
+          "info": {
+            "name": "Zoom Update a Meeting Poll",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.zoom.us/v1/meetings/:meetingId/polls/:pollId",
+            "params": [
+              {
+                "name": "meetingId",
+                "value": "",
+                "type": "path",
+                "description": "The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+              },
+              {
+                "name": "pollId",
+                "value": "",
+                "type": "path",
+                "description": "The poll ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a specific meeting poll."
+        },
+        {
+          "info": {
+            "name": "Zoom Delete a Meeting Poll",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.zoom.us/v1/meetings/:meetingId/polls/:pollId",
+            "params": [
+              {
+                "name": "meetingId",
+                "value": "",
+                "type": "path",
+                "description": "The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+              },
+              {
+                "name": "pollId",
+                "value": "",
+                "type": "path",
+                "description": "The poll ID."
+              }
+            ]
+          },
+          "docs": "Delete a specific meeting poll."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

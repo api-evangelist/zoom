@@ -1,0 +1,98 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zoom / Account Chat API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Chat",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "chatGet",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v1/chat/get",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "access_token",
+                  "value": ""
+                },
+                {
+                  "name": "session_id",
+                  "value": ""
+                },
+                {
+                  "name": "from",
+                  "value": ""
+                },
+                {
+                  "name": "to",
+                  "value": ""
+                },
+                {
+                  "name": "page_size",
+                  "value": ""
+                },
+                {
+                  "name": "next_page_token",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Get chat messages for a specified period.\n\n"
+        },
+        {
+          "info": {
+            "name": "chatList",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v1/chat/list",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "access_token",
+                  "value": ""
+                },
+                {
+                  "name": "from",
+                  "value": ""
+                },
+                {
+                  "name": "to",
+                  "value": ""
+                },
+                {
+                  "name": "page_size",
+                  "value": ""
+                },
+                {
+                  "name": "email",
+                  "value": ""
+                },
+                {
+                  "name": "next_page_token",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Get chat history list for a specified time period.\n\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

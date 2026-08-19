@@ -1,0 +1,462 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zoom / Account API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Account",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "accountBillingUpdate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v1/ma/account/billing/update",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "account_id",
+                  "value": ""
+                },
+                {
+                  "name": "first_name",
+                  "value": ""
+                },
+                {
+                  "name": "last_name",
+                  "value": ""
+                },
+                {
+                  "name": "phone_number",
+                  "value": ""
+                },
+                {
+                  "name": "address",
+                  "value": ""
+                },
+                {
+                  "name": "apt",
+                  "value": ""
+                },
+                {
+                  "name": "city",
+                  "value": ""
+                },
+                {
+                  "name": "country",
+                  "value": ""
+                },
+                {
+                  "name": "state",
+                  "value": ""
+                },
+                {
+                  "name": "zip",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Update Billing Information for a sub account of the master account on Zoom.\n\n"
+        },
+        {
+          "info": {
+            "name": "accountCreate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v1/ma/account/create",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "email",
+                  "value": ""
+                },
+                {
+                  "name": "first_name",
+                  "value": ""
+                },
+                {
+                  "name": "last_name",
+                  "value": ""
+                },
+                {
+                  "name": "password",
+                  "value": ""
+                },
+                {
+                  "name": "enable_share_rc",
+                  "value": ""
+                },
+                {
+                  "name": "share_rc",
+                  "value": ""
+                },
+                {
+                  "name": "enable_share_mc",
+                  "value": ""
+                },
+                {
+                  "name": "share_mc",
+                  "value": ""
+                },
+                {
+                  "name": "pay_mode",
+                  "value": ""
+                },
+                {
+                  "name": "collection_method",
+                  "value": ""
+                },
+                {
+                  "name": "enable_pstn",
+                  "value": ""
+                },
+                {
+                  "name": "enable_enforce_login",
+                  "value": ""
+                },
+                {
+                  "name": "enable_enforce_login_sd",
+                  "value": ""
+                },
+                {
+                  "name": "enforce_login_domains",
+                  "value": ""
+                },
+                {
+                  "name": "meeting_capacity",
+                  "value": ""
+                },
+                {
+                  "name": "disable_cmr_reminder",
+                  "value": ""
+                },
+                {
+                  "name": "enable_only_host_download_cmr",
+                  "value": ""
+                },
+                {
+                  "name": "enable_same_account_access_cmr",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Create a sub account of the master account on Zoom, return the created sub account id and owner id.\n\n<aside class=\"notice\">Your account must be a master account and have this privilege to create sub account. Zoom only assign this privilege to trusted partner.</aside>\n\n<aside class=\"notice\">User will not receive the confirmation email.</aside>\n\n"
+        },
+        {
+          "info": {
+            "name": "accountDelete",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v1/ma/account/delete",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "account_id",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Delete the sub account.\n\n"
+        },
+        {
+          "info": {
+            "name": "accountGet",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v1/ma/account/get",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "account_id",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Get a sub account of the master account on Zoom, return the created sub account id and owner id.\n\n<aside class=\"notice\">Your account must be a master account and have this privilege to get sub account. Zoom only assign this privilege to trusted partner.</aside>\n\n<aside class=\"notice\">This API will let the master account owner to get sub account API key pair. This is a private feature and needs to be enabled by zoom support. If you need this function, please open a case with support to enable thi"
+        },
+        {
+          "info": {
+            "name": "accountList",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v1/ma/account/list",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "api_key",
+                  "value": ""
+                },
+                {
+                  "name": "api_secret",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "List all the sub account under the master account.\n\n"
+        },
+        {
+          "info": {
+            "name": "accountPlanAdd",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v1/ma/account/plan/add",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "account_id",
+                  "value": ""
+                },
+                {
+                  "name": "plan",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Add a plan for a sub account of the master account on Zoom.\n\n<aside class=\"notice\">Only for the sub account which is a paid account and paid by master account.</aside>\n\n<aside class=\"notice\">Only add an Additional plan for a sub account.</aside>\n\n"
+        },
+        {
+          "info": {
+            "name": "accountPlanGet",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v1/ma/account/plan/get",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "account_id",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Get plans information for a sub account of the master account on Zoom.\n\n"
+        },
+        {
+          "info": {
+            "name": "accountPlanSubscribe",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v1/ma/account/plan/subscribe",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "account_id",
+                  "value": ""
+                },
+                {
+                  "name": "first_name",
+                  "value": ""
+                },
+                {
+                  "name": "last_name",
+                  "value": ""
+                },
+                {
+                  "name": "phone_number",
+                  "value": ""
+                },
+                {
+                  "name": "address",
+                  "value": ""
+                },
+                {
+                  "name": "apt",
+                  "value": ""
+                },
+                {
+                  "name": "city",
+                  "value": ""
+                },
+                {
+                  "name": "country",
+                  "value": ""
+                },
+                {
+                  "name": "state",
+                  "value": ""
+                },
+                {
+                  "name": "zip",
+                  "value": ""
+                },
+                {
+                  "name": "plan_base",
+                  "value": ""
+                },
+                {
+                  "name": "plan_zoom_rooms",
+                  "value": ""
+                },
+                {
+                  "name": "plan_room_connector",
+                  "value": ""
+                },
+                {
+                  "name": "plan_large_meeting",
+                  "value": ""
+                },
+                {
+                  "name": "plan_webinar",
+                  "value": ""
+                },
+                {
+                  "name": "plan_recording",
+                  "value": ""
+                },
+                {
+                  "name": "plan_audio",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Subscribe plans for a sub account of the master account on Zoom.\n\n"
+        },
+        {
+          "info": {
+            "name": "accountPlanUpdate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v1/ma/account/plan/update",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "account_id",
+                  "value": ""
+                },
+                {
+                  "name": "type",
+                  "value": ""
+                },
+                {
+                  "name": "plan",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Update a plan for a sub account of the master account on Zoom.\n\n<aside class=\"notice\">Only for the sub account which is a paid account and paid by master account.</aside>\n\n<aside class=\"notice\">Could update a base plan or an additional plan.</aside>\n\n"
+        },
+        {
+          "info": {
+            "name": "accountUpdate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v1/ma/account/update",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "account_id",
+                  "value": ""
+                },
+                {
+                  "name": "enable_share_rc",
+                  "value": ""
+                },
+                {
+                  "name": "share_rc",
+                  "value": ""
+                },
+                {
+                  "name": "enable_share_mc",
+                  "value": ""
+                },
+                {
+                  "name": "share_mc",
+                  "value": ""
+                },
+                {
+                  "name": "pay_mode",
+                  "value": ""
+                },
+                {
+                  "name": "collection_method",
+                  "value": ""
+                },
+                {
+                  "name": "enable_pstn",
+                  "value": ""
+                },
+                {
+                  "name": "enable_call_out",
+                  "value": ""
+                },
+                {
+                  "name": "enable_enforce_login",
+                  "value": ""
+                },
+                {
+                  "name": "enable_enforce_login_sd",
+                  "value": ""
+                },
+                {
+                  "name": "enforce_login_domains",
+                  "value": ""
+                },
+                {
+                  "name": "meeting_capacity",
+                  "value": ""
+                },
+                {
+                  "name": "disable_cmr_reminder",
+                  "value": ""
+                },
+                {
+                  "name": "enable_only_host_download_cmr",
+                  "value": ""
+                },
+                {
+                  "name": "enable_same_account_access_cmr",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Update a sub account of the master account on Zoom, return the updated sub account id.\n\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

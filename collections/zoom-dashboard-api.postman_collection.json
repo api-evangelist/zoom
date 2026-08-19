@@ -1,0 +1,1337 @@
+{
+  "item": [
+    {
+      "id": "1263312c-22a5-4a8f-ba00-27199edf2fa6",
+      "name": "Dashboard",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f0f0c1ef-2544-4b19-b1b6-a8013feb4ae8",
+          "name": "dashboard Crc",
+          "request": {
+            "name": "dashboard Crc",
+            "description": {
+              "content": "Get CRC Port usage hour by hour for a specified time period.\n\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "metrics",
+                "crc"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<string>",
+                  "description": "(Required) Start date."
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<string>",
+                  "description": "(Required) End date."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2c12026f-a81c-4c9b-a34c-189f03a92448",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "metrics",
+                    "crc"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Start date.",
+                        "type": "text/plain"
+                      },
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) End date.",
+                        "type": "text/plain"
+                      },
+                      "key": "to",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"from\": \"2015-03-12T00:00:00.000Z\",\n  \"to\": \"2015-03-12T00:00:00.000Z\",\n  \"crc_ports_usage\": [\n    {\n      \"date_time\": \"2015-03-12T00:00:00.000Z\",\n      \"crc_ports_hour_usage\": [\n        {\n          \"hour\": \"00\",\n          \"max_usage\": 1,\n          \"total_usage\": 3\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b8386919-6d89-42c1-a1c2-0af01c7204ec",
+          "name": "dashboard Im",
+          "request": {
+            "name": "dashboard Im",
+            "description": {
+              "content": "Get statistics of Zoom IM\n\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "metrics",
+                "im"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<string>",
+                  "description": "(Required) Start date."
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<string>",
+                  "description": "(Required) End date."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "30",
+                  "description": "The amount of records returns within a single API call. Defaults to 30. Max of 30 records."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_number",
+                  "value": "1",
+                  "description": "Current page number of returned records. Default to 1."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "32372439-17f2-462c-a5dc-caedfd704d14",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "metrics",
+                    "im"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Start date.",
+                        "type": "text/plain"
+                      },
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) End date.",
+                        "type": "text/plain"
+                      },
+                      "key": "to",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The amount of records returns within a single API call. Defaults to 30. Max of 30 records.",
+                        "type": "text/plain"
+                      },
+                      "key": "page_size",
+                      "value": "30"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Current page number of returned records. Default to 1.",
+                        "type": "text/plain"
+                      },
+                      "key": "page_number",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"from\": \"2016-04-12T00:00:00.000Z\",\n  \"to\": \"2016-04-13T00:00:00.000Z\",\n  \"page_count\": 1,\n  \"page_number\": 1,\n  \"page_size\": 30,\n  \"total_records\": 10,\n  \"users\": [\n    {\n      \"user_id\": \"unique_id\",\n      \"user_name\": \"Zoomie Userton\",\n      \"email\": \"email_address\",\n      \"total_send\": 0,\n      \"total_receive\": 0,\n      \"group_send\": 0,\n      \"group_receive\": 0,\n      \"calls_send\": 0,\n      \"calls_receive\": 0,\n      \"files_send\": 0,\n      \"files_receive\": 0,\n      \"images_send\": 0,\n      \"images_receive\": 0,\n      \"voice_send\": 0,\n      \"voice_receive\": 0,\n      \"videos_send\": 0,\n      \"videos_receive\": 0,\n      \"emoji_send\": 0,\n      \"emoji_receive\": 0\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2ee77900-2c9a-45e9-8cbf-3b903b02e1e9",
+          "name": "dashboard Meetingdetail",
+          "request": {
+            "name": "dashboard Meetingdetail",
+            "description": {
+              "content": "Get live and past meeting details\n\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "metrics",
+                "meetingdetail"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "meeting_id",
+                  "value": "<string>",
+                  "description": "(Required) The meeting ID Example: ucc69C82Q5mTNyCRWE29Aw== Or B9C73AF4-2F36-4399-9337-2091584DBD03"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "(Required) Meeting type. 1 means live meeting. 2 means past meeting."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "30",
+                  "description": "The amount of records returns within a single API call. Defaults to 30. Max of 100 records."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_number",
+                  "value": "1",
+                  "description": "Current page number of returned records. Default to 1."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "92bc13cc-06a9-48c8-9f81-3360157e3efc",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "metrics",
+                    "meetingdetail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The meeting ID Example: ucc69C82Q5mTNyCRWE29Aw== Or B9C73AF4-2F36-4399-9337-2091584DBD03",
+                        "type": "text/plain"
+                      },
+                      "key": "meeting_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Meeting type. 1 means live meeting. 2 means past meeting.",
+                        "type": "text/plain"
+                      },
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The amount of records returns within a single API call. Defaults to 30. Max of 100 records.",
+                        "type": "text/plain"
+                      },
+                      "key": "page_size",
+                      "value": "30"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Current page number of returned records. Default to 1.",
+                        "type": "text/plain"
+                      },
+                      "key": "page_number",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uuid\": \"unique_id\",\n  \"id\": \"123456789\",\n  \"type\": \"Past Meeting\",\n  \"host\": \"Zoomie Userton\",\n  \"email\": \"email_address\",\n  \"user_type\": \"Pro\",\n  \"start_time\": \"2015-08-30T05:36:56.000Z\",\n  \"end_time\": \"2015-08-30T06:36:56.000Z\",\n  \"duration\": \"4 mins\",\n  \"has_pstn\": false,\n  \"has_voip\": true,\n  \"has_3rd_party_audio\": false,\n  \"has_video\": true,\n  \"has_screen_share\": false,\n  \"recording\": 0,\n  \"participants_count\": 2,\n  \"page_count\": 1,\n  \"page_number\": 1,\n  \"page_size\": 30,\n  \"participants\": [\n    {\n      \"id\": \"unique_id\",\n      \"user_id\": \"unique_id\",\n      \"user_name\": \"Zoomie Userton\",\n      \"device\": \"Mac\",\n      \"ip_address\": \"117.83.222.228\",\n      \"cn\": \"CN\",\n      \"city\": \"Nanjing\",\n      \"network_type\": \"Wifi\",\n      \"join_time\": \"2017-02-18T01:44:47.000Z\",\n      \"leave_time\": \"2017-02-18T01:45:58.000Z\",\n      \"share_application\": true,\n      \"share_desktop\": true,\n      \"share_whiteboard\": true,\n      \"recording\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0173c43c-d5e5-48f6-85f5-2eb13dc25930",
+          "name": "dashboard Meetings",
+          "request": {
+            "name": "dashboard Meetings",
+            "description": {
+              "content": "Get Live Meetings and past meetings for a specified period\n\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "metrics",
+                "meetings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<string>",
+                  "description": "(Required) Start date. Only for past meetings."
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<string>",
+                  "description": "(Required) End date. Only for past meetings."
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "1",
+                  "description": "(Required) Meeting list type. 1 means live meetings. 2 means past meetings."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "30",
+                  "description": "The amount of records returns within a single API call. Defaults to 30. Max of 100 meetings."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_number",
+                  "value": "1",
+                  "description": "Current page number of returned records. Default to 1."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5aa6f113-2979-4753-a298-9b139ac2f7c3",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "metrics",
+                    "meetings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Start date. Only for past meetings.",
+                        "type": "text/plain"
+                      },
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) End date. Only for past meetings.",
+                        "type": "text/plain"
+                      },
+                      "key": "to",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Meeting list type. 1 means live meetings. 2 means past meetings.",
+                        "type": "text/plain"
+                      },
+                      "key": "type",
+                      "value": "1"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The amount of records returns within a single API call. Defaults to 30. Max of 100 meetings.",
+                        "type": "text/plain"
+                      },
+                      "key": "page_size",
+                      "value": "30"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Current page number of returned records. Default to 1.",
+                        "type": "text/plain"
+                      },
+                      "key": "page_number",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"from\": \"2015-08-02T00:00:00.000Z\",\n  \"to\": \"2015-09-02T00:00:00.000Z\",\n  \"page_count\": 2,\n  \"page_number\": 1,\n  \"page_size\": 30,\n  \"total_records\": 49,\n  \"type\": \"Past Meetings\",\n  \"meetings\": [\n    {\n      \"uuid\": \"unique_id\",\n      \"id\": \"123456789\",\n      \"host\": \"Zoomie Userton\",\n      \"email\": \"email_address\",\n      \"user_type\": \"Pro\",\n      \"start_time\": \"2015-08-29T05:36:56.000Z\",\n      \"end_time\": \"2015-08-29T06:36:56.000Z\",\n      \"duration\": \"4 mins\",\n      \"participants\": 2,\n      \"has_pstn\": false,\n      \"has_voip\": true,\n      \"has_3rd_party_audio\": false,\n      \"has_video\": true,\n      \"has_screen_share\": false,\n      \"recording\": 0\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "00dc018e-145d-4f9c-8f1e-4bc590107ddb",
+          "name": "dashboard Qos",
+          "request": {
+            "name": "dashboard Qos",
+            "description": {
+              "content": "Get the users quality of service in a Zoom Meeting\n\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "metrics",
+                "qos"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "meeting_id",
+                  "value": "<string>",
+                  "description": "(Required) The meeting ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "(Required) Meeting type. 1 means live meeting. 2 means past meeting."
+                },
+                {
+                  "disabled": false,
+                  "key": "user_id",
+                  "value": "<string>",
+                  "description": "The user ID to get user qos."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "10",
+                  "description": "The amount of records returns within a single API call. Defaults to 10. Max of 10 records."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_number",
+                  "value": "1",
+                  "description": "Current page number of returned records. Default to 1."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4b9aed4b-f07e-49bc-ae11-24b5ad09e903",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "metrics",
+                    "qos"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The meeting ID.",
+                        "type": "text/plain"
+                      },
+                      "key": "meeting_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Meeting type. 1 means live meeting. 2 means past meeting.",
+                        "type": "text/plain"
+                      },
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The user ID to get user qos.",
+                        "type": "text/plain"
+                      },
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The amount of records returns within a single API call. Defaults to 10. Max of 10 records.",
+                        "type": "text/plain"
+                      },
+                      "key": "page_size",
+                      "value": "10"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Current page number of returned records. Default to 1.",
+                        "type": "text/plain"
+                      },
+                      "key": "page_number",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meeting_id\": \"unique_id\",\n  \"user_id\": \"unique_id\",\n  \"type\": \"Past Meeting\",\n  \"device\": \"Mac\",\n  \"ip_address\": \"112.80.63.6\",\n  \"cn\": \"CN\",\n  \"city\": \"Nanjing\",\n  \"version\": \"3.5.35288.1217\",\n  \"user_qos\": [\n    {\n      \"dateTime\": \"2015-08-30T06:40:56.000Z\",\n      \"audio_input\": {\n        \"bitrate\": \"29 kbps\",\n        \"latency\": \"39 ms\",\n        \"jitter\": \"11 ms\",\n        \"avg_loss\": \"2.5%\",\n        \"max_loss\": \"5.0%\"\n      },\n      \"audio_output\": {\n        \"bitrate\": \"\",\n        \"latency\": \"\",\n        \"jitter\": \"\",\n        \"avg_loss\": \"\",\n        \"max_loss\": \"\"\n      },\n      \"video_input\": {\n        \"bitrate\": \"77 kbps\",\n        \"latency\": \"84 ms\",\n        \"jitter\": \"4 ms\",\n        \"avg_loss\": \"28.3%\",\n        \"max_loss\": \"28.3%\",\n        \"resolution\": \"480*270\",\n        \"frame_rate\": \"3 fps\"\n      },\n      \"video_output\": {\n        \"bitrate\": \"\",\n        \"latency\": \"\",\n        \"jitter\": \"\",\n        \"avg_loss\": \"\",\n        \"max_loss\": \"\",\n        \"resolution\": \"\",\n        \"frame_rate\": \"\"\n      },\n      \"as_input\": {\n        \"bitrate\": \"\",\n        \"latency\": \"\",\n        \"jitter\": \"\",\n        \"avg_loss\": \"\",\n        \"max_loss\": \"\",\n        \"resolution\": \"\",\n        \"frame_rate\": \"\"\n      },\n      \"as_output\": {\n        \"bitrate\": \"\",\n        \"latency\": \"\",\n        \"jitter\": \"\",\n        \"avg_loss\": \"\",\n        \"max_loss\": \"\",\n        \"resolution\": \"\",\n        \"frame_rate\": \"\"\n      },\n      \"cpu_usage\": {\n        \"zoom_min_cpu_usage\": \"1%\",\n        \"zoom_avg_cpu_usage\": \"3%\",\n        \"zoom_max_cpu_usage\": \"5%\",\n        \"system_max_cpu_usage\": \"20%\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "830e3aa4-5f5b-4c75-80e8-7185f6007861",
+          "name": "dashboard Webinardetail",
+          "request": {
+            "name": "dashboard Webinardetail",
+            "description": {
+              "content": "Get live and past webinar details\n\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "metrics",
+                "webinardetail"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "meeting_id",
+                  "value": "<string>",
+                  "description": "(Required) The meeting ID Example: ucc69C82Q5mTNyCRWE29Aw== Or B9C73AF4-2F36-4399-9337-2091584DBD03"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "(Required) Meeting type. 1 means live webinar. 2 means past webinar."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "30",
+                  "description": "The amount of records returns within a single API call. Defaults to 30. Max of 100 records."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_number",
+                  "value": "1",
+                  "description": "Current page number of returned records. Default to 1."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "70c64488-4fd1-4afc-82ec-78502a631e2c",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "metrics",
+                    "webinardetail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The meeting ID Example: ucc69C82Q5mTNyCRWE29Aw== Or B9C73AF4-2F36-4399-9337-2091584DBD03",
+                        "type": "text/plain"
+                      },
+                      "key": "meeting_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Meeting type. 1 means live webinar. 2 means past webinar.",
+                        "type": "text/plain"
+                      },
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The amount of records returns within a single API call. Defaults to 30. Max of 100 records.",
+                        "type": "text/plain"
+                      },
+                      "key": "page_size",
+                      "value": "30"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Current page number of returned records. Default to 1.",
+                        "type": "text/plain"
+                      },
+                      "key": "page_number",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uuid\": \"unique_id\",\n  \"id\": \"123456789\",\n  \"type\": \"Past Webinar\",\n  \"host\": \"Zoomie Userton\",\n  \"email\": \"email_address\",\n  \"user_type\": \"Pro\",\n  \"start_time\": \"2015-08-30T05:36:56.000Z\",\n  \"end_time\": \"2015-08-30T06:36:56.000Z\",\n  \"duration\": \"4 mins\",\n  \"has_pstn\": false,\n  \"has_voip\": true,\n  \"has_3rd_party_audio\": false,\n  \"has_video\": true,\n  \"has_screen_share\": false,\n  \"recording\": 0,\n  \"participants_count\": 2,\n  \"page_count\": 1,\n  \"page_number\": 1,\n  \"page_size\": 30,\n  \"participants\": [\n    {\n      \"id\": \"unique_id\",\n      \"user_id\": \"unique_id\",\n      \"user_name\": \"Zoomie Userton\",\n      \"device\": \"Mac\",\n      \"ip_address\": \"117.83.222.228\",\n      \"cn\": \"CN\",\n      \"city\": \"Nanjing\",\n      \"network_type\": \"Wifi\",\n      \"join_time\": \"2017-02-18T01:44:47.000Z\",\n      \"leave_time\": \"2017-02-18T01:45:58.000Z\",\n      \"share_application\": true,\n      \"share_desktop\": true,\n      \"share_whiteboard\": true,\n      \"recording\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "096ce825-122f-4d05-ab83-63951d5ed71d",
+          "name": "dashboard Webinars",
+          "request": {
+            "name": "dashboard Webinars",
+            "description": {
+              "content": "Get live webinars and past webinars for a specified period.\n\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "metrics",
+                "webinars"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<string>",
+                  "description": "(Required) Start date. Only for past webinars."
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<string>",
+                  "description": "(Required) End date. Only for past webinars."
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "1",
+                  "description": "(Required) Webinar list type. 1 means live webinars. 2 means past webinars."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "30",
+                  "description": "The amount of records returns within a single API call. Defaults to 30. Max of 100 webinars."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_number",
+                  "value": "1",
+                  "description": "Current page number of returned records. Default to 1."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8ba0b13b-63c6-4f0a-99a0-51194fdf07c9",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "metrics",
+                    "webinars"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Start date. Only for past webinars.",
+                        "type": "text/plain"
+                      },
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) End date. Only for past webinars.",
+                        "type": "text/plain"
+                      },
+                      "key": "to",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Webinar list type. 1 means live webinars. 2 means past webinars.",
+                        "type": "text/plain"
+                      },
+                      "key": "type",
+                      "value": "1"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The amount of records returns within a single API call. Defaults to 30. Max of 100 webinars.",
+                        "type": "text/plain"
+                      },
+                      "key": "page_size",
+                      "value": "30"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Current page number of returned records. Default to 1.",
+                        "type": "text/plain"
+                      },
+                      "key": "page_number",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"from\": \"2015-08-02T00:00:00.000Z\",\n  \"to\": \"2015-09-02T00:00:00.000Z\",\n  \"page_count\": 2,\n  \"page_number\": 1,\n  \"page_size\": 30,\n  \"total_records\": 49,\n  \"type\": \"Past Webinars\",\n  \"meetings\": [\n    {\n      \"uuid\": \"unique_id\",\n      \"id\": \"123456789\",\n      \"host\": \"Zoomie Userton\",\n      \"email\": \"email_address\",\n      \"user_type\": \"Pro\",\n      \"start_time\": \"2015-08-29T05:36:56.000Z\",\n      \"end_time\": \"2015-08-29T06:36:56.000Z\",\n      \"duration\": \"4 mins\",\n      \"participants\": 2,\n      \"has_pstn\": false,\n      \"has_voip\": true,\n      \"has_3rd_party_audio\": false,\n      \"has_video\": true,\n      \"has_screen_share\": false,\n      \"recording\": 0\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6a5dc5ae-5309-467d-a10d-02e8d684f6c9",
+          "name": "dashboard Zoomroomdetail",
+          "request": {
+            "name": "dashboard Zoomroomdetail",
+            "description": {
+              "content": "Get a Zoom Room on Zoom via Zoom ID, return the Zoom Room info.\n\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "metrics",
+                "zoomroomdetail"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<string>",
+                  "description": "(Required) Start date."
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "(Required) The zoom room ID. Example: ucc69C82Q5mTNyCRWE29Aw== Or B9C73AF4-2F36-4399-9337-2091584DBD03"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<string>",
+                  "description": "(Required) End date."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "30",
+                  "description": "The amount of records returns within a single API call. Defaults to 30. Max of 30 records."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_number",
+                  "value": "1",
+                  "description": "Current page number of returned records. Default to 1."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "52e420a6-abfb-4714-9790-775eddc5f191",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "metrics",
+                    "zoomroomdetail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Start date.",
+                        "type": "text/plain"
+                      },
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The zoom room ID. Example: ucc69C82Q5mTNyCRWE29Aw== Or B9C73AF4-2F36-4399-9337-2091584DBD03",
+                        "type": "text/plain"
+                      },
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) End date.",
+                        "type": "text/plain"
+                      },
+                      "key": "to",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The amount of records returns within a single API call. Defaults to 30. Max of 30 records.",
+                        "type": "text/plain"
+                      },
+                      "key": "page_size",
+                      "value": "30"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Current page number of returned records. Default to 1.",
+                        "type": "text/plain"
+                      },
+                      "key": "page_number",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"from\": \"2016-04-12T00:00:00.000Z\",\n  \"to\": \"2016-04-13T00:00:00.000Z\",\n  \"page_count\": 1,\n  \"page_number\": 1,\n  \"page_size\": 30,\n  \"total_records\": 1,\n  \"zoom_room\": {\n    \"id\": \"unique_id\",\n    \"room_name\": \"zoom room\",\n    \"email\": \"zoomroom@zoom.us\",\n    \"account_type\": \"Work Email\",\n    \"passcode\": \"123\",\n    \"status\": \"Available\",\n    \"messages\": {\n      \"last_started_time\": \"\",\n      \"running_time\": \"\",\n      \"selected_microphone\": \"\",\n      \"selected_speaker\": \"\",\n      \"selected_camera\": \"\"\n    },\n    \"meeting_id\": \"\"\n  },\n  \"live_meeting\": {\n    \"uuid\": \"\",\n    \"id\": 0,\n    \"host\": \"\",\n    \"email\": \"\",\n    \"user_type\": \"\",\n    \"start_time\": \"\",\n    \"end_time\": \"\",\n    \"duration\": \"\",\n    \"participants\": 0,\n    \"has_pstn\": false,\n    \"has_voip\": false,\n    \"has_3rd_party_audio\": false,\n    \"has_video\": false,\n    \"has_screen_share\": false,\n    \"recording\": 0\n  },\n  \"past_meetings\": [\n    {\n      \"uuid\": \"unique_id\",\n      \"id\": \"123456789\",\n      \"host\": \"Zoomie Userton\",\n      \"email\": \"email_address\",\n      \"user_type\": \"\",\n      \"start_time\": \"\",\n      \"end_time\": \"\",\n      \"duration\": \"\",\n      \"participants\": 1,\n      \"has_pstn\": false,\n      \"has_voip\": false,\n      \"has_3rd_party_audio\": false,\n      \"has_video\": false,\n      \"has_screen_share\": false,\n      \"recording\": 0\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bdfdeeff-8770-4e6b-b3ab-f03b396874d1",
+          "name": "dashboard Zoomrooms",
+          "request": {
+            "name": "dashboard Zoomrooms",
+            "description": {
+              "content": "List all Zoom Rooms on Zoom.\n\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "metrics",
+                "zoomrooms"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "30",
+                  "description": "The amount of records returns within a single API call. Defaults to 30. Max of 30 records."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_number",
+                  "value": "1",
+                  "description": "Current page number of returned records. Default to 1."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a1c30ea4-509f-4b39-a367-957582c75e30",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "metrics",
+                    "zoomrooms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The amount of records returns within a single API call. Defaults to 30. Max of 30 records.",
+                        "type": "text/plain"
+                      },
+                      "key": "page_size",
+                      "value": "30"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Current page number of returned records. Default to 1.",
+                        "type": "text/plain"
+                      },
+                      "key": "page_number",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_count\": 1,\n  \"page_number\": 1,\n  \"page_size\": 30,\n  \"total_records\": 2,\n  \"zoom_rooms\": [\n    {\n      \"id\": \"unique_id\",\n      \"room_name\": \"zoom room1\",\n      \"email\": \"zoomroom1@zoom.us\",\n      \"account_type\": \"Work Email\",\n      \"passcode\": \"123\",\n      \"status\": \"Available\",\n      \"messages\": {\n        \"last_started_time\": \"\",\n        \"running_time\": \"\",\n        \"selected_microphone\": \"\",\n        \"selected_speaker\": \"\",\n        \"selected_camera\": \"\"\n      },\n      \"meeting_id\": \"\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.zoom.us/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "44d339d0-8f48-4482-8202-9b2a9da03d4e",
+    "name": "Zoom / Account Dashboard API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Needs description.\n\nContact Support:\n Name: Zoom Developers\n Email: developer@zoom.us",
+      "type": "text/plain"
+    }
+  }
+}

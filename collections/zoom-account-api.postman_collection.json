@@ -1,0 +1,1977 @@
+{
+  "item": [
+    {
+      "id": "0cb4b8cf-5063-479a-b167-7c5cfa1602a8",
+      "name": "Account",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dc99cdce-eed9-4eec-92ad-9bf279761887",
+          "name": "account Billing Update",
+          "request": {
+            "name": "account Billing Update",
+            "description": {
+              "content": "Update Billing Information for a sub account of the master account on Zoom.\n\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ma",
+                "account",
+                "billing",
+                "update"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "account_id",
+                  "value": "<string>",
+                  "description": "(Required) The sub account ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "first_name",
+                  "value": "<string>",
+                  "description": "Sold To Contact’s first name."
+                },
+                {
+                  "disabled": false,
+                  "key": "last_name",
+                  "value": "<string>",
+                  "description": "Sold To Contact’s last name."
+                },
+                {
+                  "disabled": false,
+                  "key": "phone_number",
+                  "value": "<string>",
+                  "description": "Sold To Contact’s phone number."
+                },
+                {
+                  "disabled": false,
+                  "key": "address",
+                  "value": "<string>",
+                  "description": "Sold To Contact’s address."
+                },
+                {
+                  "disabled": false,
+                  "key": "apt",
+                  "value": "<string>",
+                  "description": "Sold To Contact’s Apt/Suite."
+                },
+                {
+                  "disabled": false,
+                  "key": "city",
+                  "value": "<string>",
+                  "description": "Sold To Contact’s city."
+                },
+                {
+                  "disabled": false,
+                  "key": "country",
+                  "value": "<string>",
+                  "description": "Sold To Contact’s country. For this parameter value please refer to the id value in country list JSON file"
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>",
+                  "description": "Sold To Contact’s state. If country value is \"US\" or \"CA\", for this parameter value please refer to the id value in state list JSON file"
+                },
+                {
+                  "disabled": false,
+                  "key": "zip",
+                  "value": "<string>",
+                  "description": "Sold To Contact’s zip/postal."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "56d2817d-6c31-4515-a7a5-2fe2cf20e087",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ma",
+                    "account",
+                    "billing",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The sub account ID.",
+                        "type": "text/plain"
+                      },
+                      "key": "account_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Sold To Contact’s first name.",
+                        "type": "text/plain"
+                      },
+                      "key": "first_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Sold To Contact’s last name.",
+                        "type": "text/plain"
+                      },
+                      "key": "last_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Sold To Contact’s phone number.",
+                        "type": "text/plain"
+                      },
+                      "key": "phone_number",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Sold To Contact’s address.",
+                        "type": "text/plain"
+                      },
+                      "key": "address",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Sold To Contact’s Apt/Suite.",
+                        "type": "text/plain"
+                      },
+                      "key": "apt",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Sold To Contact’s city.",
+                        "type": "text/plain"
+                      },
+                      "key": "city",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Sold To Contact’s country. For this parameter value please refer to the id value in country list JSON file",
+                        "type": "text/plain"
+                      },
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Sold To Contact’s state. If country value is \"US\" or \"CA\", for this parameter value please refer to the id value in state list JSON file",
+                        "type": "text/plain"
+                      },
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Sold To Contact’s zip/postal.",
+                        "type": "text/plain"
+                      },
+                      "key": "zip",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"unique_id \",\n  \"updated_at\": \"2012-11-25T12:00:00.000Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c1f1c283-272c-43b3-b591-8e450e4bb3d5",
+          "name": "account Create",
+          "request": {
+            "name": "account Create",
+            "description": {
+              "content": "Create a sub account of the master account on Zoom, return the created sub account id and owner id.\n\n<aside class=\"notice\">Your account must be a master account and have this privilege to create sub account. Zoom only assign this privilege to trusted partner.</aside>\n\n<aside class=\"notice\">User will not receive the confirmation email.</aside>\n\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ma",
+                "account",
+                "create"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "email",
+                  "value": "<string>",
+                  "description": "(Required) A valid email address. It must be unique in Zoom service. If an email address is existed, a \"user existing\" error message will be return."
+                },
+                {
+                  "disabled": false,
+                  "key": "first_name",
+                  "value": "<string>",
+                  "description": "(Required) User’s first name."
+                },
+                {
+                  "disabled": false,
+                  "key": "last_name",
+                  "value": "<string>",
+                  "description": "(Required) User’s last name."
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "<string>",
+                  "description": "(Required) User’s password."
+                },
+                {
+                  "disabled": false,
+                  "key": "enable_share_rc",
+                  "value": "false",
+                  "description": "Enable Share Virtual Room Connector."
+                },
+                {
+                  "disabled": false,
+                  "key": "share_rc",
+                  "value": "<string>",
+                  "description": "Virtual Room Connector, multiple value separated by comma."
+                },
+                {
+                  "disabled": false,
+                  "key": "enable_share_mc",
+                  "value": "false",
+                  "description": "Enable Share Meeting Connector."
+                },
+                {
+                  "disabled": false,
+                  "key": "share_mc",
+                  "value": "<string>",
+                  "description": "Meeting Connector, multiple value separated by comma."
+                },
+                {
+                  "disabled": false,
+                  "key": "pay_mode",
+                  "value": "1",
+                  "description": "Who will pay for this account? 0 means Sub Account Holders Pays, 1 means Master Account Holder Pays."
+                },
+                {
+                  "disabled": false,
+                  "key": "collection_method",
+                  "value": "1",
+                  "description": "Collection Method? 0 means Automatic (billing online), 1 means Manual (send invoice)."
+                },
+                {
+                  "disabled": false,
+                  "key": "enable_pstn",
+                  "value": "true",
+                  "description": "The value should be true or false, by default is true."
+                },
+                {
+                  "disabled": false,
+                  "key": "enable_enforce_login",
+                  "value": "false",
+                  "description": "Only signed-in users can join this meeting."
+                },
+                {
+                  "disabled": false,
+                  "key": "enable_enforce_login_sd",
+                  "value": "false",
+                  "description": "Only signed-in users with specified domains can join meetings."
+                },
+                {
+                  "disabled": false,
+                  "key": "enforce_login_domains",
+                  "value": "<string>",
+                  "description": "Domains of signed-in users."
+                },
+                {
+                  "disabled": false,
+                  "key": "meeting_capacity",
+                  "value": "<string>",
+                  "description": "Account’ meeting capacity, max of 100."
+                },
+                {
+                  "disabled": false,
+                  "key": "disable_cmr_reminder",
+                  "value": "false",
+                  "description": "Disable cloud recording reminder."
+                },
+                {
+                  "disabled": false,
+                  "key": "enable_only_host_download_cmr",
+                  "value": "false",
+                  "description": "Enable Only the host can download cloud recordings."
+                },
+                {
+                  "disabled": false,
+                  "key": "enable_same_account_access_cmr",
+                  "value": "false",
+                  "description": "Enable Only users on my account can access cloud recordings."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ad61cc31-0e75-46c2-9087-6adb8ef3d998",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ma",
+                    "account",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) A valid email address. It must be unique in Zoom service. If an email address is existed, a \"user existing\" error message will be return.",
+                        "type": "text/plain"
+                      },
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) User’s first name.",
+                        "type": "text/plain"
+                      },
+                      "key": "first_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) User’s last name.",
+                        "type": "text/plain"
+                      },
+                      "key": "last_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) User’s password.",
+                        "type": "text/plain"
+                      },
+                      "key": "password",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Enable Share Virtual Room Connector.",
+                        "type": "text/plain"
+                      },
+                      "key": "enable_share_rc",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Virtual Room Connector, multiple value separated by comma.",
+                        "type": "text/plain"
+                      },
+                      "key": "share_rc",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Enable Share Meeting Connector.",
+                        "type": "text/plain"
+                      },
+                      "key": "enable_share_mc",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Meeting Connector, multiple value separated by comma.",
+                        "type": "text/plain"
+                      },
+                      "key": "share_mc",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Who will pay for this account? 0 means Sub Account Holders Pays, 1 means Master Account Holder Pays.",
+                        "type": "text/plain"
+                      },
+                      "key": "pay_mode",
+                      "value": "1"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Collection Method? 0 means Automatic (billing online), 1 means Manual (send invoice).",
+                        "type": "text/plain"
+                      },
+                      "key": "collection_method",
+                      "value": "1"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The value should be true or false, by default is true.",
+                        "type": "text/plain"
+                      },
+                      "key": "enable_pstn",
+                      "value": "true"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Only signed-in users can join this meeting.",
+                        "type": "text/plain"
+                      },
+                      "key": "enable_enforce_login",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Only signed-in users with specified domains can join meetings.",
+                        "type": "text/plain"
+                      },
+                      "key": "enable_enforce_login_sd",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Domains of signed-in users.",
+                        "type": "text/plain"
+                      },
+                      "key": "enforce_login_domains",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Account’ meeting capacity, max of 100.",
+                        "type": "text/plain"
+                      },
+                      "key": "meeting_capacity",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Disable cloud recording reminder.",
+                        "type": "text/plain"
+                      },
+                      "key": "disable_cmr_reminder",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Enable Only the host can download cloud recordings.",
+                        "type": "text/plain"
+                      },
+                      "key": "enable_only_host_download_cmr",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Enable Only users on my account can access cloud recordings.",
+                        "type": "text/plain"
+                      },
+                      "key": "enable_same_account_access_cmr",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"unique_id\",\n  \"owner_id\": \"unique_id\",\n  \"owner_email\": \"email_address\",\n  \"created_at\": \"2012-11-25T12:00:00.000Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "57142e52-3ab0-4099-8b57-10e53a157ff9",
+          "name": "account Delete",
+          "request": {
+            "name": "account Delete",
+            "description": {
+              "content": "Delete the sub account.\n\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ma",
+                "account",
+                "delete"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "account_id",
+                  "value": "<string>",
+                  "description": "(Required) The sub account ID."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "35ec06a2-862a-44b6-99db-4aa6a7055c74",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ma",
+                    "account",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The sub account ID.",
+                        "type": "text/plain"
+                      },
+                      "key": "account_id",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"unique_id\",\n  \"deleted_at\": \"2012-11-25T12:00:00.000Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1ee08269-25b5-4a41-a93b-196b223e976f",
+          "name": "account Get",
+          "request": {
+            "name": "account Get",
+            "description": {
+              "content": "Get a sub account of the master account on Zoom, return the created sub account id and owner id.\n\n<aside class=\"notice\">Your account must be a master account and have this privilege to get sub account. Zoom only assign this privilege to trusted partner.</aside>\n\n<aside class=\"notice\">This API will let the master account owner to get sub account API key pair. This is a private feature and needs to be enabled by zoom support. If you need this function, please open a case with support to enable this API.</aside>\n\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ma",
+                "account",
+                "get"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "account_id",
+                  "value": "<string>",
+                  "description": "(Required) The sub account ID."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "941a8624-0d2e-4dc5-9a83-6e027f17f6a3",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ma",
+                    "account",
+                    "get"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The sub account ID.",
+                        "type": "text/plain"
+                      },
+                      "key": "account_id",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"unique_id\",\n  \"owner_id\": \"unique_id\",\n  \"owner_email\": \"email_address\",\n  \"created_at\": \"2012-11-25T12:00:00.000Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2d7632dd-2f56-4c25-b223-8cf7b70ec449",
+          "name": "account List",
+          "request": {
+            "name": "account List",
+            "description": {
+              "content": "List all the sub account under the master account.\n\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ma",
+                "account",
+                "list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "(Required) Your API Key"
+                },
+                {
+                  "disabled": false,
+                  "key": "api_secret",
+                  "value": "<string>",
+                  "description": "(Required) Your API Secret"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b88db380-954a-4acb-8c4b-b96569a33532",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ma",
+                    "account",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Your API Key",
+                        "type": "text/plain"
+                      },
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Your API Secret",
+                        "type": "text/plain"
+                      },
+                      "key": "api_secret",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_count\": 1,\n  \"page_number\": 1,\n  \"page_size\": 30,\n  \"total_records\": 3,\n  \"subAccounts\": [\n    {\n      \"id\": \"unique_id\",\n      \"owner_email\": \"email_address\",\n      \"created_at\": \"2015-01-27T140508Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "57fd87e0-0287-41c4-8c5d-5d6895bcfc1a",
+          "name": "account Plan Add",
+          "request": {
+            "name": "account Plan Add",
+            "description": {
+              "content": "Add a plan for a sub account of the master account on Zoom.\n\n<aside class=\"notice\">Only for the sub account which is a paid account and paid by master account.</aside>\n\n<aside class=\"notice\">Only add an Additional plan for a sub account.</aside>\n\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ma",
+                "account",
+                "plan",
+                "add"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "account_id",
+                  "value": "<string>",
+                  "description": "(Required) The sub account ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "plan",
+                  "value": "<string>",
+                  "description": "(Required) Additional Plan. See [Plans](#plans) for more details"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d58212c7-b39e-46d6-8de2-373aca39afe6",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ma",
+                    "account",
+                    "plan",
+                    "add"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The sub account ID.",
+                        "type": "text/plain"
+                      },
+                      "key": "account_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Additional Plan. See [Plans](#plans) for more details",
+                        "type": "text/plain"
+                      },
+                      "key": "plan",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"unique_id\",\n  \"updated_at\": \"2012-11-25T12:00:00.000Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0e017329-092a-40f9-a51e-c1acb71e7dc4",
+          "name": "account Plan Get",
+          "request": {
+            "name": "account Plan Get",
+            "description": {
+              "content": "Get plans information for a sub account of the master account on Zoom.\n\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ma",
+                "account",
+                "plan",
+                "get"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "account_id",
+                  "value": "<string>",
+                  "description": "(Required) The sub account ID."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "44f3225f-b6e9-4d8f-aa9d-3dac9ff9ce76",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ma",
+                    "account",
+                    "plan",
+                    "get"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The sub account ID.",
+                        "type": "text/plain"
+                      },
+                      "key": "account_id",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"email\": \"email_address\",\n  \"first_name\": \"Zoomie\",\n  \"last_name\": \"Userton\",\n  \"phone_number\": \"123456789\",\n  \"address\": \"address\",\n  \"apt\": \"apt\",\n  \"city\": \"city\",\n  \"state\": \"state\",\n  \"zip\": \"12345\",\n  \"country\": \"country\",\n  \"plan_base\": {\n    \"type\": \"monthly\",\n    \"hosts\": 9\n  },\n  \"plan_zoom_rooms\": {\n    \"type\": \"zroom_monthly\",\n    \"hosts\": 9\n  },\n  \"plan_room_connector\": {\n    \"type\": \"roomconnector_yearly\",\n    \"hosts\": 9\n  },\n  \"plan_large_meeting\": [\n    {\n      \"type\": \"large100_monthly\",\n      \"hosts\": 9\n    },\n    {\n      \"type\": \"large200_monthly\",\n      \"hosts\": 9\n    },\n    {\n      \"type\": \"large300_yearly\",\n      \"hosts\": 9\n    },\n    {\n      \"type\": \"large500_yearly\",\n      \"hosts\": 9\n    }\n  ],\n  \"plan_webinar\": [\n    {\n      \"type\": \"webinar100_monthly\",\n      \"hosts\": 9\n    },\n    {\n      \"type\": \"webinar500_yearly\",\n      \"hosts\": 9\n    },\n    {\n      \"type\": \"webinar1000_yearly\",\n      \"hosts\": 9\n    },\n    {\n      \"type\": \"webinar3000_monthly\",\n      \"hosts\": 9\n    },\n    {\n      \"type\": \"webinar5000_monthly\",\n      \"hosts\": 9\n    },\n    {\n      \"type\": \"webinar10000_monthly\",\n      \"hosts\": 9\n    }\n  ],\n  \"plan_recording\": \"cmr_monthly_commitment_500\",\n  \"plan_audio\": {\n    \"type\": \"tollfree_monthly_commitment_100\",\n    \"tollfree_country\": \"AT\",\n    \"premium_country\": \"TW\",\n    \"callout\": 1,\n    \"ddi_numbers\": 66\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6277d870-f63a-4e58-9654-03e7f61036e4",
+          "name": "account Plan Subscribe",
+          "request": {
+            "name": "account Plan Subscribe",
+            "description": {
+              "content": "Subscribe plans for a sub account of the master account on Zoom.\n\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ma",
+                "account",
+                "plan",
+                "subscribe"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "account_id",
+                  "value": "<string>",
+                  "description": "(Required) The sub account ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "address",
+                  "value": "<string>",
+                  "description": "(Required) Sold To Contact’s address."
+                },
+                {
+                  "disabled": false,
+                  "key": "city",
+                  "value": "<string>",
+                  "description": "(Required) Sold To Contact’s city."
+                },
+                {
+                  "disabled": false,
+                  "key": "country",
+                  "value": "<string>",
+                  "description": "(Required) Sold To Contact’s country. For this parameter value please refer to the id value in country list JSON file"
+                },
+                {
+                  "disabled": false,
+                  "key": "first_name",
+                  "value": "<string>",
+                  "description": "(Required) Sold To Contact’s first name."
+                },
+                {
+                  "disabled": false,
+                  "key": "last_name",
+                  "value": "<string>",
+                  "description": "(Required) Sold To Contact’s last name."
+                },
+                {
+                  "disabled": false,
+                  "key": "phone_number",
+                  "value": "<string>",
+                  "description": "(Required) Sold To Contact’s phone number."
+                },
+                {
+                  "disabled": false,
+                  "key": "plan_base",
+                  "value": "<string>",
+                  "description": "(Required) Base Plan.  See [Plans](#plans) for more details"
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>",
+                  "description": "(Required) Sold To Contact’s state. If country value is \"US\" or \"CA\", for this parameter value please refer to the id value in state list JSON file"
+                },
+                {
+                  "disabled": false,
+                  "key": "zip",
+                  "value": "<string>",
+                  "description": "(Required) Sold To Contact’s zip/postal."
+                },
+                {
+                  "disabled": false,
+                  "key": "apt",
+                  "value": "<string>",
+                  "description": "Sold To Contact’s Apt/Suite."
+                },
+                {
+                  "disabled": false,
+                  "key": "plan_zoom_rooms",
+                  "value": "<string>",
+                  "description": "Additional Zoom Rooms Plan.  See [Plans](#plans) for more details"
+                },
+                {
+                  "disabled": false,
+                  "key": "plan_room_connector",
+                  "value": "<string>",
+                  "description": "Additional H.323/SIP Room Connector Plan.  See [Plans](#plans) for more details"
+                },
+                {
+                  "disabled": false,
+                  "key": "plan_large_meeting",
+                  "value": "<string>",
+                  "description": "Additional Large Meeting Plan.  See [Plans](#plans) for more details"
+                },
+                {
+                  "disabled": false,
+                  "key": "plan_webinar",
+                  "value": "<string>",
+                  "description": "Additional Webinar Plan.  See [Plans](#plans) for more details"
+                },
+                {
+                  "disabled": false,
+                  "key": "plan_recording",
+                  "value": "<string>",
+                  "description": "Additional Cloud Recording Plan.  See [Plans](#plans) for more details"
+                },
+                {
+                  "disabled": false,
+                  "key": "plan_audio",
+                  "value": "<string>",
+                  "description": "Additional Audio Conferencing Plan.  See [Plans](#plans) for more details"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0a2515d1-ea91-4be9-b638-339c565ae965",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ma",
+                    "account",
+                    "plan",
+                    "subscribe"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The sub account ID.",
+                        "type": "text/plain"
+                      },
+                      "key": "account_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Sold To Contact’s address.",
+                        "type": "text/plain"
+                      },
+                      "key": "address",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Sold To Contact’s city.",
+                        "type": "text/plain"
+                      },
+                      "key": "city",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Sold To Contact’s country. For this parameter value please refer to the id value in country list JSON file",
+                        "type": "text/plain"
+                      },
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Sold To Contact’s first name.",
+                        "type": "text/plain"
+                      },
+                      "key": "first_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Sold To Contact’s last name.",
+                        "type": "text/plain"
+                      },
+                      "key": "last_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Sold To Contact’s phone number.",
+                        "type": "text/plain"
+                      },
+                      "key": "phone_number",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Base Plan.  See [Plans](#plans) for more details",
+                        "type": "text/plain"
+                      },
+                      "key": "plan_base",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Sold To Contact’s state. If country value is \"US\" or \"CA\", for this parameter value please refer to the id value in state list JSON file",
+                        "type": "text/plain"
+                      },
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Sold To Contact’s zip/postal.",
+                        "type": "text/plain"
+                      },
+                      "key": "zip",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Sold To Contact’s Apt/Suite.",
+                        "type": "text/plain"
+                      },
+                      "key": "apt",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Additional Zoom Rooms Plan.  See [Plans](#plans) for more details",
+                        "type": "text/plain"
+                      },
+                      "key": "plan_zoom_rooms",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Additional H.323/SIP Room Connector Plan.  See [Plans](#plans) for more details",
+                        "type": "text/plain"
+                      },
+                      "key": "plan_room_connector",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Additional Large Meeting Plan.  See [Plans](#plans) for more details",
+                        "type": "text/plain"
+                      },
+                      "key": "plan_large_meeting",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Additional Webinar Plan.  See [Plans](#plans) for more details",
+                        "type": "text/plain"
+                      },
+                      "key": "plan_webinar",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Additional Cloud Recording Plan.  See [Plans](#plans) for more details",
+                        "type": "text/plain"
+                      },
+                      "key": "plan_recording",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Additional Audio Conferencing Plan.  See [Plans](#plans) for more details",
+                        "type": "text/plain"
+                      },
+                      "key": "plan_audio",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"email\": \"email_address\",\n  \"first_name\": \"Zoomie\",\n  \"last_name\": \"Userton\",\n  \"phone_number\": \"123456789\",\n  \"address\": \"address\",\n  \"apt\": \"apt\",\n  \"city\": \"city\",\n  \"state\": \"state\",\n  \"zip\": \"12345\",\n  \"country\": \"country\",\n  \"plan_base\": {\n    \"type\": \"monthly\",\n    \"hosts\": 9\n  },\n  \"plan_zoom_rooms\": {\n    \"type\": \"zroom_monthly\",\n    \"hosts\": 9\n  },\n  \"plan_room_connector\": {\n    \"type\": \"roomconnector_yearly\",\n    \"hosts\": 9\n  },\n  \"plan_large_meeting\": [\n    {\n      \"type\": \"large200_monthly\",\n      \"hosts\": 9\n    },\n    {\n      \"type\": \"large300_yearly\",\n      \"hosts\": 9\n    },\n    {\n      \"type\": \"large500_yearly\",\n      \"hosts\": 9\n    }\n  ],\n  \"plan_webinar\": [\n    {\n      \"type\": \"webinar100_monthly\",\n      \"hosts\": 9\n    },\n    {\n      \"type\": \"webinar500_yearly\",\n      \"hosts\": 9\n    },\n    {\n      \"type\": \"webinar1000_yearly\",\n      \"hosts\": 9\n    },\n    {\n      \"type\": \"webinar3000_monthly\",\n      \"hosts\": 9\n    },\n    {\n      \"type\": \"webinar5000_monthly\",\n      \"hosts\": 9\n    },\n    {\n      \"type\": \"webinar10000_monthly\",\n      \"hosts\": 9\n    }\n  ],\n  \"plan_recording\": \"cmr_monthly_commitment_500\",\n  \"plan_audio\": {\n    \"type\": \"tollfree_monthly_commitment_100\",\n    \"tollfree_country\": \"AT\",\n    \"premium_country\": \"TW\",\n    \"callout\": 1,\n    \"ddi_numbers\": 66\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "10b779c3-c1e7-420f-b90b-b0ddcd5bb9c5",
+          "name": "account Plan Update",
+          "request": {
+            "name": "account Plan Update",
+            "description": {
+              "content": "Update a plan for a sub account of the master account on Zoom.\n\n<aside class=\"notice\">Only for the sub account which is a paid account and paid by master account.</aside>\n\n<aside class=\"notice\">Could update a base plan or an additional plan.</aside>\n\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ma",
+                "account",
+                "plan",
+                "update"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "account_id",
+                  "value": "<string>",
+                  "description": "(Required) The sub account ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "plan",
+                  "value": "<string>",
+                  "description": "(Required) A Base Plan or an Additional Plan. See [Plans](#plans) for more details"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "1",
+                  "description": "(Required) Plan Type. 1 means Base Plan, 2 means Additional Plan."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f9d29c40-16df-4b1f-b725-c48f0b58beca",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ma",
+                    "account",
+                    "plan",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The sub account ID.",
+                        "type": "text/plain"
+                      },
+                      "key": "account_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) A Base Plan or an Additional Plan. See [Plans](#plans) for more details",
+                        "type": "text/plain"
+                      },
+                      "key": "plan",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Plan Type. 1 means Base Plan, 2 means Additional Plan.",
+                        "type": "text/plain"
+                      },
+                      "key": "type",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"w40hUJRpRmmkx4uPXczdHg\",\n  \"updated_at\": \"2012-11-25T12:00:00.000Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c4284a6a-7c07-4304-96eb-061b2263ecf4",
+          "name": "account Update",
+          "request": {
+            "name": "account Update",
+            "description": {
+              "content": "Update a sub account of the master account on Zoom, return the updated sub account id.\n\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ma",
+                "account",
+                "update"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "account_id",
+                  "value": "<string>",
+                  "description": "(Required) The sub account ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "enable_share_rc",
+                  "value": "<string>",
+                  "description": "Enable Share Virtual Room Connector."
+                },
+                {
+                  "disabled": false,
+                  "key": "share_rc",
+                  "value": "<string>",
+                  "description": "Virtual Room Connector, multiple value separated by comma."
+                },
+                {
+                  "disabled": false,
+                  "key": "enable_share_mc",
+                  "value": "<string>",
+                  "description": "Enable Share Meeting Connector."
+                },
+                {
+                  "disabled": false,
+                  "key": "share_mc",
+                  "value": "<string>",
+                  "description": "Meeting Connector, multiple value separated by comma."
+                },
+                {
+                  "disabled": false,
+                  "key": "pay_mode",
+                  "value": "<string>",
+                  "description": "Who will pay for this account? 0 means Sub Account Holders Pays, 1 means Master Account Holder Pays."
+                },
+                {
+                  "disabled": false,
+                  "key": "collection_method",
+                  "value": "<string>",
+                  "description": "Collection Method? 0 means Automatic (billing online), 1 means Manual (send invoice)."
+                },
+                {
+                  "disabled": false,
+                  "key": "enable_pstn",
+                  "value": "true",
+                  "description": "The value should be true or false, by default is true."
+                },
+                {
+                  "disabled": false,
+                  "key": "enable_call_out",
+                  "value": "false",
+                  "description": "The value should be true or false. If it is true, the user under this account will follow MA call out type."
+                },
+                {
+                  "disabled": false,
+                  "key": "enable_enforce_login",
+                  "value": "false",
+                  "description": "Only signed-in users can join this meeting."
+                },
+                {
+                  "disabled": false,
+                  "key": "enable_enforce_login_sd",
+                  "value": "false",
+                  "description": "Only signed-in users with specified domains can join meetings."
+                },
+                {
+                  "disabled": false,
+                  "key": "enforce_login_domains",
+                  "value": "<string>",
+                  "description": "Domains of signed-in users."
+                },
+                {
+                  "disabled": false,
+                  "key": "meeting_capacity",
+                  "value": "<string>",
+                  "description": "Account’ meeting capacity, max of 100."
+                },
+                {
+                  "disabled": false,
+                  "key": "disable_cmr_reminder",
+                  "value": "false",
+                  "description": "Disable cloud recording reminder."
+                },
+                {
+                  "disabled": false,
+                  "key": "enable_only_host_download_cmr",
+                  "value": "false",
+                  "description": "Enable Only the host can download cloud recordings."
+                },
+                {
+                  "disabled": false,
+                  "key": "enable_same_account_access_cmr",
+                  "value": "false",
+                  "description": "Enable Only users on my account can access cloud recordings."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c5aa000d-edf5-4a3e-94eb-34c0594defc4",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ma",
+                    "account",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The sub account ID.",
+                        "type": "text/plain"
+                      },
+                      "key": "account_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Enable Share Virtual Room Connector.",
+                        "type": "text/plain"
+                      },
+                      "key": "enable_share_rc",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Virtual Room Connector, multiple value separated by comma.",
+                        "type": "text/plain"
+                      },
+                      "key": "share_rc",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Enable Share Meeting Connector.",
+                        "type": "text/plain"
+                      },
+                      "key": "enable_share_mc",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Meeting Connector, multiple value separated by comma.",
+                        "type": "text/plain"
+                      },
+                      "key": "share_mc",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Who will pay for this account? 0 means Sub Account Holders Pays, 1 means Master Account Holder Pays.",
+                        "type": "text/plain"
+                      },
+                      "key": "pay_mode",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Collection Method? 0 means Automatic (billing online), 1 means Manual (send invoice).",
+                        "type": "text/plain"
+                      },
+                      "key": "collection_method",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The value should be true or false, by default is true.",
+                        "type": "text/plain"
+                      },
+                      "key": "enable_pstn",
+                      "value": "true"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The value should be true or false. If it is true, the user under this account will follow MA call out type.",
+                        "type": "text/plain"
+                      },
+                      "key": "enable_call_out",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Only signed-in users can join this meeting.",
+                        "type": "text/plain"
+                      },
+                      "key": "enable_enforce_login",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Only signed-in users with specified domains can join meetings.",
+                        "type": "text/plain"
+                      },
+                      "key": "enable_enforce_login_sd",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Domains of signed-in users.",
+                        "type": "text/plain"
+                      },
+                      "key": "enforce_login_domains",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Account’ meeting capacity, max of 100.",
+                        "type": "text/plain"
+                      },
+                      "key": "meeting_capacity",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Disable cloud recording reminder.",
+                        "type": "text/plain"
+                      },
+                      "key": "disable_cmr_reminder",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Enable Only the host can download cloud recordings.",
+                        "type": "text/plain"
+                      },
+                      "key": "enable_only_host_download_cmr",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Enable Only users on my account can access cloud recordings.",
+                        "type": "text/plain"
+                      },
+                      "key": "enable_same_account_access_cmr",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"unique_id\",\n  \"updated_at\": \"2012-11-25T12:00:00.000Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.zoom.us/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a1753ae1-0f55-48e8-8ca7-aa6fa024e051",
+    "name": "Zoom / Account API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Needs description.\n\nContact Support:\n Name: Zoom Developers\n Email: developer@zoom.us",
+      "type": "text/plain"
+    }
+  }
+}

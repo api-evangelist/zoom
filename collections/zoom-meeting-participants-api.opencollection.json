@@ -1,0 +1,86 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zoom / Account Meeting Participants API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Meeting Participants",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zoom List Meeting Participants",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.zoom.us/v1/meetings/:meetingId/participants",
+            "params": [
+              {
+                "name": "meetingId",
+                "value": "",
+                "type": "path",
+                "description": "The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned per API call. Maximum is 300."
+              },
+              {
+                "name": "next_page_token",
+                "value": "",
+                "type": "query",
+                "description": "The next page token to paginate through large result sets. A next_page_token is returned in the response when a result set exceeds the page_size."
+              },
+              {
+                "name": "include_fields",
+                "value": "registrant_id",
+                "type": "query",
+                "description": "Provide `registrant_id` to include the registrant_id field in the response."
+              }
+            ]
+          },
+          "docs": "List participants from a past meeting instance. Only available for paid accounts with the Dashboard feature enabled."
+        },
+        {
+          "info": {
+            "name": "Zoom List Past Meeting Participants",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.zoom.us/v1/past_meetings/:meetingId/participants",
+            "params": [
+              {
+                "name": "meetingId",
+                "value": "500123",
+                "type": "path",
+                "description": "The meeting UUID."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned per API call. Maximum is 300."
+              },
+              {
+                "name": "next_page_token",
+                "value": "",
+                "type": "query",
+                "description": "The next page token to paginate through large result sets. A next_page_token is returned in the response when a result set exceeds the page_size."
+              }
+            ]
+          },
+          "docs": "Retrieve information on participants from a past meeting. The API does not return results if the meeting is less than 5 minutes old."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

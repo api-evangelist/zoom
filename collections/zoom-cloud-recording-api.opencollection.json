@@ -1,0 +1,142 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zoom / Account Cloud Recording API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Cloud Recording",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "mcRecordingList",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v1/mc/recording/list",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "host_id",
+                  "value": ""
+                },
+                {
+                  "name": "meeting_number",
+                  "value": ""
+                },
+                {
+                  "name": "from",
+                  "value": ""
+                },
+                {
+                  "name": "to",
+                  "value": ""
+                },
+                {
+                  "name": "page_size",
+                  "value": ""
+                },
+                {
+                  "name": "page_number",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Lists all the cloud recordings meetings on a Meeting Connector\n\n"
+        },
+        {
+          "info": {
+            "name": "recordingDelete",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v1/recording/delete",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "meeting_id",
+                  "value": ""
+                },
+                {
+                  "name": "file_id",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Delete recorded meeting either on Zoom cloud or on-premise.\n\n"
+        },
+        {
+          "info": {
+            "name": "recordingGet",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v1/recording/get",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "meeting_id",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Get the recorded meeting on either Zoom cloud or on-prem.\n\n"
+        },
+        {
+          "info": {
+            "name": "recordingList",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v1/recording/list",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "host_id",
+                  "value": ""
+                },
+                {
+                  "name": "meeting_number",
+                  "value": ""
+                },
+                {
+                  "name": "from",
+                  "value": ""
+                },
+                {
+                  "name": "to",
+                  "value": ""
+                },
+                {
+                  "name": "page_size",
+                  "value": ""
+                },
+                {
+                  "name": "page_number",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "List all the cloud recording meetings on Zoom.\n\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

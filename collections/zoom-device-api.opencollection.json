@@ -1,0 +1,130 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zoom / Account Device API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Device",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "deviceDeviceCreate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v1/h323/device/create",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "name",
+                  "value": ""
+                },
+                {
+                  "name": "ip",
+                  "value": ""
+                },
+                {
+                  "name": "protocol_type",
+                  "value": ""
+                },
+                {
+                  "name": "encryption_type",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Create a H.323/SIP Device on your Zoom account.\n\n"
+        },
+        {
+          "info": {
+            "name": "deviceDeviceDelete",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v1/h323/device/delete",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "id",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Delete a H.323/SIP Device on your Zoom account.\n\n"
+        },
+        {
+          "info": {
+            "name": "deviceDeviceList",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v1/h323/device/list",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "page_size",
+                  "value": ""
+                },
+                {
+                  "name": "page_number",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "List H.323/SIP Devices on your Zoom account.\n\n"
+        },
+        {
+          "info": {
+            "name": "deviceDeviceUpdate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v1/h323/device/update",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "id",
+                  "value": ""
+                },
+                {
+                  "name": "name",
+                  "value": ""
+                },
+                {
+                  "name": "ip",
+                  "value": ""
+                },
+                {
+                  "name": "protocol_type",
+                  "value": ""
+                },
+                {
+                  "name": "encryption_type",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Update a H.323/SIP Device on your Zoom account.\n\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

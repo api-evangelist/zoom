@@ -1,0 +1,74 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zoom / Account Meeting Recordings API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Meeting Recordings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zoom Get Meeting Recordings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.zoom.us/v1/meetings/:meetingId/recordings",
+            "params": [
+              {
+                "name": "meetingId",
+                "value": "",
+                "type": "path",
+                "description": "The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+              },
+              {
+                "name": "include_fields",
+                "value": "example_value",
+                "type": "query",
+                "description": "Additional fields to include in the response."
+              },
+              {
+                "name": "ttl",
+                "value": "10",
+                "type": "query",
+                "description": "Time to live in seconds for the download URL."
+              }
+            ]
+          },
+          "docs": "Retrieve all recordings for a specific meeting. Cloud recordings are available to paid accounts with cloud recording enabled."
+        },
+        {
+          "info": {
+            "name": "Zoom Delete Meeting Recordings",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.zoom.us/v1/meetings/:meetingId/recordings",
+            "params": [
+              {
+                "name": "meetingId",
+                "value": "",
+                "type": "path",
+                "description": "The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+              },
+              {
+                "name": "action",
+                "value": "trash",
+                "type": "query",
+                "description": "Delete action. `trash` moves to trash. `delete` permanently deletes."
+              }
+            ]
+          },
+          "docs": "Delete all recording files of a meeting. The recording files will be moved to trash and permanently deleted after 30 days."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

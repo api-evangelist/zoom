@@ -1,0 +1,1382 @@
+{
+  "item": [
+    {
+      "id": "7e1c805f-2428-48a5-90be-a07d90dd2898",
+      "name": "Meeting Polls",
+      "description": {
+        "content": "Create and manage polls for Zoom meetings.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "37ea2b38-cd9d-4ac8-bd32-fa041d414295",
+          "name": "Zoom List Meeting Polls",
+          "request": {
+            "name": "Zoom List Meeting Polls",
+            "description": {
+              "content": "List all polls for a meeting.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "meetings",
+                ":meetingId",
+                "polls"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "anonymous",
+                  "value": "<boolean>",
+                  "description": "Whether to query anonymous polls."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "meetingId",
+                  "description": "(Required) The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "caf0ccbb-9d57-4548-aa1f-2e4c3dae3c5c",
+              "name": "Successfully retrieved meeting polls.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meetings",
+                    ":meetingId",
+                    "polls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "anonymous",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total_records\": 10,\n  \"polls\": [\n    {\n      \"id\": \"abc123\",\n      \"title\": \"Example Title\",\n      \"anonymous\": true,\n      \"status\": \"notstart\",\n      \"poll_type\": 1,\n      \"questions\": [\n        {}\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3496bc26-97c7-4bf6-842a-e9165ef8d3e3",
+              "name": "Bad request. The request was invalid or cannot be served.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meetings",
+                    ":meetingId",
+                    "polls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "anonymous",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 10,\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "237c9f42-2013-4a21-9a32-01dbbb947f58",
+              "name": "Unauthorized. The request requires authentication.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meetings",
+                    ":meetingId",
+                    "polls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "anonymous",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 10,\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "08d1b8d2-52e2-47fd-9932-34ba9e073951",
+              "name": "Not found. The requested resource could not be found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meetings",
+                    ":meetingId",
+                    "polls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "anonymous",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 10,\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7e04ae70-ff66-4cc9-8f63-ce62f1651a2c",
+          "name": "Zoom Create a Meeting Poll",
+          "request": {
+            "name": "Zoom Create a Meeting Poll",
+            "description": {
+              "content": "Create a poll for a meeting. Meeting must be a scheduled meeting. Instant meetings do not have polling features enabled.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "meetings",
+                ":meetingId",
+                "polls"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "meetingId",
+                  "description": "(Required) The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"<string>\",\n  \"anonymous\": false,\n  \"poll_type\": 1,\n  \"questions\": [\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"answer_required\": \"<boolean>\",\n      \"answers\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"right_answers\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"prompts\": [\n        {\n          \"prompt_question\": \"<string>\",\n          \"prompt_right_answers\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"prompt_question\": \"<string>\",\n          \"prompt_right_answers\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"rating_min_value\": \"<integer>\",\n      \"rating_max_value\": \"<integer>\",\n      \"rating_min_label\": \"<string>\",\n      \"rating_max_label\": \"<string>\",\n      \"answer_min_character\": \"<integer>\",\n      \"answer_max_character\": \"<integer>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"answer_required\": \"<boolean>\",\n      \"answers\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"right_answers\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"prompts\": [\n        {\n          \"prompt_question\": \"<string>\",\n          \"prompt_right_answers\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"prompt_question\": \"<string>\",\n          \"prompt_right_answers\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"rating_min_value\": \"<integer>\",\n      \"rating_max_value\": \"<integer>\",\n      \"rating_min_label\": \"<string>\",\n      \"rating_max_label\": \"<string>\",\n      \"answer_min_character\": \"<integer>\",\n      \"answer_max_character\": \"<integer>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7c10d082-a531-482d-b1c8-baa605b507ae",
+              "name": "Poll created successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meetings",
+                    ":meetingId",
+                    "polls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"Example Title\",\n  \"anonymous\": true,\n  \"poll_type\": 1,\n  \"questions\": [\n    {\n      \"name\": \"Example Title\",\n      \"type\": \"single\",\n      \"answer_required\": true,\n      \"answers\": {},\n      \"right_answers\": {},\n      \"prompts\": {},\n      \"rating_min_value\": 10,\n      \"rating_max_value\": 10,\n      \"rating_min_label\": \"example_value\",\n      \"rating_max_label\": \"example_value\",\n      \"answer_min_character\": 10,\n      \"answer_max_character\": 10\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"abc123\",\n  \"title\": \"Example Title\",\n  \"anonymous\": true,\n  \"status\": \"notstart\",\n  \"poll_type\": 1,\n  \"questions\": [\n    {\n      \"name\": \"Example Title\",\n      \"type\": \"single\",\n      \"answer_required\": true,\n      \"answers\": {},\n      \"right_answers\": {},\n      \"prompts\": {},\n      \"rating_min_value\": 10,\n      \"rating_max_value\": 10,\n      \"rating_min_label\": \"example_value\",\n      \"rating_max_label\": \"example_value\",\n      \"answer_min_character\": 10,\n      \"answer_max_character\": 10\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ddd8ed05-edef-4c04-9741-a6939c5f3388",
+              "name": "Bad request. The request was invalid or cannot be served.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meetings",
+                    ":meetingId",
+                    "polls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"Example Title\",\n  \"anonymous\": true,\n  \"poll_type\": 1,\n  \"questions\": [\n    {\n      \"name\": \"Example Title\",\n      \"type\": \"single\",\n      \"answer_required\": true,\n      \"answers\": {},\n      \"right_answers\": {},\n      \"prompts\": {},\n      \"rating_min_value\": 10,\n      \"rating_max_value\": 10,\n      \"rating_min_label\": \"example_value\",\n      \"rating_max_label\": \"example_value\",\n      \"answer_min_character\": 10,\n      \"answer_max_character\": 10\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 10,\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ead8677c-fe70-4d58-91b7-1ea2206c85fb",
+              "name": "Unauthorized. The request requires authentication.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meetings",
+                    ":meetingId",
+                    "polls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"Example Title\",\n  \"anonymous\": true,\n  \"poll_type\": 1,\n  \"questions\": [\n    {\n      \"name\": \"Example Title\",\n      \"type\": \"single\",\n      \"answer_required\": true,\n      \"answers\": {},\n      \"right_answers\": {},\n      \"prompts\": {},\n      \"rating_min_value\": 10,\n      \"rating_max_value\": 10,\n      \"rating_min_label\": \"example_value\",\n      \"rating_max_label\": \"example_value\",\n      \"answer_min_character\": 10,\n      \"answer_max_character\": 10\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 10,\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "32dbed7e-0ad2-4e00-93dc-796856299541",
+              "name": "Not found. The requested resource could not be found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meetings",
+                    ":meetingId",
+                    "polls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"Example Title\",\n  \"anonymous\": true,\n  \"poll_type\": 1,\n  \"questions\": [\n    {\n      \"name\": \"Example Title\",\n      \"type\": \"single\",\n      \"answer_required\": true,\n      \"answers\": {},\n      \"right_answers\": {},\n      \"prompts\": {},\n      \"rating_min_value\": 10,\n      \"rating_max_value\": 10,\n      \"rating_min_label\": \"example_value\",\n      \"rating_max_label\": \"example_value\",\n      \"answer_min_character\": 10,\n      \"answer_max_character\": 10\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 10,\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f195e03f-3a7e-4558-b3d2-835d94c416b0",
+          "name": "Zoom Get a Meeting Poll",
+          "request": {
+            "name": "Zoom Get a Meeting Poll",
+            "description": {
+              "content": "Retrieve details of a specific meeting poll.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "meetings",
+                ":meetingId",
+                "polls",
+                ":pollId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "meetingId",
+                  "description": "(Required) The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "pollId",
+                  "description": "(Required) The poll ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e7dce673-1c4e-4595-94bd-969be7770263",
+              "name": "Successfully retrieved the poll.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meetings",
+                    ":meetingId",
+                    "polls",
+                    ":pollId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "pollId",
+                      "description": "(Required) The poll ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"abc123\",\n  \"title\": \"Example Title\",\n  \"anonymous\": true,\n  \"status\": \"notstart\",\n  \"poll_type\": 1,\n  \"questions\": [\n    {\n      \"name\": \"Example Title\",\n      \"type\": \"single\",\n      \"answer_required\": true,\n      \"answers\": {},\n      \"right_answers\": {},\n      \"prompts\": {},\n      \"rating_min_value\": 10,\n      \"rating_max_value\": 10,\n      \"rating_min_label\": \"example_value\",\n      \"rating_max_label\": \"example_value\",\n      \"answer_min_character\": 10,\n      \"answer_max_character\": 10\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9c4c1b91-340e-448a-b736-fa17b6eacc80",
+              "name": "Bad request. The request was invalid or cannot be served.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meetings",
+                    ":meetingId",
+                    "polls",
+                    ":pollId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "pollId",
+                      "description": "(Required) The poll ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 10,\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "131781c5-8033-4440-a507-c6ffc84cbf9b",
+              "name": "Unauthorized. The request requires authentication.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meetings",
+                    ":meetingId",
+                    "polls",
+                    ":pollId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "pollId",
+                      "description": "(Required) The poll ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 10,\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "48491714-44a9-4409-812e-d064e84c423e",
+              "name": "Not found. The requested resource could not be found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meetings",
+                    ":meetingId",
+                    "polls",
+                    ":pollId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "pollId",
+                      "description": "(Required) The poll ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 10,\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7982479f-920b-43be-b63d-e9d30c96ab12",
+          "name": "Zoom Update a Meeting Poll",
+          "request": {
+            "name": "Zoom Update a Meeting Poll",
+            "description": {
+              "content": "Update a specific meeting poll.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "meetings",
+                ":meetingId",
+                "polls",
+                ":pollId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "meetingId",
+                  "description": "(Required) The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "pollId",
+                  "description": "(Required) The poll ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"<string>\",\n  \"anonymous\": false,\n  \"poll_type\": 1,\n  \"questions\": [\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"answer_required\": \"<boolean>\",\n      \"answers\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"right_answers\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"prompts\": [\n        {\n          \"prompt_question\": \"<string>\",\n          \"prompt_right_answers\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"prompt_question\": \"<string>\",\n          \"prompt_right_answers\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"rating_min_value\": \"<integer>\",\n      \"rating_max_value\": \"<integer>\",\n      \"rating_min_label\": \"<string>\",\n      \"rating_max_label\": \"<string>\",\n      \"answer_min_character\": \"<integer>\",\n      \"answer_max_character\": \"<integer>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"answer_required\": \"<boolean>\",\n      \"answers\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"right_answers\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"prompts\": [\n        {\n          \"prompt_question\": \"<string>\",\n          \"prompt_right_answers\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"prompt_question\": \"<string>\",\n          \"prompt_right_answers\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"rating_min_value\": \"<integer>\",\n      \"rating_max_value\": \"<integer>\",\n      \"rating_min_label\": \"<string>\",\n      \"rating_max_label\": \"<string>\",\n      \"answer_min_character\": \"<integer>\",\n      \"answer_max_character\": \"<integer>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ea76d25e-e1dd-4b9f-9957-c4ec80a63dcc",
+              "name": "Poll updated successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meetings",
+                    ":meetingId",
+                    "polls",
+                    ":pollId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "pollId",
+                      "description": "(Required) The poll ID."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"Example Title\",\n  \"anonymous\": true,\n  \"poll_type\": 1,\n  \"questions\": [\n    {\n      \"name\": \"Example Title\",\n      \"type\": \"single\",\n      \"answer_required\": true,\n      \"answers\": {},\n      \"right_answers\": {},\n      \"prompts\": {},\n      \"rating_min_value\": 10,\n      \"rating_max_value\": 10,\n      \"rating_min_label\": \"example_value\",\n      \"rating_max_label\": \"example_value\",\n      \"answer_min_character\": 10,\n      \"answer_max_character\": 10\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d419dd52-9d55-463e-963a-820a33391ef8",
+              "name": "Bad request. The request was invalid or cannot be served.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meetings",
+                    ":meetingId",
+                    "polls",
+                    ":pollId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "pollId",
+                      "description": "(Required) The poll ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"Example Title\",\n  \"anonymous\": true,\n  \"poll_type\": 1,\n  \"questions\": [\n    {\n      \"name\": \"Example Title\",\n      \"type\": \"single\",\n      \"answer_required\": true,\n      \"answers\": {},\n      \"right_answers\": {},\n      \"prompts\": {},\n      \"rating_min_value\": 10,\n      \"rating_max_value\": 10,\n      \"rating_min_label\": \"example_value\",\n      \"rating_max_label\": \"example_value\",\n      \"answer_min_character\": 10,\n      \"answer_max_character\": 10\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 10,\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "74dd948e-1ac2-483e-958f-c2ec37d66e87",
+              "name": "Unauthorized. The request requires authentication.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meetings",
+                    ":meetingId",
+                    "polls",
+                    ":pollId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "pollId",
+                      "description": "(Required) The poll ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"Example Title\",\n  \"anonymous\": true,\n  \"poll_type\": 1,\n  \"questions\": [\n    {\n      \"name\": \"Example Title\",\n      \"type\": \"single\",\n      \"answer_required\": true,\n      \"answers\": {},\n      \"right_answers\": {},\n      \"prompts\": {},\n      \"rating_min_value\": 10,\n      \"rating_max_value\": 10,\n      \"rating_min_label\": \"example_value\",\n      \"rating_max_label\": \"example_value\",\n      \"answer_min_character\": 10,\n      \"answer_max_character\": 10\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 10,\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "72e8a81f-34f1-488d-98c1-6c7d99bfc663",
+              "name": "Not found. The requested resource could not be found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meetings",
+                    ":meetingId",
+                    "polls",
+                    ":pollId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "pollId",
+                      "description": "(Required) The poll ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"Example Title\",\n  \"anonymous\": true,\n  \"poll_type\": 1,\n  \"questions\": [\n    {\n      \"name\": \"Example Title\",\n      \"type\": \"single\",\n      \"answer_required\": true,\n      \"answers\": {},\n      \"right_answers\": {},\n      \"prompts\": {},\n      \"rating_min_value\": 10,\n      \"rating_max_value\": 10,\n      \"rating_min_label\": \"example_value\",\n      \"rating_max_label\": \"example_value\",\n      \"answer_min_character\": 10,\n      \"answer_max_character\": 10\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 10,\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8a52e0d9-1669-4f35-9109-fbe905f5b241",
+          "name": "Zoom Delete a Meeting Poll",
+          "request": {
+            "name": "Zoom Delete a Meeting Poll",
+            "description": {
+              "content": "Delete a specific meeting poll.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "meetings",
+                ":meetingId",
+                "polls",
+                ":pollId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "meetingId",
+                  "description": "(Required) The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "pollId",
+                  "description": "(Required) The poll ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f7b2d34f-285d-418e-8b3b-f09cb101e3c2",
+              "name": "Poll deleted successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meetings",
+                    ":meetingId",
+                    "polls",
+                    ":pollId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "pollId",
+                      "description": "(Required) The poll ID."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2b63273b-5702-4b2d-b25e-63dc92522352",
+              "name": "Bad request. The request was invalid or cannot be served.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meetings",
+                    ":meetingId",
+                    "polls",
+                    ":pollId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "pollId",
+                      "description": "(Required) The poll ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 10,\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b15a7ecf-e39d-4e1b-a011-a1d818388964",
+              "name": "Unauthorized. The request requires authentication.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meetings",
+                    ":meetingId",
+                    "polls",
+                    ":pollId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "pollId",
+                      "description": "(Required) The poll ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 10,\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bd9b35a3-b179-41a5-a8dc-c68c1c0a7cc9",
+              "name": "Not found. The requested resource could not be found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meetings",
+                    ":meetingId",
+                    "polls",
+                    ":pollId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "pollId",
+                      "description": "(Required) The poll ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 10,\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.zoom.us/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "5f474cf5-4b52-46ce-aa20-c22e5ba1aa30",
+    "name": "Zoom / Account Meeting Polls API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Needs description.\n\nContact Support:\n Name: Zoom Developers\n Email: developer@zoom.us",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,24 +1,52 @@
 {
   "opencollection": "1.0.0",
   "info": {
-    "name": "Zoom / Account Meeting API",
+    "name": "Zoom / Account Webinar API",
     "version": "1.0.0"
   },
   "items": [
     {
       "info": {
-        "name": "Meeting",
+        "name": "Webinar",
         "type": "folder"
       },
       "items": [
         {
           "info": {
-            "name": "meetingCreate",
+            "name": "webinarAttendeesList",
             "type": "http"
           },
           "http": {
             "method": "POST",
-            "url": "https://api.zoom.us/v1/meeting/create",
+            "url": "https://api.zoom.us/v1/webinar/attendees/list",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "id",
+                  "value": ""
+                },
+                {
+                  "name": "host_id",
+                  "value": ""
+                },
+                {
+                  "name": "uuid",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Get ended webinar attendees\n\n"
+        },
+        {
+          "info": {
+            "name": "webinarCreate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v1/webinar/create",
             "body": {
               "type": "form-urlencoded",
               "data": [
@@ -27,11 +55,11 @@
                   "value": ""
                 },
                 {
-                  "name": "type",
+                  "name": "topic",
                   "value": ""
                 },
                 {
-                  "name": "topic",
+                  "name": "type",
                   "value": ""
                 },
                 {
@@ -55,7 +83,7 @@
                   "value": ""
                 },
                 {
-                  "name": "option_registration",
+                  "name": "approval_type",
                   "value": ""
                 },
                 {
@@ -63,11 +91,11 @@
                   "value": ""
                 },
                 {
-                  "name": "option_jbh",
+                  "name": "agenda",
                   "value": ""
                 },
                 {
-                  "name": "option_start_type",
+                  "name": "option_audio",
                   "value": ""
                 },
                 {
@@ -75,19 +103,11 @@
                   "value": ""
                 },
                 {
-                  "name": "option_participants_video",
+                  "name": "option_panelist_video",
                   "value": ""
                 },
                 {
-                  "name": "option_cn_meeting",
-                  "value": ""
-                },
-                {
-                  "name": "option_in_meeting",
-                  "value": ""
-                },
-                {
-                  "name": "option_audio",
+                  "name": "option_practice_session",
                   "value": ""
                 },
                 {
@@ -107,26 +127,30 @@
                   "value": ""
                 },
                 {
-                  "name": "option_use_pmi",
+                  "name": "option_auto_record_type",
                   "value": ""
                 },
                 {
-                  "name": "option_auto_record_type",
+                  "name": "panelists",
+                  "value": ""
+                },
+                {
+                  "name": "language",
                   "value": ""
                 }
               ]
             }
           },
-          "docs": "Create a meeting on Zoom, return the created meeting URL\n\n"
+          "docs": "Create a webinar on Zoom, return the created webinar start and join URL.\n\n"
         },
         {
           "info": {
-            "name": "meetingDelete",
+            "name": "webinarDelete",
             "type": "http"
           },
           "http": {
             "method": "POST",
-            "url": "https://api.zoom.us/v1/meeting/delete",
+            "url": "https://api.zoom.us/v1/webinar/delete",
             "body": {
               "type": "form-urlencoded",
               "data": [
@@ -145,16 +169,16 @@
               ]
             }
           },
-          "docs": "Delete a meeting on Zoom, return the deleted meeting ID.\n\n"
+          "docs": "Delete a webinar on Zoom, return the deleted webinar ID.\n\n"
         },
         {
           "info": {
-            "name": "meetingEnd",
+            "name": "webinarEnd",
             "type": "http"
           },
           "http": {
             "method": "POST",
-            "url": "https://api.zoom.us/v1/meeting/end",
+            "url": "https://api.zoom.us/v1/webinar/end",
             "body": {
               "type": "form-urlencoded",
               "data": [
@@ -169,16 +193,16 @@
               ]
             }
           },
-          "docs": "End a meeting on Zoom, return the deleted meeting ID.\n\n"
+          "docs": "End a Webinar on Zoom, return the deleted Webinar ID\n\n"
         },
         {
           "info": {
-            "name": "meetingGet",
+            "name": "webinarGet",
             "type": "http"
           },
           "http": {
             "method": "POST",
-            "url": "https://api.zoom.us/v1/meeting/get",
+            "url": "https://api.zoom.us/v1/webinar/get",
             "body": {
               "type": "form-urlencoded",
               "data": [
@@ -193,16 +217,16 @@
               ]
             }
           },
-          "docs": "Get a meeting on Zoom via meeting ID, return the meeting info.\n\n"
+          "docs": "Get a Webinar on Zoom via Webinar ID, return the Webinar info\n\n"
         },
         {
           "info": {
-            "name": "meetingList",
+            "name": "webinarList",
             "type": "http"
           },
           "http": {
             "method": "POST",
-            "url": "https://api.zoom.us/v1/meeting/list",
+            "url": "https://api.zoom.us/v1/webinar/list",
             "body": {
               "type": "form-urlencoded",
               "data": [
@@ -221,40 +245,124 @@
               ]
             }
           },
-          "docs": "List all the scheduled meetings on Zoom.\n\n"
+          "docs": "List all registrationless Webinars on Zoom\n\n"
         },
         {
           "info": {
-            "name": "meetingLive",
+            "name": "webinarListRegistration",
             "type": "http"
           },
           "http": {
             "method": "POST",
-            "url": "https://api.zoom.us/v1/meeting/live",
+            "url": "https://api.zoom.us/v1/webinar/list/registration",
             "body": {
               "type": "form-urlencoded",
               "data": [
                 {
-                  "name": "api_key",
+                  "name": "host_id",
                   "value": ""
                 },
                 {
-                  "name": "api_secret",
+                  "name": "page_size",
+                  "value": ""
+                },
+                {
+                  "name": "page_number",
                   "value": ""
                 }
               ]
             }
           },
-          "docs": "Lists the live meetings on Zoom.\n\n"
+          "docs": "List all the upcoming registration-based Webinars on Zoom\n\n"
         },
         {
           "info": {
-            "name": "meetingRegister",
+            "name": "webinarPanelists",
             "type": "http"
           },
           "http": {
             "method": "POST",
-            "url": "https://api.zoom.us/v1/meeting/register",
+            "url": "https://api.zoom.us/v1/webinar/panelists",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "id",
+                  "value": ""
+                },
+                {
+                  "name": "host_id",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Get all the Webinar Panelists on Zoom\n\n"
+        },
+        {
+          "info": {
+            "name": "webinarPolls",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v1/webinar/polls",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "id",
+                  "value": ""
+                },
+                {
+                  "name": "host_id",
+                  "value": ""
+                },
+                {
+                  "name": "uuid",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Get Ended Webinar Polls\n\n"
+        },
+        {
+          "info": {
+            "name": "webinarQuestions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v1/webinar/questions",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "id",
+                  "value": ""
+                },
+                {
+                  "name": "host_id",
+                  "value": ""
+                },
+                {
+                  "name": "uuid",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Get Ended Webinar Q&A\n\n"
+        },
+        {
+          "info": {
+            "name": "webinarRegister",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v1/webinar/register",
             "body": {
               "type": "form-urlencoded",
               "data": [
@@ -341,16 +449,44 @@
               ]
             }
           },
-          "docs": "Register for a meeting.\n\n"
+          "docs": "Register for a webinar\n\n"
         },
         {
           "info": {
-            "name": "meetingUpdate",
+            "name": "webinarRegistrantsApprove",
             "type": "http"
           },
           "http": {
             "method": "POST",
-            "url": "https://api.zoom.us/v1/meeting/update",
+            "url": "https://api.zoom.us/v1/webinar/registrants/approve",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "id",
+                  "value": ""
+                },
+                {
+                  "name": "host_id",
+                  "value": ""
+                },
+                {
+                  "name": "registrant_ids",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Approve pending registrants on Zoom Webinar.\n\n"
+        },
+        {
+          "info": {
+            "name": "webinarRegistrantsList",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v1/webinar/registrants/list",
             "body": {
               "type": "form-urlencoded",
               "data": [
@@ -367,7 +503,111 @@
                   "value": ""
                 },
                 {
+                  "name": "page_size",
+                  "value": ""
+                },
+                {
+                  "name": "page_number",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "List webinar registrants on Zoom, include pending approval registrants and approved registrants.\n\n"
+        },
+        {
+          "info": {
+            "name": "webinarRegistration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v1/webinar/registration",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "id",
+                  "value": ""
+                },
+                {
+                  "name": "host_id",
+                  "value": ""
+                },
+                {
+                  "name": "occurrence_id",
+                  "value": ""
+                },
+                {
+                  "name": "page_size",
+                  "value": ""
+                },
+                {
+                  "name": "page_number",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Gather Webinar registrants info\n\n"
+        },
+        {
+          "info": {
+            "name": "webinarRegistrationCancel",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v1/webinar/registration/cancel",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "id",
+                  "value": ""
+                },
+                {
+                  "name": "host_id",
+                  "value": ""
+                },
+                {
+                  "name": "occurrence_id",
+                  "value": ""
+                },
+                {
+                  "name": "registrant_ids",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Cancel Webinar Registration\n\n"
+        },
+        {
+          "info": {
+            "name": "webinarUpdate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v1/webinar/update",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "id",
+                  "value": ""
+                },
+                {
+                  "name": "host_id",
+                  "value": ""
+                },
+                {
                   "name": "topic",
+                  "value": ""
+                },
+                {
+                  "name": "type",
                   "value": ""
                 },
                 {
@@ -391,7 +631,7 @@
                   "value": ""
                 },
                 {
-                  "name": "option_registration",
+                  "name": "approval_type",
                   "value": ""
                 },
                 {
@@ -399,11 +639,11 @@
                   "value": ""
                 },
                 {
-                  "name": "option_jbh",
+                  "name": "agenda",
                   "value": ""
                 },
                 {
-                  "name": "option_start_type",
+                  "name": "option_audio",
                   "value": ""
                 },
                 {
@@ -411,19 +651,11 @@
                   "value": ""
                 },
                 {
-                  "name": "option_participants_video",
+                  "name": "option_panelist_video",
                   "value": ""
                 },
                 {
-                  "name": "option_cn_meeting",
-                  "value": ""
-                },
-                {
-                  "name": "option_in_meeting",
-                  "value": ""
-                },
-                {
-                  "name": "option_audio",
+                  "name": "option_practice_session",
                   "value": ""
                 },
                 {
@@ -443,17 +675,45 @@
                   "value": ""
                 },
                 {
-                  "name": "option_use_pmi",
+                  "name": "option_auto_record_type",
                   "value": ""
                 },
                 {
-                  "name": "option_auto_record_type",
+                  "name": "panelists",
+                  "value": ""
+                },
+                {
+                  "name": "language",
                   "value": ""
                 }
               ]
             }
           },
-          "docs": "Update meeting info on Zoom via meeting ID.\n\n"
+          "docs": "Update Webinar info on Zoom via Webinar ID\n\n"
+        },
+        {
+          "info": {
+            "name": "webinarUuidList",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v1/webinar/uuid/list",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "id",
+                  "value": ""
+                },
+                {
+                  "name": "host_id",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Get ended webinar UUID.\n\n"
         }
       ]
     }

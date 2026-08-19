@@ -1,0 +1,142 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zoom / Account Meeting Registrants API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Meeting Registrants",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zoom List Meeting Registrants",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.zoom.us/v1/meetings/:meetingId/registrants",
+            "params": [
+              {
+                "name": "meetingId",
+                "value": "",
+                "type": "path",
+                "description": "The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+              },
+              {
+                "name": "occurrence_id",
+                "value": "500123",
+                "type": "query",
+                "description": "Meeting occurrence ID for recurring meetings."
+              },
+              {
+                "name": "status",
+                "value": "pending",
+                "type": "query",
+                "description": "Registrant status filter."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned per API call. Maximum is 300."
+              },
+              {
+                "name": "next_page_token",
+                "value": "",
+                "type": "query",
+                "description": "The next page token to paginate through large result sets. A next_page_token is returned in the response when a result set exceeds the page_size."
+              }
+            ]
+          },
+          "docs": "List all registrants for a meeting. Returns the list of users who registered for the meeting."
+        },
+        {
+          "info": {
+            "name": "Zoom Add a Meeting Registrant",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v1/meetings/:meetingId/registrants",
+            "params": [
+              {
+                "name": "meetingId",
+                "value": "",
+                "type": "path",
+                "description": "The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+              },
+              {
+                "name": "occurrence_ids",
+                "value": "example_value",
+                "type": "query",
+                "description": "A comma-separated list of occurrence IDs for recurring meetings."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Register a participant for a meeting. A host or alternative host can also add registrants on behalf of other users."
+        },
+        {
+          "info": {
+            "name": "Zoom Update Registrant Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.zoom.us/v1/meetings/:meetingId/registrants/status",
+            "params": [
+              {
+                "name": "meetingId",
+                "value": "",
+                "type": "path",
+                "description": "The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+              },
+              {
+                "name": "occurrence_id",
+                "value": "500123",
+                "type": "query",
+                "description": "Meeting occurrence ID for recurring meetings."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Approve or deny a meeting registrant. Also allows cancellation of a previously approved registrant."
+        },
+        {
+          "info": {
+            "name": "Zoom Batch Add Meeting Registrants",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v1/meetings/:meetingId/batch_registrants",
+            "params": [
+              {
+                "name": "meetingId",
+                "value": "",
+                "type": "path",
+                "description": "The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Register up to 30 registrants at once for a meeting that requires registration."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

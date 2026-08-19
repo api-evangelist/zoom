@@ -1,0 +1,560 @@
+{
+  "item": [
+    {
+      "id": "89ca3c6e-5e9c-4239-9683-1e5eaf8f8972",
+      "name": "Device",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "421cb64e-a883-4b4b-89e7-0a99976cc286",
+          "name": "device Device Create",
+          "request": {
+            "name": "device Device Create",
+            "description": {
+              "content": "Create a H.323/SIP Device on your Zoom account.\n\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "h323",
+                "device",
+                "create"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "ip",
+                  "value": "<string>",
+                  "description": "(Required) IP Address or H.323 Extension."
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "(Required) Display Name."
+                },
+                {
+                  "disabled": false,
+                  "key": "protocol_type",
+                  "value": "1",
+                  "description": "Protocol type. 1 means H.323, 2 means SIP."
+                },
+                {
+                  "disabled": false,
+                  "key": "encryption_type",
+                  "value": "2",
+                  "description": "Encryption type. 0 means No, 1 means Yes, 2 means Auto."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7e26f388-8ade-45b1-b0cc-16f7c27c0788",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "h323",
+                    "device",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) IP Address or H.323 Extension.",
+                        "type": "text/plain"
+                      },
+                      "key": "ip",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Display Name.",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Protocol type. 1 means H.323, 2 means SIP.",
+                        "type": "text/plain"
+                      },
+                      "key": "protocol_type",
+                      "value": "1"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Encryption type. 0 means No, 1 means Yes, 2 means Auto.",
+                        "type": "text/plain"
+                      },
+                      "key": "encryption_type",
+                      "value": "2"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"unique_id\",\n  \"name\": \"New Device\",\n  \"ip\": \"192.168.1.10\",\n  \"protocol_type\": 1,\n  \"encryption_type\": 2\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e7b463b6-f1e1-497e-b7df-f5dbea2594ff",
+          "name": "device Device Delete",
+          "request": {
+            "name": "device Device Delete",
+            "description": {
+              "content": "Delete a H.323/SIP Device on your Zoom account.\n\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "h323",
+                "device",
+                "delete"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "(Required) Device ID."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "577b2007-f590-4b14-906b-0021a6377c30",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "h323",
+                    "device",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Device ID.",
+                        "type": "text/plain"
+                      },
+                      "key": "id",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"unique_id\",\n  \"deleted_at\": \"2017-03-14T09:27:15.000Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e7421581-a130-46cd-a631-0c8831a5a38f",
+          "name": "device Device List",
+          "request": {
+            "name": "device Device List",
+            "description": {
+              "content": "List H.323/SIP Devices on your Zoom account.\n\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "h323",
+                "device",
+                "list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "30",
+                  "description": "The amount of records returns within a single API call. Defaults to 30."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_number",
+                  "value": "1",
+                  "description": "Current page number of returned records. Default to 1."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5b45a984-e188-4a94-a412-5c0b1c8cb43d",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "h323",
+                    "device",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The amount of records returns within a single API call. Defaults to 30.",
+                        "type": "text/plain"
+                      },
+                      "key": "page_size",
+                      "value": "30"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Current page number of returned records. Default to 1.",
+                        "type": "text/plain"
+                      },
+                      "key": "page_number",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_count\": 1,\n  \"page_number\": 1,\n  \"page_size\": 30,\n  \"total_records\": 1,\n  \"devices\": [\n    {\n      \"id\": \"unique_id\",\n      \"name\": \"New Device\",\n      \"ip\": \"192.168.1.10\",\n      \"protocol_type\": 1,\n      \"encryption_type\": 2\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "43701dce-9962-403e-b478-d69dffc7dcc5",
+          "name": "device Device Update",
+          "request": {
+            "name": "device Device Update",
+            "description": {
+              "content": "Update a H.323/SIP Device on your Zoom account.\n\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "h323",
+                "device",
+                "update"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "(Required) Device ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Display Name."
+                },
+                {
+                  "disabled": false,
+                  "key": "ip",
+                  "value": "<string>",
+                  "description": "IP Address or H.323 Extension."
+                },
+                {
+                  "disabled": false,
+                  "key": "protocol_type",
+                  "value": "1",
+                  "description": "Protocol type. 1 means H.323, 2 means SIP."
+                },
+                {
+                  "disabled": false,
+                  "key": "encryption_type",
+                  "value": "2",
+                  "description": "Encryption type. 0 means No, 1 means Yes, 2 means Auto."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2da37e06-baa8-4d60-a6fc-eb2940fc96a8",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "h323",
+                    "device",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Device ID.",
+                        "type": "text/plain"
+                      },
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Display Name.",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "IP Address or H.323 Extension.",
+                        "type": "text/plain"
+                      },
+                      "key": "ip",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Protocol type. 1 means H.323, 2 means SIP.",
+                        "type": "text/plain"
+                      },
+                      "key": "protocol_type",
+                      "value": "1"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Encryption type. 0 means No, 1 means Yes, 2 means Auto.",
+                        "type": "text/plain"
+                      },
+                      "key": "encryption_type",
+                      "value": "2"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"unique_id\",\n  \"updated_at\": \"2017-03-14T09:27:03.000Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.zoom.us/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "6683e8c2-07ec-4697-84ad-1f4931d4fb73",
+    "name": "Zoom / Account Device API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Needs description.\n\nContact Support:\n Name: Zoom Developers\n Email: developer@zoom.us",
+      "type": "text/plain"
+    }
+  }
+}

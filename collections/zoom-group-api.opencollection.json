@@ -1,0 +1,202 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zoom / Account Group API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Group",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "groupCreate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v1/group/create",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "name",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Create a group on Zoom, return the new group info.\n\n"
+        },
+        {
+          "info": {
+            "name": "groupDelete",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v1/group/delete",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "id",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Delete a group on Zoom, return the deleted group ID.\n\n"
+        },
+        {
+          "info": {
+            "name": "groupEdit",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v1/group/edit",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "id",
+                  "value": ""
+                },
+                {
+                  "name": "name",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Edit a group on Zoom, return the new group info.\n\n"
+        },
+        {
+          "info": {
+            "name": "groupGet",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v1/group/get",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "id",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Get a group on Zoom via ID, return the group info.\n\n"
+        },
+        {
+          "info": {
+            "name": "groupList",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v1/group/list",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "api_key",
+                  "value": ""
+                },
+                {
+                  "name": "api_secret",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "List all groups on your Zoom account.\n\n"
+        },
+        {
+          "info": {
+            "name": "groupMemberAdd",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v1/group/member/add",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "id",
+                  "value": ""
+                },
+                {
+                  "name": "member_ids",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Add members to a group on Zoom.\n\n"
+        },
+        {
+          "info": {
+            "name": "groupMemberDelete",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v1/group/member/delete",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "id",
+                  "value": ""
+                },
+                {
+                  "name": "member_ids",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Delete members of a group on Zoom.\n\n"
+        },
+        {
+          "info": {
+            "name": "groupMemberList",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v1/group/member/list",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "id",
+                  "value": ""
+                },
+                {
+                  "name": "page_size",
+                  "value": ""
+                },
+                {
+                  "name": "page_number",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Lists the members of a group on Zoom.\n\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

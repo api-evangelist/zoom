@@ -1,0 +1,2279 @@
+{
+  "item": [
+    {
+      "id": "ceb9782b-3d18-46e0-bab3-fc929cd0747d",
+      "name": "Meetings",
+      "description": {
+        "content": "Create and manage Zoom meetings.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8f59a86b-0b95-4f0c-b1b6-5f3c35d83bec",
+          "name": "Zoom List Meetings",
+          "request": {
+            "name": "Zoom List Meetings",
+            "description": {
+              "content": "List all the meetings that were scheduled for a user. For user-level apps, pass the `me` value instead of the userId parameter.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":userId",
+                "meetings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "scheduled",
+                  "description": "The type of meeting. `scheduled` - All valid previous (unexpired) meetings, live meetings, and upcoming scheduled meetings. `live` - All the ongoing meetings. `upcoming` - All upcoming meetings including live meetings. `upcoming_meetings` - All upcoming meetings including live meetings. `previous_meetings` - All the previous meetings."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "30",
+                  "description": "The number of records returned per API call. Maximum is 300."
+                },
+                {
+                  "disabled": false,
+                  "key": "next_page_token",
+                  "value": "<string>",
+                  "description": "The next page token to paginate through large result sets. A next_page_token is returned in the response when a result set exceeds the page_size."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_number",
+                  "value": "1",
+                  "description": "The page number of the current results."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) The user ID or email address. Use `me` for the current user in user-level apps."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "266e155f-4392-49ed-8d34-5163797a8fe0",
+              "name": "Successfully retrieved the list of meetings.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":userId",
+                    "meetings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "scheduled"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "30"
+                    },
+                    {
+                      "key": "next_page_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_number",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) The user ID or email address. Use `me` for the current user in user-level apps."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_count\": 10,\n  \"page_number\": 10,\n  \"page_size\": 10,\n  \"total_records\": 10,\n  \"next_page_token\": \"example_value\",\n  \"meetings\": [\n    {\n      \"uuid\": \"500123\",\n      \"id\": \"abc123\",\n      \"host_id\": \"500123\",\n      \"topic\": \"example_value\",\n      \"start_time\": \"2026-01-15T10:30:00Z\",\n      \"duration\": 10,\n      \"timezone\": \"example_value\",\n      \"created_at\": \"2026-01-15T10:30:00Z\",\n      \"join_url\": \"https://www.example.com\",\n      \"agenda\": \"example_value\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d764ef70-c8c2-4396-a49b-0b8f3466f03e",
+              "name": "Bad request. The request was invalid or cannot be served.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":userId",
+                    "meetings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "scheduled"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "30"
+                    },
+                    {
+                      "key": "next_page_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_number",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) The user ID or email address. Use `me` for the current user in user-level apps."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 10,\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c2b20352-91f9-4cda-a31b-356e9db0f14b",
+              "name": "Unauthorized. The request requires authentication.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":userId",
+                    "meetings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "scheduled"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "30"
+                    },
+                    {
+                      "key": "next_page_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_number",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) The user ID or email address. Use `me` for the current user in user-level apps."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 10,\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "114f6be3-30c6-4319-852a-24dff37c9db2",
+              "name": "Not found. The requested resource could not be found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":userId",
+                    "meetings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "scheduled"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "30"
+                    },
+                    {
+                      "key": "next_page_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_number",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) The user ID or email address. Use `me` for the current user in user-level apps."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 10,\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "65821602-e9ba-42ee-ba30-f15a737ade36",
+          "name": "Zoom Create a Meeting",
+          "request": {
+            "name": "Zoom Create a Meeting",
+            "description": {
+              "content": "Create a meeting for a user. For user-level apps, pass the `me` value instead of the userId parameter. A meeting can be scheduled, instant, or recurring.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":userId",
+                "meetings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) The user ID or email address. Use `me` for the current user in user-level apps."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"topic\": \"<string>\",\n  \"type\": \"<integer>\",\n  \"pre_schedule\": false,\n  \"start_time\": \"<dateTime>\",\n  \"duration\": \"<integer>\",\n  \"schedule_for\": \"<string>\",\n  \"timezone\": \"<string>\",\n  \"password\": \"<string>\",\n  \"default_password\": false,\n  \"agenda\": \"<string>\",\n  \"tracking_fields\": [\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"recurrence\": {\n    \"type\": \"<integer>\",\n    \"repeat_interval\": \"<integer>\",\n    \"weekly_days\": \"<string>\",\n    \"monthly_day\": \"<integer>\",\n    \"monthly_week\": \"<integer>\",\n    \"monthly_week_day\": \"<integer>\",\n    \"end_times\": 1,\n    \"end_date_time\": \"<dateTime>\"\n  },\n  \"settings\": {\n    \"host_video\": true,\n    \"participant_video\": \"<boolean>\",\n    \"cn_meeting\": false,\n    \"in_meeting\": false,\n    \"join_before_host\": false,\n    \"jbh_time\": \"<integer>\",\n    \"mute_upon_entry\": false,\n    \"watermark\": false,\n    \"use_pmi\": false,\n    \"approval_type\": 2,\n    \"registration_type\": 1,\n    \"audio\": \"both\",\n    \"auto_recording\": \"none\",\n    \"enforce_login\": false,\n    \"enforce_login_domains\": \"<string>\",\n    \"alternative_hosts\": \"<string>\",\n    \"alternative_hosts_email_notification\": true,\n    \"close_registration\": false,\n    \"waiting_room\": false,\n    \"global_dial_in_countries\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"contact_name\": \"<string>\",\n    \"contact_email\": \"<email>\",\n    \"registrants_email_notification\": true,\n    \"registrants_confirmation_email\": true,\n    \"meeting_authentication\": false,\n    \"authentication_option\": \"<string>\",\n    \"authentication_domains\": \"<string>\",\n    \"authentication_name\": \"<string>\",\n    \"show_share_button\": \"<boolean>\",\n    \"allow_multiple_devices\": \"<boolean>\",\n    \"encryption_type\": \"enhanced_encryption\",\n    \"approved_or_denied_countries_or_regions\": {\n      \"enable\": \"<boolean>\",\n      \"method\": \"<string>\",\n      \"approved_list\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"denied_list\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"breakout_room\": {\n      \"enable\": \"<boolean>\",\n      \"rooms\": [\n        {\n          \"name\": \"<string>\",\n          \"participants\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"participants\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    },\n    \"language_interpretation\": {\n      \"enable\": \"<boolean>\",\n      \"interpreters\": [\n        {\n          \"email\": \"<email>\",\n          \"languages\": \"<string>\"\n        },\n        {\n          \"email\": \"<email>\",\n          \"languages\": \"<string>\"\n        }\n      ]\n    },\n    \"focus_mode\": \"<boolean>\",\n    \"meeting_invitees\": [\n      {\n        \"email\": \"<email>\"\n      },\n      {\n        \"email\": \"<email>\"\n      }\n    ],\n    \"private_meeting\": false,\n    \"email_notification\": true,\n    \"host_save_video_order\": \"<boolean>\",\n    \"continuous_meeting_chat\": {\n      \"enable\": \"<boolean>\",\n      \"auto_add_invited_external_users\": \"<boolean>\"\n    }\n  },\n  \"template_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fbe74541-eb82-4d41-80f7-4ef8b5db065b",
+              "name": "Meeting created successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":userId",
+                    "meetings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) The user ID or email address. Use `me` for the current user in user-level apps."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"topic\": \"example_value\",\n  \"type\": 1,\n  \"pre_schedule\": true,\n  \"start_time\": \"2026-01-15T10:30:00Z\",\n  \"duration\": 10,\n  \"schedule_for\": \"example_value\",\n  \"timezone\": \"example_value\",\n  \"password\": \"example_value\",\n  \"default_password\": true,\n  \"agenda\": \"example_value\",\n  \"tracking_fields\": [\n    {\n      \"field\": \"example_value\",\n      \"value\": \"example_value\"\n    }\n  ],\n  \"recurrence\": {\n    \"type\": 1,\n    \"repeat_interval\": 10,\n    \"weekly_days\": \"example_value\",\n    \"monthly_day\": 10,\n    \"monthly_week\": -1,\n    \"monthly_week_day\": 1,\n    \"end_times\": 10,\n    \"end_date_time\": \"2026-01-15T10:30:00Z\"\n  },\n  \"settings\": {\n    \"host_video\": true,\n    \"participant_video\": true,\n    \"cn_meeting\": true,\n    \"in_meeting\": true,\n    \"join_before_host\": true,\n    \"jbh_time\": 0,\n    \"mute_upon_entry\": true,\n    \"watermark\": true,\n    \"use_pmi\": true,\n    \"approval_type\": 0,\n    \"registration_type\": 1,\n    \"audio\": \"both\",\n    \"auto_recording\": \"local\",\n    \"enforce_login\": true,\n    \"enforce_login_domains\": \"example_value\",\n    \"alternative_hosts\": \"example_value\",\n    \"alternative_hosts_email_notification\": \"user@example.com\",\n    \"close_registration\": true,\n    \"waiting_room\": true,\n    \"global_dial_in_countries\": [\n      {}\n    ],\n    \"contact_name\": \"example_value\",\n    \"contact_email\": \"user@example.com\",\n    \"registrants_email_notification\": \"user@example.com\",\n    \"registrants_confirmation_email\": \"user@example.com\",\n    \"meeting_authentication\": true,\n    \"authentication_option\": \"example_value\",\n    \"authentication_domains\": \"example_value\",\n    \"authentication_name\": \"example_value\",\n    \"show_share_button\": true,\n    \"allow_multiple_devices\": true,\n    \"encryption_type\": \"enhanced_encryption\",\n    \"approved_or_denied_countries_or_regions\": {\n      \"enable\": true,\n      \"method\": \"approve\",\n      \"approved_list\": {},\n      \"denied_list\": {}\n    },\n    \"breakout_room\": {\n      \"enable\": true,\n      \"rooms\": {}\n    },\n    \"language_interpretation\": {\n      \"enable\": true,\n      \"interpreters\": {}\n    },\n    \"focus_mode\": true,\n    \"meeting_invitees\": [\n      {}\n    ],\n    \"private_meeting\": true,\n    \"email_notification\": \"user@example.com\",\n    \"host_save_video_order\": true,\n    \"continuous_meeting_chat\": {\n      \"enable\": true,\n      \"auto_add_invited_external_users\": true\n    }\n  },\n  \"template_id\": \"500123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uuid\": \"500123\",\n  \"id\": \"abc123\",\n  \"host_id\": \"500123\",\n  \"host_email\": \"user@example.com\",\n  \"topic\": \"example_value\",\n  \"type\": 1,\n  \"status\": \"waiting\",\n  \"start_time\": \"2026-01-15T10:30:00Z\",\n  \"duration\": 10,\n  \"timezone\": \"example_value\",\n  \"agenda\": \"example_value\",\n  \"created_at\": \"2026-01-15T10:30:00Z\",\n  \"start_url\": \"https://www.example.com\",\n  \"join_url\": \"https://www.example.com\",\n  \"password\": \"example_value\",\n  \"h323_password\": \"example_value\",\n  \"pstn_password\": \"example_value\",\n  \"encrypted_password\": \"example_value\",\n  \"settings\": {\n    \"host_video\": true,\n    \"participant_video\": true,\n    \"cn_meeting\": true,\n    \"in_meeting\": true,\n    \"join_before_host\": true,\n    \"jbh_time\": 0,\n    \"mute_upon_entry\": true,\n    \"watermark\": true,\n    \"use_pmi\": true,\n    \"approval_type\": 0,\n    \"registration_type\": 1,\n    \"audio\": \"both\",\n    \"auto_recording\": \"local\",\n    \"enforce_login\": true,\n    \"enforce_login_domains\": \"example_value\",\n    \"alternative_hosts\": \"example_value\",\n    \"alternative_hosts_email_notification\": \"user@example.com\",\n    \"close_registration\": true,\n    \"waiting_room\": true,\n    \"global_dial_in_countries\": [\n      {}\n    ],\n    \"contact_name\": \"example_value\",\n    \"contact_email\": \"user@example.com\",\n    \"registrants_email_notification\": \"user@example.com\",\n    \"registrants_confirmation_email\": \"user@example.com\",\n    \"meeting_authentication\": true,\n    \"authentication_option\": \"example_value\",\n    \"authentication_domains\": \"example_value\",\n    \"authentication_name\": \"example_value\",\n    \"show_share_button\": true,\n    \"allow_multiple_devices\": true,\n    \"encryption_type\": \"enhanced_encryption\",\n    \"approved_or_denied_countries_or_regions\": {\n      \"enable\": true,\n      \"method\": \"approve\",\n      \"approved_list\": {},\n      \"denied_list\": {}\n    },\n    \"breakout_room\": {\n      \"enable\": true,\n      \"rooms\": {}\n    },\n    \"language_interpretation\": {\n      \"enable\": true,\n      \"interpreters\": {}\n    },\n    \"focus_mode\": true,\n    \"meeting_invitees\": [\n      {}\n    ],\n    \"private_meeting\": true,\n    \"email_notification\": \"user@example.com\",\n    \"host_save_video_order\": true,\n    \"continuous_meeting_chat\": {\n      \"enable\": true,\n      \"auto_add_invited_external_users\": true\n    }\n  },\n  \"recurrence\": {\n    \"type\": 1,\n    \"repeat_interval\": 10,\n    \"weekly_days\": \"example_value\",\n    \"monthly_day\": 10,\n    \"monthly_week\": -1,\n    \"monthly_week_day\": 1,\n    \"end_times\": 10,\n    \"end_date_time\": \"2026-01-15T10:30:00Z\"\n  },\n  \"occurrences\": [\n    {\n      \"occurrence_id\": \"500123\",\n      \"start_time\": \"2026-01-15T10:30:00Z\",\n      \"duration\": 10,\n      \"status\": \"available\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8709564f-27e0-4ff4-99cf-070b0cac2750",
+              "name": "Bad request. The request was invalid or cannot be served.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":userId",
+                    "meetings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) The user ID or email address. Use `me` for the current user in user-level apps."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"topic\": \"example_value\",\n  \"type\": 1,\n  \"pre_schedule\": true,\n  \"start_time\": \"2026-01-15T10:30:00Z\",\n  \"duration\": 10,\n  \"schedule_for\": \"example_value\",\n  \"timezone\": \"example_value\",\n  \"password\": \"example_value\",\n  \"default_password\": true,\n  \"agenda\": \"example_value\",\n  \"tracking_fields\": [\n    {\n      \"field\": \"example_value\",\n      \"value\": \"example_value\"\n    }\n  ],\n  \"recurrence\": {\n    \"type\": 1,\n    \"repeat_interval\": 10,\n    \"weekly_days\": \"example_value\",\n    \"monthly_day\": 10,\n    \"monthly_week\": -1,\n    \"monthly_week_day\": 1,\n    \"end_times\": 10,\n    \"end_date_time\": \"2026-01-15T10:30:00Z\"\n  },\n  \"settings\": {\n    \"host_video\": true,\n    \"participant_video\": true,\n    \"cn_meeting\": true,\n    \"in_meeting\": true,\n    \"join_before_host\": true,\n    \"jbh_time\": 0,\n    \"mute_upon_entry\": true,\n    \"watermark\": true,\n    \"use_pmi\": true,\n    \"approval_type\": 0,\n    \"registration_type\": 1,\n    \"audio\": \"both\",\n    \"auto_recording\": \"local\",\n    \"enforce_login\": true,\n    \"enforce_login_domains\": \"example_value\",\n    \"alternative_hosts\": \"example_value\",\n    \"alternative_hosts_email_notification\": \"user@example.com\",\n    \"close_registration\": true,\n    \"waiting_room\": true,\n    \"global_dial_in_countries\": [\n      {}\n    ],\n    \"contact_name\": \"example_value\",\n    \"contact_email\": \"user@example.com\",\n    \"registrants_email_notification\": \"user@example.com\",\n    \"registrants_confirmation_email\": \"user@example.com\",\n    \"meeting_authentication\": true,\n    \"authentication_option\": \"example_value\",\n    \"authentication_domains\": \"example_value\",\n    \"authentication_name\": \"example_value\",\n    \"show_share_button\": true,\n    \"allow_multiple_devices\": true,\n    \"encryption_type\": \"enhanced_encryption\",\n    \"approved_or_denied_countries_or_regions\": {\n      \"enable\": true,\n      \"method\": \"approve\",\n      \"approved_list\": {},\n      \"denied_list\": {}\n    },\n    \"breakout_room\": {\n      \"enable\": true,\n      \"rooms\": {}\n    },\n    \"language_interpretation\": {\n      \"enable\": true,\n      \"interpreters\": {}\n    },\n    \"focus_mode\": true,\n    \"meeting_invitees\": [\n      {}\n    ],\n    \"private_meeting\": true,\n    \"email_notification\": \"user@example.com\",\n    \"host_save_video_order\": true,\n    \"continuous_meeting_chat\": {\n      \"enable\": true,\n      \"auto_add_invited_external_users\": true\n    }\n  },\n  \"template_id\": \"500123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 10,\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a94a8291-bc2c-458c-b56c-c678915eaf9d",
+              "name": "Unauthorized. The request requires authentication.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":userId",
+                    "meetings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) The user ID or email address. Use `me` for the current user in user-level apps."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"topic\": \"example_value\",\n  \"type\": 1,\n  \"pre_schedule\": true,\n  \"start_time\": \"2026-01-15T10:30:00Z\",\n  \"duration\": 10,\n  \"schedule_for\": \"example_value\",\n  \"timezone\": \"example_value\",\n  \"password\": \"example_value\",\n  \"default_password\": true,\n  \"agenda\": \"example_value\",\n  \"tracking_fields\": [\n    {\n      \"field\": \"example_value\",\n      \"value\": \"example_value\"\n    }\n  ],\n  \"recurrence\": {\n    \"type\": 1,\n    \"repeat_interval\": 10,\n    \"weekly_days\": \"example_value\",\n    \"monthly_day\": 10,\n    \"monthly_week\": -1,\n    \"monthly_week_day\": 1,\n    \"end_times\": 10,\n    \"end_date_time\": \"2026-01-15T10:30:00Z\"\n  },\n  \"settings\": {\n    \"host_video\": true,\n    \"participant_video\": true,\n    \"cn_meeting\": true,\n    \"in_meeting\": true,\n    \"join_before_host\": true,\n    \"jbh_time\": 0,\n    \"mute_upon_entry\": true,\n    \"watermark\": true,\n    \"use_pmi\": true,\n    \"approval_type\": 0,\n    \"registration_type\": 1,\n    \"audio\": \"both\",\n    \"auto_recording\": \"local\",\n    \"enforce_login\": true,\n    \"enforce_login_domains\": \"example_value\",\n    \"alternative_hosts\": \"example_value\",\n    \"alternative_hosts_email_notification\": \"user@example.com\",\n    \"close_registration\": true,\n    \"waiting_room\": true,\n    \"global_dial_in_countries\": [\n      {}\n    ],\n    \"contact_name\": \"example_value\",\n    \"contact_email\": \"user@example.com\",\n    \"registrants_email_notification\": \"user@example.com\",\n    \"registrants_confirmation_email\": \"user@example.com\",\n    \"meeting_authentication\": true,\n    \"authentication_option\": \"example_value\",\n    \"authentication_domains\": \"example_value\",\n    \"authentication_name\": \"example_value\",\n    \"show_share_button\": true,\n    \"allow_multiple_devices\": true,\n    \"encryption_type\": \"enhanced_encryption\",\n    \"approved_or_denied_countries_or_regions\": {\n      \"enable\": true,\n      \"method\": \"approve\",\n      \"approved_list\": {},\n      \"denied_list\": {}\n    },\n    \"breakout_room\": {\n      \"enable\": true,\n      \"rooms\": {}\n    },\n    \"language_interpretation\": {\n      \"enable\": true,\n      \"interpreters\": {}\n    },\n    \"focus_mode\": true,\n    \"meeting_invitees\": [\n      {}\n    ],\n    \"private_meeting\": true,\n    \"email_notification\": \"user@example.com\",\n    \"host_save_video_order\": true,\n    \"continuous_meeting_chat\": {\n      \"enable\": true,\n      \"auto_add_invited_external_users\": true\n    }\n  },\n  \"template_id\": \"500123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 10,\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "de9c093f-fb7f-42c7-aa85-19256a7b531e",
+              "name": "Not found. The requested resource could not be found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":userId",
+                    "meetings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) The user ID or email address. Use `me` for the current user in user-level apps."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"topic\": \"example_value\",\n  \"type\": 1,\n  \"pre_schedule\": true,\n  \"start_time\": \"2026-01-15T10:30:00Z\",\n  \"duration\": 10,\n  \"schedule_for\": \"example_value\",\n  \"timezone\": \"example_value\",\n  \"password\": \"example_value\",\n  \"default_password\": true,\n  \"agenda\": \"example_value\",\n  \"tracking_fields\": [\n    {\n      \"field\": \"example_value\",\n      \"value\": \"example_value\"\n    }\n  ],\n  \"recurrence\": {\n    \"type\": 1,\n    \"repeat_interval\": 10,\n    \"weekly_days\": \"example_value\",\n    \"monthly_day\": 10,\n    \"monthly_week\": -1,\n    \"monthly_week_day\": 1,\n    \"end_times\": 10,\n    \"end_date_time\": \"2026-01-15T10:30:00Z\"\n  },\n  \"settings\": {\n    \"host_video\": true,\n    \"participant_video\": true,\n    \"cn_meeting\": true,\n    \"in_meeting\": true,\n    \"join_before_host\": true,\n    \"jbh_time\": 0,\n    \"mute_upon_entry\": true,\n    \"watermark\": true,\n    \"use_pmi\": true,\n    \"approval_type\": 0,\n    \"registration_type\": 1,\n    \"audio\": \"both\",\n    \"auto_recording\": \"local\",\n    \"enforce_login\": true,\n    \"enforce_login_domains\": \"example_value\",\n    \"alternative_hosts\": \"example_value\",\n    \"alternative_hosts_email_notification\": \"user@example.com\",\n    \"close_registration\": true,\n    \"waiting_room\": true,\n    \"global_dial_in_countries\": [\n      {}\n    ],\n    \"contact_name\": \"example_value\",\n    \"contact_email\": \"user@example.com\",\n    \"registrants_email_notification\": \"user@example.com\",\n    \"registrants_confirmation_email\": \"user@example.com\",\n    \"meeting_authentication\": true,\n    \"authentication_option\": \"example_value\",\n    \"authentication_domains\": \"example_value\",\n    \"authentication_name\": \"example_value\",\n    \"show_share_button\": true,\n    \"allow_multiple_devices\": true,\n    \"encryption_type\": \"enhanced_encryption\",\n    \"approved_or_denied_countries_or_regions\": {\n      \"enable\": true,\n      \"method\": \"approve\",\n      \"approved_list\": {},\n      \"denied_list\": {}\n    },\n    \"breakout_room\": {\n      \"enable\": true,\n      \"rooms\": {}\n    },\n    \"language_interpretation\": {\n      \"enable\": true,\n      \"interpreters\": {}\n    },\n    \"focus_mode\": true,\n    \"meeting_invitees\": [\n      {}\n    ],\n    \"private_meeting\": true,\n    \"email_notification\": \"user@example.com\",\n    \"host_save_video_order\": true,\n    \"continuous_meeting_chat\": {\n      \"enable\": true,\n      \"auto_add_invited_external_users\": true\n    }\n  },\n  \"template_id\": \"500123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 10,\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ba0dc1f7-1977-44c6-99ef-c33203a5eb74",
+              "name": "Too many requests. You have exceeded the rate limit.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":userId",
+                    "meetings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) The user ID or email address. Use `me` for the current user in user-level apps."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"topic\": \"example_value\",\n  \"type\": 1,\n  \"pre_schedule\": true,\n  \"start_time\": \"2026-01-15T10:30:00Z\",\n  \"duration\": 10,\n  \"schedule_for\": \"example_value\",\n  \"timezone\": \"example_value\",\n  \"password\": \"example_value\",\n  \"default_password\": true,\n  \"agenda\": \"example_value\",\n  \"tracking_fields\": [\n    {\n      \"field\": \"example_value\",\n      \"value\": \"example_value\"\n    }\n  ],\n  \"recurrence\": {\n    \"type\": 1,\n    \"repeat_interval\": 10,\n    \"weekly_days\": \"example_value\",\n    \"monthly_day\": 10,\n    \"monthly_week\": -1,\n    \"monthly_week_day\": 1,\n    \"end_times\": 10,\n    \"end_date_time\": \"2026-01-15T10:30:00Z\"\n  },\n  \"settings\": {\n    \"host_video\": true,\n    \"participant_video\": true,\n    \"cn_meeting\": true,\n    \"in_meeting\": true,\n    \"join_before_host\": true,\n    \"jbh_time\": 0,\n    \"mute_upon_entry\": true,\n    \"watermark\": true,\n    \"use_pmi\": true,\n    \"approval_type\": 0,\n    \"registration_type\": 1,\n    \"audio\": \"both\",\n    \"auto_recording\": \"local\",\n    \"enforce_login\": true,\n    \"enforce_login_domains\": \"example_value\",\n    \"alternative_hosts\": \"example_value\",\n    \"alternative_hosts_email_notification\": \"user@example.com\",\n    \"close_registration\": true,\n    \"waiting_room\": true,\n    \"global_dial_in_countries\": [\n      {}\n    ],\n    \"contact_name\": \"example_value\",\n    \"contact_email\": \"user@example.com\",\n    \"registrants_email_notification\": \"user@example.com\",\n    \"registrants_confirmation_email\": \"user@example.com\",\n    \"meeting_authentication\": true,\n    \"authentication_option\": \"example_value\",\n    \"authentication_domains\": \"example_value\",\n    \"authentication_name\": \"example_value\",\n    \"show_share_button\": true,\n    \"allow_multiple_devices\": true,\n    \"encryption_type\": \"enhanced_encryption\",\n    \"approved_or_denied_countries_or_regions\": {\n      \"enable\": true,\n      \"method\": \"approve\",\n      \"approved_list\": {},\n      \"denied_list\": {}\n    },\n    \"breakout_room\": {\n      \"enable\": true,\n      \"rooms\": {}\n    },\n    \"language_interpretation\": {\n      \"enable\": true,\n      \"interpreters\": {}\n    },\n    \"focus_mode\": true,\n    \"meeting_invitees\": [\n      {}\n    ],\n    \"private_meeting\": true,\n    \"email_notification\": \"user@example.com\",\n    \"host_save_video_order\": true,\n    \"continuous_meeting_chat\": {\n      \"enable\": true,\n      \"auto_add_invited_external_users\": true\n    }\n  },\n  \"template_id\": \"500123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 10,\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4c9e18e3-d19c-49ce-9955-1dbd584544b6",
+          "name": "Zoom Get Meeting Details",
+          "request": {
+            "name": "Zoom Get Meeting Details",
+            "description": {
+              "content": "Retrieve the details of a meeting. This returns detailed information about the specified meeting including settings, recurrence, and tracking fields.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "meetings",
+                ":meetingId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "occurrence_id",
+                  "value": "<string>",
+                  "description": "Meeting occurrence ID for recurring meetings."
+                },
+                {
+                  "disabled": false,
+                  "key": "show_previous_occurrences",
+                  "value": "false",
+                  "description": "Set to true to view meeting details of all previous occurrences of a recurring meeting."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "meetingId",
+                  "description": "(Required) The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9befde87-14df-4a8d-9981-028b342a7750",
+              "name": "Successfully retrieved meeting details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meetings",
+                    ":meetingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "occurrence_id",
+                      "value": "500123"
+                    },
+                    {
+                      "key": "show_previous_occurrences",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ee83cf66-f617-4019-98bc-3a6464be0431",
+              "name": "Bad request. The request was invalid or cannot be served.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meetings",
+                    ":meetingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "occurrence_id",
+                      "value": "500123"
+                    },
+                    {
+                      "key": "show_previous_occurrences",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 10,\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e5a18589-8bb3-4e9a-aaf2-77b390784467",
+              "name": "Unauthorized. The request requires authentication.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meetings",
+                    ":meetingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "occurrence_id",
+                      "value": "500123"
+                    },
+                    {
+                      "key": "show_previous_occurrences",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 10,\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a20b5811-d78e-40fc-a663-629365d238bb",
+              "name": "Not found. The requested resource could not be found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meetings",
+                    ":meetingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "occurrence_id",
+                      "value": "500123"
+                    },
+                    {
+                      "key": "show_previous_occurrences",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 10,\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "503b5210-f201-45a2-9cdb-661557cfb2dd",
+          "name": "Zoom Update a Meeting",
+          "request": {
+            "name": "Zoom Update a Meeting",
+            "description": {
+              "content": "Update the details of a meeting. This can include topic, start time, duration, settings, and other meeting options.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "meetings",
+                ":meetingId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "occurrence_id",
+                  "value": "<string>",
+                  "description": "Meeting occurrence ID for recurring meeting updates."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "meetingId",
+                  "description": "(Required) The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"topic\": \"<string>\",\n  \"type\": \"<integer>\",\n  \"start_time\": \"<dateTime>\",\n  \"duration\": \"<integer>\",\n  \"schedule_for\": \"<string>\",\n  \"timezone\": \"<string>\",\n  \"password\": \"<string>\",\n  \"agenda\": \"<string>\",\n  \"recurrence\": {\n    \"type\": \"<integer>\",\n    \"repeat_interval\": \"<integer>\",\n    \"weekly_days\": \"<string>\",\n    \"monthly_day\": \"<integer>\",\n    \"monthly_week\": \"<integer>\",\n    \"monthly_week_day\": \"<integer>\",\n    \"end_times\": 1,\n    \"end_date_time\": \"<dateTime>\"\n  },\n  \"settings\": {\n    \"host_video\": true,\n    \"participant_video\": \"<boolean>\",\n    \"cn_meeting\": false,\n    \"in_meeting\": false,\n    \"join_before_host\": false,\n    \"jbh_time\": \"<integer>\",\n    \"mute_upon_entry\": false,\n    \"watermark\": false,\n    \"use_pmi\": false,\n    \"approval_type\": 2,\n    \"registration_type\": 1,\n    \"audio\": \"both\",\n    \"auto_recording\": \"none\",\n    \"enforce_login\": false,\n    \"enforce_login_domains\": \"<string>\",\n    \"alternative_hosts\": \"<string>\",\n    \"alternative_hosts_email_notification\": true,\n    \"close_registration\": false,\n    \"waiting_room\": false,\n    \"global_dial_in_countries\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"contact_name\": \"<string>\",\n    \"contact_email\": \"<email>\",\n    \"registrants_email_notification\": true,\n    \"registrants_confirmation_email\": true,\n    \"meeting_authentication\": false,\n    \"authentication_option\": \"<string>\",\n    \"authentication_domains\": \"<string>\",\n    \"authentication_name\": \"<string>\",\n    \"show_share_button\": \"<boolean>\",\n    \"allow_multiple_devices\": \"<boolean>\",\n    \"encryption_type\": \"enhanced_encryption\",\n    \"approved_or_denied_countries_or_regions\": {\n      \"enable\": \"<boolean>\",\n      \"method\": \"<string>\",\n      \"approved_list\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"denied_list\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"breakout_room\": {\n      \"enable\": \"<boolean>\",\n      \"rooms\": [\n        {\n          \"name\": \"<string>\",\n          \"participants\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"participants\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    },\n    \"language_interpretation\": {\n      \"enable\": \"<boolean>\",\n      \"interpreters\": [\n        {\n          \"email\": \"<email>\",\n          \"languages\": \"<string>\"\n        },\n        {\n          \"email\": \"<email>\",\n          \"languages\": \"<string>\"\n        }\n      ]\n    },\n    \"focus_mode\": \"<boolean>\",\n    \"meeting_invitees\": [\n      {\n        \"email\": \"<email>\"\n      },\n      {\n        \"email\": \"<email>\"\n      }\n    ],\n    \"private_meeting\": false,\n    \"email_notification\": true,\n    \"host_save_video_order\": \"<boolean>\",\n    \"continuous_meeting_chat\": {\n      \"enable\": \"<boolean>\",\n      \"auto_add_invited_external_users\": \"<boolean>\"\n    }\n  },\n  \"tracking_fields\": [\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "19e5d51c-b17a-493d-a7d2-216a6a944433",
+              "name": "Meeting updated successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meetings",
+                    ":meetingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "occurrence_id",
+                      "value": "500123"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"topic\": \"example_value\",\n  \"type\": 1,\n  \"start_time\": \"2026-01-15T10:30:00Z\",\n  \"duration\": 10,\n  \"schedule_for\": \"example_value\",\n  \"timezone\": \"example_value\",\n  \"password\": \"example_value\",\n  \"agenda\": \"example_value\",\n  \"recurrence\": {\n    \"type\": 1,\n    \"repeat_interval\": 10,\n    \"weekly_days\": \"example_value\",\n    \"monthly_day\": 10,\n    \"monthly_week\": -1,\n    \"monthly_week_day\": 1,\n    \"end_times\": 10,\n    \"end_date_time\": \"2026-01-15T10:30:00Z\"\n  },\n  \"settings\": {\n    \"host_video\": true,\n    \"participant_video\": true,\n    \"cn_meeting\": true,\n    \"in_meeting\": true,\n    \"join_before_host\": true,\n    \"jbh_time\": 0,\n    \"mute_upon_entry\": true,\n    \"watermark\": true,\n    \"use_pmi\": true,\n    \"approval_type\": 0,\n    \"registration_type\": 1,\n    \"audio\": \"both\",\n    \"auto_recording\": \"local\",\n    \"enforce_login\": true,\n    \"enforce_login_domains\": \"example_value\",\n    \"alternative_hosts\": \"example_value\",\n    \"alternative_hosts_email_notification\": \"user@example.com\",\n    \"close_registration\": true,\n    \"waiting_room\": true,\n    \"global_dial_in_countries\": [\n      {}\n    ],\n    \"contact_name\": \"example_value\",\n    \"contact_email\": \"user@example.com\",\n    \"registrants_email_notification\": \"user@example.com\",\n    \"registrants_confirmation_email\": \"user@example.com\",\n    \"meeting_authentication\": true,\n    \"authentication_option\": \"example_value\",\n    \"authentication_domains\": \"example_value\",\n    \"authentication_name\": \"example_value\",\n    \"show_share_button\": true,\n    \"allow_multiple_devices\": true,\n    \"encryption_type\": \"enhanced_encryption\",\n    \"approved_or_denied_countries_or_regions\": {\n      \"enable\": true,\n      \"method\": \"approve\",\n      \"approved_list\": {},\n      \"denied_list\": {}\n    },\n    \"breakout_room\": {\n      \"enable\": true,\n      \"rooms\": {}\n    },\n    \"language_interpretation\": {\n      \"enable\": true,\n      \"interpreters\": {}\n    },\n    \"focus_mode\": true,\n    \"meeting_invitees\": [\n      {}\n    ],\n    \"private_meeting\": true,\n    \"email_notification\": \"user@example.com\",\n    \"host_save_video_order\": true,\n    \"continuous_meeting_chat\": {\n      \"enable\": true,\n      \"auto_add_invited_external_users\": true\n    }\n  },\n  \"tracking_fields\": [\n    {\n      \"field\": \"example_value\",\n      \"value\": \"example_value\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "091542ab-63db-4dfd-84d8-55a7deb3e47d",
+              "name": "Bad request. The request was invalid or cannot be served.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meetings",
+                    ":meetingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "occurrence_id",
+                      "value": "500123"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"topic\": \"example_value\",\n  \"type\": 1,\n  \"start_time\": \"2026-01-15T10:30:00Z\",\n  \"duration\": 10,\n  \"schedule_for\": \"example_value\",\n  \"timezone\": \"example_value\",\n  \"password\": \"example_value\",\n  \"agenda\": \"example_value\",\n  \"recurrence\": {\n    \"type\": 1,\n    \"repeat_interval\": 10,\n    \"weekly_days\": \"example_value\",\n    \"monthly_day\": 10,\n    \"monthly_week\": -1,\n    \"monthly_week_day\": 1,\n    \"end_times\": 10,\n    \"end_date_time\": \"2026-01-15T10:30:00Z\"\n  },\n  \"settings\": {\n    \"host_video\": true,\n    \"participant_video\": true,\n    \"cn_meeting\": true,\n    \"in_meeting\": true,\n    \"join_before_host\": true,\n    \"jbh_time\": 0,\n    \"mute_upon_entry\": true,\n    \"watermark\": true,\n    \"use_pmi\": true,\n    \"approval_type\": 0,\n    \"registration_type\": 1,\n    \"audio\": \"both\",\n    \"auto_recording\": \"local\",\n    \"enforce_login\": true,\n    \"enforce_login_domains\": \"example_value\",\n    \"alternative_hosts\": \"example_value\",\n    \"alternative_hosts_email_notification\": \"user@example.com\",\n    \"close_registration\": true,\n    \"waiting_room\": true,\n    \"global_dial_in_countries\": [\n      {}\n    ],\n    \"contact_name\": \"example_value\",\n    \"contact_email\": \"user@example.com\",\n    \"registrants_email_notification\": \"user@example.com\",\n    \"registrants_confirmation_email\": \"user@example.com\",\n    \"meeting_authentication\": true,\n    \"authentication_option\": \"example_value\",\n    \"authentication_domains\": \"example_value\",\n    \"authentication_name\": \"example_value\",\n    \"show_share_button\": true,\n    \"allow_multiple_devices\": true,\n    \"encryption_type\": \"enhanced_encryption\",\n    \"approved_or_denied_countries_or_regions\": {\n      \"enable\": true,\n      \"method\": \"approve\",\n      \"approved_list\": {},\n      \"denied_list\": {}\n    },\n    \"breakout_room\": {\n      \"enable\": true,\n      \"rooms\": {}\n    },\n    \"language_interpretation\": {\n      \"enable\": true,\n      \"interpreters\": {}\n    },\n    \"focus_mode\": true,\n    \"meeting_invitees\": [\n      {}\n    ],\n    \"private_meeting\": true,\n    \"email_notification\": \"user@example.com\",\n    \"host_save_video_order\": true,\n    \"continuous_meeting_chat\": {\n      \"enable\": true,\n      \"auto_add_invited_external_users\": true\n    }\n  },\n  \"tracking_fields\": [\n    {\n      \"field\": \"example_value\",\n      \"value\": \"example_value\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 10,\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "262cf3b6-0ba4-470b-98f4-57f443401285",
+              "name": "Unauthorized. The request requires authentication.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meetings",
+                    ":meetingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "occurrence_id",
+                      "value": "500123"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"topic\": \"example_value\",\n  \"type\": 1,\n  \"start_time\": \"2026-01-15T10:30:00Z\",\n  \"duration\": 10,\n  \"schedule_for\": \"example_value\",\n  \"timezone\": \"example_value\",\n  \"password\": \"example_value\",\n  \"agenda\": \"example_value\",\n  \"recurrence\": {\n    \"type\": 1,\n    \"repeat_interval\": 10,\n    \"weekly_days\": \"example_value\",\n    \"monthly_day\": 10,\n    \"monthly_week\": -1,\n    \"monthly_week_day\": 1,\n    \"end_times\": 10,\n    \"end_date_time\": \"2026-01-15T10:30:00Z\"\n  },\n  \"settings\": {\n    \"host_video\": true,\n    \"participant_video\": true,\n    \"cn_meeting\": true,\n    \"in_meeting\": true,\n    \"join_before_host\": true,\n    \"jbh_time\": 0,\n    \"mute_upon_entry\": true,\n    \"watermark\": true,\n    \"use_pmi\": true,\n    \"approval_type\": 0,\n    \"registration_type\": 1,\n    \"audio\": \"both\",\n    \"auto_recording\": \"local\",\n    \"enforce_login\": true,\n    \"enforce_login_domains\": \"example_value\",\n    \"alternative_hosts\": \"example_value\",\n    \"alternative_hosts_email_notification\": \"user@example.com\",\n    \"close_registration\": true,\n    \"waiting_room\": true,\n    \"global_dial_in_countries\": [\n      {}\n    ],\n    \"contact_name\": \"example_value\",\n    \"contact_email\": \"user@example.com\",\n    \"registrants_email_notification\": \"user@example.com\",\n    \"registrants_confirmation_email\": \"user@example.com\",\n    \"meeting_authentication\": true,\n    \"authentication_option\": \"example_value\",\n    \"authentication_domains\": \"example_value\",\n    \"authentication_name\": \"example_value\",\n    \"show_share_button\": true,\n    \"allow_multiple_devices\": true,\n    \"encryption_type\": \"enhanced_encryption\",\n    \"approved_or_denied_countries_or_regions\": {\n      \"enable\": true,\n      \"method\": \"approve\",\n      \"approved_list\": {},\n      \"denied_list\": {}\n    },\n    \"breakout_room\": {\n      \"enable\": true,\n      \"rooms\": {}\n    },\n    \"language_interpretation\": {\n      \"enable\": true,\n      \"interpreters\": {}\n    },\n    \"focus_mode\": true,\n    \"meeting_invitees\": [\n      {}\n    ],\n    \"private_meeting\": true,\n    \"email_notification\": \"user@example.com\",\n    \"host_save_video_order\": true,\n    \"continuous_meeting_chat\": {\n      \"enable\": true,\n      \"auto_add_invited_external_users\": true\n    }\n  },\n  \"tracking_fields\": [\n    {\n      \"field\": \"example_value\",\n      \"value\": \"example_value\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 10,\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "66e455c3-f39e-4dfa-9788-22ac1c096532",
+              "name": "Not found. The requested resource could not be found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meetings",
+                    ":meetingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "occurrence_id",
+                      "value": "500123"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"topic\": \"example_value\",\n  \"type\": 1,\n  \"start_time\": \"2026-01-15T10:30:00Z\",\n  \"duration\": 10,\n  \"schedule_for\": \"example_value\",\n  \"timezone\": \"example_value\",\n  \"password\": \"example_value\",\n  \"agenda\": \"example_value\",\n  \"recurrence\": {\n    \"type\": 1,\n    \"repeat_interval\": 10,\n    \"weekly_days\": \"example_value\",\n    \"monthly_day\": 10,\n    \"monthly_week\": -1,\n    \"monthly_week_day\": 1,\n    \"end_times\": 10,\n    \"end_date_time\": \"2026-01-15T10:30:00Z\"\n  },\n  \"settings\": {\n    \"host_video\": true,\n    \"participant_video\": true,\n    \"cn_meeting\": true,\n    \"in_meeting\": true,\n    \"join_before_host\": true,\n    \"jbh_time\": 0,\n    \"mute_upon_entry\": true,\n    \"watermark\": true,\n    \"use_pmi\": true,\n    \"approval_type\": 0,\n    \"registration_type\": 1,\n    \"audio\": \"both\",\n    \"auto_recording\": \"local\",\n    \"enforce_login\": true,\n    \"enforce_login_domains\": \"example_value\",\n    \"alternative_hosts\": \"example_value\",\n    \"alternative_hosts_email_notification\": \"user@example.com\",\n    \"close_registration\": true,\n    \"waiting_room\": true,\n    \"global_dial_in_countries\": [\n      {}\n    ],\n    \"contact_name\": \"example_value\",\n    \"contact_email\": \"user@example.com\",\n    \"registrants_email_notification\": \"user@example.com\",\n    \"registrants_confirmation_email\": \"user@example.com\",\n    \"meeting_authentication\": true,\n    \"authentication_option\": \"example_value\",\n    \"authentication_domains\": \"example_value\",\n    \"authentication_name\": \"example_value\",\n    \"show_share_button\": true,\n    \"allow_multiple_devices\": true,\n    \"encryption_type\": \"enhanced_encryption\",\n    \"approved_or_denied_countries_or_regions\": {\n      \"enable\": true,\n      \"method\": \"approve\",\n      \"approved_list\": {},\n      \"denied_list\": {}\n    },\n    \"breakout_room\": {\n      \"enable\": true,\n      \"rooms\": {}\n    },\n    \"language_interpretation\": {\n      \"enable\": true,\n      \"interpreters\": {}\n    },\n    \"focus_mode\": true,\n    \"meeting_invitees\": [\n      {}\n    ],\n    \"private_meeting\": true,\n    \"email_notification\": \"user@example.com\",\n    \"host_save_video_order\": true,\n    \"continuous_meeting_chat\": {\n      \"enable\": true,\n      \"auto_add_invited_external_users\": true\n    }\n  },\n  \"tracking_fields\": [\n    {\n      \"field\": \"example_value\",\n      \"value\": \"example_value\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 10,\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2cbb18ec-7f84-4cfc-ba05-da165d7bc92a",
+              "name": "Too many requests. You have exceeded the rate limit.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meetings",
+                    ":meetingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "occurrence_id",
+                      "value": "500123"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"topic\": \"example_value\",\n  \"type\": 1,\n  \"start_time\": \"2026-01-15T10:30:00Z\",\n  \"duration\": 10,\n  \"schedule_for\": \"example_value\",\n  \"timezone\": \"example_value\",\n  \"password\": \"example_value\",\n  \"agenda\": \"example_value\",\n  \"recurrence\": {\n    \"type\": 1,\n    \"repeat_interval\": 10,\n    \"weekly_days\": \"example_value\",\n    \"monthly_day\": 10,\n    \"monthly_week\": -1,\n    \"monthly_week_day\": 1,\n    \"end_times\": 10,\n    \"end_date_time\": \"2026-01-15T10:30:00Z\"\n  },\n  \"settings\": {\n    \"host_video\": true,\n    \"participant_video\": true,\n    \"cn_meeting\": true,\n    \"in_meeting\": true,\n    \"join_before_host\": true,\n    \"jbh_time\": 0,\n    \"mute_upon_entry\": true,\n    \"watermark\": true,\n    \"use_pmi\": true,\n    \"approval_type\": 0,\n    \"registration_type\": 1,\n    \"audio\": \"both\",\n    \"auto_recording\": \"local\",\n    \"enforce_login\": true,\n    \"enforce_login_domains\": \"example_value\",\n    \"alternative_hosts\": \"example_value\",\n    \"alternative_hosts_email_notification\": \"user@example.com\",\n    \"close_registration\": true,\n    \"waiting_room\": true,\n    \"global_dial_in_countries\": [\n      {}\n    ],\n    \"contact_name\": \"example_value\",\n    \"contact_email\": \"user@example.com\",\n    \"registrants_email_notification\": \"user@example.com\",\n    \"registrants_confirmation_email\": \"user@example.com\",\n    \"meeting_authentication\": true,\n    \"authentication_option\": \"example_value\",\n    \"authentication_domains\": \"example_value\",\n    \"authentication_name\": \"example_value\",\n    \"show_share_button\": true,\n    \"allow_multiple_devices\": true,\n    \"encryption_type\": \"enhanced_encryption\",\n    \"approved_or_denied_countries_or_regions\": {\n      \"enable\": true,\n      \"method\": \"approve\",\n      \"approved_list\": {},\n      \"denied_list\": {}\n    },\n    \"breakout_room\": {\n      \"enable\": true,\n      \"rooms\": {}\n    },\n    \"language_interpretation\": {\n      \"enable\": true,\n      \"interpreters\": {}\n    },\n    \"focus_mode\": true,\n    \"meeting_invitees\": [\n      {}\n    ],\n    \"private_meeting\": true,\n    \"email_notification\": \"user@example.com\",\n    \"host_save_video_order\": true,\n    \"continuous_meeting_chat\": {\n      \"enable\": true,\n      \"auto_add_invited_external_users\": true\n    }\n  },\n  \"tracking_fields\": [\n    {\n      \"field\": \"example_value\",\n      \"value\": \"example_value\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 10,\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "44e8b324-0f65-4b9d-9370-c8938e47076d",
+          "name": "Zoom Delete a Meeting",
+          "request": {
+            "name": "Zoom Delete a Meeting",
+            "description": {
+              "content": "Delete a meeting. This permanently removes the meeting from Zoom.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "meetings",
+                ":meetingId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "occurrence_id",
+                  "value": "<string>",
+                  "description": "Meeting occurrence ID for recurring meeting deletion."
+                },
+                {
+                  "disabled": false,
+                  "key": "schedule_for_reminder",
+                  "value": "true",
+                  "description": "Notify host and alternative host about the meeting cancellation via email."
+                },
+                {
+                  "disabled": false,
+                  "key": "cancel_meeting_reminder",
+                  "value": "false",
+                  "description": "Notify registrants about the meeting cancellation via email."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "meetingId",
+                  "description": "(Required) The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cae5e2fe-c591-4bfe-a95a-ab2556c080b3",
+              "name": "Meeting deleted successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meetings",
+                    ":meetingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "occurrence_id",
+                      "value": "500123"
+                    },
+                    {
+                      "key": "schedule_for_reminder",
+                      "value": "true"
+                    },
+                    {
+                      "key": "cancel_meeting_reminder",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d0841c1d-7649-446a-a1d7-90aea8ec6d05",
+              "name": "Bad request. The request was invalid or cannot be served.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meetings",
+                    ":meetingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "occurrence_id",
+                      "value": "500123"
+                    },
+                    {
+                      "key": "schedule_for_reminder",
+                      "value": "true"
+                    },
+                    {
+                      "key": "cancel_meeting_reminder",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 10,\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "43ff1ead-73f2-4f9f-8317-b592c6673973",
+              "name": "Unauthorized. The request requires authentication.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meetings",
+                    ":meetingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "occurrence_id",
+                      "value": "500123"
+                    },
+                    {
+                      "key": "schedule_for_reminder",
+                      "value": "true"
+                    },
+                    {
+                      "key": "cancel_meeting_reminder",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 10,\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "46d8b9d6-01b6-4790-a311-c6a3ffe77495",
+              "name": "Not found. The requested resource could not be found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meetings",
+                    ":meetingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "occurrence_id",
+                      "value": "500123"
+                    },
+                    {
+                      "key": "schedule_for_reminder",
+                      "value": "true"
+                    },
+                    {
+                      "key": "cancel_meeting_reminder",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 10,\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "98ce99c3-a2ec-4353-a965-a0c5a2520f30",
+          "name": "Zoom Update Meeting Status",
+          "request": {
+            "name": "Zoom Update Meeting Status",
+            "description": {
+              "content": "End a meeting by updating its status. This can also recover a deleted meeting within a certain time frame.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "meetings",
+                ":meetingId",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "meetingId",
+                  "description": "(Required) The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f9b1af66-a4d3-4c68-9346-150e25865ecd",
+              "name": "Meeting status updated successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meetings",
+                    ":meetingId",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"end\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "114159a4-038d-4a60-aaab-4a9daa029e18",
+              "name": "Bad request. The request was invalid or cannot be served.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meetings",
+                    ":meetingId",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"end\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 10,\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "52c297c4-abe8-45de-ba86-f57d84f3981e",
+              "name": "Unauthorized. The request requires authentication.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meetings",
+                    ":meetingId",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"end\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 10,\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "64e69ab6-713b-4654-9946-282ebdadafbc",
+              "name": "Not found. The requested resource could not be found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meetings",
+                    ":meetingId",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"end\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 10,\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "775ae276-eff9-491d-8fb2-d00b1fe96e92",
+          "name": "Zoom Get Past Meeting Details",
+          "request": {
+            "name": "Zoom Get Past Meeting Details",
+            "description": {
+              "content": "Retrieve information about a past meeting. The meeting UUID must be double-encoded if it contains `/` or `//` characters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "past_meetings",
+                ":meetingId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "meetingId",
+                  "description": "(Required) The meeting UUID. Each meeting instance will generate its own UUID. Double-encode if the UUID begins with `/` or contains `//`."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "33d42930-6aeb-422d-b22b-0308b729cad8",
+              "name": "Successfully retrieved past meeting details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "past_meetings",
+                    ":meetingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting UUID. Each meeting instance will generate its own UUID. Double-encode if the UUID begins with `/` or contains `//`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uuid\": \"500123\",\n  \"id\": \"abc123\",\n  \"host_id\": \"500123\",\n  \"host_email\": \"user@example.com\",\n  \"type\": 1,\n  \"topic\": \"example_value\",\n  \"user_name\": \"example_value\",\n  \"start_time\": \"2026-01-15T10:30:00Z\",\n  \"end_time\": \"2026-01-15T10:30:00Z\",\n  \"duration\": 10,\n  \"total_minutes\": 10,\n  \"participants_count\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9e3ab886-da20-4d4d-8f63-5794341faff8",
+              "name": "Bad request. The request was invalid or cannot be served.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "past_meetings",
+                    ":meetingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting UUID. Each meeting instance will generate its own UUID. Double-encode if the UUID begins with `/` or contains `//`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 10,\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3c6164f6-e09f-4111-8854-d93290f2613c",
+              "name": "Unauthorized. The request requires authentication.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "past_meetings",
+                    ":meetingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting UUID. Each meeting instance will generate its own UUID. Double-encode if the UUID begins with `/` or contains `//`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 10,\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fbd1c5aa-7d5a-4cab-863d-4944319c54ac",
+              "name": "Not found. The requested resource could not be found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "past_meetings",
+                    ":meetingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting UUID. Each meeting instance will generate its own UUID. Double-encode if the UUID begins with `/` or contains `//`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 10,\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fa21a7cf-17b5-4792-9b3e-b0fc9e8038fe",
+          "name": "Zoom Get Meeting Invitation",
+          "request": {
+            "name": "Zoom Get Meeting Invitation",
+            "description": {
+              "content": "Retrieve the meeting invitation note for a specific meeting.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "meetings",
+                ":meetingId",
+                "invitation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "meetingId",
+                  "description": "(Required) The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "52682b97-a028-430f-838c-dbfb995f0396",
+              "name": "Successfully retrieved the meeting invitation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meetings",
+                    ":meetingId",
+                    "invitation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"invitation\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2484677f-a3c2-4ab5-820b-90151d606892",
+              "name": "Bad request. The request was invalid or cannot be served.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meetings",
+                    ":meetingId",
+                    "invitation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 10,\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3ace1b50-36bf-4133-812a-2e06ad61a5d3",
+              "name": "Unauthorized. The request requires authentication.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meetings",
+                    ":meetingId",
+                    "invitation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 10,\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2512103e-13c8-40ed-8917-bbc2885af7d1",
+              "name": "Not found. The requested resource could not be found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meetings",
+                    ":meetingId",
+                    "invitation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "meetingId",
+                      "description": "(Required) The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 10,\n  \"message\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.zoom.us/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "665d3ef0-a9ce-420d-96b7-55d49a914eec",
+    "name": "Zoom / Account Meetings API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Needs description.\n\nContact Support:\n Name: Zoom Developers\n Email: developer@zoom.us",
+      "type": "text/plain"
+    }
+  }
+}

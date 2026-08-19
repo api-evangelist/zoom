@@ -1,0 +1,306 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zoom / Account Dashboard API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Dashboard",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "dashboardCrc",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v1/metrics/crc",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "from",
+                  "value": ""
+                },
+                {
+                  "name": "to",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Get CRC Port usage hour by hour for a specified time period.\n\n"
+        },
+        {
+          "info": {
+            "name": "dashboardIm",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v1/metrics/im",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "from",
+                  "value": ""
+                },
+                {
+                  "name": "to",
+                  "value": ""
+                },
+                {
+                  "name": "page_size",
+                  "value": ""
+                },
+                {
+                  "name": "page_number",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Get statistics of Zoom IM\n\n"
+        },
+        {
+          "info": {
+            "name": "dashboardMeetingdetail",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v1/metrics/meetingdetail",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "meeting_id",
+                  "value": ""
+                },
+                {
+                  "name": "type",
+                  "value": ""
+                },
+                {
+                  "name": "page_size",
+                  "value": ""
+                },
+                {
+                  "name": "page_number",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Get live and past meeting details\n\n"
+        },
+        {
+          "info": {
+            "name": "dashboardMeetings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v1/metrics/meetings",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "type",
+                  "value": ""
+                },
+                {
+                  "name": "from",
+                  "value": ""
+                },
+                {
+                  "name": "to",
+                  "value": ""
+                },
+                {
+                  "name": "page_size",
+                  "value": ""
+                },
+                {
+                  "name": "page_number",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Get Live Meetings and past meetings for a specified period\n\n"
+        },
+        {
+          "info": {
+            "name": "dashboardQos",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v1/metrics/qos",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "meeting_id",
+                  "value": ""
+                },
+                {
+                  "name": "type",
+                  "value": ""
+                },
+                {
+                  "name": "user_id",
+                  "value": ""
+                },
+                {
+                  "name": "page_size",
+                  "value": ""
+                },
+                {
+                  "name": "page_number",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Get the users quality of service in a Zoom Meeting\n\n"
+        },
+        {
+          "info": {
+            "name": "dashboardWebinardetail",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v1/metrics/webinardetail",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "meeting_id",
+                  "value": ""
+                },
+                {
+                  "name": "type",
+                  "value": ""
+                },
+                {
+                  "name": "page_size",
+                  "value": ""
+                },
+                {
+                  "name": "page_number",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Get live and past webinar details\n\n"
+        },
+        {
+          "info": {
+            "name": "dashboardWebinars",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v1/metrics/webinars",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "type",
+                  "value": ""
+                },
+                {
+                  "name": "from",
+                  "value": ""
+                },
+                {
+                  "name": "to",
+                  "value": ""
+                },
+                {
+                  "name": "page_size",
+                  "value": ""
+                },
+                {
+                  "name": "page_number",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Get live webinars and past webinars for a specified period.\n\n"
+        },
+        {
+          "info": {
+            "name": "dashboardZoomroomdetail",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v1/metrics/zoomroomdetail",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "id",
+                  "value": ""
+                },
+                {
+                  "name": "from",
+                  "value": ""
+                },
+                {
+                  "name": "to",
+                  "value": ""
+                },
+                {
+                  "name": "page_size",
+                  "value": ""
+                },
+                {
+                  "name": "page_number",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Get a Zoom Room on Zoom via Zoom ID, return the Zoom Room info.\n\n"
+        },
+        {
+          "info": {
+            "name": "dashboardZoomrooms",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zoom.us/v1/metrics/zoomrooms",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "page_size",
+                  "value": ""
+                },
+                {
+                  "name": "page_number",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "List all Zoom Rooms on Zoom.\n\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
