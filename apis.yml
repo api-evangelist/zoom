@@ -265,6 +265,11 @@ apis:
   baseURL: https://api.zoom.us/v2
   tags:
   - Conferences
+  - Event
+  - Registrations
+  - Webinars
+  tags_raw:
+  - Conferences
   - Events
   - Registrations
   - Webinars
@@ -283,6 +288,10 @@ apis:
   humanURL: https://developers.zoom.us/docs/api/marketplace/
   baseURL: https://api.zoom.us/v2
   tags:
+  - Application
+  - Integration
+  - Marketplace
+  tags_raw:
   - Apps
   - Integrations
   - Marketplace
@@ -382,6 +391,10 @@ apis:
   baseURL: https://api.zoom.us/v2
   tags:
   - Calendar
+  - Event
+  - Scheduling
+  tags_raw:
+  - Calendar
   - Events
   - Scheduling
   properties:
@@ -413,6 +426,10 @@ apis:
   tags:
   - Automation
   - Bots
+  - Chatbots
+  tags_raw:
+  - Automation
+  - Bots
   - Chatbot
   properties:
   - type: Documentation
@@ -426,6 +443,9 @@ apis:
   humanURL: https://developers.zoom.us/docs/api/ai-companion/
   baseURL: https://api.zoom.us/v2
   tags:
+  - Artificial Intelligence
+  - Companion
+  tags_raw:
   - AI
   - Artificial Intelligence
   - Companion
@@ -443,6 +463,10 @@ apis:
   tags:
   - Collaboration
   - Documents
+  - File
+  tags_raw:
+  - Collaboration
+  - Documents
   - Files
   properties:
   - type: Documentation
@@ -455,6 +479,10 @@ apis:
   humanURL: https://developers.zoom.us/docs/api/tasks/
   baseURL: https://api.zoom.us/v2
   tags:
+  - Productivity
+  - Project Management
+  - Task
+  tags_raw:
   - Productivity
   - Project Management
   - Tasks
@@ -472,6 +500,11 @@ apis:
   tags:
   - Conference Room Connector
   - Devices
+  - H.323
+  - SIP
+  tags_raw:
+  - Conference Room Connector
+  - Devices
   - H323
   - SIP
   properties:
@@ -486,6 +519,11 @@ apis:
   humanURL: https://developers.zoom.us/docs/api/virtual-agent/
   baseURL: https://api.zoom.us/v2
   tags:
+  - Artificial Intelligence
+  - Chatbots
+  - Customer-Support
+  - Virtual Agent
+  tags_raw:
   - AI
   - Chatbot
   - Customer Support
@@ -548,6 +586,11 @@ apis:
   humanURL: https://developers.zoom.us/docs/api/commerce/
   baseURL: https://api.zoom.us/v2
   tags:
+  - Billing
+  - Commerce
+  - Partners
+  - Subscription
+  tags_raw:
   - Billing
   - Commerce
   - Partners
@@ -677,6 +720,10 @@ apis:
   humanURL: https://developers.zoom.us/docs/api/cobrowse-sdk/
   baseURL: https://api.zoom.us/v2
   tags:
+  - Cobrowse
+  - Customer-Support
+  - Screen Sharing
+  tags_raw:
   - Cobrowse
   - Customer Support
   - Screen Sharing
