@@ -12,8 +12,11 @@ info:
     description.
   version: 1.0.0
 sourceDescriptions:
-- name: meetingApi
-  url: ../openapi/zoom-meeting-api-openapi.yml
+- name: meetingRecordingsApi
+  url: ../openapi/zoom-meeting-recordings-api-openapi.yml
+  type: openapi
+- name: meetingsApi
+  url: ../openapi/zoom-meetings-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: retrieve-meeting-recordings

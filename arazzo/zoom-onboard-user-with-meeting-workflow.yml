@@ -13,11 +13,11 @@ info:
     and executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: userApi
-  url: ../openapi/zoom-user--openapi-original.yml
+- name: meetingsApi
+  url: ../openapi/zoom-meetings-api-openapi.yml
   type: openapi
-- name: meetingApi
-  url: ../openapi/zoom-meeting-api-openapi.yml
+- name: userApi
+  url: ../openapi/zoom-user-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: onboard-user-with-meeting

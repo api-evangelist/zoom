@@ -10,8 +10,8 @@ info:
     be read and executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: meetingApi
-  url: ../openapi/zoom-meeting-api-openapi.yml
+- name: meetingsApi
+  url: ../openapi/zoom-meetings-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: create-and-confirm-meeting

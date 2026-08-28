@@ -11,8 +11,11 @@ info:
     executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: meetingApi
-  url: ../openapi/zoom-meeting-api-openapi.yml
+- name: meetingPollsApi
+  url: ../openapi/zoom-meeting-polls-api-openapi.yml
+  type: openapi
+- name: meetingsApi
+  url: ../openapi/zoom-meetings-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: create-meeting-poll

@@ -14,7 +14,7 @@ info:
   version: 1.0.0
 sourceDescriptions:
 - name: reportApi
-  url: ../openapi/zoom-report--openapi-original.yml
+  url: ../openapi/zoom-report-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: account-then-user-report

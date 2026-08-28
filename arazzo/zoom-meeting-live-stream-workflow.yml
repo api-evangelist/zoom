@@ -11,8 +11,8 @@ info:
     read and executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: meetingApi
-  url: ../openapi/zoom-meeting-api-openapi.yml
+- name: meetingLiveStreamApi
+  url: ../openapi/zoom-meeting-live-stream-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: configure-and-start-live-stream

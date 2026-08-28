@@ -13,7 +13,7 @@ info:
   version: 1.0.0
 sourceDescriptions:
 - name: userApi
-  url: ../openapi/zoom-user--openapi-original.yml
+  url: ../openapi/zoom-user-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: create-and-get-user

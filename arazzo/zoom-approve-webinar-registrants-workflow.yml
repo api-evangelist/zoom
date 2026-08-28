@@ -15,7 +15,7 @@ info:
   version: 1.0.0
 sourceDescriptions:
 - name: webinarApi
-  url: ../openapi/zoom-webinar--openapi-original.yml
+  url: ../openapi/zoom-webinar-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: approve-pending-webinar-registrants

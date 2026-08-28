@@ -13,7 +13,7 @@ info:
   version: 1.0.0
 sourceDescriptions:
 - name: chatApi
-  url: ../openapi/zoom-chat--openapi-original.yml
+  url: ../openapi/zoom-chat-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: chat-history-drill-down

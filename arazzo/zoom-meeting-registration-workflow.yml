@@ -12,8 +12,11 @@ info:
     description.
   version: 1.0.0
 sourceDescriptions:
-- name: meetingApi
-  url: ../openapi/zoom-meeting-api-openapi.yml
+- name: meetingRegistrantsApi
+  url: ../openapi/zoom-meeting-registrants-api-openapi.yml
+  type: openapi
+- name: meetingsApi
+  url: ../openapi/zoom-meetings-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: register-attendee-for-meeting

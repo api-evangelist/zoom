@@ -12,8 +12,8 @@ info:
     executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: recordingApi
-  url: ../openapi/zoom-recording--openapi-original.yml
+- name: cloudRecordingApi
+  url: ../openapi/zoom-cloud-recording-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: inspect-and-delete-recording
