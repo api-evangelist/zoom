@@ -4,6 +4,19 @@ name: Zoom
 description: Zoom is a communications platform that allows users to connect with video,
   audio, phone, and chat. The Zoom API provides programmatic access to Zoom's core
   features including meetings, webinars, recordings, users, and more.
+deliveryModel:
+  model: unknown
+  open_source: unknown
+  commercial: true
+  callable_host: true
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - openapi
+  - pricing
+  - repository-unlicensed
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve
@@ -1243,6 +1256,11 @@ apis:
   - type: APIReference
     url: https://developers.zoom.us/docs/api/rest/reference/user/methods/
 common:
+- type: CapabilityMap
+  url: capabilities/zoom-capability-edges.yml
+  name: Zoom Business Capability Map
+- type: IssueTracker
+  url: https://github.com/zoom/api/issues
 - type: AgenticAccess
   url: agentic-access/zoom-agentic-access.yml
 - type: VulnerabilityDisclosure
