@@ -439,7 +439,7 @@ apis:
   tags:
   - Automation
   - Bots
-  - Chatbots
+  - Chatbot
   tags_raw:
   - Automation
   - Bots
@@ -513,7 +513,7 @@ apis:
   tags:
   - Conference Room Connector
   - Devices
-  - H.323
+  - H323
   - SIP
   tags_raw:
   - Conference Room Connector
@@ -533,7 +533,7 @@ apis:
   baseURL: https://api.zoom.us/v2
   tags:
   - Artificial Intelligence
-  - Chatbots
+  - Chatbot
   - Customer-Support
   - Virtual Agent
   tags_raw:
