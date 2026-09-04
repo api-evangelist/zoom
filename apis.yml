@@ -44,7 +44,7 @@ modified: '2026-05-19'
 specificationVersion: '0.23'
 type: Index
 access: 3rd-Party
-position: Consumer
+position: Consuming
 apis:
 - aid: zoom:zoom-meeting-api
   name: Zoom Meeting API
