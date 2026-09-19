@@ -32,6 +32,17 @@ accessModel:
   method: derived
 image: https://st1.zoom.us/static/5.16.6-1642/image/new/ZoomLogo.png
 tags:
+- Video
+- Zoom
+- Chat
+- Collaboration
+- Communications
+- Meetings
+- Video Conferencing
+- Webinars
+tags_raw:
+- Videos
+- Zoom
 - Chat
 - Collaboration
 - Communications
@@ -39,7 +50,6 @@ tags:
 - Video Conferencing
 - Videos
 - Webinars
-- Zoom
 created: '2024-04-14'
 modified: '2026-09-16'
 specificationVersion: '0.23'
@@ -351,6 +361,11 @@ apis:
   - Conference Rooms
   - Devices
   - Rooms
+  - Workspace
+  tags_raw:
+  - Conference Rooms
+  - Devices
+  - Rooms
   - Workspaces
   properties:
   - type: Documentation
@@ -519,7 +534,7 @@ apis:
   - Artificial Intelligence
   - Chatbots
   - Customer-Support
-  - Virtual Agent
+  - Virtual Agents
   tags_raw:
   - AI
   - Chatbot
@@ -640,6 +655,10 @@ apis:
   humanURL: https://developers.zoom.us/docs/api/qss/
   baseURL: https://api.zoom.us/v2
   tags:
+  - Monitoring
+  - Networks
+  - Quality of Service
+  tags_raw:
   - Monitoring
   - Network
   - Quality of Service
@@ -818,6 +837,8 @@ apis:
   humanURL: https://developers.zoom.us/docs/api/rest/chat-api/
   baseURL: https://api.zoom.us/v2
   tags:
+  - Dashboards
+  tags_raw:
   - Dashboard
   properties:
   - type: OpenAPI
