@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   title: Zoom / Account Meeting Participants API
   description: Needs description.
@@ -128,6 +128,32 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    MeetingIdPath:
+      name: meetingId
+      in: path
+      required: true
+      description: The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID.
+      schema:
+        oneOf:
+        - type: integer
+          format: int64
+        - type: string
+    PageSize:
+      name: page_size
+      in: query
+      description: The number of records returned per API call. Maximum is 300.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 300
+        default: 30
+    NextPageToken:
+      name: next_page_token
+      in: query
+      description: The next page token to paginate through large result sets. A next_page_token is returned in the response when a result set exceeds the page_size.
+      schema:
+        type: string
   schemas:
     Participant:
       type: object
@@ -220,35 +246,9 @@ components:
               message:
                 type: string
           example: []
-  parameters:
-    NextPageToken:
-      name: next_page_token
-      in: query
-      description: The next page token to paginate through large result sets. A next_page_token is returned in the response when a result set exceeds the page_size.
-      schema:
-        type: string
-    MeetingIdPath:
-      name: meetingId
-      in: path
-      required: true
-      description: The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID.
-      schema:
-        oneOf:
-        - type: integer
-          format: int64
-        - type: string
-    PageSize:
-      name: page_size
-      in: query
-      description: The number of records returned per API call. Maximum is 300.
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 300
-        default: 30
   responses:
-    Unauthorized:
-      description: Unauthorized. The request requires authentication.
+    NotFound:
+      description: Not found. The requested resource could not be found.
       content:
         application/json:
           schema:
@@ -259,8 +259,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: Not found. The requested resource could not be found.
+    Unauthorized:
+      description: Unauthorized. The request requires authentication.
       content:
         application/json:
           schema:

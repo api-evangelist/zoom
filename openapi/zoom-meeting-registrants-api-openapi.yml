@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   title: Zoom / Account Meeting Registrants API
   description: Needs description.
@@ -317,33 +317,114 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  parameters:
-    NextPageToken:
-      name: next_page_token
-      in: query
-      description: The next page token to paginate through large result sets. A next_page_token is returned in the response when a result set exceeds the page_size.
-      schema:
-        type: string
-    MeetingIdPath:
-      name: meetingId
-      in: path
-      required: true
-      description: The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID.
-      schema:
-        oneOf:
-        - type: integer
-          format: int64
-        - type: string
-    PageSize:
-      name: page_size
-      in: query
-      description: The number of records returned per API call. Maximum is 300.
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 300
-        default: 30
   schemas:
+    Registrant:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Registrant ID.
+          example: abc123
+        email:
+          type: string
+          format: email
+          description: Registrant email address.
+          example: user@example.com
+        first_name:
+          type: string
+          description: Registrant first name.
+          example: example_value
+        last_name:
+          type: string
+          description: Registrant last name.
+          example: example_value
+        address:
+          type: string
+          example: example_value
+        city:
+          type: string
+          example: example_value
+        state:
+          type: string
+          example: example_value
+        zip:
+          type: string
+          example: example_value
+        country:
+          type: string
+          example: example_value
+        phone:
+          type: string
+          example: example_value
+        industry:
+          type: string
+          example: example_value
+        org:
+          type: string
+          example: example_value
+        job_title:
+          type: string
+          example: example_value
+        purchasing_time_frame:
+          type: string
+          example: example_value
+        role_in_purchase_process:
+          type: string
+          example: example_value
+        no_of_employees:
+          type: string
+          example: example_value
+        comments:
+          type: string
+          example: example_value
+        status:
+          type: string
+          description: Registrant status.
+          enum:
+          - approved
+          - pending
+          - denied
+          example: approved
+        create_time:
+          type: string
+          format: date-time
+          description: Time the registrant registered.
+          example: '2026-01-15T10:30:00Z'
+        join_url:
+          type: string
+          format: uri
+          description: Unique join URL for this registrant.
+          example: https://www.example.com
+    RegistrantCreateResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: Meeting ID.
+          example: abc123
+        registrant_id:
+          type: string
+          description: Registrant ID.
+          example: '500123'
+        start_time:
+          type: string
+          format: date-time
+          description: Meeting start time.
+          example: '2026-01-15T10:30:00Z'
+        topic:
+          type: string
+          description: Meeting topic.
+          example: example_value
+        join_url:
+          type: string
+          format: uri
+          description: Unique join URL for this registrant.
+          example: https://www.example.com
+        participant_pin_code:
+          type: integer
+          description: Participant PIN code for phone dial-in.
+          example: 10
     RegistrantCreateRequest:
       type: object
       required:
@@ -480,105 +561,6 @@ components:
           type: boolean
           description: Auto-approve this registrant.
           example: true
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-          description: Error code.
-          example: 10
-        message:
-          type: string
-          description: Error message.
-          example: example_value
-        errors:
-          type: array
-          description: Detailed error messages.
-          items:
-            type: object
-            properties:
-              field:
-                type: string
-              message:
-                type: string
-          example: []
-    Registrant:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Registrant ID.
-          example: abc123
-        email:
-          type: string
-          format: email
-          description: Registrant email address.
-          example: user@example.com
-        first_name:
-          type: string
-          description: Registrant first name.
-          example: example_value
-        last_name:
-          type: string
-          description: Registrant last name.
-          example: example_value
-        address:
-          type: string
-          example: example_value
-        city:
-          type: string
-          example: example_value
-        state:
-          type: string
-          example: example_value
-        zip:
-          type: string
-          example: example_value
-        country:
-          type: string
-          example: example_value
-        phone:
-          type: string
-          example: example_value
-        industry:
-          type: string
-          example: example_value
-        org:
-          type: string
-          example: example_value
-        job_title:
-          type: string
-          example: example_value
-        purchasing_time_frame:
-          type: string
-          example: example_value
-        role_in_purchase_process:
-          type: string
-          example: example_value
-        no_of_employees:
-          type: string
-          example: example_value
-        comments:
-          type: string
-          example: example_value
-        status:
-          type: string
-          description: Registrant status.
-          enum:
-          - approved
-          - pending
-          - denied
-          example: approved
-        create_time:
-          type: string
-          format: date-time
-          description: Time the registrant registered.
-          example: '2026-01-15T10:30:00Z'
-        join_url:
-          type: string
-          format: uri
-          description: Unique join URL for this registrant.
-          example: https://www.example.com
     RegistrantList:
       type: object
       properties:
@@ -608,39 +590,57 @@ components:
           items:
             $ref: '#/components/schemas/Registrant'
           example: []
-    RegistrantCreateResponse:
+    ErrorResponse:
       type: object
       properties:
-        id:
+        code:
           type: integer
-          format: int64
-          description: Meeting ID.
-          example: abc123
-        registrant_id:
-          type: string
-          description: Registrant ID.
-          example: '500123'
-        start_time:
-          type: string
-          format: date-time
-          description: Meeting start time.
-          example: '2026-01-15T10:30:00Z'
-        topic:
-          type: string
-          description: Meeting topic.
-          example: example_value
-        join_url:
-          type: string
-          format: uri
-          description: Unique join URL for this registrant.
-          example: https://www.example.com
-        participant_pin_code:
-          type: integer
-          description: Participant PIN code for phone dial-in.
+          description: Error code.
           example: 10
+        message:
+          type: string
+          description: Error message.
+          example: example_value
+        errors:
+          type: array
+          description: Detailed error messages.
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+              message:
+                type: string
+          example: []
+  parameters:
+    MeetingIdPath:
+      name: meetingId
+      in: path
+      required: true
+      description: The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID.
+      schema:
+        oneOf:
+        - type: integer
+          format: int64
+        - type: string
+    PageSize:
+      name: page_size
+      in: query
+      description: The number of records returned per API call. Maximum is 300.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 300
+        default: 30
+    NextPageToken:
+      name: next_page_token
+      in: query
+      description: The next page token to paginate through large result sets. A next_page_token is returned in the response when a result set exceeds the page_size.
+      schema:
+        type: string
   responses:
-    Unauthorized:
-      description: Unauthorized. The request requires authentication.
+    NotFound:
+      description: Not found. The requested resource could not be found.
       content:
         application/json:
           schema:
@@ -651,8 +651,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: Not found. The requested resource could not be found.
+    Unauthorized:
+      description: Unauthorized. The request requires authentication.
       content:
         application/json:
           schema:

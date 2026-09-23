@@ -1,23 +1,13 @@
 {
   "provider": "zoom",
   "sources": [
-    "zoom-account-api-openapi.yml",
-    "zoom-chat-api-openapi.yml",
-    "zoom-cloud-recording-api-openapi.yml",
-    "zoom-dashboard-api-openapi.yml",
-    "zoom-device-api-openapi.yml",
-    "zoom-group-api-openapi.yml",
-    "zoom-im-group-api-openapi.yml",
-    "zoom-meeting-api-openapi.yml",
+    "_original/zoom-openapi-original.yml",
     "zoom-meeting-live-stream-api-openapi.yml",
     "zoom-meeting-participants-api-openapi.yml",
     "zoom-meeting-polls-api-openapi.yml",
     "zoom-meeting-recordings-api-openapi.yml",
     "zoom-meeting-registrants-api-openapi.yml",
-    "zoom-meetings-api-openapi.yml",
-    "zoom-report-api-openapi.yml",
-    "zoom-user-api-openapi.yml",
-    "zoom-webinar-api-openapi.yml"
+    "zoom-meetings-api-openapi.yml"
   ],
   "outputs": [
     "zoom-account-api-openapi.yml",
@@ -28,19 +18,54 @@
     "zoom-group-api-openapi.yml",
     "zoom-im-group-api-openapi.yml",
     "zoom-meeting-api-openapi.yml",
+    "zoom-report-api-openapi.yml",
+    "zoom-user-api-openapi.yml",
+    "zoom-webinar-api-openapi.yml",
     "zoom-meeting-live-stream-api-openapi.yml",
     "zoom-meeting-participants-api-openapi.yml",
     "zoom-meeting-polls-api-openapi.yml",
     "zoom-meeting-recordings-api-openapi.yml",
     "zoom-meeting-registrants-api-openapi.yml",
-    "zoom-meetings-api-openapi.yml",
-    "zoom-report-api-openapi.yml",
-    "zoom-user-api-openapi.yml",
-    "zoom-webinar-api-openapi.yml"
+    "zoom-meetings-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
-  "warnings": [],
-  "notes": [],
-  "skipped": []
+  "warnings": [
+    "zoom-meeting-live-stream-api-openapi.yml: previously refined output kept for 3 operation(s) no archived document covers (e.g. /meetings/{meetingId}/jointoken/live_streaming get, /meetings/{meetingId}/livestream patch, /meetings/{meetingId}/livestream/status patch); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "zoom-meeting-participants-api-openapi.yml: previously refined output kept for 2 operation(s) no archived document covers (e.g. /meetings/{meetingId}/participants get, /past_meetings/{meetingId}/participants get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "zoom-meeting-polls-api-openapi.yml: previously refined output kept for 5 operation(s) no archived document covers (e.g. /meetings/{meetingId}/polls get, /meetings/{meetingId}/polls post, /meetings/{meetingId}/polls/{pollId} delete); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "zoom-meeting-recordings-api-openapi.yml: previously refined output kept for 2 operation(s) no archived document covers (e.g. /meetings/{meetingId}/recordings delete, /meetings/{meetingId}/recordings get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "zoom-meeting-registrants-api-openapi.yml: previously refined output kept for 4 operation(s) no archived document covers (e.g. /meetings/{meetingId}/batch_registrants post, /meetings/{meetingId}/registrants get, /meetings/{meetingId}/registrants post); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "zoom-meetings-api-openapi.yml: previously refined output kept for 8 operation(s) no archived document covers (e.g. /meetings/{meetingId} delete, /meetings/{meetingId} get, /meetings/{meetingId} patch); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth."
+  ],
+  "notes": [
+    "11 archived document(s) dropped as subsets of other archived documents",
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "zoom-openapi-original.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "_original/zoom-webinar--openapi-original.yml: archived document superseded by a larger archived document",
+    "_original/zoom-user--openapi-original.yml: archived document superseded by a larger archived document",
+    "_original/zoom-report--openapi-original.yml: archived document superseded by a larger archived document",
+    "_original/zoom-recording--openapi-original.yml: archived document superseded by a larger archived document",
+    "_original/zoom-metrics--openapi-original.yml: archived document superseded by a larger archived document",
+    "_original/zoom-meeting--openapi-original.yml: archived document superseded by a larger archived document",
+    "_original/zoom-im--openapi-original.yml: archived document superseded by a larger archived document",
+    "_original/zoom-group--openapi-original.yml: archived document superseded by a larger archived document",
+    "_original/zoom-device--openapi-original.yml: archived document superseded by a larger archived document",
+    "_original/zoom-chat--openapi-original.yml: archived document superseded by a larger archived document",
+    "_original/zoom-account--openapi-original.yml: archived document superseded by a larger archived document",
+    "zoom-account-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "zoom-chat-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "zoom-cloud-recording-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "zoom-dashboard-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "zoom-device-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "zoom-group-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "zoom-im-group-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "zoom-meeting-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "zoom-report-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "zoom-user-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "zoom-webinar-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

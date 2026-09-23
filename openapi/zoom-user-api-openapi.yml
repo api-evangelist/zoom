@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Zoom / Account User API
-  description: Needs description.
+  title: Zoom REST User API
+  description: API Description
   contact:
     name: Zoom Developers
     url: https://zoom.us/developer
@@ -23,10 +23,7 @@ paths:
     post:
       tags:
       - User
-      description: 'Delete a user''s assistant.
-
-
-        '
+      description: Delete a user's assistant.
       operationId: userAssistantDelete
       requestBody:
         content:
@@ -49,14 +46,13 @@ paths:
                 id: unique_id
                 host_email: email_address
                 updated_at: 2013-09-02 12:00:00+00:00
+      summary: User assistant delete
+      x-summary-source: derived
   /user/assistant/set:
     post:
       tags:
       - User
-      description: 'Set a user''s assistant which can schedule meeting for him.
-
-
-        '
+      description: Set a user's assistant which can schedule meeting for him.
       operationId: userAssistantSet
       requestBody:
         content:
@@ -85,6 +81,8 @@ paths:
                 id: unique_id
                 host_email: email_address
                 updated_at: 2013-09-02 12:00:00+00:00
+      summary: User assistant set
+      x-summary-source: derived
   /user/autocreate:
     post:
       tags:
@@ -92,21 +90,10 @@ paths:
       description: 'Create a user on Zoom, returns the created user ID.
 
 
-        <aside class="notice">
-
         The API is provided for enterprise customer who has a managed domain
 
-        </aside>
 
-
-        <aside class="warning">
-
-        This feature is disabled by default because of the security risk involved in creating a user who does not belong to your domain without notifying the user. You need to contact Zoom customer support if you want to use this API
-
-        </aside>
-
-
-        '
+        This feature is disabled by default because of the security risk involved in creating a user who does not belong to your domain without notifying the user. You need to contact Zoom customer support if you want to use this API'
       operationId: userAutocreate
       requestBody:
         content:
@@ -338,14 +325,13 @@ paths:
                 token: ''
                 zpk: ''
                 zak: ''
+      summary: User autocreate
+      x-summary-source: derived
   /user/checkemail:
     post:
       tags:
       - User
-      description: 'Check if the user email exists.
-
-
-        '
+      description: Check if the user email exists.
       operationId: userCheckemail
       requestBody:
         content:
@@ -366,14 +352,13 @@ paths:
             application/json:
               example:
                 existed_email: true
+      summary: User checkemail
+      x-summary-source: derived
   /user/checkzpk:
     post:
       tags:
       - User
-      description: 'Check if the zpk is expired. The zpk is used to authenticate a user.
-
-
-        '
+      description: Check if the zpk is expired. The zpk is used to authenticate a user.
       operationId: userCheckzpk
       requestBody:
         content:
@@ -394,6 +379,8 @@ paths:
             application/json:
               example:
                 expire_in: 7187
+      summary: User checkzpk
+      x-summary-source: derived
   /user/create:
     post:
       tags:
@@ -401,21 +388,10 @@ paths:
       description: 'Create a user on Zoom, returns the created user ID.
 
 
-        <aside class="notice">
-
         Your account must have this privilege to provisioning user. Zoom only assigns this privilege to a trusted partner
 
-        </aside>
 
-
-        <aside class="notice">
-
-        User will get an email sent from Zoom. There is a confirmation link in this email. User will then need to click this link to activate their account to the Zoom service. The user can set or change their password in Zoom.
-
-        </aside>
-
-
-        '
+        User will get an email sent from Zoom. There is a confirmation link in this email. User will then need to click this link to activate their account to the Zoom service. The user can set or change their password in Zoom.'
       operationId: userCreate
       requestBody:
         content:
@@ -643,6 +619,8 @@ paths:
                 token: ''
                 zpk: ''
                 zak: ''
+      summary: User create
+      x-summary-source: derived
   /user/custcreate:
     post:
       tags:
@@ -650,21 +628,10 @@ paths:
       description: 'Create a user on Zoom, returns the created user ID.
 
 
-        <aside class="notice">
-
         The API is provided for API plan only
 
-        </aside>
 
-
-        <aside class="notice">
-
-        User created in this way has no password and is not able to log into the Zoom web site or client
-
-        </aside>
-
-
-        '
+        User created in this way has no password and is not able to log into the Zoom web site or client'
       operationId: userCustcreate
       requestBody:
         content:
@@ -892,14 +859,13 @@ paths:
                 token: ''
                 zpk: ''
                 zak: ''
+      summary: User custcreate
+      x-summary-source: derived
   /user/activate:
     post:
       tags:
       - User
-      description: 'Activate a user on Zoom, return the user ID.
-
-
-        '
+      description: Activate a user on Zoom, return the user ID.
       operationId: userActivate
       requestBody:
         content:
@@ -921,14 +887,13 @@ paths:
               example:
                 id: unique_id
                 activated_at: 2012-11-25 12:00:00+00:00
+      summary: User activate
+      x-summary-source: derived
   /user/deactivate:
     post:
       tags:
       - User
-      description: 'Deactivate a user on Zoom, return the user ID.
-
-
-        '
+      description: Deactivate a user on Zoom, return the user ID.
       operationId: userDeactivate
       requestBody:
         content:
@@ -950,14 +915,13 @@ paths:
               example:
                 id: unique_id
                 deactivated_at: 2012-11-25 12:00:00+00:00
+      summary: User deactivate
+      x-summary-source: derived
   /user/delete:
     post:
       tags:
       - User
-      description: 'Delete a user on Zoom, return the deleted user ID.
-
-
-        '
+      description: Delete a user on Zoom, return the deleted user ID.
       operationId: userDelete
       requestBody:
         content:
@@ -984,14 +948,13 @@ paths:
                 id: unique_id
                 account_id: ' unique_id'
                 deleted_at: 2012-11-25 12:00:00+00:00
+      summary: User delete
+      x-summary-source: derived
   /user/get:
     post:
       tags:
       - User
-      description: 'Get a user info on Zoom via user ID
-
-
-        '
+      description: Get a user info on Zoom via user ID
       operationId: userGet
       requestBody:
         content:
@@ -1059,14 +1022,13 @@ paths:
                 status: 0
                 zpk: ABzyF_DKLzVcPd-5Wu6zCwlZ3978jn7ZcTHONHrP7Vs.BwYAAAFTY-4XnwAAHCAkMTRlMzRjYzUtMjJmZC00MTQ1LTg2MzUtZmVmYjk3ZDI0NGMyFlYydzlQTzgxUl8yS1pmREtvTWVybVEWVjJ3OVBPODFSXzJLWmZES29NZXJtUQxzb3BoaWUgc3VuNjZkALM0VUVtMTFHTmh3cGFTWlJNMGkxYjhXSXNIZEIzbXZ0VlZwOGg0Q1Jhb1B3LkJnSWdUMjlLVG1KR1YySjNTVnBDZDFwUlpXb3Zhamh1TUUwd2VVVkVaU3QyTDNCQVpUSTNabVJtWkRNNFpqSmhZall5TXpRMk9XVTVOMkUwT1RNeVlUa3lPV1UyTlRnMk5qTm1OV0prT0RVek5URmhNR1l5WTJObVpUTTVNV0V6TTJabU1RQQAAFi1YZ0gzWVg2VDNTZmRqVEI5dEJLMXcAAgE
                 zak: eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjbGllbnQiLCJ1aWQiOiJXWGpRbkRNRVFzdWNVNXYxWXlIV0lBIiwiaXNzIjoid2ViIiwic3R5IjoxMDAsImNsdCI6MCwic3RrIjoiUGpuNXItSEJVb0tXd2lBQVFOR1FndnFKNWVLY19zV1l3VHBHNjdJQm00SS5CZ1FnVDI5S1RtSkdWMkozU1ZwQ2QxcFJaV292YWpodU1FMHdlVVZFWlN0MkwzQkFaVEkzWm1SbVpETTRaakpoWWpZeU16UTJPV1U1TjJFME9UTXlZVGt5T1dVMk5UZzJOak5tTldKa09EVXpOVEZoTUdZeVkyTm1aVE01TVdFek0yWm1NUUFnZFVvemNIQndjRnA1WTBaSFYybEZjbTFoYlZwSEt6VTRkMFprY2pWS1VXOEEiLCJleHAiOjE1MjYyNzQ1NzUsImlhdCI6MTUyNjI2NzM3NSwiYWlkIjoiWG1XeGlnZFVSZWVnTW9ibHY3d3FUQSIsImNpZCI6IiJ9.oMMmw50xEfD2IVaSfxap1OlSbczto-KAM
+      summary: User get
+      x-summary-source: derived
   /user/getbyemail:
     post:
       tags:
       - User
-      description: 'Get a user on Zoom via user email address and login type, return the user info.
-
-
-        '
+      description: Get a user on Zoom via user email address and login type, return the user info.
       operationId: userGetbyemail
       requestBody:
         content:
@@ -1128,14 +1090,13 @@ paths:
                 status: 0
                 zpk: ABzyF_DKLzVcPd-5Wu6zCwlZ3978jn7ZcTHONHrP7Vs.BwYAAAFTY-4XnwAAHCAkMTRlMzRjYzUtMjJmZC00MTQ1LTg2MzUtZmVmYjk3ZDI0NGMyFlYydzlQTzgxUl8yS1pmREtvTWVybVEWVjJ3OVBPODFSXzJLWmZES29NZXJtUQxzb3BoaWUgc3VuNjZkALM0VUVtMTFHTmh3cGFTWlJNMGkxYjhXSXNIZEIzbXZ0VlZwOGg0Q1Jhb1B3LkJnSWdUMjlLVG1KR1YySjNTVnBDZDFwUlpXb3Zhamh1TUUwd2VVVkVaU3QyTDNCQVpUSTNabVJtWkRNNFpqSmhZall5TXpRMk9XVTVOMkUwT1RNeVlUa3lPV1UyTlRnMk5qTm1OV0prT0RVek5URmhNR1l5WTJObVpUTTVNV0V6TTJabU1RQQAAFi1YZ0gzWVg2VDNTZmRqVEI5dEJLMXcAAgE
                 zak: eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjbGllbnQiLCJ1aWQiOiJXWGpRbkRNRVFzdWNVNXYxWXlIV0lBIiwiaXNzIjoid2ViIiwic3R5IjoxMDAsImNsdCI6MCwic3RrIjoiUGpuNXItSEJVb0tXd2lBQVFOR1FndnFKNWVLY19zV1l3VHBHNjdJQm00SS5CZ1FnVDI5S1RtSkdWMkozU1ZwQ2QxcFJaV292YWpodU1FMHdlVVZFWlN0MkwzQkFaVEkzWm1SbVpETTRaakpoWWpZeU16UTJPV1U1TjJFME9UTXlZVGt5T1dVMk5UZzJOak5tTldKa09EVXpOVEZoTUdZeVkyTm1aVE01TVdFek0yWm1NUUFnZFVvemNIQndjRnA1WTBaSFYybEZjbTFoYlZwSEt6VTRkMFprY2pWS1VXOEEiLCJleHAiOjE1MjYyNzQ1NzUsImlhdCI6MTUyNjI2NzM3NSwiYWlkIjoiWG1XeGlnZFVSZWVnTW9ibHY3d3FUQSIsImNpZCI6IiJ9.oMMmw50xEfD2IVaSfxap1OlSbczto-KAM
+      summary: User getbyemail
+      x-summary-source: derived
   /user/list:
     post:
       tags:
       - User
-      description: 'List all the users on Zoom
-
-
-        '
+      description: List all the users on Zoom
       operationId: userList
       requestBody:
         content:
@@ -1195,14 +1156,13 @@ paths:
                   token: ''
                   zpk: ''
                   zak: ''
+      summary: User list
+      x-summary-source: derived
   /user/pending:
     post:
       tags:
       - User
-      description: 'List all the pending users on Zoom
-
-
-        '
+      description: List all the pending users on Zoom
       operationId: userPending
       requestBody:
         content:
@@ -1262,14 +1222,13 @@ paths:
                   token: ''
                   zpk: ''
                   zak: ''
+      summary: User pending
+      x-summary-source: derived
   /user/permanentdelete:
     post:
       tags:
       - User
-      description: 'Delete a user from Zoom system permanently.
-
-
-        '
+      description: Delete a user from Zoom system permanently.
       operationId: userPermanentdelete
       requestBody:
         content:
@@ -1292,14 +1251,13 @@ paths:
                 id: unique_id
                 email: email_address
                 deleted_at: 2013-09-02 12:00:00+00:00
+      summary: User permanentdelete
+      x-summary-source: derived
   /user/revoketoken:
     post:
       tags:
       - User
-      description: 'Revoke a user''s SSO token.
-
-
-        '
+      description: Revoke a user's SSO token.
       operationId: userRevoketoken
       requestBody:
         content:
@@ -1322,14 +1280,13 @@ paths:
                 id: unique_id
                 email: email_address
                 updated_at: 2013-09-02 12:00:00+00:00
+      summary: User revoketoken
+      x-summary-source: derived
   /user/scheduleforhost/list:
     post:
       tags:
       - User
-      description: 'List assigned schedule privilege for host users.
-
-
-        '
+      description: List assigned schedule privilege for host users.
       operationId: userScheduleforhostList
       requestBody:
         content:
@@ -1355,6 +1312,8 @@ paths:
                   email: email_address
                   first_name: Zoomie
                   last_name: Userton
+      summary: User scheduleforhost list
+      x-summary-source: derived
   /user/ssocreate:
     post:
       tags:
@@ -1362,10 +1321,7 @@ paths:
       description: 'Create a SSO user on Zoom, return the created user ID.
 
 
-        <aside class="notice">The API is provided for enabled ''Pre-provisioning SSO User'' option. User created in this way has no password. If it is not a basic user, will generate a Personal Vanity URL using user name (no domain) of the provisioning email. If user name or pmi is invalid or occupied, will use random number/random personal vanity URL.</aside>
-
-
-        '
+        The API is provided for enabled ''Pre-provisioning SSO User'' option. User created in this way has no password. If it is not a basic user, will generate a Personal Vanity URL using user name (no domain) of the provisioning email. If user name or pmi is invalid or occupied, will use random number/random personal vanity URL.'
       operationId: userSsocreate
       requestBody:
         content:
@@ -1461,14 +1417,13 @@ paths:
                 token: ''
                 zpk: ''
                 zak: ''
+      summary: User ssocreate
+      x-summary-source: derived
   /user/update:
     post:
       tags:
       - User
-      description: 'Update user info on Zoom via user ID.
-
-
-        '
+      description: Update user info on Zoom via user ID.
       operationId: userUpdate
       requestBody:
         content:
@@ -1676,14 +1631,13 @@ paths:
               example:
                 id: unique_id
                 updated_at: 2012-11-25 12:00:00+00:00
+      summary: User update
+      x-summary-source: derived
   /user/updatepassword:
     post:
       tags:
       - User
-      description: 'Upload and update user''s profile picture on Zoom via user ID.
-
-
-        '
+      description: Upload and update user's profile picture on Zoom via user ID.
       operationId: userUpdatepassword
       requestBody:
         content:
@@ -1709,6 +1663,18 @@ paths:
               example:
                 id: unique_id
                 updated_at: 2013-09-02 12:00:00+00:00
+      summary: User updatepassword
+      x-summary-source: derived
+components:
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: api_key
+      in: query
+    api_secret:
+      type: apiKey
+      name: api_secret
+      in: query
 externalDocs:
   description: Zoom REST API Documentation
   url: https://zoom.github.io/api

@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Zoom / Account Group API
-  description: Needs description.
+  title: Zoom REST Group API
+  description: API Description
   contact:
     name: Zoom Developers
     url: https://zoom.us/developer
@@ -17,15 +17,13 @@ security:
 - api_secret: []
 tags:
 - name: Group
+  description: Group operations
 paths:
   /group/create:
     post:
       tags:
       - Group
-      description: 'Create a group on Zoom, return the new group info.
-
-
-        '
+      description: Create a group on Zoom, return the new group info.
       operationId: groupCreate
       requestBody:
         content:
@@ -49,14 +47,13 @@ paths:
                 account_id: unique_id
                 name: New Group Test
                 total_members: 0
+      summary: Group create
+      x-summary-source: derived
   /group/delete:
     post:
       tags:
       - Group
-      description: 'Delete a group on Zoom, return the deleted group ID.
-
-
-        '
+      description: Delete a group on Zoom, return the deleted group ID.
       operationId: groupDelete
       requestBody:
         content:
@@ -77,16 +74,15 @@ paths:
             application/json:
               example:
                 id: unique_id
-                deleted_at: '2015-08-20T08:41:58.000Z'
+                deleted_at: 2015-08-20 08:41:58+00:00
                 deleted_count: 1
+      summary: Group delete
+      x-summary-source: derived
   /group/edit:
     post:
       tags:
       - Group
-      description: 'Edit a group on Zoom, return the new group info.
-
-
-        '
+      description: Edit a group on Zoom, return the new group info.
       operationId: groupEdit
       requestBody:
         content:
@@ -113,14 +109,13 @@ paths:
                 account_id: unique_id
                 name: New Group Test
                 total_members: 0
+      summary: Group edit
+      x-summary-source: derived
   /group/get:
     post:
       tags:
       - Group
-      description: 'Get a group on Zoom via ID, return the group info.
-
-
-        '
+      description: Get a group on Zoom via ID, return the group info.
       operationId: groupGet
       requestBody:
         content:
@@ -144,14 +139,13 @@ paths:
                 account_id: unique_id
                 name: Group Test
                 total_members: 2
+      summary: Group get
+      x-summary-source: derived
   /group/list:
     post:
       tags:
       - Group
-      description: 'List all groups on your Zoom account.
-
-
-        '
+      description: List all groups on your Zoom account.
       operationId: groupList
       requestBody:
         content:
@@ -181,14 +175,13 @@ paths:
                   account_id: unique_id
                   name: Group Test1
                   total_members: 40
+      summary: Group list
+      x-summary-source: derived
   /group/member/add:
     post:
       tags:
       - Group
-      description: 'Add members to a group on Zoom.
-
-
-        '
+      description: Add members to a group on Zoom.
       operationId: groupMemberAdd
       requestBody:
         content:
@@ -213,16 +206,15 @@ paths:
             application/json:
               example:
                 id: unique_id
-                add_at: '2015-08-20T08:57:38.000Z'
+                add_at: 2015-08-20 08:57:38+00:00
                 add_count: 2
+      summary: Group member add
+      x-summary-source: derived
   /group/member/delete:
     post:
       tags:
       - Group
-      description: 'Delete members of a group on Zoom.
-
-
-        '
+      description: Delete members of a group on Zoom.
       operationId: groupMemberDelete
       requestBody:
         content:
@@ -247,16 +239,15 @@ paths:
             application/json:
               example:
                 id: unique_id
-                deleted_at: '2015-08-20T08:57:38.000Z'
+                deleted_at: 2015-08-20 08:57:38+00:00
                 deleted_count: 2
+      summary: Group member delete
+      x-summary-source: derived
   /group/member/list:
     post:
       tags:
       - Group
-      description: 'Lists the members of a group on Zoom.
-
-
-        '
+      description: Lists the members of a group on Zoom.
       operationId: groupMemberList
       requestBody:
         content:
@@ -294,6 +285,18 @@ paths:
                   first_name: Zoomie
                   last_name: Userton
                   pic_url: https://ssotest.zoom.us/p/6EoubcvJR7eF2grNXJkrHA/f2003a9c-3095-4865-8536-03cc6f211e86-9569
+      summary: Group member list
+      x-summary-source: derived
+components:
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: api_key
+      in: query
+    api_secret:
+      type: apiKey
+      name: api_secret
+      in: query
 externalDocs:
   description: Zoom REST API Documentation
   url: https://zoom.github.io/api

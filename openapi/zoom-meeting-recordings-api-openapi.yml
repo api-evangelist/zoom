@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   title: Zoom / Account Meeting Recordings API
   description: Needs description.
@@ -116,6 +116,17 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    MeetingIdPath:
+      name: meetingId
+      in: path
+      required: true
+      description: The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID.
+      schema:
+        oneOf:
+        - type: integer
+          format: int64
+        - type: string
   schemas:
     RecordingList:
       type: object
@@ -292,20 +303,9 @@ components:
       - 2
       - 3
       - 8
-  parameters:
-    MeetingIdPath:
-      name: meetingId
-      in: path
-      required: true
-      description: The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID.
-      schema:
-        oneOf:
-        - type: integer
-          format: int64
-        - type: string
   responses:
-    Unauthorized:
-      description: Unauthorized. The request requires authentication.
+    NotFound:
+      description: Not found. The requested resource could not be found.
       content:
         application/json:
           schema:
@@ -316,8 +316,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: Not found. The requested resource could not be found.
+    Unauthorized:
+      description: Unauthorized. The request requires authentication.
       content:
         application/json:
           schema:

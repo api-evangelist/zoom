@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Zoom / Account Device API
-  description: Needs description.
+  title: Zoom REST Device API
+  description: API Description
   contact:
     name: Zoom Developers
     url: https://zoom.us/developer
@@ -17,15 +17,13 @@ security:
 - api_secret: []
 tags:
 - name: Device
+  description: Device operations
 paths:
   /h323/device/create:
     post:
       tags:
       - Device
-      description: 'Create a H.323/SIP Device on your Zoom account.
-
-
-        '
+      description: Create a H.323/SIP Device on your Zoom account.
       operationId: deviceDeviceCreate
       requestBody:
         content:
@@ -62,14 +60,13 @@ paths:
                 ip: 192.168.1.10
                 protocol_type: 1
                 encryption_type: 2
+      summary: Device device create
+      x-summary-source: derived
   /h323/device/delete:
     post:
       tags:
       - Device
-      description: 'Delete a H.323/SIP Device on your Zoom account.
-
-
-        '
+      description: Delete a H.323/SIP Device on your Zoom account.
       operationId: deviceDeviceDelete
       requestBody:
         content:
@@ -90,15 +87,14 @@ paths:
             application/json:
               example:
                 id: unique_id
-                deleted_at: '2017-03-14T09:27:15.000Z'
+                deleted_at: 2017-03-14 09:27:15+00:00
+      summary: Device device delete
+      x-summary-source: derived
   /h323/device/list:
     post:
       tags:
       - Device
-      description: 'List H.323/SIP Devices on your Zoom account.
-
-
-        '
+      description: List H.323/SIP Devices on your Zoom account.
       operationId: deviceDeviceList
       requestBody:
         content:
@@ -130,14 +126,13 @@ paths:
                   ip: 192.168.1.10
                   protocol_type: 1
                   encryption_type: 2
+      summary: Device device list
+      x-summary-source: derived
   /h323/device/update:
     post:
       tags:
       - Device
-      description: 'Update a H.323/SIP Device on your Zoom account.
-
-
-        '
+      description: Update a H.323/SIP Device on your Zoom account.
       operationId: deviceDeviceUpdate
       requestBody:
         content:
@@ -172,7 +167,19 @@ paths:
             application/json:
               example:
                 id: unique_id
-                updated_at: '2017-03-14T09:27:03.000Z'
+                updated_at: 2017-03-14 09:27:03+00:00
+      summary: Device device update
+      x-summary-source: derived
+components:
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: api_key
+      in: query
+    api_secret:
+      type: apiKey
+      name: api_secret
+      in: query
 externalDocs:
   description: Zoom REST API Documentation
   url: https://zoom.github.io/api

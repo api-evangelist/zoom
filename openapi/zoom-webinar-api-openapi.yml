@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Zoom / Account Webinar API
-  description: Needs description.
+  title: Zoom REST Webinar API
+  description: API Description
   contact:
     name: Zoom Developers
     url: https://zoom.us/developer
@@ -23,10 +23,7 @@ paths:
     post:
       tags:
       - Webinar
-      description: 'Get ended webinar attendees
-
-
-        '
+      description: Get ended webinar attendees
       operationId: webinarAttendeesList
       requestBody:
         content:
@@ -68,14 +65,13 @@ paths:
                     country: US
                     address: 1234 Some Street
                     city: Zoomville
+      summary: Webinar attendees list
+      x-summary-source: derived
   /webinar/create:
     post:
       tags:
       - Webinar
-      description: 'Create a webinar on Zoom, return the created webinar start and join URL.
-
-
-        '
+      description: Create a webinar on Zoom, return the created webinar start and join URL.
       operationId: webinarCreate
       requestBody:
         content:
@@ -189,14 +185,13 @@ paths:
                 join_url: https://zoom.us/j/123456789
                 registration_url: ''
                 created_at: 2015-01-22 07:09:49+00:00
+      summary: Webinar create
+      x-summary-source: derived
   /webinar/delete:
     post:
       tags:
       - Webinar
-      description: 'Delete a webinar on Zoom, return the deleted webinar ID.
-
-
-        '
+      description: Delete a webinar on Zoom, return the deleted webinar ID.
       operationId: webinarDelete
       requestBody:
         content:
@@ -225,14 +220,13 @@ paths:
               example:
                 id: '123456789'
                 deleted_at: 2012-11-25 12:00:00+00:00
+      summary: Webinar delete
+      x-summary-source: derived
   /webinar/end:
     post:
       tags:
       - Webinar
-      description: 'End a Webinar on Zoom, return the deleted Webinar ID
-
-
-        '
+      description: End a Webinar on Zoom, return the deleted Webinar ID
       operationId: webinarEnd
       requestBody:
         content:
@@ -258,14 +252,13 @@ paths:
               example:
                 id: '123456789'
                 ended_at: 2012-11-25 12:00:00+00:00
+      summary: Webinar end
+      x-summary-source: derived
   /webinar/get:
     post:
       tags:
       - Webinar
-      description: 'Get a Webinar on Zoom via Webinar ID, return the Webinar info
-
-
-        '
+      description: Get a Webinar on Zoom via Webinar ID, return the Webinar info
       operationId: webinarGet
       requestBody:
         content:
@@ -312,14 +305,13 @@ paths:
                 - occurrence_id: '1483210260000'
                   start_time: 2017-01-01 02:51:00+00:00
                   duration: 60
+      summary: Webinar get
+      x-summary-source: derived
   /webinar/list:
     post:
       tags:
       - Webinar
-      description: 'List all registrationless Webinars on Zoom
-
-
-        '
+      description: List all registrationless Webinars on Zoom
       operationId: webinarList
       requestBody:
         content:
@@ -370,14 +362,13 @@ paths:
                   'option_enforce_login_domains ': ''
                   option_alternative_hosts: ''
                   status: 0
+      summary: Webinar list
+      x-summary-source: derived
   /webinar/list/registration:
     post:
       tags:
       - Webinar
-      description: 'List all the upcoming registration-based Webinars on Zoom
-
-
-        '
+      description: List all the upcoming registration-based Webinars on Zoom
       operationId: webinarListRegistration
       requestBody:
         content:
@@ -425,14 +416,13 @@ paths:
                   option_start_type: video
                   option_audio: both
                   status: 0
+      summary: Webinar list registration
+      x-summary-source: derived
   /webinar/panelists:
     post:
       tags:
       - Webinar
-      description: 'Get all the Webinar Panelists on Zoom
-
-
-        '
+      description: Get all the Webinar Panelists on Zoom
       operationId: webinarPanelists
       requestBody:
         content:
@@ -461,14 +451,13 @@ paths:
                 - name: Zoomie Userton
                   email: email_address
                   join_url: https://www.zoom.us/w/552681828?tk=TMnju_IjiU7Fx3eSkrajn2irvyMBNQ4XCW6cutSPntg.DQEAAAAAIPFBZBYwbzhKUUlXVVN3bW9Ed05QUmdvU2hBAA
+      summary: Webinar panelists
+      x-summary-source: derived
   /webinar/polls:
     post:
       tags:
       - Webinar
-      description: 'Get Ended Webinar Polls
-
-
-        '
+      description: Get Ended Webinar Polls
       operationId: webinarPolls
       requestBody:
         content:
@@ -504,14 +493,13 @@ paths:
                   question_details:
                   - question: question?
                     answer: answer
+      summary: Webinar polls
+      x-summary-source: derived
   /webinar/questions:
     post:
       tags:
       - Webinar
-      description: 'Get Ended Webinar Q&A
-
-
-        '
+      description: Get Ended Webinar Q&A
       operationId: webinarQuestions
       requestBody:
         content:
@@ -547,14 +535,13 @@ paths:
                   question_details:
                   - question: question?
                     answer: answer
+      summary: Webinar questions
+      x-summary-source: derived
   /webinar/register:
     post:
       tags:
       - Webinar
-      description: 'Register for a webinar
-
-
-        '
+      description: Register for a webinar
       operationId: webinarRegister
       requestBody:
         content:
@@ -639,14 +626,13 @@ paths:
                 topic: webinar registration
                 start_time: 2016-02-21 04:00:00+00:00
                 join_url: https://www.zoom.us/w/123456789?tk=2DsQiu6nZVsZVATrPLvXgqPvw8mmKyxgAGaDMizLv34.DQEAAAAAM9AWXhZ2Nm5vRjIyMlRoUzE3ZktWM3l4cHVRAA
+      summary: Webinar register
+      x-summary-source: derived
   /webinar/registrants/approve:
     post:
       tags:
       - Webinar
-      description: 'Approve pending registrants on Zoom Webinar.
-
-
-        '
+      description: Approve pending registrants on Zoom Webinar.
       operationId: webinarRegistrantsApprove
       requestBody:
         content:
@@ -676,14 +662,13 @@ paths:
               example:
                 id: '421431292'
                 updated_at: 2016-08-18 02:11:40+00:00
+      summary: Webinar registrants approve
+      x-summary-source: derived
   /webinar/registrants/list:
     post:
       tags:
       - Webinar
-      description: 'List webinar registrants on Zoom, include pending approval registrants and approved registrants.
-
-
-        '
+      description: List webinar registrants on Zoom, include pending approval registrants and approved registrants.
       operationId: webinarRegistrantsList
       requestBody:
         content:
@@ -730,14 +715,13 @@ paths:
                   last_name: Userton
                   email: email_address
                   registration_time: 2016-08-18 01:45:26+00:00
+      summary: Webinar registrants list
+      x-summary-source: derived
   /webinar/registration:
     post:
       tags:
       - Webinar
-      description: 'Gather Webinar registrants info
-
-
-        '
+      description: Gather Webinar registrants info
       operationId: webinarRegistration
       requestBody:
         content:
@@ -784,14 +768,13 @@ paths:
                   approval: approved
                   email: email_address
                   registration_url: https://api.zoom.us/w/206388466?tk=n8-qbK4ocC73mPjIRlheMksYPxeWAhnktoUZq_xAqg8.DQEAAAAADE088hZKTXcxTllpelFjZXNfNDg0NlNKQ3lRAA
+      summary: Webinar registration
+      x-summary-source: derived
   /webinar/registration/cancel:
     post:
       tags:
       - Webinar
-      description: 'Cancel Webinar Registration
-
-
-        '
+      description: Cancel Webinar Registration
       operationId: webinarRegistrationCancel
       requestBody:
         content:
@@ -824,14 +807,13 @@ paths:
               example:
                 id: '844495467'
                 updated_at: 2016-11-29 01:26:43+00:00
+      summary: Webinar registration cancel
+      x-summary-source: derived
   /webinar/update:
     post:
       tags:
       - Webinar
-      description: 'Update Webinar info on Zoom via Webinar ID
-
-
-        '
+      description: Update Webinar info on Zoom via Webinar ID
       operationId: webinarUpdate
       requestBody:
         content:
@@ -929,14 +911,13 @@ paths:
               example:
                 id: '123456789'
                 updated_at: 2012-11-25 12:00:00+00:00
+      summary: Webinar update
+      x-summary-source: derived
   /webinar/uuid/list:
     post:
       tags:
       - Webinar
-      description: 'Get ended webinar UUID.
-
-
-        '
+      description: Get ended webinar UUID.
       operationId: webinarUuidList
       requestBody:
         content:
@@ -963,6 +944,18 @@ paths:
                 webinars:
                 - uuid: unique_id
                   start_time: 2015-08-23 03:03:48+00:00
+      summary: Webinar uuid list
+      x-summary-source: derived
+components:
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: api_key
+      in: query
+    api_secret:
+      type: apiKey
+      name: api_secret
+      in: query
 externalDocs:
   description: Zoom REST API Documentation
   url: https://zoom.github.io/api

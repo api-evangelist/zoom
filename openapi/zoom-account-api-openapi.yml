@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Zoom / Account API
-  description: Needs description.
+  title: Zoom REST Account API
+  description: API Description
   contact:
     name: Zoom Developers
     url: https://zoom.us/developer
@@ -17,15 +17,13 @@ security:
 - api_secret: []
 tags:
 - name: Account
+  description: Account operations
 paths:
   /ma/account/billing/update:
     post:
       tags:
       - Account
-      description: 'Update Billing Information for a sub account of the master account on Zoom.
-
-
-        '
+      description: Update Billing Information for a sub account of the master account on Zoom.
       operationId: accountBillingUpdate
       requestBody:
         content:
@@ -73,7 +71,9 @@ paths:
             application/json:
               example:
                 id: 'unique_id '
-                updated_at: '2012-11-25T12:00:00.000Z'
+                updated_at: 2012-11-25 12:00:00+00:00
+      summary: Account billing update
+      x-summary-source: derived
   /ma/account/create:
     post:
       tags:
@@ -81,13 +81,10 @@ paths:
       description: 'Create a sub account of the master account on Zoom, return the created sub account id and owner id.
 
 
-        <aside class="notice">Your account must be a master account and have this privilege to create sub account. Zoom only assign this privilege to trusted partner.</aside>
+        Your account must be a master account and have this privilege to create sub account. Zoom only assign this privilege to trusted partner.
 
 
-        <aside class="notice">User will not receive the confirmation email.</aside>
-
-
-        '
+        User will not receive the confirmation email.'
       operationId: accountCreate
       requestBody:
         content:
@@ -174,15 +171,14 @@ paths:
                 id: unique_id
                 owner_id: unique_id
                 owner_email: email_address
-                created_at: '2012-11-25T12:00:00.000Z'
+                created_at: 2012-11-25 12:00:00+00:00
+      summary: Account create
+      x-summary-source: derived
   /ma/account/delete:
     post:
       tags:
       - Account
-      description: 'Delete the sub account.
-
-
-        '
+      description: Delete the sub account.
       operationId: accountDelete
       requestBody:
         content:
@@ -203,7 +199,9 @@ paths:
             application/json:
               example:
                 id: unique_id
-                deleted_at: '2012-11-25T12:00:00.000Z'
+                deleted_at: 2012-11-25 12:00:00+00:00
+      summary: Account delete
+      x-summary-source: derived
   /ma/account/get:
     post:
       tags:
@@ -211,13 +209,10 @@ paths:
       description: 'Get a sub account of the master account on Zoom, return the created sub account id and owner id.
 
 
-        <aside class="notice">Your account must be a master account and have this privilege to get sub account. Zoom only assign this privilege to trusted partner.</aside>
+        Your account must be a master account and have this privilege to get sub account. Zoom only assign this privilege to trusted partner.
 
 
-        <aside class="notice">This API will let the master account owner to get sub account API key pair. This is a private feature and needs to be enabled by zoom support. If you need this function, please open a case with support to enable this API.</aside>
-
-
-        '
+        This API will let the master account owner to get sub account API key pair. This is a private feature and needs to be enabled by zoom support. If you need this function, please open a case with support to enable this API.'
       operationId: accountGet
       requestBody:
         content:
@@ -240,15 +235,14 @@ paths:
                 id: unique_id
                 owner_id: unique_id
                 owner_email: email_address
-                created_at: '2012-11-25T12:00:00.000Z'
+                created_at: 2012-11-25 12:00:00+00:00
+      summary: Account get
+      x-summary-source: derived
   /ma/account/list:
     post:
       tags:
       - Account
-      description: 'List all the sub account under the master account.
-
-
-        '
+      description: List all the sub account under the master account.
       operationId: accountList
       requestBody:
         content:
@@ -280,6 +274,8 @@ paths:
                 - id: unique_id
                   owner_email: email_address
                   created_at: 2015-01-27T140508Z
+      summary: Account list
+      x-summary-source: derived
   /ma/account/plan/add:
     post:
       tags:
@@ -287,13 +283,10 @@ paths:
       description: 'Add a plan for a sub account of the master account on Zoom.
 
 
-        <aside class="notice">Only for the sub account which is a paid account and paid by master account.</aside>
+        Only for the sub account which is a paid account and paid by master account.
 
 
-        <aside class="notice">Only add an Additional plan for a sub account.</aside>
-
-
-        '
+        Only add an Additional plan for a sub account.'
       operationId: accountPlanAdd
       requestBody:
         content:
@@ -318,15 +311,14 @@ paths:
             application/json:
               example:
                 id: unique_id
-                updated_at: '2012-11-25T12:00:00.000Z'
+                updated_at: 2012-11-25 12:00:00+00:00
+      summary: Account plan add
+      x-summary-source: derived
   /ma/account/plan/get:
     post:
       tags:
       - Account
-      description: 'Get plans information for a sub account of the master account on Zoom.
-
-
-        '
+      description: Get plans information for a sub account of the master account on Zoom.
       operationId: accountPlanGet
       requestBody:
         content:
@@ -394,14 +386,13 @@ paths:
                   premium_country: TW
                   callout: 1
                   ddi_numbers: 66
+      summary: Account plan get
+      x-summary-source: derived
   /ma/account/plan/subscribe:
     post:
       tags:
       - Account
-      description: 'Subscribe plans for a sub account of the master account on Zoom.
-
-
-        '
+      description: Subscribe plans for a sub account of the master account on Zoom.
       operationId: accountPlanSubscribe
       requestBody:
         content:
@@ -524,6 +515,8 @@ paths:
                   premium_country: TW
                   callout: 1
                   ddi_numbers: 66
+      summary: Account plan subscribe
+      x-summary-source: derived
   /ma/account/plan/update:
     post:
       tags:
@@ -531,13 +524,10 @@ paths:
       description: 'Update a plan for a sub account of the master account on Zoom.
 
 
-        <aside class="notice">Only for the sub account which is a paid account and paid by master account.</aside>
+        Only for the sub account which is a paid account and paid by master account.
 
 
-        <aside class="notice">Could update a base plan or an additional plan.</aside>
-
-
-        '
+        Could update a base plan or an additional plan.'
       operationId: accountPlanUpdate
       requestBody:
         content:
@@ -567,15 +557,14 @@ paths:
             application/json:
               example:
                 id: w40hUJRpRmmkx4uPXczdHg
-                updated_at: '2012-11-25T12:00:00.000Z'
+                updated_at: 2012-11-25 12:00:00+00:00
+      summary: Account plan update
+      x-summary-source: derived
   /ma/account/update:
     post:
       tags:
       - Account
-      description: 'Update a sub account of the master account on Zoom, return the updated sub account id.
-
-
-        '
+      description: Update a sub account of the master account on Zoom, return the updated sub account id.
       operationId: accountUpdate
       requestBody:
         content:
@@ -648,7 +637,19 @@ paths:
             application/json:
               example:
                 id: unique_id
-                updated_at: '2012-11-25T12:00:00.000Z'
+                updated_at: 2012-11-25 12:00:00+00:00
+      summary: Account update
+      x-summary-source: derived
+components:
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: api_key
+      in: query
+    api_secret:
+      type: apiKey
+      name: api_secret
+      in: query
 externalDocs:
   description: Zoom REST API Documentation
   url: https://zoom.github.io/api

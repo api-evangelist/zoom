@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Zoom / Account Dashboard API
-  description: Needs description.
+  title: Zoom REST Dashboard API
+  description: API Description
   contact:
     name: Zoom Developers
     url: https://zoom.us/developer
@@ -17,15 +17,13 @@ security:
 - api_secret: []
 tags:
 - name: Dashboard
+  description: Dashboard operations
 paths:
   /metrics/crc:
     post:
       tags:
       - Dashboard
-      description: 'Get CRC Port usage hour by hour for a specified time period.
-
-
-        '
+      description: Get CRC Port usage hour by hour for a specified time period.
       operationId: dashboardCrc
       requestBody:
         content:
@@ -49,22 +47,21 @@ paths:
           content:
             application/json:
               example:
-                from: '2015-03-12T00:00:00.000Z'
-                to: '2015-03-12T00:00:00.000Z'
+                from: 2015-03-12
+                to: 2015-03-12
                 crc_ports_usage:
-                - date_time: '2015-03-12T00:00:00.000Z'
+                - date_time: 2015-03-12
                   crc_ports_hour_usage:
                   - hour: '00'
                     max_usage: 1
                     total_usage: 3
+      summary: Dashboard crc
+      x-summary-source: derived
   /metrics/im:
     post:
       tags:
       - Dashboard
-      description: 'Get statistics of Zoom IM
-
-
-        '
+      description: Get statistics of Zoom IM
       operationId: dashboardIm
       requestBody:
         content:
@@ -96,8 +93,8 @@ paths:
           content:
             application/json:
               example:
-                from: '2016-04-12T00:00:00.000Z'
-                to: '2016-04-13T00:00:00.000Z'
+                from: 2016-04-12
+                to: 2016-04-13
                 page_count: 1
                 page_number: 1
                 page_size: 30
@@ -122,14 +119,13 @@ paths:
                   videos_receive: 0
                   emoji_send: 0
                   emoji_receive: 0
+      summary: Dashboard im
+      x-summary-source: derived
   /metrics/meetingdetail:
     post:
       tags:
       - Dashboard
-      description: 'Get live and past meeting details
-
-
-        '
+      description: Get live and past meeting details
       operationId: dashboardMeetingdetail
       requestBody:
         content:
@@ -167,8 +163,8 @@ paths:
                 host: Zoomie Userton
                 email: email_address
                 user_type: Pro
-                start_time: '2015-08-30T05:36:56.000Z'
-                end_time: '2015-08-30T06:36:56.000Z'
+                start_time: 2015-08-30 05:36:56+00:00
+                end_time: 2015-08-30 06:36:56+00:00
                 duration: 4 mins
                 has_pstn: false
                 has_voip: true
@@ -189,20 +185,19 @@ paths:
                   cn: CN
                   city: Nanjing
                   network_type: Wifi
-                  join_time: '2017-02-18T01:44:47.000Z'
-                  leave_time: '2017-02-18T01:45:58.000Z'
+                  join_time: 2017-02-18 01:44:47+00:00
+                  leave_time: 2017-02-18 01:45:58+00:00
                   share_application: true
                   share_desktop: true
                   share_whiteboard: true
                   recording: true
+      summary: Dashboard meetingdetail
+      x-summary-source: derived
   /metrics/meetings:
     post:
       tags:
       - Dashboard
-      description: 'Get Live Meetings and past meetings for a specified period
-
-
-        '
+      description: Get Live Meetings and past meetings for a specified period
       operationId: dashboardMeetings
       requestBody:
         content:
@@ -239,8 +234,8 @@ paths:
           content:
             application/json:
               example:
-                from: '2015-08-02T00:00:00.000Z'
-                to: '2015-09-02T00:00:00.000Z'
+                from: 2015-08-02
+                to: 2015-09-02
                 page_count: 2
                 page_number: 1
                 page_size: 30
@@ -252,8 +247,8 @@ paths:
                   host: Zoomie Userton
                   email: email_address
                   user_type: Pro
-                  start_time: '2015-08-29T05:36:56.000Z'
-                  end_time: '2015-08-29T06:36:56.000Z'
+                  start_time: 2015-08-29 05:36:56+00:00
+                  end_time: 2015-08-29 06:36:56+00:00
                   duration: 4 mins
                   participants: 2
                   has_pstn: false
@@ -262,14 +257,13 @@ paths:
                   has_video: true
                   has_screen_share: false
                   recording: 0
+      summary: Dashboard meetings
+      x-summary-source: derived
   /metrics/qos:
     post:
       tags:
       - Dashboard
-      description: 'Get the users quality of service in a Zoom Meeting
-
-
-        '
+      description: Get the users quality of service in a Zoom Meeting
       operationId: dashboardQos
       requestBody:
         content:
@@ -313,7 +307,7 @@ paths:
                 city: Nanjing
                 version: 3.5.35288.1217
                 user_qos:
-                - dateTime: '2015-08-30T06:40:56.000Z'
+                - dateTime: 2015-08-30 06:40:56+00:00
                   audio_input:
                     bitrate: 29 kbps
                     latency: 39 ms
@@ -363,14 +357,13 @@ paths:
                     zoom_avg_cpu_usage: 3%
                     zoom_max_cpu_usage: 5%
                     system_max_cpu_usage: 20%
+      summary: Dashboard qos
+      x-summary-source: derived
   /metrics/webinardetail:
     post:
       tags:
       - Dashboard
-      description: 'Get live and past webinar details
-
-
-        '
+      description: Get live and past webinar details
       operationId: dashboardWebinardetail
       requestBody:
         content:
@@ -408,8 +401,8 @@ paths:
                 host: Zoomie Userton
                 email: email_address
                 user_type: Pro
-                start_time: '2015-08-30T05:36:56.000Z'
-                end_time: '2015-08-30T06:36:56.000Z'
+                start_time: 2015-08-30 05:36:56+00:00
+                end_time: 2015-08-30 06:36:56+00:00
                 duration: 4 mins
                 has_pstn: false
                 has_voip: true
@@ -430,20 +423,19 @@ paths:
                   cn: CN
                   city: Nanjing
                   network_type: Wifi
-                  join_time: '2017-02-18T01:44:47.000Z'
-                  leave_time: '2017-02-18T01:45:58.000Z'
+                  join_time: 2017-02-18 01:44:47+00:00
+                  leave_time: 2017-02-18 01:45:58+00:00
                   share_application: true
                   share_desktop: true
                   share_whiteboard: true
                   recording: true
+      summary: Dashboard webinardetail
+      x-summary-source: derived
   /metrics/webinars:
     post:
       tags:
       - Dashboard
-      description: 'Get live webinars and past webinars for a specified period.
-
-
-        '
+      description: Get live webinars and past webinars for a specified period.
       operationId: dashboardWebinars
       requestBody:
         content:
@@ -480,8 +472,8 @@ paths:
           content:
             application/json:
               example:
-                from: '2015-08-02T00:00:00.000Z'
-                to: '2015-09-02T00:00:00.000Z'
+                from: 2015-08-02
+                to: 2015-09-02
                 page_count: 2
                 page_number: 1
                 page_size: 30
@@ -493,8 +485,8 @@ paths:
                   host: Zoomie Userton
                   email: email_address
                   user_type: Pro
-                  start_time: '2015-08-29T05:36:56.000Z'
-                  end_time: '2015-08-29T06:36:56.000Z'
+                  start_time: 2015-08-29 05:36:56+00:00
+                  end_time: 2015-08-29 06:36:56+00:00
                   duration: 4 mins
                   participants: 2
                   has_pstn: false
@@ -503,14 +495,13 @@ paths:
                   has_video: true
                   has_screen_share: false
                   recording: 0
+      summary: Dashboard webinars
+      x-summary-source: derived
   /metrics/zoomroomdetail:
     post:
       tags:
       - Dashboard
-      description: 'Get a Zoom Room on Zoom via Zoom ID, return the Zoom Room info.
-
-
-        '
+      description: Get a Zoom Room on Zoom via Zoom ID, return the Zoom Room info.
       operationId: dashboardZoomroomdetail
       requestBody:
         content:
@@ -546,8 +537,8 @@ paths:
           content:
             application/json:
               example:
-                from: '2016-04-12T00:00:00.000Z'
-                to: '2016-04-13T00:00:00.000Z'
+                from: 2016-04-12
+                to: 2016-04-13
                 page_count: 1
                 page_number: 1
                 page_size: 30
@@ -598,14 +589,13 @@ paths:
                   has_video: false
                   has_screen_share: false
                   recording: 0
+      summary: Dashboard zoomroomdetail
+      x-summary-source: derived
   /metrics/zoomrooms:
     post:
       tags:
       - Dashboard
-      description: 'List all Zoom Rooms on Zoom.
-
-
-        '
+      description: List all Zoom Rooms on Zoom.
       operationId: dashboardZoomrooms
       requestBody:
         content:
@@ -645,6 +635,18 @@ paths:
                     selected_speaker: ''
                     selected_camera: ''
                   meeting_id: ''
+      summary: Dashboard zoomrooms
+      x-summary-source: derived
+components:
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: api_key
+      in: query
+    api_secret:
+      type: apiKey
+      name: api_secret
+      in: query
 externalDocs:
   description: Zoom REST API Documentation
   url: https://zoom.github.io/api

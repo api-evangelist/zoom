@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Zoom / Account Meeting API
-  description: Needs description.
+  title: Zoom REST Meeting API
+  description: API Description
   contact:
     name: Zoom Developers
     url: https://zoom.us/developer
@@ -17,15 +17,13 @@ security:
 - api_secret: []
 tags:
 - name: Meeting
+  description: Meeting operations
 paths:
   /meeting/create:
     post:
       tags:
       - Meeting
-      description: 'Create a meeting on Zoom, return the created meeting URL
-
-
-        '
+      description: Create a meeting on Zoom, return the created meeting URL
       operationId: meetingCreate
       requestBody:
         content:
@@ -131,13 +129,13 @@ paths:
                 id: '123456789'
                 start_url: https://zoom.us/s/123456789?zak=xxxxxx
                 join_url: https://zoom.us/j/123456789
-                created_at: '2012-11-25T12:00:00.000Z'
+                created_at: 2012-11-25 12:00:00+00:00
                 host_id: unique_id
                 topic: Topic for this meeting
                 type: 2
                 option_jbh: false
                 option_start_type: video
-                start_time: '2012-11-25T12:00:00.000Z'
+                start_time: 2012-11-25 12:00:00+00:00
                 duration: 30
                 timezone: America/Los_Angeles
                 password: '123'
@@ -149,14 +147,13 @@ paths:
                 'option_enforce_login_domains ': ''
                 option_alternative_hosts: ''
                 status: 0
+      summary: Meeting create
+      x-summary-source: derived
   /meeting/delete:
     post:
       tags:
       - Meeting
-      description: 'Delete a meeting on Zoom, return the deleted meeting ID.
-
-
-        '
+      description: Delete a meeting on Zoom, return the deleted meeting ID.
       operationId: meetingDelete
       requestBody:
         content:
@@ -184,15 +181,14 @@ paths:
             application/json:
               example:
                 id: '123456789'
-                deleted_at: '2012-11-25T12:00:00.000Z'
+                deleted_at: 2012-11-25 12:00:00+00:00
+      summary: Meeting delete
+      x-summary-source: derived
   /meeting/end:
     post:
       tags:
       - Meeting
-      description: 'End a meeting on Zoom, return the deleted meeting ID.
-
-
-        '
+      description: End a meeting on Zoom, return the deleted meeting ID.
       operationId: meetingEnd
       requestBody:
         content:
@@ -217,15 +213,14 @@ paths:
             application/json:
               example:
                 id: '123456789'
-                ended_at: '2012-11-25T12:00:00.000Z'
+                ended_at: 2012-11-25 12:00:00+00:00
+      summary: Meeting end
+      x-summary-source: derived
   /meeting/get:
     post:
       tags:
       - Meeting
-      description: 'Get a meeting on Zoom via meeting ID, return the meeting info.
-
-
-        '
+      description: Get a meeting on Zoom via meeting ID, return the meeting info.
       operationId: meetingGet
       requestBody:
         content:
@@ -273,19 +268,18 @@ paths:
                 timezone: Asia/Hong_Kong
                 start_url: https://www.zoom.us/s/123456789?zak=xxxxxx
                 join_url: https://www.zoom.us/j/123456789
-                created_at: '2016-12-20T02:51:42.000Z'
+                created_at: 2016-12-20 02:51:42+00:00
                 occurrences:
                 - occurrence_id: '1483210260000'
-                  start_time: '2017-01-01T02:51:00.000Z'
+                  start_time: 2017-01-01 02:51:00+00:00
                   duration: 60
+      summary: Meeting get
+      x-summary-source: derived
   /meeting/list:
     post:
       tags:
       - Meeting
-      description: 'List all the scheduled meetings on Zoom.
-
-
-        '
+      description: List all the scheduled meetings on Zoom.
       operationId: meetingList
       requestBody:
         content:
@@ -322,11 +316,11 @@ paths:
                   id: '123456789'
                   start_url: https://zoom.us/s/123456789?zak=xxxxxx
                   join_url: https://zoom.us/j/123456789
-                  created_at: '2012-11-25T12:00:00.000Z'
+                  created_at: 2012-11-25 12:00:00+00:00
                   host_id: unique_id
                   topic: Topic for this meeting
                   type: 2
-                  start_time: '2012-11-25T12:00:00.000Z'
+                  start_time: 2012-11-25 12:00:00+00:00
                   duration: 30
                   timezone: America/Los_Angeles
                   password: '123'
@@ -340,14 +334,13 @@ paths:
                   'option_enforce_login_domains ': ''
                   option_alternative_hosts: ''
                   status: 0
+      summary: Meeting list
+      x-summary-source: derived
   /meeting/live:
     post:
       tags:
       - Meeting
-      description: 'Lists the live meetings on Zoom.
-
-
-        '
+      description: Lists the live meetings on Zoom.
       operationId: meetingLive
       requestBody:
         content:
@@ -380,12 +373,12 @@ paths:
                   id: '123456789'
                   start_url: https://zoom.us/s/123456789?zak=xxxxxx
                   join_url: https://zoom.us/j/123456789
-                  created_at: '2012-11-25T12:00:00.000Z'
+                  created_at: 2012-11-25 12:00:00+00:00
                   host_id: unique_id
                   topic: Topic for this meeting
                   type: 2
                   status: 0
-                  start_time: '2012-11-25T12:00:00.000Z'
+                  start_time: 2012-11-25 12:00:00+00:00
                   duration: 30
                   timezone: America/Los_Angeles
                   password: '123'
@@ -398,14 +391,13 @@ paths:
                   option_enforce_login: false
                   'option_enforce_login_domains ': ''
                   option_alternative_hosts: ''
+      summary: Meeting live
+      x-summary-source: derived
   /meeting/register:
     post:
       tags:
       - Meeting
-      description: 'Register for a meeting.
-
-
-        '
+      description: Register for a meeting.
       operationId: meetingRegister
       requestBody:
         content:
@@ -488,16 +480,15 @@ paths:
                 registrant_id: unique_id
                 id: '123456789'
                 topic: meeting registration
-                start_time: '2016-02-21T04:00:00.000Z'
+                start_time: 2016-02-21 04:00:00+00:00
                 join_url: https://www.zoom.us/w/869275230?tk=2DsQiu6nZVsZVATrPLvXgqPvw8mmKyxgAGaDMizLv34.DQEAAAAAM9AWXhZ2Nm5vRjIyMlRoUzE3ZktWM3l4cHVRAA
+      summary: Meeting register
+      x-summary-source: derived
   /meeting/update:
     post:
       tags:
       - Meeting
-      description: 'Update meeting info on Zoom via meeting ID.
-
-
-        '
+      description: Update meeting info on Zoom via meeting ID.
       operationId: meetingUpdate
       requestBody:
         content:
@@ -603,7 +594,19 @@ paths:
             application/json:
               example:
                 id: unique_id
-                updated_at: '2012-11-25T12:00:00.000Z'
+                updated_at: 2012-11-25 12:00:00+00:00
+      summary: Meeting update
+      x-summary-source: derived
+components:
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: api_key
+      in: query
+    api_secret:
+      type: apiKey
+      name: api_secret
+      in: query
 externalDocs:
   description: Zoom REST API Documentation
   url: https://zoom.github.io/api

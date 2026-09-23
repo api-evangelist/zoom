@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Zoom / Account Cloud Recording API
-  description: Needs description.
+  title: Zoom REST Cloud Recording API
+  description: API Description
   contact:
     name: Zoom Developers
     url: https://zoom.us/developer
@@ -23,10 +23,7 @@ paths:
     post:
       tags:
       - Cloud Recording
-      description: 'Lists all the cloud recordings meetings on a Meeting Connector
-
-
-        '
+      description: Lists all the cloud recordings meetings on a Meeting Connector
       operationId: mcRecordingList
       requestBody:
         content:
@@ -87,14 +84,13 @@ paths:
                     file_size: 432432
                     play_url: https://brand.zoom.us/recording/play/HzMyuI23bqxlJLVJLrww3L9ZuFeZEvYtG0vQ6pHhp6Twr6GPjX4Qks_CJak7jrU2
                     download_url: https://brand.zoom.us/recording/download/HzMyuI23bqxlJLVJLrww3L9ZuFeZEvYtG0vQ6pHhp6Twr6GPjX4Qks_CJak7jrU2
+      summary: Mc recording list
+      x-summary-source: derived
   /recording/delete:
     post:
       tags:
       - Cloud Recording
-      description: 'Delete recorded meeting either on Zoom cloud or on-premise.
-
-
-        '
+      description: Delete recorded meeting either on Zoom cloud or on-premise.
       operationId: recordingDelete
       requestBody:
         content:
@@ -119,14 +115,13 @@ paths:
               example:
                 id: unique_id
                 deleted_at: 2012-11-25 12:00:00+00:00
+      summary: Recording delete
+      x-summary-source: derived
   /recording/get:
     post:
       tags:
       - Cloud Recording
-      description: 'Get the recorded meeting on either Zoom cloud or on-prem.
-
-
-        '
+      description: Get the recorded meeting on either Zoom cloud or on-prem.
       operationId: recordingGet
       requestBody:
         content:
@@ -165,14 +160,13 @@ paths:
                   file_size: 438482
                   play_url: https://brand.zoom.us/recording/play/HzMyuI23bqxlJLVJLrww3L9ZuFeZEvYtG0vQ6pHhp6Twr6GPjX4Qks_CJak7jrU2
                   download_url: https://brand.zoom.us/recording/download/HzMyuI23bqxlJLVJLrww3L9ZuFeZEvYtG0vQ6pHhp6Twr6GPjX4Qks_CJak7jrU2
+      summary: Recording get
+      x-summary-source: derived
   /recording/list:
     post:
       tags:
       - Cloud Recording
-      description: 'List all the cloud recording meetings on Zoom.
-
-
-        '
+      description: List all the cloud recording meetings on Zoom.
       operationId: recordingList
       requestBody:
         content:
@@ -234,6 +228,18 @@ paths:
                     status: completed
                     play_url: https://brand.zoom.us/recording/play/HzMyuI23bqxlJLVJLrww3L9ZuFeZEvYtG0vQ6pHhp6Twr6GPjX4Qks_CJak7jrU2
                     download_url: https://brand.zoom.us/recording/download/HzMyuI23bqxlJLVJLrww3L9ZuFeZEvYtG0vQ6pHhp6Twr6GPjX4Qks_CJak7jrU2
+      summary: Recording list
+      x-summary-source: derived
+components:
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: api_key
+      in: query
+    api_secret:
+      type: apiKey
+      name: api_secret
+      in: query
 externalDocs:
   description: Zoom REST API Documentation
   url: https://zoom.github.io/api

@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   title: Zoom / Account Meeting Live Stream API
   description: Needs description.
@@ -158,6 +158,25 @@ components:
         - type: integer
           format: int64
         - type: string
+  responses:
+    NotFound:
+      description: Not found. The requested resource could not be found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Bad request. The request was invalid or cannot be served.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Unauthorized. The request requires authentication.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   schemas:
     ErrorResponse:
       type: object
@@ -208,25 +227,6 @@ components:
           - 720p
           - 1080p
           example: 720p
-  responses:
-    Unauthorized:
-      description: Unauthorized. The request requires authentication.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Bad request. The request was invalid or cannot be served.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: Not found. The requested resource could not be found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
 externalDocs:
   description: Zoom REST API Documentation
   url: https://zoom.github.io/api

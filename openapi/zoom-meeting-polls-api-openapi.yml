@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   title: Zoom / Account Meeting Polls API
   description: Needs description.
@@ -265,6 +265,25 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    MeetingIdPath:
+      name: meetingId
+      in: path
+      required: true
+      description: The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID.
+      schema:
+        oneOf:
+        - type: integer
+          format: int64
+        - type: string
+    PollIdPath:
+      name: pollId
+      in: path
+      required: true
+      description: The poll ID.
+      schema:
+        type: integer
+        format: int64
   schemas:
     PollCreateRequest:
       type: object
@@ -293,28 +312,6 @@ components:
           description: List of questions for the poll.
           items:
             $ref: '#/components/schemas/PollQuestion'
-          example: []
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-          description: Error code.
-          example: 10
-        message:
-          type: string
-          description: Error message.
-          example: example_value
-        errors:
-          type: array
-          description: Detailed error messages.
-          items:
-            type: object
-            properties:
-              field:
-                type: string
-              message:
-                type: string
           example: []
     Poll:
       type: object
@@ -354,6 +351,28 @@ components:
           description: List of questions in the poll.
           items:
             $ref: '#/components/schemas/PollQuestion'
+          example: []
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Error code.
+          example: 10
+        message:
+          type: string
+          description: Error message.
+          example: example_value
+        errors:
+          type: array
+          description: Detailed error messages.
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+              message:
+                type: string
           example: []
     PollQuestion:
       type: object
@@ -428,28 +447,9 @@ components:
           type: integer
           description: Maximum characters for short/long answer questions.
           example: 10
-  parameters:
-    MeetingIdPath:
-      name: meetingId
-      in: path
-      required: true
-      description: The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID.
-      schema:
-        oneOf:
-        - type: integer
-          format: int64
-        - type: string
-    PollIdPath:
-      name: pollId
-      in: path
-      required: true
-      description: The poll ID.
-      schema:
-        type: integer
-        format: int64
   responses:
-    Unauthorized:
-      description: Unauthorized. The request requires authentication.
+    NotFound:
+      description: Not found. The requested resource could not be found.
       content:
         application/json:
           schema:
@@ -460,8 +460,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: Not found. The requested resource could not be found.
+    Unauthorized:
+      description: Unauthorized. The request requires authentication.
       content:
         application/json:
           schema:

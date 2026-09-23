@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Zoom / Account IM Group API
-  description: Needs description.
+  title: Zoom REST IM Group API
+  description: API Description
   contact:
     name: Zoom Developers
     url: https://zoom.us/developer
@@ -17,15 +17,13 @@ security:
 - api_secret: []
 tags:
 - name: IM Group
+  description: IM Group operations
 paths:
   /im/group/create:
     post:
       tags:
       - IM Group
-      description: 'Create a IM group on Zoom, return the new group info.
-
-
-        '
+      description: Create a IM group on Zoom, return the new group info.
       operationId: imGroupGroupCreate
       requestBody:
         content:
@@ -68,14 +66,13 @@ paths:
                 option_search_by_domain: false
                 option_search_by_account: false
                 option_search_by_ma_account: false
+      summary: Im group group create
+      x-summary-source: derived
   /im/group/delete:
     post:
       tags:
       - IM Group
-      description: 'Delete a IM group on Zoom, return the deleted group ID.
-
-
-        '
+      description: Delete a IM group on Zoom, return the deleted group ID.
       operationId: imGroupGroupDelete
       requestBody:
         content:
@@ -96,16 +93,15 @@ paths:
             application/json:
               example:
                 id: unique_id
-                deleted_at: '2015-08-20T08:41:58.000Z'
+                deleted_at: 2015-08-20 08:41:58+00:00
                 deleted_count: 1
+      summary: Im group group delete
+      x-summary-source: derived
   /im/group/edit:
     post:
       tags:
       - IM Group
-      description: 'Edit a IM group on Zoom, return the new group info.
-
-
-        '
+      description: Edit a IM group on Zoom, return the new group info.
       operationId: imGroupGroupEdit
       requestBody:
         content:
@@ -151,14 +147,13 @@ paths:
                 option_search_by_domain: false
                 option_search_by_account: true
                 option_search_by_ma_account: false
+      summary: Im group group edit
+      x-summary-source: derived
   /im/group/get:
     post:
       tags:
       - IM Group
-      description: 'Get a IM group on Zoom via ID, return the group info.
-
-
-        '
+      description: Get a IM group on Zoom via ID, return the group info.
       operationId: imGroupGroupGet
       requestBody:
         content:
@@ -185,14 +180,13 @@ paths:
                 option_search_by_domain: false
                 option_search_by_account: true
                 option_search_by_ma_account: false
+      summary: Im group group get
+      x-summary-source: derived
   /im/group/list:
     post:
       tags:
       - IM Group
-      description: 'List all IM groups on your Zoom account.
-
-
-        '
+      description: List all IM groups on your Zoom account.
       operationId: imGroupGroupList
       requestBody:
         content:
@@ -225,15 +219,14 @@ paths:
                   option_search_by_domain: false
                   option_search_by_account: true
                   option_search_by_ma_account: false
-                  last_modified_time: '2016-04-16T07:45:41.000Z'
+                  last_modified_time: 2016-04-16 07:45:41+00:00
+      summary: Im group group list
+      x-summary-source: derived
   /im/group/member/delete:
     post:
       tags:
       - IM Group
-      description: 'Delete members of a IM group on Zoom.
-
-
-        '
+      description: Delete members of a IM group on Zoom.
       operationId: imGroupGroupMemberDelete
       requestBody:
         content:
@@ -258,16 +251,15 @@ paths:
             application/json:
               example:
                 id: unique_id
-                deleted_at: '2015-08-20T08:57:38.000Z'
+                deleted_at: 2015-08-20 08:57:38+00:00
                 deleted_count: 2
+      summary: Im group group member delete
+      x-summary-source: derived
   /im/group/member/list:
     post:
       tags:
       - IM Group
-      description: 'Lists the members of a IM group on Zoom.
-
-
-        '
+      description: Lists the members of a IM group on Zoom.
       operationId: imGroupGroupMemberList
       requestBody:
         content:
@@ -305,6 +297,18 @@ paths:
                   first_name: Zoomie
                   last_name: Userton
                   pic_url: https://ssotest.zoom.us/p/6EoubcvJR7eF2grNXJkrHA/f2003a9c-3095-4865-8536-03cc6f211e86-9569
+      summary: Im group group member list
+      x-summary-source: derived
+components:
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: api_key
+      in: query
+    api_secret:
+      type: apiKey
+      name: api_secret
+      in: query
 externalDocs:
   description: Zoom REST API Documentation
   url: https://zoom.github.io/api

@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Zoom / Account Report API
-  description: Needs description.
+  title: Zoom REST Report API
+  description: API Description
   contact:
     name: Zoom Developers
     url: https://zoom.us/developer
@@ -23,10 +23,7 @@ paths:
     post:
       tags:
       - Report
-      description: 'Get account report for a specified period.
-
-
-        '
+      description: Get account report for a specified period.
       operationId: reportGetaccountreport
       requestBody:
         content:
@@ -76,6 +73,8 @@ paths:
                   meeting_minutes: 300
                   last_client_version: 1.0.18584.0225
                   last_login_time: 2013-02-11 08:18:09+00:00
+      summary: Report getaccountreport
+      x-summary-source: derived
   /report/getaudioreport:
     post:
       tags:
@@ -83,13 +82,10 @@ paths:
       description: 'Get user report for a specified period.
 
 
-        <aside class="notice">Toll Report API is provided for enabled ''Toll Report'' option.</aside>
+        Toll Report API is provided for enabled ''Toll Report'' option.
 
 
-        <aside class="notice">We will report a maximum of one month. For example, if "from" is set to "2015-08-05" and "to" is "2015-10-10" we will adjust "from" to "2015-09-10"</aside>
-
-
-        '
+        We will report a maximum of one month. For example, if "from" is set to "2015-08-05" and "to" is "2015-10-10" we will adjust "from" to "2015-09-10"'
       operationId: reportGetaudioreport
       requestBody:
         content:
@@ -142,14 +138,13 @@ paths:
                   end_time: 2016-01-12 02:26:48+00:00
                   duration: 2
                   total: 0.12
+      summary: Report getaudioreport
+      x-summary-source: derived
   /report/getdailyreport:
     post:
       tags:
       - Report
-      description: 'Get daily report for one month, can only get daily report for recent 3 months.
-
-
-        '
+      description: Get daily report for one month, can only get daily report for recent 3 months.
       operationId: reportGetdailyreport
       requestBody:
         content:
@@ -181,14 +176,13 @@ paths:
                   new_user: 0
                   participants: 0
                   meeting_minutes: 0
+      summary: Report getdailyreport
+      x-summary-source: derived
   /report/getuserreport:
     post:
       tags:
       - Report
-      description: 'Get user report for a specified period.
-
-
-        '
+      description: Get user report for a specified period.
       operationId: reportGetuserreport
       requestBody:
         content:
@@ -240,6 +234,18 @@ paths:
                   - name: John
                     join_time: 2013-02-11 08:30:09+00:00
                     leave_time: 2013-02-11 08:50:09+00:00
+      summary: Report getuserreport
+      x-summary-source: derived
+components:
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: api_key
+      in: query
+    api_secret:
+      type: apiKey
+      name: api_secret
+      in: query
 externalDocs:
   description: Zoom REST API Documentation
   url: https://zoom.github.io/api

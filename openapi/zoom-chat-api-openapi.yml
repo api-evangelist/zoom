@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Zoom / Account Chat API
-  description: Needs description.
+  title: Zoom REST Chat API
+  description: API Description
   contact:
     name: Zoom Developers
     url: https://zoom.us/developer
@@ -22,10 +22,7 @@ paths:
     post:
       tags:
       - Chat
-      description: 'Get chat messages for a specified period.
-
-
-        '
+      description: Get chat messages for a specified period.
       operationId: chatGet
       requestBody:
         content:
@@ -66,23 +63,22 @@ paths:
               example:
                 session_id: unique_id
                 group_name: zoom
-                from: '2016-01-16T00:00:00.000Z'
-                to: '2016-01-22T00:00:00.000Z'
+                from: 2016-01-16
+                to: 2016-01-22
                 page_size: 30
                 page_count: 1
                 next_page_token: ''
                 chat_messages:
                 - message: test1
                   sender: ''
-                  date_time: '2016-01-18T06:40:56.000Z'
+                  date_time: 2016-01-18 06:40:56+00:00
+      summary: Chat get
+      x-summary-source: derived
   /chat/list:
     post:
       tags:
       - Chat
-      description: 'Get chat history list for a specified time period.
-
-
-        '
+      description: Get chat history list for a specified time period.
       operationId: chatList
       requestBody:
         content:
@@ -120,8 +116,8 @@ paths:
           content:
             application/json:
               example:
-                from: '2016-01-16T00:00:00.000Z'
-                to: '2016-01-22T00:00:00.000Z'
+                from: 2016-01-16
+                to: 2016-01-22
                 page_size: 30
                 page_count: 1
                 next_page_token: ''
@@ -130,7 +126,19 @@ paths:
                   type: Group
                   participants: ''
                   group_name: zoom test1
-                  last_message_send_time: '2016-01-18T06:40:56.000Z'
+                  last_message_send_time: 2016-01-18 06:40:56+00:00
+      summary: Chat list
+      x-summary-source: derived
+components:
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: api_key
+      in: query
+    api_secret:
+      type: apiKey
+      name: api_secret
+      in: query
 externalDocs:
   description: Zoom REST API Documentation
   url: https://zoom.github.io/api
