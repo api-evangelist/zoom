@@ -533,13 +533,14 @@ apis:
   tags:
   - Artificial Intelligence
   - Chatbots
-  - Customer-Support
+  - Customer Support
   - Virtual Agents
   tags_raw:
   - AI
   - Chatbot
   - Customer Support
   - Virtual Agent
+  - Customer-Support
   properties:
   - type: Documentation
     url: https://developers.zoom.us/docs/api/rest/reference/virtual-agent/methods/
@@ -726,12 +727,13 @@ apis:
   baseURL: https://api.zoom.us/v2
   tags:
   - Cobrowse
-  - Customer-Support
+  - Customer Support
   - Screen Sharing
   tags_raw:
   - Cobrowse
   - Customer Support
   - Screen Sharing
+  - Customer-Support
   properties:
   - type: Documentation
     url: https://developers.zoom.us/docs/api/cobrowse-sdk/
@@ -747,8 +749,6 @@ apis:
     url: openapi/zoom-account-api-openapi.yml
   - type: Documentation
     url: https://developers.zoom.us/docs/api/rest/chat-api/
-  - type: GraphQL
-    url: graphql/zoom-graphql.md
   - type: Documentation
     url: https://developers.zoom.us/docs/api/rest/reference/user/methods/
   - type: Documentation
@@ -779,8 +779,6 @@ apis:
     url: openapi/zoom-chat-api-openapi.yml
   - type: Documentation
     url: https://developers.zoom.us/docs/api/rest/chat-api/
-  - type: GraphQL
-    url: graphql/zoom-graphql.md
   - type: Documentation
     url: https://developers.zoom.us/docs/api/rest/reference/user/methods/
   - type: Documentation
@@ -811,8 +809,6 @@ apis:
     url: openapi/zoom-cloud-recording-api-openapi.yml
   - type: Documentation
     url: https://developers.zoom.us/docs/api/rest/chat-api/
-  - type: GraphQL
-    url: graphql/zoom-graphql.md
   - type: Documentation
     url: https://developers.zoom.us/docs/api/rest/reference/user/methods/
   - type: Documentation
@@ -845,8 +841,6 @@ apis:
     url: openapi/zoom-dashboard-api-openapi.yml
   - type: Documentation
     url: https://developers.zoom.us/docs/api/rest/chat-api/
-  - type: GraphQL
-    url: graphql/zoom-graphql.md
   - type: Documentation
     url: https://developers.zoom.us/docs/api/rest/reference/user/methods/
   - type: Documentation
@@ -877,8 +871,6 @@ apis:
     url: openapi/zoom-device-api-openapi.yml
   - type: Documentation
     url: https://developers.zoom.us/docs/api/rest/chat-api/
-  - type: GraphQL
-    url: graphql/zoom-graphql.md
   - type: Documentation
     url: https://developers.zoom.us/docs/api/rest/reference/user/methods/
   - type: Documentation
@@ -909,8 +901,6 @@ apis:
     url: openapi/zoom-group-api-openapi.yml
   - type: Documentation
     url: https://developers.zoom.us/docs/api/rest/chat-api/
-  - type: GraphQL
-    url: graphql/zoom-graphql.md
   - type: Documentation
     url: https://developers.zoom.us/docs/api/rest/reference/user/methods/
   - type: Documentation
@@ -941,8 +931,6 @@ apis:
     url: openapi/zoom-im-group-api-openapi.yml
   - type: Documentation
     url: https://developers.zoom.us/docs/api/rest/chat-api/
-  - type: GraphQL
-    url: graphql/zoom-graphql.md
   - type: Documentation
     url: https://developers.zoom.us/docs/api/rest/reference/user/methods/
   - type: Documentation
@@ -973,8 +961,6 @@ apis:
     url: openapi/zoom-meeting-live-stream-api-openapi.yml
   - type: Documentation
     url: https://developers.zoom.us/docs/api/rest/chat-api/
-  - type: GraphQL
-    url: graphql/zoom-graphql.md
   - type: Documentation
     url: https://developers.zoom.us/docs/api/rest/reference/user/methods/
   - type: Documentation
@@ -1005,8 +991,6 @@ apis:
     url: openapi/zoom-meeting-participants-api-openapi.yml
   - type: Documentation
     url: https://developers.zoom.us/docs/api/rest/chat-api/
-  - type: GraphQL
-    url: graphql/zoom-graphql.md
   - type: Documentation
     url: https://developers.zoom.us/docs/api/rest/reference/user/methods/
   - type: Documentation
@@ -1037,8 +1021,6 @@ apis:
     url: openapi/zoom-meeting-polls-api-openapi.yml
   - type: Documentation
     url: https://developers.zoom.us/docs/api/rest/chat-api/
-  - type: GraphQL
-    url: graphql/zoom-graphql.md
   - type: Documentation
     url: https://developers.zoom.us/docs/api/rest/reference/user/methods/
   - type: Documentation
@@ -1069,8 +1051,6 @@ apis:
     url: openapi/zoom-meeting-recordings-api-openapi.yml
   - type: Documentation
     url: https://developers.zoom.us/docs/api/rest/chat-api/
-  - type: GraphQL
-    url: graphql/zoom-graphql.md
   - type: Documentation
     url: https://developers.zoom.us/docs/api/rest/reference/user/methods/
   - type: Documentation
@@ -1101,8 +1081,6 @@ apis:
     url: openapi/zoom-meeting-registrants-api-openapi.yml
   - type: Documentation
     url: https://developers.zoom.us/docs/api/rest/chat-api/
-  - type: GraphQL
-    url: graphql/zoom-graphql.md
   - type: Documentation
     url: https://developers.zoom.us/docs/api/rest/reference/user/methods/
   - type: Documentation
@@ -1133,8 +1111,6 @@ apis:
     url: openapi/zoom-meetings-api-openapi.yml
   - type: Documentation
     url: https://developers.zoom.us/docs/api/rest/chat-api/
-  - type: GraphQL
-    url: graphql/zoom-graphql.md
   - type: Documentation
     url: https://developers.zoom.us/docs/api/rest/reference/user/methods/
   - type: Documentation
@@ -1165,8 +1141,6 @@ apis:
     url: openapi/zoom-report-api-openapi.yml
   - type: Documentation
     url: https://developers.zoom.us/docs/api/rest/chat-api/
-  - type: GraphQL
-    url: graphql/zoom-graphql.md
   - type: Documentation
     url: https://developers.zoom.us/docs/api/rest/reference/user/methods/
   - type: Documentation
@@ -1197,8 +1171,6 @@ apis:
     url: openapi/zoom-user-api-openapi.yml
   - type: Documentation
     url: https://developers.zoom.us/docs/api/rest/chat-api/
-  - type: GraphQL
-    url: graphql/zoom-graphql.md
   - type: Documentation
     url: https://developers.zoom.us/docs/api/rest/reference/user/methods/
   - type: Documentation
@@ -1229,8 +1201,6 @@ apis:
     url: openapi/zoom-webinar-api-openapi.yml
   - type: Documentation
     url: https://developers.zoom.us/docs/api/rest/chat-api/
-  - type: GraphQL
-    url: graphql/zoom-graphql.md
   - type: Documentation
     url: https://developers.zoom.us/docs/api/rest/reference/user/methods/
   - type: Documentation
