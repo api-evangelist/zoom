@@ -147,17 +147,6 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  parameters:
-    MeetingIdPath:
-      name: meetingId
-      in: path
-      required: true
-      description: The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID.
-      schema:
-        oneOf:
-        - type: integer
-          format: int64
-        - type: string
   responses:
     NotFound:
       description: Not found. The requested resource could not be found.
@@ -165,14 +154,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Bad request. The request was invalid or cannot be served.
+    Unauthorized:
+      description: Unauthorized. The request requires authentication.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Unauthorized. The request requires authentication.
+    BadRequest:
+      description: Bad request. The request was invalid or cannot be served.
       content:
         application/json:
           schema:
@@ -227,6 +216,17 @@ components:
           - 720p
           - 1080p
           example: 720p
+  parameters:
+    MeetingIdPath:
+      name: meetingId
+      in: path
+      required: true
+      description: The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID.
+      schema:
+        oneOf:
+        - type: integer
+          format: int64
+        - type: string
 externalDocs:
   description: Zoom REST API Documentation
   url: https://zoom.github.io/api

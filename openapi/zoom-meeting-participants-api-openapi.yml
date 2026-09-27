@@ -128,7 +128,41 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  responses:
+    NotFound:
+      description: Not found. The requested resource could not be found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Unauthorized. The request requires authentication.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Bad request. The request was invalid or cannot be served.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   parameters:
+    NextPageToken:
+      name: next_page_token
+      in: query
+      description: The next page token to paginate through large result sets. A next_page_token is returned in the response when a result set exceeds the page_size.
+      schema:
+        type: string
+    PageSize:
+      name: page_size
+      in: query
+      description: The number of records returned per API call. Maximum is 300.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 300
+        default: 30
     MeetingIdPath:
       name: meetingId
       in: path
@@ -139,22 +173,29 @@ components:
         - type: integer
           format: int64
         - type: string
-    PageSize:
-      name: page_size
-      in: query
-      description: The number of records returned per API call. Maximum is 300.
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 300
-        default: 30
-    NextPageToken:
-      name: next_page_token
-      in: query
-      description: The next page token to paginate through large result sets. A next_page_token is returned in the response when a result set exceeds the page_size.
-      schema:
-        type: string
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Error code.
+          example: 10
+        message:
+          type: string
+          description: Error message.
+          example: example_value
+        errors:
+          type: array
+          description: Detailed error messages.
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+              message:
+                type: string
+          example: []
     Participant:
       type: object
       properties:
@@ -224,47 +265,6 @@ components:
           items:
             $ref: '#/components/schemas/Participant'
           example: []
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-          description: Error code.
-          example: 10
-        message:
-          type: string
-          description: Error message.
-          example: example_value
-        errors:
-          type: array
-          description: Detailed error messages.
-          items:
-            type: object
-            properties:
-              field:
-                type: string
-              message:
-                type: string
-          example: []
-  responses:
-    NotFound:
-      description: Not found. The requested resource could not be found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Bad request. The request was invalid or cannot be served.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Unauthorized. The request requires authentication.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
 externalDocs:
   description: Zoom REST API Documentation
   url: https://zoom.github.io/api
