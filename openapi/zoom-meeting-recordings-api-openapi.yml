@@ -136,95 +136,6 @@ components:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    MeetingType:
-      type: integer
-      description: 'Meeting type: 1 - Instant meeting, 2 - Scheduled meeting, 3 - Recurring meeting with no fixed time, 8 - Recurring meeting with a fixed time.'
-      enum:
-      - 1
-      - 2
-      - 3
-      - 8
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-          description: Error code.
-          example: 10
-        message:
-          type: string
-          description: Error message.
-          example: example_value
-        errors:
-          type: array
-          description: Detailed error messages.
-          items:
-            type: object
-            properties:
-              field:
-                type: string
-              message:
-                type: string
-          example: []
-    RecordingList:
-      type: object
-      properties:
-        uuid:
-          type: string
-          description: Unique meeting instance ID.
-          example: '500123'
-        id:
-          type: integer
-          format: int64
-          description: Meeting ID.
-          example: abc123
-        host_id:
-          type: string
-          description: Host user ID.
-          example: '500123'
-        host_email:
-          type: string
-          format: email
-          description: Host email address.
-          example: user@example.com
-        topic:
-          type: string
-          description: Meeting topic.
-          example: example_value
-        type:
-          $ref: '#/components/schemas/MeetingType'
-        start_time:
-          type: string
-          format: date-time
-          description: Meeting start time.
-          example: '2026-01-15T10:30:00Z'
-        timezone:
-          type: string
-          description: Timezone.
-          example: example_value
-        duration:
-          type: integer
-          description: Meeting duration in minutes.
-          example: 10
-        total_size:
-          type: integer
-          format: int64
-          description: Total file size of all recordings in bytes.
-          example: 10
-        recording_count:
-          type: integer
-          description: Number of recording files.
-          example: 10
-        share_url:
-          type: string
-          format: uri
-          description: Share URL for the recording.
-          example: https://www.example.com
-        recording_files:
-          type: array
-          items:
-            $ref: '#/components/schemas/RecordingFile'
-          example: []
     RecordingFile:
       type: object
       properties:
@@ -311,6 +222,95 @@ components:
           - sign_interpretation
           - production_studio
           example: shared_screen_with_speaker_view(CC)
+    RecordingList:
+      type: object
+      properties:
+        uuid:
+          type: string
+          description: Unique meeting instance ID.
+          example: '500123'
+        id:
+          type: integer
+          format: int64
+          description: Meeting ID.
+          example: abc123
+        host_id:
+          type: string
+          description: Host user ID.
+          example: '500123'
+        host_email:
+          type: string
+          format: email
+          description: Host email address.
+          example: user@example.com
+        topic:
+          type: string
+          description: Meeting topic.
+          example: example_value
+        type:
+          $ref: '#/components/schemas/MeetingType'
+        start_time:
+          type: string
+          format: date-time
+          description: Meeting start time.
+          example: '2026-01-15T10:30:00Z'
+        timezone:
+          type: string
+          description: Timezone.
+          example: example_value
+        duration:
+          type: integer
+          description: Meeting duration in minutes.
+          example: 10
+        total_size:
+          type: integer
+          format: int64
+          description: Total file size of all recordings in bytes.
+          example: 10
+        recording_count:
+          type: integer
+          description: Number of recording files.
+          example: 10
+        share_url:
+          type: string
+          format: uri
+          description: Share URL for the recording.
+          example: https://www.example.com
+        recording_files:
+          type: array
+          items:
+            $ref: '#/components/schemas/RecordingFile'
+          example: []
+    MeetingType:
+      type: integer
+      description: 'Meeting type: 1 - Instant meeting, 2 - Scheduled meeting, 3 - Recurring meeting with no fixed time, 8 - Recurring meeting with a fixed time.'
+      enum:
+      - 1
+      - 2
+      - 3
+      - 8
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Error code.
+          example: 10
+        message:
+          type: string
+          description: Error message.
+          example: example_value
+        errors:
+          type: array
+          description: Detailed error messages.
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+              message:
+                type: string
+          example: []
   parameters:
     MeetingIdPath:
       name: meetingId

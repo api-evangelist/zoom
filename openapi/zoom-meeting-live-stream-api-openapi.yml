@@ -167,28 +167,6 @@ components:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-          description: Error code.
-          example: 10
-        message:
-          type: string
-          description: Error message.
-          example: example_value
-        errors:
-          type: array
-          description: Detailed error messages.
-          items:
-            type: object
-            properties:
-              field:
-                type: string
-              message:
-                type: string
-          example: []
     LiveStreamUpdateRequest:
       type: object
       required:
@@ -216,6 +194,28 @@ components:
           - 720p
           - 1080p
           example: 720p
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Error code.
+          example: 10
+        message:
+          type: string
+          description: Error message.
+          example: example_value
+        errors:
+          type: array
+          description: Detailed error messages.
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+              message:
+                type: string
+          example: []
   parameters:
     MeetingIdPath:
       name: meetingId

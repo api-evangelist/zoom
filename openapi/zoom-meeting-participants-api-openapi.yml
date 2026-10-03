@@ -147,33 +147,27 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-  parameters:
-    NextPageToken:
-      name: next_page_token
-      in: query
-      description: The next page token to paginate through large result sets. A next_page_token is returned in the response when a result set exceeds the page_size.
-      schema:
-        type: string
-    PageSize:
-      name: page_size
-      in: query
-      description: The number of records returned per API call. Maximum is 300.
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 300
-        default: 30
-    MeetingIdPath:
-      name: meetingId
-      in: path
-      required: true
-      description: The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID.
-      schema:
-        oneOf:
-        - type: integer
-          format: int64
-        - type: string
   schemas:
+    ParticipantList:
+      type: object
+      properties:
+        page_count:
+          type: integer
+          example: 10
+        page_size:
+          type: integer
+          example: 10
+        total_records:
+          type: integer
+          example: 10
+        next_page_token:
+          type: string
+          example: example_value
+        participants:
+          type: array
+          items:
+            $ref: '#/components/schemas/Participant'
+          example: []
     ErrorResponse:
       type: object
       properties:
@@ -245,26 +239,32 @@ components:
           - in_meeting
           - in_waiting_room
           example: in_meeting
-    ParticipantList:
-      type: object
-      properties:
-        page_count:
-          type: integer
-          example: 10
-        page_size:
-          type: integer
-          example: 10
-        total_records:
-          type: integer
-          example: 10
-        next_page_token:
-          type: string
-          example: example_value
-        participants:
-          type: array
-          items:
-            $ref: '#/components/schemas/Participant'
-          example: []
+  parameters:
+    PageSize:
+      name: page_size
+      in: query
+      description: The number of records returned per API call. Maximum is 300.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 300
+        default: 30
+    NextPageToken:
+      name: next_page_token
+      in: query
+      description: The next page token to paginate through large result sets. A next_page_token is returned in the response when a result set exceeds the page_size.
+      schema:
+        type: string
+    MeetingIdPath:
+      name: meetingId
+      in: path
+      required: true
+      description: The meeting ID. This can be the meeting number (e.g., 85746065) or the meeting UUID.
+      schema:
+        oneOf:
+        - type: integer
+          format: int64
+        - type: string
 externalDocs:
   description: Zoom REST API Documentation
   url: https://zoom.github.io/api
