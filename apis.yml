@@ -1223,6 +1223,10 @@ apis:
   - type: APIReference
     url: https://developers.zoom.us/docs/api/rest/reference/user/methods/
 common:
+- type: Plans
+  url: plans/zoom-plans-pricing.yml
+- type: FinOps
+  url: finops/zoom-finops.yml
 - type: Website
   url: https://zoom.us
 - type: CapabilityMap
