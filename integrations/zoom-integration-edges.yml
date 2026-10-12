@@ -1,0 +1,588 @@
+generated: '2026-10-12'
+method: searched
+source:
+- https://zapier.com/apps/zoom/integrations
+- https://n8n.io/integrations/zoom/
+- https://composio.dev/toolkits/zoom
+checked:
+- https://composio.dev/toolkits/zoom
+- https://monid.ai/tools/zoom
+- https://n8n.io/integrations/zoom/
+- https://zapier.com/apps/zoom/integrations
+summary: null
+marketplace_apps:
+- marketplace: zapier
+  channel: ipaas-listing
+  app: zoom
+  url: https://zapier.com/apps/zoom/integrations
+  external_url: https://www.zoom.us/
+  partner_tier: PLATINUM
+  triggers:
+  - key: meeting_ended
+    label: New Meeting Ended
+  - key: meeting_summary
+    label: New Meeting Summary
+  - key: new_audio_transcript
+    label: New Audio Transcript
+  - key: new_joiner
+    label: New Participant Joined Webinar or Meeting
+  - key: new_meeting
+    label: New Meeting
+  - key: new_meeting_registrant
+    label: New Meeting Registrant
+  - key: new_recording
+    label: New Cloud Recording
+  - key: new_registrant
+    label: New Webinar Registrant
+  - key: participant_left
+    label: Participant Left Webinar or Meeting
+  - key: workspace_reservation
+    label: New Workspace Reservation
+  actions:
+  - key: create_meeting
+    label: Create Meeting
+  - key: create_meeting_registrant
+    label: Create Meeting Registrant
+  - key: create_registrant
+    label: Create Webinar Registrant
+  - key: delete_meeting_recordings
+    label: Delete Meeting Recordings
+  - key: _zap_raw_request
+    label: API Request (Beta)
+  - key: ae:29969
+    label: Update Zoom Meeting
+  searches:
+  - key: find_meeting
+    label: Find Meeting/Webinar
+  - key: find_meeting_participants
+    label: Find Meeting or Webinar Participants
+  - key: find_recording_and_download
+    label: Find Recording and Download
+  - key: find_webinar_registrants
+    label: Find Webinar Registrants
+  - key: get_summary
+    label: Get Meeting Summary
+- marketplace: n8n
+  channel: open-source-node
+  app: zoom
+  url: https://n8n.io/integrations/zoom/
+  identity: title
+  pair_pages: 2
+  pairs:
+  - zscaler-zia
+  - zulip
+- marketplace: composio
+  channel: agent-gateway
+  app: zoom
+  url: https://composio.dev/toolkits/zoom
+  identity: action-prefix
+  actions:
+  - key: ZOOM_ADD_A_MEETING_REGISTRANT
+  - key: ZOOM_ADD_A_WEBINAR_REGISTRANT
+  - key: ZOOM_ADD_PROJECT_COLLABORATORS
+  - key: ZOOM_ADD_WHITEBOARD_COLLABORATOR
+  - key: ZOOM_APPLY_CLASSIFICATION_TO_WHITEBOARD
+  - key: ZOOM_CREATE_A_MEETING
+  - key: ZOOM_CREATE_PROJECT
+  - key: ZOOM_CREATE_WHITEBOARD
+  - key: ZOOM_CREATE_WHITEBOARD_EXPORT
+  - key: ZOOM_CREATE_ZRA_CONVERSATION
+  - key: ZOOM_CREATE_ZRA_CONVERSATION_COMMENT
+  - key: ZOOM_CREATE_ZRA_CRM_ACCOUNTS
+  - key: ZOOM_CREATE_ZRA_CRM_CONTACTS
+  - key: ZOOM_CREATE_ZRA_CRM_DEALS
+  - key: ZOOM_CREATE_ZRA_CRM_LEADS
+  - key: ZOOM_CREATE_ZRA_CRM_SETTINGS
+  - key: ZOOM_CREATE_ZRA_USER_CONVERSATION
+  - key: ZOOM_DAILY_USAGE_REPORT_CHANGED_TRIGGER
+  - key: ZOOM_DELETE_A_MEETING
+  - key: ZOOM_DELETE_MEETING_RECORDINGS
+  - key: ZOOM_DELETE_PROJECT
+  - key: ZOOM_DELETE_PROJECT_COLLABORATOR
+  - key: ZOOM_DELETE_WHITEBOARD
+  - key: ZOOM_DELETE_WHITEBOARD_COLLABORATOR
+  - key: ZOOM_DELETE_ZRA_CONVERSATION
+  - key: ZOOM_DELETE_ZRA_CONVERSATION_COMMENT
+  - key: ZOOM_DELETE_ZRA_CRM_SETTINGS
+  - key: ZOOM_DELETE_ZRA_DEAL_ACTIVITIES
+  - key: ZOOM_DOWNLOAD_IMPORTED_WHITEBOARD_FILE
+  - key: ZOOM_DOWNLOAD_WHITEBOARD_EXPORT
+  - key: ZOOM_DOWNLOAD_WHITEBOARD_SESSION_ACTIVITY
+  - key: ZOOM_GET_A_MEETING
+  - key: ZOOM_GET_A_MEETING_SUMMARY
+  - key: ZOOM_GET_A_WEBINAR
+  - key: ZOOM_GET_DAILY_USAGE_REPORT
+  - key: ZOOM_GET_IQ_CONVERSATION_CONTENT_ANALYSIS
+  - key: ZOOM_GET_IQ_DEAL
+  - key: ZOOM_GET_MARKETPLACE_USER_APPS
+  - key: ZOOM_GET_MARKETPLACE_USER_ENTITLEMENTS
+  - key: ZOOM_GET_MEETING_RECORDINGS
+  - key: ZOOM_GET_PAST_MEETING_PARTICIPANTS
+  - key: ZOOM_GET_PROJECT
+  - key: ZOOM_GET_USER
+  - key: ZOOM_GET_WHITEBOARD
+  - key: ZOOM_GET_WHITEBOARD_EXPORT_STATUS
+  - key: ZOOM_GET_WHITEBOARD_SESSION
+  - key: ZOOM_GET_ZRA_CONVERSATION_COMMENTS
+  - key: ZOOM_GET_ZRA_CONVERSATION_INTERACTIONS
+  - key: ZOOM_GET_ZRA_CONVERSATION_SCORECARDS
+  - key: ZOOM_GET_ZRA_DEAL_ACTIVITIES
+  - key: ZOOM_IMPORT_WHITEBOARD
+  - key: ZOOM_LIST_ALL_RECORDINGS
+  - key: ZOOM_LIST_ARCHIVED_FILES
+  - key: ZOOM_LIST_DEVICES
+  - key: ZOOM_LIST_MARKETPLACE_APP_CUSTOM_FIELDS
+  - key: ZOOM_LIST_MEETINGS
+  - key: ZOOM_LIST_MEETING_SUMMARY_TEMPLATES
+  - key: ZOOM_LIST_PAST_MEETING_INSTANCES
+  - key: ZOOM_LIST_PROJECTS
+  - key: ZOOM_LIST_PROJECT_COLLABORATORS
+  - key: ZOOM_LIST_USERS_COLLABORATION_DEVICES
+  - key: ZOOM_LIST_USERS_SETTINGS
+  - key: ZOOM_LIST_WEBINARS
+  - key: ZOOM_LIST_WEBINAR_PARTICIPANTS
+  - key: ZOOM_LIST_WEBINAR_REGISTRANTS
+  - key: ZOOM_LIST_WHITEBOARDS
+  - key: ZOOM_LIST_ZRA_CONVERSATIONS
+  - key: ZOOM_LIST_ZRA_CRM_ACCOUNTS
+  - key: ZOOM_LIST_ZRA_CRM_CONTACTS
+  - key: ZOOM_LIST_ZRA_CRM_DEALS
+  - key: ZOOM_LIST_ZRA_CRM_LEADS
+  - key: ZOOM_LIST_ZRA_CRM_SETTINGS
+  - key: ZOOM_LIST_ZRA_DEALS
+  - key: ZOOM_LIST_ZRA_SCHEDULED
+  - key: ZOOM_LIST_ZRA_SETTINGS_INDICATORS
+  - key: ZOOM_LIST_ZRA_USER_CONVERSATION_PLAYLISTS
+  - key: ZOOM_MEETING_DETAILS_CHANGED_TRIGGER
+  - key: ZOOM_MEETING_RECORDING_CHANGED_TRIGGER
+  - key: ZOOM_MEETING_SUMMARY_UPDATED_TRIGGER
+  - key: ZOOM_MOVE_WHITEBOARDS_TO_PROJECT
+  - key: ZOOM_NEW_CLOUD_RECORDING_TRIGGER
+  - key: ZOOM_NEW_MEETING_CREATED_TRIGGER
+  - key: ZOOM_NEW_MEETING_PARTICIPANT_TRIGGER
+  - key: ZOOM_NEW_WEBINAR_CREATED_TRIGGER
+  - key: ZOOM_NEW_WEBINAR_PARTICIPANT_TRIGGER
+  - key: ZOOM_REMOVE_WHITEBOARDS_FROM_PROJECT
+  - key: ZOOM_REMOVE_WHITEBOARD_CLASSIFICATION
+  - key: ZOOM_SEARCH_COMPANY_CONTACTS
+  - key: ZOOM_UPDATE_A_MEETING
+  - key: ZOOM_UPDATE_CLASSIFICATION_LABEL
+  - key: ZOOM_UPDATE_PROJECT
+  - key: ZOOM_UPDATE_PROJECT_COLLABORATORS
+  - key: ZOOM_UPDATE_WHITEBOARD_COLLABORATOR
+  - key: ZOOM_UPDATE_WHITEBOARD_SHARE_SETTINGS
+  - key: ZOOM_UPDATE_ZRA_CONVERSATION_COMMENT
+  - key: ZOOM_UPDATE_ZRA_CONVERSATION_HOST
+  - key: ZOOM_UPLOAD_WHITEBOARD_FILE
+  - key: ZOOM_USER_INFORMATION_CHANGED_TRIGGER
+  - key: ZOOM_VALIDATE_MARKETPLACE_APP_MANIFEST
+  - key: ZOOM_WEBINAR_DETAILS_CHANGED_TRIGGER
+edges:
+- partner_name: HubSpot
+  partner: hubspot
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zoom/integrations/hubspot
+  direction: third-party
+  category: Marketing Automation
+  partner_url: http://www.hubspot.com/
+- partner_name: Eventbrite
+  partner: eventbrite
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zoom/integrations/eventbrite
+  direction: third-party
+  category: Event Management
+  partner_url: https://eventbrite.com/
+- partner_name: Mailchimp
+  partner: mailchimp
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zoom/integrations/mailchimp
+  direction: third-party
+  category: Marketing Automation
+  partner_url: https://mailchimp.com/
+- partner_name: LeadConnector
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zoom/integrations/leadconnector
+  direction: third-party
+  category: Marketing Automation
+  partner_url: https://www.leadconnectorhq.com/
+- partner_name: Google Drive
+  partner: google-drive
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zoom/integrations/google-drive
+  direction: third-party
+  category: File Management & Storage
+  partner_url: https://www.google.com/drive/
+- partner_name: ActiveCampaign
+  partner: activecampaign
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zoom/integrations/activecampaign
+  direction: third-party
+  category: Marketing Automation
+  partner_url: https://www.activecampaign.com/?utm_source=unpaid_syndication_website&utm_medium=referral&utm_campaign=zapier_listing
+- partner_name: Gravity Forms
+  partner: gravity-forms
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zoom/integrations/gravity-forms
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: https://www.gravityforms.com/?utm_campaign=partners&utm_source=zapier-listing-learn-more&utm_medium=free-placement
+- partner_name: ClickFunnels Classic
+  partner: clickfunnels
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zoom/integrations/clickfunnels-classic
+  direction: third-party
+  category: Marketing Automation
+  partner_url: https://www.clickfunnels.com/
+- partner_name: Kajabi
+  partner: kajabi
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zoom/integrations/kajabi
+  direction: third-party
+  category: eCommerce
+  partner_url: http://kajabi.com/
+- partner_name: Google Calendar
+  partner: google-calendar
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zoom/integrations/google-calendar
+  direction: third-party
+  category: Calendar
+  partner_url: https://calendar.google.com/
+- partner_name: Typeform
+  partner: typeform
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zoom/integrations/typeform
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: https://www.typeform.com/signup?utm_medium=referral&utm_source=zapier&utm_campaign=zapier_integration&utm_content=marketplace
+- partner_name: Airtable
+  partner: airtable
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zoom/integrations/airtable
+  direction: third-party
+  category: Databases
+  partner_url: https://airtable.com/
+- partner_name: Unbounce
+  partner: unbounce
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zoom/integrations/unbounce
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: https://unbounce.com/
+- partner_name: OnceHub
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zoom/integrations/oncehub
+  direction: third-party
+  category: Scheduling & Booking
+  partner_url: https://www.oncehub.com/scheduleonce/home
+- partner_name: Vimeo
+  partner: vimeo
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zoom/integrations/vimeo
+  direction: third-party
+  category: Video & Audio
+  partner_url: https://vimeo.com/
+- partner_name: Kartra
+  partner: kartra
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zoom/integrations/kartra
+  direction: third-party
+  category: Marketing Automation
+  partner_url: https://home.kartra.com/
+- partner_name: Slack
+  partner: slack
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zoom/integrations/slack
+  direction: third-party
+  category: Team Chat
+  partner_url: https://slack.com/
+- partner_name: tl;dv
+  partner: tl-dv
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zoom/integrations/tldv
+  direction: third-party
+  category: AI Meeting Assistants
+  partner_url: https://tldv.io/?utm_source=zapier&utm_medium=app_showcase
+- partner_name: LinkedIn Ads
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zoom/integrations/linkedin-ads
+  direction: third-party
+  category: Ads & Conversion
+  partner_url: https://www.linkedin.com/
+- partner_name: Gmail
+  partner: gmail
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zoom/integrations/gmail
+  direction: third-party
+  category: Email
+  partner_url: https://mail.google.com/
+- partner_name: Google Forms
+  partner: google-forms
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zoom/integrations/google-forms
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: http://google.com/
+- partner_name: Google Docs
+  partner: google-docs
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zoom/integrations/google-docs
+  direction: third-party
+  category: Documents
+  partner_url: http://google.com/
+- partner_name: monday.com
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zoom/integrations/monday
+  direction: third-party
+  category: Project Management
+  partner_url: https://monday.com/
+- partner_name: WooCommerce
+  partner: woocommerce
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zoom/integrations/woocommerce
+  direction: third-party
+  category: eCommerce
+  partner_url: https://woocommerce.com/products/woocommerce-zapier/?utm_source=zapier&utm_medium=website&utm_campaign=integration
+- partner_name: Acuity Scheduling
+  partner: acuity-scheduling
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zoom/integrations/acuity-scheduling
+  direction: third-party
+  category: Scheduling & Booking
+  partner_url: https://acuityscheduling.com/?utm_source=zapier.com&utm_medium=referral&utm_campaign=integration-page
+- partner_name: Pipedrive
+  partner: pipedrive
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zoom/integrations/pipedrive
+  direction: third-party
+  category: CRM (Customer Relationship Management)
+  partner_url: https://pipedrive.com/
+- partner_name: Pardot
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zoom/integrations/pardot
+  direction: third-party
+  category: Marketing Automation
+  partner_url: http://www.pardot.com/
+- partner_name: Microsoft Excel
+  partner: null
+  partner_match: null
+  partner_candidate: zapier
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zoom/integrations/excel
+  direction: third-party
+  category: Microsoft
+  partner_url: https://zapier.com/office.com
+- partner_name: Squarespace Forms
+  partner: squarespace
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zoom/integrations/squarespace-forms
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: https://www.squarespace.com/
+- partner_name: Dropbox
+  partner: dropbox
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zoom/integrations/dropbox
+  direction: third-party
+  category: File Management & Storage
+  partner_url: https://dropbox.com/
+- partner_name: synthflow
+  partner: synthflow
+  partner_match: domain
+  type: contract
+  channel: partner-built
+  relationship: processor-connection
+  direction: partner-built
+  evidence: https://github.com/api-evangelist/synthflow/blob/main/openapi/synthflow-phone-numbers-api-openapi.yml
+  contract_reference:
+    repo: synthflow
+    spec_file: synthflow-phone-numbers-api-openapi.yml
+    value: zoom
+    property: components.schemas.NumbersPhoneNumberSlugPatchRequestBodyContentApplicationJsonSchemaProviderName
+    detected_by: detect-payment-method-edges.py
+    detected: '2026-10-12'
+templates:
+- title: Upload new Zoom recordings to Google Drive
+  url: https://zapier.com/apps/google-drive/integrations/zoom/232845/upload-new-zoom-recordings-to-google-drive
+  apps:
+  - zoom
+  - google-drive
+- title: Upload new Zoom recordings to tl;dv
+  url: https://zapier.com/apps/tldv/integrations/zoom/1574106/upload-new-zoom-recordings-to-tldv
+  apps:
+  - zoom
+  - tldv
+- title: Add new Zoom meetings to Google Calendar
+  url: https://zapier.com/apps/google-calendar/integrations/zoom/3890/add-new-zoom-meetings-to-google-calendar
+  apps:
+  - zoom
+  - google-calendar
+- title: Upload new Zoom recordings to Google Drive and send notifications via Gmail
+  url: https://zapier.com/apps/gmail/integrations/zoom/126217/upload-new-zoom-recordings-to-google-drive-and-send-notifications-via-gmail
+  apps:
+  - zoom
+  - google-drive
+  - gmail
+- title: Add new Leadpages leads as Zoom registrants
+  url: https://zapier.com/apps/leadpages/integrations/zoom/22996/add-new-leadpages-leads-as-zoom-registrants
+  apps:
+  - leadpages
+  - zoom
+- title: Send new Zoom recordings to Google Drive
+  url: https://zapier.com/apps/google-drive/integrations/zoom/126240/send-new-zoom-recordings-to-google-drive
+  apps:
+  - zoom
+  - google-drive
+- title: Upload new Zoom recordings to YouTube as videos
+  url: https://zapier.com/apps/youtube/integrations/zoom/1743230/upload-new-zoom-recordings-to-youtube-as-videos
+  apps:
+  - zoom
+  - youtube
+- title: Upload new Zoom recordings to tl;dv automatically
+  url: https://zapier.com/apps/tldv/integrations/zoom/1744878/upload-new-zoom-recordings-to-tldv-automatically
+  apps:
+  - zoom
+  - tldv
+- title: Send Slack messages for new Zoom recordings
+  url: https://zapier.com/apps/slack/integrations/zoom/222533/send-slack-messages-for-new-zoom-recordings
+  apps:
+  - zoom
+  - slack
+- title: Upload new Zoom audio transcripts to Google Drive as files
+  url: https://zapier.com/apps/google-drive/integrations/zoom/1728902/upload-new-zoom-audio-transcripts-to-google-drive-as-files
+  apps:
+  - zoom
+  - google-drive
+- title: Create Zoom meetings for new Calendly events
+  url: https://zapier.com/apps/calendly/integrations/zoom/11528/create-zoom-meetings-for-new-calendly-events
+  apps:
+  - calendly
+  - zoom
+- title: Upload new Zoom recordings to Vimeo as videos
+  url: https://zapier.com/apps/vimeo/integrations/zoom/1743113/upload-new-zoom-recordings-to-vimeo-as-videos
+  apps:
+  - zoom
+  - vimeo
+template_total: 2263
