@@ -285,7 +285,6 @@
   arazzo: null
 - slug: zoom-linkedin-ads
   label: LinkedIn Ads
-  partner: linkedin-ads
   partner_name: LinkedIn Ads
   category: Ads & Conversion
   type: marketplace
@@ -293,7 +292,7 @@
   channel: ipaas-usage
   evidence: https://zapier.com/apps/zoom/integrations/linkedin-ads
   source: edge
-  status: pending-generation
+  status: pending-partner-spec
   arazzo: null
 - slug: zoom-gmail
   label: Gmail
@@ -333,7 +332,6 @@
   arazzo: null
 - slug: zoom-monday-com
   label: monday.com
-  partner: monday-com
   partner_name: monday.com
   category: Project Management
   type: marketplace
@@ -341,7 +339,7 @@
   channel: ipaas-usage
   evidence: https://zapier.com/apps/zoom/integrations/monday
   source: edge
-  status: pending-generation
+  status: pending-partner-spec
   arazzo: null
 - slug: zoom-woocommerce
   label: WooCommerce
@@ -381,7 +379,6 @@
   arazzo: null
 - slug: zoom-pardot
   label: Pardot
-  partner: pardot
   partner_name: Pardot
   category: Marketing Automation
   type: marketplace
@@ -389,11 +386,10 @@
   channel: ipaas-usage
   evidence: https://zapier.com/apps/zoom/integrations/pardot
   source: edge
-  status: pending-generation
+  status: pending-partner-spec
   arazzo: null
 - slug: zoom-microsoft-excel
   label: Microsoft Excel
-  partner: microsoft-excel
   partner_name: Microsoft Excel
   category: Microsoft
   type: marketplace
@@ -401,7 +397,7 @@
   channel: ipaas-usage
   evidence: https://zapier.com/apps/zoom/integrations/excel
   source: edge
-  status: pending-generation
+  status: pending-partner-spec
   arazzo: null
 - slug: zoom-squarespace-forms
   label: Squarespace Forms
@@ -443,5 +439,44 @@
     property: components.schemas.NumbersPhoneNumberSlugPatchRequestBodyContentApplicationJsonSchemaProviderName
     detected_by: detect-payment-method-edges.py
     detected: '2026-10-12'
+  status: not-a-workflow
+  arazzo: null
+- slug: zoom-clever-clever-app-gallery
+  label: Clever (clever-app-gallery)
+  partner: clever
+  partner_name: Clever (clever-app-gallery)
+  category: communication
+  type: marketplace
+  marketplace: clever-app-gallery
+  channel: partner-built
+  evidence: https://clever.com/app-gallery
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: zoom-docusign-partner-store
+  label: Docusign (partner-store)
+  partner: docusign
+  partner_name: Docusign (partner-store)
+  category: Integrations
+  type: marketplace
+  marketplace: partner-store
+  channel: partner-built
+  evidence: https://marketplace.zoom.us/apps/qsDLHg0-Q6WXiF6H1TVWig
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: zoom-okta-own
+  label: Okta (own)
+  partner: okta
+  partner_name: Okta (own)
+  category: Single Sign-On
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.okta.com/integrations/zoomforgovernment/
+  source: edge
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
