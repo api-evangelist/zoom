@@ -10,6 +10,7 @@ checked:
 - https://composio.dev/toolkits/zoom
 - https://monid.ai/tools/zoom
 - https://n8n.io/integrations/zoom/
+- https://registry.modelcontextprotocol.io/v0/servers
 - https://zapier.com/apps/zoom/integrations
 - okta/integrations/okta-integration-edges.yml
 summary: null
@@ -526,6 +527,43 @@ edges:
     property: components.schemas.NumbersPhoneNumberSlugPatchRequestBodyContentApplicationJsonSchemaProviderName
     detected_by: detect-payment-method-edges.py
     detected: '2026-10-12'
+- partner_name: MCP Registry
+  partner: mcp
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://registry.modelcontextprotocol.io/v0/servers?search=io.github.zoom
+  contract_reference:
+    register: registry.modelcontextprotocol.io
+    spec_file: null
+    role: mcp-server-listing
+    registered_name: io.github.zoom/zoom-docs
+    register_id: io.github.zoom/zoom-docs
+    detected_by: sweep-agent-tools.py
+    detected: '2026-10-14'
+  mcp_registry:
+    servers:
+    - io.github.zoom/zoom-docs
+    - io.github.zoom/zoom-meetings
+    - io.github.zoom/zoom-revenue-accelerator
+    - io.github.zoom/zoom-tasks
+    - io.github.zoom/zoom-team-chat
+    - io.github.zoom/zoom-whiteboard
+    - io.github.zoom/zoom-workspace
+    hosted_remote: 7
+    local_package: 0
+    transports:
+      streamable-http: 7
+    auth_declared: 0
+    catalog_declared: true
+    namespace_domains:
+    - zoom.us
+  matched_by:
+  - remote-domain
+  detected_by: sweep-agent-tools.py
+  first_seen: '2026-10-14'
 - partner_name: Clever (clever-app-gallery)
   partner: clever
   partner_match: mirror
