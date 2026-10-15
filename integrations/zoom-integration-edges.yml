@@ -11,6 +11,8 @@ checked:
 - https://monid.ai/tools/zoom
 - https://n8n.io/integrations/zoom/
 - https://registry.modelcontextprotocol.io/v0/servers
+- https://technical.edugain.org/api.php?action=list_entities&type=idp&format=json
+- https://technical.edugain.org/api.php?action=list_entities&type=sp&format=json
 - https://zapier.com/apps/zoom/integrations
 - okta/integrations/okta-integration-edges.yml
 summary: null
@@ -631,6 +633,82 @@ edges:
   - SECURE_IDENTITY_INTEGRATIONS_ADVANCED
   - UNIVERSAL_LOGOUT
   - WORKFLOWS_CONNECTORS
+- partner_name: eduGAIN
+  partner: null
+  type: register
+  channel: standard-directory
+  relationship: network-participant
+  direction: partner-built
+  evidence: https://technical.edugain.org/api.php?action=list_entities&type=sp&format=json
+  category: research and education identity federation
+  contract_reference:
+    network: eduGAIN (GÉANT interfederation)
+    spec_file: null
+    roles:
+    - service-provider
+    role: service-provider
+    federations:
+    - INCOMMON
+    matched_by: domain:zoom.us
+    entities:
+    - entity_id: https://bath-ac-uk.zoom.us
+      role: service-provider
+      federation: INCOMMON
+      display_name: Zoom Video Communications, Inc.
+      entity_categories:
+      - '43'
+      - '76'
+      sirtfi: true
+      coco: true
+    - entity_id: https://bsg.zoom.us
+      role: service-provider
+      federation: INCOMMON
+      display_name: Zoom Video Communications, Inc.
+      entity_categories:
+      - '43'
+      - '76'
+      sirtfi: true
+      coco: true
+    - entity_id: https://cs-ox-ac-uk.zoom.us
+      role: service-provider
+      federation: INCOMMON
+      display_name: Zoom Video Communications, Inc.
+      entity_categories:
+      - '43'
+      - '76'
+      sirtfi: true
+      coco: true
+    - entity_id: https://scu-testing.zoom.us
+      role: service-provider
+      federation: INCOMMON
+      display_name: Zoom Video Communications, Inc.
+      entity_categories:
+      - '43'
+      - '76'
+      sirtfi: true
+      coco: true
+    - entity_id: https://telcit.zoom.us
+      role: service-provider
+      federation: INCOMMON
+      display_name: Zoom Video Communications, Inc.
+      entity_categories:
+      - '43'
+      - '76'
+      sirtfi: true
+      coco: true
+    - entity_id: https://uni-kl-de.zoom.us
+      role: service-provider
+      federation: INCOMMON
+      display_name: Zoom Video Communications, Inc.
+      entity_categories:
+      - '43'
+      - '76'
+      sirtfi: true
+      coco: true
+    detected_by: sweep-higher-ed.py
+    detected: '2026-10-15'
+  detected_by: sweep-higher-ed.py
+  first_seen: '2026-10-15'
 templates:
 - title: Upload new Zoom recordings to Google Drive
   url: https://zapier.com/apps/google-drive/integrations/zoom/232845/upload-new-zoom-recordings-to-google-drive
