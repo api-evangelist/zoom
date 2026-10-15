@@ -604,7 +604,7 @@
     - zoom-phone
     - zoom-scheduler
     - zoom-team-chat
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: zoom-n8n
   label: n8n
@@ -629,7 +629,7 @@
     node_path: Zoom
     trigger: false
     builder: n8n (built-in node)
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: zoom-pipedream
   label: Pipedream
@@ -655,7 +655,7 @@
     actions: true
     sources: true
     builder: Pipedream repo (component)
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: zoom-fedramp
   label: FedRAMP
