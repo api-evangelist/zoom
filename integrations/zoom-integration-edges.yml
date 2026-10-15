@@ -529,110 +529,6 @@ edges:
     property: components.schemas.NumbersPhoneNumberSlugPatchRequestBodyContentApplicationJsonSchemaProviderName
     detected_by: detect-payment-method-edges.py
     detected: '2026-10-12'
-- partner_name: MCP Registry
-  partner: mcp
-  partner_match: register
-  type: register
-  channel: standard-directory
-  relationship: standard-participant
-  direction: partner-built
-  evidence: https://registry.modelcontextprotocol.io/v0/servers?search=io.github.zoom
-  contract_reference:
-    register: registry.modelcontextprotocol.io
-    spec_file: null
-    role: mcp-server-listing
-    registered_name: io.github.zoom/zoom-docs
-    register_id: io.github.zoom/zoom-docs
-    detected_by: sweep-agent-tools.py
-    detected: '2026-10-14'
-  mcp_registry:
-    servers:
-    - io.github.zoom/zoom-docs
-    - io.github.zoom/zoom-meetings
-    - io.github.zoom/zoom-revenue-accelerator
-    - io.github.zoom/zoom-tasks
-    - io.github.zoom/zoom-team-chat
-    - io.github.zoom/zoom-whiteboard
-    - io.github.zoom/zoom-workspace
-    hosted_remote: 7
-    local_package: 0
-    transports:
-      streamable-http: 7
-    auth_declared: 0
-    catalog_declared: true
-    namespace_domains:
-    - zoom.us
-  matched_by:
-  - remote-domain
-  detected_by: sweep-agent-tools.py
-  first_seen: '2026-10-14'
-- partner_name: Clever (clever-app-gallery)
-  partner: clever
-  partner_match: mirror
-  mirror_match: domain
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: clever-app-gallery
-  evidence: https://clever.com/app-gallery
-  mirror_of: clever/integrations/clever-integration-edges.yml
-  apps: []
-  listing_count: 2
-  detected: '2026-10-14'
-  detected_by: mirror-platform-listings.py
-  category: communication
-  features:
-  - instant_login
-- partner_name: Docusign (partner-store)
-  partner: docusign
-  partner_match: mirror
-  mirror_match: domain+verified
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: partner-store
-  evidence: https://marketplace.zoom.us/apps/qsDLHg0-Q6WXiF6H1TVWig
-  mirror_of: docusign/integrations/docusign-integration-edges.yml
-  apps:
-  - eSignature for Zoom
-  listing_count: 1
-  detected: '2026-10-14'
-  detected_by: mirror-platform-listings.py
-  category: Integrations
-- partner_name: Okta (own)
-  partner: okta
-  partner_match: mirror
-  mirror_match: domain
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: own
-  evidence: https://www.okta.com/integrations/zoomforgovernment/
-  mirror_of: okta/integrations/okta-integration-edges.yml
-  apps:
-  - Zoom for Government
-  - Zoom
-  listing_count: 2
-  detected: '2026-10-14'
-  detected_by: mirror-platform-listings.py
-  category: Single Sign-On
-  badges:
-  - OKTA_VERIFIED
-  features:
-  - CREATE
-  - DEACTIVATE
-  - IDENTITY_SECURITY_POSTURE_MANAGEMENT
-  - SAML
-  - UPDATE
-  - GROUP_PUSH
-  - MCP_SERVER
-  - OIDC
-  - SECURE_IDENTITY_INTEGRATIONS_ADVANCED
-  - UNIVERSAL_LOGOUT
-  - WORKFLOWS_CONNECTORS
 - partner_name: eduGAIN
   partner: null
   type: register
@@ -709,6 +605,110 @@ edges:
     detected: '2026-10-15'
   detected_by: sweep-higher-ed.py
   first_seen: '2026-10-15'
+- partner_name: Clever (clever-app-gallery)
+  partner: clever
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: clever-app-gallery
+  evidence: https://clever.com/app-gallery
+  mirror_of: clever/integrations/clever-integration-edges.yml
+  apps: []
+  listing_count: 2
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+  category: communication
+  features:
+  - instant_login
+- partner_name: Docusign (partner-store)
+  partner: docusign
+  partner_match: mirror
+  mirror_match: domain+verified
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: partner-store
+  evidence: https://marketplace.zoom.us/apps/qsDLHg0-Q6WXiF6H1TVWig
+  mirror_of: docusign/integrations/docusign-integration-edges.yml
+  apps:
+  - eSignature for Zoom
+  listing_count: 1
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+  category: Integrations
+- partner_name: Okta (own)
+  partner: okta
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://www.okta.com/integrations/zoomforgovernment/
+  mirror_of: okta/integrations/okta-integration-edges.yml
+  apps:
+  - Zoom for Government
+  - Zoom
+  listing_count: 2
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+  category: Single Sign-On
+  badges:
+  - OKTA_VERIFIED
+  features:
+  - CREATE
+  - DEACTIVATE
+  - IDENTITY_SECURITY_POSTURE_MANAGEMENT
+  - SAML
+  - UPDATE
+  - GROUP_PUSH
+  - MCP_SERVER
+  - OIDC
+  - SECURE_IDENTITY_INTEGRATIONS_ADVANCED
+  - UNIVERSAL_LOGOUT
+  - WORKFLOWS_CONNECTORS
+- partner_name: MCP Registry
+  partner: mcp
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://registry.modelcontextprotocol.io/v0/servers?search=io.github.zoom
+  contract_reference:
+    register: registry.modelcontextprotocol.io
+    spec_file: null
+    role: mcp-server-listing
+    registered_name: io.github.zoom/zoom-docs
+    register_id: io.github.zoom/zoom-docs
+    detected_by: sweep-agent-tools.py
+    detected: '2026-10-15'
+  mcp_registry:
+    servers:
+    - io.github.zoom/zoom-docs
+    - io.github.zoom/zoom-meetings
+    - io.github.zoom/zoom-revenue-accelerator
+    - io.github.zoom/zoom-tasks
+    - io.github.zoom/zoom-team-chat
+    - io.github.zoom/zoom-whiteboard
+    - io.github.zoom/zoom-workspace
+    hosted_remote: 7
+    local_package: 0
+    transports:
+      streamable-http: 7
+    auth_declared: 0
+    catalog_declared: true
+    namespace_domains:
+    - zoom.us
+  matched_by:
+  - remote-domain
+  detected_by: sweep-agent-tools.py
+  first_seen: '2026-10-14'
 templates:
 - title: Upload new Zoom recordings to Google Drive
   url: https://zapier.com/apps/google-drive/integrations/zoom/232845/upload-new-zoom-recordings-to-google-drive

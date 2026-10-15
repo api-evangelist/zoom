@@ -460,45 +460,6 @@
     detected: '2026-10-14'
   status: not-a-workflow
   arazzo: null
-- slug: zoom-clever-clever-app-gallery
-  label: Clever (clever-app-gallery)
-  partner: clever
-  partner_name: Clever (clever-app-gallery)
-  category: communication
-  type: marketplace
-  marketplace: clever-app-gallery
-  channel: partner-built
-  evidence: https://clever.com/app-gallery
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
-- slug: zoom-docusign-partner-store
-  label: Docusign (partner-store)
-  partner: docusign
-  partner_name: Docusign (partner-store)
-  category: Integrations
-  type: marketplace
-  marketplace: partner-store
-  channel: partner-built
-  evidence: https://marketplace.zoom.us/apps/qsDLHg0-Q6WXiF6H1TVWig
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
-- slug: zoom-okta-own
-  label: Okta (own)
-  partner: okta
-  partner_name: Okta (own)
-  category: Single Sign-On
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://www.okta.com/integrations/zoomforgovernment/
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
 - slug: zoom-edugain
   label: eduGAIN
   partner_name: eduGAIN
@@ -574,5 +535,44 @@
       coco: true
     detected_by: sweep-higher-ed.py
     detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: zoom-clever-clever-app-gallery
+  label: Clever (clever-app-gallery)
+  partner: clever
+  partner_name: Clever (clever-app-gallery)
+  category: communication
+  type: marketplace
+  marketplace: clever-app-gallery
+  channel: partner-built
+  evidence: https://clever.com/app-gallery
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: zoom-docusign-partner-store
+  label: Docusign (partner-store)
+  partner: docusign
+  partner_name: Docusign (partner-store)
+  category: Integrations
+  type: marketplace
+  marketplace: partner-store
+  channel: partner-built
+  evidence: https://marketplace.zoom.us/apps/qsDLHg0-Q6WXiF6H1TVWig
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: zoom-okta-own
+  label: Okta (own)
+  partner: okta
+  partner_name: Okta (own)
+  category: Single Sign-On
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.okta.com/integrations/zoomforgovernment/
+  source: edge
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
