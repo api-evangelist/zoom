@@ -265,7 +265,115 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  responses:
+    Unauthorized:
+      description: Unauthorized. The request requires authentication.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Not found. The requested resource could not be found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Bad request. The request was invalid or cannot be served.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   schemas:
+    PollCreateRequest:
+      type: object
+      properties:
+        title:
+          type: string
+          description: Poll title. Maximum 64 characters.
+          maxLength: 64
+          example: Example Title
+        anonymous:
+          type: boolean
+          description: Whether this is an anonymous poll.
+          default: false
+          example: true
+        poll_type:
+          type: integer
+          description: Type of poll. 1 - Poll, 2 - Advanced Poll, 3 - Quiz.
+          enum:
+          - 1
+          - 2
+          - 3
+          default: 1
+          example: 1
+        questions:
+          type: array
+          description: List of questions for the poll.
+          items:
+            $ref: '#/components/schemas/PollQuestion'
+          example: []
+    Poll:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: Poll ID.
+          example: abc123
+        title:
+          type: string
+          description: Poll title.
+          example: Example Title
+        anonymous:
+          type: boolean
+          description: Whether this is an anonymous poll.
+          example: true
+        status:
+          type: string
+          description: Poll status.
+          enum:
+          - notstart
+          - started
+          - ended
+          - sharing
+          example: notstart
+        poll_type:
+          type: integer
+          description: Type of poll. 1 - Poll, 2 - Advanced Poll, 3 - Quiz.
+          enum:
+          - 1
+          - 2
+          - 3
+          example: 1
+        questions:
+          type: array
+          description: List of questions in the poll.
+          items:
+            $ref: '#/components/schemas/PollQuestion'
+          example: []
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Error code.
+          example: 10
+        message:
+          type: string
+          description: Error message.
+          example: example_value
+        errors:
+          type: array
+          description: Detailed error messages.
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+              message:
+                type: string
+          example: []
     PollQuestion:
       type: object
       properties:
@@ -339,114 +447,6 @@ components:
           type: integer
           description: Maximum characters for short/long answer questions.
           example: 10
-    Poll:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-          description: Poll ID.
-          example: abc123
-        title:
-          type: string
-          description: Poll title.
-          example: Example Title
-        anonymous:
-          type: boolean
-          description: Whether this is an anonymous poll.
-          example: true
-        status:
-          type: string
-          description: Poll status.
-          enum:
-          - notstart
-          - started
-          - ended
-          - sharing
-          example: notstart
-        poll_type:
-          type: integer
-          description: Type of poll. 1 - Poll, 2 - Advanced Poll, 3 - Quiz.
-          enum:
-          - 1
-          - 2
-          - 3
-          example: 1
-        questions:
-          type: array
-          description: List of questions in the poll.
-          items:
-            $ref: '#/components/schemas/PollQuestion'
-          example: []
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-          description: Error code.
-          example: 10
-        message:
-          type: string
-          description: Error message.
-          example: example_value
-        errors:
-          type: array
-          description: Detailed error messages.
-          items:
-            type: object
-            properties:
-              field:
-                type: string
-              message:
-                type: string
-          example: []
-    PollCreateRequest:
-      type: object
-      properties:
-        title:
-          type: string
-          description: Poll title. Maximum 64 characters.
-          maxLength: 64
-          example: Example Title
-        anonymous:
-          type: boolean
-          description: Whether this is an anonymous poll.
-          default: false
-          example: true
-        poll_type:
-          type: integer
-          description: Type of poll. 1 - Poll, 2 - Advanced Poll, 3 - Quiz.
-          enum:
-          - 1
-          - 2
-          - 3
-          default: 1
-          example: 1
-        questions:
-          type: array
-          description: List of questions for the poll.
-          items:
-            $ref: '#/components/schemas/PollQuestion'
-          example: []
-  responses:
-    BadRequest:
-      description: Bad request. The request was invalid or cannot be served.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Unauthorized. The request requires authentication.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: Not found. The requested resource could not be found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   parameters:
     PollIdPath:
       name: pollId

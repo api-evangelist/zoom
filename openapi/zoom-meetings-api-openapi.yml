@@ -606,12 +606,15 @@ paths:
         dispatcher: FALLBACK
 components:
   parameters:
-    NextPageToken:
-      name: next_page_token
+    PageSize:
+      name: page_size
       in: query
-      description: The next page token to paginate through large result sets. A next_page_token is returned in the response when a result set exceeds the page_size.
+      description: The number of records returned per API call. Maximum is 300.
       schema:
-        type: string
+        type: integer
+        minimum: 1
+        maximum: 300
+        default: 30
     UserIdPath:
       name: userId
       in: path
@@ -623,6 +626,19 @@ components:
         - me
         - jchill@example.com
         - AbCdEfGhIjKlMnOpQrStUv
+    NextPageToken:
+      name: next_page_token
+      in: query
+      description: The next page token to paginate through large result sets. A next_page_token is returned in the response when a result set exceeds the page_size.
+      schema:
+        type: string
+    PageNumber:
+      name: page_number
+      in: query
+      description: The page number of the current results.
+      schema:
+        type: integer
+        default: 1
     MeetingIdPath:
       name: meetingId
       in: path
@@ -633,98 +649,7 @@ components:
         - type: integer
           format: int64
         - type: string
-    PageNumber:
-      name: page_number
-      in: query
-      description: The page number of the current results.
-      schema:
-        type: integer
-        default: 1
-    PageSize:
-      name: page_size
-      in: query
-      description: The number of records returned per API call. Maximum is 300.
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 300
-        default: 30
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-          description: Error code.
-          example: 10
-        message:
-          type: string
-          description: Error message.
-          example: example_value
-        errors:
-          type: array
-          description: Detailed error messages.
-          items:
-            type: object
-            properties:
-              field:
-                type: string
-              message:
-                type: string
-          example: []
-    PastMeetingDetails:
-      type: object
-      properties:
-        uuid:
-          type: string
-          description: Unique meeting instance ID.
-          example: '500123'
-        id:
-          type: integer
-          format: int64
-          description: Meeting ID.
-          example: abc123
-        host_id:
-          type: string
-          description: Host user ID.
-          example: '500123'
-        host_email:
-          type: string
-          format: email
-          description: Host email address.
-          example: user@example.com
-        type:
-          $ref: '#/components/schemas/MeetingType'
-        topic:
-          type: string
-          description: Meeting topic.
-          example: example_value
-        user_name:
-          type: string
-          description: Display name of the meeting host.
-          example: example_value
-        start_time:
-          type: string
-          format: date-time
-          description: Meeting start time.
-          example: '2026-01-15T10:30:00Z'
-        end_time:
-          type: string
-          format: date-time
-          description: Meeting end time.
-          example: '2026-01-15T10:30:00Z'
-        duration:
-          type: integer
-          description: Meeting duration in minutes.
-          example: 10
-        total_minutes:
-          type: integer
-          description: Total meeting minutes across all participants.
-          example: 10
-        participants_count:
-          type: integer
-          description: Number of participants.
-          example: 10
     MeetingCreateRequest:
       type: object
       properties:
@@ -793,134 +718,28 @@ components:
           type: string
           description: Meeting template ID to use.
           example: '500123'
-    MeetingSummary:
+    ErrorResponse:
       type: object
       properties:
-        uuid:
-          type: string
-          description: Unique meeting instance ID.
-          example: '500123'
-        id:
+        code:
           type: integer
-          format: int64
-          description: Meeting ID (meeting number).
-          example: abc123
-        host_id:
-          type: string
-          description: ID of the user who is the meeting host.
-          example: '500123'
-        topic:
-          type: string
-          description: Meeting topic.
-          example: example_value
-        type:
-          $ref: '#/components/schemas/MeetingType'
-        start_time:
-          type: string
-          format: date-time
-          description: Meeting start time in UTC.
-          example: '2026-01-15T10:30:00Z'
-        duration:
-          type: integer
-          description: Meeting duration in minutes.
+          description: Error code.
           example: 10
-        timezone:
+        message:
           type: string
-          description: Timezone for the meeting start time.
+          description: Error message.
           example: example_value
-        created_at:
-          type: string
-          format: date-time
-          description: Time the meeting was created.
-          example: '2026-01-15T10:30:00Z'
-        join_url:
-          type: string
-          format: uri
-          description: URL for participants to join the meeting.
-          example: https://www.example.com
-        agenda:
-          type: string
-          description: Meeting agenda or description.
-          example: example_value
-    Recurrence:
-      type: object
-      description: Recurrence settings for recurring meetings.
-      properties:
-        type:
-          type: integer
-          description: Recurrence type. 1 - Daily, 2 - Weekly, 3 - Monthly.
-          enum:
-          - 1
-          - 2
-          - 3
-          example: 1
-        repeat_interval:
-          type: integer
-          description: Interval at which the meeting recurs. For daily, max 90. For weekly, max 12. For monthly, max 3.
-          example: 10
-        weekly_days:
-          type: string
-          description: Days of the week for weekly recurrence. 1-Sunday through 7-Saturday. Comma separated for multiple days.
-          example: example_value
-        monthly_day:
-          type: integer
-          description: Day of the month for monthly recurrence (1-31).
-          example: 10
-        monthly_week:
-          type: integer
-          description: Week of the month for monthly recurrence. -1 - Last week, 1 - First, 2 - Second, 3 - Third, 4 - Fourth.
-          enum:
-          - -1
-          - 1
-          - 2
-          - 3
-          - 4
-          example: -1
-        monthly_week_day:
-          type: integer
-          description: Day of the week for monthly recurrence. 1-Sunday through 7-Saturday.
-          enum:
-          - 1
-          - 2
-          - 3
-          - 4
-          - 5
-          - 6
-          - 7
-          example: 1
-        end_times:
-          type: integer
-          description: Number of times the meeting will recur before ending. Cannot be used with end_date_time. Maximum 365 for daily, 99 for weekly and monthly.
-          maximum: 365
-          default: 1
-          example: 10
-        end_date_time:
-          type: string
-          format: date-time
-          description: The end date-time for the recurrence. Cannot be used with end_times.
-          example: '2026-01-15T10:30:00Z'
-    MeetingDetails:
-      allOf:
-      - $ref: '#/components/schemas/MeetingCreateResponse'
-      - type: object
-        properties:
-          occurrences:
-            type: array
-            description: Array of occurrence objects for recurring meetings.
-            items:
-              $ref: '#/components/schemas/Occurrence'
-          tracking_fields:
-            type: array
-            description: Tracking fields configured for the meeting.
-            items:
-              type: object
-              properties:
-                field:
-                  type: string
-                value:
-                  type: string
-                visible:
-                  type: boolean
+        errors:
+          type: array
+          description: Detailed error messages.
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+              message:
+                type: string
+          example: []
     MeetingUpdateRequest:
       type: object
       properties:
@@ -1063,14 +882,240 @@ components:
           items:
             $ref: '#/components/schemas/Occurrence'
           example: []
-    MeetingType:
-      type: integer
-      description: 'Meeting type: 1 - Instant meeting, 2 - Scheduled meeting, 3 - Recurring meeting with no fixed time, 8 - Recurring meeting with a fixed time.'
-      enum:
-      - 1
-      - 2
-      - 3
-      - 8
+    PastMeetingDetails:
+      type: object
+      properties:
+        uuid:
+          type: string
+          description: Unique meeting instance ID.
+          example: '500123'
+        id:
+          type: integer
+          format: int64
+          description: Meeting ID.
+          example: abc123
+        host_id:
+          type: string
+          description: Host user ID.
+          example: '500123'
+        host_email:
+          type: string
+          format: email
+          description: Host email address.
+          example: user@example.com
+        type:
+          $ref: '#/components/schemas/MeetingType'
+        topic:
+          type: string
+          description: Meeting topic.
+          example: example_value
+        user_name:
+          type: string
+          description: Display name of the meeting host.
+          example: example_value
+        start_time:
+          type: string
+          format: date-time
+          description: Meeting start time.
+          example: '2026-01-15T10:30:00Z'
+        end_time:
+          type: string
+          format: date-time
+          description: Meeting end time.
+          example: '2026-01-15T10:30:00Z'
+        duration:
+          type: integer
+          description: Meeting duration in minutes.
+          example: 10
+        total_minutes:
+          type: integer
+          description: Total meeting minutes across all participants.
+          example: 10
+        participants_count:
+          type: integer
+          description: Number of participants.
+          example: 10
+    MeetingList:
+      type: object
+      properties:
+        page_count:
+          type: integer
+          description: Total number of pages.
+          example: 10
+        page_number:
+          type: integer
+          description: Current page number.
+          example: 10
+        page_size:
+          type: integer
+          description: Number of records per page.
+          example: 10
+        total_records:
+          type: integer
+          description: Total number of meeting records.
+          example: 10
+        next_page_token:
+          type: string
+          description: Token for the next page of results.
+          example: example_value
+        meetings:
+          type: array
+          description: List of meeting objects.
+          items:
+            $ref: '#/components/schemas/MeetingSummary'
+          example: []
+    Occurrence:
+      type: object
+      description: Meeting occurrence information for recurring meetings.
+      properties:
+        occurrence_id:
+          type: string
+          description: Occurrence ID.
+          example: '500123'
+        start_time:
+          type: string
+          format: date-time
+          description: Start time of this occurrence.
+          example: '2026-01-15T10:30:00Z'
+        duration:
+          type: integer
+          description: Duration of this occurrence in minutes.
+          example: 10
+        status:
+          type: string
+          description: Occurrence status.
+          enum:
+          - available
+          - deleted
+          example: available
+    Recurrence:
+      type: object
+      description: Recurrence settings for recurring meetings.
+      properties:
+        type:
+          type: integer
+          description: Recurrence type. 1 - Daily, 2 - Weekly, 3 - Monthly.
+          enum:
+          - 1
+          - 2
+          - 3
+          example: 1
+        repeat_interval:
+          type: integer
+          description: Interval at which the meeting recurs. For daily, max 90. For weekly, max 12. For monthly, max 3.
+          example: 10
+        weekly_days:
+          type: string
+          description: Days of the week for weekly recurrence. 1-Sunday through 7-Saturday. Comma separated for multiple days.
+          example: example_value
+        monthly_day:
+          type: integer
+          description: Day of the month for monthly recurrence (1-31).
+          example: 10
+        monthly_week:
+          type: integer
+          description: Week of the month for monthly recurrence. -1 - Last week, 1 - First, 2 - Second, 3 - Third, 4 - Fourth.
+          enum:
+          - -1
+          - 1
+          - 2
+          - 3
+          - 4
+          example: -1
+        monthly_week_day:
+          type: integer
+          description: Day of the week for monthly recurrence. 1-Sunday through 7-Saturday.
+          enum:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          example: 1
+        end_times:
+          type: integer
+          description: Number of times the meeting will recur before ending. Cannot be used with end_date_time. Maximum 365 for daily, 99 for weekly and monthly.
+          maximum: 365
+          default: 1
+          example: 10
+        end_date_time:
+          type: string
+          format: date-time
+          description: The end date-time for the recurrence. Cannot be used with end_times.
+          example: '2026-01-15T10:30:00Z'
+    MeetingDetails:
+      allOf:
+      - $ref: '#/components/schemas/MeetingCreateResponse'
+      - type: object
+        properties:
+          occurrences:
+            type: array
+            description: Array of occurrence objects for recurring meetings.
+            items:
+              $ref: '#/components/schemas/Occurrence'
+          tracking_fields:
+            type: array
+            description: Tracking fields configured for the meeting.
+            items:
+              type: object
+              properties:
+                field:
+                  type: string
+                value:
+                  type: string
+                visible:
+                  type: boolean
+    MeetingSummary:
+      type: object
+      properties:
+        uuid:
+          type: string
+          description: Unique meeting instance ID.
+          example: '500123'
+        id:
+          type: integer
+          format: int64
+          description: Meeting ID (meeting number).
+          example: abc123
+        host_id:
+          type: string
+          description: ID of the user who is the meeting host.
+          example: '500123'
+        topic:
+          type: string
+          description: Meeting topic.
+          example: example_value
+        type:
+          $ref: '#/components/schemas/MeetingType'
+        start_time:
+          type: string
+          format: date-time
+          description: Meeting start time in UTC.
+          example: '2026-01-15T10:30:00Z'
+        duration:
+          type: integer
+          description: Meeting duration in minutes.
+          example: 10
+        timezone:
+          type: string
+          description: Timezone for the meeting start time.
+          example: example_value
+        created_at:
+          type: string
+          format: date-time
+          description: Time the meeting was created.
+          example: '2026-01-15T10:30:00Z'
+        join_url:
+          type: string
+          format: uri
+          description: URL for participants to join the meeting.
+          example: https://www.example.com
+        agenda:
+          type: string
+          description: Meeting agenda or description.
+          example: example_value
     MeetingSettings:
       type: object
       description: Meeting settings and options.
@@ -1341,62 +1386,17 @@ components:
             auto_add_invited_external_users:
               type: boolean
           example: example_value
-    Occurrence:
-      type: object
-      description: Meeting occurrence information for recurring meetings.
-      properties:
-        occurrence_id:
-          type: string
-          description: Occurrence ID.
-          example: '500123'
-        start_time:
-          type: string
-          format: date-time
-          description: Start time of this occurrence.
-          example: '2026-01-15T10:30:00Z'
-        duration:
-          type: integer
-          description: Duration of this occurrence in minutes.
-          example: 10
-        status:
-          type: string
-          description: Occurrence status.
-          enum:
-          - available
-          - deleted
-          example: available
-    MeetingList:
-      type: object
-      properties:
-        page_count:
-          type: integer
-          description: Total number of pages.
-          example: 10
-        page_number:
-          type: integer
-          description: Current page number.
-          example: 10
-        page_size:
-          type: integer
-          description: Number of records per page.
-          example: 10
-        total_records:
-          type: integer
-          description: Total number of meeting records.
-          example: 10
-        next_page_token:
-          type: string
-          description: Token for the next page of results.
-          example: example_value
-        meetings:
-          type: array
-          description: List of meeting objects.
-          items:
-            $ref: '#/components/schemas/MeetingSummary'
-          example: []
+    MeetingType:
+      type: integer
+      description: 'Meeting type: 1 - Instant meeting, 2 - Scheduled meeting, 3 - Recurring meeting with no fixed time, 8 - Recurring meeting with a fixed time.'
+      enum:
+      - 1
+      - 2
+      - 3
+      - 8
   responses:
-    BadRequest:
-      description: Bad request. The request was invalid or cannot be served.
+    Unauthorized:
+      description: Unauthorized. The request requires authentication.
       content:
         application/json:
           schema:
@@ -1407,8 +1407,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Unauthorized. The request requires authentication.
+    BadRequest:
+      description: Bad request. The request was invalid or cannot be served.
       content:
         application/json:
           schema:
