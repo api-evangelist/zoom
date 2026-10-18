@@ -785,7 +785,7 @@
     - alpha
     in_cloud: true
     builder: unknown (community connector; contributor not in the record)
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: zoom-fivetran
   label: Fivetran
@@ -811,7 +811,7 @@
     - connectors/applications/zoom
     vendor_link: https://zoom.us/
     builder: Fivetran
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: zoom-meltano
   label: Meltano
@@ -844,7 +844,7 @@
     - bronze
     - silver
     builder: 'community (Meltano Hub variant maintainers: airbyte, mashey, robby-rob-slalom)'
-  status: pending-partner-spec
+  status: not-a-workflow
   arazzo: null
 - slug: zoom-15five
   label: 15Five
