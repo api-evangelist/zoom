@@ -536,7 +536,7 @@ apis:
   tags:
   - Artificial Intelligence
   - Chatbots
-  - Customer Support
+  - Customer Service
   - Virtual Agents
   tags_raw:
   - AI
@@ -730,7 +730,7 @@ apis:
   baseURL: https://api.zoom.us/v2
   tags:
   - Cobrowse
-  - Customer Support
+  - Customer Service
   - Screen Sharing
   tags_raw:
   - Cobrowse
