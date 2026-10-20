@@ -15,6 +15,7 @@
   evidence: https://zapier.com/apps/google-drive/integrations/zoom/232845/upload-new-zoom-recordings-to-google-drive
   template: https://zapier.com/apps/google-drive/integrations/zoom/232845/upload-new-zoom-recordings-to-google-drive
   source: template
+  relationship: ipaas-bridge
   status: pending-generation
   arazzo: null
 - slug: zoom-upload-new-zoom-recordings-to-tl-dv
@@ -29,6 +30,7 @@
   evidence: https://zapier.com/apps/tldv/integrations/zoom/1574106/upload-new-zoom-recordings-to-tldv
   template: https://zapier.com/apps/tldv/integrations/zoom/1574106/upload-new-zoom-recordings-to-tldv
   source: template
+  relationship: ipaas-bridge
   status: pending-generation
   arazzo: null
 - slug: zoom-add-new-zoom-meetings-to-google-calendar
@@ -43,6 +45,7 @@
   evidence: https://zapier.com/apps/google-calendar/integrations/zoom/3890/add-new-zoom-meetings-to-google-calendar
   template: https://zapier.com/apps/google-calendar/integrations/zoom/3890/add-new-zoom-meetings-to-google-calendar
   source: template
+  relationship: ipaas-bridge
   status: pending-generation
   arazzo: null
 - slug: zoom-upload-new-zoom-recordings-to-google-drive-and-send-notifications-via-gmail
@@ -57,6 +60,7 @@
   evidence: https://zapier.com/apps/gmail/integrations/zoom/126217/upload-new-zoom-recordings-to-google-drive-and-send-notifications-via-gmail
   template: https://zapier.com/apps/gmail/integrations/zoom/126217/upload-new-zoom-recordings-to-google-drive-and-send-notifications-via-gmail
   source: template
+  relationship: ipaas-bridge
   status: pending-generation
   arazzo: null
 - slug: zoom-send-new-zoom-recordings-to-google-drive
@@ -71,6 +75,7 @@
   evidence: https://zapier.com/apps/google-drive/integrations/zoom/126240/send-new-zoom-recordings-to-google-drive
   template: https://zapier.com/apps/google-drive/integrations/zoom/126240/send-new-zoom-recordings-to-google-drive
   source: template
+  relationship: ipaas-bridge
   status: pending-generation
   arazzo: null
 - slug: zoom-upload-new-zoom-recordings-to-tl-dv-automatically
@@ -85,6 +90,7 @@
   evidence: https://zapier.com/apps/tldv/integrations/zoom/1744878/upload-new-zoom-recordings-to-tldv-automatically
   template: https://zapier.com/apps/tldv/integrations/zoom/1744878/upload-new-zoom-recordings-to-tldv-automatically
   source: template
+  relationship: ipaas-bridge
   status: pending-generation
   arazzo: null
 - slug: zoom-send-slack-messages-for-new-zoom-recordings
@@ -99,6 +105,7 @@
   evidence: https://zapier.com/apps/slack/integrations/zoom/222533/send-slack-messages-for-new-zoom-recordings
   template: https://zapier.com/apps/slack/integrations/zoom/222533/send-slack-messages-for-new-zoom-recordings
   source: template
+  relationship: ipaas-bridge
   status: pending-generation
   arazzo: null
 - slug: zoom-upload-new-zoom-audio-transcripts-to-google-drive-as-files
@@ -113,6 +120,7 @@
   evidence: https://zapier.com/apps/google-drive/integrations/zoom/1728902/upload-new-zoom-audio-transcripts-to-google-drive-as-files
   template: https://zapier.com/apps/google-drive/integrations/zoom/1728902/upload-new-zoom-audio-transcripts-to-google-drive-as-files
   source: template
+  relationship: ipaas-bridge
   status: pending-generation
   arazzo: null
 - slug: zoom-upload-new-zoom-recordings-to-vimeo-as-videos
@@ -127,300 +135,7 @@
   evidence: https://zapier.com/apps/vimeo/integrations/zoom/1743113/upload-new-zoom-recordings-to-vimeo-as-videos
   template: https://zapier.com/apps/vimeo/integrations/zoom/1743113/upload-new-zoom-recordings-to-vimeo-as-videos
   source: template
-  status: pending-generation
-  arazzo: null
-- slug: zoom-hubspot
-  label: HubSpot
-  partner: hubspot
-  partner_name: HubSpot
-  category: Marketing Automation
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zoom/integrations/hubspot
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: zoom-eventbrite
-  label: Eventbrite
-  partner: eventbrite
-  partner_name: Eventbrite
-  category: Event Management
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zoom/integrations/eventbrite
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: zoom-mailchimp
-  label: Mailchimp
-  partner: mailchimp
-  partner_name: Mailchimp
-  category: Marketing Automation
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zoom/integrations/mailchimp
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: zoom-leadconnector
-  label: LeadConnector
-  partner_name: LeadConnector
-  category: Marketing Automation
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zoom/integrations/leadconnector
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: zoom-activecampaign
-  label: ActiveCampaign
-  partner: activecampaign
-  partner_name: ActiveCampaign
-  category: Marketing Automation
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zoom/integrations/activecampaign
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: zoom-gravity-forms
-  label: Gravity Forms
-  partner: gravity-forms
-  partner_name: Gravity Forms
-  category: Forms & Surveys
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zoom/integrations/gravity-forms
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: zoom-clickfunnels-classic
-  label: ClickFunnels Classic
-  partner: clickfunnels
-  partner_name: ClickFunnels Classic
-  category: Marketing Automation
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zoom/integrations/clickfunnels-classic
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: zoom-kajabi
-  label: Kajabi
-  partner: kajabi
-  partner_name: Kajabi
-  category: eCommerce
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zoom/integrations/kajabi
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: zoom-typeform
-  label: Typeform
-  partner: typeform
-  partner_name: Typeform
-  category: Forms & Surveys
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zoom/integrations/typeform
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: zoom-airtable
-  label: Airtable
-  partner: airtable
-  partner_name: Airtable
-  category: Databases
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zoom/integrations/airtable
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: zoom-unbounce
-  label: Unbounce
-  partner: unbounce
-  partner_name: Unbounce
-  category: Forms & Surveys
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zoom/integrations/unbounce
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: zoom-oncehub
-  label: OnceHub
-  partner_name: OnceHub
-  category: Scheduling & Booking
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zoom/integrations/oncehub
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: zoom-kartra
-  label: Kartra
-  partner: kartra
-  partner_name: Kartra
-  category: Marketing Automation
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zoom/integrations/kartra
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: zoom-linkedin-ads
-  label: LinkedIn Ads
-  partner_name: LinkedIn Ads
-  category: Ads & Conversion
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zoom/integrations/linkedin-ads
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: zoom-gmail
-  label: Gmail
-  partner: gmail
-  partner_name: Gmail
-  category: Email
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zoom/integrations/gmail
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: zoom-google-forms
-  label: Google Forms
-  partner: google-forms
-  partner_name: Google Forms
-  category: Forms & Surveys
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zoom/integrations/google-forms
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: zoom-google-docs
-  label: Google Docs
-  partner: google-docs
-  partner_name: Google Docs
-  category: Documents
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zoom/integrations/google-docs
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: zoom-monday-com
-  label: monday.com
-  partner_name: monday.com
-  category: Project Management
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zoom/integrations/monday
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: zoom-woocommerce
-  label: WooCommerce
-  partner: woocommerce
-  partner_name: WooCommerce
-  category: eCommerce
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zoom/integrations/woocommerce
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: zoom-acuity-scheduling
-  label: Acuity Scheduling
-  partner: acuity-scheduling
-  partner_name: Acuity Scheduling
-  category: Scheduling & Booking
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zoom/integrations/acuity-scheduling
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: zoom-pipedrive
-  label: Pipedrive
-  partner: pipedrive
-  partner_name: Pipedrive
-  category: CRM (Customer Relationship Management)
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zoom/integrations/pipedrive
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: zoom-pardot
-  label: Pardot
-  partner_name: Pardot
-  category: Marketing Automation
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zoom/integrations/pardot
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: zoom-microsoft-excel
-  label: Microsoft Excel
-  partner_name: Microsoft Excel
-  category: Microsoft
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zoom/integrations/excel
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: zoom-squarespace-forms
-  label: Squarespace Forms
-  partner: squarespace
-  partner_name: Squarespace Forms
-  category: Forms & Surveys
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zoom/integrations/squarespace-forms
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: zoom-dropbox
-  label: Dropbox
-  partner: dropbox
-  partner_name: Dropbox
-  category: File Management & Storage
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/zoom/integrations/dropbox
-  source: edge
+  relationship: ipaas-bridge
   status: pending-generation
   arazzo: null
 - slug: zoom-synthflow
@@ -645,6 +360,32 @@
     listings: 1
     sample_apps:
     - Act-On
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-workplace-apps.py
+    detected: '2026-10-18'
+  status: not-a-workflow
+  arazzo: null
+- slug: zoom-acuity-scheduling
+  label: Acuity Scheduling
+  partner: acuity-scheduling
+  partner_name: Acuity Scheduling
+  category: Zoom app
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.zoom.us/apps/z_EsRti0TCyE2JAC4Z6kRA
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: Zoom App Marketplace (marketplace.zoom.us public search + detailV2 JSON)
+    spec_file: null
+    role: zoom-app
+    registered_name: Squarespace Ireland Limited
+    matched_domain: acuityscheduling.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Acuity Scheduling
     signal_note: one edge per (builder, platform); listings and badges are context, never read
     detected_by: sweep-workplace-apps.py
     detected: '2026-10-18'
@@ -3084,6 +2825,32 @@
     detected: '2026-10-18'
   status: not-a-workflow
   arazzo: null
+- slug: zoom-dropbox
+  label: Dropbox
+  partner: dropbox
+  partner_name: Dropbox
+  category: Zoom app
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.zoom.us/apps/4qTXYwx2QtuAKJ-DV3zR3Q
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: Zoom App Marketplace (marketplace.zoom.us public search + detailV2 JSON)
+    spec_file: null
+    role: zoom-app
+    registered_name: Dropbox
+    matched_domain: dropbox.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Dropbox Dash
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-workplace-apps.py
+    detected: '2026-10-18'
+  status: not-a-workflow
+  arazzo: null
 - slug: zoom-eightfold-ai
   label: Eightfold AI
   partner: eightfold-ai
@@ -3341,6 +3108,32 @@
     listings: 1
     sample_apps:
     - eFront
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-workplace-apps.py
+    detected: '2026-10-18'
+  status: not-a-workflow
+  arazzo: null
+- slug: zoom-eventbrite
+  label: Eventbrite
+  partner: eventbrite
+  partner_name: Eventbrite
+  category: Zoom app
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.zoom.us/apps/btYQyg1IS-ianY2zY2-XRQ
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: Zoom App Marketplace (marketplace.zoom.us public search + detailV2 JSON)
+    spec_file: null
+    role: zoom-app
+    registered_name: Eventbrite Inc
+    matched_domain: eventbrite.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Eventbrite 2.0
     signal_note: one edge per (builder, platform); listings and badges are context, never read
     detected_by: sweep-workplace-apps.py
     detected: '2026-10-18'
@@ -7092,6 +6885,32 @@
     sample_apps:
     - Pipedream
     - Pipedream for Zoom Admins
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-workplace-apps.py
+    detected: '2026-10-18'
+  status: not-a-workflow
+  arazzo: null
+- slug: zoom-pipedrive
+  label: Pipedrive
+  partner: pipedrive
+  partner_name: Pipedrive
+  category: Zoom app
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.zoom.us/apps/uZzyLt6kRzeTYlZj_S_YMQ
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: Zoom App Marketplace (marketplace.zoom.us public search + detailV2 JSON)
+    spec_file: null
+    role: zoom-app
+    registered_name: Pipedrive OÜ
+    matched_domain: pipedrive.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Pipedrive
     signal_note: one edge per (builder, platform); listings and badges are context, never read
     detected_by: sweep-workplace-apps.py
     detected: '2026-10-18'
@@ -11155,4 +10974,273 @@
     detected_by: sweep-compliance-assurance.py
     detected: '2026-10-20'
   status: not-a-workflow
+  arazzo: null
+- slug: zoom-hubspot
+  label: HubSpot
+  partner: hubspot
+  partner_name: HubSpot
+  category: Marketing Automation
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zoom/integrations/hubspot
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: zoom-mailchimp
+  label: Mailchimp
+  partner: mailchimp
+  partner_name: Mailchimp
+  category: Marketing Automation
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zoom/integrations/mailchimp
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: zoom-leadconnector
+  label: LeadConnector
+  partner_name: LeadConnector
+  category: Marketing Automation
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zoom/integrations/leadconnector
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: zoom-activecampaign
+  label: ActiveCampaign
+  partner: activecampaign
+  partner_name: ActiveCampaign
+  category: Marketing Automation
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zoom/integrations/activecampaign
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: zoom-gravity-forms
+  label: Gravity Forms
+  partner: gravity-forms
+  partner_name: Gravity Forms
+  category: Forms & Surveys
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zoom/integrations/gravity-forms
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: zoom-clickfunnels-classic
+  label: ClickFunnels Classic
+  partner: clickfunnels
+  partner_name: ClickFunnels Classic
+  category: Marketing Automation
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zoom/integrations/clickfunnels-classic
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: zoom-kajabi
+  label: Kajabi
+  partner: kajabi
+  partner_name: Kajabi
+  category: eCommerce
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zoom/integrations/kajabi
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: zoom-typeform
+  label: Typeform
+  partner: typeform
+  partner_name: Typeform
+  category: Forms & Surveys
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zoom/integrations/typeform
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: zoom-airtable
+  label: Airtable
+  partner: airtable
+  partner_name: Airtable
+  category: Databases
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zoom/integrations/airtable
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: zoom-oncehub
+  label: OnceHub
+  partner_name: OnceHub
+  category: Scheduling & Booking
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zoom/integrations/oncehub
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: zoom-unbounce
+  label: Unbounce
+  partner: unbounce
+  partner_name: Unbounce
+  category: Forms & Surveys
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zoom/integrations/unbounce
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: zoom-kartra
+  label: Kartra
+  partner: kartra
+  partner_name: Kartra
+  category: Marketing Automation
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zoom/integrations/kartra
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: zoom-linkedin-ads
+  label: LinkedIn Ads
+  partner: linkedin-ads
+  partner_name: LinkedIn Ads
+  category: Ads & Conversion
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zoom/integrations/linkedin-ads
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: zoom-gmail
+  label: Gmail
+  partner: gmail
+  partner_name: Gmail
+  category: Email
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zoom/integrations/gmail
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: zoom-google-forms
+  label: Google Forms
+  partner: google-forms
+  partner_name: Google Forms
+  category: Forms & Surveys
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zoom/integrations/google-forms
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: zoom-google-docs
+  label: Google Docs
+  partner: google-docs
+  partner_name: Google Docs
+  category: Documents
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zoom/integrations/google-docs
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: zoom-monday-com
+  label: monday.com
+  partner: monday-com
+  partner_name: monday.com
+  category: Project Management
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zoom/integrations/monday
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: zoom-woocommerce
+  label: WooCommerce
+  partner: woocommerce
+  partner_name: WooCommerce
+  category: eCommerce
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zoom/integrations/woocommerce
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: zoom-pardot
+  label: Pardot
+  partner_name: Pardot
+  category: Marketing Automation
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zoom/integrations/pardot
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: zoom-microsoft-excel
+  label: Microsoft Excel
+  partner_name: Microsoft Excel
+  category: Microsoft
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zoom/integrations/excel
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: zoom-squarespace-forms
+  label: Squarespace Forms
+  partner: squarespace
+  partner_name: Squarespace Forms
+  category: Forms & Surveys
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/zoom/integrations/squarespace-forms
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
   arazzo: null
