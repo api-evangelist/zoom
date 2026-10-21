@@ -11244,3 +11244,998 @@
   relationship: ipaas-bridge
   status: pending-generation
   arazzo: null
+- slug: zoom-alleva
+  label: Alleva
+  partner: alleva
+  partner_name: Alleva
+  category: Zoom technology partner
+  type: coverage
+  marketplace: zoom-partner-program
+  channel: standard-directory
+  evidence: https://partner.zoom.com/solutions/alleva/
+  source: edge
+  relationship: system-coverage
+  contract_reference:
+    register: Zoom Partner Solutions (partner.zoom.com/solutions; /wp-json/wp/v2/isvsolution)
+    standard: Zoom Partner Program
+    spec_file: null
+    role: zoom-technology-partner
+    registered_name: Alleva
+    register_id: https://partner.zoom.com/solutions/alleva/
+    matched_domain: null
+    matched_by: register-name
+    identity_source: register-name
+    signal_note: 'participation only: partner type / program tier is partner_tier, never counted; no Zoom certification
+      is printed on the register, so no certified_products'
+    detected_by: sweep-zoom-app-marketplace.py
+    detected: '2026-10-21'
+    context:
+      products:
+      - Developer Platform
+    identity_note: register gave only the name; exact normalised match to the repo's apis.yml name, one repo, Wikidata
+      P856 not contradicting (Kin 2026-10-20 decision 2)
+  status: not-a-workflow
+  arazzo: null
+- slug: zoom-avaya
+  label: Avaya
+  partner: avaya
+  partner_name: Avaya
+  category: Zoom technology partner
+  type: coverage
+  marketplace: zoom-partner-program
+  channel: standard-directory
+  evidence: https://partner.zoom.com/solutions/avaya/
+  source: edge
+  relationship: system-coverage
+  contract_reference:
+    register: Zoom Partner Solutions (partner.zoom.com/solutions; /wp-json/wp/v2/isvsolution)
+    standard: Zoom Partner Program
+    spec_file: null
+    role: zoom-technology-partner
+    registered_name: Avaya
+    register_id: https://partner.zoom.com/solutions/avaya/
+    matched_domain: avaya.com
+    matched_by: domain
+    identity_source: a link on the partner page to the partner's own site (name-gated)
+    signal_note: 'participation only: partner type / program tier is partner_tier, never counted; no Zoom certification
+      is printed on the register, so no certified_products'
+    detected_by: sweep-zoom-app-marketplace.py
+    detected: '2026-10-21'
+    context:
+      products:
+      - Workplace
+  status: not-a-workflow
+  arazzo: null
+- slug: zoom-brighthire
+  label: BrightHire
+  partner: brighthire
+  partner_name: BrightHire
+  category: Zoom technology partner
+  type: coverage
+  marketplace: zoom-partner-program
+  channel: standard-directory
+  evidence: https://partner.zoom.com/solutions/brighthire/
+  source: edge
+  relationship: system-coverage
+  contract_reference:
+    register: Zoom Partner Solutions (partner.zoom.com/solutions; /wp-json/wp/v2/isvsolution)
+    standard: Zoom Partner Program
+    spec_file: null
+    role: zoom-technology-partner
+    registered_name: BrightHire
+    register_id: https://partner.zoom.com/solutions/brighthire/
+    matched_domain: null
+    matched_by: register-name
+    identity_source: register-name
+    signal_note: 'participation only: partner type / program tier is partner_tier, never counted; no Zoom certification
+      is printed on the register, so no certified_products'
+    detected_by: sweep-zoom-app-marketplace.py
+    detected: '2026-10-21'
+    context:
+      products:
+      - App Marketplace
+      - Meetings
+      - Phone
+    identity_note: register gave only the name; exact normalised match to the repo's apis.yml name, one repo, Wikidata
+      P856 not contradicting (Kin 2026-10-20 decision 2)
+  status: not-a-workflow
+  arazzo: null
+- slug: zoom-calendly
+  label: Calendly
+  partner: calendly
+  partner_name: Calendly
+  category: Zoom technology partner
+  type: coverage
+  marketplace: zoom-partner-program
+  channel: standard-directory
+  evidence: https://partner.zoom.com/solutions/calendly/
+  source: edge
+  relationship: system-coverage
+  contract_reference:
+    register: Zoom Partner Solutions (partner.zoom.com/solutions; /wp-json/wp/v2/isvsolution)
+    standard: Zoom Partner Program
+    spec_file: null
+    role: zoom-technology-partner
+    registered_name: Calendly
+    register_id: https://partner.zoom.com/solutions/calendly/
+    matched_domain: null
+    matched_by: register-name
+    identity_source: register-name
+    signal_note: 'participation only: partner type / program tier is partner_tier, never counted; no Zoom certification
+      is printed on the register, so no certified_products'
+    detected_by: sweep-zoom-app-marketplace.py
+    detected: '2026-10-21'
+    context:
+      products:
+      - App Marketplace
+      - Events
+      - Meetings
+    identity_note: register gave only the name; exact normalised match to the repo's apis.yml name, one repo, Wikidata
+      P856 not contradicting (Kin 2026-10-20 decision 2)
+  status: not-a-workflow
+  arazzo: null
+- slug: zoom-charmhealth
+  label: CharmHealth
+  partner: charmhealth
+  partner_name: CharmHealth
+  category: Zoom technology partner
+  type: coverage
+  marketplace: zoom-partner-program
+  channel: standard-directory
+  evidence: https://partner.zoom.com/solutions/charmhealth/
+  source: edge
+  relationship: system-coverage
+  contract_reference:
+    register: Zoom Partner Solutions (partner.zoom.com/solutions; /wp-json/wp/v2/isvsolution)
+    standard: Zoom Partner Program
+    spec_file: null
+    role: zoom-technology-partner
+    registered_name: CharmHealth
+    register_id: https://partner.zoom.com/solutions/charmhealth/
+    matched_domain: null
+    matched_by: register-name
+    identity_source: register-name
+    signal_note: 'participation only: partner type / program tier is partner_tier, never counted; no Zoom certification
+      is printed on the register, so no certified_products'
+    detected_by: sweep-zoom-app-marketplace.py
+    detected: '2026-10-21'
+    context:
+      products:
+      - Developer Platform
+    identity_note: register gave only the name; exact normalised match to the repo's apis.yml name, one repo, Wikidata
+      P856 not contradicting (Kin 2026-10-20 decision 2)
+  status: not-a-workflow
+  arazzo: null
+- slug: zoom-class-technologies-inc
+  label: Class Technologies Inc.
+  partner: class-technologies
+  partner_name: Class Technologies Inc.
+  category: Zoom technology partner
+  type: coverage
+  marketplace: zoom-partner-program
+  channel: standard-directory
+  evidence: https://partner.zoom.com/solutions/class/
+  source: edge
+  relationship: system-coverage
+  contract_reference:
+    register: Zoom Partner Solutions (partner.zoom.com/solutions; /wp-json/wp/v2/isvsolution)
+    standard: Zoom Partner Program
+    spec_file: null
+    role: zoom-technology-partner
+    registered_name: Class Technologies Inc.
+    register_id: https://partner.zoom.com/solutions/class/
+    matched_domain: null
+    matched_by: register-name
+    identity_source: register-name
+    signal_note: 'participation only: partner type / program tier is partner_tier, never counted; no Zoom certification
+      is printed on the register, so no certified_products'
+    detected_by: sweep-zoom-app-marketplace.py
+    detected: '2026-10-21'
+    context:
+      products:
+      - App Marketplace
+      - Meetings
+      - Phone
+      - Rooms & Spaces
+    identity_note: register gave only the name; exact normalised match to the repo's apis.yml name, one repo, Wikidata
+      P856 not contradicting (Kin 2026-10-20 decision 2)
+  status: not-a-workflow
+  arazzo: null
+- slug: zoom-elation-health
+  label: Elation Health
+  partner: elation-health
+  partner_name: Elation Health
+  category: Zoom technology partner
+  type: coverage
+  marketplace: zoom-partner-program
+  channel: standard-directory
+  evidence: https://partner.zoom.com/solutions/elation-health/
+  source: edge
+  relationship: system-coverage
+  contract_reference:
+    register: Zoom Partner Solutions (partner.zoom.com/solutions; /wp-json/wp/v2/isvsolution)
+    standard: Zoom Partner Program
+    spec_file: null
+    role: zoom-technology-partner
+    registered_name: Elation Health
+    register_id: https://partner.zoom.com/solutions/elation-health/
+    matched_domain: null
+    matched_by: register-name
+    identity_source: register-name
+    signal_note: 'participation only: partner type / program tier is partner_tier, never counted; no Zoom certification
+      is printed on the register, so no certified_products'
+    detected_by: sweep-zoom-app-marketplace.py
+    detected: '2026-10-21'
+    context:
+      products:
+      - Developer Platform
+      - Meetings
+    identity_note: register gave only the name; exact normalised match to the repo's apis.yml name, one repo, Wikidata
+      P856 not contradicting (Kin 2026-10-20 decision 2)
+  status: not-a-workflow
+  arazzo: null
+- slug: zoom-genesys
+  label: Genesys
+  partner: genesys
+  partner_name: Genesys
+  category: Zoom technology partner
+  type: coverage
+  marketplace: zoom-partner-program
+  channel: standard-directory
+  evidence: https://partner.zoom.com/solutions/genesys/
+  source: edge
+  relationship: system-coverage
+  contract_reference:
+    register: Zoom Partner Solutions (partner.zoom.com/solutions; /wp-json/wp/v2/isvsolution)
+    standard: Zoom Partner Program
+    spec_file: null
+    role: zoom-technology-partner
+    registered_name: Genesys
+    register_id: https://partner.zoom.com/solutions/genesys/
+    matched_domain: genesys.com
+    matched_by: domain
+    identity_source: developer of the Zoom App Marketplace listing https://marketplace.zoom.us/apps/aTjGNfG4TYa4KSCy1CmGlQ
+      linked from the partner page
+    signal_note: 'participation only: partner type / program tier is partner_tier, never counted; no Zoom certification
+      is printed on the register, so no certified_products'
+    detected_by: sweep-zoom-app-marketplace.py
+    detected: '2026-10-21'
+    context:
+      products:
+      - Meetings
+      - Phone
+      - Team Chat
+  status: not-a-workflow
+  arazzo: null
+- slug: zoom-healthie
+  label: Healthie
+  partner: healthie
+  partner_name: Healthie
+  category: Zoom technology partner
+  type: coverage
+  marketplace: zoom-partner-program
+  channel: standard-directory
+  evidence: https://partner.zoom.com/solutions/healthie/
+  source: edge
+  relationship: system-coverage
+  contract_reference:
+    register: Zoom Partner Solutions (partner.zoom.com/solutions; /wp-json/wp/v2/isvsolution)
+    standard: Zoom Partner Program
+    spec_file: null
+    role: zoom-technology-partner
+    registered_name: Healthie
+    register_id: https://partner.zoom.com/solutions/healthie/
+    matched_domain: null
+    matched_by: register-name
+    identity_source: register-name
+    signal_note: 'participation only: partner type / program tier is partner_tier, never counted; no Zoom certification
+      is printed on the register, so no certified_products'
+    detected_by: sweep-zoom-app-marketplace.py
+    detected: '2026-10-21'
+    context:
+      products:
+      - App Marketplace
+      - Meetings
+      - Phone
+      - Rooms & Spaces
+      - Team Chat
+      - Webinar
+    identity_note: register gave only the name; exact normalised match to the repo's apis.yml name, one repo, Wikidata
+      P856 not contradicting (Kin 2026-10-20 decision 2)
+  status: not-a-workflow
+  arazzo: null
+- slug: zoom-instructure
+  label: Instructure
+  partner: instructure
+  partner_name: Instructure
+  category: Zoom technology partner
+  type: coverage
+  marketplace: zoom-partner-program
+  channel: standard-directory
+  evidence: https://partner.zoom.com/solutions/instructure/
+  source: edge
+  relationship: system-coverage
+  contract_reference:
+    register: Zoom Partner Solutions (partner.zoom.com/solutions; /wp-json/wp/v2/isvsolution)
+    standard: Zoom Partner Program
+    spec_file: null
+    role: zoom-technology-partner
+    registered_name: Instructure
+    register_id: https://partner.zoom.com/solutions/instructure/
+    matched_domain: instructure.com
+    matched_by: domain+name-among-holders
+    identity_source: a link on the partner page to the partner's own site (name-gated)
+    signal_note: 'participation only: partner type / program tier is partner_tier, never counted; no Zoom certification
+      is printed on the register, so no certified_products'
+    detected_by: sweep-zoom-app-marketplace.py
+    detected: '2026-10-21'
+    context:
+      products:
+      - Developer Platform
+      - Meetings
+  status: not-a-workflow
+  arazzo: null
+- slug: zoom-invision
+  label: InVision
+  partner: invision
+  partner_name: InVision
+  category: Zoom technology partner
+  type: coverage
+  marketplace: zoom-partner-program
+  channel: standard-directory
+  evidence: https://partner.zoom.com/solutions/invision/
+  source: edge
+  relationship: system-coverage
+  contract_reference:
+    register: Zoom Partner Solutions (partner.zoom.com/solutions; /wp-json/wp/v2/isvsolution)
+    standard: Zoom Partner Program
+    spec_file: null
+    role: zoom-technology-partner
+    registered_name: InVision
+    register_id: https://partner.zoom.com/solutions/invision/
+    matched_domain: invisionapp.com
+    matched_by: domain+name-among-holders
+    identity_source: developer of the Zoom App Marketplace listing https://marketplace.zoom.us/apps/QVoAT026T7ONfgx_BoWheQ
+      linked from the partner page
+    signal_note: 'participation only: partner type / program tier is partner_tier, never counted; no Zoom certification
+      is printed on the register, so no certified_products'
+    detected_by: sweep-zoom-app-marketplace.py
+    detected: '2026-10-21'
+    context:
+      products:
+      - App Marketplace
+      - Meetings
+  status: not-a-workflow
+  arazzo: null
+- slug: zoom-jane
+  label: Jane
+  partner: jane-app
+  partner_name: Jane
+  category: Zoom technology partner
+  type: coverage
+  marketplace: zoom-partner-program
+  channel: standard-directory
+  evidence: https://partner.zoom.com/solutions/jane/
+  source: edge
+  relationship: system-coverage
+  contract_reference:
+    register: Zoom Partner Solutions (partner.zoom.com/solutions; /wp-json/wp/v2/isvsolution)
+    standard: Zoom Partner Program
+    spec_file: null
+    role: zoom-technology-partner
+    registered_name: Jane
+    register_id: https://partner.zoom.com/solutions/jane/
+    matched_domain: jane.app
+    matched_by: domain
+    identity_source: a link on the partner page to the partner's own site (name-gated)
+    signal_note: 'participation only: partner type / program tier is partner_tier, never counted; no Zoom certification
+      is printed on the register, so no certified_products'
+    detected_by: sweep-zoom-app-marketplace.py
+    detected: '2026-10-21'
+    context:
+      products:
+      - Meetings
+  status: not-a-workflow
+  arazzo: null
+- slug: zoom-kore-ai
+  label: Kore.ai
+  partner: koreai
+  partner_name: Kore.ai
+  category: Zoom technology partner
+  type: coverage
+  marketplace: zoom-partner-program
+  channel: standard-directory
+  evidence: https://partner.zoom.com/solutions/kore-ai/
+  source: edge
+  relationship: system-coverage
+  contract_reference:
+    register: Zoom Partner Solutions (partner.zoom.com/solutions; /wp-json/wp/v2/isvsolution)
+    standard: Zoom Partner Program
+    spec_file: null
+    role: zoom-technology-partner
+    registered_name: Kore.ai
+    register_id: https://partner.zoom.com/solutions/kore-ai/
+    matched_domain: null
+    matched_by: register-name
+    identity_source: register-name
+    signal_note: 'participation only: partner type / program tier is partner_tier, never counted; no Zoom certification
+      is printed on the register, so no certified_products'
+    detected_by: sweep-zoom-app-marketplace.py
+    detected: '2026-10-21'
+    context:
+      products:
+      - App Marketplace
+      - Contact Center
+    identity_note: register gave only the name; exact normalised match to the repo's apis.yml name, one repo, Wikidata
+      P856 not contradicting (Kin 2026-10-20 decision 2)
+  status: not-a-workflow
+  arazzo: null
+- slug: zoom-lumen-technologies
+  label: Lumen Technologies
+  partner: lumen-technologies
+  partner_name: Lumen Technologies
+  category: Zoom technology partner
+  type: coverage
+  marketplace: zoom-partner-program
+  channel: standard-directory
+  evidence: https://partner.zoom.com/solutions/lumen/
+  source: edge
+  relationship: system-coverage
+  contract_reference:
+    register: Zoom Partner Solutions (partner.zoom.com/solutions; /wp-json/wp/v2/isvsolution)
+    standard: Zoom Partner Program
+    spec_file: null
+    role: zoom-technology-partner
+    registered_name: Lumen Technologies
+    register_id: https://partner.zoom.com/solutions/lumen/
+    matched_domain: lumen.com
+    matched_by: domain+name-among-holders
+    identity_source: a link on the partner page to the partner's own site (name-gated)
+    signal_note: 'participation only: partner type / program tier is partner_tier, never counted; no Zoom certification
+      is printed on the register, so no certified_products'
+    detected_by: sweep-zoom-app-marketplace.py
+    detected: '2026-10-21'
+    context:
+      products:
+      - Phone
+  status: not-a-workflow
+  arazzo: null
+- slug: zoom-mural
+  label: MURAL
+  partner: mural
+  partner_name: MURAL
+  category: Zoom technology partner
+  type: coverage
+  marketplace: zoom-partner-program
+  channel: standard-directory
+  evidence: https://partner.zoom.com/solutions/mural/
+  source: edge
+  relationship: system-coverage
+  contract_reference:
+    register: Zoom Partner Solutions (partner.zoom.com/solutions; /wp-json/wp/v2/isvsolution)
+    standard: Zoom Partner Program
+    spec_file: null
+    role: zoom-technology-partner
+    registered_name: MURAL
+    register_id: https://partner.zoom.com/solutions/mural/
+    matched_domain: mural.co
+    matched_by: domain
+    identity_source: developer of the Zoom App Marketplace listing https://marketplace.zoom.us/apps/Fi-f1klsT8C1o22KH0oETw
+      linked from the partner page
+    signal_note: 'participation only: partner type / program tier is partner_tier, never counted; no Zoom certification
+      is printed on the register, so no certified_products'
+    detected_by: sweep-zoom-app-marketplace.py
+    detected: '2026-10-21'
+    context:
+      products:
+      - App Marketplace
+      - Meetings
+      - Rooms & Spaces
+  status: not-a-workflow
+  arazzo: null
+- slug: zoom-neat
+  label: Neat
+  partner: neat-pulse-api
+  partner_name: Neat
+  category: Zoom technology partner
+  type: coverage
+  marketplace: zoom-partner-program
+  channel: standard-directory
+  evidence: https://partner.zoom.com/solutions/neat/
+  source: edge
+  relationship: system-coverage
+  contract_reference:
+    register: Zoom Partner Solutions (partner.zoom.com/solutions; /wp-json/wp/v2/isvsolution)
+    standard: Zoom Partner Program
+    spec_file: null
+    role: zoom-technology-partner
+    registered_name: Neat
+    register_id: https://partner.zoom.com/solutions/neat/
+    matched_domain: neat.no
+    matched_by: domain
+    identity_source: a link on the partner page to the partner's own site (name-gated)
+    signal_note: 'participation only: partner type / program tier is partner_tier, never counted; no Zoom certification
+      is printed on the register, so no certified_products'
+    detected_by: sweep-zoom-app-marketplace.py
+    detected: '2026-10-21'
+    context:
+      products:
+      - Contact Center
+      - Phone
+      - Rooms & Spaces
+      - Workplace
+  status: not-a-workflow
+  arazzo: null
+- slug: zoom-observe-ai
+  label: Observe.AI
+  partner: observeai
+  partner_name: Observe.AI
+  category: Zoom technology partner
+  type: coverage
+  marketplace: zoom-partner-program
+  channel: standard-directory
+  evidence: https://partner.zoom.com/solutions/observe-ai/
+  source: edge
+  relationship: system-coverage
+  contract_reference:
+    register: Zoom Partner Solutions (partner.zoom.com/solutions; /wp-json/wp/v2/isvsolution)
+    standard: Zoom Partner Program
+    spec_file: null
+    role: zoom-technology-partner
+    registered_name: Observe.AI
+    register_id: https://partner.zoom.com/solutions/observe-ai/
+    matched_domain: null
+    matched_by: register-name
+    identity_source: register-name
+    signal_note: 'participation only: partner type / program tier is partner_tier, never counted; no Zoom certification
+      is printed on the register, so no certified_products'
+    detected_by: sweep-zoom-app-marketplace.py
+    detected: '2026-10-21'
+    context:
+      products:
+      - Contact Center
+    identity_note: register gave only the name; exact normalised match to the repo's apis.yml name, one repo, Wikidata
+      P856 not contradicting (Kin 2026-10-20 decision 2)
+  status: not-a-workflow
+  arazzo: null
+- slug: zoom-osmind
+  label: Osmind
+  partner: osmind
+  partner_name: Osmind
+  category: Zoom technology partner
+  type: coverage
+  marketplace: zoom-partner-program
+  channel: standard-directory
+  evidence: https://partner.zoom.com/solutions/osmind/
+  source: edge
+  relationship: system-coverage
+  contract_reference:
+    register: Zoom Partner Solutions (partner.zoom.com/solutions; /wp-json/wp/v2/isvsolution)
+    standard: Zoom Partner Program
+    spec_file: null
+    role: zoom-technology-partner
+    registered_name: Osmind
+    register_id: https://partner.zoom.com/solutions/osmind/
+    matched_domain: osmind.org
+    matched_by: domain
+    identity_source: a link on the partner page to the partner's own site (name-gated)
+    signal_note: 'participation only: partner type / program tier is partner_tier, never counted; no Zoom certification
+      is printed on the register, so no certified_products'
+    detected_by: sweep-zoom-app-marketplace.py
+    detected: '2026-10-21'
+    context:
+      products:
+      - Meetings
+  status: not-a-workflow
+  arazzo: null
+- slug: zoom-outreach
+  label: Outreach
+  partner: outreach
+  partner_name: Outreach
+  category: Zoom technology partner
+  type: coverage
+  marketplace: zoom-partner-program
+  channel: standard-directory
+  evidence: https://partner.zoom.com/solutions/outreach/
+  source: edge
+  relationship: system-coverage
+  contract_reference:
+    register: Zoom Partner Solutions (partner.zoom.com/solutions; /wp-json/wp/v2/isvsolution)
+    standard: Zoom Partner Program
+    spec_file: null
+    role: zoom-technology-partner
+    registered_name: Outreach
+    register_id: https://partner.zoom.com/solutions/outreach/
+    matched_domain: null
+    matched_by: register-name
+    identity_source: register-name
+    signal_note: 'participation only: partner type / program tier is partner_tier, never counted; no Zoom certification
+      is printed on the register, so no certified_products'
+    detected_by: sweep-zoom-app-marketplace.py
+    detected: '2026-10-21'
+    context:
+      products:
+      - App Marketplace
+      - Contact Center
+      - Meetings
+      - Phone
+      - Revenue Accelerator
+    identity_note: register gave only the name; exact normalised match to the repo's apis.yml name, one repo, Wikidata
+      P856 not contradicting (Kin 2026-10-20 decision 2)
+  status: not-a-workflow
+  arazzo: null
+- slug: zoom-outschool
+  label: Outschool
+  partner: outschool
+  partner_name: Outschool
+  category: Zoom technology partner
+  type: coverage
+  marketplace: zoom-partner-program
+  channel: standard-directory
+  evidence: https://partner.zoom.com/solutions/outschool/
+  source: edge
+  relationship: system-coverage
+  contract_reference:
+    register: Zoom Partner Solutions (partner.zoom.com/solutions; /wp-json/wp/v2/isvsolution)
+    standard: Zoom Partner Program
+    spec_file: null
+    role: zoom-technology-partner
+    registered_name: Outschool
+    register_id: https://partner.zoom.com/solutions/outschool/
+    matched_domain: outschool.com
+    matched_by: domain
+    identity_source: a link on the partner page to the partner's own site (name-gated)
+    signal_note: 'participation only: partner type / program tier is partner_tier, never counted; no Zoom certification
+      is printed on the register, so no certified_products'
+    detected_by: sweep-zoom-app-marketplace.py
+    detected: '2026-10-21'
+    context:
+      products:
+      - Developer Platform
+  status: not-a-workflow
+  arazzo: null
+- slug: zoom-tata-communications
+  label: Tata Communications
+  partner: tata-communications
+  partner_name: Tata Communications
+  category: Zoom technology partner
+  type: coverage
+  marketplace: zoom-partner-program
+  channel: standard-directory
+  evidence: https://partner.zoom.com/solutions/tata-communications/
+  source: edge
+  relationship: system-coverage
+  contract_reference:
+    register: Zoom Partner Solutions (partner.zoom.com/solutions; /wp-json/wp/v2/isvsolution)
+    standard: Zoom Partner Program
+    spec_file: null
+    role: zoom-technology-partner
+    registered_name: Tata Communications
+    register_id: https://partner.zoom.com/solutions/tata-communications/
+    matched_domain: null
+    matched_by: register-name
+    identity_source: register-name
+    signal_note: 'participation only: partner type / program tier is partner_tier, never counted; no Zoom certification
+      is printed on the register, so no certified_products'
+    detected_by: sweep-zoom-app-marketplace.py
+    detected: '2026-10-21'
+    context:
+      products:
+      - Phone
+    identity_note: register gave only the name; exact normalised match to the repo's apis.yml name, one repo, Wikidata
+      P856 not contradicting (Kin 2026-10-20 decision 2)
+  status: not-a-workflow
+  arazzo: null
+- slug: zoom-telnyx
+  label: Telnyx
+  partner: telnyx
+  partner_name: Telnyx
+  category: Zoom technology partner
+  type: coverage
+  marketplace: zoom-partner-program
+  channel: standard-directory
+  evidence: https://partner.zoom.com/solutions/telnyx/
+  source: edge
+  relationship: system-coverage
+  contract_reference:
+    register: Zoom Partner Solutions (partner.zoom.com/solutions; /wp-json/wp/v2/isvsolution)
+    standard: Zoom Partner Program
+    spec_file: null
+    role: zoom-technology-partner
+    registered_name: Telnyx
+    register_id: https://partner.zoom.com/solutions/telnyx/
+    matched_domain: telnyx.com
+    matched_by: domain+name-among-holders
+    identity_source: a link on the partner page to the partner's own site (name-gated)
+    signal_note: 'participation only: partner type / program tier is partner_tier, never counted; no Zoom certification
+      is printed on the register, so no certified_products'
+    detected_by: sweep-zoom-app-marketplace.py
+    detected: '2026-10-21'
+    context:
+      products:
+      - Phone
+  status: not-a-workflow
+  arazzo: null
+- slug: zoom-transunion
+  label: TransUnion
+  partner: transunion
+  partner_name: TransUnion
+  category: Zoom technology partner
+  type: coverage
+  marketplace: zoom-partner-program
+  channel: standard-directory
+  evidence: https://partner.zoom.com/solutions/transunion/
+  source: edge
+  relationship: system-coverage
+  contract_reference:
+    register: Zoom Partner Solutions (partner.zoom.com/solutions; /wp-json/wp/v2/isvsolution)
+    standard: Zoom Partner Program
+    spec_file: null
+    role: zoom-technology-partner
+    registered_name: TransUnion
+    register_id: https://partner.zoom.com/solutions/transunion/
+    matched_domain: transunion.com
+    matched_by: domain
+    identity_source: a link on the partner page to the partner's own site (name-gated)
+    signal_note: 'participation only: partner type / program tier is partner_tier, never counted; no Zoom certification
+      is printed on the register, so no certified_products'
+    detected_by: sweep-zoom-app-marketplace.py
+    detected: '2026-10-21'
+    context:
+      products:
+      - Contact Center
+      - Phone
+  status: not-a-workflow
+  arazzo: null
+- slug: zoom-usertesting
+  label: UserTesting
+  partner: usertesting
+  partner_name: UserTesting
+  category: Zoom technology partner
+  type: coverage
+  marketplace: zoom-partner-program
+  channel: standard-directory
+  evidence: https://partner.zoom.com/solutions/usertesting/
+  source: edge
+  relationship: system-coverage
+  contract_reference:
+    register: Zoom Partner Solutions (partner.zoom.com/solutions; /wp-json/wp/v2/isvsolution)
+    standard: Zoom Partner Program
+    spec_file: null
+    role: zoom-technology-partner
+    registered_name: UserTesting
+    register_id: https://partner.zoom.com/solutions/usertesting/
+    matched_domain: usertesting.com
+    matched_by: domain
+    identity_source: a link on the partner page to the partner's own site (name-gated)
+    signal_note: 'participation only: partner type / program tier is partner_tier, never counted; no Zoom certification
+      is printed on the register, so no certified_products'
+    detected_by: sweep-zoom-app-marketplace.py
+    detected: '2026-10-21'
+    context:
+      products:
+      - Meetings
+  status: not-a-workflow
+  arazzo: null
+- slug: zoom-verint
+  label: Verint
+  partner: verint-systems
+  partner_name: Verint
+  category: Zoom technology partner
+  type: coverage
+  marketplace: zoom-partner-program
+  channel: standard-directory
+  evidence: https://partner.zoom.com/solutions/verint-financial-compliance/
+  source: edge
+  relationship: system-coverage
+  contract_reference:
+    register: Zoom Partner Solutions (partner.zoom.com/solutions; /wp-json/wp/v2/isvsolution)
+    standard: Zoom Partner Program
+    spec_file: null
+    role: zoom-technology-partner
+    registered_name: Verint
+    register_id: https://partner.zoom.com/solutions/verint-financial-compliance/
+    matched_domain: verint.com
+    matched_by: domain
+    identity_source: a link on the partner page to the partner's own site (name-gated)
+    signal_note: 'participation only: partner type / program tier is partner_tier, never counted; no Zoom certification
+      is printed on the register, so no certified_products'
+    detected_by: sweep-zoom-app-marketplace.py
+    detected: '2026-10-21'
+    context:
+      products:
+      - Meetings
+      - Phone
+  status: not-a-workflow
+  arazzo: null
+- slug: zoom-warmly
+  label: Warmly
+  partner: warmly
+  partner_name: Warmly
+  category: Zoom technology partner
+  type: coverage
+  marketplace: zoom-partner-program
+  channel: standard-directory
+  evidence: https://partner.zoom.com/solutions/warmly/
+  source: edge
+  relationship: system-coverage
+  contract_reference:
+    register: Zoom Partner Solutions (partner.zoom.com/solutions; /wp-json/wp/v2/isvsolution)
+    standard: Zoom Partner Program
+    spec_file: null
+    role: zoom-technology-partner
+    registered_name: Warmly
+    register_id: https://partner.zoom.com/solutions/warmly/
+    matched_domain: warmly.ai
+    matched_by: domain
+    identity_source: developer of the Zoom App Marketplace listing https://marketplace.zoom.us/apps/vkBX54brQ0-iiSGtEx33vg
+      linked from the partner page
+    signal_note: 'participation only: partner type / program tier is partner_tier, never counted; no Zoom certification
+      is printed on the register, so no certified_products'
+    detected_by: sweep-zoom-app-marketplace.py
+    detected: '2026-10-21'
+    context:
+      products:
+      - App Marketplace
+      - Meetings
+      - Webinar
+  status: not-a-workflow
+  arazzo: null
+- slug: zoom-wellnessliving
+  label: WellnessLiving
+  partner: wellnessliving
+  partner_name: WellnessLiving
+  category: Zoom technology partner
+  type: coverage
+  marketplace: zoom-partner-program
+  channel: standard-directory
+  evidence: https://partner.zoom.com/solutions/wellnessliving/
+  source: edge
+  relationship: system-coverage
+  contract_reference:
+    register: Zoom Partner Solutions (partner.zoom.com/solutions; /wp-json/wp/v2/isvsolution)
+    standard: Zoom Partner Program
+    spec_file: null
+    role: zoom-technology-partner
+    registered_name: WellnessLiving
+    register_id: https://partner.zoom.com/solutions/wellnessliving/
+    matched_domain: null
+    matched_by: register-name
+    identity_source: register-name
+    signal_note: 'participation only: partner type / program tier is partner_tier, never counted; no Zoom certification
+      is printed on the register, so no certified_products'
+    detected_by: sweep-zoom-app-marketplace.py
+    detected: '2026-10-21'
+    context:
+      products:
+      - Events
+      - Webinar
+    identity_note: register gave only the name; exact normalised match to the repo's apis.yml name, one repo, Wikidata
+      P856 not contradicting (Kin 2026-10-20 decision 2)
+  status: not-a-workflow
+  arazzo: null
+- slug: zoom-zendesk
+  label: Zendesk
+  partner: zendesk
+  partner_name: Zendesk
+  category: Zoom technology partner
+  type: coverage
+  marketplace: zoom-partner-program
+  channel: standard-directory
+  evidence: https://partner.zoom.com/solutions/zendesk/
+  source: edge
+  relationship: system-coverage
+  contract_reference:
+    register: Zoom Partner Solutions (partner.zoom.com/solutions; /wp-json/wp/v2/isvsolution)
+    standard: Zoom Partner Program
+    spec_file: null
+    role: zoom-technology-partner
+    registered_name: Zendesk
+    register_id: https://partner.zoom.com/solutions/zendesk/
+    matched_domain: null
+    matched_by: register-name
+    identity_source: register-name
+    signal_note: 'participation only: partner type / program tier is partner_tier, never counted; no Zoom certification
+      is printed on the register, so no certified_products'
+    detected_by: sweep-zoom-app-marketplace.py
+    detected: '2026-10-21'
+    context:
+      products:
+      - App Marketplace
+      - Contact Center
+      - Meetings
+      - Phone
+    identity_note: register gave only the name; exact normalised match to the repo's apis.yml name, one repo, Wikidata
+      P856 not contradicting (Kin 2026-10-20 decision 2)
+  status: not-a-workflow
+  arazzo: null
+- slug: zoom-realwear
+  label: RealWear
+  partner: realwear
+  partner_name: RealWear
+  category: Zoom technology partner
+  type: coverage
+  marketplace: zoom-partner-program
+  channel: standard-directory
+  evidence: https://partner.zoom.com/partner/zoom-3/
+  source: edge
+  relationship: system-coverage
+  contract_reference:
+    register: Zoom Partner Locator (partner.zoom.com/partner-locator; /wp-json/wp/v2/partner)
+    standard: Zoom Partner Program
+    spec_file: null
+    role: zoom-hardware-or-peering-partner
+    registered_name: RealWear
+    register_id: https://partner.zoom.com/partner/zoom-3/
+    matched_domain: null
+    matched_by: register-name
+    identity_source: register-name
+    signal_note: 'participation only: partner type / program tier is partner_tier, never counted; no Zoom certification
+      is printed on the register, so no certified_products'
+    detected_by: sweep-zoom-app-marketplace.py
+    detected: '2026-10-21'
+    identity_note: register gave only the name; exact normalised match to the repo's apis.yml name, one repo, Wikidata
+      P856 not contradicting (Kin 2026-10-20 decision 2)
+  status: not-a-workflow
+  arazzo: null
+- slug: zoom-singtel
+  label: Singtel
+  partner: singtel
+  partner_name: Singtel
+  category: Zoom technology partner
+  type: coverage
+  marketplace: zoom-partner-program
+  channel: standard-directory
+  evidence: https://partner.zoom.com/partner/singtel/
+  source: edge
+  relationship: system-coverage
+  contract_reference:
+    register: Zoom Partner Locator (partner.zoom.com/partner-locator; /wp-json/wp/v2/partner)
+    standard: Zoom Partner Program
+    spec_file: null
+    role: zoom-hardware-or-peering-partner
+    registered_name: Singtel
+    register_id: https://partner.zoom.com/partner/singtel/
+    matched_domain: null
+    matched_by: register-name
+    identity_source: register-name
+    signal_note: 'participation only: partner type / program tier is partner_tier, never counted; no Zoom certification
+      is printed on the register, so no certified_products'
+    detected_by: sweep-zoom-app-marketplace.py
+    detected: '2026-10-21'
+    context:
+      competencies:
+      - Phone
+    identity_note: register gave only the name; exact normalised match to the repo's apis.yml name, one repo, Wikidata
+      P856 not contradicting (Kin 2026-10-20 decision 2)
+  status: not-a-workflow
+  arazzo: null
+- slug: zoom-steelcase
+  label: Steelcase
+  partner: steelcase
+  partner_name: Steelcase
+  category: Zoom technology partner
+  type: coverage
+  marketplace: zoom-partner-program
+  channel: standard-directory
+  evidence: https://partner.zoom.com/partner/steelcase/
+  source: edge
+  relationship: system-coverage
+  contract_reference:
+    register: Zoom Partner Locator (partner.zoom.com/partner-locator; /wp-json/wp/v2/partner)
+    standard: Zoom Partner Program
+    spec_file: null
+    role: zoom-hardware-or-peering-partner
+    registered_name: Steelcase
+    register_id: https://partner.zoom.com/partner/steelcase/
+    matched_domain: null
+    matched_by: register-name
+    identity_source: register-name
+    signal_note: 'participation only: partner type / program tier is partner_tier, never counted; no Zoom certification
+      is printed on the register, so no certified_products'
+    detected_by: sweep-zoom-app-marketplace.py
+    detected: '2026-10-21'
+    identity_note: register gave only the name; exact normalised match to the repo's apis.yml name, one repo, Wikidata
+      P856 not contradicting (Kin 2026-10-20 decision 2)
+  status: not-a-workflow
+  arazzo: null
