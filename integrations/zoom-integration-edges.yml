@@ -58,6 +58,8 @@ checked:
 - https://api.apis.guru/v2/providers.json
 - https://dir.texas.gov/resource-library-item/tx-ramp-certified-cloud-products
 - intercom/integrations/intercom-integration-edges.yml
+- https://store.servicenow.com/store/app/
+- https://store.servicenow.com/store/sitemap_xml
 summary: null
 marketplace_apps:
 - marketplace: own
@@ -13359,6 +13361,51 @@ edges:
   detected: '2026-10-23'
   detected_by: mirror-platform-listings.py
   category: Intercom App Store app
+- partner_name: ServiceNow Store (partner apps)
+  partner: servicenow
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://store.servicenow.com/store/seller/bd1c1cacdbf45704032a7a9e0f961945
+  category: ServiceNow Store partner app / app certification
+  contract_reference:
+    register: ServiceNow Store (store.servicenow.com/store/sitemap_xml -> /store/app/<id> server-rendered pages)
+    standard: ServiceNow Store app certification (ServiceNow Certified App badge)
+    spec_file: null
+    role: servicenow-store-partner
+    registered_name: Zoom Video Communications Inc
+    register_id: bd1c1cacdbf45704032a7a9e0f961945
+    matched_domain: zoom.us
+    matched_by: domain
+    identity_source: the listing's own seller website link (no lookup)
+    certified_products:
+    - product: ServiceNow Certified App (scoped_app / integration)
+      product_type: scoped_app / integration
+      standard: ServiceNow Store app certification (ServiceNow Certified App badge)
+      lapsed: false
+      products_sample:
+      - Zoom Contact Center
+      - Zoom Contact Center Unified View
+      - Zoom Phone
+      releases:
+      - Yokohama
+      - Zurich
+      - Australia
+    products_sample:
+    - Zoom Admin Alerts
+    - Zoom Contact Center
+    - Zoom Contact Center Unified View
+    - Zoom Phone
+    signal_note: 'listing alone = standard-participant; certified_products = one entry per Application type the
+      seller holds a ServiceNow Certified App badge for, standard named on each; lapsed: true when none of that
+      type''s certified apps lists either of the two newest release families on the Store; app counts are context,
+      never counted'
+    detected_by: sweep-servicenow-store.py
+    detected: '2026-10-23'
+  detected_by: sweep-servicenow-store.py
+  first_seen: '2026-10-23'
 templates:
 - title: Upload new Zoom recordings to Google Drive
   url: https://zapier.com/apps/google-drive/integrations/zoom/232845/upload-new-zoom-recordings-to-google-drive
