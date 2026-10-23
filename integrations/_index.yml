@@ -10877,19 +10877,6 @@
     detected: '2026-10-19'
   status: not-a-workflow
   arazzo: null
-- slug: zoom-clever-clever-app-gallery
-  label: Clever (clever-app-gallery)
-  partner: clever
-  partner_name: Clever (clever-app-gallery)
-  category: communication
-  type: marketplace
-  marketplace: clever-app-gallery
-  channel: partner-built
-  evidence: https://clever.com/app-gallery
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
 - slug: zoom-n8n
   label: n8n
   partner: n8n
@@ -12497,5 +12484,31 @@
       lapsed: false
     detected_by: sweep-tx-ramp-certified-cloud.py
     detected: '2026-10-22'
+  status: not-a-workflow
+  arazzo: null
+- slug: zoom-clever-clever-app-gallery
+  label: Clever (clever-app-gallery)
+  partner: clever
+  partner_name: Clever (clever-app-gallery)
+  category: communication
+  type: marketplace
+  marketplace: clever-app-gallery
+  channel: partner-built
+  evidence: https://clever.com/app-gallery
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: zoom-intercom-own
+  label: Intercom (own)
+  partner: intercom
+  partner_name: Intercom (own)
+  category: Intercom App Store app
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.intercom.com/app-store/?app_package_code=zoom-zva-69d0
+  source: edge
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null

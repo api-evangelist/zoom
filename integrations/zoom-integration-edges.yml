@@ -57,6 +57,7 @@ checked:
 - https://api.apis.guru/v2/list.json
 - https://api.apis.guru/v2/providers.json
 - https://dir.texas.gov/resource-library-item/tx-ramp-certified-cloud-products
+- intercom/integrations/intercom-integration-edges.yml
 summary: null
 marketplace_apps:
 - marketplace: own
@@ -11093,24 +11094,6 @@ edges:
     detected: '2026-10-19'
   detected_by: sweep-higher-ed.py
   first_seen: '2026-10-19'
-- partner_name: Clever (clever-app-gallery)
-  partner: clever
-  partner_match: mirror
-  mirror_match: domain
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: clever-app-gallery
-  evidence: https://clever.com/app-gallery
-  mirror_of: clever/integrations/clever-integration-edges.yml
-  apps: []
-  listing_count: 2
-  detected: '2026-10-14'
-  detected_by: mirror-platform-listings.py
-  category: communication
-  features:
-  - instant_login
 - partner_name: Zapier
   partner: zapier
   partner_match: aggregator
@@ -13341,6 +13324,41 @@ edges:
     detected: '2026-10-22'
   detected_by: sweep-tx-ramp-certified-cloud.py
   first_seen: '2026-10-22'
+- partner_name: Clever (clever-app-gallery)
+  partner: clever
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: clever-app-gallery
+  evidence: https://clever.com/app-gallery
+  mirror_of: clever/integrations/clever-integration-edges.yml
+  apps: []
+  listing_count: 2
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+  category: communication
+  features:
+  - instant_login
+- partner_name: Intercom (own)
+  partner: intercom
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://www.intercom.com/app-store/?app_package_code=zoom-zva-69d0
+  mirror_of: intercom/integrations/intercom-integration-edges.yml
+  apps:
+  - Zoom Virtual Agent
+  listing_count: 1
+  detected: '2026-10-23'
+  detected_by: mirror-platform-listings.py
+  category: Intercom App Store app
 templates:
 - title: Upload new Zoom recordings to Google Drive
   url: https://zapier.com/apps/google-drive/integrations/zoom/232845/upload-new-zoom-recordings-to-google-drive
